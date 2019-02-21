@@ -1,0 +1,101 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Modèle pour la 1ère de couverture des thèses préparées à l'Université Paris-Saclay, basé sur le modèle produit par Guillaume BRIGOT / Template for back cover of thesis made at Université Paris-Saclay, based on the template made by Guillaume BRIGOT
+%%% Mis à jour par Aurélien ARNOUX (École polytechnique)/ Updated by Aurélien ARNOUX (École polytechnique)
+%%% Les instructions concernant chaque donnée à remplir sont données en bloc de commentaire / Rules to fill this file are given in comment blocks
+%%% ATTENTION Ces informations doivent tenir sur une seule page une fois compilées / WARNING These informations must contain in no more than one page once compiled
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Version du 19 juillet 2018 (Merci à Hadrien VROYLANDT (Univ. Paris-Sud) pour ses suggestions et corrections)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagestyle{empty}
+
+%\color{bordeau} \hfill \vfill \tiny \ecodocnum
+\begin{textblock}{5}(0,0)
+	\textblockcolour{bordeau}
+	%\vspace{10mm}
+	\includegraphics [scale=1]{couvertures/bande.png}
+	\vspace{300mm}
+\end{textblock}
+
+\begin{textblock}{1}(0.6,9.5)
+
+	\Huge{\rotatebox{90}{\color{white}{\fontsize{38}{54}\selectfont Thèse de doctorat}}}
+\end{textblock}
+
+\begin{textblock}{1}(0.6,3)
+	\Large{\rotatebox{90}{\color{white}{NNT : \NNT}}}
+\end{textblock}
+
+\begin{textblock}{1}(\hpostt,\vpostt)
+	\textblockcolour{white}
+	\includegraphics[scale=1]{couvertures/etab/\logoEtt.png}
+\end{textblock}
+
+\begin{textblock}{1}(\hpos,\vpos)
+	\textblockcolour{white}
+		\includegraphics[scale=1]{couvertures/etab/\logoEt.png}
+\end{textblock}
+
+%\vspace{6cm}
+%% Texte
+\begin{textblock}{10.3}(5.4,3)
+	\textblockcolour{white}
+
+	\color{bordeau}
+	%\begin{center}
+	\begin{flushright}
+		\huge{\PhDTitle} \bigskip %% Titre de la thèse
+		\vfill
+		\color{black} %% Couleur noire du reste du texte
+		\normalsize {Thèse de doctorat de l'Université Paris-Saclay} \\
+		préparée à \PhDworkingplace \\ \bigskip
+		\vfill
+		Ecole doctorale n$^{\circ}$\ecodocnum ~\ecodoctitle ~(\ecodocacro)  \\
+
+		\small{Spécialité de doctorat: \PhDspeciality} \bigskip %% Spécialité
+		\vfill
+		\footnotesize{Thèse présentée et soutenue à \defenseplace, le \defensedate, par} \bigskip
+		\vfill
+		\Large{\textbf{\textsc{\PhDname}}} %% Nom du docteur
+		\vfill
+		%\bigskip
+	\end{flushright}
+
+	%\end{center}
+	\color{black}
+	%% Jury
+	\begin{flushleft}
+
+		\small Composition du Jury :
+	\end{flushleft}
+	%% Members of the jury
+
+	\small
+	%\begin{center}
+	\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+	\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}lm{#1}}
+
+	\label{jury} 																				%% Mettre à jour si des membres ont été ajoutés ou retirés / Update if members have been added or removed
+	\begin{flushleft}
+	\begin{tabular}{@{} L{9.5cm} R{4.5cm}}
+		\jurynameA  \\ \juryadressA & \juryroleA \\[5pt]
+		\jurynameB  \\ \juryadressB & \juryroleB \\[5pt]
+		\jurynameC  \\ \juryadressC & \juryroleC \\[5pt]
+		\jurynameD  \\ \juryadressD & \juryroleD \\[5pt]
+		\jurynameE  \\ \juryadressE & \juryroleE \\[5pt]
+		\jurynameF  \\ \juryadressF & \juryroleF \\[5pt]
+		\jurynameG  \\ \juryadressG & \juryroleG \\[5pt]
+		\jurynameH  \\ \juryadressH & \juryroleH \\[5pt]
+	\end{tabular}
+	\end{flushleft}
+	%\end{center}
+\end{textblock}
+
+\clearpage
+\mbox{}
+\clearpage
+\mbox{}
+\clearpage
+
+\pagestyle{headings}

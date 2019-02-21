@@ -1,0 +1,242 @@
+%!TEX root=../main.tex
+
+\chapter{Résumé en français}
+\begin{otherlanguage}{french}
+
+\section*{Introduction}
+Une bonne tenue mécanique des structures du génie civil en béton armé sous chargements dynamiques sévères est primordiale pour la sécurité et nécessite une évaluation précise de leur comportement en présence de propagation de fissures dynamiques. Dans ce travail, on se focalise sur la modélisation constitutive du béton assimilé à un matériau élastique-fragile endommageable en tension seulement. La rupture fragile s'accompagne de très peu de déformations loin de fissures et d'une localisation du tenseur des déformations le long des fissures. La modélisation et l'analyse décrites dans cette étude s'appliquent aux matériaux fragiles vérifiant ces comportements à la rupture.
+
+Une étude bibliographique sur la rupture dynamique fragile est proposée dans le chapitre \ref{chap:introduction}. Plusieurs modèles physiques sont comparés quant à leur aptitude à modéliser la rupture fragile: la théorie classique de Griffith, l'approche variationnelle de la rupture et les modèles d'endommagement à gradient formulés initialement dans un cadre quasi statique. Plusieurs objectifs de cette présente étude sont classifiés en fonction de l'approche utilisée (théorique ou numérique) et en utilisant les sujets thématiques suivants
+\begin{itemize}
+\item Vers la dynamique,
+\item Établir un lien avec les approches « champ de phase »,
+\item Meilleure compréhension des modèles d'endommagement à gradient, et
+\item Validation expérimentale.
+\end{itemize}
+
+\section*{Modèles d'endommagement à gradient en dynamique}
+Le chapitre \ref{chap:graddama} regroupe les contributions théoriques de cette these. On postule que l'évolution spatio-temporelle de la localisation des déformations dans un solide fragile est régie par un modèle d'endommagement à gradient. Il consiste à introduire un nouveau champ scalaire $0\leq\alpha_t\leq 1$ réalisant une description régularisée entre la partie saine de la structure $\alpha_t=0$ et la région fissurée $\alpha_t=1$.
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.55\textwidth]{fiss3.pdf}
+\end{figure}
+
+On propose une formulation variationnelle des modèles d'endommagement à gradient en dynamique à l'aide de trois principes physiques d'irréversibilité, de stabilité et de bilan d'énergie
+\begin{enumerate}
+\item \textbf{Irréversibilité}: l'endommagement $t\mapsto\alpha_t$ est non-décroissant du temps.
+\item \textbf{Stabilité d'ordre un}: la variation première de l'action est non-negative par rapport aux évolutions arbitraires et admissibles du couple déplacement-endommagement
+\begin{equation*}
+\mathcal{A}'(\vec{u},\alpha)(\vec{v}-\vec{u},\beta-\alpha)\geq 0\text{ for all $\vec{v}\in\mathcal{C}(\vec{u})$ and all $\beta\in\mathcal{D}(\alpha)$}.
+\end{equation*}
+\item \textbf{Bilan d'énergie}: la dissipation d'énergie est uniquement due à l'endommagement
+\begin{multline*}
+\mathcal{H}_t=\mathcal{H}_0+\int_0^t\left(\int_\Omega\bigl(\sig_s\cdot\eps(\dot{\vec{U}}_s)-\rho\dot{\vec{u}}_s\cdot\ddot{\vec{U}}_s\bigr)\dx-\mathcal{W}_s(\dot{\vec{U}}_s)-\dot{\mathcal{W}}_s(\vec{u}_s)\right)\D{s} \\
++\int_\Omega\rho(\dot{\vec{u}}_t\cdot\dot{\vec{U}}_t-\dot{\vec{u}}_0\cdot\dot{\vec{U}}_0)\dx
+\end{multline*}
+où l'énergie totale est définie par
+\[
+\mathcal{H}_t=\mathcal{E}(\vec{u}_t,\alpha_t)+\mathcal{S}(\alpha_t)+\mathcal{K}(\dot{\vec{u}}_t)-\mathcal{W}_t(\vec{u}_t).
+\]
+\end{enumerate}
+Il s'agit d'une extension en dynamique du formalisme existant en statique via la variation de l'intégrale temporelle d'un lagrangien généralisé prenant en compte l'énergie cinétique $\mathcal{K}$ et aussi l'énergie dissipée $\mathcal{S}$ due au processus d'endommagement. Grâce au caractère variationnel de la formulation, ces modèles d'endommagement permettent de rendre compte de toute l'évolution de la fissuration avec des trajets et topologies complexes et non-présupposés d'un point de vue modélisation de l'évolution du défaut.
+
+Pour modéliser le comportement asymétrique des matériaux fragiles en traction et en compression, plusieurs formulations basées sur la dépendance de l'énergie élastique vis-à-vis de l'endommagement sont revues et un cadre unificateur est proposé via un principe variationnel. Ces modèles sont vus comme un paramètre matériau en soi décrivant différents mécanismes d'endommagement déterminés par la microstructure. Une meilleure compréhension de leur comportement est obtenue via un essai de traction/compression unidimensionnel.
+
+On s'intéresse ensuite à l'équation d'évolution de fissures régularisées par le champ d'endommagement durant la phase de propagation. On démontre que la pointe de la fissure dynamique est régie par un critère de Griffith faisant intervenir le taux de restitution d'énergie dynamique conventionnel
+\begin{equation*}
+G_t^\alpha=\int_\domaint\Bigl(\bigl(\kappa(\dot{\vec{u}}_t)-\psi\bigl(\eps(\vec{u}_t),\alpha_t\bigr)\bigr)\div\vtheta_t+\sig_t\cdot(\nabla\vec{u}_t\nabla\vtheta_t)+\div(\vec{f}_t\otimes\vtheta_t)\cdot\vec{u}_t+\rho\ddot{\vec{u}}_t\cdot\nabla\vec{u}_t\vtheta_t+\rho\dot{\vec{u}}_t\cdot\nabla\dot{\vec{u}}_t\vtheta_t\Bigr)\dx\,,
+\end{equation*}
+et le taux de dissipation d'endommagement
+\begin{equation*}
+\gamma_t=\frac{\partial}{\partial l_t}\mathcal{S}^*(\alpha^*_t,l_t)=\int_\domaint\bigl(\varsigma(\alpha_t,\nabla\alpha_t)\div\vtheta_t-\vec{q}_t\cdot\nabla\vtheta_t\nabla\alpha_t\bigr)\dx.
+\end{equation*}
+La démonstration et la dérivation rigoureuse de ces concepts dans le modèle d'endommagement reposent sur les techniques de dérivation lagrangienne par rapport au domaine basée sur la configuration fissurée initiale et une séparation d'échelles lorsque la longueur interne est petite par rapport à la taille de la structure.
+
+\section*{Implémentation numérique}
+Le caractère variationnel de l'approche permet aussi une implémentation numérique directe et de manière consistante pour des problèmes bi et tri-dimensionnels, cf. le chapitre \ref{chap:numerics}. Elle est basée sur une discrétisation par éléments finis standards en espace et le schéma de $\beta$-Newmark en temps. Le problème d'endommagement qui détermine l'état de fissuration à l'instant actuel est résolu à l'échelle de la structure par la méthode du gradient conjugué projeté. L'architecture informatique est basée sur la librairie d'algèbre linéaire numérique PETSc qui assure une gestion uniforme des vecteurs et des matrices lors d'un calcul séquentiel ou parallèle. Dans le cas explicite, le modèle discrétisé résumé par l'algorithme suivant est implémenté dans le code de dynamique rapide EuroPlexus, cf. \cite{EPX:2015}
+\begin{algorithmic}[1]\linespread{1.2}\selectfont\normalsize
+\For{chaque pas de temps $n\geq 0$}
+  \State M-à-j $\dot{\uvec}^{n+1/2}=\dot{\uvec}^{n}+\frac{\Delta t}{2}\ddot{\uvec}^n$.
+  \State M-à-j $\uvec^{n+1}=\uvec^n+\Delta t\dot{\uvec}^{n+1/2}$.
+  \State Obtenir $\dvec^{n+1}$ via la minimisation d'énergie.
+  \State Obtenir $\ddot{\uvec}^{n+1}$ via l'équilibre dynamique.
+  \State M-à-j $\dot{\uvec}^{n+1}=\dot{\uvec}^{n+1/2}+\frac{\Delta t}{2}\ddot{\uvec}^{n+1}$.
+\EndFor
+\end{algorithmic}
+Une implémentation \emph{open source} est aussi disponible dans le code d'éléments finis FEniCS, voir \cite{LiMaurini:2015}.
+
+\section*{Simulations numériques}
+Les résultats de simulation obtenus issu des calculs parallèles sont alors discutés d'un point de vue numérique et physique dans le chapitre \ref{chap:simulation}. L'efficacité du modèle numérique est démontrée via une analyse de scalabilité.
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.5\textwidth]{plate_scaling.pdf}
+\end{figure}
+On montre en particulier que la résolution du problème d'endommagement à l'échelle de la structure n'est pas pénalisante pour un calcul explicite de fissuration fragile dynamique. Les lois constitutives d'endommagement et les formulations d'asymétrie en traction et en compression sont comparées quant à leur aptitude à modéliser la rupture fragile. On confirme que la loi d'endommagement intégrant une zone purement élastique est préférable aussi d'un point de vue numérique. Pour un comportement asymétrique en traction et en compression, le modèle basé sur la décomposition spectrale (contraintes/déformations principales) inscrit dans le cadre variationnel du chapitre \ref{chap:graddama} permettrait de mieux modéliser la rupture des matériaux fragiles. Cela permettrait un rapprochement avec les modèles « champ de phase » issue de la communauté mécanique numérique.
+
+Pour mieux comprendre les approches d'endommagement à gradient en dynamique en tant qu'un modèle de rupture \emph{per se}, on adopte une stratégie « divide ut regnes » et leurs propriétés spécifiques sont analysées séparément pour différentes phases de l'évolution du défaut : nucléation, initiation, propagation, arrêt, branchement et bifurcation.
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{allphases-H.pdf}
+\end{figure}
+
+En particulier, la nucléation d'une fissure dans un solide sain est régie par un critère en contrainte accompagné des effets d'échelle introduits par la longueur interne. Cela est illustré par les simulations d'une barre sous choc et d'un essai brésilien sur un cylindre sous compression.
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.5\textwidth]{brazilian-size.pdf}
+\end{figure}
+
+Via un calcul antiplan d'une plaque, on vérifie que la propagation de fissure satisfait la loi de Griffith démontrée dans le chapitre \ref{chap:graddama}.
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{crack_speed.pdf}
+\end{figure}
+Une analyse numérique de convergence vers le modèle quasi-statique y est aussi proposée.
+
+Quelques observations numériques au tour d'un zoom spatio-temporel des phénomènes de branchement ou de bifurcation sont décrites et on propose une comparaison avec des critères classiques en mécanique de la rupture.
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.6\textwidth]{plate-micro-macro.pdf}
+\end{figure}
+
+Des confrontations avec les résultats expérimentaux sont aussi réalisées afin d'évaluer le modèle et proposer des axes d'amélioration. En particulier, on envisage d'utiliser les lois d'endommagement plus sophistiquées pour pouvoir contrôler la bande d'endommagement pour le béton.
+\end{otherlanguage}
+
+\chapter{Avant-propos}
+
+\section*{Research Background and Outline}
+From a modeling point of view, the present work concerns the \emph{formulation} of mathematical models of the physical phenomenon in an industrial context. Due to the complexity of the problem, numerical simulation is also needed to provide an approximate solution of the previous theoretical models. To ensure the faithfulness of the numerically discretized computer model with respect to the theoretical one, the \emph{verification} step should be first carried out in terms of numerical convergence properties. Finally, \emph{validation} of the physical and the numerical models will be achieved via the comparison between simulation results and experimental observations. All these steps are covered in the present study.
+
+In civil engineering, mechanical performance and integrity of the reinforced concrete structures are of paramount importance for safety. Severe transient dynamic loading conditions (such as impact or explosion) often lead to crack nucleation and its further space-time evolution in the most vulnerable area, which results in ultimate structural failure. A better understanding of the mechanics of defects would thus guide the civil engineers to optimize the dimensioning, the shape and the topology of the initial design. An accurate assessment of structural behaviors in the presence of dynamic crack propagation calls for more advanced physical models and their corresponding efficient computer implementations. In this aspect, the present work contributes thus to an improvement of the existing modeling of fracture in industrial structures, both from theoretical and numerical approaches.
+
+Numerical simulation of reinforced concrete structures requires in general a separate modeling of the concrete, the reinforcement and the steel-concrete interaction. Due to the broadness of the subject, we will only focus here on the fracture behaviors of concrete itself. A coupling with the existing steel reinforcement models and in particular the phenomenon of interfacial fracture will be thoroughly investigated in the future. The mechanical behaviors of concrete fall into the category of brittle materials. Defect evolution in these materials with dynamical or inertia effects are commonly studied in the branch ``dynamic fracture'' of physics of solids. Very little deformation is present away from the fractured region and the strain tensor is essentially localized along the crack band. Without loss of generality, the methodology, modeling and analyses described in the present work should apply to a large class of materials that can be characterized by such constitutive and fracture behaviors.
+
+Concretely, the mathematical modeling of dynamic brittle fracture will be performed in the framework of solid continuum mechanics with the usual Cauchy stress as the main stress measure. Adopting an engineering approach, we concentrate on a macroscopic phenomenological characterization of the constitutive behavior of brittle materials in the presence of fracture. In particular, the spatial and temporal evolution of strain localization in a brittle solid will be modeled by the gradient-damage approach that is gaining popularity in the recent years. It consists of introducing a new spatial scalar field $\alpha_t$ that indicates and tracks the location of cracks. It can be considered as a damage variable since $\alpha_t=0$ refers to an intact material point whereas $\alpha_t=1$ stands for a totally damaged region, \emph{i.e.} a crack or a strain-localization area. Compared to other existing approaches of dynamic fracture, the advantage of such gradient damage models lies in the crack path prediction with arbitrary crack topologies from a theoretic defect evolution modeling point of view. Its variational formulation also permits a direct and consistent numerical implementation both for two-dimensional and three-dimensional problems.
+
+A brief bibliographical study of dynamic brittle fracture is provided in \cref{chap:introduction}. We describe first the kinematics and physics of fracture in brittle materials with inertia, since the objective consists of faithfully and efficiently charactering those phenomena. In order to motivate the present work and to define a research scope, several currently used physical modeling approaches are compared with respect to their aptitude to approximate brittle fracture. This includes the classical Griffith's theory, the variational approach to fracture originated from the pioneer work of \cite{FrancfortMarigo:1998} and the current gradient damage model formulated in the quasi-static setting \cite{PhamMarigo:2010-1}. Based on the literature investigation, the objectives of the present work can then be defined. They are classified depending on the methodology used (theoretical or numerical approach) and using the following four thematic subjects
+\begin{itemize}
+\item Going dynamical,
+\item Bridging the link with phase field approaches,
+\item Better understanding of gradient damage modeling of fracture, and
+\item Experimental validation.
+\end{itemize}
+To facilitate the presentation, the main novelty brought by the present study will be summarized at the beginning of each section by using the above classification.
+
+\cref{chap:graddama} regroups the main theoretical contribution of this work. It concerns first a dynamic extension of the previous quasi-static gradient damage model in a variationally consistent framework. In quasi-statics, static equilibrium and the crack evolution of a solid corresponds to a minimum of the potential energy functional. In dynamics, this principle is generalized using an augmented space-time action integral and the temporal evolution of the coupled $(\vec{u},\alpha)$ field is governed by the stationarity of the former. As we shall see in the sequel, the benefits originating directly from the variational nature of the formulation are multi-fold. In explicit dynamics in the presence of violent loading conditions, finite rotations of fractured regions are often observed. We also propose a possible approach to incorporate geometrical nonlinearities through the introduction of the Hencky logarithmic strain. The concrete as well as other brittle materials are characterized by asymmetric behaviors in tension and in compression. Accounting for such effects is essential especially in dynamics due to wave reflections at the boundary. We then provide a systematic review of several existing approaches and carry out a theoretic study during a uniaxial traction/compression experiment. Finally we propose a theoretic exploration of the previous variational framework in the case when the damage band is localized along a spatially propagating path. A generalized Griffith criterion is obtained in the dynamic case that governs the temporal evolution of the gradient-damage crack tip. A separation of scales is then achieved by assuming that the internal length is small by comparison with the dimension of the body.
+
+Then in \cref{chap:numerics}, we present an efficient numerical implementation of the theoretic model described in the previous chapter. We follow a typical decoupling of the spatial and temporal discretization of the original continuous model and describe separately these two discretization procedures. Since the gradient damage approach consists of describing material constitutive behaviors inside the strain localization region, a relatively fine mesh is needed at least along the potential fracture path. In the present work, high computational needs will be overcome via parallel computing techniques. Efficiency of the numerical model is illustrated and demonstrated by a strong scaling analysis. In terms of final numerical implementation, we provide on the one hand an open-source Python implementation of dynamic gradient damage models based on the FEniCS Project, see \cite{LiMaurini:2015}. On the other hand, the development is also conducted in the industrial explicit dynamics software EPX, cf. \cite{EPX:2015}.
+
+\cref{chap:simulation} constitutes another main contribution of the present work through several well-chosen numerical experiments. These simulations are tailored to highlight specific properties of the dynamic gradient damage model during a complete defect evolution. A \emph{divide and conquer} strategy is adopted and different temporal and spatial phases or events of dynamic fracture are investigated independently: nucleation, initiation, propagation, arrest, kinking, branching, \ldots To facilitate the reading, the ordering of the chapter as well as the objectives of each experiment is first explained. The four thematic subjects initially devised are also used to classify these numerical simulations. Verification of the numerical discretized model is achieved through convergence studies and comparison with theoretical results. We also provide an experimental validation of the proposed model via correlations between numerical and experimental observations. Limitations of the present model/parameters are also given toward improved modeling of dynamic fracture.
+
+Finally some concluding remarks are given in \cref{chap:conclusion}. It consists of a general overview of the gradient damage approach to dynamic fracture both from a theoretical formulation/analysis and numerical implementation/investigation point of view. The presentation is classified using the four thematic subjects given in \cref{chap:introduction}. Possible future work arising from the present study is also indicated. 
+
+\section*{Notation Conventions}
+General notation conventions adopted in the present work are summarized as follows:
+\begin{itemize}
+\item Scalar-valued quantities will be denoted by italic Roman or Greek letters. It concerns not only the mathematical and physical constants such as the Young's modulus $E$ but also the temporal and spatial dependence of such scalars. Several examples include a temporal evolution of the crack length $l$, a particular one-dimensional stress measure $\sigma$ and the spatial damage field $\alpha_t$.
+
+\item Vectors and second-order tensors as well as their matrix representation will be represented by boldface letters. This concerns for example a particular material point in a three-dimensional body $\vec{x}$, the displacement field $\vec{u}_t$, the velocity field $\dot{\vec{u}}_t$ and the stress tensor at that point $\sig_t(\vec{x})$.
+
+\item Higher order tensors will be indicated by sans-serif letters: the elasticity tensor $\tens{A}$ for instance.
+
+\item Tensors are considered as linear operators and intrinsic notation is adopted. If the resulting quantity is not a scalar, the contraction operation will be written without dots, such as $\sig_t=\tens{A}\eps_t=\tens{A}_{ijkl}\eps_{kl}$ (the summation
+convention is assumed).
+
+\item Inner products between two tensors of the same order will be denoted with a dot, such as $\tens{A}\eps_t\cdot\eps_t=\tens{A}_{ijkl}\eps_{kl}\eps_{ij}$ (the summation
+convention is assumed).
+
+\item Time dependence of the involved quantity will be indicated by a subscript, like $\vec{u}:(t,\vec{x})\mapsto\vec{u}_t(\vec{x})$. In particular, the notation $\vec{u}_t$ is understood as the displacement field at a fixed time $t$, whereas $\vec{u}$ refers to the time evolution of the displacement field.
+\end{itemize}
+
+\section*{Publications and License Information}
+The present PhD work leads to the publication of the following journal papers. The author declare that only the personal contributions are used in this thesis.
+\begin{itemize}
+\item \fullcite{LiMarigoGuilbaudPotapov:2015}. \mybibexclude{LiMarigoGuilbaudPotapov:2015}
+\item \fullcite{LiMarigoGuilbaudPotapov:2016}. \mybibexclude{LiMarigoGuilbaudPotapov:2016}
+\item \fullcite{LiMarigo:2016}. \mybibexclude{LiMarigo:2016}
+\item \fullcite{Li:2016aa}. \mybibexclude{Li:2016aa}
+\end{itemize}
+
+The present PhD thesis is written with \TeX. The source files are available in a public Bitbucket repository:
+\begin{quotation}
+\url{https://bitbucket.org/litianyi/thesis-manuscript}
+\end{quotation}
+
+\doclicenseThis
+
+Licensees may copy, distribute, display and perform the work and make derivative works and remixes based on it only if they give the author the credits (attribution). The following BibTeX code can be used to cite the current document:
+\begin{lstlisting}[language=TeX]
+@PhdThesis{Li:2016,
+  author = {Li, Tianyi},
+  title  = {{G}radient-{D}amage {M}odeling of {D}ynamic {B}rittle {F}racture: {V}ariational {P}rinciples and {N}umerical {S}imulations},
+  school = {Université Paris-Saclay},
+  year   = {2016},
+  month  = oct,
+}
+\end{lstlisting}
+
+Interested readers can freely use or adapt the document structure, the title page, etc., to their own needs.
+
+\section*{PhD Metadata}
+\begin{quotation}
+\textbf{Warning}: According to the dictionary, the word ``metadata'' refers to a set of data that describes and gives information about other data. This section provides information behind the present PhD work and has nothing to do with the rest of the document. Serious readers concerned with \emph{la Patrie, les Sciences et la Gloire}\footnote{Motto of l'Ecole Polytechnique.} are sincerely invited to skip this section.
+\end{quotation}
+
+\subsection*{Statistics}
+Several text-based work (Fortran/Python scripts, journal articles, public presentations) is stored and tracked in a private Bitbucket repository from the day I was introduced to the Mercurial version control system (approximately 2 months after the beginning of the thesis, \emph{i.e.} in December 2013). Every \emph{commit} to the repository represents some tasks done and can be used as a work unit. Of course, all commits are not born equal and some commits represent more important contributions than others (in terms of quantity and/or quality). However this effect is not taken into account here. \emph{Future work could be devoted to a better quantification or discrimination of different commits}.
+
+Up to August 10, 2016, a total of 636 commits are contributed to the present PhD thesis repository in the past 3 years minus 2 months. We are here interested in the distribution of these commits with respect to different temporal spans, see \cref{fig:nbcommits}.
+\begin{enumerate}[(a)]
+\item \textbf{Per year}: The law of large numbers in probability theory seems to be verified: approximately an average of 250 commits are performed per year, according to the information for 2014 (total), 2015 (total) and 2016 (up to August). Thanks to the excellent working conditions in France, only $\approx 215$ work days (excluding public holidays, weekends, and all vacations) are totalized per year. This means more than 1 commit is done per work day. Of course I do work also during holidays.
+
+\item \textbf{Per month}: The most productive months are concentrated in the spring season, from March to June. I'm less productive during summer and autumn and least efficient when it's cold. A quick literature search with Google doesn't seem to confirm this finding.
+
+\item \textbf{Per day}: Mysteriously the 15th of each month contributes least to the current PhD work.
+
+\item \textbf{Per weekday}: The first peak is arrived on Wednesday. A significant loss of efficiency is observed on Thursday for unknown reasons. Most commits are done on Friday, since some work is left for the weekend to come.
+
+\item \textbf{Per hour}: Logically most commits are performed around 18 o'clock when I leave \emph{work}, to make sure that I can still work after \emph{work}: the second most commits are contributed around 22 o'clock.
+\end{enumerate}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.98\textwidth]{nbcommits.pdf}
+\caption{Distribution of commits up to August 10, 2016: (a) per year, (b) per month, (c) per day, (d) per weekday and (e) per hour} \label{fig:nbcommits}
+\end{figure}
+
+\subsection*{Remerciements}
+Mes remerciements vont tout d'abord à Jean-Jacques, cher directeur de thèse. Je lui remercie d'avoir assuré la qualité scientifique dans ce travail et de m'avoir également confié les responsabilités de mes productions scientifiques. Je ne vais pas répéter ce qui a été dit le jour de la soutenance, mais grâce à lui j'ai pu découvrir le campus et le cercle Polytechniciens, un paysage autrefois méconnu et fort lointain.
+
+\vspace{0.2cm}
+
+J'aimerais ensuite remercier tous les membres du jury d'avoir bien examiné le travail. Je remercie Monsieur Damamme de s'être déplacé de Gramat afin de présider mon jury de thèse. J'adresse aussi mes remerciements à Madame de Lorenzis d'avoir participé physiquement au jury à une distance d'environ \SI{900}{km} de son lieu de travail. Merci aussi à Monsieur Francfort qui a accepté d'examiner cette thèse.
+
+\vspace{0.2cm}
+
+Je remercie également les deux rapporteurs : Monsieur Combescure de l'INSA de Lyon et Monsieur Maurini de Paris VI. Je les remercie d'avoir apprécié en général le manuscrit et d'avoir formulé les remarques scientifiques appropriées. J'en profite pour dire merci à Corrado ; sans lui je n'aurais probablement pas pu contribuer aussi au projet FEniCS et découvrir le cercle des chercheurs numériciens HPC.
+
+\vspace{0.2cm}
+
+Je voudrais remercier ensuite mes deux co-encadrants industriels : Daniel (CEA Saclay) et Serguei (EDF Lab Clamart puis Paris-Saclay). Sans eux, cette thèse se serait déroutée vers une thèse purement académique. Merci à Serguei, Hariddh et Vincent pour leurs conseils et aides concernant EuroPlexus.
+
+\vspace{0.2cm}
+
+J'exprime aussi mes remerciements à Patrick, directeur de l'IMSIA (\emph{presque} vrai), et Marie-Line, pour leur aide précieuse. J'ai pu ainsi participer à plusieurs et suffisamment de colloques et congrès nationaux et internationaux durant ces trois années de thèse. 
+
+\vspace{0.2cm}
+
+J'aimerais remercier les co-occupants-de-bureau, les co-travailleurs, les co-FEniCSiens, les co-mangeurs (cantine comprise, couscous compris, pizza authentique faite maison comprise), les co-buveurs (café compris, et dont le vieillissement n'est pas forcément exceptionnellement prolongé), les co-fumeurs, les co-rigoleurs et co-blagueurs (Tokyo University), les co-voyageurs-d'AMA, les co-dormeurs-à-l'aéroport-de-Marseille, les co-randonneurs et co-promeneurs, le co-enquêteur-du-M (un truc RATP), les co-pongistes (joueur de ping-pong), les co-cinéphiles et peut-être aussi le co-cataphile\ldots Sans vous ces trois années au LaMSID 8193 Clamart et à l'IMSIA 9219 Palaiseau seraient sans doute moins drôles.
+
+\vspace{0.2cm}
+
+Ô cher \texttt{dsp0647318} (à tel point que je l'ai encore mémorisé jusqu'aujourd'hui, soit \SI{5760}{mn} après la soutenance), un vieux Debian Squeeze, qui m'a accompagné dans le froid du R013 et qui a dû beaucoup souffert grâce à FEniCS (cancer de disques RAID). Tu t'es libéré un mois avant l'échéance mais je te remercie quand même pour ta loyauté. Monsieur Hérisson à oeil unique, ne m'en veuille pas si je t'ai lassé sur mon bureau O2C.10A. Avant de se jeter dans la poubelle de Saclay, dis merci à quiconque qui voudra prendre quelques articles sur la mécanique des milieux continus, la rupture\ldots
+
+\vspace{0.2cm}
+
+\indent\hspace{-0.085cm}\includegraphics{chinese.pdf}
+
+{\footnotesize
+Merci à ma famille, et surtout à ma mère, mon père et Sa Majesté le caniche Laffi le Gros pour leur soutien et encouragement.}
+
+\vspace{0.2cm}
+
+Enfin, j'aimerais remercier tous ceux et celles que j'ai côtoyés et auxquels je n'ai pas eu de chance de dire merci.
