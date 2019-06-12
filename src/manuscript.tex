@@ -1,3 +1,5 @@
+% !TEX root=/home/tavant/these/manuscript/src/manuscript.tex
+
 \documentclass[
    a4paper,	%Pour papier A4
    12pt,		%Taille de la police 12
@@ -9,43 +11,26 @@
    toc=listof,
    numbers=noenddot,
    captions=tableheading,
-   fleqn,
-   amsmath
+   fleqn,   % left alignment of formula
+   amsmath,
+   hidelinks
    ]{book}
    %Packages
-   \usepackage[english,french]{babel}
-   \usepackage[T1]{fontenc}
-   \usepackage[latin1]{inputenc}
-   \usepackage{graphicx,eso-pic}	%eso-pic pour mettre des images avant les chapitres
-   \usepackage{float, caption}
-   \usepackage{amsmath,amssymb,mathrsfs,amsfonts}
-   \usepackage[amssymb]{SIunits}
-   \usepackage[thmmarks,amsmath]{ntheorem}
-   \usepackage{array, multirow, tabularx}
-   \usepackage{mathrsfs}                   %pour faire des cursives dans les formules
-   \usepackage{SIunits}		        %SI units
-   \usepackage{listings}		        %Pour ecrire du code
-   \usepackage[final]{pdfpages}		%Pour insérer des feuilles pdf (page de garde+abstracts)
-   \usepackage{minitoc} 			%Pour faire des mini tables des matières en début de chapitre
-   \usepackage{subfig}	%pour mettre des subplots
-   \usepackage{xcolor} %pour avoir les couleurs
-   \usepackage{notoccite} %pour ne pas prendre en compte les citations dans les captions de figures. Incompatible avec hyperref
-   \usepackage{textcomp} %pour les apostrophes
-   \usepackage[nottoc,numbib,notlof,notlot]{tocbibind} %pour afficher l'entrée biblio dans la table des matières
-   %\usepackage[firstpage]{draftwatermark} %pour marquer draft sur la première page
-   %\SetWatermarkScale{6} %taille de la watermark
-   %\SetWatermarkLightness{0.9} %transparence de la watermark
+\input{settings}
 
-\usepackage{graphicx}
-\graphicspath{{images/}}  % Location of the graphics files (set up for graphics to be in PDF format)
-\usepackage{etoolbox}
-\patchcmd{\chapter}{plain}{empty}{}{}
+\selectlanguage{english}%
 
 \includeonly{texfiles/1-introduction}
+
+
 \input{texfiles/set_title}
+
+\input{symbols} 		% definitions des symboles
+
 \begin{document}
 
 \include{texfiles/1ere}
+
 \frontmatter
 %dedicace
 \include{dedicace}
@@ -58,15 +43,34 @@
 \tableofcontents  		% Table des Matières
 %-----------
 \cleardoublepage
-% liste des figures
-\listoffigures \addcontentsline{toc}{chapter}{\listfigurename} \mtcaddchapter
-\cleardoublepage
-% liste des tableaux
-\listoftables \addcontentsline{toc}{chapter}{\listtablename} \mtcaddchapter
-\cleardoublepage
-% liste des algos
-\lstlistoflistings \addcontentsline{toc}{chapter}{\lstlistlistingname} \mtcaddchapter
-\include{symbole} 		% liste des symboles
+
+% % liste des figures
+% \listoffigures \addcontentsline{toc}{chapter}{\listfigurename} \mtcaddchapter
+% \cleardoublepage
+%
+% % liste des tableaux
+% \listoftables \addcontentsline{toc}{chapter}{\listtablename} \mtcaddchapter
+% \cleardoublepage
+%
+% % liste des algos
+% \lstlistoflistings \addcontentsline{toc}{chapter}{\lstlistlistingname} \mtcaddchapter
+
+
+% \input{acronyms}
+% \addcontentsline{toc}{chapter}{Acronyms} \mtcaddchapter
+\printnomenclature
+
+%
+% \selectlanguage{french}%
+% \begin{abstract}
+%   ...  versione  del  sommario  in  italiano  ...
+% \end{abstract}
+%
+% \selectlanguage{english}%
+% \begin{abstract}
+%   ...  English  version  of the  abstract  ...
+% \end{abstract}
+
 
 \mainmatter
 \include{texfiles/1-introduction}
@@ -74,7 +78,7 @@
 \appendix
 
 
-\clearpage
+
 \include{texfiles/4eme}
 
 \end{document}

@@ -1,0 +1,127 @@
+% !TEX root=/home/tavant/these/manuscript/src/manuscript.tex
+
+\usepackage[english,french]{babel}
+\usepackage[T1]{fontenc}
+
+\usepackage[latin1]{inputenc}
+\usepackage{eso-pic}	%eso-pic pour mettre des images avant les chapitres
+\usepackage{float, caption}
+\usepackage{amsmath,amssymb,mathrsfs,amsfonts}
+\usepackage[amssymb]{SIunits}
+
+\usepackage[thmmarks,amsmath]{ntheorem}
+\usepackage{array, multirow, tabularx}
+\usepackage{mathrsfs}                   %pour faire des cursives dans les formules
+
+\usepackage{SIunits}		        %SI units
+\usepackage{listings}		        %Pour ecrire du code
+\usepackage[final]{pdfpages}		%Pour insérer des feuilles pdf (page de garde+abstracts)
+\usepackage{minitoc} 			%Pour faire des mini tables des matières en début de chapitre
+
+\usepackage{xcolor} %pour avoir les couleurs
+
+\usepackage{hyperref}  %allow references
+\hypersetup{
+    colorlinks,
+    linkcolor={red!50!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
+
+\usepackage[nocfg]{nomencl}
+\renewcommand{\nomname}{List of Symbols}
+\makenomenclature
+
+\usepackage{textcomp} %pour les apostrophes
+\usepackage[nottoc,numbib,notlof,notlot]{tocbibind} %pour afficher l'entrée biblio dans la table des matières
+%\usepackage[firstpage]{draftwatermark} %pour marquer draft sur la première page
+%\SetWatermarkScale{6} %taille de la watermark
+%\SetWatermarkLightness{0.9} %transparence de la watermark
+
+
+% GRAPHICS
+\usepackage{graphicx}
+\graphicspath{{images/}}  % Location of the graphics files (set up for graphics to be in PDF format)
+\usepackage{subfig}	%pour mettre des subplots
+
+
+\usepackage{etoolbox}
+\patchcmd{\chapter}{plain}{empty}{}{}
+
+
+\graphicspath{{schemas/}{plots/}{images/}{logos/}}
+\definecolor{lightgray}{gray}{0.95}
+\hyphenation{Fortran}		        %Pour eviter l'hyphenation de "Fortran"
+
+\lstset{language=[90]Fortran,	%Pour bien ecrire le code en Fortran
+  basicstyle=\fontsize{11}{13}\selectfont\ttfamily,
+  keywordstyle=\color{gray},
+  commentstyle=\color{blue},
+  morecomment=[l]{!\ },  %Comment only with space after !
+  captionpos=b, % sets the caption-position to bottom
+  frame=single, % adds a frame around the code
+  %numbers=left, % where to put the line-numbers
+  %numbersep=5pt, % how far the line-numbers are from the code
+  %stepnumber=2, % the step between two line-numbers
+  rulecolor=\color{black}, % if not set, the frame-color may be changed
+  backgroundcolor=\color{lightgray}, % choose the background color
+  breaklines=true %break lines if too long
+}
+
+% TODO: Fix Greek mu
+
+\usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10]{microtype}
+% activate={true,nocompatibility} - activate protrusion and expansion
+% final - enable microtype; use "draft" to disable
+% tracking=true, kerning=true, spacing=true - activate these techniques
+% factor=1100 - add 10% to the protrusion amount (default is 1000)
+% stretch=10, shrink=10 - reduce stretchability/shrinkability (default is 20/20)
+
+
+\usepackage{hyperref}
+% For better intext references. By example \cref{fig:X} produces "Fig. n° X" instead of just "X"
+\usepackage{varioref}  % add the page when the object is far away
+\usepackage{hyperref}
+\usepackage[capitalise]{cleveref}  %hance, uyse \vref for the page reference, else \cref only
+% For better citations.
+\usepackage[numbers]{natbib}
+%\usepackage[style=phys]{biblatex}
+
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%  Overlay bar for means
+\makeatletter
+\newsavebox\myboxA
+\newsavebox\myboxB
+\newlength\mylenA
+\usepackage[super]{nth}
+\newcommand*\mean[2][0.75]{%
+    \sbox{\myboxA}{$\m@th#2$}%
+    \setbox\myboxB\null% Phantom box
+    \ht\myboxB=\ht\myboxA%
+    \dp\myboxB=\dp\myboxA%
+    \wd\myboxB=#1\wd\myboxA% Scale phantom
+    \sbox\myboxB{$\m@th\overline{\copy\myboxB}$}%  Overlined phantom
+    \setlength\mylenA{\the\wd\myboxA}%   calc width diff
+    \addtolength\mylenA{-\the\wd\myboxB}%
+    \ifdim\wd\myboxB<\wd\myboxA%
+       \rlap{\hskip 0.5\mylenA\usebox\myboxB}{\usebox\myboxA}%
+    \else
+        \hskip -0.5\mylenA\rlap{\usebox\myboxA}{\hskip 0.5\mylenA\usebox\myboxB}%
+    \fi}
+\makeatother
+
+
+\input{settings_notes}
+
+
+\usepackage{acronym}  %to handle acronym
+
+
+% Define the abstract Env.
+\usepackage{fancyhdr}
+\pagestyle{empty}
+
+\newenvironment{abstract}%
+    {\cleardoublepage\thispagestyle{empty}\null\vfill\begin{center}%
+    \bfseries\abstractname\end{center}}%
+    {\vfill\null}
