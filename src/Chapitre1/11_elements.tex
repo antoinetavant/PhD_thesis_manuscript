@@ -1,0 +1,41 @@
+
+% !TEX root=/home/tavant/these/manuscript/src/manuscript.tex
+
+\section{Elements of the 2D PIC-MCC simulations}
+
+\subsection{Principe of the PIC simulations}
+
+The \ac{PIC} simulation models the movement of particles on a fixed grid.
+
+The grid is used to compute the electric field, in the electrostatic approximation by solving the Poisson equation \vref{eq-poisson}, or the Maxwell equations
+
+\begin{equation}
+  \label{eq-poisson}
+  \nabla \phi = - \frac{\rho}{\epsilon_0}
+\end{equation}
+
+where $\phi$ is the electric potential, $\rho$ is the charge density, and $\epsilon_0$ the vacuum permittivity.
+
+The charge density $\rho$ is computed by depositing the particle over the cells, using the usual Cloud-in-cell model \cite{birdsall1991}.
+
+The particles moves following the Loren'z forces \cref{eq-Lor}.
+
+\begin{equation}
+  \label{eq-Lor}
+  m \vec{a} = q E + q \vec{v} \times \vec{B}
+\end{equation}
+with $m$ and $q$ the particle mass and electric charge respectively.
+The numerical particles folowed in the simulations correspond to $q_f$ physical particles, with
+\begin{equation}
+  q_f = \frac{n V}{N}
+\end{equation}
+with $n$ the particle density, $V$ the volume of a cell, and $N_{\rm pc}$ the number of numerical particle in a cell.
+A large enough number of particle is needed in order to obtain physical results.
+Indeed, insufficient number of particles leads to numerical heating \cite{ueda1994}.
+Usually, a minimum of 100 particles per cell are used, but recent results seem to encourage to use more particle \cite{janhunen2018}
+
+\subsection{Monte Carlo collisions}
+
+In \ac{PIC} simulations, collisions between charged and neutral particles can be modeled by binary collision, but this approach is computationally costly.
+Instead, a Monte-Carlo algorithm can be used \cite{vahedi1995}.
+This approach is very efficient, and allow scattering, momentum transfer and ionization to be consistently model.

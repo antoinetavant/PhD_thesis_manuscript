@@ -1,7 +1,38 @@
 % !TEX root=/home/tavant/these/manuscript/src/manuscript.tex
 
 \usepackage[english,french]{babel}
+
+
+% -------------
+% font spec
+%-----------
 \usepackage[T1]{fontenc}
+% \usepackage{ebgaramond}
+
+\usepackage{titlesec}
+\usepackage{titling}
+% Specify different font for section headings
+\newcommand*{\headingfont}{\fontfamily{phv}\selectfont}
+
+\titleformat*{\section}{\LARGE\headingfont}
+\titleformat*{\subsection}{\Large\headingfont}
+\titleformat*{\subsubsection}{\large\headingfont}
+
+%use \showfont to print the current font used
+\makeatletter
+\newcommand{\showfont}{encoding: \f@encoding{},
+  family: \f@family{},
+  series: \f@series{},
+  shape: \f@shape{},
+  size: \f@size{}
+}
+\newcommand{\iffont}[3]{\ifthenelse{\equal{\f@family}{#1}}{#2}{#3}}
+\makeatother
+
+
+
+\usepackage{lmodern}% http://ctan.org/pkg/lm for allowing arbitrary font size
+\newcommand{\hsc}[1]{{\footnotesize\MakeUppercase{#1}}}   % Fake Small Caps
 
 \usepackage[latin1]{inputenc}
 \usepackage{eso-pic}	%eso-pic pour mettre des images avant les chapitres
@@ -20,13 +51,7 @@
 
 \usepackage{xcolor} %pour avoir les couleurs
 
-\usepackage{hyperref}  %allow references
-\hypersetup{
-    colorlinks,
-    linkcolor={red!50!black},
-    citecolor={blue!50!black},
-    urlcolor={blue!80!black}
-}
+
 
 \usepackage[nocfg]{nomencl}
 \renewcommand{\nomname}{List of Symbols}
@@ -78,11 +103,26 @@
 % stretch=10, shrink=10 - reduce stretchability/shrinkability (default is 20/20)
 
 
-\usepackage{hyperref}
 % For better intext references. By example \cref{fig:X} produces "Fig. n° X" instead of just "X"
-\usepackage{varioref}  % add the page when the object is far away
-\usepackage{hyperref}
+\usepackage{varioref} % add the page when the object is far away
+
+\ifpdf
+  \usepackage[pagebackref=true,hyperindex=true,colorlinks=true]{hyperref}
+  \hypersetup{pdfstartview={FitH}, bookmarksnumbered={true}}
+
+\else
+  \usepackage[hypertex=true,hyperindex=true,colorlinks=false]{hyperref}
+\fi
+\hypersetup{
+    colorlinks,
+    linkcolor={red!50!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
+
 \usepackage[capitalise]{cleveref}  %hance, uyse \vref for the page reference, else \cref only
+
+
 % For better citations.
 \usepackage[numbers]{natbib}
 %\usepackage[style=phys]{biblatex}
@@ -94,6 +134,7 @@
 \newsavebox\myboxB
 \newlength\mylenA
 \usepackage[super]{nth}
+
 \newcommand*\mean[2][0.75]{%
     \sbox{\myboxA}{$\m@th#2$}%
     \setbox\myboxB\null% Phantom box
@@ -111,7 +152,7 @@
 \makeatother
 
 
-\input{settings_notes}
+\input{texfiles/settings_notes}
 
 
 \usepackage{acronym}  %to handle acronym
@@ -125,3 +166,19 @@
     {\cleardoublepage\thispagestyle{empty}\null\vfill\begin{center}%
     \bfseries\abstractname\end{center}}%
     {\vfill\null}
+
+
+% ignore bibliorapgy if empty
+\let\myBib\thebibliography
+
+\renewcommand\thebibliography[1]{\ifx\relax#1\relax\else\myBib{#1}\fi}
+
+%for linebreak
+\renewcommand\linebreak{\vspace{1em}}
+
+
+
+\newenvironment{zzz}
+               {\list{}{\rightmargin0pt \leftmargin4em }%
+                \item\relax}
+               {\endlist}

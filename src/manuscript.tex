@@ -4,30 +4,31 @@
    a4paper,	%Pour papier A4
    12pt,		%Taille de la police 12
    twoside,	%recto-verso
-   headinclude,
-   headsepline,
-   plainheadsepline,
-   bibliography=totoc,
-   toc=listof,
+   headinclude, headsepline, plainheadsepline,
+   bibliography=totoc, toc=listof,
    numbers=noenddot,
    captions=tableheading,
    fleqn,   % left alignment of formula
-   amsmath,
-   hidelinks
-   ]{book}
+   amsmath, hidelinks  ]{book}
    %Packages
-\input{settings}
+\input{texfiles/settings}
 
 \selectlanguage{english}%
 
-\includeonly{texfiles/1-introduction}
+\includeonly{structure/structure, structure/lists, Chapitre1/1-introduction}
 
 
 \input{texfiles/set_title}
 
-\input{symbols} 		% definitions des symboles
+
+\input{texfiles/symbols} 		% definitions des symboles
+
+
+
 
 \begin{document}
+
+
 
 \include{texfiles/1ere}
 
@@ -37,29 +38,8 @@
 
 %remerciements
 \include{thanks}
-\cleardoublepage
-%-----------
-\dominitoc%[n] 		% Initialisation de minitoc ([n] enleve le ``content'')
-\tableofcontents  		% Table des Matières
-%-----------
-\cleardoublepage
 
-% % liste des figures
-% \listoffigures \addcontentsline{toc}{chapter}{\listfigurename} \mtcaddchapter
-% \cleardoublepage
-%
-% % liste des tableaux
-% \listoftables \addcontentsline{toc}{chapter}{\listtablename} \mtcaddchapter
-% \cleardoublepage
-%
-% % liste des algos
-% \lstlistoflistings \addcontentsline{toc}{chapter}{\lstlistlistingname} \mtcaddchapter
-
-
-% \input{acronyms}
-% \addcontentsline{toc}{chapter}{Acronyms} \mtcaddchapter
-\printnomenclature
-
+\include{structure/lists}
 %
 % \selectlanguage{french}%
 % \begin{abstract}
@@ -73,10 +53,15 @@
 
 
 \mainmatter
-\include{texfiles/1-introduction}
+\include{structure/structure}
+
+
+\include{Chapitre1/1-introduction}
 
 \appendix
 
+\bibliographystyle{ieeetr}
+\bibliography{bib/MyLibrary}{}
 
 
 \include{texfiles/4eme}
