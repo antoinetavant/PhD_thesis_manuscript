@@ -140,3 +140,5 @@ sympy-plots-for-*.tex/
 *.nlg
 
 *.nls
+
+src/Chapitre1/\.idea/

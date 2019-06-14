@@ -66,15 +66,14 @@
 
 % GRAPHICS
 \usepackage{graphicx}
-\graphicspath{{images/}}  % Location of the graphics files (set up for graphics to be in PDF format)
 \usepackage{subfig}	%pour mettre des subplots
+\graphicspath{{images/}{Chapitre1/}{Chapitre1/figure/}{schemas/}{plots/}{images/}{logos/}}  % Location of the graphics files (set up for graphics to be in PDF format)
 
 
 \usepackage{etoolbox}
 \patchcmd{\chapter}{plain}{empty}{}{}
 
 
-\graphicspath{{schemas/}{plots/}{images/}{logos/}}
 \definecolor{lightgray}{gray}{0.95}
 \hyphenation{Fortran}		        %Pour eviter l'hyphenation de "Fortran"
 
@@ -182,3 +181,5 @@
                {\list{}{\rightmargin0pt \leftmargin4em }%
                 \item\relax}
                {\endlist}
+
+\newcommand\defaultwidth{4in}
