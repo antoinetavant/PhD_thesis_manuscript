@@ -46,7 +46,7 @@
   \subsection{discretisation}
 
 
-  The dielectric permittivity is $\epsilon= \epsilon_r \epsilon_0$ with $\epsilon_r$ the relative permittivity of the dielectric.
+  The dielectric permittivity is $\epsilon= \epsr \epsilon_0$ with $\epsr$ the relative permittivity of the dielectric.
 
   The Poisson equation with not-constant permittivity is
   \begin{equation} \label{eq-poisson}
@@ -81,7 +81,7 @@
   \subsection{Poisson equation discretization}
 
     We start by positioning the plasma-dielectric interface on the surface between two cells.
-    This means that the permittivity $\epsilon = \epsilon_0 \epsilon_r$ is  constant over a cell.
+    This means that the permittivity $\epsilon = \epsilon_0 \epsr$ is  constant over a cell.
     In order to discretize the Poisson equation, we integrate \vref{eq-poisson} over the cell volume
 
     \begin{equation}
@@ -185,8 +185,8 @@
 
   \subsection{Verifications}
     We verify the discretization by modeling a capacitor.
-    The relative permittivity of the dielectric inside the capacitor is set to $\epsilon_r = 8$, and a surface charge of  $\sigma = 8$~nC.cm$^{-2}$ is imposed on one side, and $-8$~nC.cm$^{-2}$ on the other side.
-    The expected electric field in the capacitor using the infinite plans approximation is $E = \sigma/(\epsilon_0\epsilon_r) = 1.15$~kV.mm$^{-1}$.
+    The relative permittivity of the dielectric inside the capacitor is set to $\epsr = 8$, and a surface charge of  $\sigma = 8$~nC.cm$^{-2}$ is imposed on one side, and $-8$~nC.cm$^{-2}$ on the other side.
+    The expected electric field in the capacitor using the infinite plans approximation is $E = \sigma/(\epsilon_0\epsr) = 1.15$~kV.mm$^{-1}$.
 
     \Cref{fig-surface} shows the electric field computed using the obtained decomposition.
     We see that we obtain the expected value for the electric field.

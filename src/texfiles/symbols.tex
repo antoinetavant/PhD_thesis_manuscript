@@ -56,9 +56,30 @@
 
 
 \newcommand{\vect}[1]{{\mathbf #1}}
-\newcommand{\epsr}[1]{\epsilon_{R #1}}
+\newcommand{\epsr}{\epsilon_{R}}
 \newcommand{\V}{\Omega_{i,j}}
 \newcommand{\C}{C_{i,j}}
 
 \newcommand{\grad}{\vect{\nabla}}
 \newcommand{\deriv}[2]{\frac{\partial #1}{\partial #2}}
+
+\newcommand{\dx}{\Delta x}
+\newcommand{\dy}{\Delta y}
+%========================
+% Nomenclature
+
+%% This code creates the groups
+% -----------------------------------------
+\usepackage{etoolbox}
+\renewcommand\nomgroup[1]{%
+  \item[\bfseries
+  \ifstrequal{#1}{P}{Physics Constants}{%
+  \ifstrequal{#1}{N}{Number Sets}{%
+  \ifstrequal{#1}{Q}{Quantities}{}}}%
+]}
+
+% This will add the units
+%----------------------------------------------
+\newcommand{\nomunit}[1]{%
+\renewcommand{\nomentryend}{\hspace*{\fill}#1}}
+%----------------------------------------------

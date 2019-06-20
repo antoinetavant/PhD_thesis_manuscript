@@ -182,7 +182,24 @@
                 \item\relax}
                {\endlist}
 
+\newcommand\subfigurewidth{2in}
 \newcommand\defaultwidth{4in}
 
 \usepackage[]{algorithm2e}
  \usepackage{mathtools}
+
+
+ %===================
+ % Subfigures
+\usepackage[percent]{overpic}
+
+\newcommand\subfiguretics[3]{
+\begin{overpic}[width=\subfigurewidth,grid,tics=10]{#1}
+ \put (#3) {\bf #2}
+\end{overpic}
+}
+\newcommand\subfigure[3]{
+\begin{overpic}[width=\subfigurewidth]{#1}
+ \put (#3) {\bf #2}
+\end{overpic}
+}
