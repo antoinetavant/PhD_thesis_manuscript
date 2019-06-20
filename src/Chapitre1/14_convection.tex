@@ -153,3 +153,135 @@
     However, it do not explain the effects of the azimuthal length.
 
   \subsection{Effect of the noise on the electric field}
+    \label{sec-mathnoise}
+    In order to explain the impact of the azimuthal length on the instability, we can study the azimuthal electric field $\aziE$ resulting of the charge density $\rho$.
+    As the Pouisson equation is linear, we have
+    \begin{align}
+      \aziE(\theta) &= C + \frac{1}{\epsilon_0} \int_0^{\theta} \rho(s) ds\\
+                    &= C + \frac{1}{\epsilon_0} \int_0^{\theta} (\rho_0(s) + \N(0, \stdconv) ) ds \\ 
+                    &= C + \aziE_{, 0} + \aziE_{, 1}
+    \end{align}
+    with $C$ a constant that ensure that the boundary conditions are respected.
+    The part of the electric field $\aziE_{, 0}$ corresponds to the charge density $\rho_0$ and $\aziE_{, 1}$  corresponds tot he charge density noise $\N(0, \sigma_{\rm stat})$.
+    Let us focus now on $\aziE_{, 1}$.
+    We can study $\aziE_{, 1}$ using two equivalent means: the \ac{FT} and the Brownian bridge.
+    
+    \paragraph{Fourier Transform \\}
+      Applying the \ac{FT} on the equation
+      \begin{equation} \label{eq-aziE1}
+        \aziE_{, 1} = \frac{1}{\epsilon_0} \int_0^{\theta}  \N(0, \stdconv) ds
+      \end{equation}
+      gives    
+      \begin{align}
+        \FFT \lp \aziE_{, 1} \rp (k) &= \frac{1}{\epsilon_0} \FFT \lp \int_0^{\theta}  \N(0, \stdconv) ds \rp \\
+                                     &= \frac{1}{\epsilon_0} \frac{ \N(\mu_{\rm FT}, \sigma_{\rm FT})}{k} \label{eq-fft}
+      \end{align}
+      
+      \Cref{eq-fft} shows that $\aziE_{, 1}$ is also follows a Gaussian distribution, but with a non-zero mean value.
+      It is also inversely proportional to the wave number.
+      Hence, when we increase the azimuthal length, which means that small wave number can exit in the simulation domain, the amplitude of $\aziE_{, 1}$ increases as well.
+      
+    \paragraph{Brownian Bridge}
+      \Cref{eq-aziE1}, combined with the boundary condition, is the definition of the a Browning bridge.
+      
+      A Brownian bridge is a particular Brownian motion that reaches at a given distance the same value that the initial value.
+      Hence, we have
+      \begin{align*}
+        \mathbb{E}(\aziE_{, 1}) &= 0,  \\
+        {\rm var}(\aziE_{, 1}) &= \stdconv^2 \frac{L_{\theta}}{4}
+      \end{align*}
+    
+      Hence, increases the azimuthal length increases the amplitude of $\aziE_{, 1}$.
+      
+    
+    We believe that when the amplitude of $\aziE_{, 1}$ is too large, it can trigger an oscillation.
+    
+    \subsection{Noiseless convection model}
+      \label{sec-noiselessresults}
+      Have have shown that the convection model induces a noise in the charge density, that induces an azimuthal electric field which amplitudes depends on the azimuthal length.
+      
+      We propose here a modified version of Lafleur's convection model in order to remove the noise in the charge density, so that is expected to not present the numerical artefacts see previously.
+      
+      The noiseless convection model follows the same algorithm that before, but the azimuthal position of the particle create is not chosen uniformly as random, but instead has the same position as the removed particle.
+      \Cref{fig-fakez3} shows a schematic illustration of the noiseless convection algorithm applied on a particle.
+      
+      \begin{figure}[hbtp]
+        \centering
+        \includegraphics[width=\defaultwidth]{Fake_1d_3}
+        \caption{Illustration of the noiseless convection model}
+        \label{fig-fakez3}
+      \end{figure}
+      
+      We have implemented this modified convection model in the \ac{2D} radial-azimuthal simulation.
+      
+      \Cref{fig-newconv_noconv} shows the time  evolution of the azimuthal electric field at the center of the radial dimension with and without the noiseless convection model.
+      It presents the same conditions that in \cref{fig-convection_numerical}.{\bf a} and {\bf b}. 
+      As previously, the convection stabilises the growth of the instability to a steady-state, but it does not affect the physics.
+       
+      
+      \begin{figure}[hbtp]
+        \centering
+        \includegraphics[width=\defaultwidth]{Compare_no_new_Reinj_Oz}
+        \caption{Time evolution of the azimuthal electric field at the center of the radial dimension with and without the noiseless convection model. }
+        \label{fig-newconv_noconv}
+      \end{figure}
+      
+      \Cref{fig-oldeconv_newconv} shows the  time  evolution of the azimuthal electric field at the center of the radial dimension  with the convection modeled using Lafleur's model and the noiseless model with a small azimuthal length.
+      We can see that the two models gives almost exactly the same results.
+      
+      \begin{figure}[hbtp]
+        \centering
+        \includegraphics[width=\defaultwidth]{Compare_old_new_Reinj_Oz}
+        \caption{Time evolution of the azimuthal electric field at the center of the radial dimension with the convection modeled using (left) Lafleur's model and (right) the noiseless model with a small azimuthal length.}
+        \label{fig-oldeconv_newconv}
+      \end{figure}
+      
+      
+      \Cref{fig-oldeconv_newconv_longLZ} shows the  time  evolution of the azimuthal electric field at the center of the radial dimension  with the convection modeled using Lafleur's model and the noiseless model but using a longer azimuthal length than \cref{fig-oldeconv_newconv}.
+      In this cases, we can see that Lafleur's convection model induces oscillations that are not observed with the noiseless model.
+      
+      \begin{figure}[hbtp]
+        \centering
+        \includegraphics[width=\defaultwidth]{Compare_old_new_Reinj_Oz_LongLx}
+        \caption{Time evolution of the azimuthal electric field at the center of the radial dimension with the convection modeled using (left) Lafleur's model and (right) the noiseless model with a longer azimuthal length.}
+        \label{fig-oldeconv_newconv_longLZ}
+      \end{figure}
+      
+
+
+      Theses observations hove shown that Trevor's convection model induces a noise on the charge density, that do not affect the simulation when the domain size is small, but can rise numerical artefacts when the domain size is larger.
+      We have seen that the minor modification on the model do not affect the simulations results on a small domain, but allow us to use larger simulation domain without any numerical artefacts.
+      
+      \inlinenote{ Should we re-run all of the simulations of the 1rst paper using the new model ? Else, we should say why.}
+    
+    \subsection{Effects On a \ac{2D} simulation domain}
+      
+      The mathematical development of \cref{sec-mathnoise} has been done in \ac{1D}.
+      We can legitimately ask is the results can be extended to a \ac{2D} domain.
+      
+      A mathematical definition of $\aziE_{, 1}$ is more difficult, as, neglecting the dielectric layers,
+      \begin{equation} \label{eq-aziE}
+        \aziE_{, 1} = \partial_{\theta} \phi_1 \text{ such that } \grad \cdot \grad \phi_1 = - \frac { \N(0, \stdconv)}{\epsilon_0} \text{ following the boundary condition}.
+      \end{equation}
+      
+      However, we can investigate it numerically.
+      \Cref{fig-dftLr} shows the \ac{DFT} of the source term $\rho_1 = \N(0, \stdconv)$, the resulting azimuthal electric field $\aziE_{, 1}$ and plasma potential $\rho$ computed on the centreline of the simulation domain in the radial direction, for three different radial length expressed in number of cell $N_x$.
+      Is also discipled the "equivalent" source term $\rho_{\rm eq}$, which is the source term that would give the frequency spectra observed in a \ac{1D} domain
+      \begin{equation} \label{eq-equirho}
+        \rho_{\rm eq} = \partial_\theta \aziE_{, 1}.
+      \end{equation}
+      
+      Using a Monte Carlo approach, the spectra are average over 50 cases in order to better observe the mean values of the distribution in respect with the standard deviation.
+      
+      \begin{figure}[hbtp]
+        \centering
+        \includegraphics[width=\textwidth]{effect_Lr}
+        \caption{\ac{DFT} of the source term $\rho_1 = \N(0, \stdconv)$, the resulting azimuthal electric field $\aziE_{, 1}$ and plasma potential $\rho$ computed on the centreline of a radial-azimuthal simulation. }
+        \label{fig-dftLr}
+      \end{figure}
+      
+
+
+
+
+
