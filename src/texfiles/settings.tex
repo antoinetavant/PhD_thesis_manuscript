@@ -159,7 +159,7 @@
 
 % Define the abstract Env.
 \usepackage{fancyhdr}
-\pagestyle{empty}
+% \pagestyle{empty}
 
 \newenvironment{abstract}%
     {\cleardoublepage\thispagestyle{empty}\null\vfill\begin{center}%
@@ -182,7 +182,7 @@
                 \item\relax}
                {\endlist}
 
-\newcommand\subfigurewidth{2in}
+\newcommand\subfigurewidth{2.5in}
 \newcommand\defaultwidth{4in}
 
 \usepackage[]{algorithm2e}
@@ -192,6 +192,8 @@
  %===================
  % Subfigures
 \usepackage[percent]{overpic}
+%Floats
+\usepackage{placeins}  % allows \FloatBarrier
 
 \newcommand\subfiguretics[3]{
 \begin{overpic}[width=\subfigurewidth,grid,tics=10]{#1}
