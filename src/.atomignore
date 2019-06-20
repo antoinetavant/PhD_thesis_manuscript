@@ -1,17 +1,17 @@
-# *.bbl
-# *.blg
-# *.brf
-# *.fdb_latexmk
-# *.mt*
-# *.nlo
-# *.nlg
-# *.nls
-# *.fls
-# *.log
-# *.mad
-# *.out
-# *.thm
-# *.gz
-# *.maf
-# *.vim
+*.bbl
+*.blg
+*.brf
+*.fdb_latexmk
+*.mt*
+*.nlo
+*.nlg
+*.nls
+*.fls
+*.log
+*.mad
+*.out
+*.thm
+*.gz
+*.maf
+*.vim
 *.idea
