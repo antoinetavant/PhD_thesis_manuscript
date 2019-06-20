@@ -1,4 +1,270 @@
 % !TEX root=/home/tavant/these/manuscript/src/manuscript.tex
 
 \section{Dielectrics boundary condition}
-\label{sec-diel}
+  \label{sec-diel}
+
+  \Cref{fig-2D} illustrate the configuration in the radial-azimuthal plan highliting the radial boundary conditions.
+  The plasma is bounded in the radial direction by dielectric layers isolating the magnetic circuit.
+  The magnetic circuit can be considered electrically grounded.
+
+  The particles are absorbs when touching the dielectric wall, and we suppose an infinite residence time.
+  Hence, we obtain a surface charge $\sigma$ at a time $t$ with
+  \begin{equation} \label{eq-sigmaintegrate}
+    \sigma(t) = e \int_0^t (J_i - J_e) dt
+  \end{equation}
+  with $J_i$ and $J_e$ the ion and electron flux respectively and $e$ is the elementary charge and supposing that there is no surface charge at the interface at the beginning.
+
+  \begin{figure}[hbtp]
+    \centering
+    \includegraphics[width=\defaultwidth]{2D_diel_Rtheta}
+    \caption{Schematic representation of the dielectric layers between the plasma in the \ac{2D} radial-azimuthal plan. Are present the dielectric in yellow, the plasma in blue, the surface charges in red and the grounded magnetic circuit in black.}
+    \label{fig-2D}
+  \end{figure}
+
+
+  A common approach is to suppose that the electric field inside the dielectric is zero.
+  Using Gauss theorem, we obtain a Neumann boundary condition at the plasma-wall interface for the potential
+  \begin{equation} \label{eq-gauss}
+    \partial_r \phi = \frac{\sigma}{\epsilon_0}
+  \end{equation}
+  with $\sigma$ the surface charge and $\epsilon_0$ the vacuum permittivity.
+  However, the electric field in a dielectric material is not zero, but depends on the global system.
+  Hence, in order to model correctly the dielectric wall of the \ac{HET}, we choose to include the whole dielectric layers inside of the simulation domain.
+
+  In this section, we derive the discretization of the Poisson equation with non-uniform permittivity in the \ac{2D} radial azimuthal plan using the finite volume approach.
+
+
+  \subsection{Non-uniform mesh}
+
+    In the dielectric layers, there is no particles nor charges.
+    Hence, the numerical constraints on the cell size are not applicable, and the cell size can be increased.
+    In order to reduce the cell size difference between two neighbouring cells, we uses an exponential growth of the cell size in the radial direction.
+    The cell size in the azimuthal direction $dy$ is kept constant.
+    The resulting non-uniform mesh can be seen in \cref{fig-2D}.
+
+
+  \subsection{discretisation}
+
+
+  The dielectric permittivity is $\epsilon= \epsilon_r \epsilon_0$ with $\epsilon_r$ the relative permittivity of the dielectric.
+
+  The Poisson equation with not-constant permittivity is
+  \begin{equation} \label{eq-poisson}
+    \grad \cdot \epsilon \grad \phi = \rho
+  \end{equation}
+  with $\rho$ the charge density.
+  We note $\vect{D}=\epsilon \vect{E} = \epsilon \grad \phi$ the electric flux.
+
+  \Cref{fig-decompo1} shows the Cartesian decomposition of the \ac{2D} domain.
+  The cell $(i,j)$ has four direct neighbours:
+  \begin{itemize}
+    \item the est $E$ in $(i+1,j)$
+    \item the west $W$ in $(i-1, j)$
+    \item the north $N$ in $(i, j+1)$
+    \item the south $S$ in $(i, j-1)$
+  \end{itemize}
+  The cell dimensions are $dx_{i,j}$ and $dy_{i,j}$, and $\V=dx_{i,j} dy_{i,j}$ is the cell volume.
+  As the mesh is Cartesian, we have for a given $j$ $dx_{i,j} = cst$ for all $i$. Hence, we note $dx_{i,j} = d_i$ and $dy_{i,j} = d_j$
+
+  The boundaries are noted $S^s_{i,j}$ with $s=E,W,N$ or $S$.
+  We can see that $S^W_{i,j}=S^E_{i-1,j}$, and the same goes for the other borders.
+  We note $\C = S^E_{i,j} \cup S^W_{i,j} \cup S^N_{i,j} \cup S^S_{i,j}$ the cell surface boundary.
+  The center of the cell is located in $i,j$ and the borders are located in $i\pm 1/2$ in the Est-West direction and $j\pm 1/2$ in the North-Sourth direction.
+  \begin{figure}[hbt]
+    \centering
+    \includegraphics[width=\defaultwidth]{discrect1.pdf}
+    \caption{Illustration of the Cartesian decomposition of the \ac{2D} domain}
+    \label{fig-decompo1}
+  \end{figure}
+
+
+  \subsection{Poisson equation discretization}
+
+    We start by positioning the plasma-dielectric interface on the surface between two cells.
+    This means that the permittivity $\epsilon = \epsilon_0 \epsilon_r$ is  constant over a cell.
+    In order to discretize the Poisson equation, we integrate \vref{eq-poisson} over the cell volume
+
+    \begin{equation}
+    \int_{\V} - \grad \cdot (\epsilon \grad \phi) dv= \int_{\V} \rho dv.
+    \end{equation}
+    Using Gauss-Ostrogradsky theorem, we obtain
+    \begin{equation}
+    \oint_{\C} ( - \epsilon \grad \phi) \cdot \vect{n} dS = Q_{tot} =  \V \bar{\rho},
+    \end{equation}
+    with $\vect{n}$ la normal vector directed outward, $Q_{tot}$ is the total charge of the cell and $\bar{\rho}$ is the mean value of $\rho$ in the cell.
+    We can decompose the integration over the cell boundary with the four surfaces $S^s_{i,j}$ as
+    \begin{equation}
+      \label{eq-poissonsum}
+    \oint_{\C} (-\epsilon \grad \phi) \cdot \vect{n} dS = \sum_{k\in(E,W,N,S)} S^k_{i,j} \vect{D}^k_{i,j} \cdot \vect{n}
+    \end{equation}
+    with $\vect{D}^k_{i,j}$ the flux through the surface $k$ of the cell $(i,j)$.
+
+
+    \paragraph*{Electric flux \\}
+    Let us define the electric flux through the Est border  $\vect{D}^E_{i,j}$.
+    We suppose there is no surface charges on $S^E$.
+
+    We can writ the electric flux as
+    \begin{align} \label{eq-flux1}
+      \vect{D}^E_{i,j} \cdot \vect{n} &= \epsilon_{i,j} E_{x i+1/2,j}^-\\
+                                      &= - \epsilon_{i,j} \frac{\phi_{i+1/2,j} - \phi_{i,j}}{d_i/2},
+    \end{align}
+    with an off-center discretization of the electric field.
+
+    Using the Gauss's law without charges
+    \begin{equation} \label{eq-gausslaw}
+      \epsilon_{i,j}E_{x i+1/2,j}^- - \epsilon_{i+1,j}E_{x i+1/2,j}^+ =0,
+    \end{equation}
+    we have
+    \begin{equation}
+      \epsilon_{i,j} \frac{\phi_{i+1/2,j} - \phi_{i,j}}{d_i/2} = \epsilon_{i+1,j} \frac{\phi_{i+1,j} - \phi_{i+1/2,j}}{d_{i+1}/2}.
+    \end{equation}
+    Hence
+    \begin{equation} \label{eq-phidemi1}
+      \phi_{i+1/2,j} = \frac{\epsilon_{i,j} d_{i+1} \phi_{i,j} + \epsilon_{i+1,j} d_{i} \phi_{i+1,j} }{\epsilon_{i,j} d_{i+1} + \epsilon_{i+1,j} d_{i} },
+    \end{equation}
+    which corresponds to the usual discretization when $\epsilon$ and $d_i$ are both constant.
+    Using \cref{eq-phidemi1} in \cref{eq-flux1} we obtain
+    \begin{align}
+      \label{eq-nosc}
+    \vect{D}^E_{i,j} \cdot \vect{n} &=& 2\frac{\epsilon_{i,j}\epsilon_{i+1,j}}{\epsilon_{i,j}d_{i+1} + \epsilon_{i+1,j} d_i} (\phi_{i,j}-\phi_{i+1,j})
+    &=& 2\epsilon_0 \frac{\epsr{i,j}\epsr{i+1,j}}{\epsr{i,j}d_{i+1} + \epsr{i+1,j} d_i} (\phi_{i,j}-\phi_{i+1,j})
+    \end{align}
+
+    We note $Q^E_{i,j} \equiv \frac{\epsilon_{i,j} \epsilon_{i+1,j}}{\epsilon_{i,j} d_{i+1} + \epsilon_{i+1,j} d_i}$.
+    reproducing the same decomposition on the other borders, we obtain
+    \begin{equation}
+      \label{eq-descretPoisson1}
+    S^E_{i,j} Q^E_{i,j} \phi_{i+1,j} + S^W_{i,j} Q^W_{i,j} \phi_{i-1,j} + S^N_{i,j} Q^N_{i,j} \phi_{i,j+1} + S^S_{i,j} Q^S_{i,j} \phi_{i,j-1} - Q^C_{i,j} \phi_{i,j} = - \V \bar{\rho_{i,j}}
+    \end{equation}
+    with
+    \begin{center}
+      $\begin{dcases}
+     Q^E_{i,j} &= 2\frac{\epsilon_{i,j} \epsilon_{i+1,j}}{\epsilon_{i,j} d_{i+1} + \epsilon_{i+1,j} d_i} \\
+     Q^W_{i,j} &= Q^E_{i-1,j} \\
+     Q^N_{i,j} &= 2\frac{\epsilon_{i,j} \epsilon_{i,j+1}}{\epsilon_{i,j} d_{j+1} + \epsilon_{i,j+1} d_{j}}\\
+     Q^S_{i,j} &= Q^N_{i-1,j} \\
+     Q^C_{i,j} &= Q^E_{i,j}S^E_{i,j}+Q^W_{i,j}S^W_{i,j}+Q^N_{i,j}S^N_{i,j}+Q^S_{i,j}S^S_{i,j}
+     \end{dcases}$
+    \end{center}
+
+    as well as $S^E_{i,j} = S^W_{i,j} =d_id_z, S^N_{i,j} = S^S_{i,j}= d_jd_z$ et $\V = d_jd_id_z$.
+    We observe that the evolution of the vacuum permittivity and the cell size affects the coefficients to be used, but the system stays symmetric.
+
+
+    \subsection{Including surfaces charges}
+    Let's now considerer the presence of surface charges on the surface $S^E_{i,j}$.
+    Gauss's law now reads
+    \begin{equation} \label{eq-gausslawsc}
+      -\epsilon_{i,j}E_{x i+1/2,j}^- + \epsilon_{i+1,j}E_{x i+1/2,j}^+ =\sigma^E,
+    \end{equation}
+    with $\sigma^E$ the surface charge on the surface.
+    The surface charge is not taken into account when computing the total charge in a cell.
+    Using the same discretization as before, we obtain
+    \begin{equation}
+    \epsilon_{i,j} \frac{\phi_{i+1/2,j} - \phi_{i,j}}{d_i/2} - \epsilon_{i+1,j} \frac{\phi_{i+1,j} - \phi_{i+1/2,j}}{d_{i+1}/2} = \sigma^E
+    \end{equation}
+    so that
+    \begin{equation}
+      \label{eq-phidemi}
+    \phi_{i+1/2,j} = \frac{\epsilon_{i,j} d_{i+1} \phi_{i,j} + \epsilon_{i+1,j} d_{i} \phi_{i+1,j} }{\epsilon_{i,j} d_{i+1} + \epsilon_{i+1,j} d_{i} } + \frac{1}{2}\sigma^E \frac{d_i d_{i+1}}{\epsilon_{i,j} d_{i+1} + \epsilon_{i+1,j} d_{i}}
+    \end{equation}
+    hence
+    \begin{align*}
+    \vect{D}^E_{i,j} \cdot \vect{n} &= 2\frac{\epsilon_{i,j}\epsilon_{i+1,j}}{\epsilon_{i,j}d_{i+1} + \epsilon_{i+1,j} d_i} (\phi_{i,j}-\phi_{i+1,j}) - \sigma^E \frac{\epsilon_{i,j}d_{i+1}}{\epsilon_{i,j}d_{i+1}+\epsilon_{i+1,j}d_{i}}
+    \end{align*}
+    We obtain the same relation that \cref{eq-nosc} updated by $- \sigma^E \frac{\epsilon_{i,j}d_{i+1}}{\epsilon_{i,j}d_{i+1}+\epsilon_{i+1,j}d_{i}}$
+
+    Hence, we finally obtain
+    \begin{equation}
+    S^E_{i,j} Q^E_{i,j} \phi_{i+1,j} + S^W_{i,j} Q^W_{i,j} \phi_{i-1,j} + S^N_{i,j} Q^N_{i,j} \phi_{i,j+1} + S^S_{i,j} Q^S_{i,j} \phi_{i,j-1} - Q^C_{i,j} \phi_{i,j} = - \V \bar{\rho_{i,j}} + Q^W_{\sigma} \sigma^W
+    \end{equation}
+    with $Q^W_{\sigma} =  S^W_{i,j} \frac{\epsilon_{i,j}d_{i-1}}{\epsilon_{i,j}d_{i-1}+\epsilon_{i-1,j}d_{i}}$.
+
+
+
+  \subsection{Verifications}
+    We verify the discretization by modeling a capacitor.
+    The relative permittivity of the dielectric inside the capacitor is set to $\epsilon_r = 8$, and a surface charge of  $\sigma = 8$~nC.cm$^{-2}$ is imposed on one side, and $-8$~nC.cm$^{-2}$ on the other side.
+    The expected electric field in the capacitor using the infinite plans approximation is $E = \sigma/(\epsilon_0\epsilon_r) = 1.15$~kV.mm$^{-1}$.
+
+    \Cref{fig-surface} shows the electric field computed using the obtained decomposition.
+    We see that we obtain the expected value for the electric field.
+
+    \begin{figure}[hbtp]
+      \label{fig-surface}
+      \centering
+      \includegraphics[width=\defaultwidth]{potential.pdf}
+      \caption{Electric field of the capacitor configuration calculated by the Poisson solver in order to validate the discretization and the solver. }
+    \end{figure}
+
+
+  \subsection{Interface at the cell centre}
+    In the previous section, we supposed that the plasma-dielectric dielectric boundary was at the interface between the cells.
+    However, this means that the electric field at the interface is ill-defined.
+    Moreover, the Dirichlet condition is better defined at the cell center.
+    Hence, we chose to position the plasma-wall interface at the center of the cell.
+    This means that the permittivity is not constant over a cell.
+
+    Because the wall boundary are only in the radial directions, we considerer only an interface in the North-South direction.
+    \Cref{fig-decompo2} shows the domain decomposition.
+    The decomposition is the same as previously, except for the permittivity that can have two different values: one in the North half-plan $\epsr{i,j}^n$ and another in the South half plan $\epsr{i,j}^s$.
+
+    \begin{figure}[hbt]
+      \centering
+      \includegraphics[width=\defaultwidth]{discrect2.pdf}
+      \caption{Cartesian decomposition of the \ac{2D} domain. The dash lines represent discontinuities in the permittivity value.}
+      \label{fig-decompo2}
+    \end{figure}
+
+    The discretisation of the Poisson \cref{eq-poisson} is follows the same path as previously.
+
+    Except that the electric flux in equation in not constant any more, so that \cref{eq-poissonsum} becomes
+    \begin{equation}
+    \oint_{\C} (-\epsilon \grad \phi) \cdot \vect{n} dS = \sum_{k\in(E,W,N,S)} S^k_{i,j} <\vect{D}^k_{i,j} \cdot \vect{n}>.
+    \end{equation}
+
+    We can define
+    \begin{align}
+    <\vect{D}^E_{i,j} \cdot \vect{n} >&= \frac{1}{2} \epsilon_{i,j}^N E_{x i+1/2,j}^- + \frac{1}{2} \epsilon_{i,j}^S E_{x i+1/2,j}^-\\
+     &= \frac{-1}{2} (\epsilon_{i,j}^N + \epsilon_{i,j}^S) \frac{\phi_{i+1/2,j} - \phi_{i,j}}{d_i/2}
+     \label{eq-flux}
+    \end{align}
+    so that in the Est-West direction, the flux behave as if the cell permittivity is the mean of the North and South half plan $\epsilon_{i,j} = \frac{1}{2} (\epsilon_{i,j}^N + \epsilon_{i,j}^S)$.
+    Hence, the rest of the computation are similar.
+    For the boundary North and South, the permittivity is constant, hence there is no modification.
+    Consequently, we obtain the discretization
+    \begin{equation}
+    S^E_{i,j} Q^E_{i,j} \phi_{i+1,j} + S^W_{i,j} Q^W_{i,j} \phi_{i-1,j} + S^N_{i,j} Q^N_{i,j} \phi_{i,j+1} + S^S_{i,j} Q^S_{i,j} \phi_{i,j-1} - Q^C_{i,j} \phi_{i,j} = - \V \bar{\rho_{i,j}}
+    \label{eq-descretPoissoncentered}
+    \end{equation}
+    with
+    \begin{center}
+     $\begin{dcases}
+     Q^E_{i,j} &= 2\frac{\epsilon_{i,j} \epsilon_{i+1,j}}{\epsilon_{i,j} d_{i+1} + \epsilon_{i+1,j} d_i} \\
+     Q^W_{i,j} &= Q^E_{i-1,j} \\
+     Q^N_{i,j} &= 2\frac{\epsilon_{i,j}^N \epsilon_{i,j+1}^S}{\epsilon_{i,j}^N d_{j+1} + \epsilon_{i,j+1}^S d_{j}}\\
+     Q^S_{i,j} &= 2\frac{\epsilon_{i,j}^S \epsilon_{i,j-1}^N}{\epsilon_{i,j}^S d_{j+1} + \epsilon_{i,j-1}^N d_{j}} \\
+     Q^C_{i,j} &= Q^E_{i,j}S^E_{i,j}+Q^W_{i,j}S^W_{i,j}+Q^N_{i,j}S^N_{i,j}+Q^S_{i,j}S^S_{i,j}
+     \end{dcases}$
+    \end{center}
+
+    As well as $S^E_{i,j} = S^W_{i,j} =d_id_z, S^N_{i,j} = S^S_{i,j}= d_jd_z$ et $\V = d_jd_id_z$.
+    Here, the system is no more symmetric.
+    However, we can suppose that the only permittivity jump appends at the cell center, so that  $\epsilon_{i,j}^S = \epsilon_{i,j-1}^N$.
+    Hence, $Q^N_{i,j} = 2\frac{\epsilon_{i,j}^N}{ d_{j+1} + d_{j}}$ and the system is symmetric.
+
+  \subsection{Surface charges for centred interface}
+    in the case of centered plasma-wall interface, we have surfaces charges at the center of the cell.
+    Hence
+    \begin{equation}
+    \int_{\Omega_{i,j}} \rho dv = \Omega_{i,j}\bar{\rho} + S_{i,j}^N \sigma_{i,j}.
+    \end{equation}
+    The surface charges behave like volume charges.
+    Hence, we obtain
+    \begin{equation}
+    S^E_{i,j} Q^E_{i,j} \phi_{i+1,j} + S^W_{i,j} Q^W_{i,j} \phi_{i-1,j} + S^N_{i,j} Q^N_{i,j} \phi_{i,j+1} + S^S_{i,j} Q^S_{i,j} \phi_{i,j-1} - Q^C_{i,j} \phi_{i,j} = - \V \bar{\rho_{i,j}} - S^N_{i,j} \sigma_{i,j}
+    \end{equation}
+
+    The discretization obtained for the plasma-wall interface cell-centred is very similar to the one obtained for the interface at the cell interface.
+    However, it better conserves the plasma domain when the dielectric layer is not modeled and that Dirichlet conditions are applied.

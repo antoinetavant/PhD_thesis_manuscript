@@ -1,12 +1,14 @@
+% !TEX root=/home/tavant/these/manuscript/src/manuscript.tex
 
 
 
 \usepackage{xargs}                      % Use more than one optional parameter in a new commands
 % \usepackage[pdftex,dvipsnames]{xcolor}  % Coloured text etc.
 \usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
+
 \newcommandx{\unsure}[2][1=]{\todo[noline,linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
 \newcommandx{\change}[2][1=]{\todo[noline,linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}}
 \newcommandx{\info}[2][1=]{\todo[noline,linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,#1]{#2}}
-\newcommandx{\improvement}[2][1=]{\todo[noline,linecolor=Plum,backgroundcolor=Plum!25,bordercolor=Plum,#1]{#2}}
+\newcommandx{\improvement}[2][1=]{\todo[inline,linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
 \newcommandx{\thiswillnotshow}[2][1=]{\todo[noline,disable,#1]{#2}}
 \newcommandx{\inlinenote}[2][1=]{\todo[inline,size=\small,#1]{#2}}
