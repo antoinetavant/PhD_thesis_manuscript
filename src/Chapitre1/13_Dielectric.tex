@@ -49,7 +49,7 @@
   The dielectric permittivity is $\epsilon= \epsr \epsilon_0$ with $\epsr$ the relative permittivity of the dielectric.
 
   The Poisson equation with not-constant permittivity is
-  \begin{equation} \label{eq-poisson}
+  \begin{equation} \label{eq-poissondiel}
     \grad \cdot \epsilon \grad \phi = \rho
   \end{equation}
   with $\rho$ the charge density.
@@ -82,7 +82,7 @@
 
     We start by positioning the plasma-dielectric interface on the surface between two cells.
     This means that the permittivity $\epsilon = \epsilon_0 \epsr$ is  constant over a cell.
-    In order to discretize the Poisson equation, we integrate \vref{eq-poisson} over the cell volume
+    In order to discretize the Poisson equation, we integrate \vref{eq-poissondiel} over the cell volume
 
     \begin{equation}
     \int_{\V} - \grad \cdot (\epsilon \grad \phi) dv= \int_{\V} \rho dv.
@@ -217,7 +217,7 @@
       \label{fig-decompo2}
     \end{figure}
 
-    The discretisation of the Poisson \cref{eq-poisson} is follows the same path as previously.
+    The discretisation of the Poisson \cref{eq-poissonsum} is follows the same path as previously.
 
     Except that the electric flux in equation in not constant any more, so that \cref{eq-poissonsum} becomes
     \begin{equation}

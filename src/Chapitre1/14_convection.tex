@@ -2,7 +2,6 @@
 
 \section{Axial Convection model}
   \label{sec-reinjectionnoise}
-  \inlinenote{Add the section about reinjection noise.}
 
   As introduce in the previous section, the \ac{2D} radial-azimuthal simulation do not model a priori the convection.
 
@@ -161,7 +160,7 @@
                     &= C + \frac{1}{\epsilon_0} \int_0^{\theta} (\rho_0(s) + \N(0, \stdconv) ) ds \\ 
                     &= C + \aziE_{, 0} + \aziE_{, 1}
     \end{align}
-    with $C$ a constant that ensure that the boundary conditions are respected.
+    with $C$ a constant that ensure that the \ac{BC}s are respected.
     The part of the electric field $\aziE_{, 0}$ corresponds to the charge density $\rho_0$ and $\aziE_{, 1}$  corresponds tot he charge density noise $\N(0, \sigma_{\rm stat})$.
     Let us focus now on $\aziE_{, 1}$.
     We can study $\aziE_{, 1}$ using two equivalent means: the \ac{FT} and the Brownian bridge.
@@ -182,7 +181,7 @@
       Hence, when we increase the azimuthal length, which means that small wave number can exit in the simulation domain, the amplitude of $\aziE_{, 1}$ increases as well.
       
     \paragraph{Brownian Bridge}
-      \Cref{eq-aziE1}, combined with the boundary condition, is the definition of the a Browning bridge.
+      \Cref{eq-aziE1}, combined with the \ac{BC}, is the definition of the a Browning bridge.
       
       A Brownian bridge is a particular Brownian motion that reaches at a given distance the same value that the initial value.
       Hence, we have
@@ -254,31 +253,54 @@
       
       \inlinenote{ Should we re-run all of the simulations of the 1rst paper using the new model ? Else, we should say why.}
     
-    \subsection{Effects On a \ac{2D} simulation domain}
+    \subsection{Effects on a \ac{2D} simulation domain}
       
       The mathematical development of \cref{sec-mathnoise} has been done in \ac{1D}.
-      We can legitimately ask is the results can be extended to a \ac{2D} domain.
+      We can legitimately wonder is the results  can be extended directly to a \ac{2D} domain.
       
-      A mathematical definition of $\aziE_{, 1}$ is more difficult, as, neglecting the dielectric layers,
+      A mathematical definition of $\aziE_{, 1}$ is more difficult, as we have, neglecting the dielectric layers,
       \begin{equation} \label{eq-aziE}
-        \aziE_{, 1} = \partial_{\theta} \phi_1 \text{ such that } \grad \cdot \grad \phi_1 = - \frac { \N(0, \stdconv)}{\epsilon_0} \text{ following the boundary condition}.
+        \aziE_{, 1} = \partial_{\theta} \phi_1 \text{ such that } \grad \cdot \grad \phi_1 = - \frac { \N(0, \stdconv)}{\epsilon_0} \text{ following the \ac{BC}}.
       \end{equation}
+      The \ac{BC}s are
+      \begin{itemize}
+        \item periodic \ac{BC} in the azimuthal direction,
+        \item Dirichlet \ac{BC} in the radial direction, modeling grounded walls,
+      \end{itemize}
+      which translate as
+      \begin{align}
+        \phi &= 0 \text{ for } r=0 \text{ and } r=L_r, &\forall \theta\\
+        \phi(\theta = 0)&= \phi(\theta = L_{\theta}) , &\forall r
+      \end{align}
       
-      However, we can investigate it numerically.
-      \Cref{fig-dftLr} shows the \ac{DFT} of the source term $\rho_1 = \N(0, \stdconv)$, the resulting azimuthal electric field $\aziE_{, 1}$ and plasma potential $\rho$ computed on the centreline of the simulation domain in the radial direction, for three different radial length expressed in number of cell $N_x$.
-      Is also discipled the "equivalent" source term $\rho_{\rm eq}$, which is the source term that would give the frequency spectra observed in a \ac{1D} domain
+      Solving \cref{eq-aziE} analytically is much more difficult that the \ac{1D} development because of the Dirichlet \ac{BC}.
+      \nomenclature[N]{Dirichlet Boundary condition}{ Type of boundary conditions for which the field is fixed. For instance for grounded electrodes on the plasma potential: $\phi = 0$}
+      However, we can investigate it numerically, by solving \cref{eq-aziE} for a given random source term.
+      Using a Monte Carlo approach, the results are averaged 50 times in order to better observe the mean behaviour in respect to the noise (i.e. increasing signal to noise ratio).
+        
+      \Cref{fig-dftLr} shows the \ac{DFT} of the source term $\rho_1 = \N(0, \stdconv)$, the resulting azimuthal electric field $\aziE_{, 1}$ and plasma potential $\phi$ computed on the centreline of the simulation domain in the radial direction, for three different radial length expressed in number of cell $N_x$.
+      Is also showed the "equivalent" source term $\rho_{\rm eq}$, which is the source term that would give the frequency spectra observed in a \ac{1D} domain
       \begin{equation} \label{eq-equirho}
-        \rho_{\rm eq} = \partial_\theta \aziE_{, 1}.
+        \rho_{\rm eq} = \epsilon_0 \partial_\theta \aziE_{, 1}.
       \end{equation}
+      The results are given for different radial length $N_x=15,50 \text{ and } 200$, while the azimuthally length $N_y=200$ is kept constant.
+      We can see that the plasma potential and the electric field show larger amplitude for small wave numbers (large wavelength) compared to large wave numbers in the three cases.
+      However, the amplitude of the smaller wave numbers is affected.
+      In the cases of small radial length ($N_x=15 \text{ and } 50$), the spectra of the electric field is not monotonic.
+      This can be explained by the Dirichlet \ac{BC}s that {\it pin down} the fluctuation of the plasma potential.
       
-      Using a Monte Carlo approach, the spectra are average over 50 cases in order to better observe the mean values of the distribution in respect with the standard deviation.
+      However, even though the amplitude is reduces in \ac{2D} with small radial direction compared to a \ac{1D} model, we still observe large amplitude of small wave number oscillations in both the electric field and the plasma potential.
+      Hence, the conclusions of  \cref{sec-mathnoise} derived in \ac{1D} can be legitimately used for \ac{2D} domains.
+      
+      
       
       \begin{figure}[hbtp]
         \centering
         \includegraphics[width=\textwidth]{effect_Lr}
-        \caption{\ac{DFT} of the source term $\rho_1 = \N(0, \stdconv)$, the resulting azimuthal electric field $\aziE_{, 1}$ and plasma potential $\rho$ computed on the centreline of a radial-azimuthal simulation. }
+        \caption{\ac{DFT} of the source term $\rho_1 = \N(0, \stdconv)$, the resulting azimuthal electric field $\aziE_{, 1}$ and plasma potential $\rho$ computed on the centreline of a radial-azimuthal simulation, and the "equivalent" source term defined by \cref{eq-equirho}. $N_y=200$. }
         \label{fig-dftLr}
       \end{figure}
+      
       
 
 
