@@ -15,7 +15,7 @@
 
 \selectlanguage{english}%
 
-\includeonly{structure/structure, structure/lists, Chapitre1/1-introduction, Chapitre2/2-mean_values}
+\includeonly{structure/structure, structure/lists, Chapitre1/1-introduction, Chapitre2/2-mean_values, Context/concepts}
 
 
 \input{texfiles/set_title}
@@ -23,6 +23,7 @@
 
 \input{texfiles/symbols} 		% definitions des symboles
 
+\graphicspath{{images/}{Chapitre1/}{Chapitre1/figure/}{Context/figure/}{Chapitre2/figure/}{schemas/}{plots/}{images/}{logos/}}  % Location of the graphics files (set up for graphics to be in PDF format)
 
 
 
@@ -56,8 +57,9 @@
 % \include{structure/structure}
 
 
+\include{Context/concepts}
 \include{Chapitre1/1-introduction}
-\include{Chapitre2/2-mean_values}
+% \include{Chapitre2/2-mean_values}
 
 \appendix
 
