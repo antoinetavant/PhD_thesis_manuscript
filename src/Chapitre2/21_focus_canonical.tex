@@ -3,21 +3,71 @@
 \section{Canonical simulation results}
   \label{sec-canonical}
   
-  The {\it canonical} case is the reference case that will be extensively described and commented.
-  It will be used then to analyse and quantify the effects of the two aspect of the dielectric walls:
+  
+  The {\it canonical} case corresponds to the case when the wall do not include its dielectric mechanism:
   \begin{itemize}
-    \item the dielectric layer on the plasma potential, analysed in  % \cref{sec-dielectric_layer}
-    \item the electron emission, analysed in %\cref{sec-see}
+    \item the dielectric layer on the plasma potential
+    \item the electron emission
   \end{itemize}
+  It is the reference case that will be extensively described and commented.
+  It will be used then to analyse and quantify the effects of the two aspects of the dielectric walls.
   
+  \subsection{Initial phase} \label{subsec-initlaphase}
+  The initial phase of the simulation corresponds to the growth of the \ac{ECDI}, and the formation of the sheaths.
+  Because of growth of the instability, the electron transport increases as well, that increases the electron heating.
   
-  \Cref{fig-profiles} shows the radial profiles of the electron and ions densities averaged azimuthally.
+  The time scale of the sheath formation is governed by the ion inertia.
+  It is roughly the same time scale than the saturation of the instability due to ion-trapping.
+  
+  \begin{figure}[hbtp]
+    \centering
+    \includegraphics[width=\defaultwidth]{canonical_Te_start_directions}
+    \caption{Temporal evolution of the electron mean kinetic energy decomposed over the three direction. Is showed only the beginning of the simulation.}
+    \label{fig-canon_Te_strat}
+  \end{figure}
+  
+  \Cref{fig-canon_Te_strat} shows the temporal evolution of the electron mean kinetic energy decomposed over the three direction, $\Ee_r, \Ee_{\theta}, \Ee_z$, such that
+  \begin{equation} \label{eq-Ee_direction}
+    \Ee_d = \frac{1}{n} \frac{1}{2} m_e \iiint_{\vect{v}}  v_{e,d}^2 f (\vect{v}) d^3v, \text{ with } d \in \{r, \theta, z  \}
+  \end{equation}
+  
+  We see that after some high frequency oscillations of $\Ee_{\theta}$ and $\Ee_z$ due to the cyclotron motion, the temperature rises before Stabilizing at $\Ee \simeq 45$V.
+  The radial temperature $\Te_r$ is less than $\Te_z$ and $\Te_{\theta}$, but only by a small factor.
+  This means that the electrons temperature is quite anisotropic.
+  
+  \renewcommand\subfigurewidth{4in}
+  
+  \begin{figure}[hbtp]
+    \centering
+    \begin{tabular}{c}
+      \subfigure{time_r_mean_n}{a}{20, 20}
+          \\
+      \subfigure{time_r_mean_phi}{b}{20, 20} 
+    \end{tabular}
+    \caption{Temporal evolution of the radial profile of the ({\bf a}) electron density and ({\bf b}) the plasma potential averaged azimuthally}
+    \label{fig-tx_n_phi}
+  \end{figure}
+  
+  We can see on \Cref{fig-tx_n_phi} the evolution of the radial profile of the electron density on the plasma potential on the same time scale.
+  We observe of the two parameters the formation of the sheath and the evolution toward a steady state.
+  
+  \subsection{Stable phase} \label{subsec-stablephase}
+  After the relatively fast rise of the plasma characteristic, the simulations stabilises at a steady state, as we can see in 
+  
+  \begin{figure}[hbtp]
+    \centering
+    \includegraphics[width=\defaultwidth]{canonical_Te_all_directions}
+    \caption{Temporal evolution of the electron mean kinetic energy decomposed over the three direction, similar to \cref{fig-canon_Te_strat} but during a longer time}
+    \label{fig-canon_Te_strat}
+  \end{figure}
+  
+
+  \Cref{fig-profiles} shows the radial profiles of the electron and ions densities averaged azimuthally at steady state.
   We can see the sheath close to the wall where the electron density fall rapidly compare to the ions.
-  
   
   \begin{figure}[hbtp]
     \centering
     \includegraphics[width=\defaultwidth]{density_profile.pdf}
-    \caption{Radial profile of the ion and electron densities at steady state.}
+    \caption{Radial profile of the ion and electron densities at steady state, average azimuthally.}
     \label{fig-profiles}
   \end{figure}
