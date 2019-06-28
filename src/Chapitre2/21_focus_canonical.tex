@@ -52,13 +52,21 @@
   We observe of the two parameters the formation of the sheath and the evolution toward a steady state.
   
   \subsection{Stable phase} \label{subsec-stablephase}
-  After the relatively fast rise of the plasma characteristic, the simulations stabilises at a steady state, as we can see in 
+  After the relatively fast rise of the plasma characteristic, the simulations stabilises at a steady state, as we can see in \Cref{fig-canon_Te_all}.
+  
+  We observe that after $t\simeq2\mus$ , the electron energy $\Ee$ start to oscillate around its final value.
+  The oscillations are than damped and reach their minimum amplitude at  $t\simeq 7\mus$.
+  Hence, there is no need to simulate for longer than $10\mus$ in the following simulations.
+  
+  \inlinenote{Je parle ici d'oscillation. Devrais-je en parler ? Peut-être plus tard ?}
+  
+  
   
   \begin{figure}[hbtp]
     \centering
     \includegraphics[width=\defaultwidth]{canonical_Te_all_directions}
     \caption{Temporal evolution of the electron mean kinetic energy decomposed over the three direction, similar to \cref{fig-canon_Te_strat} but during a longer time}
-    \label{fig-canon_Te_strat}
+    \label{fig-canon_Te_all}
   \end{figure}
   
 
@@ -71,3 +79,45 @@
     \caption{Radial profile of the ion and electron densities at steady state, average azimuthally.}
     \label{fig-profiles}
   \end{figure}
+  
+  \subsection{Enhanced electron transport} \label{subsec-canonmue}
+  The electron cross-field axial transport is usually characterized by the electron mobility
+  \begin{equation} \label{eq-mobdef}
+    \mob = \frac{u_{e, z}}{E_z}
+  \end{equation}
+  with $u_{e,z}$ and $E_z$ the electron mean axial velocity and the axial electric field, respectively./
+  \nomenclature[Q]{\ensuremath{ \mob}}{ Electron mobility}
+  \nomenclature[Q]{\ensuremath{ u}}{ Electron mean velocity}
+  
+  In the \ac{PIC} simulations, \mob is computed at each time step by
+  \begin{equation} \label{eq-mobpic}
+    \mobpic = \frac{1}{E_z} \sum_N v_{e,z}
+  \end{equation}
+
+  \begin{figure}[hbtp]
+    \centering
+    \includegraphics[width=\defaultwidth]{canonical_mu_all}
+    \caption{Temporal evolution of the electron axial mobility computed in the \ac{PIC} simulation.}
+    \label{fig-canon_mu}
+  \end{figure}
+  
+  \Cref{fig-canon_mu} shows the temporal evolution of the electron mobility $\mobpic$ measured in the simulation.
+  We can see that it presents the same characteristics that the evolution of the electron energy $\Ee$ on \cref{fig-canon_Te_all}.
+  
+  The classical electron mobility from the collisional theory is \citep{lafleur2016a}
+  \begin{equation} \label{eq-muclass}
+    \mobclass = \frac{\nu_m \frac{e}{m_e}}{\oce^2 + \nu_m^2}
+  \end{equation}
+  with $\nu_m$ the electron-neutral  collision frequency and \oce is the electron cyclotron frequency.
+  In the conditions of \cref{parameters}, $\mobclass \simeq 0.8$ m$^2$(sV)$^{-1}$.
+  
+  The measured electron mobility in the \ac{PIC} simulation is one order of magnitude larger than the classical mobility.
+  Is the present case, as no electron is emitted from the wall, the enhancement only comes from the \ac{ECDI}, as proposed by \citet{lafleur2016} .
+  % K_ex = 2 10^-13
+  % n_g = 1e19
+  % wce = q B / m
+  
+  
+  
+  
+  
