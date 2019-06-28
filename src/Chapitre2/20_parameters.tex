@@ -1,0 +1,54 @@
+% !TEX root=/home/tavant/these/manuscript/src/manuscript.tex
+
+\section{Simulation parameters}
+  \label{sec-params}
+  
+  The simulation domain corresponds to the exit plan of the thruster.
+  Hence, a neutral pressure $P_n$ of 0.1~mTorr and a plasma density $n_e$ of $\sn{1}{17}$ m$^{3}$ has been chosen.
+  The fixed axial electric field and radial magnetic field are $E_z=\sn{2}{4}$ m/s and $B_r=200$ G, respectively.
+  The domain measures $L_r=2$~cm in the radial dimension and $L_{\theta}=0.5$~cm in the azimuthal direction.
+  The axial length is fixed at $L_z=1$~cm.
+  
+  The numerical parameters are chosen to respect the stability criterion of \ac{PIC} simulation, and are presented in \Cref{parameters}
+  
+  \begin{table}[htbp] %PIC parameters
+       \centering
+       \ra{1.3}
+       \caption{\label{parameters} Standard operating and numerical parameters used in the 2D PIC simulations of an HET.  The simulation results are given as representative values.}
+       \begin{tabular}{@{}r c c c@{}} 
+          \toprule
+          {\bf Physical Parameter} & notation & Value & Unit \\
+          \midrule
+          Gas & & Xenon & - \\
+          Domain dimensions & $L_{x} \times L_{y} \times L_{z}$ & $2.0 \times 0.5 \times 1.0$ & [cm$^3$] \\
+          Radial magnetic field & $B_{0}$                    & $200$                 & [{G}] \\
+          Axial electric field & $E_{0}$                    & $2 \times 10^{4}$     & [{Vm}$^{-1}$] \\
+          Mean plasma density & $n_{0}$                    & $3 \times 10^{17}$    & [{m}$^{-3}$] \\
+          Initial electron temperature & $\Te_{,0}  $               & $5.0$                 & [{V}] \\
+          Initial ion temperature & $T_{i,0}   $               & $0.1$                 & [{V}] \\
+          Secondary electron temperature & $T_{see}   $               & $1.0$                 & [{V}] \\
+          Neutral gas pressure & $P_{n}     $               & $1.0$                 & [{mTorr}] \\
+          Neutral gas temperature & $T_{n}     $               & $300$                 & [{K}] \\
+          Neutral gas density & $n_{g}     $               & $3.22 \times 10^{19}$ & [{m}$^{-3}$]\\
+          \midrule
+          {\bf Simulation Parameter} &  &   &  \\
+          
+          Time step & $\Delta t  $                      & $4 \times 10^{-12}$ & [{s}] \\
+          Cell size & $\Delta x = \Delta y = \Delta z $ & $2 \times 10^{-5}$  & [{m}] \\
+          Number of particles per cell & $N/NG      $                      & $80$                & [{part/cell}] \\
+          \midrule
+          {\bf Simulation result} &  &  &  \\ 
+          Electron temperature & $\Te$                       & $40$                  & [V] \\
+          Electron plasma frequency & $\omega_{pe}$               & $3.1 \times 10^{10} $  & [rad/s]\\
+          Electron cyclotron frequency & $\omega_{ce}$               &  $3.5\times 10^{9}$  & [rad/s] \\
+          Electron Larmor radius & $r_{Le}$                    & 6$\times 10^{-4}$    & [m] \\
+          \bottomrule
+       \end{tabular}
+    \end{table}
+  
+  
+  \paragraph{Initialisation\\}
+  The simulation is initialized with a uniform density of particles, following a Maxwellian distribution for temperature $\Te_{,0}$ and $\Ti_{,0}$ for the electrons and the ions respectively.
+  
+  
+  

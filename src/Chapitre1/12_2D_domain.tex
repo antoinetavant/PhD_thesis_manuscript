@@ -43,6 +43,17 @@ A constant and uniform axial electric field $E_0$ is imposed.
   \label{fig-2dschemat}
 \end{figure}
 
+\subsection{Particle balance}
+As the axial position simulated is the exit plan, the ionization is too low to balance the particle losses to the wall.
+Instead, the ionization take place upstream, and the particles are convected downstream.
+In this condition, two solutions are possible,
+\begin{itemize}
+  \item having a simulation that dies off, as done in \citet{janhunen2018},
+  \item forcing an arbitrary ionization to occur in order to compensate the radial losses citep{taccognaxxx}.
+\end{itemize}
+The second option is slightly less realistic, but allow to obtain a steady steady and is supposed not to affect significantly the simulation.
+
+
 \subsection{Axial convection}
 
 Due to the imposed axial electric field, ions and electrons gain energy.

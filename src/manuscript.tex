@@ -15,7 +15,12 @@
 
 \selectlanguage{english}%
 
-\includeonly{structure/structure, structure/lists, Chapitre1/1-introduction, Chapitre2/2-mean_values, Context/concepts}
+\includeonly{structure/structure,%
+ structure/lists,%
+ % Context/concepts,%
+ Chapitre1/1-introduction,%
+ Chapitre2/2-mean_values%
+ }
 
 
 \input{texfiles/set_title}
@@ -23,7 +28,11 @@
 
 \input{texfiles/symbols} 		% definitions des symboles
 
-\graphicspath{{images/}{Chapitre1/}{Chapitre1/figure/}{Context/figure/}{Chapitre2/figure/}{schemas/}{plots/}{images/}{logos/}}  % Location of the graphics files (set up for graphics to be in PDF format)
+\graphicspath{{images/}%
+{Chapitre1/}{Chapitre1/figure/}%
+{Context/figure/}%
+{Chapitre2/figure/}%
+}  % Location of the graphics files (set up for graphics to be in PDF format)
 
 
 
@@ -31,14 +40,14 @@
 
 
 
-\include{texfiles/1ere}
+% \include{texfiles/1ere}
 
 \frontmatter
 %dedicace
-\include{dedicace}
+% \include{dedicace}
 
 %remerciements
-\include{thanks}
+% \include{thanks}
 
 \include{structure/lists}  % List of the chapters and sections
 %
@@ -56,10 +65,33 @@
 \mainmatter
 % \include{structure/structure}
 
+% Referee
+% * Sedina 
+% * Achim Von Keudell (Borum) (rapporteur)
+% * Stephan
+% * directeru LPGP : Tiberiu Minea
+% * 
+% 
+% Polytechnique:
+% * Post d'IR ?
+% * ingenieur calcul pour le LPP
+% * Lien possible avec le CMAP et le MESO centre
+% * Lien possible aussi avec l'enseigmenent
+% * Debut 24 mois sur chair
+% 
+% * Post de Lilia ?? Mars ou juin 2020, possible d'avoir un doublons avant
+% 
+% Onera:
+% * Frustration ? publi, confs etc.
+% * Jarrige est très chercheur: lui demander !
+% * Fabien: 2013 
 
 \include{Context/concepts}
+% \acresetall
 \include{Chapitre1/1-introduction}
-% \include{Chapitre2/2-mean_values}
+% \acresetall
+\include{Chapitre2/2-mean_values}
+% \acresetall
 
 \appendix
 
