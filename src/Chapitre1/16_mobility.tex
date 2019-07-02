@@ -1,0 +1,65 @@
+% !TEX root=/home/tavant/these/manuscript/src/manuscript.tex
+
+\section{electron cross-field transport}
+  \label{sec-transport}
+  
+  The electron mobility in the axial direction $\mobe$ is defined as the ratio between the mean velocity $u$ and the electric field
+  \begin{equation} \label{eq-mudef}
+    \mobe = \frac{u_{e,z}}{E_z}
+  \end{equation}
+  with $u_{e,z}=<v_{e,z}>$ the electron mean velocity
+  \nomenclature[Q]{\ensuremath{ u_{e,z}}}{Electron mean velocity int he axial direction : $u_{e,z} = < v_{e,z}>$}
+  In the \ac{PIC} simulations, \cref{eq-mudef} can be used directed to compute $\mobpic$.
+  
+  In the classical drift diffusion theory of the electron mobility transverse to a magnetic field, the mobility is due to collisions as \citep{chen2006,meezan2001}
+  \begin{equation} \label{eq-mobclas}
+    \mobcla = \frac{e}{m_e} \frac{\nu_m}{\nu_m^2 + \oce^2}
+  \end{equation}
+  with $\oce=\frac{e B}{m_e}$ the electron cyclotron frequency and $\nu_m$ the electron-neutral momentum transfer collision frequency.
+  \nomenclature[Q]{\ensuremath{ \oce}}{ Electron cyclotron frequency $\oce=\frac{e B}{m_e}$}
+  \nomenclature[Q]{\ensuremath{ \nu_m}}{  electron-neutral momentum transfer collision frequency}
+  
+  At the exit plan, the classical mobility predict a mobility of the order of $\mobcla=0.001 -- 0.01\mobunit$ \citep{adam2008a}.
+  
+  The kinetic approach allowed \citet{lafleur2016a} to propose a modified mobility due to the oscillations of the electron density and the azimuthal electric field of the \ac{ECDI}.
+  This effective mobility obtained is 
+  \begin{equation} \label{eq-defmobeff}
+    \mobeff = \mobcla \lp 1 - \frac{\oce}{\nu_m}  \frac{< \dne \dEt >_{\theta} }{n_0 E_z}   \rp
+  \end{equation}
+  with \dne and \dEt the fluctuations in the azimuthal directions of the electron density and azimuthal electric field, respectively, the operator $< . >_{\theta}$ is the average in the azimuthal direction, and $n_0$ is the average plasma density.
+  In the case where $\nu_m << \oce$, \cref{eq-defmobeff} can be simplified to 
+  \begin{align} 
+    \mobeff &= \frac{\frac{e}{m_e} \nu_m}{\oce^2} \lp 1 - \frac{\oce^2}{\nu_m}  \frac{< \dne \dEt >_{\theta} }{n_0 E_z}   \rp \nonumber \\
+    &= \frac{< \dne \dEt >_{\theta} }{n_0 E_z}   \frac{1}{B_r} \label{eq-mobeffsimple}
+  \end{align}
+  which shows that the instability enhances the electron axial mobility in a wave similar to an $E \times B$ drift.
+  The electric field $E_{\theta}$ oscillates and presents a zero mean value, but the average effect on the electron transport is not zero if the correction between \dEt and \dne is not zero.
+  
+  In  \citet{lafleur2016a}, the authors present the instability effect as an electron-ion friction force $\Rei = - e < \dne \dEt >_{\theta}$.
+  Under the assumption that the saturation of the instability is mainly due to ion trapping, the electron-ion friction force can be simplified to
+  \begin{equation} \label{eq-rei-sat}
+    \Rei^{sat} = \frac{e \norm{\grad \cdot (n_e \Te \vect{v_i})}}{4 \sqrt{6} c_s} \simeq \frac{e n_e \Te \viout}{4 \sqrt 6 c_s L_z}
+  \end{equation} 
+  \nomenclature[Q]{\ensuremath{ \vect{v_i}}}{  ion velocity vector}
+  \nomenclature[Q]{\ensuremath{ c_s}}{ ion sound speed $c_s=(e \Te/m_i)^{1/2}$ }
+  where $\vect{v_i}$ is the ion velocity, $c_s=(e \Te/m_i)^{1/2}$  is the ion sound speed, and the spatial derivative in has been approximated across the axial simulation direction, with $\viout$ the ion outlet velocity 
+  \begin{equation} \label{eq-viz}
+    \viout = \sqrt{\frac{2 e U_z}{m_i}},
+  \end{equation}
+  with $U_z = E_z L_z$ the total potential difference in the axial direction.
+  \nomenclature[Q]{\ensuremath{ U_z}}{   total potential difference in the axial direction $U_z = E_z L_z$}
+  
+  Using \cref{eq-rei-sat} in \cref{eq-mobeffsimple}, we obtain the simplified expression
+  \begin{equation} \label{eq-mobeffsat}
+    \mobeffsat = \frac{\sqrt{\frac{\Te}{U_z}}}{4\sqrt{3}B_r}.
+  \end{equation}
+  
+  \Cref{eq-mobeffsat} shows that for the radial and azimuthal \ac{2D} geometry being used here, the enhanced mobility due to \ac{ECDI} scales as the square-root of the electron temperature $\Te$ if the simulation parameters are constant.
+  However, it is not the case in general, as the saturation of the instability can be also due to convection, and there are axial gradients in the electron temperature and plasma density as well.
+  
+  We can note that $\mobpic, \mobeff$ and $\mobcla$ are defined at every position of the simulation, but that $\mobeffsat$ can only be globally calculated. 
+  
+  
+  
+  
+  
