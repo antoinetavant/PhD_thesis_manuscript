@@ -17,9 +17,9 @@
 
 \includeonly{structure/structure,%
  structure/lists,%
- % Context/concepts,%
- % Chapitre1/1-introduction,%
- Chapitre2/2-mean_values%
+ Context/concepts,%
+ Chapitre1/1-introduction,%
+ % Chapitre2/2-mean_values%
  }
 
 
@@ -85,9 +85,18 @@
 % * Frustration ? publi, confs etc.
 % * Jarrige est très chercheur: lui demander !
 % * Fabien: 2013 
+% \renewcommand{\chaptername}{}
+\let\oldthechapter\thechapter
+\let\oldthechaptername\chaptername
 
+\renewcommand\thechapter{}
+\renewcommand\chaptername{}
 \include{Context/concepts}
 % \acresetall
+
+\renewcommand\thechapter\oldthechapter
+\renewcommand\chaptername\oldthechaptername
+
 \include{Chapitre1/1-introduction}
 % \acresetall
 \include{Chapitre2/2-mean_values}

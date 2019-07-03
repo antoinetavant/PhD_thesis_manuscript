@@ -4,12 +4,13 @@
 
 %Uncomment next line if AMS fonts required
 %\usepackage{iopams}
+\newcommand{\prl}{\parallel}
 \newcommand{\estar}{\epsilon^*}
 \newcommand{\Te}{\mathrm{T_e}}
+\newcommand{\Tepar}{\mathrm{T_e}_{\prl}}
 \newcommand{\Ti}{\mathrm{T_i}}
 \newcommand{\Ts}{\mathrm{T_s}}
 \newcommand{\Tsee}{\mathrm{T_{SEE}}}
-\newcommand{\prl}{\parallel}
 \newcommand{\sig}{\sigma}
 \newcommand{\sigm}{\sigma_{\rm max}}
 \newcommand{\sigo}{\sigma_0}
@@ -33,6 +34,7 @@
 \renewcommand{\rp}{\right)}
 
 \newcommand{\dphi}{\Delta \phi}
+\newcommand{\dphisheath}{\Delta \phi_{\rm sheath}}
 \newcommand{\mobe}{\mu_{\mathrm{e}}}
 \newcommand{\mobeffsat}{\mu_{\mathrm{eff}}^{sat}}
 \newcommand{\mobeff}{\mu_{\mathrm{eff}}}
@@ -115,3 +117,8 @@
 \newcommand\dEt{\ensuremath{\delta E_{\theta}}}
 \newcommand\Rei{\ensuremath{R_{ei}}}
 \newcommand\viout{\ensuremath{  v_{i, \rm out} }}
+
+\let\arobase\at
+\renewcommand{\at}[1]{ \ensuremath{ \bigg\vert_{#1} }}
+
+\newcommand\dphiscl{\ensuremath{\dphi_{\rm SCL}}}

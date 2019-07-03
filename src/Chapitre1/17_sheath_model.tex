@@ -1,0 +1,61 @@
+% !TEX root=/home/tavant/these/manuscript/src/manuscript.tex
+
+\section{Sheath model with electron emission}
+  \label{sec-sheath}
+  
+  \inlinenote{Ici, le model est introduit rapidement... Peut-être le faire plus explicitement a partire des equations fluid ?}
+  
+  The sheath model featuring SEE processes has been historically studied by Hobbs and Wesson \citet{hobbs1967}, but is still an active research topic nowadays \citep{ahedo2005}.
+  The sheath is often considered to be collision-less and isothermal, while the plasma is composed of hot Maxwellian electrons and cold ions. A third population of electron-induced secondary electrons is also present in the sheath, and the re-emission rate $\rate$ is assumed to constant.
+  The SEE process modifies the potential drop in the sheath as \citep{hobbs1967}
+  \begin{equation} \label{eq-sheathhobbs}
+    \dphisheath = \Tepar \ln \lp (1 - \rate) \sqrt{\frac{m_i}{2 \pi m_e}}   \rp
+  \end{equation}
+  with $\Tepar$ the electron temperature in the direction parallel to the magnetic field, thus normal to the walls.
+  Adding a pre-sheath drop of $\Tepar/2$ \citep{ahedo2002}, the total potential drop to the wall becomes
+  
+  \begin{equation} \label{eq-total_drop}
+    \dphi = \dphisheath + \frac{\Tepar}{2} =  \Tepar \lp \frac{1}{2} + \ln \lb (1 - \rate) \sqrt{\frac{m_i}{2 \pi m_e}}   \rb  \rp
+  \end{equation}
+  
+  In \Cref{eq-sheathhobbs,eq-total_drop}, we uses $\Tepar$ as in general, and more precisely in low-pressure magnetized plasma, the electrons can be anisotrope.
+  
+  We can see that \cref{eq-sheathhobbs} becomes negative for a critical value of the emission rate
+  \begin{equation} \label{eq-ratecrone}
+    \rate_{\rm max} = 1 - \sqrt{\frac{2 \pi m_e}{m_i}} \simeq 0.985 \text{ for Xenon.}
+  \end{equation}
+  
+  However, before that $\rate$ attains $\ratecr$, the model of \citet{hobbs1967} presents another behaviour against the hypotheses of  \cref{eq-sheathhobbs}, as the sheath becomes \ac{SCL} \citep{hobbs1967}.
+  In the \ac{SCL} conditions, the electron emission is so large that the electric field at the wall becomes zero 
+  \begin{equation} \label{eq-scl_Er}
+    \deriv{\phi}{r} \at{\rm wall}= 0 
+  \end{equation}
+  In this case, the plasma potential drop to the wall for any ion mass is \citep{hobbs1967}
+  \begin{equation} \label{eq-dphi_scl}
+    \dphiscl \simeq 1.02 \Tepar,
+  \end{equation}
+  and the limit emission rate is
+  \begin{equation} \label{eq-ratecr}
+    \ratecr \simeq 1 - 8.3 \sqrt{\frac{m_e}{m_i}}
+  \end{equation}
+
+  For xenon, \cref{eq-ratecr} gives $\ratecr = 0.983$ \citep{goebel}.\footnote{This value of 0.983 is obtained after several approximation, some of which should not allow to use three significant digits. That's why it does not exactly match with the numerical results presented in \cref{fig-potential_profile}.}
+  
+  \Cref{fig-potential_profile} illustrates the sheath model of \citet{hobbs1967} by showing the plasma potential profile in the sheath for different values of electron emission rate for a xenon plasma.
+  \cref{fig-potential_profile}.{\bf a} gives the potential $\phi$ normalized by $\dphisheath$ from \cref{eq-sheathhobbs}, and \cref{fig-potential_profile}.{\bf b} gives $\phi$ not normalized.
+  We can see in \cref{fig-potential_profile}  that for $\rate < \ratecr$, the plasma potential reached $\dphisheath$.
+  However, for $\rate > \ratecr$, the plasma potential do not reaches $\dphisheath$, resulting in a non-zero current to the wall .
+  Indeed, the sheath is not monotonic in this case, hence the hypotheses needed to develop \cref{eq-sheathhobbs} are not fulfilled.
+  
+  In \cref{fig-potential_profile}.{\bf b}, we can see that at $\rate \simeq \ratecr$, the plasma potential tends towards $\Te$, as mentioned by \cref{eq-dphi_scl}.
+  \begin{figure}[hbtp]
+    \centering
+    \begin{tabular}{c c}
+      \subfigure{plasma_profile_normed}{a}{25,20} & 
+      \subfigure{plasma_profile}{b}{25,20} 
+    \end{tabular}
+    \caption{Evolution of the plasma potential in the sheath for different values of electron emission rate $\rate$ fro a xenon plasma, ({\bf a}) normalized by the total potential drop $\dphisheath$ from \cref{eq-sheathhobbs}, and ({\bf b}) normalized by the electron temperature, but $\dphisheath/\Te$ is noted with the black dotted line.  }
+    \label{fig-potential_profile}
+  \end{figure}
+  
+  

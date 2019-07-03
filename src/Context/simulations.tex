@@ -13,9 +13,9 @@ The phase space is the set of all possible position $\vect{x}$ and velocity $\ve
 The evolutions in the phase space are due to forces, diffusion and collisions.
 
 \begin{equation} \label{eq-boltzmann}
-\deriv{f}{t}  + \vect{v} \cdot \grad_{\vect{x}} f + \vect{F} \cdot  \grad_{\vect{v}} f = \deriv{f}{t} \bigg\vert_{\rm coll}
+\deriv{f}{t}  + \vect{v} \cdot \grad_{\vect{x}} f + \vect{F} \cdot  \grad_{\vect{v}} f = \deriv{f}{t} \at{\rm coll}
 \end{equation}
-where $f$ is the distribution function of the particle at $\vect{x}, \vect{v}$, and $\deriv{f}{t} \bigg\vert_{\rm coll}$ denotes the effects of the collisions, $\grad$ is the gradient in both the positions (subscript $\vect{x}$) and the velocities (subscript $\vect{v}$)  and $\vect{F}$ is the force applied to the particle.
+where $f$ is the distribution function of the particle at $\vect{x}, \vect{v}$, and $\deriv{f}{t} \at{\rm coll}$ denotes the effects of the collisions, $\grad$ is the gradient in both the positions (subscript $\vect{x}$) and the velocities (subscript $\vect{v}$)  and $\vect{F}$ is the force applied to the particle.
 In the general electro-magnetic case,
 \begin{equation*} \label{eq-forceEM}
   \vect{F} =  q \vect{E} + q \vect{v} \times \vect{B}
@@ -28,7 +28,7 @@ Instead, if the preside description of $f$ is not needed, we can instead use the
 
 The first equation is obtained by integrating \cref{eq-boltzmann} over the velocity space
 \begin{align}
-  \iiint_{\vect{v}} d^3v \text{ \cref{eq-boltzmann}} &&{ } \iff { }&& \iiint_{\vect{v}}  \deriv{f}{t} d^3v &&+&& \iiint_{\vect{v}}  \vect{v} \cdot \grad_{\vect{x}} f  d^3v &&+&&  \iiint_{\vect{v}}  \vect{F} \cdot  \grad_{\vect{v}} f  d^3v && = && \iiint_{\vect{v}}  \deriv{f}{t} \bigg\vert_{\rm coll} \nonumber  \\ 
+  \iiint_{\vect{v}} d^3v \text{ \cref{eq-boltzmann}} &&{ } \iff { }&& \iiint_{\vect{v}}  \deriv{f}{t} d^3v &&+&& \iiint_{\vect{v}}  \vect{v} \cdot \grad_{\vect{x}} f  d^3v &&+&&  \iiint_{\vect{v}}  \vect{F} \cdot  \grad_{\vect{v}} f  d^3v && = && \iiint_{\vect{v}}  \deriv{f}{t} \at{\rm coll} \nonumber  \\ 
   && { } \iff { }&&  \deriv{n}{t} &&+&& \vect{u}  \cdot \grad_{\vect{x}} n &&+&& 0 &&=&& S_{\rm iz}   \label{eq-conc}
 \end{align} 
 where $n=\iiint f d^3v$ is the density, $\vect{v} = \iiint \vect{v} f d^3v$ is the mean velocity, and $S_{\rm iz}$ is the source term of particle due to ionization.
