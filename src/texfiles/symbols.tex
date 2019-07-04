@@ -1,5 +1,7 @@
 % !TEX root=/home/tavant/these/manuscript/src/manuscript.tex
 
+\usepackage{xspace}
+\xspaceaddexceptions{]\}}
 
 
 %Uncomment next line if AMS fonts required
@@ -65,7 +67,7 @@
 \newcommand{\V}{\Omega_{i,j}}
 \newcommand{\C}{C_{i,j}}
 
-\newcommand{\grad}{\vect{\nabla}}
+\DeclareMathOperator{\grad}{\vect{\nabla}}
 \newcommand{\deriv}[2]{\frac{\partial #1}{\partial #2}}
 
 \newcommand{\dx}{\Delta x}
@@ -101,10 +103,10 @@
 \newcommand\proba{\ensuremath{\sigma }}
 \newcommand\probamax{\ensuremath{\proba_{\rm max} }}
 
-\newcommand\rate{\ensuremath{ \bar{\proba} }}
-\newcommand\ratemaxw{\ensuremath{ \bar{\proba}_{\rm Maxw} }}
-\newcommand\ratepic{\ensuremath{ \bar{\proba}_{\rm PIC} }}
-\newcommand\ratecr{\ensuremath{ \bar{\proba}_{\rm cr} }}
+\newcommand\rate{\ensuremath{ \bar{\proba}}\xspace}
+\newcommand\ratemaxw{\ensuremath{ \bar{\proba}_{\rm Maxw}}\xspace}
+\newcommand\ratepic{\ensuremath{ \bar{\proba}_{\rm PIC}}\xspace}
+\newcommand\ratecr{\ensuremath{ \bar{\proba}_{\rm cr}}\xspace}
 
 
 \newcommand\mob{\ensuremath{\mu_e}}

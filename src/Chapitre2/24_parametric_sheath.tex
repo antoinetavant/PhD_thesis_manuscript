@@ -4,21 +4,29 @@
   \label{sec-sheath_validation}
   
   The \ac{PIC} simulations used here do not need any sheath model.
-  In contrary, they can be used in order to validate the sheath modeled introduced in {\bf REF} coming from the fluid theory.
-  This sheath model links the plasma potential drop with the electron temperature on the electron emission rate.
-  The emission rate is linked to the electron temperature via \cref{eq-seemaxw}
+  On the contrary, they can be used in order to validate the sheath modeled introduced in \vref{sec-sheath} coming from the fluid theory.
+  
+  This sheath model of \vref{eq-sheathhobbs} links the plasma potential drop with the electron temperature on the electron emission rate.
 
   \Cref{eq-seemaxw} can be used to estimate the electron emission rate given the mean electron temperature measured in the simulations, corresponding statistically to the plasma bulk temperature.   
   
   In the \ac{PIC} simulations, \cref{eq-seeyield} can be computed by counting the number of electrons attaining the wall and emitted during a time-step.
   We note \ratepic this measurement.
    
+   
   \begin{figure}[hbtp]
     \centering
     \includegraphics[width=\defaultwidth]{SEE_rates}
-    \caption{Values of the electron emission rate $\rate$ (blue) measured in the simulation, and obtained with \cref{eq-seemaxw} using the electron temperature showed in \cref{fig-Tevsproba} }
+    \caption{Values of the electron emission rate $\ratepic$ (blue) measured in the simulation, and $ \ratemaxw$ obtained with \cref{eq-seemaxw} using the electron temperature showed in \cref{fig-Tevsproba}. }
     \label{fig-seeparamesMaxw}
   \end{figure}
+  
+  
+  We can see in \Cref{fig-seeparamesMaxw} that the mean electron emission rate lies between 0.6 for large $\crover$ and 1 at low $\crover$.
+  The saturation of \ratepic at 1 for high emissivity ( $\crover < 50 \volt$) was not expected from \ratemaxw.
+  Indeed, \probamax is equal to 2.9, and the electron temperature in the bulk measured, when used in \cref{eq-seemaxw}, predicts a rate between 1.4 and 2.8.
+  This discrepancy at low \crover is due to the \ac{SCL} regime.
+  In \citet{hobbs1967}, the authors predict that in this regime, a potential well forms such that a fraction of the emitted electrons are returned to the wall, in order to maintain the effective emission rate to $\ratecr\sim1$.
   
   \begin{figure}[hbtp]
     \centering
@@ -26,12 +34,6 @@
     \caption{Mean electron temperature measured in the \ac{PIC} simulations as a function of the electron emission rate \rate, measured as well in the simulations.  }
     \label{fig-Tevsproba}
   \end{figure}
-  
-  
-  We can see in \Cref{fig-seeparamesMaxw} that the mean electron emission rate lies between 0.6 for large $\crover$ and 1 at low $\crover$.
-  The lower limit is expected, as $\proba_0 = 0.5$.
-  On the other hand, the saturation of \ratepic at 1 was not expected.
-  Indeed, \ratemaxw is equal to 2.9, and the electron temperature in the bulk measured, when, used in \cref{eq-seemaxw}, predicts a rate between 1.4 and 2.8.
   
   The electron temperature measured in the bulk of the simulation is presented in \cref{fig-Tevsproba} for the same cases as in \cref{fig-seeparamesMaxw}.
   We can see that when \rate increases, $\Te$ monotonically decreases from 45V to around 30V.
