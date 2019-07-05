@@ -5,9 +5,7 @@
   
   The \ac{PIC} simulations used here do not need any sheath model.
   On the contrary, they can be used in order to validate the sheath modeled introduced in \vref{sec-sheath} coming from the fluid theory.
-  
   This sheath model of \vref{eq-sheathhobbs} links the plasma potential drop with the electron temperature on the electron emission rate.
-
   \Cref{eq-seemaxw} can be used to estimate the electron emission rate given the mean electron temperature measured in the simulations, corresponding statistically to the plasma bulk temperature.   
   
   In the \ac{PIC} simulations, \cref{eq-seeyield} can be computed by counting the number of electrons attaining the wall and emitted during a time-step.
@@ -27,26 +25,26 @@
   Indeed, \probamax is equal to 2.9, and the electron temperature in the bulk measured, when used in \cref{eq-seemaxw}, predicts a rate between 1.4 and 2.8.
   This discrepancy at low \crover is due to the \ac{SCL} regime.
   In \citet{hobbs1967}, the authors predict that in this regime, a potential well forms such that a fraction of the emitted electrons are returned to the wall, in order to maintain the effective emission rate to $\ratecr\sim1$.
-  
+  However, for $crover > 50 \volt$, the sheath regime described in \vref{sec-sheath} should be valid.
+   
   \begin{figure}[hbtp]
     \centering
-    \includegraphics[width=\defaultwidth]{Te_pic_2}
-    \caption{Mean electron temperature measured in the \ac{PIC} simulations as a function of the electron emission rate \rate, measured as well in the simulations.  }
+    \begin{tabular}{cc}
+      \includegraphics[width=3in]{phi_drop_6}
+      &
+      \includegraphics[width=3in]{Te_pic_2}
+    \end{tabular}
+    \caption{({\bf a}) Plasma potential drop to the wall normalized by the electron bulk as a function of the electron rate. {\bf $\Te$ is italic !}; ({\bf b}) Mean electron temperature measured in the \ac{PIC} simulations as a function of the electron emission rate \rate, measured as well in the simulations.  }
     \label{fig-Tevsproba}
   \end{figure}
   
-  The electron temperature measured in the bulk of the simulation is presented in \cref{fig-Tevsproba} for the same cases as in \cref{fig-seeparamesMaxw}.
+  The electron temperature measured in the bulk of the simulation is presented in \cref{fig-Tevsproba}.{\bf b} for the same cases as in \cref{fig-seeparamesMaxw}.
   We can see that when \rate increases, $\Te$ monotonically decreases from 45V to around 30V.
-  However, these values do not explains the measured emission rate \ratepic.
-    
-  \begin{figure}[hbtp]
-    \centering
-    \includegraphics[width=\defaultwidth]{phi_drop_6}
-    \caption{Plasma potential drop to the wall normalized by the electron bulk as a function of the electron rate. {\bf $\Te$ is italic !}}
-    \label{fig-phi_rate}
-  \end{figure}
-  
-  \Cref{fig-phi_rate} shows the evolution of the potential drop to the wall measured in the \ac{PIC} simulation compared to the theory \vref{eq-total_drop}.
+  However, these values are not consistent with the measured emission rate \ratepic for $\crover > 50\volt$.
+
+  \Cref{fig-Tevsproba}.{\bf a} shows the evolution of the potential drop to the wall measured in the \ac{PIC} simulation compared to the theory \vref{eq-total_drop} ({\bf OR is it \cref{eq-sheathhobbs} ...?}).
+  As expected by \vref{eq-dphi_scl}, $\dphi$ measured in the simulation saturates to $\Te$ for high emission rate ($\ratepic \sim 1$).
+  However, 
   We see that at low emission rate, the potential drop is lower than expected.
   However, at high emission rate, the expected value tends toward negative values, while the measured values converges toward $\frac{\dphi}{\Te} = 1$.
   
@@ -55,7 +53,7 @@
     \item Maxwellian electrons
     \item Isothermal evolution of the electrons
   \end{itemize}
-  These two hypotheses will be confronted against the kinetic simulation in the next session.
+  These two hypotheses will be confronted against the kinetic simulation in the next chapter.
   
   
    

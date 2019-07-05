@@ -3,3 +3,57 @@
 \section{Conclusion}
   \label{sec-conclusion_ch2}
   
+  Using the \ac{PIC} simulation code introduced in \vref{ch-1}, we studied the effects of the dielectric walls on the discharge, and more precisely the effects on the electron cross-field mobility.
+  
+  To begin with, a \emph{canonical} case, with metallic walls were defined.
+  The metallic walls correspond to grounded, and non-emissive walls.
+  For this reference case, we observed that the convection model used allow us to obtain a steady state.
+  We observed an enhanced electron transport transverse to the magnetic field lines, because of the instability.
+  
+  Both effects of the dielectric -- the electron induced electron emission and the electrostatic boundary condition -- were investigated.
+  First, we  only modeled the dielectric boundary condition. Then, we studied only the electron emission. Afterwards, the two phenomena have been studied together.
+  
+  \subsubsection*{Electrostatic boundary condition}
+  
+  The electrostatic boundary condition were modeled by including in the domain of simulation the thickness of the wall ($L_{\rm wall} = 3 \centi\meter$).
+  Surface charges accumulate at the interface between the plasma and the wall.
+  We observed that the modified boundary condition did not modify significantly the discharge and the axial electron mobility.
+  We saw that the boundary condition used results in a radial electric field $E_r$ of the same order of magnitude than the Neumann boundary condition of \vref{eq-neuman}.
+  However, the spatio-temporal evolution are not similar.
+  As the dielectric model used here do not increase significantly the computational time, we recommend to use it instead of the Neumann boundary condition, that do not reproduce the same near-wall behaviour.
+  
+  
+  \subsubsection*{Electron induce electron emission}
+  
+  Electron induced electron emission from the wall is modeled using a linear model \vref{sec-seemodel}.
+  The crossover energy $\crover$ is varied from a large value (low emissivity material) to small values (high emissivity).
+  We observed in the simulations that when the electron emission rate increases, the mean electron temperature decreases.
+  This decreases the amplitude of the \ac{ECDI} at saturation, hence decreases the electron modbility in the plasma (see \vref{fig-radial-data}).
+  However, electron emission induces \ac{NWC}, which almost double the electron mobility close to the wall when $\crover$ passes from $200\volt$ to $30\volt$.
+  Consequently, the overall electron crossfield mobility is almost constant in our simulation.
+  
+  We observed in our simulation three different regimes depending of the values of $\crover$.
+  For high values of $\crover$, the plasma stabilised with an emission rate $\ratepic < ratecr$.
+  When $\crover$ is small, we observe a stable configuration with $\ratepic \sim \ratecr$.
+  Under these conditions, the sheath in space-charge limited.
+  The transition between the two regimes is not stable, but instead passes by a bifurcation regime.
+  During this third regime, the sheath jumps between the two stable regimes.
+  Indeed, the transition passes through an unstable phase, as we can see it on \vref{fig-dphivsTe}.
+  
+
+  \subsubsection*{Inconsistent sheath model }
+  
+  The simulation results have been compared to the sheath model of \citet{hobbs1967}.
+  We observed a significant discrepancy between the \ac{PIC} simulations and the sheath model that comes from a fluid approach.
+  In particular, the potential drop and the electron emission rate are both overestimated.
+  These overestimation can lead to erroneous conclusion and prediction when using fluid models.
+  Hence, a better understanding of the plasma-wall transition via the sheath is needed.
+  
+  The sheath model currently used reposes mainly on two hypothesis
+  \begin{itemize}
+    \item Maxwellian electrons,
+    \item Isothermal evolution of the electrons in the sheath
+  \end{itemize}
+  
+  Theses hypothesis will be confronted in the next chapter.
+  
