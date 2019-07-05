@@ -40,7 +40,7 @@
 \usepackage{eso-pic}	%eso-pic pour mettre des images avant les chapitres
 \usepackage{float, caption}
 \usepackage{amsmath,amssymb,mathrsfs,amsfonts}
-\usepackage[amssymb,cdot]{SIunits}   %SI units
+\usepackage[amssymb]{SIunits}   %SI units, with dots for multiplications and medium space befor the unit
 
 \usepackage[thmmarks,amsmath]{ntheorem}
 \usepackage{array, multirow, tabularx}
@@ -249,3 +249,16 @@
 % \@tempswatrue \fi}
 \makeatother
 
+
+%  ==================
+% Introduction
+\usepackage{epigraph}
+
+\newcommand\quotechapt[2]{
+\begin{flushright}
+  \emph{ #2}
+\rule{0.4\textwidth}{1pt}
+
+#1
+\end{flushright}
+}

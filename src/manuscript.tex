@@ -37,7 +37,14 @@
 {Chapitre2/figure/}%
 }  % Location of the graphics files (set up for graphics to be in PDF format)
 
-
+\geometry{
+	left=26mm,
+	top=30mm,
+	right=16mm,
+	bottom=30mm
+}
+\SIunits[cdot]
+\SIunits[thickqspace]
 \begin{document}
 
 
@@ -88,6 +95,9 @@
 % * Jarrige est très chercheur: lui demander !
 % * Fabien: 2013 
 % \renewcommand{\chaptername}{}
+
+% \acresetall
+
 \let\oldthechapter\thechapter
 \let\oldthechaptername\chaptername
 

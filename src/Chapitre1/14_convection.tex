@@ -278,8 +278,9 @@
       However, we can investigate it numerically, by solving \cref{eq-aziE} for a given random source term.
       Using a Monte Carlo approach, the results are averaged 50 times in order to better observe the mean behaviour in respect to the noise (i.e. increasing signal to noise ratio).
         
-      \Cref{fig-dftLr} shows the \ac{DFT} of the source term $\rho_1 = \N(0, \stdconv)$, the resulting azimuthal electric field $\aziE_{, 1}$ and plasma potential $\phi$ computed on the centreline of the simulation domain in the radial direction, for three different radial length expressed in number of cell $N_x$.
+      \Cref{fig-dftLr} shows the \ac{DFT} of the source term \[\rho_1 = \N(0, \stdconv),\] the resulting azimuthal electric field $\aziE_{, 1}$ and plasma potential $\phi$ computed on the centreline of the simulation domain in the radial direction, for three different radial length expressed in number of cell $N_x$.
       Is also showed the "equivalent" source term $\rho_{\rm eq}$, which is the source term that would give the frequency spectra observed in a \ac{1D} domain
+      
       \begin{equation} \label{eq-equirho}
         \rho_{\rm eq} = \epsilon_0 \partial_\theta \aziE_{, 1}.
       \end{equation}
