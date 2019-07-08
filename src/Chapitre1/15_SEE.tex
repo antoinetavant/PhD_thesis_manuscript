@@ -4,14 +4,17 @@
 \label{sec-seemodel}
 When an incident electron reaches the wall material, several scenarii are possible, as described in \citet{villemant}
 \begin{enumerate}
-  \item Elastic reflection: the electron encounter only elastic collision with the material, hence its energy is constant. However, its direction is not necessary specular.
-  \item Inelastic reflection: the electron loose some of its energy to the material.
-  \item Secondary electron emission: the energy of the primary electron is enough to extract one or more electrons from the material.
+  \item Elastic reflection\string: the electron encounter only elastic collision with the material, hence its energy is constant. However, its reflection is not necessary specular.
+  \item Inelastic reflection\string: the electron looses some of its energy to the material before returning to the plasma.
+  \item Secondary electron emission\string: the energy of the primary electron is enough to extract one or more electrons from the material.
   \item No emission, the electron is absorbed by the wall.
 \end{enumerate}
 
-The probability \proba  that one event appends instead of the other depends predominantly on the particle energy, and weakly on its  impact angle.
-Concerning the mean flux of electron incident and emitted, we uses the mean emission rate, or yield, \rate.
+The probability \proba{}  that one event happens instead of another depends predominantly on the particle energy, and weakly on its  impact angle.
+Concerning the mean flux of electron incident and emitted, we uses the mean emission rate, or yield, \rate
+\begin{equation*} \label{eq-ratedifinition}
+  \rate = \frac{\Gamma_{e, \rm primary}}{\Gamma_{e, \rm secondary}}
+\end{equation*}
 
 \subsection{Models of emission } \label{subsec-seemodels}
 Several models can be used to describe the electron emission.
@@ -37,12 +40,12 @@ It describes the total emission corresponding to the sum of the elastic and inel
 \begin{equation} \label{eq-proba_barral}
   \proba(\ek) = 
   \begin{cases}
-    \proba_0 + (1 - \proba_0) \frac{\ek}{\crover}   &\text{ if } \ek < \frac{\probamax - \proba_0}{1 - \proba_0} \crover  \\
-    \probamax &\text{ if } \ek \geq \frac{\probamax - \proba_0}{1 - \proba_0} \crover
+    \proba_0 + (1 - \proba_0) \frac{\ek}{\crover}   &\text{ if } \ek <  \ek_{\max} \\
+    \probamax &\text{ if } \ek \geq \ek_{\max}
   \end{cases}
 \end{equation}
-where $\ek$ is the kinetic energy of the incoming electron, $\proba_0$ is the asymptotic probability of emission at energy null, $\crover$ is the crossover energy above which the probability of emission is higher that one, and \probamax is the maximum probability.
-\Cref{eq-proba_barral} is illustrated on \Cref{fig-modelbarral}.
+where $\ek$ is the kinetic energy of the incoming electron, $\proba_0$ is the asymptotic probability of emission at energy null, $\crover$ is the crossover energy above which the probability of emission is higher that one, \probamax is the maximum probability and $\ek_{\max}= \frac{\probamax - \proba_0}{1 - \proba_0} \crover $ is the minimum energy for which $\rate = \probamax$ .
+\Cref{eq-proba_barral} is illustrated in \Cref{fig-modelbarral}.
 
 \begin{figure}[hbtp]
   \centering
@@ -54,7 +57,7 @@ where $\ek$ is the kinetic energy of the incoming electron, $\proba_0$ is the as
  We suppose that all of the electron emitted are isotropically emitted following a Maxwellian flux distribution function of temperature $\Tsee$.
  The parameters $\proba_0$,  $\probamax$ and $\crover$ can be obtained from experiments. 
  \Cref{tab-seeparames} shows the crossover energy and the  probability of emission at energy null for different materials.
- The  asymptotic probability of emission at energy null $\proba_0$ is close to $0.5$, but $\crover$ can vary from 18 to 305 V.
+ The value of $\proba_0$ is always close to $0.5$, but $\crover$ can vary from 18 to 305 V.
  Hence, in the following parametric studies, $\proba_0$ will be kept at 0.5 while we very $\crover$ from low values, corresponding to highly emmissive materials, to high values, representing less emmissive materials.
  
  \begin{table}[hbtp]

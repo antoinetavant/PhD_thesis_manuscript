@@ -7,11 +7,11 @@
   \begin{equation} \label{eq-mudef}
     \mobe = \frac{u_{e,z}}{E_z}
   \end{equation}
-  with $u_{e,z}=<v_{e,z}>$ the electron mean velocity
-  \nomenclature[Q]{\ensuremath{ u_{e,z}}}{Electron mean velocity int he axial direction : $u_{e,z} = < v_{e,z}>$}
+  with $u_{e,z}=<v_{e,z}>$ the electron mean velocity.
+  \nomenclature[Q]{\ensuremath{ u_{e,z}}}{Electron mean velocity in the axial direction \string: $u_{e,z} = < v_{e,z}>$}
   In the \ac{PIC} simulations, \cref{eq-mudef} can be used directed to compute $\mobpic$.
   
-  In the classical drift diffusion theory of the electron mobility transverse to a magnetic field, the mobility is due to collisions as \citep{chen2006,meezan2001}
+  In the classical drift diffusion theory of the electron mobility transverse to a magnetic field, the mobility is due to collisions as seen in \vref{sec-mob} 
   \begin{equation} \label{eq-mobclas}
     \mobcla = \frac{e}{m_e} \frac{\nu_m}{\nu_m^2 + \oce^2}
   \end{equation}
@@ -19,24 +19,24 @@
   \nomenclature[Q]{\ensuremath{ \oce}}{ Electron cyclotron frequency $\oce=\frac{e B}{m_e}$}
   \nomenclature[Q]{\ensuremath{ \nu_m}}{  electron-neutral momentum transfer collision frequency}
   
-  At the exit plan, the classical mobility predict a mobility of the order of $\mobcla=0.001 -- 0.01\mobunit$ \citep{adam2008a}.
+  At the exit plan, the classical mobility predict a mobility of the order of $\mobcla=0.001--0.01\mobunit$ \citep{adam2008a}.
   
   The kinetic approach allowed \citet{lafleur2016a} to propose a modified mobility due to the oscillations of the electron density and the azimuthal electric field of the \ac{ECDI}.
   This effective mobility obtained is 
   \begin{equation} \label{eq-defmobeff}
     \mobeff = \mobcla \lp 1 - \frac{\oce}{\nu_m}  \frac{< \dne \dEt >_{\theta} }{n_0 E_z}   \rp
   \end{equation}
-  with \dne and \dEt the fluctuations in the azimuthal directions of the electron density and azimuthal electric field, respectively, the operator $< . >_{\theta}$ is the average in the azimuthal direction, and $n_0$ is the average plasma density.
+  with \dne{} and \dEt{} the fluctuations in the azimuthal directions of the electron density and azimuthal electric field, respectively, the operator $< . >_{\theta}$ is the average in the azimuthal direction, and $n_0$ is the average plasma density.
   In the case where $\nu_m << \oce$, \cref{eq-defmobeff} can be simplified to 
   \begin{align} 
     \mobeff &= \frac{\frac{e}{m_e} \nu_m}{\oce^2} \lp 1 - \frac{\oce^2}{\nu_m}  \frac{< \dne \dEt >_{\theta} }{n_0 E_z}   \rp \nonumber \\
     &= \frac{< \dne \dEt >_{\theta} }{n_0 E_z}   \frac{1}{B_r} \label{eq-mobeffsimple}
   \end{align}
   which shows that the instability enhances the electron axial mobility in a wave similar to an $E \times B$ drift.
-  The electric field $E_{\theta}$ oscillates and presents a zero mean value, but the average effect on the electron transport is not zero if the correction between \dEt and \dne is not zero.
+  The electric field $E_{\theta}$ oscillates and presents a zero mean value, but the average effect on the electron transport is not zero if the correction between \dEt{} and \dne{} is not zero.
   
   In  \citet{lafleur2016a}, the authors present the instability effect as an electron-ion friction force $\Rei = - e < \dne \dEt >_{\theta}$.
-  Under the assumption that the saturation of the instability is mainly due to ion trapping, the electron-ion friction force can be simplified to
+  Under the assumption that the saturation of the instability is mainly due to ion trapping, the electron-ion friction force can be simplified in the \ac{2D} geometry of the simulation to
   \begin{equation} \label{eq-rei-sat}
     \Rei^{sat} = \frac{e \norm{\grad \cdot (n_e \Te \vect{v_i})}}{4 \sqrt{6} c_s} \simeq \frac{e n_e \Te \viout}{4 \sqrt 6 c_s L_z}
   \end{equation} 
@@ -49,7 +49,7 @@
   with $U_z = E_z L_z$ the total potential difference in the axial direction.
   \nomenclature[Q]{\ensuremath{ U_z}}{   total potential difference in the axial direction $U_z = E_z L_z$}
   
-  Using \cref{eq-rei-sat} in \cref{eq-mobeffsimple}, we obtain the simplified expression
+  Using \cref{eq-rei-sat} in \cref{eq-mobeffsimple}, we obtain the simplified expression of the effective mobility at saturation
   \begin{equation} \label{eq-mobeffsat}
     \mobeffsat = \frac{\sqrt{\frac{\Te}{U_z}}}{4\sqrt{3}B_r}.
   \end{equation}

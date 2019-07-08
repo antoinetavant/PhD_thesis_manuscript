@@ -5,22 +5,31 @@
 
 \chapter{Parametric study of the dielectric characteristics}
 \label{ch-2}
-Structure :
 
-{\bf II. Parametric study of the dielectric} 30 pages
-\begin{zzz}
-  This chapter takes the 1rst paper which uses Vivien's results.
+We uses the PIC simulation code described in \cref{ch-1} in order to perform a parametric study over the two aspect of the dielectric walls: the secondary electron emission, and the modification of the electrostatic boundary condition.
+We observe there impact on the electron cross-field mobility, and the electron temperature.
+A large discrepancy is observed between the sheath model of \cref{sec-sheath} and the PIC simulation results.
 
-  2.1 Fully metallic wall (no SEE, grounded).
+\minitoc
 
-  2.2 Impact of Dielectric layer without SEE
 
-  2.3 Impact of SEE with grounded wall
-
-  2.4 SEE and dielectric in the same time
-
-  2.5 Discrepancy between $\mean{\Te}$, $\sigma_{PIC}$ and $\sigma_{theo} = \sigma_0 + (1 - \sigma_0) \frac{2 T_e}{\epsilon_0}$
-\end{zzz}
+% 
+% Structure \string:
+% 
+% {\bf II. Parametric study of the dielectric} 30 pages
+% \begin{zzz}
+%   This chapter takes the 1rst paper which uses Vivien's results.
+% 
+%   2.1 Fully metallic wall (no SEE, grounded).
+% 
+%   2.2 Impact of Dielectric layer without SEE
+% 
+%   2.3 Impact of SEE with grounded wall
+% 
+%   2.4 SEE and dielectric in the same time
+% 
+%   2.5 Discrepancy between $\mean{\Te}$, $\sigma_{PIC}$ and $\sigma_{theo} = \sigma_0 + (1 - \sigma_0) \frac{2 T_e}{\epsilon_0}$
+% \end{zzz}
 
 As introduced in \Cref{ch-1}, the \ac{HET} behaviour is dependent of the axial electron transport toward the anode across the magnetic barrier.
 Two main phenomena are proposed to enhance the electron mobility,
@@ -41,4 +50,5 @@ while the second section highlight the main characteristics of the simulation re
 \input{Chapitre2/22_dielectric_layer}
 \input{Chapitre2/23_emission_parametric}
 \input{Chapitre2/24_parametric_sheath}
+\input{Chapitre2/25_diel_and_SEE}
 \input{Chapitre2/25_conclusion}

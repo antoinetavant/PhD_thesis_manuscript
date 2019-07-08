@@ -13,9 +13,9 @@
 \newcommand{\Ti}{\mathrm{T_i}}
 \newcommand{\Ts}{\mathrm{T_s}}
 \newcommand{\Tsee}{\mathrm{T_{SEE}}}
-\newcommand{\sig}{\sigma}
-\newcommand{\sigm}{\sigma_{\rm max}}
-\newcommand{\sigo}{\sigma_0}
+\newcommand{\sig}{\sigma\xspace}
+\newcommand{\sigm}{\sigma_{\rm max}\xspace}
+\newcommand{\sigo}{\sigma_0\xspace}
 
 \newcommand{\norm}[1]{\lvert#1\rvert}
 \renewcommand{\vec}[1]{{\bf #1}}
@@ -48,9 +48,9 @@
 \newcommand{\Es}{{\mathcal{E}_s}}
 
 \newcommand\Npc{N_{\rm pc}}
-\newcommand\Isp{\ensuremath {\rm I_{\rm sp}}}
+\newcommand\Isp{\ensuremath {\rm I_{\rm sp}}\xspace}
 
-% 10^number : use as \sn{Value}{Power} for value x 10^Power
+% 10^number \string: use as \sn{Value}{Power} for value x 10^Power
 \newcommand{\sn}[2]{\ensuremath{{#1}\times 10^{#2}}}
 
 
@@ -88,7 +88,7 @@
 \renewcommand\nomgroup[1]{%
   \item[\bfseries
   \ifstrequal{#1}{P}{Physics Constants}{%
-  \ifstrequal{#1}{N}{Number Sets}{%
+  \ifstrequal{#1}{N}{Numerical Implementation}{%
   \ifstrequal{#1}{Q}{Quantities}{}}}%
 ]}
 

@@ -8,11 +8,11 @@
 
 
 In order to move in space, the satellites, scientific probes and spacecrafts in general rely on a propulsion system.
-The cost to go from one planet (usually the Earth) to another location can be expressed as \emph{ Delta-V}, a measure of impulse needed to perform a manoeuvre.
+The cost to go from one location to another can be expressed as \emph{Delta-V}, a measure of impulse needed to perform a manoeuvre.
 \nomenclature[Q]{Delta-V}{Measure of impulse needed for a space manoeuvre}
 \Cref{fig-subway_DV} illustrates the Delta-V needed to evolve in the solar system.
-We can see that reaching \ac{LEO} needs a Delta-v of 9400 m/s, while the \ac{GEO} is 3910 m/s further.
-Landing on the Moon is at a total of 15 km/s away from the Earth ground, while landing on Neptune require 43.7 km/s of impulse.
+We can see that reaching \ac{LEO} needs a Delta-V of 9400 m/s, while the \ac{GEO} is 3910 m/s further.
+Landing on the Moon requires a total of 15 km/s away from the Earth ground, while landing on Neptune require 43.7 km/s of impulse.
 \begin{figure}[hbtp]
   \centering
   \includegraphics[width=\textwidth]{subway_map}
@@ -40,15 +40,15 @@ Hence,
   \text{Delta-V} = \int_{t_1}^{t_2} v_{\rm ex} \frac{ \norm{\dot{M}}}{M(t)} dt = v_{\rm ex} \ln \lp \frac{M_0}{M_1} \rp
 \end{equation}
 with $M_0 = M(t_0)$ and $M_1=M(t_1)$, and supposing that $v_{\rm ex}$ is constant.
-We see from \cref{eq-rocket} that, for a spacecraft of dry mass $M_1$, to have a given Delta-V, the exhaust velocity is directly linked to the initial \emph{wet} mass $M_0 = M_1 + M_{\rm prop}$, with $M_{\rm prop}$ the propellant mass.
+We see from \cref{eq-rocket} that for a spacecraft of dry mass $M_1$ to have a given Delta-V, the exhaust velocity is directly linked to the initial \emph{wet} mass $M_0 = M_1 + M_{\rm prop}$, with $M_{\rm prop}$ the propellant mass.
 \Cref{eq-rocket} is known as the (Tsiolkovsky) rocket equation.
 The exhaust velocity $v_{\rm ex}$ is usually refereed instead by the specific impulse $\Isp = g_0 v_{\rm ex}$, with $g_0$ the standard gravity.
 \nomenclature[Q]{\ensuremath{ \Isp}}{ Specific impulse, related to the exhaust velocity of a propellant}
 \nomenclature[P]{\ensuremath{ g_0}}{  Standard gravity \nomunit{9.80665 m/s$^2$}}
 
-\subsection*{Chemical and electrical space propulsion systems}
+\subsection*{Chemical space propulsion systems}
 The usual thruster for rocket thruster uses chemical reaction to generate the thrust.
-For instance, the Vulcain (the thruster engine of the main stage of the European Ariane 5 and 6, developed by ArianeGroup, ex Safran) uses the oxygen-hydrogen combustion, the most efficient chemical reaction \citep{nasa-H2O2}
+For instance, the Vulcain (the thruster engine of the main stage of the European Ariane 5 and 6, developed by ArianeGroup, ex. Safran) uses the oxygen-hydrogen combustion, the most efficient chemical reaction \citep{nasa-H2O2}
 \begin{equation*}
   2 {\rm H_2} + { \rm O_2} = 2 {\rm H_2 O} + 572 \text{~kJ},
 \end{equation*}
@@ -57,7 +57,7 @@ This means that burning $1\,\kilo\gram$ of hydrogen-oxygen mixture generates a t
 
 Supposing that the entire energy is converted into the exhaust of the water produced, its velocity would be of $5.1 \,\kms$.
 In reality, the exhaust velocity of the Vulcain is of $4.2 \,\kms$, corresponding to $\Isp=431 \,\second$.
-The efficiency of the Vulcain clause to 80\%, which is a very high efficiency, and it would be difficult to increase it significantly. 
+The efficiency of the Vulcain is close to 80\%, which is a very high efficiency, and it would be difficult to increase it significantly. 
 
 The fact that the energy source is linked to the propellant mass gives an upper limit of exhaust velocity for a given combustion.
 Electrical propulsion engines, on the other hand, decouple the mass ejected (the propellant) from the energy source.
@@ -77,12 +77,12 @@ The two main \ac{EP} technologies used are
   \item the Gridded Ion Thrusters (GIT), usually refereed as Ion Thrusters
 \end{itemize}
 
-Recently, the first satellites of two mega-constellations (OneWeb, 648 satellites planned, from which 6 were launched on February, the \nth{26} 2019, and Startlink, 12,000 satellites planned, from which 62 were launched on May, \nth{23} 2019) were send two Low Earth orbit, both using \ac{HET}s. 
+Recently, the first satellites of two mega-constellations (OneWeb, 648 satellites planned, from which 6 were launched on February, the \nth{26} 2019, and Startlink, 12~000 satellites planned, from which 62 were launched on May, \nth{23} 2019) were send to Low Earth orbit, both using \ac{HET}s. 
 
 
  
  \paragraph{The Gridded Ion Thruster} is a plasma chamber closed at one end by two or more grids.
- The plasma source is an emitting cathode, generating energetic electrons that ionize the propellant, usually Xenon.
+ The plasma source can be an emitting cathode, generating energetic electrons that ionize the propellant, usually Xenon, or a \ac{RF} source.
  The ions are accelerated by the potential difference between the grids.
  Another cathode is used to neutralize the ion beam.
  Compared to \ac{HET}s, it produces an ion beam with less divergence and an higher \Isp of the order of 3000 to 4000~s.
@@ -92,7 +92,7 @@ Recently, the first satellites of two mega-constellations (OneWeb, 648 satellite
 \begin{figure}[hbtp]
   \centering
   \includegraphics[width=\defaultwidth]{ion_Bepi}
-  \caption{The T6 ion thruster will help send BepiColombo to Mercury (Credit: QiniteQ)}
+  \caption{The T6 ion thruster will help send BepiColombo to Mercury (Credit\string: QiniteQ)}
   \label{fig-iongridded}
 \end{figure}
  
@@ -107,7 +107,7 @@ Recently, the first satellites of two mega-constellations (OneWeb, 648 satellite
  \begin{figure}[hbtp]
    \centering
    \includegraphics[width=\defaultwidth]{HET_x3}
-   \caption{A 13 kilowatt \ac{HET} prototype on a testing bench in a vacuum chamber (Credit: NASA).  }
+   \caption{A 13 kilowatt \ac{HET} prototype on a testing bench in a vacuum chamber (Credit\string: NASA).  }
    \label{fig-13kWHET}
  \end{figure}
  
@@ -116,9 +116,23 @@ Recently, the first satellites of two mega-constellations (OneWeb, 648 satellite
  
  France is a leader country in the aerospace industry in Europe and in the world, with for example the companies Airbus, Thales, Safran and ArianeGroup.
  Unsurprisingly, the French ecosystem of electric propulsion is rich.
- The main French thrusters are the PPS series from Safran, with the \PPS1350 (version G at 1.5~kW nominal power, 89~mN of thrust and \Isp of 1650~s, and the version E at 2.7~kW, at 140~mN of thrust and \Isp of 1800s), and the \PPS5000, a high power \ac{HET} at 5~kW, the first models of which has been delivered to Boeing in May 2019.
+ The main thrusters produced in France are the PPS series from Safran, with the \PPS1350 (version G at 1.5~kW nominal power, and the version E at 2.7~kW), and the \PPS5000, a high power \ac{HET} at 5~kW, the first models of which has been delivered to Boeing in May 2019.
  A low-power version of the \PPS{}  is currently developed at Safran \citep{vaudolon2018}.
-
+ A list for the \PPS{} series elements and their respective characteristics can bee seen in \cref{tab-ppsfamily}.
+ \begin{table}[hbtp]
+ \ra{1.3}
+   \centering
+   \caption{Members of the \PPS{} series developed by Safran Aircraft Engines \citep{boniface2017,duchemin2017,vaudolon2018}. The nominal operating condition of the \PPS{X00} is not fixed, yet.}
+   \label{tab-ppsfamily}
+   \begin{tabular}{@{}llll@{}} \toprule
+   Name & Power & Thurst & \Isp \\ \midrule
+   \PPS1350-G & 1.5~kW & 89~mN  & 1650~s \\
+   \PPS1350-E & 2.7~kW & 140~mN  & 1800~s \\
+   \PPS5000 & $3-5$~kW & $150-300$~mN  & $1850-1700$~s \\
+   \PPS{X00} & $\sim 650$W &  $\sim$40~mN & $\sim 1450$~s \\
+   \bottomrule
+   \end{tabular}
+ \end{table}
  
  Several initiative concerning the small-sat sector are also undertaken, as for instance the start-ups Exotrail (micro \ac{HET}) and Thrust Me (radio frequency Ion Thruster), or the Electron Cyclotron Resonance Thruster at ONERA.
  

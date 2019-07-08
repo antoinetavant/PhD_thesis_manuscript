@@ -1,7 +1,7 @@
 % !TEX root=/home/tavant/these/manuscript/src/manuscript.tex
 
 \usepackage[english,french]{babel}
-
+\shorthandoff{:}
 % \usepackage{parskip}  %% Add spaces between paragraphs
 % -------------
 % font spec
@@ -22,18 +22,18 @@
 
 %use \showfont to print the current font used
 \makeatletter
-\newcommand{\showfont}{encoding: \f@encoding{},
-  family: \f@family{},
-  series: \f@series{},
-  shape: \f@shape{},
-  size: \f@size{}
+\newcommand{\showfont}{encoding\string: \f@encoding{},
+  family\string: \f@family{},
+  series\string: \f@series{},
+  shape\string: \f@shape{},
+  size\string: \f@size{}
 }
 \newcommand{\iffont}[3]{\ifthenelse{\equal{\f@family}{#1}}{#2}{#3}}
 \makeatother
 
 
 
-\usepackage{lmodern}% http://ctan.org/pkg/lm for allowing arbitrary font size
+\usepackage{lmodern}% http\string://ctan.org/pkg/lm for allowing arbitrary font size
 \newcommand{\hsc}[1]{{\footnotesize\MakeUppercase{#1}}}   % Fake Small Caps
 
 \usepackage[latin1]{inputenc}
@@ -55,7 +55,7 @@
 
 
 \usepackage[nocfg]{nomencl}
-\renewcommand{\nomname}{List of Symbols}
+\renewcommand{\nomname}{Nomenclature and List of Symbols}
 \makenomenclature
 
 \usepackage{textcomp} %pour les apostrophes
@@ -92,7 +92,7 @@
   breaklines=true %break lines if too long
 }
 
-% TODO: Fix Greek mu
+% TODO\string: Fix Greek mu
 
 \usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10]{microtype}
 % activate={true,nocompatibility} - activate protrusion and expansion
@@ -102,7 +102,7 @@
 % stretch=10, shrink=10 - reduce stretchability/shrinkability (default is 20/20)
 
 
-% For better intext references. By example \cref{fig:X} produces "Fig. n° X" instead of just "X"
+% For better intext references. By example \cref{fig\string:X} produces "Fig. n° X" instead of just "X"
 \usepackage{varioref} % add the page when the object is far away
 
 \ifpdf
@@ -243,7 +243,7 @@
 % \def\@testdef #1#2#3{%
 %   \def\reserved@a{#3}\expandafter \ifx \csname #1@#2\endcsname
 %  \reserved@a  \else
-% \typeout{^^Jlabel #2 changed:^^J%
+% \typeout{^^Jlabel #2 changed\string:^^J%
 % \meaning\reserved@a^^J%
 % \expandafter\meaning\csname #1@#2\endcsname^^J}%
 % \@tempswatrue \fi}

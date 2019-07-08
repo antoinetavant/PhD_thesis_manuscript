@@ -22,18 +22,17 @@ However, the global behaviour of the discharge is not affected compared to simul
 Hence, we choose to neglect the curvature.
 
 Consequently, we can use a Cartesian mesh (also called a rectangular mesh).
-For the sake of clarity, the usual notation $x,y$ is used for the radial and azimuthal directions, respectively.
+For the sake of clarity, the usual notation $x,y$ is used in the simulation for the radial ($r$) and azimuthal directions $\theta$, respectively.
 
 \subsection{Radial-azimuthal domain description}
 
 
 The azimuthal directions is closed using periodic boundary condition for both the particles and the fields.
 The radial boundary conditions can be of different kind.
-They are description in \cref{sec-diel}.
+They are described in \cref{sec-diel}.
 
 A constant and uniform magnetic field $B_0$ is imposed in the radial direction.
-A constant and uniform axial electric field $E_0$ is imposed.
-
+A constant and uniform axial electric field $E_0$ is imposed.w
 \Cref{fig-2dschemat} shows a schematic representation of the simulated domain, overlaid with the computed azimuthal electric field $E_y$.
 
 \begin{figure}[hbtp]
@@ -46,10 +45,10 @@ A constant and uniform axial electric field $E_0$ is imposed.
 \subsection{Particle balance}
 As the axial position simulated is the exit plan, the ionization is too low to balance the particle losses to the wall.
 Instead, the ionization take place upstream, and the particles are convected downstream.
-In this condition, two solutions are possible,
+In these conditions, two models can be used,
 \begin{itemize}
   \item having a simulation that dies off, as done in \citet{janhunen2018},
-  \item forcing an arbitrary ionization to occur in order to compensate the radial losses citep{taccognaxxx}.
+  \item forcing an arbitrary ionization to occur in order to compensate the radial losses \citep{dominguez-vazquez2018}.
 \end{itemize}
 The second option is slightly less realistic, but allow to obtain a steady steady and is supposed not to affect significantly the simulation.
 
@@ -63,12 +62,12 @@ This prevents the possibility to reach a steady state regime, as observed in \ci
 
 We implement a model of convection initially proposed for a \ac{1D} simulation by \citet{lafleur2016a}, and addapted in \ac{2D} by \citet{croes2017a}.
 The model uses a finite axial length $L_z$.
-When a particle reaches the boundary $z=0$ or $L=L_z$, it removed from the simulation.
+When a particle reaches the boundary $z=0$ or $z=L_z$, it is removed from the simulation.
 In order to conserve the particle (and charge) balance, a particle is created at $z=0$ for the ions (that are accelerated toward $z>0$) or at $z=L_z$ for the electrons.
 
-It has been observed that using a radial position uniformly for the newly injected particle would affect the sheath \citep{croes2017a}.
+It has been observed that using a radial position chosen uniformly at random for the newly injected particle would affect the sheath \citep{croes2017a}.
 Hence, the radial position of the new particle is the same of the removed particle.
 
-Concerning the azimuthal particle position, choosing to use a random position or the same position as the removed particle is more difficult.
+Concerning the azimuthal particle position, it is more difficult to choose between a random position or the same position as the removed particle.
 In \citet{lafleur2016a,croes2017a}, the author chooses to use a random azimuthal position.
-However, as show in \cref{sec-reinjectionnoise}, this induces a numerical noise that can be harmful in some cases.
+However, as we show it in \cref{sec-reinjectionnoise}, this induces a numerical noise that can be harmful in some cases.

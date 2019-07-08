@@ -38,19 +38,17 @@ with $q$ the particle charge, $\vect{E}$ the electric field, and $\vect{B}$ the 
 The description in 7 dimensions (3 of space, 3 of velocity, and one of time) can complicate the resolution of the Boltzmann equation.
 If the precise description of $f$ is not needed, we can instead use the first moments of \Cref{eq-boltzmann} on the velocity.
 
-The first equation is obtained by integrating \cref{eq-boltzmann} over the velocity space
-\begin{gather}
-  \iiint_{\vect{v}} d^3v \quad \text{ \cref{eq-boltzmann}} \\
+The first equation is obtained by integrating \cref{eq-boltzmann} over the velocity space gives
 \begin{align}
-   \iff & \iiint_{\vect{v}}  \deriv{f}{t} d^3v &&+&& \iiint_{\vect{v}}  \vect{v} \cdot \grad_{\vect{x}} f  d^3v &&+&&  \iiint_{\vect{v}}  \vect{F} \cdot  \grad_{\vect{v}} f  d^3v && = && \iiint_{\vect{v}}  \deriv{f}{t} \at{\rm coll} \nonumber  \\ 
-   \iff &  \deriv{n}{t} &&+&& \vect{u}  \cdot \grad_{\vect{x}} n &&+&& 0 &&=&& S_{\rm iz}   \label{eq-conc}
+    & \iiint_{\vect{v}}  \deriv{f}{t} d^3v &&+&& \iiint_{\vect{v}}  \vect{v} \cdot \grad_{\vect{x}} f  d^3v &&+&&  \iiint_{\vect{v}}  \vect{F} \cdot  \grad_{\vect{v}} f  d^3v && = && \iiint_{\vect{v}}  \deriv{f}{t} \at{\rm coll} \nonumber  \\ 
+   \iff &  \deriv{n}{t} &&+&&  \grad_{\vect{x}}  \cdot  ( \vect{u} n) &&+&& 0 &&=&& S_{\rm iz}   \label{eq-conc}
 \end{align} 
-\end{gather}
-where $n=\iiint f d^3v$ is the density, $\vect{v} = \iiint \vect{v} f d^3v$ is the mean velocity, and $S_{\rm iz}$ is the source term of particle due to ionization.
+where $n=\iiint f d^3v$ is the density, $\vect{u} = \frac{1}{n} \iiint \vect{v} f d^3v$ is the mean velocity, and $S_{\rm iz}$ is the source term of particle due to ionization.
 \Cref{eq-conc} is the continuity equation for a given species.
+
 In the similar fashion, integrating the Boltzmann equation times the velocity or the kinetic energy gives the momentum conservation equation and the energy conservation equation.
 This set of equation is simpler to approach, although it relies on more hypotheses.
-One of the hypotheses concerns the closure of the system.
+One of them being the closure of the system.
 Indeed, the continuity equation describes the evolution of the density $n$ but needs the mean velocity $\vect{u}$.
 However, the velocity is described by the momentum conservation equation that need the temperature $T$, and so on.
 
@@ -58,22 +56,25 @@ In order to close the system, one has to make a hypotheses on the higher moment 
 A usual closure is the isothermal hypotheses, that fix the temperature. 
 Hence, the energy conservation equation is not needed.
 Other closures possibles are the adiabatic hypotheses (no heath flux, the \nth{3} moment of $f$), the polytropic law linking the evolution of $n$ with $T$, or the Fourier law for heat diffusion.
+\inlinenote{Should we write the closes as equations ? $q = 0$, $T_e n_e ^{a}=cst$, etc. ?}<
+
 
 \subsection*{Plasma simulation models} \label{subsec-simulations}
-As there is two different models to describe the plasma, there is two different simulation methods : the fluid simulations and the kinetic simulations.
+As there are two different models to describe the plasma, there are two different simulation methods \string: the fluid simulations and the kinetic simulations.
 
-The fluid simulations solve the density, mean velocity and temperature of the species, and the electromagnetic fields.
+The fluid simulations solve the moments of the distribution function (the density, mean velocity and usually the temperature of the species), and the electromagnetic fields.
 Depending of the conditions, the system of equation can be simplified before resolution.
 In electrodynamic conditions, mainly for space plasmas and fusion, the Maxwell equations are coupled to the fluid equations leading to magnetohydrodynamics (MHD).
-In the case of electrostatic conditions, has it is usual for cold plasmas, the Poisson equation is coupled to the fluid equations.
+In the case of electrostatic conditions, as it is usual for Low Temperature plasmas, the Poisson equation is coupled to the fluid equations.
 Due to the low mass of the electrons compare to the ions, we can also suppose the quasi-neutrality of the plasma, leading to the drift-diffusion approximation.
 The fluid equations can be solved in \ac{3D}, \ac{2D} or \ac{1D} for space.
 In low dimension model, the effects of the missing dimensions is usually added, for instance in the source terms as done by \citet{barral2003a}.
 
+\vspace{1em}
 However, some phenomena can only be describes via the distribution function.
 An example of such phenomena is the particle-wave interaction, as the Landau Damping \citep{landau1945,malmberg1964} or the plasma-beam instability \citep{filippychev1990}, for which the gradient of the distribution function in the velocity space is important.
 In contrast to the fluid descriptions, \emph{kinetic} simulations solve for the distribution function for both position and velocities.
-Two approaches are usually used for kinetic simulations:
+Two approaches are usually used for kinetic simulations\string:
 \begin{itemize}
   \item The \ac{DK} simulations, that discretize \Cref{eq-boltzmann} in the full phase space.
   \item The \ac{PIC}, that uses an ensemble of particles to discretize the distribution function.

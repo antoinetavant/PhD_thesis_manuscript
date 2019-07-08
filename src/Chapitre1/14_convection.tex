@@ -3,9 +3,9 @@
 \section{Axial Convection model}
   \label{sec-reinjectionnoise}
 
-  As introduce in the previous section, the \ac{2D} radial-azimuthal simulation do not model a priori the convection.
+  As introduce in the previous section, the \ac{2D} radial-azimuthal simulation do not model a priori the axial convection of the particles.
 
-  \subsection{Lafleur's model of injection}
+  \subsection{Lafleur's model of convection}
 
     \citet{lafleur2016a} proposed a way to model the axial convection of the particles in a \ac{1D} purely azimuthal simulation.
     \Cref{fig-Fake_1d_1} shows a schematic illustration of the model.
@@ -30,7 +30,7 @@
     \begin{figure}[hbtp]
       \centering
       \includegraphics[width=\defaultwidth]{Fake_1d_2}
-      \caption{Schematic representation of Trevor's convection model \citep{lafleur2016a}. The red particle is removed of the simulation, and the green particle is created. In this illustration, the particle is an ion. }
+      \caption{Schematic representation of Trevor's convection model \citep{lafleur2016a}. The red particle is removed of the simulation, and the green particle is created. In this illustration, the particle is an ion, as the reinjection is at $z=0$. }
       \label{fig-Fake_1d_1}
     \end{figure}
 
@@ -38,7 +38,7 @@
     The principle is exactly similar.
     The particles are followed in the 3 directions, and a finite length is used to close to axial direction.
     It is important to note that even is the particle are followed in the 3 directions, the meshed domain is only \ac{2D}.
-    The simulation is not \ac{3D}-\ac{3V}.
+    The simulation is not \ac{3D}-\ac{3V}, but only \ac{2D}-\ac{3V}.
 
     In \citet{croes2017a}, the authors have observed that if the newly created particle has a radial position chosen uniformly at random, it would affect the sheath.
     Hence, they decided to use the same radial position that the removed particle.
@@ -77,13 +77,13 @@
     The wavelength is short, of the order of $\lambda = 1.5$~mm.
     \nomenclature[Q]{\ensuremath{ \lambda}}{ Wave length}
     \cref{fig-convection_numerical}.{\bf b} corresponds to the same case as \cref{fig-convection_numerical}.{\bf a} but this time with the axial convection modeled.
-    We observe this time a saturation of the oscillation's amplitude, and the wavelength is close to $\lambda = 1.5$~mm.
+    We observe this time a saturation of the oscillation's amplitude, and the wavelength is close to $\lambda \simeq 1.5$~mm.
 
     On the second row (\cref{fig-convection_numerical}.{\bf c} and {\bf d}), the length of the periodic azimuthal direction is $L_{\theta}=1$~cm.
     \cref{fig-convection_numerical}.{\bf c} corresponds to the case without axial convection, and \cref{fig-convection_numerical}.{\bf b} corresponds to the same case but this time with the axial convection modeled.
     In \cref{fig-convection_numerical}.{\bf c}, we can see that increasing the azimuthal length did not affect the \ac{ECDI}, as expected.
     However, in  \cref{fig-convection_numerical}.{\bf d}, the instability is clearly affected.
-    A simple oscillation is observe, corresponding to $\lambda=10$~mm.
+    A single oscillation is observe, corresponding to $\lambda=10$~mm.
     They are most certainly unphysical.
 
     \begin{figure}[hbtp]
@@ -117,19 +117,18 @@
     \end{figure}
 
     No explanation have been proposed, yet.
-    In the next section, we develop a possible explanation, and a new convection model for the simulation.
+    In the next section, we develop a theory that could explain the observation, and a new convection model for the simulation is proposed.
 
   \subsection{Numerical noise of Lafleur's convection model}
 
     Let us consider de Lafleur's convection model in \ac{1D} on the charge density.
     When computing the charge density on the mesh vertices, the axial position is not taken into account.
-    Consequently, the convection process illustrated on \cref{fig-Fake_1d_1} is similar to moving a particle arbitrarily.
-    Seen by the charge density, this is similar to a Poisson noise, also named shot noise, on the charge density.
-    \inlinenote{Actually, this is more like the combination of a Poisson noise with a uniform noise, appending twice for every particles, once with a positive charge and once with a negative charge. I don't really know if we need to give these details. }
+    Consequently, the convection process illustrated on \cref{fig-Fake_1d_1} is similar to moving a particle arbitrarily (read randomly).
+    Seen by the charge density, this is similar to a Poisson noise, also named shot noise, on the charge density.\footnote{Actually, this noise is the combination of a Poisson noise with a uniform noise, happening twice for every particles convection, once with a positive charge and once with a negative charge.}
 
     After a certain number of particle removed and created, the Poisson noise is similar to a Gaussian noise, also named thermal noise, following a normal distribution $\N$ .
     \nomenclature[Q]{\ensuremath{ \N }}{ Normal distribution.}
-    Hence, the charge density becomes
+    Hence, the charge density becomes \footnote{One can note that the mean of the noise is strictly zero, as the charge density is conserved.}
     \begin{equation} \label{eq-rhonoise}
       \rho = \rho_0 + \N(0, \stdconv),
     \end{equation}
@@ -148,8 +147,8 @@
     \end{equation}
 
     We can see on \cref{eq-convstd} that the amplitude of the convection induced noise on the charge density is proportional to the inverse of the axial length $L_z$.
-    This could explain the observation of \cref{fig-couplesCroes} that obtaining physical result with a smaller $L_z$ is more restrictive.
-    However, it do not explain the effects of the azimuthal length.
+    This could explain the observation of \cref{fig-couplesCroes} when using a smaller $L_z$.
+    However, it does not explain the effects of the azimuthal length observed in \cref{fig-couplesCroes,fig-convection_numerical}.
 
   \subsection{Effect of the noise on the electric field}
     \label{sec-mathnoise}
@@ -160,10 +159,10 @@
                     &= C + \frac{1}{\epsilon_0} \int_0^{\theta} (\rho_0(s) + \N(0, \stdconv) ) ds \\ 
                     &= C + \aziE_{, 0} + \aziE_{, 1}
     \end{align}
-    with $C$ a constant that ensure that the \ac{BC}s are respected.
-    The part of the electric field $\aziE_{, 0}$ corresponds to the charge density $\rho_0$ and $\aziE_{, 1}$  corresponds tot he charge density noise $\N(0, \sigma_{\rm stat})$.
-    Let us focus now on $\aziE_{, 1}$.
-    We can study $\aziE_{, 1}$ using two equivalent means: the \ac{FT} and the Brownian bridge.
+    with $C$ a constant that ensure that the periodical \ac{BC} are respected.
+    The part of the electric field $\aziE_{, 0}$ corresponds to the unperturbed charge density $\rho_0$ and $\aziE_{, 1}$  corresponds to the noisy charge density $\N(0, \sigma_{\rm stat})$.
+    Hence, let us focus now on $\aziE_{, 1}$.
+    We can study $\aziE_{, 1}$ using two equivalent means\string: the \ac{FT} and the Brownian bridge.
     
     \paragraph{Fourier Transform \\}
       Applying the \ac{FT} on the equation
@@ -177,14 +176,14 @@
       \end{align}
       
       \Cref{eq-fft} shows that $\aziE_{, 1}$ is also follows a Gaussian distribution, but with a non-zero mean value.
-      It is also inversely proportional to the wave number.
+      It is also inversely proportional to the wave number $k$.
       Hence, when we increase the azimuthal length, which means that small wave number can exit in the simulation domain, the amplitude of $\aziE_{, 1}$ increases as well.
       
-    \paragraph{Brownian Bridge}
+    \paragraph{Brownian Bridge\\}
       \Cref{eq-aziE1}, combined with the \ac{BC}, is the definition of the a Browning bridge.
       
       A Brownian bridge is a particular Brownian motion that reaches at a given distance the same value that the initial value.
-      Hence, we have
+      Hence, we have \citep{ibe2013}
       \begin{align*}
         \mathbb{E}(\aziE_{, 1}) &= 0,  \\
         {\rm var}(\aziE_{, 1}) &= \stdconv^2 \frac{L_{\theta}}{4}
@@ -193,15 +192,15 @@
       Hence, increases the azimuthal length increases the amplitude of $\aziE_{, 1}$.
       
     
-    We believe that when the amplitude of $\aziE_{, 1}$ is too large, it can trigger an oscillation.
+    We believe that when the amplitude of $\aziE_{, 1}$ is too large, it can trigger an unphysical oscillation.
+    The next section uses this conclusion in order to adapt the convection model.
     
     \subsection{Noiseless convection model}
       \label{sec-noiselessresults}
-      Have have shown that the convection model induces a noise in the charge density, that induces an azimuthal electric field which amplitudes depends on the azimuthal length.
+      Have have shown that the convection model induces a noise in the charge density, that produces an azimuthal electric field which amplitudes depends on the azimuthal length.
       
       We propose here a modified version of Lafleur's convection model in order to remove the noise in the charge density, so that is expected to not present the numerical artefacts see previously.
-      
-      The noiseless convection model follows the same algorithm that before, but the azimuthal position of the particle create is not chosen uniformly as random, but instead has the same position as the removed particle.
+      The noiseless convection model follows the same algorithm that before, but the azimuthal position of the particle created is not chosen uniformly as random, but instead the new particle has the same position as the removed particle.
       \Cref{fig-fakez3} shows a schematic illustration of the noiseless convection algorithm applied on a particle.
       
       \begin{figure}[hbtp]
@@ -248,16 +247,19 @@
       
 
 
-      Theses observations hove shown that Trevor's convection model induces a noise on the charge density, that do not affect the simulation when the domain size is small, but can rise numerical artefacts when the domain size is larger.
+      Theses observations have shown that Trevor's convection model induces a noise on the charge density, that do not affect the simulation when the domain size is small, but can rise numerical artefacts when the domain size is larger.
       We have seen that the minor modification on the model do not affect the simulations results on a small domain, but allow us to use larger simulation domain without any numerical artefacts.
       
-      \inlinenote{ Should we re-run all of the simulations of the 1rst paper using the new model ? Else, we should say why.}
-    
+      Unfortunately, the new model has been developed during the last year of my theses.
+      Hence, the first simulation results have been obtained using Lafleur's convection model.
+      As seen in \cref{fig-oldeconv_newconv}, on a small geometry the results are not affected, hence there is no need to verify all of the simulations obtained.
+      On the other hand, in order to study the instability, it is useful to have a longer azimuthal, in order to obtain a more resolved frequency spectra.
+      Hence, the modified convection model  used in this case.
+          
     \subsection{Effects on a \ac{2D} simulation domain}
       
       The mathematical development of \cref{sec-mathnoise} has been done in \ac{1D}.
       We can legitimately wonder is the results  can be extended directly to a \ac{2D} domain.
-      
       A mathematical definition of $\aziE_{, 1}$ is more difficult, as we have, neglecting the dielectric layers,
       \begin{equation} \label{eq-aziE}
         \aziE_{, 1} = \partial_{\theta} \phi_1 \text{ such that } \grad \cdot \grad \phi_1 = - \frac { \N(0, \stdconv)}{\epsilon_0} \text{ following the \ac{BC}}.
@@ -269,17 +271,17 @@
       \end{itemize}
       which translate as
       \begin{align}
-        \phi &= 0 \text{ for } r=0 \text{ and } r=L_r, &\forall \theta\\
-        \phi(\theta = 0)&= \phi(\theta = L_{\theta}) , &\forall r
+        &\phi = 0 \text{ for } r=0 \text{ and } r=L_r, &\forall \theta \label{eq-BC1} \\
+        &\phi(\theta = 0)= \phi(\theta = L_{\theta}) , &\forall r \label{eq-BC2}
       \end{align}
       
-      Solving \cref{eq-aziE} analytically is much more difficult that the \ac{1D} development because of the Dirichlet \ac{BC}.
-      \nomenclature[N]{Dirichlet Boundary condition}{ Type of boundary conditions for which the field is fixed. For instance for grounded electrodes on the plasma potential: $\phi = 0$}
+      Solving \cref{eq-aziE,eq-BC1,eq-BC2} analytically is much more difficult that the \ac{1D} development because of the Dirichlet \ac{BC}.
+      \nomenclature[N]{Dirichlet Boundary condition\string:}{ a type of boundary conditions for which the field is fixed. For instance for grounded electrodes on the plasma potential\string: $\phi = 0$}
       However, we can investigate it numerically, by solving \cref{eq-aziE} for a given random source term.
       Using a Monte Carlo approach, the results are averaged 50 times in order to better observe the mean behaviour in respect to the noise (i.e. increasing signal to noise ratio).
         
       \Cref{fig-dftLr} shows the \ac{DFT} of the source term \[\rho_1 = \N(0, \stdconv),\] the resulting azimuthal electric field $\aziE_{, 1}$ and plasma potential $\phi$ computed on the centreline of the simulation domain in the radial direction, for three different radial length expressed in number of cell $N_x$.
-      Is also showed the "equivalent" source term $\rho_{\rm eq}$, which is the source term that would give the frequency spectra observed in a \ac{1D} domain
+      Is also showed the "equivalent" source term $\rho_{\rm eq}$, which is the source term that would give the frequency spectra of $\aziE_{, 1}$ observed in a \ac{1D} domain
       
       \begin{equation} \label{eq-equirho}
         \rho_{\rm eq} = \epsilon_0 \partial_\theta \aziE_{, 1}.

@@ -3,7 +3,8 @@
 \section{Dielectrics boundary condition}
   \label{sec-diel}
 
-  \Cref{fig-2D} illustrate the configuration in the radial-azimuthal plan highliting the radial boundary conditions.
+  \Vref{fig-2dschemat} showed the simulation of the radial-azimuthal domain without dielectric wall, but instead grounded electron.
+  \Cref{fig-2D} illustrate the configuration in the radial-azimuthal plan highlighting the more realistic radial boundary conditions.
   The plasma is bounded in the radial direction by dielectric layers isolating the magnetic circuit.
   The magnetic circuit can be considered electrically grounded.
 
@@ -25,7 +26,7 @@
   A common approach is to suppose that the electric field inside the dielectric is zero.
   Using Gauss theorem, we obtain a Neumann boundary condition at the plasma-wall interface for the potential
   \begin{equation} \label{eq-gauss}
-    \partial_r \phi = \frac{\sigma}{\epsilon_0}
+    \norm{\partial_r \phi} = \frac{\norm{\sigma}}{\epsilon_0}
   \end{equation}
   with $\sigma$ the surface charge and $\epsilon_0$ the vacuum permittivity.
   However, the electric field in a dielectric material is not zero, but depends on the global system.
@@ -36,14 +37,14 @@
 
   \subsection{Non-uniform mesh}
 
-    In the dielectric layers, there is no particles nor charges.
+    In the dielectric layers, there is no particle nor charge.
     Hence, the numerical constraints on the cell size are not applicable, and the cell size can be increased.
-    In order to reduce the cell size difference between two neighbouring cells, we uses an exponential growth of the cell size in the radial direction.
-    The cell size in the azimuthal direction $dy$ is kept constant.
+    In order to reduce the cell size difference between two neighbouring cells, we use an exponential growth of the cell size in the radial direction.
+    The cell size in the azimuthal direction $\dy$ is kept constant.
     The resulting non-uniform mesh can be seen in \cref{fig-2D}.
 
 
-  \subsection{discretisation}
+  \subsection{Poisson equation discretization}
 
 
   The dielectric permittivity is $\epsilon= \epsr \epsilon_0$ with $\epsr$ the relative permittivity of the dielectric.
@@ -56,15 +57,15 @@
   We note $\vect{D}=\epsilon \vect{E} = \epsilon \grad \phi$ the electric flux.
 
   \Cref{fig-decompo1} shows the Cartesian decomposition of the \ac{2D} domain.
-  The cell $(i,j)$ has four direct neighbours:
+  The cell $(i,j)$ has four direct neighbours\string:
   \begin{itemize}
     \item the est $E$ in $(i+1,j)$
     \item the west $W$ in $(i-1, j)$
     \item the north $N$ in $(i, j+1)$
     \item the south $S$ in $(i, j-1)$
   \end{itemize}
-  The cell dimensions are $dx_{i,j}$ and $dy_{i,j}$, and $\V=dx_{i,j} dy_{i,j}$ is the cell volume.
-  As the mesh is Cartesian, we have for a given $j$ $dx_{i,j} = cst$ for all $i$. Hence, we note $dx_{i,j} = d_i$ and $dy_{i,j} = d_j$
+  The cell dimensions are $\dx_{i,j}$ and $\dy_{i,j}$, and $\V=\dx_{i,j} \dy_{i,j}$ is the cell volume.
+  As the mesh is Cartesian, we have for a given $j$ $\dx_{i,j} = cst$ for all $i$. Hence, we note $\dx_{i,j} = d_i$ and $\dy_{i,j} = d_j$
 
   The boundaries are noted $S^s_{i,j}$ with $s=E,W,N$ or $S$.
   We can see that $S^W_{i,j}=S^E_{i-1,j}$, and the same goes for the other borders.
@@ -103,17 +104,16 @@
     \paragraph*{Electric flux \\}
     Let us define the electric flux through the Est border  $\vect{D}^E_{i,j}$.
     We suppose there is no surface charges on $S^E$.
-
-    We can writ the electric flux as
+    We can hence write the electric flux as
     \begin{align} \label{eq-flux1}
-      \vect{D}^E_{i,j} \cdot \vect{n} &= \epsilon_{i,j} E_{x i+1/2,j}^-\\
+      \vect{D}^E_{i,j} \cdot \vect{n} &= \epsilon_{i,j} E_{x, i+1/2,j}^-\\
                                       &= - \epsilon_{i,j} \frac{\phi_{i+1/2,j} - \phi_{i,j}}{d_i/2},
     \end{align}
     with an off-center discretization of the electric field.
 
     Using the Gauss's law without charges
     \begin{equation} \label{eq-gausslaw}
-      \epsilon_{i,j}E_{x i+1/2,j}^- - \epsilon_{i+1,j}E_{x i+1/2,j}^+ =0,
+      \epsilon_{i,j}E_{x, i+1/2,j}^- - \epsilon_{i+1,j}E_{x, i+1/2,j}^+ =0,
     \end{equation}
     we have
     \begin{equation}
@@ -156,7 +156,7 @@
     Let's now considerer the presence of surface charges on the surface $S^E_{i,j}$.
     Gauss's law now reads
     \begin{equation} \label{eq-gausslawsc}
-      -\epsilon_{i,j}E_{x i+1/2,j}^- + \epsilon_{i+1,j}E_{x i+1/2,j}^+ =\sigma^E,
+      -\epsilon_{i,j}E_{x, i+1/2,j}^- + \epsilon_{i+1,j}E_{x, i+1/2,j}^+ =\sigma^E,
     \end{equation}
     with $\sigma^E$ the surface charge on the surface.
     The surface charge is not taken into account when computing the total charge in a cell.
@@ -208,7 +208,7 @@
 
     Because the wall boundary are only in the radial directions, we considerer only an interface in the North-South direction.
     \Cref{fig-decompo2} shows the domain decomposition.
-    The decomposition is the same as previously, except for the permittivity that can have two different values: one in the North half-plan $\epsr{i,j}^n$ and another in the South half plan $\epsr{i,j}^s$.
+    The decomposition is the same as previously, except for the permittivity that can have two different values\string: one in the North half-plan ${\epsr}_{, i,j}^n$ and another in the South half plan ${\epsr}_{, i,j}^s$.
 
     \begin{figure}[hbt]
       \centering
@@ -226,7 +226,7 @@
 
     We can define
     \begin{align}
-    <\vect{D}^E_{i,j} \cdot \vect{n} >&= \frac{1}{2} \epsilon_{i,j}^N E_{x i+1/2,j}^- + \frac{1}{2} \epsilon_{i,j}^S E_{x i+1/2,j}^-\\
+    <\vect{D}^E_{i,j} \cdot \vect{n} >&= \frac{1}{2} \epsilon_{i,j}^N E_{x, i+1/2,j}^- + \frac{1}{2} \epsilon_{i,j}^S E_{x, i+1/2,j}^-\\
      &= \frac{-1}{2} (\epsilon_{i,j}^N + \epsilon_{i,j}^S) \frac{\phi_{i+1/2,j} - \phi_{i,j}}{d_i/2}
      \label{eq-flux}
     \end{align}
@@ -267,4 +267,5 @@
     \end{equation}
 
     The discretization obtained for the plasma-wall interface cell-centred is very similar to the one obtained for the interface at the cell interface.
-    However, it better conserves the plasma domain when the dielectric layer is not modeled and that Dirichlet conditions are applied.
+    However, it conserves the particle domain when the dielectric layer is not modeled and that Dirichlet conditions are applied, and the electric field at the plasma-wall interface is better defined.
+    Hence, the cell-centred interface will be used.
