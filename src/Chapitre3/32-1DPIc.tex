@@ -1,0 +1,63 @@
+% !TEX root=/home/tavant/these/manuscript/src/manuscript.tex
+
+
+
+\section{Simplified 1D for the PIC simulations}
+\label{sec-1DPIC}
+
+We have seen in \cref{sec-insights} that the secondary electron emission is not responsible for the temperature gradient.
+Hence, we will neglect it is this section.
+The simulations were at low pressure, in which case  the electrons are non-local \cite{bernstein1954, godyak1993}.
+In low pressure bounded discharges, it is well-known that the EEDF is not Maxwellian in both capacitively coupled plasmas and inductively coupled plasmas \cite{mouchtouris2016, godyak2002, meige2006a, dominguez-vazquez2018}, in agreement whith \vref{fig-EEDF}.
+
+The impact of non-Maxwellian EEDF on the electron flux at the wall has been studied by Kaganovich et al. \citep{kaganovich2000,kaganovich2007}.
+They showed that the electron kinetics at low pressure can significantly reduce the electron flux to the wall, in agreement with kinetic simulations.
+The main parameter determining the electron flux was found to be the electron scattering frequency.
+However, to the knowledge of the authors no model describes the sheath with non-Maxwellian EEDF, that could be used in fluid equations.
+
+The evolution of the electron temperature and the non-locality of the electron in bounded plasmas as been studied in \citet{meige2006a}.
+Hence, we will use in this chapter similar physical conditions, in order to compare with there conclusions.
+We use a 1D PIC simulation of an argon plasma confined between two walls separated by a length $L=10$cm.
+The background pressure is varied between 0.05 and 10 mTorr.
+
+The same particle source model as in \ac{2D}\ac{PIC} of the \ac{HET} is used.
+In order to compensate the particle losses at the wall, we inject with a spatially uniform probability an electron-ion couple for every ion lost at the wall.
+This corresponds to the following ionization rate:
+\begin{equation}
+  S_{iz} = \frac{1}{L} 2 \Gamma_e
+\end{equation}
+with $\Gamma_e$ the electron flux to the wall.
+A second model will be used latter, with a self-consistent heating and ionization.
+
+Monte Carlo collisions (MCC) are still used, but we do not model the particle generation of the ionization process, but only the scattering and momentum transfer.
+As previously, Coulomb collisions are not included in the study as we are at low plasma density (at the steady state the electron density is around $n_e = 10^{15}$m$^{-3}$).
+
+To satisfy generally accepted accuracy conditions for the cell size and time step \citep{turner2013}, a time step of $3.7\cdot10^{-11}$\,s is used with a cell length of $1.7\cdot10^{-5}$\,m.
+This allows us to resolve properly the plasma frequency $\frac{2 \pi}{\omega_{pe}} = 3.5\cdot10^{-9} $\,s and the Debye length $\lambda_{De} = 3.10^{-4}$\,m.
+Around $300$ particles per cell are used for the simulations, and statistical convergence has been verified for both the cell length and the number of particles per cell.
+
+
+\begin{table}
+  \centering
+  \begin{tabular}{lll}  \toprule
+    Parameter & Value & Unit  \\ \midrule
+    Pressure $P$ & $0.05,0.1,0.5, 2, 10$ & mTorr\\
+    Initial density & $1 .10^{15}$ & m$^{-3}$\\
+    $\Te_{, inj}$& 5 & V\\
+    Domain length $L$ & 10 & cm\\
+    gas & Argon & -\\
+    \bottomrule
+  \end{tabular}
+  \caption{Simulation parameters for the 1D PIC simulations.}
+  \label{tab_1DPICParams}
+\end{table}
+
+
+
+
+
+
+
+
+
+
