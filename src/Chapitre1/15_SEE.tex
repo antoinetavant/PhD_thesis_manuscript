@@ -13,8 +13,13 @@ When an incident electron reaches the wall material, several scenarii are possib
 The probability \proba{}  that one event happens instead of another depends predominantly on the particle energy, and weakly on its  impact angle.
 Concerning the mean flux of electron incident and emitted, we uses the mean emission rate, or yield, \rate
 \begin{equation*} \label{eq-ratedifinition}
-  \rate = \frac{\Gamma_{e, \rm primary}}{\Gamma_{e, \rm secondary}}
+  \rate = \frac{\Gamma_{e, \rm secondary}}{\Gamma_{e, \rm primary}}
 \end{equation*}
+which can be developed using the distribution function to 
+\begin{equation*} \label{eq-ratedifinition_evdf}
+  \rate = \frac{\iiint_{\Omega} v_x \proba(\vect{v_e}) f(\vect{v_e}) d^3v}{\iiint_{\Omega} v_x \proba(\vect{v_e}) f(\vect{v_e}) d^3v}
+\end{equation*}
+with $\Omega$ the ensemble of $\vect{v_e}$ directed toward the wall\string: $\vect{v_e} \cdot \vect{n} > 0$, with $\vect{n} $ the unit vector normal to and toward the wall.
 
 \subsection{Models of emission } \label{subsec-seemodels}
 Several models can be used to describe the electron emission.

@@ -4,3 +4,54 @@
 
 \section{Insights for the PIC simulations}
 \label{sec-insights}
+
+As announced in \vref{sec-sheath_validation}, the sheath model of \vref{sec-sheath} uses two hypothesis\string:
+\begin{itemize}
+  \item Maxwellian electrons,
+  \item Isothermal evolution of the electrons.
+\end{itemize}
+
+When collisions can be neglected, as it is usually assumed in the sheath, these two hypothesis are linked.
+Indeed, the \ac{1D} Maxwellian distribution function expressed as the total energy is
+\begin{equation} \label{eq-maxw_total}
+  f(\ek, \phi) \propto \exp \lp \frac{\ek - \phi}{\Te}  \rp = \propto \exp \lp \frac{\ek}{\Te} \frac{-\phi}{\Te},
+\end{equation}
+where $\ek$ and $\Te$ are the electron kinetic energy and temperature expressed in Volt.
+We can see in \cref{eq-maxw_total} that the spatial variation (due to the plasma potential $\phi$) only affect the amplitude of the distribution function, not its shape in the energy space.
+Hence, the electron temperature is uniform, i.e. they are isotherm.
+In addition, we find that $n_e \propto \exp (- \phi / \Te)$, which is the definition of Boltzmann electrons.
+
+Hence, let see if this two aspects are respected in the \ac{2D} \ac{PIC}-\ac{MCC} simulation results
+
+\subsection{Electron distribution function}
+
+\begin{figure}[hbtp]
+  \centering
+  \includegraphics[width=\defaultwidth]{EEDF_2-eps-converted-to}
+  \caption{Electron energy distribution function of the electrons ({\bf a}) in the bulk, in the three directions, and ({\bf b}) in the bulk and in the sheath}
+  \label{fig-EEDF}
+\end{figure}
+
+Using the kinetic information of the PIC simulations, we present in \Cref{fig-EEDF} the mean electron energy probability functions (EEPF) in the case $\crover = 200\,\volt$.
+\Cref{fig-EEDF}.{\bf a} shows the projections of the EEPF in the centre of the simulations along the three directions.
+These projections are compared to the Maxwellian probability function of the same
+kinetic temperature.
+\Cref{fig-EEDF}.{\bf b} shows the total EEPF for both the bulk and the sheath populations.
+ The sheath length is defined as the location where the ions reach the Bohm speed, which is about 0.4mm.
+ 
+ We see in \cref{fig-EEDF}.{\bf a} that the electron distribution function is not Maxwellian.
+ In particular the high energy tails are depleted.
+ However, we can see that the electrons are rather isotropic, compared to \ac{1D} simulation \citep{sydorenko2006}.
+ In order to evaluate the effect of the nonMaxwellian EEPF, we numerically integrate the EEPF from the PIC data using \vref{eq-ratedifinition_evdf}.
+The results (not shown) do not differ significantly from the Maxwellian values of \vref{eq-seemaxw}.
+Hence, we can conclude that even if the Maxwellian hypothesis is not respected in the
+PIC simulations, it is not enough to explain the differences observed in \vref{fig-seeparamesMaxw}.
+
+
+\Cref{fig-EEDF}.{\bf b} presents the EEPF for the bulk population as well as for the sheath population.
+ We can see that the sheath population is colder than the population at the centre, which could explain the difference of \vref{fig-seeparamesMaxw}. 
+ This effect is assessed in the next section.
+
+
+
+ 
