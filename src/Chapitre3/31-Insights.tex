@@ -18,10 +18,10 @@ Indeed, the \ac{1D} Maxwellian distribution function expressed as the total ener
 \end{equation}
 where $\ek$ and $\Te$ are the electron kinetic energy and temperature expressed in Volt.
 We can see in \cref{eq-maxw_total} that the spatial variation (due to the plasma potential $\phi$) only affect the amplitude of the distribution function, not its shape in the energy space.
-Hence, the electron temperature is uniform, i.e. they are isotherm.
+Hence, the electron temperature is uniform, i.e. the electrons are isotherm.
 In addition, we find that $n_e \propto \exp (- \phi / \Te)$, which is the definition of Boltzmann electrons.
 
-Hence, let see if this two aspects are respected in the \ac{2D} \ac{PIC}-\ac{MCC} simulation results
+Hence, let see if these two hypotheses are respected  in the \ac{2D} \ac{PIC}-\ac{MCC} simulation results
 
 \subsection{Electron distribution function}
 \label{subsec-eedf_2D}
@@ -31,7 +31,7 @@ Using the kinetic information of the PIC simulations, we present in \Cref{fig-EE
 These projections are compared to the Maxwellian probability function of the same
 kinetic temperature.
 \Cref{fig-EEDF}.{\bf b} shows the total EEPF for both the bulk and the sheath populations.
- The sheath length is defined as the location where the ions reach the Bohm speed, which is about 0.4mm.
+ The sheath length is defined as the location where the ions reach the Bohm speed, which is located about 0.4mm from the wall.
  
  \begin{figure}[hbtp]
    \centering
@@ -57,7 +57,7 @@ Hence, we can conclude that even if the Maxwellian hypothesis is not respected i
  In addition, we can see in \cref{fig-EEDF}.{\bf a} that the radial EEPF is close to the EEPF in the other directions, i.e the electron are almost isotropic.
  For instance, for $\crover = 200\,\volt$  we measure $\Te_r = 41.5\,\volt$ while $\Te_{\theta} \sim \Te_z = 49\,\volt$.
  The cause of the difference with \citet{heron2013} is not yet clear, but there the results were only obtained at early times where saturation of the instability has not necessarily been reached, and no electron loss in  the axial direction was accounted for.
- This is supported by \cref{fig-canon_Te_strat,fig-canon_Te_all} which show us that there is a larger anisotropy at the beginning of the simulation ($t<2\micro\second$) than latter.
+ This is supported by \cref{fig-canon_Te_strat,fig-canon_Te_all} which show us that there is a larger anisotropy at the beginning of the simulation ($t<2\micro\second$) than later.
  It is possible that at steady state, the electrons in our simulations have had sufficient time to become more isotropic.
  The energy transfer from the axial and azimuthal directions to the radial direction is not clearly understood
  yet \citep{janhunen2018}, but we believe that it is due to the instability.

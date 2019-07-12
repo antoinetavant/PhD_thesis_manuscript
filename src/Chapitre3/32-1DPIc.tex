@@ -31,7 +31,7 @@ This corresponds to the following ionization rate:
   S_{iz} = \frac{1}{L} 2 \Gamma_e
 \end{equation}
 with $\Gamma_e$ the electron flux to the wall.
-A second model will be used latter, with a self-consistent heating and ionization.
+A second model will be used later, with a self-consistent heating and ionization.
 
 Monte Carlo collisions (MCC) are still used, but we do not model the particle generation of the ionization process, but only the scattering and momentum transfer.
 As previously, Coulomb collisions are not included in the study as we are at low plasma density (at the steady state the electron density is around $n_e = 10^{15}$m$^{-3}$).
@@ -61,7 +61,7 @@ Around $300$ particles per cell are used for the simulations, and statistical co
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=\defaultwidth]{1D_PIC_summary.pdf}
+  \includegraphics[width=\textwidth]{1D_PIC_summary.pdf}
   \caption{Profile of the electron and ion densities (left) and the plasma potential and electron temperature in the PIC simulation with the parameters of \cref{tab_1DPICParams}, with $P=0.1$mTorr.}
   \label{fig-PIC1}
 \end{figure}
@@ -73,7 +73,7 @@ However, while the electron temperature is almost constant in the plasma bulk at
 The electron temperature gradient should affect the density profile in the sheath and the electron heat flux at the wall.
 
 \vspace{1em}
-For isotropic distribution functions, it is convenient to introduce the electron energy distribution function (EEDF) $f_{\epsilon}$ \citep{charbert}:
+For isotropic distribution functions, it is convenient to introduce the electron energy distribution function (EEDF) $f_{\epsilon}$ \citep{chabert}:
 \begin{equation}
 f_{\epsilon}(\epsilon) d\epsilon = 4 \pi v^2 f_e(\vec{v}) dv
 \end{equation}
@@ -123,7 +123,7 @@ This model is closer to the \ac{PIC} EEPF, but neglects the tails of newly gener
 \begin{figure}[hbtp]
   \centering
   \includegraphics[width=\defaultwidth]{EVDFs_and2Te}
-  \caption{Electron energy probability function at different positions in the simulation, as in \cref{fig-PIC2}, but overlaid with a Two temperature fit. \inlinenote{The FIt do not fix the knee at $\phi$ ! Need to be done again.}}
+  \caption{Electron energy probability function at different positions in the simulation, as in \cref{fig-PIC2}, but overlaid with a Two temperature fit. \inlinenote{The Fit do not fix the knee at $\phi$ ! Need to be done again.}}
   \label{fig-PIC3}
 \end{figure}
 
