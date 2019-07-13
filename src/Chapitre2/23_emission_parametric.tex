@@ -38,7 +38,7 @@
     \label{fig-see_illustration}
   \end{figure}
   
-  In the simulation, we can only measure the average electron emission yield, also named rate, 
+  In the simulation, we can only measure the average electron emission yield, also named emission rate, 
   \begin{equation} \label{eq-seeyield}
     \rate = \frac{\Gamma_{\rm emitted}}{\Gamma_{\rm incident}} = \frac{\iiint v_r \proba(\vect{v}) f(\vect{v}) d^3v}{\iiint v_r  f(\vect{v}) d^3v}.
   \end{equation}
@@ -91,7 +91,7 @@
   This is due the electron temperature $\Te$ which decreases from around $\Te=45$V at $\crover=200$V to $\Te=30$V at low $\crover$ (the evolution of $\Te$ can be seen in \cref{fig-Tevsproba}).
   
   On the other hand, the near wall mobility increases significantly on $\mobpic$ (almost by a factor of 2) with the electron emission.
-  However, we do not see this evolution on $\mobeffsat$, meaning that it indeed comes from another physical mechanism that the \ac{ECDI}.
+  However, we do not see this evolution on $\mobeffsat$, meaning that it indeed comes from another physical mechanism than the \ac{ECDI}.
   
   
   \subsection{Three different regimes}
@@ -101,8 +101,10 @@
   Regime {\bf III} corresponds to high values of $\crover$ (higher than 50V), during which $\mobeffsat$, and  $\mobpic$ are roughlty constants, but $\mobeff$ increases slightly.
   Regime {\bf II} is a short transition regime, for $35 < \crover < 50$V.
   
-  The different regimes easier to differentiate when looking at the temporal evolution of the different variables.
-  
+  The different regimes are actually obvious when looking at the temporal evolution of the different variables.
+  \Cref{fig-threeregimes}  presents the temporal evolution of the space average $\ratepic$ for three different
+  values of $\crover$ , corresponding to three different regimes we have identified.
+  In regimes {\bf I} and {\bf III}, $\ratepic$ reaches a steady state after a few microseconds.
 
   \begin{figure}[hbtp]
     \centering
@@ -111,18 +113,15 @@
     \label{fig-threeregimes}
   \end{figure}
   
-  \Cref{fig-threeregimes}  presents the temporal evolution of the space average $\ratepic$ for three different
-  values of $\crover$ , corresponding to three different regimes we have identified.
-  In regimes {\bf I} and {\bf III}, $\ratepic$ reaches a steady state after a few microseconds.
- 
+
   Regime {\bf I}, with low $\crover$, is characterized by a saturation of $\ratepic$ at a value between $\ratecr$ and 1, which leads to a non-monotonic potential profile.
   Regime {\bf III}, for higher $\crover$ , is characterized by a steady state with a SEE rate lower than $\ratecr$.
 
   The transition between these two stable regimes (monotonic and non-monotonic sheath) passes by regime {\b f II}, an oscillating mode between the two stable regimes.
-   As shown in \cref{fig-mob-epsstar}, regime {\bf II} is observed only in a narrow range of $\crover$.
-   The oscillations of regime {\bf II} are shown in \cref{fig-threeregimes} up to $10\mus$ but have been observed for more than $40\mus$.
-   Note that regimes {\bf I} and {\bf III} in \cref{fig-threeregimes} are obtained for $\crover = 38$~V and $\crover = 50$~V respectively, i.e. near the boundary of the unstable window (see \cref{fig-mob-epsstar}).
-   Consequently, we observe a few oscillations before the steady-state is reached, as these cases are close to the bifurcation.
+ As shown in \cref{fig-mob-epsstar}, regime {\bf II} is observed only in a narrow range of $\crover$.
+ The oscillations of regime {\bf II} are shown in \cref{fig-threeregimes} up to $10\mus$ but have been observed for more than $40\mus$.
+ Note that regimes {\bf I} and {\bf III} in \cref{fig-threeregimes} are obtained for $\crover = 38$~V and $\crover = 50$~V respectively, i.e. near the boundary of the unstable window (see \cref{fig-mob-epsstar}).
+ Consequently, we observe a few oscillations before the steady-state is reached, as these cases are close to the bifurcation.
    
    
    The physical origin of the bifurcation can bee seen with the help of \cref{fig-dphivsTe}, which shows the evolution of the potential drop to the wall as a function of the electron temperature.
@@ -146,14 +145,14 @@
    This corresponds to regime {\bf III}.
    However, the $\dphi$ reaches a maximum, after which it drops sharply to zero and below.
    
-   When the potential passes the maximum, the electrons are not screen by the sheath any more.
+   When the potential passes the maximum, the electrons are not screened by the sheath any more.
    Hence, the electrons reach the wall with a higher energy, resulting in a higher electron emission from the wall, hence a smaller potential drop.
-   The sheath is unstable, and quickly attain a \ac{SCL} \citep{raitses2005}.
+   The sheath is unstable, and quickly attain a \ac{SCL} regime \citep{raitses2005}.
    
    In this regime, the sheath is not monotonic, and the model of \vref{eq-sheathhobbs} is no more value, and the potential drop tends toward $\dphi \simeq \Te$ \citep{hobbs1967,goebel} \footnote{see \vref{sec-sheath} for more details}, showed in \cref{fig-dphivsTe}.
    This corresponds to regime {\bf I}.
    
-   During regime {\bf I}, the electron power losses to the wall are very high, and they can exceed the gains.
+   However, during regime {\bf I}, the electron power losses to the wall are very high, and they can exceed the gains.
    Hence, the electron temperature decreases.
    If $\Te$ decreases too much, the sheath can come back to the previous regime {\bf III}.
    The oscillations between regime {\bf I} and {\bf III} defines regimes {\bf II}.
@@ -167,7 +166,7 @@
    \end{enumerate}
    The first point is confronted in the next section. 
    We can see that the mean electron temperature in the simulation do not evolves a lot with the electron emission for $\rate < 0.8$, correlating to  $\crover > 50$~V.  
-   The second point will be studied in section/chapter {\bf REF}.
+   The second point will be studied in \cref{ch-3}
    
    
   

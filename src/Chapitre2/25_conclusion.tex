@@ -5,8 +5,8 @@
   
   Using the \ac{PIC} simulation code introduced in \vref{ch-1}, we studied the effects of the dielectric walls on the discharge, and more precisely the effects on the electron cross-field mobility.
   
-  To begin with, a \emph{canonical} case, with metallic walls were defined.
-  The metallic walls correspond to grounded, and non-emissive walls.
+  To begin with, a \emph{canonical} case, with metallic walls was defined and studied.
+  The metallic walls correspond to grounded and non-emissive walls.
   For this reference case, we observed that the convection model used allow us to obtain a steady state.
   We observed an enhanced electron transport transverse to the magnetic field lines, because of the instability.
   
@@ -20,7 +20,10 @@
   We observed that the modified boundary condition did not modify significantly the discharge and the axial electron mobility.
   We saw that the boundary condition used results in a radial electric field $E_r$ of the same order of magnitude than the Neumann boundary condition of \vref{eq-neuman}.
   However, the spatio-temporal evolution are not similar.
-  As the dielectric model used here do not increase significantly the computational time, we recommend to use it instead of the Neumann boundary condition, that do not reproduce the same near-wall behaviour.
+  
+  More importantly, when the electron emission is modeled as when, the observed behaviour differs significantly from the Neumann condition.
+  This leads to differences in the electron emission rate.
+  As the dielectric model used here do not increase significantly the computational time, we recommend to use it instead of the Neumann boundary condition, that do not reproduce the same plasma-wall interaction.
   
   
   \subsubsection*{Electron induce electron emission}
@@ -33,7 +36,7 @@
   Consequently, the overall electron crossfield mobility is almost constant in our simulation.
   
   We observed in our simulation three different regimes depending of the values of $\crover$.
-  For high values of $\crover$, the plasma stabilised with an emission rate $\ratepic < ratecr$.
+  For high values of $\crover$, the plasma stabilised with an emission rate $\ratepic < \ratecr$.
   When $\crover$ is small, we observe a stable configuration with $\ratepic \sim \ratecr$.
   Under these conditions, the sheath in space-charge limited.
   The transition between the two regimes is not stable, but instead passes by a bifurcation regime.

@@ -4,10 +4,13 @@
   \label{sec-params}
   
   The simulation domain corresponds to the exit plan of the thruster.
-  Hence, a neutral pressure $P_n$ of 0.1~mTorr and a plasma density $n_e$ of $\sn{1}{17}$ m$^{3}$ has been chosen.
+  Hence, a neutral pressure $P_n$ of 0.1~mTorr and a plasma density $n_e$ of $\sn{1}{17}$ m$^{3}$ are used.
   The fixed axial electric field and radial magnetic field are $E_z=\sn{2}{4}$ m/s and $B_r=200$ G, respectively.
-  The domain measures $L_r=2$~cm in the radial dimension and $L_{\theta}=0.5$~cm in the azimuthal direction.
-  The axial length is fixed at $L_z=1$~cm.
+  The rectangular \ac{2D} domain measures $L_r=2$~cm in the radial dimension and $L_{\theta}=0.5$~cm in the azimuthal direction.
+  The axial length used for the convection is fixed at $L_z=1$~cm.
+  The results shown in the chapter have been obtained at the beginning of my these, when the study of the convection have not been conducted, yet.
+  Hence, we use the convection model of \citet{lafleur2016a}.
+  However, we validated at posteriori that the convection model used do not modify the results in the conditions used.
   
   The numerical parameters are chosen to respect the stability criterion of \ac{PIC} simulation, and are presented in \Cref{parameters}
   
@@ -37,9 +40,9 @@
           Cell size & $\Delta x = \Delta y = \Delta z $ & $2 \times 10^{-5}$  & [{m}] \\
           Number of particles per cell & $N/NG      $                      & $80$                & [{part/cell}] \\
           \midrule
-          {\bf Simulation result} &  &  &  \\ 
-          Electron temperature & $\Te$                       & $40$                  & [V] \\
+          {\bf Typical quantities} &  &  &  \\ 
           Electron plasma frequency & $\omega_{pe}$               & $3.1 \times 10^{10} $  & [rad/s]\\
+          Iopn plasma frequency & $\omega_{pi}$               & $36 \times 10^{6} $  & [rad/s]\\
           Electron cyclotron frequency & $\omega_{ce}$               &  $3.5\times 10^{9}$  & [rad/s] \\
           Electron Larmor radius & $r_{Le}$                    & 6$\times 10^{-4}$    & [m] \\
           \bottomrule
@@ -47,8 +50,6 @@
     \end{table}
   
   
-  \paragraph{Initialisation\\}
   The simulation is initialized with a uniform density of particles, following a Maxwellian distribution for temperature $\Te_{,0}$ and $\Ti_{,0}$ for the electrons and the ions respectively.
-  
   
   
