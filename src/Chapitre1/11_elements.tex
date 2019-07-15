@@ -25,17 +25,17 @@
     \begin{equation}
       q_f = \frac{n V}{\Npc}
     \end{equation}
-    with $n$ the particle density, $V$ the volume of a cell, and $\Npc$ the number of numerical particle in a cell.
-    A large enough number of particle is needed in order to obtain physical results.
+    with $n$ the particle density, $V$ the volume of a cell, and $\Npc$ the number of numerical particles in a cell.
+    A large enough number of particles is needed in order to obtain physical results.
     Indeed, insufficient number of particles leads to numerical heating \cite{ueda1994}.
-    Usually, a minimum of 100 particles per cell are used, but recent results seem to encourage to use more particle \cite{janhunen2018}.
+    Usually, a minimum of 100 particles per cell are used, but recent results seem to encourage to use more particles \cite{janhunen2018}.
 
   \subsection{Monte Carlo collisions}
 
     In \ac{PIC} simulations, collisions between charged and neutral particles can be modeled by binary collision, but this approach is computationally costly.
     Instead, a Monte-Carlo algorithm can be used \cite{vahedi1995}.
     This approach is very efficient, and allow scattering, momentum transfer and ionization to be consistently modeled.
-    The propellant used in \ac{HET} usually is \ac{Xe}, even if the recent constellation Starlink uses \ac{Kr}.
+    The propellant used in \ac{HET} is \ac{Xe}.
     The cross sections used for modeling \ac{Xe} or other gases collisions are taken from the {\sc LXCat} database project \cite{LXCat_web}.
     Except if otherwise stated, the elastic, inelastic scattering and ionization reactions listed in \cref{tab-reactXe} are used.
     The cross section values are summarised in \cref{fig-xexsection}.
@@ -83,21 +83,21 @@
   \end{figure}
 
   \subsection{Data used}
-    In the \ac{PIC} simulations, there are two kind of data used\string:
+    In \ac{PIC} simulations, there are two kinds of data used\string:
     \begin{itemize}
-      \item Particles (electron, ions, neutral can be followed as well but not in \LPPic)
+      \item Particles (electron, ions, neutrals can be followed as well but not in \LPPic)
       \item Mesh, also named fields (densities, electric and magnetic fields, and so on)
     \end{itemize}
 
     \paragraph{Particles\\}
     For each particles, are known its position $\vec{x}$ and its velocity $\vec{v}$.
-    In most \ac{PIC}-\ac{MCC} simulations, the 3 directions of the velocity vector are followed in order to in order to take into account scattering.
+    In most \ac{PIC}-\ac{MCC} simulations, the 3 directions of the velocity vector are followed in order to take into account scattering.
     It is abbreviated as \acs{3V}.
     
     \paragraph{Fields\\}
     The fields are defined at the center of each cell of the mesh.
     The charge density $\rho$ is computed by depositing the particle on the mesh, using the Cloud-in-cell model \cite{birdsall1991}.
-    The electric field at the position of the particle is also obtain by bi-linear interpolation.
+    The electric field at the position of the particle is also obtained by bi-linear interpolation.
     The mesh dimension defines the dimension of the simulation.
     It is usual to find \acs{1D}\acs{3V} or \acs{2D}\acs{3V} \ac{PIC} simulations, for particles with 3 directions on the velocity but 1 (or 2) dimensions in space.
 
@@ -119,7 +119,7 @@
       \label{fig-leapfrog}
     \end{figure}
     This shift can leads to erroneous diagnostics when computing moments of the particles distribution.
-    For instance, the mean velocity of an ensemble of $N$ particle at the instant $t$ is computed as\string:
+    For instance, the mean velocity of an ensemble of $N$ particles at the instant $t$ is computed as\string:
     \begin{equation} \label{eq-meanv}
       \mean{\vect{v}}^t = \frac{1}{N} \sum_i^N \lp \vect{v_i}^t + \frac{q}{m} \vect{E_i} \frac{\dt}{2} \rp.
     \end{equation}
@@ -132,8 +132,8 @@
 
     \paragraph{Magnetized particles}
     For magnetized particles, we use a modification of the leapfrog algorithm proposed by Boris \cite{boris1970}.
-    It correspond to an operator splitting between the electrostatic acceleration and the magnetic rotation.
-    This splitting is describe below\string:
+    It corresponds to an operator splitting between the electrostatic acceleration and the magnetic rotation.
+    This splitting is described below\string:
 
     \begin{enumerate}
       \item accelerate the particle during $\frac{\dt}{2}$ \string: $\vect{v}^{t-\frac{\dt}{2}} = \vect{v}^{t-1} + \frac{q}{m} \vect{E} \frac{\dt}{2}$
@@ -147,13 +147,15 @@
 
     The Poisson equation \cref{eq-poisson} is an elliptic equation.
     We can directly discretize the differential operator by finite volume on the cell mesh.
-    The formal discretization is develop in \cref{sec-diel}, but a short summary is given here.
+    The formal discretization is developed in \cref{sec-diel}, for the special case of taking into account the presence of dielectric boundaries.
 
     In \ac{1D}, the obtained linear system is tridiagnonal.
-    It can be solve directly using {\sc Thomas} algorithm, which simply stores the Gauss elimination's coefficient.
+    It can be solved directly using {\sc Thomas} algorithm, which simply stores the Gauss elimination's coefficient.
     In \ac{2D}, the linear system is pentadiagonal.
     A direct solver, like the $LU$ decomposition, would require a large amount a memory to store the factorisation matrices.
     On the other hand, as the time step is usually small in \ac{PIC} simulation, we expect the plasma potential $\phi$ not to change rapidly.
-    Hence, an iterative solver using the previous solution as initial guess seems more reasonable fro both the memory storage and the computational time.
+    Hence, an iterative solver using the previous solution as initial guess seems more reasonable from both the memory storage and the computational time.
 
-    In practice, we uses {\sc Hypre}'s multigrid solver to solve Poisson equation in \ac{2D} in \LPPic.
+    In practice, we uses {\sc Hypre}'s multigrid solver to solve Poisson equation in \ac{2D} in \LPPic \citep{falgout2002}.
+    
+    \inlinenote{Le style du discourd est inconsistant... Trop précis, ou pas access.}

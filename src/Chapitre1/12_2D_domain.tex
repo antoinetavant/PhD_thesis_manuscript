@@ -9,6 +9,8 @@ As realistic \ac{3D} simulations are not yet achievable, we choose to simulate t
 The axial location where the electron drift is the highest is close to the exit plan, where the axial electric field is the highest.
 Hence, we choose this location to be simulated.
 
+In this section, we describe the characteristics of the radial-azimuthal simulation.
+
 
 \subsection{Neglecting curvature}
 The \ac{ECDI} features oscillations of short wavelength of the order of the mm.
@@ -43,24 +45,24 @@ A constant and uniform axial electric field $E_0$ is imposed.w
 \end{figure}
 
 \subsection{Particle balance}
-As the axial position simulated is the exit plan, the ionization is too low to balance the particle losses to the wall.
-Instead, the ionization take place upstream, and the particles are convected downstream.
+As the axial position simulated is the exit plane, the ionization is too low to balance the particle losses to the wall.
+Instead, the ionization takes place upstream, and the particles are convected downstream.
 In these conditions, two models can be used,
 \begin{itemize}
   \item having a simulation that dies off, as done in \citet{janhunen2018},
   \item forcing an arbitrary ionization to occur in order to compensate the radial losses \citep{dominguez-vazquez2018}.
 \end{itemize}
-The second option is slightly less realistic, but allow to obtain a steady steady and is supposed not to affect significantly the simulation.
+The second option is slightly less realistic, but allows to obtain a steady state and is supposed not to affect significantly the simulation.
 
 
 \subsection{Axial convection}
 
 Due to the imposed axial electric field, ions and electrons gain energy.
 In the \ac{HET}, the axial convection of the particles balances the energy gain.
-However, the a purely \ac{2D} simulations, the convection is mission, resulting in an ever rising particle energy.
+However, in a purely \ac{2D} simulations, the convection is missing, resulting in an ever rising particle energy.
 This prevents the possibility to reach a steady state regime, as observed in \citet{heron2013,janhunen2018}.
 
-We implement a model of convection initially proposed for a \ac{1D} simulation by \citet{lafleur2016a}, and addapted in \ac{2D} by \citet{croes2017a}.
+We implemented a model of convection initially proposed for a \ac{1D} simulation by \citet{lafleur2016a}, and addapted in \ac{2D} by \citet{croes2017a}.
 The model uses a finite axial length $L_z$.
 When a particle reaches the boundary $z=0$ or $z=L_z$, it is removed from the simulation.
 In order to conserve the particle (and charge) balance, a particle is created at $z=0$ for the ions (that are accelerated toward $z>0$) or at $z=L_z$ for the electrons.
@@ -69,5 +71,5 @@ It has been observed that using a radial position chosen uniformly at random for
 Hence, the radial position of the new particle is the same of the removed particle.
 
 Concerning the azimuthal particle position, it is more difficult to choose between a random position or the same position as the removed particle.
-In \citet{lafleur2016a,croes2017a}, the author chooses to use a random azimuthal position.
-However, as we show it in \cref{sec-reinjectionnoise}, this induces a numerical noise that can be harmful in some cases.
+In \citet{lafleur2016a,croes2017a}, a random azimuthal position was chosen.
+However, as will be discussed in \cref{sec-reinjectionnoise}, this induces a numerical noise that can be harmful in some cases.

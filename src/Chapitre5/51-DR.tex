@@ -3,3 +3,33 @@
 \section{Dispersion relation of the instabilities}
   \label{sec-DR-kinetic}
   
+  
+  The dispersion relations are obtained by coupling the particle dynamics with the electric fields.
+  In the case of the kinetic electrostatic dispersion relation, we couple the Vlasov equation with the Poisson equation.
+  
+  In our \ac{2D} geometrie, we can neglect all of the gradients.
+  Are imposed a fixed axial electric field $\vect{E} = E_0 \vect{e_z}$ and a fixed radial magnetic field $\vect{B} = B_0 \vect{e_r}$
+  The electrons are drifting in the azimuthal direction due to the $E\times B$ drift, hence
+  \[ \vect{u_{e}} = \frac{\vect{E} \times \vect{B}}{\norm{\vect{B}}^2} = \frac{E_0}{B_0}  \vect{e_{\theta}}.    \]
+  The ions are accelerated in the axial direction, $ \vect{u_i} = u_i  \vect{e_z}$.
+  
+  The perturbations are waves of the form \[ \exp \lp \vect{k} \cdot \vect{x} - \omega t  \rp, \]
+  with $\vect{x}$ the position vector, the oscillation wave vector $\vect{k}$ is real but its frequency $\omega = \omega_r + i \gamma$ can be complex, where $\gamma$ is the growth rate of the oscillations. 
+  
+  \vspace{1em}
+  The dispersion relation has been studied by \citet{ducrocq2006} in the case of cold ions and Maxwellian electrons in a \ac{2D} geometry.
+  A numerical algorithm has been proposed by \citet{cavalier2013} and compared to experimental measurements.
+  In \citet{lafleur2016}, the authors added the ion drift velocity to the dispersion relation.
+  
+  The \ac{ECDI} dispersion relation obtained presents resonances at the cyclotron frequencies, which broadens when $k_r$ in increased.
+  The limit when $k_r$ tends to large values is similar to an \ac{IAW}.
+  This limit is usually used.
+  
+  Recently, \ac{2D} \ac{PIC} simulation on a large domain observed radial structures in the oscillations \citep{janhunen2018,hara2019a}.
+  
+  \citet{lafleur2018} got read of the Maxwellian electron hypothesis by using directly the electron distribution function measured in the \ac{PIC} simulations in the \ac{IAW} dispersion relation.
+  He showed that the frequency of the oscillation is almost unperturbed, but the growth rate is significantly reduced, even when the ions were still supposed Maxwellian.
+  
+  Here, we propose to continue the investigation by solving the dispersion relation numerically with the electron and ion distribution function for both the \ac{IAW} and the \ac{ECDI}.
+  
+  

@@ -3,12 +3,12 @@
 \section{Dielectrics boundary condition}
   \label{sec-diel}
 
-  \Vref{fig-2dschemat} showed the simulation of the radial-azimuthal domain without dielectric wall, but instead grounded electron.
-  \Cref{fig-2D} illustrate the configuration in the radial-azimuthal plan highlighting the more realistic radial boundary conditions.
+  \Cref{fig-2dschemat} shows the simulation of the radial-azimuthal domain with metallic grounded walls.
+  \Cref{fig-2D} illustrates the configuration in the radial-azimuthal planehighlighting the more realistic radial boundary conditions.
   The plasma is bounded in the radial direction by dielectric layers isolating the magnetic circuit.
   The magnetic circuit can be considered electrically grounded.
 
-  The particles are absorbs when touching the dielectric wall, and we suppose an infinite residence time.
+  The particles are absorbed when touching the dielectric wall, and we suppose an infinite residence time.
   Hence, we obtain a surface charge $\sigma$ at a time $t$ with
   \begin{equation} \label{eq-sigmaintegrate}
     \sigma(t) = e \int_0^t (J_i - J_e) dt
@@ -23,7 +23,7 @@
   \end{figure}
 
 
-  A common approach is to suppose that the electric field inside the dielectric is zero.
+  A common approach is to suppose that the electric field inside the dielectric is zero. {\bf REFERENCE}
   Using Gauss theorem, we obtain a Neumann boundary condition at the plasma-wall interface for the potential
   \begin{equation} \label{eq-gauss}
     \norm{\partial_r \phi} = \frac{\norm{\sigma}}{\epsilon_0}
@@ -32,7 +32,7 @@
   However, the electric field in a dielectric material is not zero, but depends on the global system.
   Hence, in order to model correctly the dielectric wall of the \ac{HET}, we choose to include the whole dielectric layers inside of the simulation domain.
 
-  In this section, we derive the discretization of the Poisson equation with non-uniform permittivity in the \ac{2D} radial azimuthal plan using the finite volume approach.
+  In this section, we derive the discretization of the Poisson equation with non-uniform permittivity in the \ac{2D} radial azimuthal plane using the finite volume approach.
 
 
   \subsection{Non-uniform mesh}
@@ -59,7 +59,7 @@
   \Cref{fig-decompo1} shows the Cartesian decomposition of the \ac{2D} domain.
   The cell $(i,j)$ has four direct neighbours\string:
   \begin{itemize}
-    \item the est $E$ in $(i+1,j)$
+    \item the east $E$ in $(i+1,j)$
     \item the west $W$ in $(i-1, j)$
     \item the north $N$ in $(i, j+1)$
     \item the south $S$ in $(i, j-1)$
@@ -70,7 +70,7 @@
   The boundaries are noted $S^s_{i,j}$ with $s=E,W,N$ or $S$.
   We can see that $S^W_{i,j}=S^E_{i-1,j}$, and the same goes for the other borders.
   We note $\C = S^E_{i,j} \cup S^W_{i,j} \cup S^N_{i,j} \cup S^S_{i,j}$ the cell surface boundary.
-  The center of the cell is located in $i,j$ and the borders are located in $i\pm 1/2$ in the Est-West direction and $j\pm 1/2$ in the North-Sourth direction.
+  The center of the cell is located in $i,j$ and the borders are located in $i\pm 1/2$ in the East-West direction and $j\pm 1/2$ in the North-Sourth direction.
   \begin{figure}[hbt]
     \centering
     \includegraphics[width=\defaultwidth]{discrect1.pdf}
@@ -83,7 +83,7 @@
 
     We start by positioning the plasma-dielectric interface on the surface between two cells.
     This means that the permittivity $\epsilon = \epsilon_0 \epsr$ is  constant over a cell.
-    In order to discretize the Poisson equation, we integrate \vref{eq-poissondiel} over the cell volume
+    In order to discretize the Poisson equation, we integrate \cref{eq-poissondiel} over the cell volume
 
     \begin{equation}
     \int_{\V} - \grad \cdot (\epsilon \grad \phi) dv= \int_{\V} \rho dv.
@@ -92,7 +92,7 @@
     \begin{equation}
     \oint_{\C} ( - \epsilon \grad \phi) \cdot \vect{n} dS = Q_{tot} =  \V \bar{\rho},
     \end{equation}
-    with $\vect{n}$ la normal vector directed outward, $Q_{tot}$ is the total charge of the cell and $\bar{\rho}$ is the mean value of $\rho$ in the cell.
+    with $\vect{n}$ the normal vector directed outward, $Q_{tot}$ is the total charge of the cell and $\bar{\rho}$ is the mean value of $\rho$ in the cell.
     We can decompose the integration over the cell boundary with the four surfaces $S^s_{i,j}$ as
     \begin{equation}
       \label{eq-poissonsum}
@@ -102,7 +102,7 @@
 
 
     \paragraph*{Electric flux \\}
-    Let us define the electric flux through the Est border  $\vect{D}^E_{i,j}$.
+    Let us define the electric flux through the East border  $\vect{D}^E_{i,j}$.
     We suppose there is no surface charges on $S^E$.
     We can hence write the electric flux as
     \begin{align} \label{eq-flux1}
@@ -149,8 +149,8 @@
     \end{center}
 
     as well as $S^E_{i,j} = S^W_{i,j} =d_id_z, S^N_{i,j} = S^S_{i,j}= d_jd_z$ et $\V = d_jd_id_z$.
-    We observe that the evolution of the vacuum permittivity and the cell size affects the coefficients to be used, but the system stays symmetric.
-
+    We observe that the evolution of the relative permittivity and the cell size affects the coefficients to be used, but the system stays symmetric.
+    \inlinenote{Introduce what is symmetric system}
 
     \subsection{Including surfaces charges}
     Let's now considerer the presence of surface charges on the surface $S^E_{i,j}$.
@@ -184,9 +184,9 @@
 
 
   \subsection{Verifications}
-    We verify the discretization by modeling a capacitor.
-    The relative permittivity of the dielectric inside the capacitor is set to $\epsr = 8$, and a surface charge of  $\sigma = 8$~nC.cm$^{-2}$ is imposed on one side, and $-8$~nC.cm$^{-2}$ on the other side.
-    The expected electric field in the capacitor using the infinite plans approximation is $E = \sigma/(\epsilon_0\epsr) = 1.15$~kV.mm$^{-1}$.
+    We verify the discretization by modeling a \ac{1D} capacitor.
+    The relative permittivity of the dielectric inside the capacitor (from $x=0.4$ to $0.6$) is set to $\epsr = 8$, and a surface charge of  $\sigma = 8$~nC.cm$^{-2}$ is imposed on one side, and $-8$~nC.cm$^{-2}$ on the other side.
+    The expected electric field in the capacitor using the infinite plane approximation is $E = \sigma/(\epsilon_0\epsr) = 1.15$~kV.mm$^{-1}$.
 
     \Cref{fig-surface} shows the electric field computed using the obtained decomposition.
     We see that we obtain the expected value for the electric field.
@@ -201,14 +201,14 @@
 
   \subsection{Interface at the cell centre}
     In the previous section, we supposed that the plasma-dielectric dielectric boundary was at the interface between the cells.
-    However, this means that the electric field at the interface is ill-defined.
-    Moreover, the Dirichlet condition is better defined at the cell center.
+    However, this means that the electric field close to the interface is unknown, as it is defined at the cell center.
+    Moreover, the Dirichlet condition for the potential is better defined at the cell center, and for sake of simplicity, changing the boundary conditions should not change the particle domain.
     Hence, we chose to position the plasma-wall interface at the center of the cell.
     This means that the permittivity is not constant over a cell.
 
-    Because the wall boundary are only in the radial directions, we considerer only an interface in the North-South direction.
+    Because the wall boundaries are only in the radial directions, we consider only an interface in the North-South direction.
     \Cref{fig-decompo2} shows the domain decomposition.
-    The decomposition is the same as previously, except for the permittivity that can have two different values\string: one in the North half-plan ${\epsr}_{, i,j}^n$ and another in the South half plan ${\epsr}_{, i,j}^s$.
+    The decomposition is the same as previously, except for the permittivity that can have two different values\string: one in the North half-plane${\epsr}_{, i,j}^n$ and another in the South half plane${\epsr}_{, i,j}^s$.
 
     \begin{figure}[hbt]
       \centering
@@ -217,9 +217,7 @@
       \label{fig-decompo2}
     \end{figure}
 
-    The discretisation of the Poisson \cref{eq-poissonsum} is follows the same path as previously.
-
-    Except that the electric flux in equation in not constant any more, so that \cref{eq-poissonsum} becomes
+    The discretisation of the Poisson \cref{eq-poissonsum} is follows the same path as previously,except that the electric flux in equation in not constant any more, so that \cref{eq-poissonsum} becomes
     \begin{equation}
     \oint_{\C} (-\epsilon \grad \phi) \cdot \vect{n} dS = \sum_{k\in(E,W,N,S)} S^k_{i,j} <\vect{D}^k_{i,j} \cdot \vect{n}>.
     \end{equation}
@@ -230,8 +228,8 @@
      &= \frac{-1}{2} (\epsilon_{i,j}^N + \epsilon_{i,j}^S) \frac{\phi_{i+1/2,j} - \phi_{i,j}}{d_i/2}
      \label{eq-flux}
     \end{align}
-    so that in the Est-West direction, the flux behave as if the cell permittivity is the mean of the North and South half plan $\epsilon_{i,j} = \frac{1}{2} (\epsilon_{i,j}^N + \epsilon_{i,j}^S)$.
-    Hence, the rest of the computation are similar.
+    so that in the Est-West direction, the flux behave as if the cell permittivity is the mean of the North and South half plane$\epsilon_{i,j} = \frac{1}{2} (\epsilon_{i,j}^N + \epsilon_{i,j}^S)$.
+    Hence, the rest of the computation is similar.
     For the boundary North and South, the permittivity is constant, hence there is no modification.
     Consequently, we obtain the discretization
     \begin{equation}
@@ -251,7 +249,7 @@
 
     As well as $S^E_{i,j} = S^W_{i,j} =d_id_z, S^N_{i,j} = S^S_{i,j}= d_jd_z$ et $\V = d_jd_id_z$.
     Here, the system is no more symmetric.
-    However, we can suppose that the only permittivity jump appends at the cell center, so that  $\epsilon_{i,j}^S = \epsilon_{i,j-1}^N$.
+    However, we can suppose that the only permittivity jump happens at the cell center, so that  $\epsilon_{i,j}^S = \epsilon_{i,j-1}^N$.
     Hence, $Q^N_{i,j} = 2\frac{\epsilon_{i,j}^N}{ d_{j+1} + d_{j}}$ and the system is symmetric.
 
   \subsection{Surface charges for centred interface}
@@ -269,3 +267,10 @@
     The discretization obtained for the plasma-wall interface cell-centred is very similar to the one obtained for the interface at the cell interface.
     However, it conserves the particle domain when the dielectric layer is not modeled and that Dirichlet conditions are applied, and the electric field at the plasma-wall interface is better defined.
     Hence, the cell-centred interface will be used.
+
+    \inlinenote{Ajouter validation de la resolution}
+  \subsection{Electric field computation}
+  
+  \subsection{Numerical resolution the Poisson equation}
+  
+  

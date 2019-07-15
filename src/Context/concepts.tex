@@ -1,11 +1,14 @@
 % !TEX root=/home/tavant/these/manuscript/src/manuscript.tex
 
-
-\chapter*{Concepts and preliminaries}
+\let\oldleftmark=\leftmark
+\let\oldrightmark=\rightmark
+\newcommand\chaptertitle{ Concepts and preliminaries }
+\chapter*{\chaptertitle}
 \label{ch-concepts}
 % \addcontentsline{toc}{chapter}{Concepts and preliminaries}
-\addstarredchapter{Concepts and preliminaries}
-
+\addstarredchapter{\chaptertitle}
+\renewcommand\leftmark{\expandafter\MakeUppercase{\chaptertitle}}
+\renewcommand\rightmark{\expandafter\MakeUppercase{\chaptertitle}}
 % \epigraph{The Earth is the cradle of humanity, but mankind cannot stay in the cradle forever.}{Konstantin Tsiolkovsky}
 % 
 % 

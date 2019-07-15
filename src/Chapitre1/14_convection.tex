@@ -3,7 +3,7 @@
 \section{Axial Convection model}
   \label{sec-reinjectionnoise}
 
-  As introduce in the previous section, the \ac{2D} radial-azimuthal simulation do not model a priori the axial convection of the particles.
+  As introduced in the previous section, the \ac{2D} radial-azimuthal simulation does not model a priori the axial convection of the particles.
 
   \subsection{Lafleur's model of convection}
 
@@ -30,7 +30,7 @@
     \begin{figure}[hbtp]
       \centering
       \includegraphics[width=\defaultwidth]{Fake_1d_2}
-      \caption{Schematic representation of Trevor's convection model \citep{lafleur2016a}. The red particle is removed of the simulation, and the green particle is created. In this illustration, the particle is an ion, as the reinjection is at $z=0$. }
+      \caption{Schematic representation of Lafleur's convection model \citep{lafleur2016a}. The red particle is removed of the simulation, and the green particle is created. In this illustration, the particle is an ion, and the reinjection is at $z=0$. }
       \label{fig-Fake_1d_1}
     \end{figure}
 
@@ -58,7 +58,7 @@
     \begin{figure}[hbtp]
       \centering
       \includegraphics[width=\defaultwidth]{energy}
-      \caption{Time evolution of the electron mean energy when the convection is not modeled ($L_z \rightarrow \infty$) and with Trevor's convection model used, $L_z = 1$ cm. Adapted from \citet{croes2017}.}
+      \caption{Time evolution of the electron mean energy when the convection is not modeled ($L_z \rightarrow \infty$) and with Lafleur's convection model used, $L_z = 1$ cm. Adapted from \citet{croes2017}.}
       \label{fig-energy_convection}
     \end{figure}
 
@@ -73,18 +73,17 @@
 
     On the first row (\cref{fig-convection_numerical}.{\bf a} and {\bf b}), the length of the periodic azimuthal direction is $L_{\theta}=0.5$~cm.
     \cref{fig-convection_numerical}.{\bf a} corresponds to the case without axial convection.
-    We clearly see that the \ac{ECDI} rises and do not saturate.
+    We clearly see that the \ac{ECDI} rises and does not saturate.
     The wavelength is short, of the order of $\lambda = 1.5$~mm.
     \nomenclature[Q]{\ensuremath{ \lambda}}{ Wave length}
     \cref{fig-convection_numerical}.{\bf b} corresponds to the same case as \cref{fig-convection_numerical}.{\bf a} but this time with the axial convection modeled.
     We observe this time a saturation of the oscillation's amplitude, and the wavelength is close to $\lambda \simeq 1.5$~mm.
 
     On the second row (\cref{fig-convection_numerical}.{\bf c} and {\bf d}), the length of the periodic azimuthal direction is $L_{\theta}=1$~cm.
-    \cref{fig-convection_numerical}.{\bf c} corresponds to the case without axial convection, and \cref{fig-convection_numerical}.{\bf b} corresponds to the same case but this time with the axial convection modeled.
+    \cref{fig-convection_numerical}.{\bf c} corresponds to the case without axial convection, and \cref{fig-convection_numerical}.{\bf b} corresponds to the same case but with the axial convection modeled.
     In \cref{fig-convection_numerical}.{\bf c}, we can see that increasing the azimuthal length did not affect the \ac{ECDI}, as expected.
     However, in  \cref{fig-convection_numerical}.{\bf d}, the instability is clearly affected.
-    A single oscillation is observe, corresponding to $\lambda=10$~mm.
-    They are most certainly unphysical.
+    A single oscillation is observed, corresponding to $\lambda=10$~mm, which seems almost certainly unphysical.
 
     \begin{figure}[hbtp]
       \centering
@@ -106,29 +105,28 @@
     The author investigated the values of the azimuthal length which presented physical and unphysical results
     for different values of the axial length.
     \Cref{fig-couplesCroes} shows the results obtained (adapted from \citep{croes2017}).
-    We can see that for a given value of the axial length, the azimuthal must be lower that a certain value to present physical results.
+    We can see that for a given value of the axial length, the azimuthal must be less that a certain value to present physical results.
     However, the value of this upper limit depends of the axial length, such that the if the axial length decreases, the upper limit of the azimuthal length decreases as well.
 
     \begin{figure}[hbtp]
       \centering
       \includegraphics[width=\defaultwidth]{2D_couples}
-      \caption{Values of the azimuthal length and the axial length for which the simulation result is physical (similar to \cref{fig-convection_numerical}.{\bf b}) or unphysical  (similar to \cref{fig-convection_numerical}.{\bf d}) \inlinenote{Make this image smaller (smaller font, etc.)}}
+      \caption{Values of the azimuthal length and the axial length for which the simulation result is physical (similar to \cref{fig-convection_numerical}.{\bf b}) or unphysical  (similar to \cref{fig-convection_numerical}.{\bf d}) \inlinenote{Make this image smaller (smaller font, etc.), correct azimuthal}}
       \label{fig-couplesCroes}
     \end{figure}
 
-    No explanation have been proposed, yet.
     In the next section, we develop a theory that could explain the observation, and a new convection model for the simulation is proposed.
 
   \subsection{Numerical noise of Lafleur's convection model}
 
-    Let us consider de Lafleur's convection model in \ac{1D} on the charge density.
+    Let us consider Lafleur's convection model in \ac{1D} on the charge density.
     When computing the charge density on the mesh vertices, the axial position is not taken into account.
     Consequently, the convection process illustrated on \cref{fig-Fake_1d_1} is similar to moving a particle arbitrarily (read randomly).
     Seen by the charge density, this is similar to a Poisson noise, also named shot noise, on the charge density.\footnote{Actually, this noise is the combination of a Poisson noise with a uniform noise, happening twice for every particles convection, once with a positive charge and once with a negative charge.}
 
-    After a certain number of particle removed and created, the Poisson noise is similar to a Gaussian noise, also named thermal noise, following a normal distribution $\N$ .
+    After a certain number of particles removed and created, the Poisson noise is similar to a Gaussian noise, also named thermal noise, following a normal distribution $\N$ . 
     \nomenclature[Q]{\ensuremath{ \N }}{ Normal distribution.}
-    Hence, the charge density becomes \footnote{One can note that the mean of the noise is strictly zero, as the charge density is conserved.}
+    Hence, the charge density becomes \footnote{One can note that the mean of the noise is strictly zero (with probability 1), as the charge density is conserved.}
     \begin{equation} \label{eq-rhonoise}
       \rho = \rho_0 + \N(0, \stdconv),
     \end{equation}
@@ -189,7 +187,7 @@
         {\rm var}(\aziE_{, 1}) &= \stdconv^2 \frac{L_{\theta}}{4}
       \end{align*}
     
-      Hence, increases the azimuthal length increases the amplitude of $\aziE_{, 1}$.
+      Hence, the increase of the azimuthal length increases the amplitude of $\aziE_{, 1}$.
       
     
     We believe that when the amplitude of $\aziE_{, 1}$ is too large, it can trigger an unphysical oscillation.
@@ -197,9 +195,9 @@
     
     \subsection{Noiseless convection model}
       \label{sec-noiselessresults}
-      Have have shown that the convection model induces a noise in the charge density, that produces an azimuthal electric field which amplitudes depends on the azimuthal length.
+      In previous section, we have shown that the convection model induces a noise in the charge density, that produces an azimuthal electric field which amplitudes depends on the azimuthal length.
       
-      We propose here a modified version of Lafleur's convection model in order to remove the noise in the charge density, so that is expected to not present the numerical artefacts see previously.
+      We propose here a modified version of Lafleur's convection model in order to remove the noise in the charge density
       The noiseless convection model follows the same algorithm that before, but the azimuthal position of the particle created is not chosen uniformly as random, but instead the new particle has the same position as the removed particle.
       \Cref{fig-fakez3} shows a schematic illustration of the noiseless convection algorithm applied on a particle.
       
@@ -247,7 +245,7 @@
       
 
 
-      Theses observations have shown that Trevor's convection model induces a noise on the charge density, that do not affect the simulation when the domain size is small, but can rise numerical artefacts when the domain size is larger.
+      Theses observations have shown that Lafleur's convection model induces a noise on the charge density, that do not affect the simulation when the domain size is small, but can rise numerical artefacts when the domain size is larger.
       We have seen that the minor modification on the model do not affect the simulations results on a small domain, but allow us to use larger simulation domain without any numerical artefacts.
       
       Unfortunately, the new model has been developed during the last year of my theses.
@@ -255,6 +253,7 @@
       As seen in \cref{fig-oldeconv_newconv}, on a small geometry the results are not affected, hence there is no need to verify all of the simulations obtained.
       On the other hand, in order to study the instability, it is useful to have a longer azimuthal, in order to obtain a more resolved frequency spectra.
       Hence, the modified convection model  used in this case.
+      \inlinenote{Give precise sections where it is used}
           
     \subsection{Effects on a \ac{2D} simulation domain}
       

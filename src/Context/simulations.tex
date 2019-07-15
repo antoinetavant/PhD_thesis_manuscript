@@ -5,8 +5,8 @@
 \label{sec-simulations}
 \addcontentsline{toc}{section}{Plasma models and simulations}
 
-The plasma is the state of mater were the internal energy is high enough to ionize the atoms.
-Depending of the pressure, energy, and time scale, different models are better to describe the plasma.
+The plasma is the state of matter in which atoms are ionized.
+Depending on the pressure, energy, and time scale, different models are more adapted to describe the plasma.
 There are mainly two distinct models.
 The first is the \emph{kinetic} description of the species of the plasma, via the Boltzmann equation.
 The second uses a \emph{fluid} description of the species, by means of moments.
@@ -21,7 +21,7 @@ The second uses a \emph{fluid} description of the species, by means of moments.
 
 \paragraph{Boltzmann equation \\}
 The Boltzmann equation in \cref{eq-boltzmann} describes the evolution of the particles (atoms, ions and electrons) in the phase space.
-The phase space is the set of all possible position $\vect{x}$ and velocity $\vect{v}$ that can be attained by a particle.
+The phase space is the set of each possible position $\vect{x}$ and velocity $\vect{v}$ that can be attained by a particle.
 The evolutions in the phase space are due to forces, diffusion and collisions.
 
 \begin{equation} \label{eq-boltzmann}
@@ -56,7 +56,7 @@ In order to close the system, one has to make a hypotheses on the higher moment 
 A usual closure is the isothermal hypotheses, that fix the temperature. 
 Hence, the energy conservation equation is not needed.
 Other closures possibles are the adiabatic hypotheses (no heath flux, the \nth{3} moment of $f$), the polytropic law linking the evolution of $n$ with $T$, or the Fourier law for heat diffusion.
-\inlinenote{Should we write the closes as equations ? $q = 0$, $T_e n_e ^{a}=cst$, etc. ?}<
+\inlinenote{Should we write the closes as equations ? $q = 0$, $T_e n_e ^{a}=cst$, etc. ?}
 
 
 \subsection*{Plasma simulation models} \label{subsec-simulations}
@@ -66,12 +66,13 @@ The fluid simulations solve the moments of the distribution function (the densit
 Depending of the conditions, the system of equation can be simplified before resolution.
 In electrodynamic conditions, mainly for space plasmas and fusion, the Maxwell equations are coupled to the fluid equations leading to magnetohydrodynamics (MHD).
 In the case of electrostatic conditions, as it is usual for Low Temperature plasmas, the Poisson equation is coupled to the fluid equations.
-Due to the low mass of the electrons compare to the ions, we can also suppose the quasi-neutrality of the plasma, leading to the drift-diffusion approximation.
+In most of low-temperature plasma, the plasma in quasi-neutral except in small regions as plasma sheaths close to walls.
+It is also common to neglect inertia terms and assume a steady state of momentum equations, leading to the drift-diffusion approximation
 The fluid equations can be solved in \ac{3D}, \ac{2D} or \ac{1D} for space.
 In low dimension model, the effects of the missing dimensions is usually added, for instance in the source terms as done by \citet{barral2003a}.
 
 \vspace{1em}
-However, some phenomena can only be describes via the distribution function.
+However, some phenomena can only be described via the knowledge of the distribution function.
 An example of such phenomena is the particle-wave interaction, as the Landau Damping \citep{landau1945,malmberg1964} or the plasma-beam instability \citep{filippychev1990}, for which the gradient of the distribution function in the velocity space is important.
 In contrast to the fluid descriptions, \emph{kinetic} simulations solve for the distribution function for both position and velocities.
 Two approaches are usually used for kinetic simulations\string:
