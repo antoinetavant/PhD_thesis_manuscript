@@ -13,7 +13,7 @@
   \[ \vect{u_{e}} = \frac{\vect{E} \times \vect{B}}{\norm{\vect{B}}^2} = \frac{E_0}{B_0}  \vect{e_{\theta}}.    \]
   The ions are accelerated in the axial direction, $ \vect{u_i} = u_i  \vect{e_z}$.
   
-  The perturbations are waves of the form \[ \exp \lp \vect{k} \cdot \vect{x} - \omega t  \rp, \]
+  The perturbations are waves of the form \[ \exp \lp i \vect{k} \cdot \vect{x} - i \omega t  \rp, \]
   with $\vect{x}$ the position vector, the oscillation wave vector $\vect{k}$ is real but its frequency $\omega = \omega_r + i \gamma$ can be complex, where $\gamma$ is the growth rate of the oscillations. 
   
   \vspace{1em}
@@ -32,4 +32,66 @@
   
   Here, we propose to continue the investigation by solving the dispersion relation numerically with the electron and ion distribution function for both the \ac{IAW} and the \ac{ECDI}.
   
+  
+  \subsection{General dispersion relation}
+  \label{sec-geneDR}
+  
+  We follow the development presented in \citet{ducrocq2006,cavalier2013,lafleur2016}.
+  The plasma dielectric function is defined as
+  \begin{equation} \label{eq-de}
+    \hat\epsilon(\vect{k},\omega) = 1 - \sum_s \chi_s(\vect{k},\omega)
+  \end{equation}
+  
+  where $\chi_s(\vect{k}, \omega)$ is the susceptibility of the species $s$.
+  It is obtained by coupling the Poisson equation with the particles description.
+  The dispersion relation is obtained by setting $  \hat\epsilon(\vect{k},\omega) =0$
+  
+  
+  For the unmagnetized ions, supposing a Maxwellian distribution, the susceptibility is
+  \begin{equation} \label{eq-}
+    \chi_i(\vect{k},\omega) = \frac{\opi^2}{k^2 v^2_{th, i}} Z'\lp \frac{\omega - \vect{k} \cdot \vect{u_{i}}}{k v_{th, i}}  \rp
+  \end{equation}
+  where $\opi$ the ion plasma pulsation, $k=\norm{\vect{k}}$ and $\vect{u_i}$ is the mean velocity of the ions.
+  The function $Z'$ is the derivative of the Fried and Conte function \citep{fried1961}
+  \begin{equation} \label{eq-friedandConte}
+    Z(\eta) = \frac{1}{\sqrt{\pi}} \int_{-\infty}^{\infty} \frac{\exp{(-t^2)}}{t - \eta} dt.
+  \end{equation}
+  We use here the Fried and Conte function because of the Maxwellian hypothesis.
+  In \citet{xiehua-sheng2013}, the author proposes a numerical calculation of the susceptibility for a general distribution function
+  \begin{equation} \label{eq-general}
+    Z(\eta, f) = \int_{-\infty}^{\infty} \frac{f(t)}{t - \eta} dt,
+  \end{equation}
+  with $f$ the velocity distribution function to consider.
+  For sake of brevity, the generalized dispersion function $Z(\eta,f)$ is noted $Z(\eta)$, and the Fried and Conte function is noted $Z_M(\eta)$.
+  The derivative of $Z$ is
+  \begin{equation} \label{eq-derivatives}
+    Z'(\eta) = \int_{-\infty}^{\infty} \frac{\partial f(t) / \partial t}{t - \eta} dt,
+  \end{equation}
+  
+  \vspace{1em}
+  A general expression for the plasma dielectric function can be obtained for magnetized electrons by making use of the method of characteristics and is given by
+  \begin{equation} \label{eq-drECDI}
+    \begin{split}
+    \hat\epsilon(\vect{k},\omega) =& 1 - \\
+     &\frac{\opi^2}{k^2 v^2_{th, i}} Z'\lp \frac{\omega - \vect{k} \cdot \vect{u_{i}}}{k v_{th, i}}  \rp + \\
+     & \frac{1}{k^2 \lde^2} \lb 1 + \lp  \frac{\omega - \vect{k} \cdot \vect{u_{e}}}{k v_{th, e}} \rp \sum_{n=-\infty}^{\infty} e^{- \beta} I_n(\beta) Z\lp  \frac{\omega - \vect{k} \cdot \vect{u_{e} - n \oce}}{k_{r} v_{th, e}} \rp  \rb,
+  \end{split}
+  \end{equation}
+  where $I_n$ are the modified Bessel functions of the first kind, and 
+  \begin{equation} \label{eq-beta}
+    \beta = \frac{(k_{\theta}^2 + k_z^2) b^2_{th, e}}{ \oce^2}
+  \end{equation}
+  
+  \Cref{eq-drECDI} is the dispersion relation for drifting magnetised electrons and unmagnetized ions.
+  It will be used to study the \acf{ECDI}.
+  
+
+
+  \subsection{Modified Ion Accoustic Wave}
+  \label{sucsec-IAW}
+  \citet{lafleur2016} shows that after some assumptions -- mostly a drifting Maxwellian distributions and a small electron drift velocity compared to thermal speed -- \cref{eq-drECDI} can be solved to obtain
+  \begin{equation} \label{eq-MIAW}
+    \omega = \omega_r + i \gamma = \vect{k} \cdot \vect{u_{i}} \pm \frac{k c_s}{\sqrt{1 + k^2 \lde^2}} \pm i \sqrt{\frac{\pi m_e}{8 m_i}} \frac{\vect{k} \cdot \vect{u_{e}}}{( 1 + k^2 \lde^2)^{3/2}}.
+  \end{equation}
+  The above equation represent the modified ion-acoustic dispersion relation.
   
