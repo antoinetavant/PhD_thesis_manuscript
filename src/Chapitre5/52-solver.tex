@@ -3,4 +3,87 @@
 \section{Solving the kinetic \ac{DR}}
   \label{sec-DR-solver}
   
+  In order to solve the dispersion relation $\hat\epsilon(\vect{k}, \omega) = 0$ of \cref{eq-drECDI}, we solve for every $\vect{k}$ the complex value of $\omega$ that minimise $\norm{\hat\epsilon}$.
+  Hence, we first need to evaluate $\hat\epsilon(\vect{k}, \omega)$ for given arguments $\vect{k}, \omega$.
+  Then, we can find the root.
   
+  \subsection{Numerical determination of $\hat\epsilon$} \label{subsec-numepsilon}
+  
+  The numerical computation of $\norm{\hat\epsilon}$ is done using the method of \citet{xiehua-sheng2013} for computing $\tilde{Z}$ the numerical approximation of $Z$. 
+  It uses the fact that $Z$ is an Hilbert transform of the distribution function, and that the Hilbert transform can be changed to a Fourier Transform, weighed by a well chosen basis functions, and so the \ac{FFT} algorithm can be used \citep{weideman1995}.
+  An interesting point is that the evaluation of $\tilde{Z}(\eta)$ is done by a polynomial, which coefficients depends on the distribution function $f$ and need to be determined only once.
+  Hence, the algorithm is relatively fast.
+  
+  \begin{figure}[hbtp]
+    \centering
+    \includegraphics[width=0.7\textwidth]{Validation_numericalZ.pdf}
+    \caption{Comparison of the numerical evaluation of $\tilde{Z}(\eta)$ for a Maxwellian distribution function with the Fried and Conte function (from the \texttt{plasmapy} python package).  }
+    \label{fig-numZ}
+  \end{figure}
+  \cref{fig-numZ} shows the comparison of the numerical evaluation of $\tilde{Z}(\eta)$ for a Maxwellian distribution function with the Fried and Conte function (from the `plasmapy` python package) for different values of the imaginary part of $\eta$.
+  We can see that for $\Im(\eta)$ positive, null or slightly negative, the two functions gives exactly the same results.
+  However, for larger negative values of $\Im(\eta)$, the two functions gives different results.
+  
+  This discrepancy between $Z$ and $\tilde{Z}$ for large negative imaginary argument is certainly do to the fact of the analytic expansion of $Z$ to the imaginary part require the evaluation of the distribution function in the complex plane \citet{xiehua-sheng2013,weideman1995}.
+  However, the discrete velocity distribution function measured in the \ac{PIC} simulation cannot be properly evaluated for complex velocities.
+  On the other hand, we are only interested in instabilities, with positive growth rate.
+  Hence, the discrepancy observed should not affect the conclusions of the study.
+  
+  \Cref{fig-numZbis} presents the comparison of the calculation of $\hat\epsilon$ from \cref{eq-drECDI} for a Maxwellian distribution function with (left) the Fried and Conte function (from the `plasmapy` python package) and (right) the numerical $\tilde{Z}$.
+  We can see that the root with the greater imaginary part, located close to (0.2, 0), is the same in both cases, but that other roots for large negative imaginary part are not similar.
+  But as said previously, theses roots are not our concern, hence the dispersion relation should be well computed using $\tilde{Z}$.
+  
+
+  \begin{figure}[hbtp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Validation_numericalZ_bis.png}
+    \caption{Comparison of the numerical evaluation of $\hat\epsilon$ from \cref{eq-drECDI} for a Maxwellian distribution function with (left) the Fried and Conte function (from the \texttt{plasmapy} python package) and (right) the numerical $\tilde{Z}$, in logarithmic scale.  }
+    \label{fig-numZbis}
+  \end{figure}
+  
+  \subsection{Finding the root of $\hat\epsilon$}
+  Now that we can compute $\hat\epsilon$, we can solve the dispersion relation.
+  In order to find the root of $\hat\epsilon$, two methods have been tested.
+  
+  
+  \paragraph{Exact root finding algorithm\\}
+    The first approach has the advantage of finding all of the root in a given domain.
+    It uses Cauchy's argument principle in order to find if there is a solution in a domain by integrating over the domain contour
+    \begin{equation} \label{eq-rootnumber}
+      N - P = \frac{1}{2 i \pi} \int_{C} \frac{\hat\epsilon'(\omega)}{\hat\epsilon(\omega)} d\omega
+    \end{equation}
+    where $N$ and $P$ denote the number of roots and poles in the contour $C$.
+    Supposing there is no poles, we either have
+    \begin{enumerate}
+      \item $N=0$, hence no roots are presents in the domain
+      \item $N=1$, exactly one root is present
+      \item $N>1$, more than one root are present
+    \end{enumerate}
+
+    Starting from a large rectangular domain, if $N>1$, we divide the first domain into four sub-domains, and we repeat recursively the algorithm.
+    If $N=1$, we can once again use an integral on the contour to find the root \citep{fortune2001}.
+    
+    \vspace{1em}
+    This algorithm have been implemented in a python package and successfully tested.
+    However, it takes a significant amount of time to obtain the solutions, as $\hat\epsilon$ needs to be evaluated a lot of time during the integrations.
+    Moreover, we have observed that the dispersion relations \cref{eq-drECDI,eq-MIAW} present only one solution with a positive growth rate.
+    This solution, corresponding to the instability, is isolated from the others.
+    Hence, a simpler algorithm, as the Gradient descent, can be used.
+    
+  \paragraph{Fast root finding algorithm\\}
+    A faster root finding algorithm is proposed to solve the relation dispersion by supposing that the most growing wave is the only root over a domain sufficient large.
+    In other words, it is not close to other roots.
+    Hence, we can use an standard minimization method for non-linear equation.
+    Has the analytic expression of the Hessian or the gradient is unknown, we use Nelder-Mead method \citep{mckinnon1998}.
+    We also tried the Conjugate gradient method by approximating the gradient using finite differences. 
+    However, even if this methods converges in fewer steps, the gradient estimation take a significant amount of time.
+    Powell's method \citet{powell1964} has also been implemented, but the Nelder-Mead method present the best performances.
+    
+    The first guess of the iterative Nelder-Mead method is either 
+    \begin{itemize}
+      \item the solution obtained for the previous value of $\vect{k}$
+      \item the solution of the analytic ion acoustic wave dispersion relation
+    \end{itemize}
+    In addition, we can see in \cref{fig-numZbis} that the interesting root is far from the others in the complex plane.
+    Hence, a poor initial guess should not affect significantly the converged results, as long as the step size is reasonable.
+    
