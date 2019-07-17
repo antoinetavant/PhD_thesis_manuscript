@@ -5,60 +5,60 @@
   
   
   \subsection{Distribution function impacts} \label{subsec-DRimpact}
-  Before using the electron and ion distribution functions measured in the \ac{PIC} simulations, we compare the distribution relation for \ac{ECDI} and \ac{IAW} for different analytic distribution function.
-  
-  \paragraph{Ion acoustic wave\\}
-  
-  \Cref{fig-IAW_Maxw} shows the comparison with the relation dispersion \cref{eq-drIAWgene} for cold ions and drifting Maxwellian electrons of temperature $\Te=50\,\volt$ and drift velocity $u_e = \sn{2}{6} \,\meter\per\second$ for which the plasma dispersion function $Z$ is computed analytically (with the \texttt{plasmapy} package) or numerically.
-  The plasma density is $n_e = n_i = \sn{1}{17} \,\per\meter\cubed$.
-  Is also shown the frequency and growth rate obtained the simplified dispersion relation of \cref{eq-MIAW}. 
-  
-  \begin{figure}[hbtp]
-    \centering
-    \includegraphics[width=\defaultwidth]{IAW_Maxw}
-    \caption{\ac{IAW} frequency and growth rate for a Maxwellian distribution function using the Freid and Conte function (label Analytic $Z$), the numerical estimation of $\tilde{Z}$, and the simplified analytic expressions of \cref{eq-MIAW}. The wavevector is supposed in the azimuthal direction }
-    \label{fig-IAW_Maxw}
-  \end{figure}
-  
-  We can see that all results gives the same solution.
-  The growth rates are all overlapping, hence it is difficult to see the differences.
-  The simplified analytic expression returns a slightly different result, but the differences is negligible.
-  The numerically evolution of $\tilde{Z}$ give the same result as analytic evaluation.
-  
-  \Cref{fig-IAW_druv} shows the effect of a Druyvesteyn electron distribution compared to a Maxwellian.
-  We recall that a Druyvesteyn distribution follows the expression
-  \begin{equation} \label{eq-druyv}
-    f_{D}(v) = \exp \lp C1 \frac{\norm{v}^3}{v_{th}^3}  \rp C2,
-  \end{equation}
-  with $C1 \simeq 0.63$ and $C2 \sim 0.84$ two normalizing constants.
-  We can see that there is no much impact of the Druyvesteyn electron velocity distribution function on the electron, except that the growth rate is sightly diminished.
-  
-  \begin{figure}[hbtp]
-    \centering
-    \includegraphics[width=\defaultwidth]{IAW_druv}
-    \caption{\ac{IAW} frequency and growth rate for a Maxwellian distribution function using the Freid and Conte function and a Druyvesteyn distribution evaluated with the numerical estimation of $\tilde{Z}$. The wavevector is supposed in the azimuthal direction }
-    \label{fig-IAW_druv}
-  \end{figure}
-  
-  \paragraph{Electron Cyclotron Drift instability\\}
-  
-    \Cref{fig-ECDI_druv} shows the frequency and the grow rate for the \ac{ECDI}, using defined by \cref{eq-drECDI}, in the same conditions that the \ac{IAW} results, with $k_r \lambda_{De} = 0.1 $.
-    The infinite sum over the cyclotron resonances is stopped at $N_{max} = 20$.
+    Before using the electron and ion distribution functions measured in the \ac{PIC} simulations, we compare the distribution relation for \ac{ECDI} and \ac{IAW} for different analytic distribution function.
     
+    \paragraph{Ion acoustic wave\\}
+    
+    \Cref{fig-IAW_Maxw} shows the comparison with the relation dispersion \cref{eq-drIAWgene} for cold ions and drifting Maxwellian electrons of temperature $\Te=50\,\volt$ and drift velocity $u_e = \sn{2}{6} \,\meter\per\second$ for which the plasma dispersion function $Z$ is computed analytically (with the \texttt{plasmapy} package) or numerically.
+    The plasma density is $n_e = n_i = \sn{1}{17} \,\per\meter\cubed$.
+    Is also shown the frequency and growth rate obtained the simplified dispersion relation of \cref{eq-MIAW}. 
     
     \begin{figure}[hbtp]
-    \centering
-    \includegraphics[width=\defaultwidth]{ECDI_druv}
-    \caption{\ac{ECDI} frequency and growth rate for a Maxwellian distribution function using the Freid and Conte function and a Druyvesteyn distribution evaluated with the numerical estimation of $\tilde{Z}$, the radial wave number is $k_r \lambda_{De} = 0.1 $.}
-    \label{fig-ECDI_druv}
-  \end{figure}
-  
-  We can see in \cref{fig-ECDI_druv} that the cyclotron resonances are present for both distribution functions.
-  But while the growth rate is not much affected, the frequency is reduced for larger azimuthal wave number.
-  
-  For a smaller radial wavenumber, the numerical resolution cashes as the argument in the $Z$ function diverges.
-  However, in the limit $\eta \rightarrow \infty, Z(\eta) \rightarrow  \frac{1}{\eta}$.
-  Hence, still obtain the cyclotron resonances, as shown in \citet{janhunen2018}, Fig. 2.
+      \centering
+      \includegraphics[width=\defaultwidth]{IAW_Maxw}
+      \caption{\ac{IAW} frequency and growth rate for a Maxwellian distribution function using the Freid and Conte function (label Analytic $Z$), the numerical estimation of $\tilde{Z}$, and the simplified analytic expressions of \cref{eq-MIAW}. The wavevector is supposed in the azimuthal direction }
+      \label{fig-IAW_Maxw}
+    \end{figure}
+    
+    We can see that all results gives the same solution.
+    The growth rates are all overlapping, hence it is difficult to see the differences.
+    The simplified analytic expression returns a slightly different result, but the differences is negligible.
+    The numerically evolution of $\tilde{Z}$ give the same result as analytic evaluation.
+    
+    \Cref{fig-IAW_druv} shows the effect of a Druyvesteyn electron distribution compared to a Maxwellian.
+    We recall that a Druyvesteyn distribution follows the expression
+    \begin{equation} \label{eq-druyv}
+      f_{D}(v) = \exp \lp C1 \frac{\norm{v}^3}{v_{th}^3}  \rp C2,
+    \end{equation}
+    with $C1 \simeq 0.63$ and $C2 \sim 0.84$ two normalizing constants.
+    We can see that there is no much impact of the Druyvesteyn electron velocity distribution function on the electron, except that the growth rate is sightly diminished.
+    
+    \begin{figure}[hbtp]
+      \centering
+      \includegraphics[width=\defaultwidth]{IAW_druv}
+      \caption{\ac{IAW} frequency and growth rate for a Maxwellian distribution function using the Freid and Conte function and a Druyvesteyn distribution evaluated with the numerical estimation of $\tilde{Z}$. The wavevector is supposed in the azimuthal direction }
+      \label{fig-IAW_druv}
+    \end{figure}
+    
+    \paragraph{Electron Cyclotron Drift instability\\}
+    
+      \Cref{fig-ECDI_druv} shows the frequency and the grow rate for the \ac{ECDI}, using defined by \cref{eq-drECDI}, in the same conditions that the \ac{IAW} results, with $k_r \lambda_{De} = 0.1 $.
+      The infinite sum over the cyclotron resonances is stopped at $N_{max} = 20$.
+      
+      
+      \begin{figure}[hbtp]
+      \centering
+      \includegraphics[width=\defaultwidth]{ECDI_druv}
+      \caption{\ac{ECDI} frequency and growth rate for a Maxwellian distribution function using the Freid and Conte function and a Druyvesteyn distribution evaluated with the numerical estimation of $\tilde{Z}$, the radial wave number is $k_r \lambda_{De} = 0.1 $.}
+      \label{fig-ECDI_druv}
+    \end{figure}
+    
+    We can see in \cref{fig-ECDI_druv} that the cyclotron resonances are present for both distribution functions.
+    But while the growth rate is not much affected, the frequency is reduced for larger azimuthal wave number.
+    
+    For a smaller radial wavenumber, the numerical resolution cashes as the argument in the $Z$ function diverges.
+    However, in the limit $\eta \rightarrow \infty, Z(\eta) \rightarrow  \frac{1}{\eta}$.
+    Hence, still obtain the cyclotron resonances, as shown in \citet{janhunen2018}, Fig. 2.
 
   \subsection{Distribution function measured} \label{subsec-VDFpic}
   
@@ -90,25 +90,88 @@
   The high energy ion population comes from ion trapping, as we can see that their velocity if of the order of the ion sound speed, which is close tot he wave phase velocity \citet{lafleur2018}.
   
   \vspace{1em}
-  As both electron and ion velocity distribution functions are far from a drifting Maxwellian, we will use both of same in the calculations of the dispersion relation.
+  As both electron and ion velocity distribution functions are far from a drifting Maxwellian, we will study the influence of both distributions in the calculations of the dispersion relation.
   
   
   
-  \subsection{electron cyclotron drift instability} \label{subsec-VDFpic}
+  \subsection{electron cyclotron drift instability} \label{subsec-ECDIPIC}
   
-    \inlinenote{Ici: le debut, la partie linear. Montrer les resonances. Dire que la DR EVDI n'est plus utile après (fig ECDI_PIC_time.pdf)}
+    \inlinenote{Ici: le debut, la partie linear. Montrer les resonances. Dire que la DR EVDI n est plus utile apres (fig ECDI\_PIC\_time.pdf)}
   
   
   
   
   \subsection{Ion acoustic wave} \label{subsec-VDFIAW}
   
+  We have see in the previous \cref{subsec-ECDIPIC} that the \ac{ECDI} do not represent well the non-linear effects on the dispersion relations.
+  Hence, following \citet{janhunen2018,taccogna2019}, we uses the \ac{IAW} dispersion relation.
+  The \ac{IAW} relation can be solved with several hypotheses (see \cref{sec-geneDR} for more details)
+  \begin{enumerate}
+    \item Simplified analytical values,
+    \item Maxwellian electrons, cold ion ($\Ti = 0\,\volt$),
+    \item Maxwellian electrons and ions ($\Ti > 0\,\volt$),
+    \item Non-Maxwellian electrons, Maxwellian ions ($\Ti > 0\,\volt$),
+    \item Non-Maxwellian electrons and ions.
+  \end{enumerate}
   
+  We will use all of this solutions, and compare them to the \ac{PIC} simulation results.
+  We are willing to obtain the temporal evolution of the solution.
+  In practices, we will only follow the evolution of the most growing wave.
+  In order to find the most growing wave, we solve the dispersion relation for different values of $k$.
+  Over all of the solutions obtained, we select the one corresponding to the maximum value of $\gamma$.
+  In practice, we uses 100 values between $k=0.02 \lde$ and $k = 2 \lde$.
+  \Cref{fig-Example_of_DR_IAW} illustrate the protocol used for 3 different cases.
+  We can see the maximum of the growing rate, and it frequency.
   
   \begin{figure}[hbtp]
     \centering
-    \includegraphics[width=0.8\textwidth]{GrowthRate_time_evolution_250_ter.pdf}
+    \includegraphics[width=\defaultwidth]{Example_of_DR_IAW.pdf}
+    \caption{Illustration of the \ac{IAW} dispersion relation obtained at two different time ($t=0$ and $t=1.2\,\micro\second$), using the hypothesis of Maxwellian distribution functions for both electrons and ions. The electron temperature measured in the simulation is always used, but the ion temperature is only used once. The most growing solution is marked with a circle on the growing rate and the frequency.}
+    \label{fig-Example_of_DR_IAW}
+  \end{figure}
+  
+  
+  This calculation is automated for the whole duration of the simulation.
+  The velocity distribution function, when used, are obtained from the \ac{PIC} simulation the same way that in \cref{subsec-VDFpic}.
+  \Cref{fig-time_wave} shows the temporal evolution of the three characteristic of the most growing wave: the growth rate $\gamma$, the azimuthal wavenumber $k$ and the frequency $\omega$.
+  \begin{figure}[hbtp]
+    \centering
+    % \includegraphics[width=\textwidth]{GrowthRate_time_evolution_250_ter.pdf}
+    \includegraphics[width=\textwidth]{GrowthRate_time_evolution_250_again.png}  %inverted ion velocity as a correction, to look like Lefleur... :/
     \caption{Temporal evolution of the growth rate $\gamma$, the azimuthal wavenumber $k$ and the frequency $\omega$ for the most growing wave, obtained with several hypothesis on the dispersion relation. See text for more precisions. }
     \label{fig-time_wave}
   \end{figure}
+  
+  Three different behaviour are observed.
+  First, the solution of the dispersion relation with Maxwellian electrons and cold ions (dashed green line in \cref{fig-time_wave}) presents a solution of $\omega$ and $k$ constant in time, and very close to the analytical values, beeing $k \lde = 1/\sqrt{2}$ and $\omega = \opi/\sqrt{3}$.
+  However, it also presents a constant growth rate.
+  
+  Secondly, we observe that the solutions given with Maxwellian ions of temperature not zero are relatively similar for both the Maxwellian electrons  (dotted red line) and using the \ac{EVDF} measured in the \ac{PIC} simulation (dotted and dashed orange line).
+  In these cases, the growth rate decreases regularly to zero.
+  
+  Interestingly, the periods during which the growth rate is zero (firstly between $t=1\,\micro\second$ and $t=2\,\micro\second$, then around $t=3\,\micro\second$ and so on) correspond precisely to the periods during which the wave energy density decreases in \vref{fig-tempITcrit}.
+  This means that the decrease of the wave amplitude would only be due to the ion temperature, and not its distribution function.
+  
+  However, we not that the value of the ion temperature $\Ti$ is highly affected by the population of ions trapped, as see in \cref{subsec-VDFpic}.
+  Hence, the effect of the trapped particle is indeed present, but only via its impact on the temperature.
+  
+  \vspace{1em}
+  To finish with, we solved the \ac{IAW} dispersion relation without any hypothesis on the velocity distribution function, but with the one measured in the PIC simulations (blue solid line in  \cref{fig-time_wave}).
+  In this case, the beginning ($t < 1 \,\micro\second$) is quite similar to the other results.
+  However, after that ($t > 1 \,\micro\second$) the growth rate never rises above zero, expect very slightly around $t=4\,\micro\second$.
+  
+  This result is non consistent with the observations of \cref{sec-PIC-ECDI}, where we saw that the instability amplitude is modulated over the whole simulation time.
+  It is also in contrast with \citet{lafleur2018}, where the authors obtained a non-zero growth rate.
+  
+  Up to now, there is non apparent explanation.
+  It could be due to an error in the numerical algorithm, both possible on the theory and in the implementation.
+  Concerning the theory, we have see in \cref{sec-DR-solver} that the numerical algorithm to compute the plasma dispersion function $Z$ proposed by \citet{xiehua-sheng2013} cannot give a good result for certain argument values.
+  In addition, the truncation of the number of Fourier bases at $N=64$, which works well with a Maxwellian distribution, could generate a significant error when using distribution function far from a Maxwellian.
+  In our specific case, the ion population is composed of a majority of cold Maxwellian ions and a small number of high energetic trapped ions.
+  It is possible that this kind of distribution function is not well taken into account by the algorithm.
+  
+  Concerning the implementation, we try to test and validate the codes, but the presence of an error is always possible.
+  A common practice to validate a simulation code when no theoretical solution can be used to compare to is the Benchmark \citep{turner2013}.
+  As a dispersion relation solver for general distributions would benefit the whole plasma physics community, developing such a benchmark that would compare the solution of independent implementations of the same algorithm, or not, seems very interesting.
+  
   
