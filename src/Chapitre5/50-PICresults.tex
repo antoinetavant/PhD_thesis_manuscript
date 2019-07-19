@@ -2,18 +2,16 @@
 
 \section{Instability in the \ac{PIC} simulation}
   \label{sec-PIC-ECDI}
-  As briefly mentioned in \cref{ch-1}, the $E \times B$ configuration of the \ac{HET} make azimuthal instabilities to rise.
-  This aspect has been neglected in \cref{ch-2,ch-3}, expect when talking about the axial electron transport.
-  While these instabilities are the subject of numerous studied, they remain unclear.
   
-  Using the results of the \ac{PIC} simulation, we propose some new insights for the understanding on the instability, hence the electron cross-field transport. 
-  \inlinenote{Maybe this part in the chapter abstract...?}
-  
-  We present in this section the results obtained for one case.
-  However, we observe the same results when varying the  different physical parameters.
+  We present in this section the simulation results obtained in one case.
+  Indeed, as we observed the same results when varying the  different physical parameters, there is no need in presenting more results.
   The parameters of the simulations are presented in \cref{tab-evdfpicparams}.
   The radial boundary condition include a dielectric layer, of width $L_{diel}$.
   No electron emission is modeled, and the convection is modeled with the new model (see \cref{sec-noiselessresults}).
+  
+  As the same time of my thesis, other groups presented their simulation results in a similar radial-azimuthal geometries. 
+  Their results are discussed at the end of the section, in \cref{subsec-others}.
+
 
   \begin{table}[hbtp]
   \ra{1.3}
@@ -23,9 +21,9 @@
     \begin{tabular}{@{}l l l @{}} \toprule
     Parameter    &   Value   &  Unit  \\ \midrule
     $L_r\times L_{\theta}\times L_z$   & $1\times 0.26\times 0.5$ & cm \\
-    $n_e = n_i$  & $\sn{3}{17}$ & \per\meter\cubed \\
+    $n_e = n_i$  & $\sn{3}{17}$ & $\per\meter\cubed$ \\
     $B_r$  & 0.02 & T \\
-    $E_z$  & \sn{2}{4} & \volt\per\meter \\
+    $E_z$  & \sn{2}{4} & $s\volt\per\meter$ \\
     $L_{diel}$ & 3 & \milli\meter  \\
     \bottomrule
     \end{tabular}
@@ -135,6 +133,21 @@
     However, some time after the moment in violated the criteria is violated ($\tau = 0.40 \pm 0.07 \,\micro\second$ on the four oscillations), the wave abruptly stop rising but decreases instead.
     This delay between the time the ions should be trapped and the time the wave stop growing in most certainly due to the ion inertia, as we have $\tau \sim T_B$.
     
-    A complementary results is presented in \cref{subsec-VDFIAW} but solving the dispersion relations what we present in the next section.
+    A complementary results is presented in \cref{subsec-VDFIAW} by solving the dispersion relations what we present in the next section.
     
-      
+    \subsection{Other results from the comunity} \label{subsec-others}
+    
+    \citet{hara2019a} presents some kinetic simulation results of a \ac{2D} geometry, of size similar to the case presented here.
+    However, the authors focused on the electron mobility values, and few information on the instability are given.
+    
+    In \citet{janhunen2018}, the authors present a collision-less highly results \ac{2D} \ac{PIC} simulation.
+    No convection, and no radial losses compensation model are used, hence the electron energy quickly rises and the density decreases.
+    On the other hand, the domain is bigger, with a radial length of $L_r = 53.8\,\milli\meter$ for an azimythal length of $L_{\theta} = 13.45 \,\milli\meter$.
+    Three cells by Debye length are used, while there are in average 800 particles per cell.
+    In these conditions, the instability rises, but a large structure, named a Modified Two Stream Instability (MTSI), is observed, of wavelength twice as big as $L_r$.
+    
+    The simulation parameters of \citet{taccogna2019} are similar to the results presented here, with  $L_r = 15\,\milli\meter$ and $L_{\theta} = 12.5 \,\milli\meter$.
+    The results are qualitatively similar to the others, but in this case, the author observed radial structures, but this time with a wavelength of a third of $L_r$.
+    
+    \inlinenote{Comment conclure sur ces results ??}
+    

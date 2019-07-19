@@ -96,15 +96,76 @@
   
   \subsection{electron cyclotron drift instability} \label{subsec-ECDIPIC}
   
-    \inlinenote{Ici: le debut, la partie linear. Montrer les resonances. Dire que la DR EVDI n est plus utile apres (fig ECDI\_PIC\_time.pdf)}
   
-  
-  
-  
+    As observed in \Cref{sec-PIC-ECDI}, the simulation begin by a linear growth of the instability.
+    Previous results obtained with \LPPic \citet{croes2017a} showed no resonances during this period.
+    However, these results where obtained with Lafleur's convection model, as introduced in \cref{sec-reinjectionnoise}.
+    Here, the results where obtained with the modified model, inducing less noise.
+    
+    We can see in \Cref{fig-phi_fluctuation_summary}  a snapshot of the plasma potential fluctuation in the azimuthal direction \[ \delta \phi(r, \theta) = \phi(r, \theta) - < \phi(r, \theta) >_{ \theta}, \]
+    at four different times during the growth of the instability.
+    For this results, we increased the azimuthal length $L_{\theta}$ to $6\,\milli\meter$, so that the instability characteristics, as the wavenumber $k$, are more distinguishable.
+    We observe no significant differences on the simulation results.
+    However, the simulation time is doubled in this case, so only the first microsecond has been simulated.
+    
+
+    
+    \begin{figure}[hbtp]
+      \centering
+      \includegraphics[width=\defaultwidth]{phi_fluctuation_summary.pdf}
+      \caption{Snapshot of the plasma potential at different times during the linear phase of the simulation.}
+      \label{fig-phi_fluctuation_summary}
+    \end{figure}
+    
+    At the beginning, we see fluctuations that can be due both thermal fluctuation \citep{salpeter1960} or numerical noise due to particle discretization.
+    Then, the instability rises.
+    We can see that it starts with small wavelength ($\lambda \simeq 0.75\,\milli\meter$ at $t=0.2\,\micro\second$).
+    After a short period, the short wavelength waves merges to form longer wavelength waves  ($\lambda \simeq 1.5\,\milli\meter$ at $t=0.7\,\micro\second$).
+    
+    This is also clearly seen on the frequency spectra, showed in \Cref{fig-phi_fluctuation_summary_FFT}.
+    We can see in the spectra the resonances at the cyclotron wavenumber $k_0 = \frac{\oce}{u_e} \simeq 3.5\,\per\milli\meter$.
+    
+    \begin{figure}[hbtp]
+      \centering
+      \includegraphics[width=\defaultwidth]{phi_fluctuation_summary_FFT.pdf}
+      \caption{Frequency spectra on the azimuthal instability presented in \cref{fig-phi_fluctuation_summary}. The spectrum are average in the radial direction. The red dotted lines represent the cyclotron resonances.}
+      \label{fig-phi_fluctuation_summary_FFT}
+    \end{figure}
+    
+    At $t=0.2\,\micro\second$, the most dominant mode is the second resonance, but the other resonances starts are also present.
+    At $t=0.4\,\micro\second$, all of the resonances are distinguishable, but their amplitude is strictly decreasing.
+    Then, at $t=0.7\,\micro\second$, we can no longer see the resonances, except for the first resonance.
+    As we observed resonances in the Fourier spectrum, let solve the dispersion relation for the \ac{ECDI}.
+    
+    \vspace{1em}
+    We solve the \ac{ECDI} dispersion relation of \cref{eq-drECDI} for $t=0.2, 0.4$ and $0.7\micro\second$ using both the Maxwellian hypothesis for the ions and electrons, and the velocity distribution functions measured in the \ac{PIC} simulations.
+    The radial wavenumber taken is $k_r = 2 \pi/L_R \sim 0.6 \per\milli\meter$ \citep{lafleur2016}.
+    This value corresponds to $k_r \lde = 0.036$ at $t=0.2\,\micro\second$ and $k_r \lde = 0.044$ at $t=0.7\,\micro\second$, as the electron temperature increases.
+    
+    \begin{figure}[hbtp]
+      \centering
+      % \begin{tabular}{c}
+        \includegraphics[width=0.45\textwidth]{ECDI_PIC_ionvcorrected_2mus.pdf} 
+        \includegraphics[width=0.45\textwidth]{ECDI_PIC_ionvcorrected_4mus.pdf} 
+        \includegraphics[width=0.45\textwidth]{ECDI_PIC_ionvcorrected_7mus.pdf} 
+      % \end{tabular}
+      \caption{Dispersion relation for the \ac{ECDI} using both (dotted lines) the Maxwellian hypothesis for the ions and electrons, and (solid lines) the velocity distribution functions measured in the \ac{PIC} simulations. The abscissa is normalized by the cyclotron resonance wavelength.}
+      \label{fig-DRECDI}
+    \end{figure}
+    
+    We can see in \Cref{fig-DRECDI} that the dispersion relation shows the cyclotron resonance at the beginning.
+    However, the most rising wavelength is not the second harmonic, but the forth.
+    After, the resonances broaden, and disappear.
+    This is due to increases of the radial wavelength used with respect to the Debye length $\lde$ \citet{lafleur2016a,ducrocq2006,cavalier2013}.
+    The value of radial wavelength is discuss later in \cref{sec-DR-BC}.
+    
+    We can also observe that the deviation of the distribution function from the Maxwellian decreases the growth rate.
+    This as been observed  in an axial-azimuthal \ac{PIC} simulation by \citet{lafleur2018}.
+    This confirm that the exact distribution function should be used in the calculation of the distribution function.
+    
   \subsection{Ion acoustic wave} \label{subsec-VDFIAW}
   
-  We have see in the previous \cref{subsec-ECDIPIC} that the \ac{ECDI} do not represent well the non-linear effects on the dispersion relations.
-  Hence, following \citet{janhunen2018,taccogna2019}, we uses the \ac{IAW} dispersion relation.
+  We have see in the previous \cref{subsec-ECDIPIC} that the \ac{ECDI} distribution function is not needed, but can instead be approximated by the \ac{IAW} \citep{lafleur2018,janhunen2018,taccogna2019}.
   The \ac{IAW} relation can be solved with several hypotheses (see \cref{sec-geneDR} for more details)
   \begin{enumerate}
     \item Simplified analytical values,

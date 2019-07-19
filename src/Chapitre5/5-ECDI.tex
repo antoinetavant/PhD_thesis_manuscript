@@ -4,16 +4,19 @@
 
 
 \chapter{Azimuthal instability}
-\label{ch-3}
+\label{ch-5}
 
-The presence of azimuthal instabilities in the Hall effect thrusters has first been showed with numerical simulations by \citet{adam2004}.
-However, it nature is not yet fully understood.
-In this chapter, we investigate the instabilities observed in the \ac{2D} \ac{PIC} simulations.
+\begin{Chabstract}
+  
+As briefly mentioned in \cref{ch-1}, the $E \times B$ configuration of the \ac{HET} give rise to azimuthal instabilities.
+This aspect has been neglected in \cref{ch-2,ch-3}, except by they consequences on the axial electron transport.
+While these instabilities are the subject of numerous studied, they remain unclear.
 
-First, we present the oscillations observed in the PIC simulation.
-After that, we derive the dispersion relation without hypothesis on the particle distribution function.
-Then, we present a numerical algorithm that solves the dispersion relation using the distribution function measured in the \ac{PIC} simulations.
-Then, the oscillations observed in the simulation are compared to the results of the dispersion relation.
+Using the results of the \ac{PIC} simulations, we propose new insights for the understanding on the instability, hence the electron cross-field transport.
+In particular, we develop a relation dispersion solver that uses the velocity distribution function measured in the simulations.
+Then, we compare the simulation instability characteristics with the dispersion relations.
+A special care is taken with the boundary condition and the instability non-linear saturation. 
+\end{Chabstract}
 
 % 
 % 
@@ -30,8 +33,19 @@ Then, the oscillations observed in the simulation are compared to the results of
 
 \minitoc
 
+
+The presence of azimuthal instabilities in the Hall effect thrusters has first been showed with numerical simulations by \citet{adam2004}.
+However, their nature is not yet clear.
+The investigation of the instabilities observed in the \ac{2D} \ac{PIC} simulations in the subject of this chapter.
+
+In \cref{sec-PIC-ECDI}, we present the oscillations observed in the \ac{PIC} simulations.
+After that, we derive the dispersion relation with no hypothesis used concerning the particle distribution functions in \cref{sec-DR-kinetic}, and we present in \cref{sec-DR-solver} a numerical algorithm that solves the dispersion relation using the distribution function measured in the \ac{PIC} simulations.
+The oscillations observed in the simulation are compared in \cref{sec-DR-results} to the results of the dispersion relation.
+To finish with; the impact of the radial boundary condition is investigated in \cref{sec-DR-BC}.
+
 \input{Chapitre5/50-PICresults}
 \input{Chapitre5/51-DR}
 \input{Chapitre5/52-solver}
 \input{Chapitre5/53-results}
 \input{Chapitre5/54-radialBC}
+\input{Chapitre5/55-conclusion}
