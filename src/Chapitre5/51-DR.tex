@@ -14,7 +14,7 @@
   The ions are accelerated in the axial direction, $ \vect{u_i} = u_i  \vect{e_z}$.
   
   The perturbations are waves of the form \[ \exp \lp i \vect{k} \cdot \vect{x} - i \omega t  \rp, \]
-  with $\vect{x}$ the position vector, the oscillation wave vector $\vect{k}$ is real but its frequency $\omega = \omega_r + i \gamma$ can be complex, where $\gamma$ is the growth rate of the oscillations. 
+  with $\vect{x}$ the position vector, the oscillation wave vector $\vect{k} = k_r \vect{e_r} + k_{\theta} \vect{e_{\theta}}$ is real but its frequency $\omega = \omega_r + i \gamma$ can be complex, where $\gamma$ is the growth rate of the oscillations. 
   
   \vspace{1em}
   The dispersion relation has been studied by \citet{ducrocq2006} in the case of cold ions and Maxwellian electrons in a \ac{2D} geometry.
@@ -27,8 +27,8 @@
   
   Recently, \ac{2D} \ac{PIC} simulation on a large domain observed radial structures in the oscillations \citep{janhunen2018,hara2019a}.
   
-  \citet{lafleur2018} got read of the Maxwellian electron hypothesis by using directly the electron distribution function measured in the \ac{PIC} simulations in the \ac{IAW} dispersion relation.
-  He showed that the frequency of the oscillation is almost unperturbed, but the growth rate is significantly reduced, even when the ions were still supposed Maxwellian.
+  \citet{lafleur2018} got read of the Maxwellian hypothesis by using directly the distribution functions measured in the \ac{PIC} simulations in the \ac{IAW} dispersion relation.
+  The authors showed that the frequency of the oscillation is almost unperturbed, but the growth rate is significantly reduced, even when the ions were still supposed Maxwellian \citep[F ig. 8]{lafleur2018}.
   
   Here, we propose to continue the investigation by solving the dispersion relation numerically with the electron and ion distribution function for both the \ac{IAW} and the \ac{ECDI}.
   
@@ -48,7 +48,7 @@
     
     
     For the unmagnetized ions, supposing a Maxwellian distribution, the susceptibility is
-    \begin{equation} \label{eq-}
+    \begin{equation} \label{eq-susceptibility}
       \chi_i(\vect{k},\omega) = \frac{\opi^2}{k^2 v^2_{th, i}} Z'\lp \frac{\omega - \vect{k} \cdot \vect{u_{i}}}{k v_{th, i}}  \rp
     \end{equation}
     where $\opi$ the ion plasma pulsation, $k=\norm{\vect{k}}$ and $\vect{u_i}$ is the mean velocity of the ions.
@@ -91,10 +91,8 @@
     \label{sucsec-IAW}
     
     The dispersion relation of \cref{eq-drECDI} presents sharp resonances due to cyclotron resonances.
-    
-    However, kinetic simulations in \citet{janhunen2018,taccogna2019} have show that after some time (around  $t=0.5\,\micro\second$ and $t=3\,\micro\second$ respectively) the resonances are not present, with a progressive decrease of the higher harmonics and the first harmonics becoming the most prominent .
-    This observation is attributed to non-linear resonance broadening, because the electron orbit est distorted, leading to the loss of the phase relation between the electron and the wave \citep{taccogna2019}.
-    The electron demagnetisation leads to a dispersion relation where the ions and the electrons have the same type of contribution
+    However, kinetic simulations in \citet{janhunen2018,taccogna2019} have shown that after some time (around  $t=0.5\,\micro\second$ and $t=3\,\micro\second$ respectively) the resonances are no longer present, with a progressive decrease of the higher harmonics and the first harmonics becoming the most prominent.
+    Without the resonances, the dispersion relation evolves to the nonmagnetic ion-acoustic instability
     \begin{equation} \label{eq-drIAWgene}
       \begin{split}
       \hat\epsilon(\vect{k},\omega) =& 1 - \\
@@ -102,8 +100,13 @@
        & \frac{1}{k^2 \lde^2}  Z'\lp  \frac{\omega - \vect{k} \cdot \vect{u_{e}}}{k v_{th, e}} \rp ,
     \end{split}
     \end{equation}
-    \Cref{eq-drIAWgene} is the general Ion Accoustic Wave dispersion relation.
+
     
+    However, one can not that there is no consensus on the transition to an \ac{IAW}.
+    It can be is attributed to non-linear resonance broadening, because the electron orbit est distorted, leading to the loss of the phase relation between the electron and the wave \citep{taccogna2019}.
+    The electron demagnetisation leads to a dispersion relation where the ions and the electrons have the same type of contribution.
+    But recently, \citet{janhunen2018a} claimed that the demagnetisation condition due to nonlinear resonance broadening is not fulfilled.
+    \citet{lafleur2017a} uses the fact that in \ac{2D} simulations, the finite minimum value for the radial wave vector is responsible for the ion acoustic dispersion relation.
     
     \citet{lafleur2016} and \citet{janhunen2018} show that after some assumptions -- mostly a drifting Maxwellian distributions, cold ions, and a small electron drift velocity compared to thermal speed -- \cref{eq-drIAWgene} can be solved to obtain
     \begin{equation} \label{eq-MIAW}

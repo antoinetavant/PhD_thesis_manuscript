@@ -21,7 +21,7 @@
     \begin{tabular}{@{}l l l @{}} \toprule
     Parameter    &   Value   &  Unit  \\ \midrule
     $L_r\times L_{\theta}\times L_z$   & $1\times 0.26\times 0.5$ & cm \\
-    $n_e = n_i$  & $\sn{3}{17}$ & $\per\meter\cubed$ \\
+    $n_e = n_i$  & $\sn{3}{17}$ & \meter$^{-3}$ \\
     $B_r$  & 0.02 & T \\
     $E_z$  & \sn{2}{4} & $s\volt\per\meter$ \\
     $L_{diel}$ & 3 & \milli\meter  \\
@@ -29,11 +29,15 @@
     \end{tabular}
   \end{table}
 
-  \subsection{Azimuthal electric field}
+  \subsection{Preliminary results of the azimuthal instability }
+  
+  We focus in this section on the azimuthal instability observed the the \ac{2D} \ac{PIC} simulations.
+  The oscillations affects all of the plasma quantities (densities, potential, electric field).
+  The results presented here emphasize on the azimuthal electric field, but the same characteristic are also observed on the other quantities.
   
   \Cref{fig-2DcutEx} shows the temporal evolution of the azimuthal electric field as a function of the azimuthal position, measured at the center of the radial direction.
-  We clearly see the instability growth up to the saturation around $T=1\,\micro\second$.
-  Then, we see in addition to the fast oscillation a slower modulation of the amplitude. 
+  We clearly see the instability growing, up to the saturation around $T=1\,\micro\second$.
+  Then, we observe, in addition to the fast oscillation, a slower modulation of the oscillation's amplitude. 
   \begin{figure}[hbtp]
     \centering
     \includegraphics[width=\defaultwidth]{electric_field_cut2D}
@@ -43,7 +47,7 @@
 
   \Cref{fig-FFT_ex} shows the frequency spectrum of the azimuthal electric field presented in \cref{fig-2DcutEx} computed via \ac{FFT} in the stationary state ($t > 1.2\,\micro\second$).
   The spectrum have been average in the azimuthal direction, in order to reduce the noise.
-  The theoretical frequency $f_{\rm theo} = \frac{\opi}{\pi \sqrt{6} }$ is given. {\bf REF}
+  The theoretical frequency $f_{\rm theo} = \frac{\opi}{\pi \sqrt{6} }$ is given \citep{croes2018}. 
   We can see a very good agreement between $f_{\rm theo}$ and the maximum of the frequency spectrum.
   \begin{figure}[hbtp]
     \centering
@@ -52,12 +56,32 @@
     \label{fig-FFT_ex}
   \end{figure}
   
-  \subsection{Temporal evolution} \label{subsec-temp}
+  \subsection{Energy cascade} \label{subsec-turbul}
+  
+  We can see in \cref{fig-FFT_ex} a slow decrease of the frequency amplitude from $f={\rm theo}$ to larger frequencies.
+  This sort of cascade is typical of turbulences, and can be a source of energy dissipation hence saturation.
+  Kolmogorov's hypotheses of incompressible fluid leads to a cascade in power law \[ W(f) = | \mathcal{FFT}(E_{\theta})(f) |^2 \propto f ^ {- \alpha}, \]
+  with $\alpha = 5/3$.
+  
+  \begin{figure}[hbtp]
+    \centering
+    \includegraphics[width=\defaultwidth]{spectrum_frequency_turbul}
+    \caption{Frequency power spectra, normalized and in log-log scale. Is }
+    \label{fig-turbul}
+  \end{figure}
+  
+  \Cref{fig-turbul} shows the frequency power spectra in log scale.
+  Is overlaid a fit of the cascade, for frequencies above the maximum amplitude.
+  The power law obtained is $\alpha \simeq 4.2$.
+  The oscillations observed present a decrease of the power spectra much steeper than expected.
+  Even if the mechanism of plasma turbulences differs from the fluid \citep{tsytovich1972}, the value of $\alpha$ is quite large, hence we dismiss this phenomena.
+  
+  \subsection{Temporal evolution of the oscillation amplitude} \label{subsec-temp}
   We have seen in the previous section that after a growing phase, the instability saturate but oscillates slowly around.
   This section analyse these temporal characteristics.
   
-  \Cref{fig-Ezstd_time} shows the temporal evolution of the characteristics of the electrostatic wave.
-  As the wave is not monochromatic (i.e. it is the sum of multiple waves), we display both the maximum of the electric field $\max(E_{\theta})$, and its standard deviation $\stdE$.
+  \Cref{fig-Ezstd_time} shows the temporal evolution of the characteristics of the electrostatic oscillation.
+  As the oscillation is not monochromatic (i.e. it is the sum of multiple waves), we display both the maximum of the electric field $\max(E_{\theta})$, and its standard deviation $\stdE$.
   In the case of a monochromatic wave, the would have 
   \[ \stdE = \frac{\max(E_{\theta})}{\sqrt{2}}.  \]
   
@@ -70,8 +94,12 @@
   
   We can see in \cref{fig-Ezstd_time} that during the first microsecond, we observe an exponential growth, corresponding to a constant growth rate.
   A linear fit in log scale give $\gamma_{PIC} \simeq 0.07 \opi$ during the linear phase.
-  After $t=1\,\micro\second$, the amplitude of the electric field oscillates around a mean value, with a period of the order of $T_{NL}=1.5 \,\micro\second$.
+  After $t=1\,\micro\second$, the amplitude of the electric field oscillates around a mean value, with a period of the order of $T_{NL}=1.5 \pm 0.1 \,\micro\second$.
+  Hence, the azimuthal electric field becomore of the type of
+  \[  E_{\theta} = E_{\rm LF}(t) E_{\rm HF}(t, {\theta}) \]
+  with $E_{\rm HF}(t) $ the high frequency instability, and $E_{\rm LF}(t)$ the modulation of low frequency $f_{\rm LF} \simeq  650 \pm 40 \,\kilo\hertz$.
   Several phenomena are candidate to the modulation observed.
+  they are discussed here-after.
   
   
   \paragraph{Ion transit time\\}
@@ -81,7 +109,7 @@
       T_{t} = \sqrt{\frac{2 m_i L_z}{e E_z}} \simeq 0.8 \mu s.
     \end{equation}
     
-    The transit time is of the good  order of magnitude, but $T_{NL}$ is twice bigger, still.
+    The transit time is of the good  order of magnitude, but $T_{NL}$ is still twice bigger.
     
   \paragraph{Particle trapping and bouncing\\}
     A common raison for wave saturation is the ion trapping. 
@@ -93,7 +121,9 @@
       T_{B} = 2 \pi \sqrt{\frac{m_i}{e k \max(E_{\theta})} } \simeq 0.5 \,\micro\second,
     \end{equation}
     which is 3 times smaller than $T_{NL}$.
-    Even though in \citet{belmont2013}, the authors say that, when the amplitude of the electric field is large (as it is the case here), the bouncing time scale increases due to non-linear phenomenon (the particle trajectory is not harmonic any more), we cannot conclude here that this is the origin of the low frequency modulation.
+    Using $\sqrt{2} \sigma_{E_{\theta}}$ instead of $\max(E)$, we find $T_B = 0.9\,\micro\second$
+    
+    Even though in \citet{belmont2013}, the authors say that, when the amplitude of the electric field is large (as it is the case here), the bouncing time scale increases due to non-linear phenomenon (the particle trajectory is no longer harmonic), we cannot conclude here that this is the origin of the low frequency modulation.
 
   
   \paragraph{Ion trapping oscillation\\}
@@ -118,7 +148,7 @@
     
     \Cref{fig-tempITcrit} shows the temporal evolution of the electron thermal energy $\epsilon_{\rm th}$ and the wave energy density $\epsilon_{\rm wave}$, scaled by the factor 432.
     We can see that $\epsilon_{\rm th}$ is relatively constant.
-    However, $\epsilon_{\rm wave}$  oscillates significantly, and passes above and below $\epsilon_{\rm th}$.
+    However, $\epsilon_{\rm wave}$  oscillates significantly, and passes regularly above and below $\epsilon_{\rm th}$.
     
     \begin{figure}[hbtp]
       \centering
@@ -129,25 +159,26 @@
     \end{figure}
     
     In \cref{fig-tempITcrit}, as expected the period of the oscillations of $\epsilon_{\rm wave}$ is $T_{NL} = 1.5\,\micro\second$.
-    But here, we can see that when the criteria \cref{eq-criteriaIT} is fulfilled, the temporal derivative of the wave energy density increases, which means that the wave growing rate is positive.
-    However, some time after the moment in violated the criteria is violated ($\tau = 0.40 \pm 0.07 \,\micro\second$ on the four oscillations), the wave abruptly stop rising but decreases instead.
+    But here, we can see that when the criteria \cref{eq-criteriaIT} is fulfilled, the temporal derivative of the growth rate is positive.
+    However, a delay $\tau$ after the moment when the criteria is violated ($\tau = 0.40 \pm 0.07 \,\micro\second$ on the four oscillations), the wave abruptly stop rising and decreases instead.
     This delay between the time the ions should be trapped and the time the wave stop growing in most certainly due to the ion inertia, as we have $\tau \sim T_B$.
     
     A complementary results is presented in \cref{subsec-VDFIAW} by solving the dispersion relations what we present in the next section.
     
     \subsection{Other results from the comunity} \label{subsec-others}
     
+    \inlinenote{Je ne suis pas content de cette partie. Comment conclure sur ces results ??}
+
     \citet{hara2019a} presents some kinetic simulation results of a \ac{2D} geometry, of size similar to the case presented here.
     However, the authors focused on the electron mobility values, and few information on the instability are given.
     
-    In \citet{janhunen2018}, the authors present a collision-less highly results \ac{2D} \ac{PIC} simulation.
-    No convection, and no radial losses compensation model are used, hence the electron energy quickly rises and the density decreases.
+    In \citet{janhunen2018}, the authors present a collision-less highly resolved \ac{2D} \ac{PIC} simulation.
+    No convection, and no radial losses compensation models are used, hence the electron energy quickly rises and the density decreases.
     On the other hand, the domain is bigger, with a radial length of $L_r = 53.8\,\milli\meter$ for an azimythal length of $L_{\theta} = 13.45 \,\milli\meter$.
     Three cells by Debye length are used, while there are in average 800 particles per cell.
-    In these conditions, the instability rises, but a large structure, named a Modified Two Stream Instability (MTSI), is observed, of wavelength twice as big as $L_r$.
+    In these conditions, the instability rises, but a large radial structure, named Modified Two Stream Instability (MTSI), of wavelength twice as big as $L_r$  is observed.
     
     The simulation parameters of \citet{taccogna2019} are similar to the results presented here, with  $L_r = 15\,\milli\meter$ and $L_{\theta} = 12.5 \,\milli\meter$.
-    The results are qualitatively similar to the others, but in this case, the author observed radial structures, but this time with a wavelength of a third of $L_r$.
+    The results are qualitatively similar to the others, however the authors also observed radial structures, but this time with a wavelength of a third of $L_r$.
     
-    \inlinenote{Comment conclure sur ces results ??}
     

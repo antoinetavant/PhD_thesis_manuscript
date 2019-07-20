@@ -51,7 +51,7 @@
 \newcommand\Isp{\ensuremath {\rm I_{\rm sp}}\xspace}
 
 % 10^number \string: use as \sn{Value}{Power} for value x 10^Power
-\newcommand{\sn}[2]{\ensuremath{{#1}\,\times\,10^{#2}}}
+\newcommand{\sn}[2]{\ensuremath{{{#1}{\times}10^{#2}}}}
 
 
 %mean notation. May need an average command as well
@@ -84,7 +84,7 @@
 
 %% This code creates the groups
 % -----------------------------------------
-\usepackage{etoolbox}
+
 \renewcommand\nomgroup[1]{%
   \item[\bfseries
   \ifstrequal{#1}{P}{Physics Constants}{%

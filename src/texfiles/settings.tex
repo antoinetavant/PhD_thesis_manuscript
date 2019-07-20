@@ -72,6 +72,12 @@
 
 \usepackage{etoolbox}
 \patchcmd{\chapter}{plain}{empty}{}{}
+% Remove warning from the bibliography URL too long
+% Variant A
+\apptocmd{\sloppy}{\hbadness 4492\relax}{}{}
+% Variant B
+% \apptocmd{\thebibliography}{\raggedright}{}{}
+
 
 
 \definecolor{lightgray}{gray}{0.95}
