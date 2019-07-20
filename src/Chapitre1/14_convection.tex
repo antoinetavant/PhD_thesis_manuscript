@@ -217,7 +217,7 @@
       
       \begin{figure}[hbtp]
         \centering
-        \includegraphics[width=\defaultwidth]{Compare_no_new_Reinj_Oz}
+        \includegraphics[width=0.8\textwidth]{Compare_no_new_Reinj_Oz}
         \caption{Time evolution of the azimuthal electric field at the center of the radial dimension with and without the noiseless convection model. }
         \label{fig-newconv_noconv}
       \end{figure}
@@ -227,7 +227,7 @@
       
       \begin{figure}[hbtp]
         \centering
-        \includegraphics[width=\defaultwidth]{Compare_old_new_Reinj_Oz}
+        \includegraphics[width=0.8\textwidth]{Compare_old_new_Reinj_Oz}
         \caption{Time evolution of the azimuthal electric field at the center of the radial dimension with the convection modeled using (left) Lafleur's model and (right) the noiseless model with a small azimuthal length.}
         \label{fig-oldeconv_newconv}
       \end{figure}
@@ -238,7 +238,7 @@
       
       \begin{figure}[hbtp]
         \centering
-        \includegraphics[width=\defaultwidth]{Compare_old_new_Reinj_Oz_LongLx}
+        \includegraphics[width=0.8\textwidth]{Compare_old_new_Reinj_Oz_LongLx}
         \caption{Time evolution of the azimuthal electric field at the center of the radial dimension with the convection modeled using (left) Lafleur's model and (right) the noiseless model with a longer azimuthal length.}
         \label{fig-oldeconv_newconv_longLZ}
       \end{figure}
@@ -279,19 +279,19 @@
       However, we can investigate it numerically, by solving \cref{eq-aziE} for a given random source term.
       Using a Monte Carlo approach, the results are averaged 50 times in order to better observe the mean behaviour in respect to the noise (i.e. increasing signal to noise ratio).
         
-      \Cref{fig-dftLr} shows the \ac{DFT} of the source term \[\rho_1 = \N(0, \stdconv),\] the resulting azimuthal electric field $\aziE_{, 1}$ and plasma potential $\phi$ computed on the centreline of the simulation domain in the radial direction, for three different radial length expressed in number of cell $N_x$.
-      Is also showed the "equivalent" source term $\rho_{\rm eq}$, which is the source term that would give the frequency spectra of $\aziE_{, 1}$ observed in a \ac{1D} domain
+      \Cref{fig-dftLr} shows the \ac{DFT} of the source term \[\rho_1 = \N(0, \stdconv),\] the resulting azimuthal electric field $\aziE_{, 1}$ and plasma potential $\phi$ computed on the centreline of the simulation domain in the radial direction, for three different radial lengths expressed in number of cell $N_x$.
+      Is also shown the "equivalent" source term $\rho_{\rm eq}$, which is the source term that would give the frequency spectra of $\aziE_{, 1}$ observed in a \ac{1D} domain
       
       \begin{equation} \label{eq-equirho}
         \rho_{\rm eq} = \epsilon_0 \partial_\theta \aziE_{, 1}.
       \end{equation}
-      The results are given for different radial length $N_x=15,50 \text{ and } 200$, while the azimuthally length $N_y=200$ is kept constant.
+      The results are given for different radial lengths $N_x=15,50 \text{ and } 200$, while the azimuthally length $N_y=200$ is kept constant.
       We can see that the plasma potential and the electric field show larger amplitude for small wave numbers (large wavelength) compared to large wave numbers in the three cases.
       However, the amplitude of the smaller wave numbers is affected.
       In the cases of small radial length ($N_x=15 \text{ and } 50$), the spectra of the electric field is not monotonic.
-      This can be explained by the Dirichlet \ac{BC}s that {\it pin down} the fluctuation of the plasma potential.
+      This can be explained by the Dirichlet \ac{BC}s that {\it pins down} the fluctuation of the plasma potential.
       
-      However, even though the amplitude is reduces in \ac{2D} with small radial direction compared to a \ac{1D} model, we still observe large amplitude of small wave number oscillations in both the electric field and the plasma potential.
+      However, even though the amplitude is reduced in \ac{2D} with small radial direction compared to a \ac{1D} model, we still observe large amplitude of small wave number oscillations in both the electric field and the plasma potential.
       Hence, the conclusions of  \cref{sec-mathnoise} derived in \ac{1D} can be legitimately used for \ac{2D} domains.
       
       
@@ -299,12 +299,14 @@
       \begin{figure}[hbtp]
         \centering
         \includegraphics[width=\textwidth]{effect_Lr}
-        \caption{\ac{DFT} of the source term $\rho_1 = \N(0, \stdconv)$, the resulting azimuthal electric field $\aziE_{, 1}$ and plasma potential $\rho$ computed on the centreline of a radial-azimuthal simulation, and the "equivalent" source term defined by \cref{eq-equirho}. $N_y=200$. }
+        \caption{\ac{DFT} of the source term $\rho_1 = \N(0, \stdconv)$, the resulting azimuthal electric field $\aziE_{, 1}$ and plasma potential $\phi$ computed on the centreline of a radial-azimuthal simulation, and the "equivalent" source term defined by \cref{eq-equirho}. $N_y=200$. }
         \label{fig-dftLr}
+        
       \end{figure}
       
+      \inlinenote{Enlever $h$ de term. Peu-etre fair une seul legende}
       
-
+      \inlinenote{Rq Anne: je ne comprends pas la difference entre la courbe bleu et l'orange. Peut-être faut-il l'enlever ?}
 
 
 

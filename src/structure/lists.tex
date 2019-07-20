@@ -5,6 +5,11 @@
 \dominitoc%[n] 		% Initialisation de minitoc ([n] enleve le ``content'')
 \tableofcontents  		% Table des Matières
 %-----------
+\makeatletter
+  \providecommand\@dotsep{5}
+\makeatother
+\listoftodos
+\relax
 
 % % liste des figures
 % \listoffigures \addcontentsline{toc}{chapter}{\listfigurename} \mtcaddchapter
