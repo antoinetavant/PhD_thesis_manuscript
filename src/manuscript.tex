@@ -20,11 +20,12 @@
 % ===============================
 \includeonly{structure/structure,%
  structure/lists,%
- Context/concepts,%
+ Context/0_concepts,%
  Chapitre1/1-introduction,%
  Chapitre2/2-mean_values,%
  Chapitre3/3-non_isothermal_sheath,%
  Chapitre5/5-ECDI, %
+ texfiles/1ere
  }
 
  
@@ -38,15 +39,16 @@
 {Context/figure/}%
 {Chapitre2/figure/}%
 {Chapitre3/figure/}%
-{Chapitre5/figure/}%
+  {Chapitre5/figure/}%
 }  % Location of the graphics files (set up for graphics to be in PDF format)
 
-\geometry{
+\geometry{  % the margins
 	left=26mm,
 	top=30mm,
 	right=16mm,
 	bottom=30mm
 }
+
 \SIunits[cdot]
 \SIunits[thickqspace]
 
@@ -54,7 +56,7 @@
 
 
 
-% \include{texfiles/1ere}
+\include{texfiles/1ere}
 
 \frontmatter
 %dedicace
@@ -115,7 +117,7 @@
 
 \renewcommand\thechapter{}
 \renewcommand\chaptername{}
-\include{Context/concepts}
+\include{Context/0_concepts}
 % \acresetall
 
 \let\leftmark=\oldleftmark
