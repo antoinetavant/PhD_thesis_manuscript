@@ -1,0 +1,69 @@
+% !TEX root=/home/tavant/these/manuscript/src/manuscript.tex
+
+
+
+
+\chapter{Secondary electron emission with anisothermal sheath}
+\label{ch-5}
+
+\begin{Chabstract}
+  
+We modify the polytropic sheath model with secondary electron emission
+\end{Chabstract}
+
+{\bf IV. Polytrotic sheath model with SEE} 20 pages
+\begin{zzz}
+  This chapter goes beyond the actual modified sheath model in order to add SEEs.
+  This require some time to develop before writting !
+
+  5.1 Kinetic effects of the SEE on the EVDFs  4 pages
+
+  5.2 SEE effects on the Fluid model  5 pages
+
+  5.3 Validation against the Parametric 2D PIC simulation results. 2 pages
+  
+  5.4 1D fluid model with modified wall model. 4 pages
+\end{zzz}
+
+\minitoc
+
+What is complicated here is the definition of the electron temperature, that include both primary and secondary electrons.
+Should we
+\begin{itemize}
+  \item Use a 2 fluid( so 1 electron) with a fluid model that includes the SEE ?
+  \item Use a 3 fluid model, that would  include folly absorbed primary electrons (simply polytropic) and emitted electrons, with strictly positive velocity.
+\end{itemize}
+
+In the First case, the electron temperature is simple to define.
+But the closure equation may need to be changed.
+
+the second case is more simpler, mathematicaly.
+
+References:
+Il y a déjà eu beaucoup de travaux, mais aucun model fluides !
+
+\citet{meezan2002} : Bolzmann solver, 2-Te EVDF, SEE compared with Maxwellian
+
+\citet{smirnov2004} : MCC code, 2-Te EVDF. Mais fake EVDI effect via collisions
+
+\citet{sydorenko2006a} : Beam in EVDF because of 1D PIC-MCC 
+
+\citet{raitses2006} : "strong anisotropy : facteur 4",  compare Mesures avec fluids codes: says disagriment. Talks about 
+
+\citet{ahedo2002} : sheath-presheath model with SEE with bolzmann electron, Sagdeev potential, SCL regime avec saturations 
+
+\citet{ahedo2003} : 1D axial model avec wall interactions (SEE et SCL), plum with section increase (A(z)) 
+
+\citet{ahedo2005} : Fluid model with SEE, with partial trapping and partial beams
+
+\citet{raitses2005} : SCL regime and Te saturation (where he says that the SCL may not be responsible ??)
+
+\citet{barral2003a} : 1D model, anisotrop electrons ({\bf must read to know how}), shows saturation at SCL with large anisotropy
+
+{\bf \Large A lire}
+
+\citet{sydorenko2007} :  non maxwellian EVDF
+
+\citet{raitses2005a} : electron-wall interaction
+
+\citet{jolivet2000} : SEE effect on EVDF 
