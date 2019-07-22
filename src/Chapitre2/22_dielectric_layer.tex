@@ -3,15 +3,16 @@
 \section{Modeling the dielectric layer }
   \label{sec-diel_layer}
   
-  The first effect of the wall material studied is the layer of dielectric, as introduced in \Cref{sec-diel}.
+  The first effect of the wall material studied is effect of adding a layer of dielectric material with its own permittivity, as introduced in \Cref{sec-diel}.
   The simulation parameters are the same as in the canonical case, presented in \cref{sec-canonical}, but the plasma is separated from the ground wall by a dielectric layer of 3~cm.
+  Hence, the distance between the grounded electrodes is $2.6\,\milli\meter$.
   The relative permittivity of the dielectric is $\epsr=25$.
   %% SEE runs 250et 257 ?? Ly=1cm, Diel avec et sans SEE
   
   
   \subsection{Effect of the dielectric layer} \label{subsec-effect_mob}
   
-  The simulation results presents qualitatively the same results as the case without the dielectric layer.
+  The simulation results are qualitatively the same as in the case without the dielectric layer.
   As an example, \Cref{fig-mod_diel_comp} shows the temporal evolution of the axial electron mobility with and without the dielectric layer.
   We can see a small difference, but not really significant concerning the physical origin of the electron enhanced mobility, and the effect of the dielectric layer.
   The other variables (mean electron temperature, radial profiles, and so on) follow the same conclusion.
@@ -22,20 +23,22 @@
     \caption{Temporal evolution of the axial electron mobility with the dielectric layer and without (ground walls).\improvement{Remake the figure !!}}
     \label{fig-mod_diel_comp}
   \end{figure}
-  \inlinenote{Maybe rerun the cases, or at least check that it has similar parameters than the canonical case}
+  \inlinenote{Maybe rerun the cases, or at least check that it has similar parameters than the canonical case. \\Anne: Oui !!}
   
   \subsection{Near wall parameters} \label{subsec-nearwall}
-    Let focus on the surface charge and the near wall electric field.
+    In this section, we focus on the surface charge and the near wall electric field.
     \Cref{fig-sigma_time} shows the temporal evolution of the surface charge at one point of the wall.
     The position has been chosen to be the center ($L_{\theta} = 0.25$~cm) of the lower wall, but the observations are similar at other positions.
      
     \begin{figure}[hbtp]
       \centering
       \includegraphics[width=\defaultwidth]{surface_charges_vstime}
-      \caption{Temporal evolution of the surface charges at one position}
+      \caption{Temporal evolution of the surface charges at one position of the lower dielectric wall}
       \label{fig-sigma_time}
     \end{figure}
   
+    \inlinenote{Anne: evolution temporelle de 1 a 5...pas clair pourquoi tu montres pas avant et apres...}
+    
     We can see on \cref{fig-sigma_time} that the surface charge oscillates around a mean value close to $-4.5$ nC/\square\meter and an amplitude of around 1 nC/\square\meter.
     
     \inlinenote{Est-ce qu'on compare la valeur moyenne à la valeur theo d'un model de gain ?}
@@ -45,7 +48,9 @@
     
   \subsection{Dielectric model comparison} \label{subsec-modelcomp}
   
-  As introduced in \cref{sec-diel}, another possibility to model the effect of the surface charges on the plasma is to use a Neumann boundary condition [{\bf REF}]
+  \inlinenote{Anne: {\bf Beaucoup de remarques sur cette partie: pas assez claire, décrire plus les valeures observées, etc. Voir les notes sur le pdf (22 juillet)}
+  
+  As introduced in \cref{sec-diel}, a simplified approach to model the effect of the surface charges on the plasma is to use a Neumann boundary condition [{\bf REF}]
   \begin{equation} \label{eq-neuman}
     E_r = \frac{\sigma}{\epsilon_0}.
   \end{equation}
@@ -76,3 +81,7 @@
   \Cref{fig-er_time}.{\bf b} shows the near-wall  radial electric field compared to \cref{eq-neuman} at the same position than \cref{fig-sigma_time}.
   We can see that the two values are of the same order of magnitude, close to $-500$~kV/m.
   However, the two values are not strictly equal, but the maximum error between the two are only of the order of $20\%$, which mean that the \ac{RMS} error is around 10\%.
+  
+  \inlinenote{Anne: Small conclusion needed here.
+maybe conclude that this difference on electric field could have an influence on surface processes + not so difficult to include dielectric + 2D effects could be modeled more accurately
+Also you use it in the section 2.6 so you could already mention it here...In this section, no secondary electron has been taken into account, in section 2.6, we will also disuss the influence of using the simplified equation 2.8 in the case where secondary electron emission is important.}

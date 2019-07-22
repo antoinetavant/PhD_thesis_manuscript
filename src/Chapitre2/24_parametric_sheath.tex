@@ -4,19 +4,20 @@
   \label{sec-sheath_validation}
   
   The \ac{PIC} simulations used here do not need any sheath theory in order to model the plasma-wall interaction.
-  On the contrary, the rely on first principle models.
-  Hence, they can be used in order to validate the sheath modeled introduced in \vref{sec-sheath} coming from the fluid theory.
+  Conversely, they rely on first principle models.
+  Hence, they can be used in order to validate the sheath modeled introduced in \cref{sec-sheath} coming from the fluid theory.
   
-  This sheath model of \vref{eq-sheathhobbs} links the plasma potential drop with the electron temperature on the electron emission rate.
+  This sheath model links with \cref{eq-sheathhobbs} the plasma potential drop $\dphi$ with the electron temperature $\Te$ and the electron emission rate $\rate$.
+  \inlinenote{Anne: pourquoi tu parles de 1.50 la ? Parler de 2.11 suffit non?}
   \Cref{eq-seemaxw} can be used to estimate the electron emission rate given the mean electron temperature measured in the simulations, corresponding statistically to the plasma bulk temperature.   
-  In the \ac{PIC} simulations, \cref{eq-seeyield} can be computed by counting the number of electrons attaining the wall and emitted during a time-step.
+  In the \ac{PIC} simulations, $\rate$ can be computed using \cref{eq-seeyield} by counting the number of electrons attaining the wall and emitted during a time-step.
   We note \ratepic this measurement.
   \vspace{1em}
    
   \begin{figure}[hbtp]
     \centering
     \includegraphics[width=\defaultwidth]{SEE_rates}
-    \caption{Values of the electron emission rate $\ratepic$ (blue) measured in the simulation, and $ \ratemaxw$ obtained with \cref{eq-seemaxw} using the electron temperature showed in \cref{fig-Tevsproba}. }
+    \caption{Values of the electron emission rate $\ratepic$ (blue) measured in the \ac{PIC} simulations, and $ \ratemaxw$ obtained with \cref{eq-seemaxw} using the electron temperature shown in \cref{fig-Tevsproba}. }
     \label{fig-seeparamesMaxw}
   \end{figure}
   
@@ -26,7 +27,7 @@
   Indeed, \probamax is equal to 2.9, and the electron temperature in the bulk measured, when used in \cref{eq-seemaxw}, predicts a rate between 1.4 and 2.8.
   This discrepancy at low \crover is due to the \ac{SCL} regime.
   In \citet{hobbs1967}, the authors predict that in this regime, a potential well forms such that a fraction of the emitted electrons are returned to the wall, in order to maintain the effective emission rate to $\ratecr\sim1$.
-  However, for $\crover > 50 \volt$, the sheath regime described in \vref{sec-sheath} should be valid.
+  However, for $\crover > 50 \volt$, the sheath regime described in \cref{sec-sheath} should be valid.
    
   \begin{figure}[hbtp]
     \centering
@@ -55,5 +56,5 @@
   \end{itemize}
   These two hypotheses will be confronted against the kinetic simulation in the next chapter.
   
-  
+  \inlinenote{Anne: bizarre dans la lecture: a la fin de la section 2.4, tu annonces 2 points importants et tu dis que tu vas en traiter 1 et on arrive a la fin de la section 2.5 avec 2 points d'hypotheses.....}
    

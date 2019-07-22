@@ -4,26 +4,25 @@
   \label{sec-canonical}
   
   
-  The {\it canonical} case corresponds to the case when the wall do not include the two dielectric mechanism.
-  Hence, the wall are grounded, and are fully absorbing. 
+  The {\it canonical} case corresponds to the case when the walls are grounded, and are fully absorbing. 
   It is the reference case that will be extensively described and commented.
-  It will be used then to analyse and quantify the effects of the two aspects of the dielectric walls.
+  It will be used then to analyse and quantify the effects of two characteristics of the dielectric walls on the studied discharges : the secondary electron emission, and the modification of the electrostatic boundary condition.
   
-  \subsection{Initial phase} \label{subsec-initlaphase}
+  \subsection{Initial phase of the simulation: $t \leq 2\,\micro\second$} \label{subsec-initlaphase}
   
   The initial phase of the simulation corresponds to the growth of the \ac{ECDI}, and the formation of the sheaths.
   Because of the growth of the instability, the electron transport increases as well, that increases the electron heating.
   The time scale of the sheath formation is governed by the ion inertia.
-  It is roughly the same time scale than the saturation of the instability due to ion-trapping.
+  It is roughly the same time scale as the saturation of the instability due to ion-trapping.
   
   \begin{figure}[hbtp]
     \centering
     \includegraphics[width=\defaultwidth]{canonical_Te_start_directions}
-    \caption{Temporal evolution of the electron mean kinetic energy decomposed over the three direction. Is showed only the beginning of the simulation.}
+    \caption{Temporal evolution of the electron mean kinetic energy decomposed over the three directions. Only the beginning of the simulation is shown.}
     \label{fig-canon_Te_strat}
   \end{figure}
   
-  \Cref{fig-canon_Te_strat} shows the temporal evolution of the electron mean kinetic energy decomposed over the three direction, $\Ee_r, \Ee_{\theta}, \Ee_z$, such that
+  \Cref{fig-canon_Te_strat} shows the temporal evolution of the electron mean kinetic energy decomposed over the three directions, $\Ee_r, \Ee_{\theta}, \Ee_z$, such that
   \begin{equation} \label{eq-Ee_direction}
     \Ee_d = \frac{1}{n} \frac{1}{2} m_e \iiint_{\vect{v}}  v_{e,d}^2 f (\vect{v}) d^3v, \text{ with } d \in \{r, \theta, z  \}
   \end{equation}
@@ -36,7 +35,7 @@
       \Ee_{\theta} \simeq \frac{\Te_{\theta}}{2} + \frac{m_e}{2} \lp \frac{E_0}{B_0} \rp^2 \\
     \end{cases}
   \end{equation} 
-  with $\frac{m_e}{2} \lp \frac{E_0}{B_0} \rp^2 \simeq  2.84\,\electronvolt $.
+  with $\frac{m_e}{2} \lp \frac{E_0}{B_0} \rp^2 \simeq  2.84\,\volt $.
   \nomenclature[Q]{\ensuremath{ \Ee}}{ Electron total kinetic energy, imposed of the thermal (or internal) energy and the kinetic energy of the mean velocity.  }
   We see that after some high frequency oscillations of $\Ee_{\theta}$ and $\Ee_z$ due to the cyclotron motion, the temperature rises before stabilizing at $\Ee \simeq 45$V.
   The radial kinetic energy $\Ee_r$ is less than $\Ee_z$ and $\Ee_{\theta}$, but only by a small difference of $5\,\volt$, corresponding to roughly $10\%$.
@@ -56,30 +55,30 @@
     \label{fig-tx_n_phi}
   \end{figure}
 
-  We can see on \Cref{fig-tx_n_phi} the evolution of the radial profile of the electron density on the plasma potential over the same period than \cref{fig-canon_Te_strat}.
+  We can see on \Cref{fig-tx_n_phi} the evolution of the radial profile of the electron density on the plasma potential over the same period as \cref{fig-canon_Te_strat}.
   We observe on both quantities the formation of the sheath and the evolution toward a steady state.
   
-  \subsection{Stable phase} \label{subsec-stablephase}
-  After the relatively fast rise of the plasma characteristic, the simulations stabilises at a steady state, as we can see in \Cref{fig-canon_Te_all}.
-  We observe that after $t\simeq2\mus$ , the electron energy $\Ee$ start to oscillate around its final value.
-  The oscillations are then damped and reach their minimum amplitude at  $t\simeq 7\mus$.
-  Hence, there is no need to simulate for longer than $10\mus$ in the following simulations.
+  \subsection{Stable phase of the simulation\string: $t > \geq 2\,\micro\second$}
+  \label{subsec-stablephase}
+  After the relatively fast rise of the plasma characteristics, the simulation stabilises at a steady state, as we can see in \Cref{fig-canon_Te_all}.
+  We observe that after $t\simeq2\mus$ , the electron energy $\Ee$ starts to oscillate around a mean value.
+  The oscillations are then damped and reach their minimum amplitude at  $t\simeq 7\mus$ and then remain with a small amplitude as shown on simulations carried out up to $25\,\micro\second$ on \cref{fig-canon_Te_all}.
+  Hence, there is no need to simulate for longer times than $10\mus$ in the following simulations.
   
-  \inlinenote{Je parle ici d'oscillation. Devrais-je en parler ? Peut-etre plus tard ?}
-  
+  The origin of these oscillations is discussed in \Cref{subsec-temp}.
   
   
   \begin{figure}[hbtp]
     \centering
     \includegraphics[width=\defaultwidth]{canonical_Te_all_directions}
-    \caption{Temporal evolution of the electron mean kinetic energy decomposed over the three direction, similar to \cref{fig-canon_Te_strat} but during a longer period. We still see the difference between $\Ee_z$ and $\Ee_{\theta}$ due to the $E\times B$ drift, and the colder radial energy.}
+    \caption{Temporal evolution of the electron mean kinetic energy decomposed over the three directions, similar to \cref{fig-canon_Te_strat} but for a longer period. We still see the difference between $\Ee_z$ and $\Ee_{\theta}$ due to the $E\times B$ drift, and the colder radial energy.}
     \label{fig-canon_Te_all}
   \end{figure}
   
 
-  \Cref{fig-profiles} shows the radial profiles of the electron and ions densities averaged azimuthally at steady state.
-  The plasma is mostly quasineutral, expect close to the wall.
-  In the sheath, close to the wall, the electron density fall more rapidly compared to the ions.
+  \Cref{fig-profiles} shows the radial profiles of the electron and ion densities averaged azimuthally at steady state.
+  The plasma is mostly quasineutral, expect close to the walls.
+  In the sheath, close to the wall, the electron density falls more rapidly compared to the ions.
   The sheath length can be roughly estimated to be $1\,\milli\meter$.
   The Debye length in our conditions is
   \begin{equation} \label{eq-debye}
@@ -90,7 +89,7 @@
   \begin{figure}[hbtp]
     \centering
     \includegraphics[width=\defaultwidth]{density_profile.pdf}
-    \caption{Radial profile of the ion and electron densities at steady state, average azimuthally and in time over the 5 last microseconds.}
+    \caption{Radial profile of the ion and electron densities at steady state, averaged azimuthally and in time over the 5 last microseconds.}
     \label{fig-profiles}
   \end{figure}
   
@@ -99,10 +98,10 @@
   \begin{equation} \label{eq-mobdef}
     \mob = \frac{u_{e, z}}{E_z}
   \end{equation}
-  with $u_{e,z}$ and $E_z$ the electron mean axial velocity and the axial electric field, respectively./
+  with $u_{e,z}$ and $E_z$ the electron mean axial velocity and the axial electric field, respectively.
   \nomenclature[Q]{\ensuremath{ \mob}}{ Electron mobility}
   \nomenclature[Q]{\ensuremath{ u}}{ Electron mean velocity}
-  In the \ac{PIC} simulations, \mob is computed at each time step by
+  In \ac{PIC} simulations, $\mob$ is computed at each time step by
   \begin{equation} \label{eq-mobpic}
     \mobpic = \frac{1}{E_z} \sum_N v_{e,z}
   \end{equation}
@@ -115,39 +114,43 @@
   \end{figure}
   
   \Cref{fig-canon_mu} shows the temporal evolution of the electron mobility $\mobpic$ measured in the simulation with \cref{eq-mobpic}.
-  We can see that it presents the same characteristics that the evolution of the electron energy $\Ee$ on \cref{fig-canon_Te_all}.
+  We can see that it presents the same characteristics as the evolution of the electron energy $\Ee$ on \cref{fig-canon_Te_all}.
   The classical electron mobility from the collisional theory is \citep{lafleur2016a}
   \begin{equation} \label{eq-muclass}
     \mobcla = \frac{\nu_m \frac{e}{m_e}}{\oce^2 + \nu_m^2}
   \end{equation}
   with $\nu_m$ the electron-neutral  collision frequency and \oce is the electron cyclotron frequency.
+  \inlinenote{Anne: formule pas deja ecrite avant? \\Réponse: Si. Est-ce grave ? }
   In the conditions of \cref{parameters}, $\mobcla \simeq 0.8$ \square\meter(sV)$^{-1}$.
   
   The measured electron mobility in the \ac{PIC} simulation is one order of magnitude larger than the classical mobility.
   Is the present case, as no electron is emitted from the wall, the enhancement only comes from the \ac{ECDI}, as proposed by \citet{lafleur2016} .
+  \inlinenote{Anne: peut-etre trop affirmatif, non? tu peux peut-etre a ce stade laisser une chance aux autres instabilités et ensuite dire que dans ton cas, avec l'ECDI seulement c'est OK ?}
   % K_ex = 2 10^-13
   % n_g = 1e19
   % wce = q B / m
   The oscillations can bee seen in \vref{fig-2dschemat}, that displays the azimuthal electric field featuring the oscillation of wavelength of the order of 1~mm, as observed in \citet{heron2013,janhunen2018}.
-  \Cref{fig-exampleECDI} by shows the temporal evolution of the azimuthal electric at the center of the channel.
-  We can see that the instability rises and saturate quickly.
-  Then, the oscillation is quite stable.
-  The Fourier Transform of the electric field present a clear maximum at $14\,\mega\hertz$.
-  The theoretical frequency of the instability is \citep{lafleur2017}
+  \Cref{fig-exampleECDI} shows the temporal evolution of the azimuthal electric at the center of the channel.
+  We can see that the instability rises and saturates quickly.
+  Then, the oscillation remains quite stable.
+  The Fourier Transform of the electric field presents a clear maximum at $14\,\mega\hertz$.
+  The theoretical frequency of the \ac{ECDI} instability is \citep{lafleur2017}
   \begin{equation} \label{eq-maxfeq}
     f_{\rm max} = \frac{\omega_{pi}}{\sqrt{3}} \simeq 21 \,\mega\hertz,
   \end{equation}
   which gives a good agreement.
   
-  The instability is the subject of Chapter 5 [Use REF here], hence it will not be further investigated here.
+  The \ac{ECDI} instability is the subject of \Cref{ch-5}, hence it will not be further investigated here.
   
   
   \begin{figure}[hbtp]
     \centering
     \includegraphics[width=\defaultwidth]{time_and_FFT}
-    \caption{Azimuthal instability\string: temporal evolution of the azimuthal electric field at the center of the simulation, and its frequency spectra computed by \ac{FFT}. The frequency for which the amplitude is maximum is highlighted.}
+    \caption{Azimuthal instability\string: temporal evolution of the azimuthal electric field at the center of the simulations, and its frequency spectra computed by \ac{FFT}. The frequency for which the amplitude is maximum is highlighted.}
     \label{fig-exampleECDI}
   \end{figure}
+  
+  \inlinenote{Anne: pour preparer ce que tu vas montrer sur la figure 2.11, je pense qu'il faut que tu donnes ici les différentes valeurs des différentes mobilités pour epsilon=0}
 
   
   
