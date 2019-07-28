@@ -1,5 +1,5 @@
 %% File: `unsrtnat.bst'
-%% A modification of `unsrt.bst' for use with natbib package
+%% A modification of `unsrt.bst' for use with natbib package 
 %%
 %% Copyright 1993-2007 Patrick W Daly
 %% Max-Planck-Institut f\"ur Sonnensystemforschung
@@ -256,7 +256,6 @@ FUNCTION {format.authors}
   if$
 }
 
-
 FUNCTION {format.editors}
 { editor empty$
     { "" }
@@ -272,28 +271,29 @@ FUNCTION {format.editors}
 FUNCTION {format.isbn}
 { isbn empty$
     { "" }
-    { ""}
+    { new.block "ISBN " isbn * }
   if$
 }
 
 FUNCTION {format.issn}
 { issn empty$
     { "" }
-    { "" }
+    { new.block "ISSN " issn * }
   if$
 }
 
 FUNCTION {format.url}
 { url empty$
     { "" }
-    { "" }
+    { new.block "URL \url{" url * "}" * }
   if$
 }
+
 
 FUNCTION {format.doi}
 { doi empty$
     { "" }
-    { "" }
+    { new.block "\doi{" doi * "}" * }
   if$
 }
 
@@ -602,6 +602,15 @@ FUNCTION {format.in.ed.booktitle}
   if$
 }
 
+FUNCTION {empty.misc.check}
+{ author empty$ title empty$ howpublished empty$
+  month empty$ year empty$ note empty$
+  and and and and and
+  key empty$ not and
+    { "all relevant fields are empty in " cite$ * warning$ }
+    'skip$
+  if$
+}
 
 FUNCTION {format.thesis.type}
 { type empty$
@@ -880,14 +889,6 @@ FUNCTION {inproceedings}
   fin.entry
 }
 
-FUNCTION {format.month}
-{
-  month empty$
-    { "" }
-    { " " month * }
-  if$
-}
-
 FUNCTION {conference} { inproceedings }
 
 FUNCTION {manual}
@@ -933,12 +934,12 @@ FUNCTION {misc}
   howpublished new.block.checka
   howpublished output
   format.date output
-  %format.issn output
-  %format.url output
+  format.issn output
+  format.url output
   new.block
   note output
   fin.entry
-  %empty.misc.check
+  empty.misc.check
 }
 
 FUNCTION {phdthesis}
