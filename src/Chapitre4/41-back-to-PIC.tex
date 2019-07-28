@@ -4,25 +4,38 @@
 \section{Polytropic index in the \ac{HET} \ac{PIC} simulations}
 \label{sec-PIC_poly}
 
-\begin{figure}[hbtp]
-  \centering
-  \includegraphics[width=\defaultwidth]{EVDF_Bulk.pdf}
-  \caption{Electron velocity distribution function at the center of the simulation, for different values of $\crover$.}
-  \label{fig-evdf_epsstar}
-\end{figure}
+We have developed in \cref{ch-3} a sheath model that uses a polytropic state law for the electrons instead of the usual isothermal approximation.
+This model successfully reproduced the sheath characteristics  when no secondary electron emission where present (fully absorbing walls).
+We now include the effects of the electron emission from the wall.
+
+In this chapter, the \ac{PIC} simulations are the same as in \cref{sec-see}. 
+Hence, the dielectric electrostatic boundary condition is not modeled, but instead the walls are grounded.
+In addition, we recall that the axial convection is model using Lafleur's model of convection, as discussed in \cref{sec-reinjectionnoise}.
+
+As previously done, we uses the mean values of the electron density $n_e$ and the electron pressure $ p_e = n_e T_e$ to find the value of the polytropic index.
+\Cref{fig-radial_profiles_see} shows the radial profiles of the electron density and temperature for different values of the cross-over energy $\crover$.
+The three values of $\crover$ are representative of the behaviour observed.
+Indeed, $\crover=200\,\volt$ and $\crover=50\,\volt$ correspond to the upper and lower limits of regime {\bf II}, corresponding to low emission rate $\rate$, while regime {\bf I} corresponds to the case $\crover=10\,\volt$.
+Regime {\bf II} is not presented has the oscillating nature of the sheath is not taken into account by the sheath modeled developed here. 
+
 
 \begin{figure}[hbtp]
   \centering
   \includegraphics[width=\textwidth]{ne_Te_profiles.pdf}
-  \caption{Radial profiles of (left) the electron density and (right) the electron temperature, for different values of $\crover$.}
+  \caption{Radial profiles of (left) the electron density and (right) the electron temperature, for different values of $\crover$. The variables are averaged over the azimuthal direction and in time between $t=5\,\micro\second$ and $t=10\,\micro\second$.  }
   \label{fig-radial_profiles_see}
 \end{figure}
 
+We can see that the electron temperature presents a monotonic profile for all the values of $\crover$.
+However, the electron density is not monotonic, but instead it presents an increase close to the wall.
+This is clearly visible in \cref{fig-log_pe-ne} that presents the electron pressure as a function of the electron density, in log scale.
+We see that close to the wall, where the electron pressure is the lowest, the curves present a significant inversion, in contrast with the case without electron emission seen in \cref{fig-polyFit}.
+Otherwise in the rest of the domain, the curves are almost linear, corresponding to a polytropic low.
 
 \begin{figure}[hbtp]
   \centering
   \includegraphics[width=\defaultwidth]{SEE_polytropic_presheath_and_sheath.pdf}
-  \caption{electron pressure as a function of the electron density normalized by the center variable, in log scale. Markers are every 10 cells (around 1$\lde$)}
+  \caption{Electron pressure as a function of the electron density normalized by the center variable, in log scale. The data corresponds to the same as \cref{fig-radial_profiles_see}. Markers are used every 10 cells ( corresponding to around one Debye length $\lde$)}
   \label{fig-log_pe-ne}
 \end{figure}
 
@@ -38,54 +51,13 @@
   \label{fig-polyfit_see}
 \end{figure}
 
-\FloatBarrier
-{\bf Conclusion: $\gamma = 1.35$ in presheath and $\partial{\gamma} / \partial \crover = 0 $}
+% 
+% \begin{figure}[hbtp]
+%   \centering
+%   \includegraphics[width=\defaultwidth]{EVDF_Bulk.pdf}
+%   \caption{Electron velocity distribution function at the center of the simulation, for different values of $\crover$.}
+%   \label{fig-evdf_epsstar}
+% \end{figure}
 
-\paragraph{Hypothesis H1: } Polytropic model until the wall and $\gamma = 1.35$ (might be explained by \cref{{fig-evdf_epsstar}}, and by the fact that we care only on the forward temperature, so not distorted by the secondary electrons).
-
-\paragraph{Hypothesis H2: } From {\bf H1}, and with the 2-$\Te$ hypothesis, we have $\rate = \rate_{\rm Maxw}(\Tew)$, were $\Tew$ can be computed from $Teb$, $\gamma$ and $\dphi$.
-
-\paragraph{Hypothesis H3: } Current equality at the wall : $\Gamma_i + \rate \Gamma_e = \Gamma_e$. This is not a surprising hypothesis.
-
-\section{Sheath model with polytropic electron and SEE}
-
-With {\bf H1, H2} and {\bf H3} we have, as developed in \cref{sec-fluidPIC} with \cref{eq-gi,eq-ge,eq-tew}:
-\begin{equation}\label{eq-sheathsee}
-  (1 - \rate_{\rm Maxw}(\Tew) )\left[ 1 +\frac{\gamma -1}{\gamma} \frac{ \dphi_0}{ \Te_0}  \right]^{\frac{1}{\gamma - 1}} \sqrt{1 - \frac{\gamma -1}{\gamma}\frac{\dphi_0}{\Te_0}} = \sqrt{\frac{4 \gamma \pi m_e}{m_i}}
-\end{equation}
-In contrast with \cref{eq-sheath}, now the sheath potential $\Delta \phi$ depends on $\rate$ with depends on $\Te$.
-Hence, $\dphi$ is not fully normalized.
-
-\begin{figure}[hbtp]
-  \centering
-  \includegraphics[width=\defaultwidth]{Sheath_drop_with_SEE.pdf}
-  \caption{Potential drop $\dphi$ normilized by the bulk electron temperature $\Te_0$ as a function of the polytropic index $\gamma$ for a xenon plasma ($m_i = 131\,\dalton$). The emission rate $\rate$ is fixed for clarity.}
-  \label{fig-dphi_see}
-\end{figure}
-
-\begin{figure}[hbtp]
-  \centering
-  \includegraphics[width=\defaultwidth]{RSO_criteria_polytropic.pdf}
-  \caption{ Plasma potential drop to the wall as a function of the electron temperature for different values of the cross-over energy $\crover$ using \cref{eq-sheathsee,eq-seemaxw}. The dashed line is $\dphi=\Te$. Similar to  \cref{fig-dphivsTe} but with polytropic electron of index $\gamma=1.35$}
-  \label{fig-rso_crit_see}
-\end{figure}
 
 \FloatBarrier
-
-\section{Comparison with PIC simulations} \label{subsec-picandmodel}
-
-\begin{figure}[hbtp]
-  \centering
-  \includegraphics[width=\textwidth]{dphi_polytropic_noSEE}
-  \caption{PIC simulation results (with SEE) compared to the polytropic limit without SEE.}
-  \label{fig-polytropic_pic_noSEE}
-\end{figure}
-
-\begin{figure}[hbtp]
-  \centering
-  \includegraphics[width=\textwidth]{Summary_polytropic_SEE.pdf}
-  \caption{Comparison of the PIC simulation results with the polytropic model with SEE.}
-  \label{fig-polytropic_see_summary}
-\end{figure}
-
-

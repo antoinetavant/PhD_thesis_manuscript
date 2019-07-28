@@ -8,7 +8,11 @@
 
 \begin{Chabstract}
   
-We modify the polytropic sheath model with secondary electron emission
+%e modify the polytropic sheath model with secondary electron emission
+We add to the non-isothermal sheath model developed in \cref{ch-3} the secondary electron emission.
+using the \ac{PIC} simulations, we observe that the polytropic index is almost constant when varying the cross-over energy $\crover$.
+The predictions of the polytropic sheath model are compared to the \ac{PIC} simulations results presented in \cref{ch-2}.
+The modified sheath model is included in a \ac{1D} fluid model.
 \end{Chabstract}
 
 {\bf IV. Polytrotic sheath model with SEE} 20 pages
@@ -28,39 +32,39 @@ We modify the polytropic sheath model with secondary electron emission
 \end{zzz}
 
 \minitoc
-
-What is complicated here is the definition of the electron temperature, that include both primary and secondary electrons.
-Should we
-\begin{itemize}
-  \item Use a 2 fluid( so 1 electron) with a fluid model that includes the SEE ?
-  \item Use a 3 fluid model, that would  include folly absorbed primary electrons (simply polytropic) and emitted electrons, with strictly positive velocity.
-\end{itemize}
-
-In the First case, the electron temperature is simple to define.
-But the closure equation may need to be changed.
-
-the second case is more simpler, mathematicaly.
-
-References:
-Il y a déjà eu beaucoup de travaux, mais aucun model fluides !
-
-\citet{meezan2002} : Bolzmann solver, 2-Te EVDF, SEE compared with Maxwellian
-
-\citet{smirnov2004} : MCC code, 2-Te EVDF. Mais fake EVDI effect via collisions
-
-\citet{sydorenko2006a} : Beam in EVDF because of 1D PIC-MCC 
-
-\citet{raitses2006} : "strong anisotropy : facteur 4",  compare Mesures avec fluids codes: says disagriment. Talks about 
-
-\citet{ahedo2002} : sheath-presheath model with SEE with bolzmann electron, Sagdeev potential, SCL regime avec saturations 
-
-\citet{ahedo2003} : 1D axial model avec wall interactions (SEE et SCL), plum with section increase (A(z)) 
-
-\citet{ahedo2005} : Fluid model with SEE, with partial trapping and partial beams
-
-\citet{raitses2005} : SCL regime and Te saturation (where he says that the SCL may not be responsible ??)
-
-\citet{barral2003a} : 1D model, anisotrop electrons ({\bf must read to know how}), shows saturation at SCL with large anisotropy
+% 
+% What is complicated here is the definition of the electron temperature, that include both primary and secondary electrons.
+% Should we
+% \begin{itemize}
+%   \item Use a 2 fluid( so 1 electron) with a fluid model that includes the SEE ?
+%   \item Use a 3 fluid model, that would  include folly absorbed primary electrons (simply polytropic) and emitted electrons, with strictly positive velocity.
+% \end{itemize}
+% 
+% In the First case, the electron temperature is simple to define.
+% But the closure equation may need to be changed.
+% 
+% the second case is more simpler, mathematicaly.
+% 
+% References:
+% Il y a déjà eu beaucoup de travaux, mais aucun model fluides !
+% 
+% \citet{meezan2002} : Bolzmann solver, 2-Te EVDF, SEE compared with Maxwellian
+% 
+% \citet{smirnov2004} : MCC code, 2-Te EVDF. Mais fake EVDI effect via collisions
+% 
+% \citet{sydorenko2006a} : Beam in EVDF because of 1D PIC-MCC 
+% 
+% \citet{raitses2006} : "strong anisotropy : facteur 4",  compare Mesures avec fluids codes: says disagriment. Talks about 
+% 
+% \citet{ahedo2002} : sheath-presheath model with SEE with bolzmann electron, Sagdeev potential, SCL regime avec saturations 
+% 
+% \citet{ahedo2003} : 1D axial model avec wall interactions (SEE et SCL), plum with section increase (A(z)) 
+% 
+% \citet{ahedo2005} : Fluid model with SEE, with partial trapping and partial beams
+% 
+% \citet{raitses2005} : SCL regime and Te saturation (where he says that the SCL may not be responsible ??)
+% 
+% \citet{barral2003a} : 1D model, anisotrop electrons ({\bf must read to know how}), shows saturation at SCL with large anisotropy
 
 {\bf \Large A lire}
 
