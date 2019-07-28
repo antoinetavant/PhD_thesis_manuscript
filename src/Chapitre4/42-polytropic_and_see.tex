@@ -2,6 +2,7 @@
 
 \FloatBarrier
 \section{Sheath model with polytropic electron and electron emission}
+\label{sec-fluid_poly_see}
 
 We have seen in \cref{sec-PIC_poly} that even in the presence of electron emission from the wall, the electrons can be decreased using a polytropic state law.
 The value of the polytropic index obtained from the mean electron density and temperature is for $\crover \geq 40 \,\volt$ is $\gamma = 1.35$.
@@ -68,8 +69,8 @@ We can the that \cref{eq-costseepoly} can present two solutions, or no solutions
 Hence, a particular care must be taken now when finding the sheath potential drop.
 
 \Cref{fig-rso_crit_see} shows the evolution of the sheath potential drop with the electron temperature for different values of $\crover$.
-It corresponds to \cref{fig-dphivsTe} with the use of a polytropic index.
-We can see now that the electron temperature in the center $\Teb$ must be much higher before that the inversion of the plasma sheath potential, compared to \cref{fig-dphivsTe}.
+It is similar to \cref{fig-dphivsTe} but with the use of a polytropic state law for the electrons.
+Two main aspects differ compared to the isothermal model\string: the multiple solution and the maximal electron temperature of the first solution.
 
 \begin{figure}[hbtp]
   \centering
@@ -78,26 +79,27 @@ We can see now that the electron temperature in the center $\Teb$ must be much h
   \label{fig-rso_crit_see}
 \end{figure}
 
-The electron temperature at inversion at $\crover=30\,\volt$ is around $\Teb=32\,\volt$, which is much closer to the mean electron temperature measured in regime {\bf II}.
+We observe in \cref{fig-rso_crit_see} that the electron temperature in the center $\Teb$ can be much higher before that the inversion of the plasma sheath potential, compared to \cref{fig-dphivsTe}.
+Indeed, the polytropic state law decreases the electron temperature at the wall, which decreases the electron emission rate.
+Hence, the electron bulk temperature can access higher temperature, compared to the one observed in \cref{fig-dphivsTe}.
+Moreover, we see that the critical temperature for $\crover=40 \,\volt$ is close to $\Te=40\,\volt$, which is consistent with the transition between the regimes {\bf III} and {\bf II}.
 
+In addition, for some electron temperature, there are three solutions.
+This could explain the oscillations observed in regime {\bf II}.
+Indeed, when the electron temperature increases, the sheath follows the first solutions.
+When the critical electron temperature, the sheath jump to the third solution.
+It corresponds to the \ac{SCL} regime with an inverted sheath.
+There, the electron temperature in the bulk decreases because of the increased electron power losses at the wall.
+The electron temperature decreases until the second critical temperature, which corresponds to the moment when the third solution disappear, so that the sheath jumps back to the first solution.
 
+Obviously, this model suppose that the polytropic index is constant.
+However, we saw in the \ac{PIC} simulations that it increases from $\gamma = 1.34$ to $1.59$.
+Hence, the exact values of the critical temperature may not exactly correspond to the one observed in the simulations.
+On the other hand, we can expect the overall behaviour not to be significantly affected.
 
+\vspace{1em}
+To summarize, the polytropic law is combined with electron emission to model the sheath.
+The model is richer than the usual isothermal model, as it allow multiple values of potential drop to the wall for the same bulk electron temperature.
 
-
-\FloatBarrier
-
-\section{Comparison with PIC simulations} \label{subsec-picandmodel}
-
-\begin{figure}[hbtp]
-  \centering
-  \includegraphics[width=\textwidth]{dphi_polytropic_noSEE}
-  \caption{PIC simulation results (with SEE) compared to the polytropic limit without SEE.}
-  \label{fig-polytropic_pic_noSEE}
-\end{figure}
-
-\begin{figure}[hbtp]
-  \centering
-  \includegraphics[width=\textwidth]{Summary_polytropic_SEE.pdf}
-  \caption{Comparison of the PIC simulation results with the polytropic model with SEE.}
-  \label{fig-polytropic_see_summary}
-\end{figure}
+This model only uses the electron bulk temperature and returns both the potential drop and the electron emission rate.
+It is compared in the next section to the \ac{PIC} simulation results.
