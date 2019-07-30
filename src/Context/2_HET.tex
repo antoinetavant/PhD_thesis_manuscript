@@ -1,0 +1,151 @@
+% !TEX root=/home/tavant/these/manuscript/src/manuscript.tex
+
+
+\section*{Presentation of the Hall effect Thruster }
+  \label{sec-HET}
+  \addcontentsline{toc}{section}{Presentation of the Hall effect Thruster}
+
+  
+  The \ac{HET} is an electrostatic electrical propulsion system accelerating ions by the mean of an imposed voltage difference.
+  \Cref{fig-bhtonoff} shows a picture of an \ac{HET} switched on and off.
+  We can see the plasma in the annular plasma chamber.
+
+
+  \begin{figure}[hbtp]
+    \centering
+    \includegraphics[width=\defaultwidth]{PPS-ON_OFF.jpg}
+    \caption{Front view off an \ac{HET}, the BHT-1500 from Busek, USA}
+    \label{fig-bhtonoff}
+  \end{figure}
+
+  We can summarize the composition of an \ac{HET} with four parts\string:
+  \begin{enumerate}
+    \item The annular chamber.
+    \item The injecting anode
+    \item The cathode
+    \item The magnetic circuit
+  \end{enumerate}
+
+  \begin{figure}[hbtp]
+    \centering
+    \includegraphics[width=\defaultwidth]{shematic_HET}
+    \caption{Schematic cut of an \ac{HET}, illustrating its different parts. }
+    \label{fig-shematiccut}
+  \end{figure}
+
+  \Cref{fig-shematiccut} presents a schematic cut of the \ac{HET} along its axial and radial direction.
+
+  \paragraph{The chamber} has an annular shape.
+  It is closed at the anode side, and kept open at the other side.
+  The axial length of the chamber is between $1$ and $3\,\centi\meter$, the radial width of the chamber is between $1$ and $2\,\centi\meter$. 
+  The walls are usually constituted by a ceramic, as the \ac{BNSiO2}.
+  The material needs to be resistant to erosion by ion impact sputtering.
+  But changing the material is also known to affects the discharge behaviour.
+  The usually supposed phenomenon for this impact is the secondary electron emission yield that is a function of the material nature.
+  For materials used in HET, this yield may be higher than 1.
+
+
+  \paragraph{The anode} is at the bottom of the chamber.
+  The anode voltage is imposed to a few hundred volts.
+  Usually, the neutral gas injection is made though the anode itself, or it is close to the anode.
+  The mass flow rate is of the order of a few mg/s.
+
+  \paragraph{The cathode} is outside of the chamber.
+  It is grounded, and injects electrons for two reasons\string:
+  \begin{itemize}
+    \item most of the electrons ($\sim 90 \%$) are used to neutralize the ion flux, for both allowing the ions to leave the thruster and avoiding charging of the spacecraft.
+    \item some of the electrons are attracted by the anode, hence entering the chamber and allowing the plasma discharge to switch and remain on.
+  \end{itemize}
+
+  \paragraph{The magnetic circuit} is composed of electromagnets and a magnetic circuit mode of different ferromagnetic pieces.
+  It creates a constant radial magnetic field in the annular chamber.
+  The maximum value of the radial magnetic field is located close to the exit plane of the chamber.
+  Its amplitude is on the order of $200$ Gauss ($\sn{2}{-2}$ T).
+
+  \Cref{fig-bshape} illustrates the axial profile of the amplitude of the radial magnetic field.
+  \begin{figure}[hbtp]
+    \centering
+    \includegraphics[width=\defaultwidth]{bshape}
+    \caption{Usual shape of the axial profile of the radial magnetic field on the centreline of the channel.}
+    \label{fig-bshape}
+  \end{figure}
+
+
+\section*{HET operating principle}
+\addcontentsline{toc}{subsection}{HET operating principle}
+
+
+  The operation principle of an \ac{HET} is rather simple.
+  The objective is to ionize the propellant and impose an electric field to accelerate the ions.
+
+  \paragraph{Ionization\\}
+  Due to the low pressure (around $\sn{1}{-4}$ Pa), the mean free path of the electrons is larger than the chamber size.
+  In consequence, a magnetic field is imposed in order to trap the electrons in a cyclotron motion, increasing the residence time of the electrons, to promote  ionization.
+  In average, 90\% of the propellant is ionized in a well designed \ac{HET}.
+
+  \paragraph{Acceleration\\}
+  The potential difference  between the anode and the cathode is used to accelerate the ions outside of the chamber and create the thrust.
+  Because the magnetic field slows the electrons down, the plasma resistivity increases in the region where the magnetic field amplitude is large.
+  Hence, the axial profile of the amplitude of the axial electric field presents a maximum close to the maximum of the magnetic field.
+  While the typical voltage difference is $V=300\,\volt$, the maximum electric field can be of the order of $30\,\kilo\volt\per\meter$ \citep{gawron2008}.
+
+  \paragraph{Ionization and Acceleration regions overlap\\}
+  \Cref{fig-zones} shows an illustration of the usual axial evolutions of the ionization, electric and magnetic fields.
+  As both the ionization region and the acceleration region are governed by the magnetic field, it can be difficult to obtain a net separation.
+  However, if ionization happens in the acceleration region, the newly created ions will not be accelerated at their maximum velocity, hence resulting in a loss compared to the maximum theoretical thrust.
+  The theoretical maximum velocity is, by conservation of the total energy of the ion
+  \begin{equation} \label{eq-vmaxtheo}
+    v_{\rm ex, max} = \sqrt{ \frac{2 e V}{m_i} } \sim 31 \,\kilo\meter\per\second
+  \end{equation}
+  with $m_i = 131 \,\atomicmass$ for xenon and $V=300\,\volt$.
+
+
+  \begin{figure}[hbtp]
+    \centering
+    \includegraphics[width=\defaultwidth]{zones}
+    \caption{Illustration of the usual axial profiles of the ionization and acceleration amplitude compared to the magnetic field.}
+    \label{fig-zones}
+  \end{figure}
+
+  The thruster efficiency, in the usual configuration, is governed by its magnetic field topology.
+  Hence, it can be difficult to find the best topology that will optimize the ionization and the location of the regions.
+  Some concepts of double stage \ac{HET} have been proposed to decouple the two phenomena in order to control them independently.
+  
+  % However, the preliminary results are not as satisfactory as expected. 
+  % \inlinenote{Add referecne here}
+  % Moreover, the double-stage system needs more parts and power sources, resulting in a more complicated system.
+
+  
+  \section*{Instabilities present in the \ac{HET} }
+  \label{sec-physics}
+  \addcontentsline{toc}{subsection}{Instabilities present in the \ac{HET}}
+
+  The \ac{HET} are subject to numerous plasma oscillations, over a large range of frequencies \citep{boeuf2017,choueiri2001}.
+  The most important one are\string:
+  \begin{enumerate}
+    \item Low frequency (10-20\,\kilo\hertz) ionization oscillations, usually refereed as breathing mode,
+    \item Azimuthal low frequency rotating spokes, also in the \kilo\hertz{} range,
+    \item Axial ion transit time oscillations, of the order of 100-500 \kilo\hertz,
+    \item Azimuthal fast oscillation, of frequency of the order of the ion plasma frequency.
+  \end{enumerate} 
+
+  \paragraph{1. Breathing mode\\}
+  The breathing mode is relatively well understood \citep{boeuf1998,barral2009,hara2014}.
+  Indeed, a simple predator-prey model of two equation is enough to qualitatively obtain the observed behaviour.
+  It is related to the idea that when the ionization is strong, the neutral atom density decreases, reducing the ionization.
+  Hence, the plasma density decreases, allowing the neutral density to rise again until the ionization growth back.
+
+  \paragraph{2. Rotating spokes\\}
+  Experimental measurements with segmented anode \citep{ellison2012,mcdonald2011} seems to indicate that the rotating spokes are present in the anode region.
+  Their physical origins are less understood, as they were first attributed to ionization \citep{janes1966}, but were later related to Simon-Hoh instability and they were observed in \ac{PIC} simulation even with neglecting ionization \citep{carlsson2018}.
+  However, in recent experiments, the presence of spokes did not seem to affect the \ac{HET} performances \citep{boeuf2018}.
+
+  \paragraph{3. Transit time instability\\}
+  Transit time instability has been predicted and observed in analytical and numerical models respectively \citep{barral2005,boeuf2018}.
+  Experimental studies of these instabilities are rather scarce and it is only recently that time-resolved Laser Induced Fluorescence measurements of the local ion velocity distribution function have confirmed the presence of this instability in a Hall thruster \citep{vaudolon2015}.
+  This oscillation could reduce the thruster performances by increasing the overlap between the acceleration and ionization regions \citep{boeuf2018}.
+
+  \paragraph{4. High frequency azimuthal oscillations\\}
+  These oscillations were first observed in \ac{PIC} simulation \citep{adam2004,ducrocq2006,adam2008a,heron2013} before being observed by electron Thomson scattering \citep{tsikata2009a,tsikata2009,tsikata2013}.
+  They are important, as they enhance the electron transport in the axial direction \citep{adam2004,lafleur2016a}.
+  They are further described in the next section.
