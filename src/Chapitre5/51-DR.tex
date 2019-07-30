@@ -7,8 +7,8 @@
   The dispersion relations are obtained by coupling the particle dynamics with the electric fields.
   In the case of the kinetic electrostatic dispersion relation, we couple the Vlasov equation with the Poisson equation.
   
-  In our \ac{2D} geometrie, we can neglect all of the gradients.
-  Are imposed a fixed axial electric field $\vect{E} = E_0 \vect{e_z}$ and a fixed radial magnetic field $\vect{B} = B_0 \vect{e_r}$
+  In our \ac{2D} geometry, we can neglect all of the gradients.
+  A fixed axial electric field $\vect{E} = E_0 \vect{e_z}$ and a fixed radial magnetic field $\vect{B} = B_0 \vect{e_r}$ are imposed.
   The electrons are drifting in the azimuthal direction due to the $E\times B$ drift, hence
   \[ \vect{u_{e}} = \frac{\vect{E} \times \vect{B}}{\norm{\vect{B}}^2} = \frac{E_0}{B_0}  \vect{e_{\theta}}.    \]
   The ions are accelerated in the axial direction, $ \vect{u_i} = u_i  \vect{e_z}$.
@@ -23,12 +23,10 @@
   
   The \ac{ECDI} dispersion relation obtained presents resonances at the cyclotron frequencies, which broadens when $k_r$ in increased.
   The limit when $k_r$ tends to large values is similar to an \ac{IAW}.
-  This limit is usually used.
+  This limit is usually used, even if recently, \ac{2D} \ac{PIC} simulations with a larger domain observed radial structures in the oscillations \citep{janhunen2018,hara2019a}.
   
-  Recently, \ac{2D} \ac{PIC} simulation on a large domain observed radial structures in the oscillations \citep{janhunen2018,hara2019a}.
-  
-  \citet{lafleur2018} got read of the Maxwellian hypothesis by using directly the distribution functions measured in the \ac{PIC} simulations in the \ac{IAW} dispersion relation.
-  The authors showed that the frequency of the oscillation is almost unperturbed, but the growth rate is significantly reduced, even when the ions were still supposed Maxwellian \citep[F ig. 8]{lafleur2018}.
+  \citet{lafleur2018} removed the Maxwellian hypothesis by using directly the distribution functions measured in the \ac{PIC} simulations in the \ac{IAW} dispersion relation.
+  The authors showed that the frequency of the oscillation is almost unperturbed, but the growth rate is significantly reduced, even when the ions were still supposed Maxwellian \citep[Fig. 8]{lafleur2018}.
   
   Here, we propose to continue the investigation by solving the dispersion relation numerically with the electron and ion distribution function for both the \ac{IAW} and the \ac{ECDI}.
   
@@ -57,7 +55,7 @@
       Z(\eta) = \frac{1}{\sqrt{\pi}} \int_{-\infty}^{\infty} \frac{\exp{(-t^2)}}{t - \eta} dt.
     \end{equation}
     We use here the Fried and Conte function because of the Maxwellian hypothesis.
-    In \citet{xiehua-sheng2013}, the author proposes a numerical calculation of the susceptibility for a general distribution function
+    \citet{xiehua-sheng2013} proposes a numerical algorithm to calculate the susceptibility for a general distribution function
     \begin{equation} \label{eq-general}
       Z(\eta, f) = \int_{-\infty}^{\infty} \frac{f(t)}{t - \eta} dt,
     \end{equation}
@@ -82,7 +80,7 @@
       \beta = \frac{(k_{\theta}^2 + k_z^2) b^2_{th, e}}{ \oce^2}
     \end{equation}
     
-    \Cref{eq-drECDI} is the dispersion relation for drifting magnetised electrons and unmagnetized ions.
+    \Cref{eq-drECDI} is the dispersion relation for drifting magnetized electrons and unmagnetized ions.
     It will be used to study the \acf{ECDI}.
     
 
@@ -102,16 +100,16 @@
     \end{equation}
 
     
-    However, one can not that there is no consensus on the transition to an \ac{IAW}.
-    It can be is attributed to non-linear resonance broadening, because the electron orbit est distorted, leading to the loss of the phase relation between the electron and the wave \citep{taccogna2019}.
+    However, one can note that there is no consensus on the transition to an \ac{IAW}.
+    It can be is attributed to non-linear resonance broadening, because the electron orbit is distorted, leading to the loss of the phase relation between the electron and the wave \citep{taccogna2019}.
     The electron demagnetisation leads to a dispersion relation where the ions and the electrons have the same type of contribution.
     But recently, \citet{janhunen2018a} claimed that the demagnetisation condition due to nonlinear resonance broadening is not fulfilled.
     \citet{lafleur2017a} uses the fact that in \ac{2D} simulations, the finite minimum value for the radial wave vector is responsible for the ion acoustic dispersion relation.
     
-    \citet{lafleur2016} and \citet{janhunen2018} show that after some assumptions -- mostly a drifting Maxwellian distributions, cold ions, and a small electron drift velocity compared to thermal speed -- \cref{eq-drIAWgene} can be solved to obtain
+    \citet{lafleur2016} and \citet{janhunen2018} show that after some assumptions -- mostly a drifting Maxwellian distribution, cold ions, and a small electron drift velocity compared to thermal speed -- \cref{eq-drIAWgene} can be solved to obtain
     \begin{equation} \label{eq-MIAW}
       \omega = \omega_r + i \gamma = \vect{k} \cdot \vect{u_{i}} \pm \frac{k c_s}{\sqrt{1 + k^2 \lde^2}} \pm i \sqrt{\frac{\pi m_e}{8 m_i}} \frac{\vect{k} \cdot \vect{u_{e}}}{( 1 + k^2 \lde^2)^{3/2}}.
     \end{equation}
-    The above equation represent the analytic modified ion-acoustic dispersion relation.
+    The above equation represents the analytic modified ion-acoustic dispersion relation.
     We can see that the growth rate is proportional to the electron drift velocity.
     

@@ -4,70 +4,15 @@
   \label{sec-DR-results}
   
   
-  \subsection{Distribution function impacts} \label{subsec-DRimpact}
-    Before using the electron and ion distribution functions measured in the \ac{PIC} simulations, we compare the distribution relation for \ac{ECDI} and \ac{IAW} for different analytic distribution function.
-    
-    \paragraph{Ion acoustic wave\\}
-    
-    \Cref{fig-IAW_Maxw} shows the comparison with the relation dispersion \cref{eq-drIAWgene} for cold ions and drifting Maxwellian electrons of temperature $\Te=50\,\volt$ and drift velocity $u_e = \sn{2}{6} \,\meter\per\second$ for which the plasma dispersion function $Z_M$ is computed analytically (with the \texttt{plasmapy} package) or numerically.
-    The plasma density is $n_e = n_i = \sn{1}{17} \,\per\meter\cubed$.
-    Is also shown the frequency and growth rate obtained the simplified dispersion relation of \cref{eq-MIAW}. 
-    
-    \begin{figure}[hbtp]
-      \centering
-      \includegraphics[width=\defaultwidth]{IAW_Maxw}
-      \caption{\ac{IAW} frequency and growth rate for a Maxwellian distribution function using the Freid and Conte function (labelled Analytic $Z_M$), the numerical estimation of $\tilde{Z}_M$, and the simplified analytic expressions of \cref{eq-MIAW}. }
-      \label{fig-IAW_Maxw}
-    \end{figure}
-    
-    We can see that all results gives almost the same solutions.
-    The growth rates are all overlapping, hence it is difficult to see the differences.
-    For $\omega_r$, the simplified analytic expression returns a slightly different result, but the differences is negligible.
-    The numerical evaluation of $\tilde{Z}_M$ give the same result as analytic evaluation.
-    
-    \Cref{fig-IAW_druv} shows the effect of a Druyvesteyn electron distribution compared to a Maxwellian.
-    We recall that a Druyvesteyn distribution follows the expression
-    \begin{equation} \label{eq-druyv}
-      f_{D}(v) = \exp \lp C1 \frac{\norm{v}^3}{v_{th}^3}  \rp C2,
-    \end{equation}
-    with $C1 \simeq 0.63$ and $C2 \sim 0.84$ two normalizing constants.
-    We can see that there is no much impact of the Druyvesteyn electron velocity distribution function on the electron, except that the maximum growth rate is sightly diminished.
-    
-    \begin{figure}[hbtp]
-      \centering
-      \includegraphics[width=\defaultwidth]{IAW_druv}
-      \caption{\ac{IAW} frequency and growth rate for a Maxwellian distribution function using the Freid and Conte function and a Druyvesteyn distribution evaluated with the numerical estimation of $\tilde{Z}$. }
-      \label{fig-IAW_druv}
-    \end{figure}
-    
-    \paragraph{Electron Cyclotron Drift instability\\}
-    
-      \Cref{fig-ECDI_druv} shows the frequency and the grow rate for the \ac{ECDI}, using defined by \cref{eq-drECDI}, in the same conditions that the \ac{IAW} results, with $k_r \lambda_{De} = 0.1 $.
-      The infinite sum over the cyclotron resonances is stopped at $N_{max} = 20$.
-      
-      
-      \begin{figure}[hbtp]
-      \centering
-      \includegraphics[width=\defaultwidth]{ECDI_druv}
-      \caption{\ac{ECDI} frequency and growth rate for a Maxwellian distribution function using the Freid and Conte function and a Druyvesteyn distribution evaluated with the numerical estimation of $\tilde{Z}$, the radial wave number is $k_r \lambda_{De} = 0.1 $.}
-      \label{fig-ECDI_druv}
-    \end{figure}
-    
-    We can see in \cref{fig-ECDI_druv} that the cyclotron resonances are present for both distribution functions.
-    But while the growth rate is not much affected, the frequency is reduced for the Druyvesteyn distribution for larger azimuthal wave number.
-    
-    For a smaller radial wavenumber, the numerical resolution crashes, as the argument in the $Z$ function diverges.
-    However, in the limit $\eta \rightarrow \infty, Z(\eta) \rightarrow  \frac{1}{\eta}$.
-    Hence, still obtain the cyclotron resonances, as shown in \citet[Fig. 2]{janhunen2018}.
 
-  \subsection{Distribution function measured} \label{subsec-VDFpic}
+  \subsection{Temporal evolution of the distribution functions in the \ac{PIC} simulation} \label{subsec-VDFpic}
   
-  Before solving the dispersion relation for the \ac{PIC} distribution function, we first observe the distribution functions.
+  First, we observe the distribution functions measured in the \ac{PIC} simulation.
   \Cref{fig-vdfs_pic_time} shows at different moments in the simulation the ion and electron azimuthal velocity distribution functions, normalized.
   The velocities are normalized by the thermal speed of the species.
   To guide the reading of the figure, is added the  theoretical electron drift velocity $u_e = \frac{E_z}{B_r}$, normalized to the electron thermal speed, as well as the ion sound speed $c_s$, normalized to the ion thermal velocity.
-  The distributions are averages in time over $4\,\nano\second$, and in space over all the azimuthal direction.
-  In the radial direction, the distributions are average over a small length at the center of the channel, between $r=0.45\,\centi\meter$ and $r=0.55\,\centi\meter$.
+  The distributions are averaged in time over $4\,\nano\second$, and in space over all the azimuthal direction.
+  In the radial direction, the distributions are averaged over a small length at the center of the channel, between $r=0.45\,\centi\meter$ and $r=0.55\,\centi\meter$.
   
   \begin{figure}[hbtp]
     \centering
@@ -75,18 +20,18 @@
     \caption{Electron and ion normalized azimuthal velocity distribution functions. The velocity in abscissa is normalized by the thermal speed of the corresponding species. Is overlaid the theoretical $E\times B$ drift velocity of the electrons $u_e = \frac{E_z}{B_r}$, and the ion sound speed $c_s$ normalized by the ion thermal velocity.}
     \label{fig-vdfs_pic_time}
   \end{figure}
+  \inlinenote{X label: normalized}
   
   We can observe in \cref{fig-vdfs_pic_time} that the electron mean velocity is always the $E \times B$ drift velocity, which is of the order of one quarter of the electron thermal speed.
   On the other hand, at the beginning of the simulation the mean velocity of the ion is null.
   But we can see that starting from $t=.8\,\micro\second$, the ions are dragged in the same direction that the electron drift.
   Here, we have to be careful not to misread the figure.
   As we have $v_{th, e} > v_{th, i}$, the effective drift velocity of the ion is much less that the electron.
-  \inlinenote{Give the values here, like $ u_e, c_s, v_th$, etc.}
-  \inlinenote{Maybe Do 2 figures ?  So that it is more readable ?}
+  \inlinenote{Give the values here, like $ u_e, c_s, v_th$, etc. \\ Anne: oui pour mettre des valeurs}
   
   We can see that a small population of high energy ions is generated, because of particle-wave interactions.
-  This leads to both an increases ion temperature, and the formation of a drift velocity in the azimuthal direction.
-  The high energy ion population comes from ion trapping, as we can see that their velocity if of the order of the ion sound speed, which is close to the wave phase velocity \citep{lafleur2018}.
+  This leads to both an increase ion temperature, and the formation of a drift velocity in the azimuthal direction.
+  The high energy ion population comes from ion trapping, as we can see that their velocity is of the order of the ion sound speed, which is close to the wave phase velocity \citep{lafleur2018}.
   
   \vspace{1em}
   As both electron and ion velocity distribution functions are far from a drifting Maxwellian, we will study the influence of both distributions in the calculations of the dispersion relation.
@@ -96,14 +41,15 @@
   \subsection{Resolution of the electron cyclotron drift instability} \label{subsec-ECDIPIC}
   
   
-    As observed in \Cref{sec-PIC-ECDI}, the simulation begin by a linear growth of the instability.
+    As observed in \Cref{sec-PIC-ECDI}, the simulation begins by a linear growth of the instability.
     Previous results obtained with \LPPic \citep{croes2017a} showed no resonances during this period.
     However, these results where obtained with Lafleur's convection model, as introduced in \cref{sec-reinjectionnoise}.
     Here, the results where obtained with the modified model, inducing less noise.
+    The parameters used for the simulation are given in \cref{tab-evdfpicparams}.
     
     We can see in \Cref{fig-phi_fluctuation_summary}  a snapshot of the plasma potential fluctuation in the azimuthal direction \[ \delta \phi(r, \theta) = \phi(r, \theta) - < \phi(r, \theta) >_{ \theta}, \]
     at four different times during the growth of the instability.
-    For this results, we increased the azimuthal length $L_{\theta}$ to $6\,\milli\meter$, so that the instability characteristics, as the wavenumber $k$, are more distinguishable.
+    For these results, we increased the azimuthal length $L_{\theta}$ from $2.5$ to $6.2\,\milli\meter$ compared to the simulations of \cref{ch-2,sec-PIC-ECDI}, so that the instability characteristics, as the wavenumber $k$, are more distinguishable.
     We observe no significant differences on the simulation results.
     However, the simulation time is doubled in this case, so only the first microseconds have been simulated.
     
@@ -116,7 +62,7 @@
       \label{fig-phi_fluctuation_summary}
     \end{figure}
     
-    At the beginning, we see fluctuations that can be due both thermal fluctuation \citep{salpeter1960} or numerical noise due to particle discretization.
+    At the beginning, we see fluctuations that can be due to both thermal fluctuation \citep{salpeter1960} or numerical noise due to particle discretization.
     Then, the instability rises.
     We can see that it starts with small wavelength ($\lambda \simeq 0.75\,\milli\meter$ at $t=0.2\,\micro\second$).
     After a short period, the short wavelength waves merges to form longer wavelength waves  ($\lambda \simeq 1.5\,\milli\meter$ at $t=0.7\,\micro\second$).
@@ -127,7 +73,7 @@
     \begin{figure}[hbtp]
       \centering
       \includegraphics[width=6in]{phi_fluctuation_summary_FFT.pdf}
-      \caption{Frequency spectra on the azimuthal instability presented in \cref{fig-phi_fluctuation_summary}. The spectrum are average in the radial direction. The red dotted lines represent the cyclotron resonances.}
+      \caption{Frequency spectra on the azimuthal instability presented in \cref{fig-phi_fluctuation_summary}. Each spectrum is averaged in the radial direction. The red dotted lines represent the cyclotron resonances.}
       \label{fig-phi_fluctuation_summary_FFT}
     \end{figure}
     
@@ -153,18 +99,18 @@
     \end{figure}
     
     We can see in \Cref{fig-DRECDI} that the dispersion relation shows the cyclotron resonance at the beginning.
-    However, the most rising wavelength is not the second harmonic, but the forth.
-    After $t=4\,\micro\second$, the resonances broaden, and disappear.
-    This is due to increases of the radial wavelength used with respect to the Debye length $\lde$ \citep{lafleur2016a,ducrocq2006,cavalier2013}.
+    However, the most growing wavelength is not the second harmonic, but the forth.
+    After $t=0.4\,\micro\second$, the resonances broaden, and disappear.
+    This is due to the increases of the radial wavelength used with respect to the Debye length $\lde$ \citep{lafleur2016a,ducrocq2006,cavalier2013}.
     The value of radial wavelength is discuss later in \cref{sec-DR-BC}.
     
     We can also observe that the deviation of the distribution function from the Maxwellian decreases the growth rate.
-    This as been observed  in an axial-azimuthal \ac{PIC} simulation by \citet{lafleur2018}.
-    This confirm that the exact distribution function should be used in the calculation of the distribution function.
+    This has been observed  in an axial-azimuthal \ac{PIC} simulation by \citet{lafleur2018}.
+    This confirms that the exact distribution function should be used in the calculation of the distribution function.
     
   \subsection{Resolution of the ion acoustic wave} \label{subsec-VDFIAW}
   
-  We have see in the previous \cref{subsec-ECDIPIC} that the \ac{ECDI} dispersion relation is not needed, but can instead be approximated by the \ac{IAW} \citep{lafleur2018,janhunen2018,taccogna2019}.
+  We have seen in the previous \cref{subsec-ECDIPIC} that the full \ac{ECDI} dispersion relation is not needed, but can instead be approximated by the \ac{IAW} \citep{lafleur2018,janhunen2018,taccogna2019}.
   The \ac{IAW} relation can be solved with several hypotheses (see \cref{sec-geneDR} for more details)
   \begin{enumerate}
     \item Simplified analytical values,
@@ -175,12 +121,12 @@
   \end{enumerate}
   
   We will use all of these cases, and compare them to the \ac{PIC} simulation results.
-  We are willing to obtain the temporal evolution of the solution.
+  We want to obtain the temporal evolution of the solution.
   In practice, we will only follow the evolution of the most growing wave.
   In order to find the most growing wave, we solve the dispersion relation for different values of $k$.
   Over all of the solutions obtained, we select the one corresponding to the maximum value of $\gamma$.
   We uses 100 values between $k=0.02 \lde$ and $k = 2 \lde$.
-  \Cref{fig-Example_of_DR_IAW} illustrate the protocol used for 3 different cases.
+  \Cref{fig-Example_of_DR_IAW} illustrates the protocol used for 3 different cases.
   We can see the maximum of the growing rate, and its frequency.
   
   \begin{figure}[hbtp]
@@ -192,17 +138,18 @@
   
   
   This calculation is automated for the whole duration of the simulation.
-  The velocity distribution function, when used, are obtained from the \ac{PIC} simulation the same way that in \cref{subsec-VDFpic}.
-  \Cref{fig-time_wave} shows the temporal evolution of the three characteristic of the most growing wave: the growth rate $\gamma$, the azimuthal wavenumber $k$ and the frequency $\omega$.
+  The velocity distribution functions, when used, are obtained from the \ac{PIC} simulation the same way that in \cref{subsec-VDFpic}.
+  \Cref{fig-time_wave} shows the temporal evolution of the three characteristics of the most growing wave: the growth rate $\gamma$, the azimuthal wavenumber $k$ and the frequency $\omega$.
   \begin{figure}[hbtp]
     \centering
     % \includegraphics[width=\textwidth]{GrowthRate_time_evolution_250_ter.pdf}
     \includegraphics[width=\textwidth]{GrowthRate_time_evolution_250_again.png}  %inverted ion velocity as a correction, to look like Lefleur... :/
-    \caption{Temporal evolution of the growth rate $\gamma$, the azimuthal wavenumber $k$ and the frequency $\omega$ for the most growing wave, obtained with several hypothesis on the dispersion relation. See text for more precisions. }
+    \caption{Temporal evolution of the growth rate $\gamma$, the azimuthal wavenumber $k$ and the frequency $\omega$ for the most growing wave, obtained with several hypotheses on the dispersion relation. See text for more precisions. }
     \label{fig-time_wave}
   \end{figure}
+  \inlinenote{Title of figure 4.16: length}
   
-  Three different behaviour are observed.
+  Three different behaviours are observed depending on the hypotheses used.
   First, the solution of the dispersion relation with Maxwellian electrons and cold ions (dashed green line in \cref{fig-time_wave}) presents a solution of $\omega$ and $k$ constant in time, and very close to the analytical values, beeing $k \lde = 1/\sqrt{2}$ and $\omega = \opi/\sqrt{3}$.
   However, it also presents a constant growth rate.
   
@@ -219,6 +166,7 @@
   In this case, the beginning ($t < 1 \,\micro\second$) is quite similar to the other results.
   However, after that ($t > 1 \,\micro\second$) the growth rate never rises above zero, expect very slightly around $t=4\,\micro\second$.
   
+  \inlinenote{Anne: commentaire on this paragraph ?}
   This result is non consistent with the observations of \cref{sec-PIC-ECDI}, where we saw that the instability amplitude is modulated over the whole simulation time.
   It is also in contrast with \citet{lafleur2018}, where the authors obtained a non-zero growth rate in an axial- azimuthal geometry.
   
@@ -233,4 +181,4 @@
   A common practice to validate a simulation code when no theoretical solution can be used to compare to is to use a Benchmark \citep{turner2013}.
   As a dispersion relation solver for general distributions would benefit the whole plasma physics community, developing such a benchmark that would compare the solution of independent implementations of the same algorithm, or different algorithm, seems very interesting.
   
-  \inlinenote{add a small summary here ?}
+  \inlinenote{add a small summary here ? \\Anne: yes}
