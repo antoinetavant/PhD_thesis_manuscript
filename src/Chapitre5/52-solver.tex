@@ -2,14 +2,16 @@
 
 \section{Solving the kinetic \ac{DR} for general distribution functions}
   \label{sec-DR-solver}
-  
+  \renewcommand\rightmark{\expandafter\MakeUppercase{Solver for the general DR}}
+
+
   In order to solve the dispersion relation $\hat\epsilon(\vect{k}, \omega) = 0$ of \cref{eq-drECDI}, we solve for every $\vect{k}$ the complex value of $\omega$ that minimise $\norm{\hat\epsilon}$.
   Hence, we first need to evaluate $\hat\epsilon(\vect{k}, \omega)$ for given arguments $\vect{k}, \omega$.
   Then, we can find the root.
   
   \subsection{Numerical determination of $\hat\epsilon$} \label{subsec-numepsilon}
   
-  The numerical computation of $\norm{\hat\epsilon}$ is done using the method of \citet{xiehua-sheng2013} for computing $\tilde{Z}$ the numerical approximation of $Z$. 
+  The numerical computation of $\norm{\hat\epsilon}$ is done using the method of \citet{xie2013} for computing $\tilde{Z}$ the numerical approximation of $Z$. 
   It uses the fact that $Z$ is an Hilbert transform of the distribution function, and that the Hilbert transform can be changed to a Fourier Transform, weighted by well chosen basis functions, so the \ac{FFT} algorithm can be used \citep{weideman1995}.
   
   An interesting point is that the evaluation of $\tilde{Z}(\eta)$ is done by a polynomial, which coefficients depends only on the distribution function $f$. 
@@ -25,7 +27,7 @@
   We can see that for $\Im(\eta)$ positive, null or slightly negative, the two functions gives exactly the same results.
   However, for larger negative values of $\Im(\eta)$, the two functions gives different results.
   
-  This discrepancy between $Z_M$ and $\tilde{Z}_M$ for large negative imaginary argument is certainly due to the fact of the analytic expansion of $Z$ to the complex plan require the evaluation of the distribution function for complex velocities \citep{xiehua-sheng2013,weideman1995}.
+  This discrepancy between $Z_M$ and $\tilde{Z}_M$ for large negative imaginary argument is certainly due to the fact of the analytic expansion of $Z$ to the complex plan require the evaluation of the distribution function for complex velocities \citep{xie2013,weideman1995}.
   \inlinenote{Anne: Pas clair}
   However, the discrete velocity distribution function measured in the \ac{PIC} simulation cannot be properly evaluated for complex velocities.
   On the other hand, we are only interested in instabilities, with positive growth rate.
