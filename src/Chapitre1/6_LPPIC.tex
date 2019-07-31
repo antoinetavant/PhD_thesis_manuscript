@@ -5,10 +5,6 @@
 \label{sec-lppic}
 \addcontentsline{toc}{section}{The \LPPic simulation code}
 
-\inlinenote{Write this part ! }
-
-The LPPic simulation code :
-* liste of publications from it ? 
 
 \LPPic is the electrostatic particle-in-cell simulation code developed at \ac{LPP} to study principally magnetized plasma thruster, such as the \ac{HET}.
 Wrote with Fortran, it uses the Message Passing Interface (MPI) to parallelized the computational load using a domain decomposition.
@@ -46,10 +42,13 @@ We can see that the overall performance of the code are very good, as it scale a
 Most of the sub-functions are much better, but the Poisson solver do not scale at all.
 Is is due to the size of the chunk of domain of each CPU, which are too small.
 A way to improve the performances of \LPPic would be to use an hybridization of the parallelization with the shared memory openMP library.
+But the current performance is acceptable, as the typical simulation case presented here runs in around one week (7 days) on 360 CPUs.
+
+\vspace{1em}
 
 The development of the  simulation code \LPPic started in 2015 by Vivien Croes.
 I joined the development with Romain Lucken in 2016, and Thomas Charoy started in 2017.
-Because of the number of contributors, and our relative experience, we quickly set a Continues Integration (CI) pipeline on a self hosted server using Teamcity.
+Because of the number of contributors, and our relative experience in Fortran, we quickly set a Continues Integration (CI) pipeline on a self hosted server using Teamcity.
 This allows a systematic verification of the modification by the mean of unit, mezzanine and integration tests \citep{turner2016}.
 
 The validation of the code is done using the Benchmark of \citet{turner2013}.
@@ -57,4 +56,5 @@ While it allows to validate a significant part of the \ac{PIC} code, it is not m
 Unfortunately, this is the only Benchmark available.
 Hence, the comparison of several codes on a \ac{2D} magnetized  has been conducted by Thomas Charoy in order to create a new Benchmark to validate such simulation codes.
 
-Since 2015, \LPPic has grown to 23000 lines of code, has been used on more than 5 different clusters of various architectures, and has been used in numerous publications \citep{croes2017a,croes2018,tavant2018,tavant2019,lucken2018,lucken2019}.
+
+Since 2015, \LPPic has grown to 23000 lines of code, has been used on more than 5 different clusters of various architectures, and has been used to produce several publications \citep{croes2017a,croes2018,tavant2018,tavant2019,lucken2018,lucken2019}.

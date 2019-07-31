@@ -149,8 +149,11 @@
     \end{center}
 
     as well as $S^E_{i,j} = S^W_{i,j} =d_id_z, S^N_{i,j} = S^S_{i,j}= d_jd_z$ et $\V = d_jd_id_z$.
-    We observe that the evolution of the relative permittivity and the cell size affects the coefficients to be used, but the system stays symmetric.
-    \inlinenote{Introduce what is symmetric system}
+    We observe that the evolution of the relative permittivity and the cell size affects the coefficients to be used, but the system remains symmetric as we have $Q^S_{i,j} = Q^N_{i-1,j}$ and $ Q^W_{i,j} = Q^E_{i-1,j}$.
+    
+    A symmetric system is a linear system of equation $A \cdot X = B$  which matrix $A$ is equal to is transpose: $A = A^T$.
+    It allows to reduce by a factor of two the memory needed to store the matrix.
+    It also allows to use algorithm exploiting this aspect. For instance, the eigenvalues are real-valued, and the matrix factorisation only need to store one factor using Cholesky decomposition, which gives $A = L L^T$ with L an upper-triangular matrix. 
 
     \subsection{Including surfaces charges}
     Let's now considerer the presence of surface charges on the surface $S^E_{i,j}$.
