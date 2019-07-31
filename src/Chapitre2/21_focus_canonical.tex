@@ -58,7 +58,7 @@
   We can see on \Cref{fig-tx_n_phi} the evolution of the radial profile of the electron density on the plasma potential over the same period as \cref{fig-canon_Te_strat}.
   We observe on both quantities the formation of the sheath and the evolution toward a steady state.
   
-  \subsection{Stable phase of the simulation\string: $t > \geq 2\,\micro\second$}
+  \subsection{Stable phase of the simulation\string: $t \geq 2\,\micro\second$}
   \label{subsec-stablephase}
   After the relatively fast rise of the plasma characteristics, the simulation stabilises at a steady state, as we can see in \Cref{fig-canon_Te_all}.
   We observe that after $t\simeq2\mus$ , the electron energy $\Ee$ starts to oscillate around a mean value.
@@ -115,22 +115,22 @@
   
   \Cref{fig-canon_mu} shows the temporal evolution of the electron mobility $\mobpic$ measured in the simulation with \cref{eq-mobpic}.
   We can see that it presents the same characteristics as the evolution of the electron energy $\Ee$ on \cref{fig-canon_Te_all}.
-  The classical electron mobility from the collisional theory is \citep{lafleur2016a}
+  We recall that the classical electron mobility from the collisional theory developed in \cref{eq-mobility} is \citep{lafleur2016a}
   \begin{equation} \label{eq-muclass}
     \mobcla = \frac{\nu_m \frac{e}{m_e}}{\oce^2 + \nu_m^2}
   \end{equation}
   with $\nu_m$ the electron-neutral  collision frequency and \oce is the electron cyclotron frequency.
-  \inlinenote{Anne: formule pas deja ecrite avant? \\Réponse: Si. Est-ce grave ? }
   In the conditions of \cref{parameters}, $\mobcla \simeq 0.8$ \square\meter(sV)$^{-1}$.
   
   The measured electron mobility in the \ac{PIC} simulation is one order of magnitude larger than the classical mobility.
-  Is the present case, as no electron is emitted from the wall, the enhancement only comes from the \ac{ECDI}, as proposed by \citet{lafleur2016} .
-  \inlinenote{Anne: peut-etre trop affirmatif, non? tu peux peut-etre a ce stade laisser une chance aux autres instabilités et ensuite dire que dans ton cas, avec l'ECDI seulement c'est OK ?}
+  In the present case, as no electron is emitted from the wall, the enhancement can only come from the instabilities present in the plasma, which induce an azimuthal electric field.
+
   % K_ex = 2 10^-13
   % n_g = 1e19
   % wce = q B / m
-  The oscillations can bee seen in \cref{fig-2dschemat}, that displays the azimuthal electric field featuring the oscillation of wavelength of the order of 1~mm, as observed in \citet{heron2013,janhunen2018}.
-  \Cref{fig-exampleECDI} shows the temporal evolution of the azimuthal electric at the center of the channel.
+  The oscillations can be seen in \cref{fig-2dschemat}, which shows the azimuthal electric field observed at $T=4\,\micro\second$.
+  It clearly features the oscillation of wavelength of the order of 1~mm, as observed in \citet{heron2013,janhunen2018}.
+  \Cref{fig-exampleECDI} shows the temporal evolution of the azimuthal electric field measured at the center of the channel.
   We can see that the instability rises and saturates quickly.
   Then, the oscillation remains quite stable.
   The Fourier Transform of the electric field presents a clear maximum at $14\,\mega\hertz$.
@@ -138,9 +138,8 @@
   \begin{equation} \label{eq-maxfeq}
     f_{\rm max} = \frac{\omega_{pi}}{\sqrt{3}} \simeq 21 \,\mega\hertz,
   \end{equation}
-  which gives a good agreement.
-  
-  The \ac{ECDI} instability is the subject of \Cref{ch-5}, hence it will not be further investigated here.
+  which gives a relatively good agreement with the oscillation observed.
+  The \ac{ECDI} instability is the subject of \Cref{ch-5}, hence it will not be further discussed here.
   
   
   \begin{figure}[hbtp]

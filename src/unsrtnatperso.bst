@@ -219,7 +219,7 @@ FUNCTION {format.names}
   s num.names$ 'numnames :=
   numnames 'namesleft :=
     { namesleft #0 > }
-    { s nameptr "{ff~}{vv~}{ll}{, jj}" format.name$ 't :=
+    { s nameptr "{f.~}{vv~}{ll}{, jj}" format.name$ 't :=
       nameptr #1 >
         { namesleft #1 >
             { ", " * t * }
@@ -283,24 +283,73 @@ FUNCTION {format.issn}
   if$
 }
 
-FUNCTION {format.url}
+
+%=> removed
+%FUNCTION {format.url}
+%{
+%  doi empty$
+%    { url }
+%    { "http://dx.doi.org/" doi * }
+%  if$
+%  duplicate$ empty$
+%    { pop$ "" }
+
+%    { "\urlprefix\url{" swap$ * "}" * }
+%  if$
+%}
+
+% FUNCTION {format.doi} 
+% { doi empty$
+%     { "" }
+%     { new.block "\href{http://dx.doi.org/" doi * "}{doi~:" * doi * "}" *}
+%   if$
+% }
+%<= end removed
+
+
+%=> added functions
+FUNCTION {format.url} 
 { url empty$
     { "" }
-    { "" }
+    { "\urlprefix\url{" swap$ * "}" * }
   if$
 }
 
-FUNCTION {format.doi}
-{ doi empty$
-    { "" }
-    { "" }
-  if$
+FUNCTION {format.href} 
+{ 
+    doi empty$
+    {
+        url empty$
+        { "" }
+        { ", \href{" url * "}{" *}
+        if$
+    }
+    { ", \href{http://dx.doi.org/" doi * "}{" *}
+    if$
+  before.all 'output.state := 
 }
+
+FUNCTION {format.hrefclose}  
+{ 
+before.all 'output.state :=
+    doi empty$
+    {
+        url empty$
+        { "" }
+        { "}" }
+        if$
+    }
+    { "}" }
+    if$
+  before.all 'output.state := 
+}
+%<= end added
+
 
 FUNCTION {format.title}
 { title empty$
     { "" }
-    { title "t" change.case$ }
+    { title "t" change.case$  }
   if$
 }
 
@@ -695,6 +744,10 @@ FUNCTION {article}
   new.block
   format.title "title" output.check
   new.block
+  %=>added
+    format.href output
+    before.all 'output.state :=  
+  %<=ens added    
   crossref missing$
     { journal emphasize "journal" output.check
       eid empty$
@@ -710,9 +763,15 @@ FUNCTION {article}
       if$
     }
   if$
-  format.issn output
-  format.doi output
-  format.url output
+  %=>removed
+      %format.doi output
+      %format.issn output
+      %format.url output
+  %<=end removed
+  %=>added
+    format.hrefclose output
+    new.sentence
+  %<=end added
   new.block
   note output
   fin.entry
@@ -748,7 +807,7 @@ FUNCTION {book}
   format.edition output
   format.date "year" output.check
   format.isbn output
-  format.doi output
+  %format.doi output
   format.url output
   new.block
   note output
@@ -766,7 +825,7 @@ FUNCTION {booklet}
   address output
   format.date output
   format.isbn output
-  format.doi output
+  %format.doi output
   format.url output
   new.block
   note output
@@ -805,7 +864,7 @@ FUNCTION {inbook}
   format.edition output
   format.date "year" output.check
   format.isbn output
-  format.doi output
+  %format.doi output
   format.url output
   new.block
   note output
@@ -835,7 +894,7 @@ FUNCTION {incollection}
     }
   if$
   format.isbn output
-  format.doi output
+  %format.doi output
   format.url output
   new.block
   note output
@@ -873,7 +932,7 @@ FUNCTION {inproceedings}
     }
   if$
   format.isbn output
-  format.doi output
+  %format.doi output
   format.url output
   new.block
   note output
@@ -972,7 +1031,7 @@ FUNCTION {proceedings}
   organization output
   publisher output
   format.isbn output
-  format.doi output
+  %format.doi output
   format.url output
   new.block
   note output

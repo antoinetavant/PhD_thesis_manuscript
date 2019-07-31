@@ -251,9 +251,10 @@
       Unfortunately, the new model has been developed during the last year of my theses.
       Hence, the first simulation results have been obtained using Lafleur's convection model.
       As seen in \cref{fig-oldeconv_newconv}, on a small geometry the results are not affected, hence there is no need to verify all of the simulations obtained.
-      On the other hand, in order to study the instability, it is useful to have a longer azimuthal, in order to obtain a more resolved frequency spectra.
-      Hence, the modified convection model  used in this case.
-      \inlinenote{Give precise sections where it is used}
+      This model is used in \cref{ch-2,ch-4}. 
+      
+      On the other hand, it is useful to have a longer azimuthal length to study the instability, as it allows to obtain a more resolved wave-number spectrum.
+      Hence, in \cref{ch-5} we uses the modified convection model.
           
     \subsection{Effects on a \ac{2D} simulation domain}
       
@@ -298,14 +299,12 @@
       
       \begin{figure}[hbtp]
         \centering
-        \includegraphics[width=\textwidth]{effect_Lr}
-        \caption{\ac{DFT} of the source term $\rho_1 = \N(0, \stdconv)$, the resulting azimuthal electric field $\aziE_{, 1}$ and plasma potential $\phi$ computed on the centreline of a radial-azimuthal simulation, and the "equivalent" source term defined by \cref{eq-equirho}. $N_y=200$. }
+        \includegraphics[width=\textwidth]{effect_Lr.pdf}
+        \caption{\ac{DFT} of the source term $\rho_1 = \N(0, \stdconv)$, the resulting azimuthal electric field $\aziE_{, 1}$ and plasma potential $\phi$ computed on the centreline of a radial-azimuthal simulation, and the Equivalent \ac{1D} source term defined by \cref{eq-equirho}. The azimuthal length is $L_{\theta}=50$ cm. }
         \label{fig-dftLr}
         
       \end{figure}
-      
-      \inlinenote{Enlever $h$ de term. Peu-etre fair une seul legende}
-      
+            
       \inlinenote{Rq Anne: je ne comprends pas la difference entre la courbe bleu et l'orange. Peut-être faut-il l'enlever ?}
 
 

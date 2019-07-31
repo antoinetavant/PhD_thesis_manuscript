@@ -30,20 +30,23 @@ For the sake of clarity, the usual notation $x,y$ is used in the simulation for 
 
 
 The azimuthal directions is closed using periodic boundary condition for both the particles and the fields.
-The radial boundary conditions can be of different kind.
-They are described in \cref{sec-diel}.
+The radial direction is closed by walls.
+The walls can be grounded metallic, or a dielectric boundary can be model.
+They are described and discussed in \cref{sec-diel}.
 
 A constant and uniform magnetic field $B_0$ is imposed in the radial direction.
-A constant and uniform axial electric field $E_0$ is imposed.w
+This does not take into account the magnetic mirror, that has been shown to be important \citep{keidar2005,yu2008a,dominguez-vazquez2018}.
+However, it cannot be modeled in the \ac{2D} Cartesian radial-azimuthal domain while conserving a divergent-free magnetic field topology.
+A constant and uniform axial electric field $E_0$ is imposed.
 \Cref{fig-2dschemat} shows a schematic representation of the simulated domain, overlaid with the computed azimuthal electric field $E_y$.
 
 \begin{figure}[hbtp]
   \centering
   \includegraphics[width=\defaultwidth]{2D_schema.pdf}
-  \caption{Schematic representation of the radial-azimuthal simulation domain. Overlaid is the computed azimuthal electric field given as an example. }
+  \caption{Schematic representation of the radial-azimuthal simulation domain. Overlaid is the computed azimuthal electric field given as an example. The radial dimensions lengths 2\,cm, and the azimuthal length is 1\,cm.
+  The magnetic field is $B_0=0.02\,\tesla$, the axial electric field is $E_0=\sn{2}{4}\,\volt\per\meter$, and the walls are grounded. More parameters are given in \cref{parameters}.}
   \label{fig-2dschemat}
 \end{figure}
-\inlinenote{Be more quantitative as used later in Ch. 2}
 
 \subsection{Particle balance}
 As the axial position simulated is the exit plane, the ionization is too low to balance the particle losses to the wall.
@@ -54,7 +57,7 @@ In these conditions, two models can be used,
   \item forcing an arbitrary ionization to occur in order to compensate the radial losses \citep{dominguez-vazquez2018}.
 \end{itemize}
 The second option is slightly less realistic, but allows to obtain a steady state and is supposed not to affect significantly the simulation.
-
+Hence, we uses this model to obtain a constant mean plasma density during the simulation.
 
 \subsection{Axial convection}
 

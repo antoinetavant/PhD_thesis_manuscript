@@ -133,12 +133,15 @@
 
 
 % For better citations.
-\usepackage[numbers]{natbib}
-% \usepackage[style=phys]{biblatex}
+% \usepackage[firstinits=true]{biblatex}
+\usepackage[numbers,
+            ]{natbib}
 %%-------------------> 
 % \usepackage{citebackref} % optionnal
 %%------------------->
-
+\usepackage{bibentry} % Includ the bibliography in the text.
+\usepackage{filecontents}
+\nobibliography*
 %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 %  Overlay bar for means
 \makeatletter
