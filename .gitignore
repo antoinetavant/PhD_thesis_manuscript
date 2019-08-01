@@ -176,3 +176,19 @@ ressources/manuscript_antoine_22juillet_chapitre3et4_anne\.pdf
 ressources/manuscript_antoine_22juillet2019_ch2_anne\.pdf
 
 src/Chapitre1/figure/\.ipynb_checkpoints/
+
+src/Chapitre1/scripts_figure/\.ipynb_checkpoints/
+
+src/Chapitre1/scripts_figure/__pycache__/
+
+src/Chapitre1/scripts_figure/images_article_1/
+
+src/Chapitre1/scripts_figure/images_article_2/
+
+src/Chapitre3/figure/\.ipynb_checkpoints/
+
+src/Chapitre1/scripts_figure/tabgrid_data\.dat
+
+src/Chapitre1/scripts_figure/Ex_snapshot
+
+src/Chapitre1/scripts_figure/Phi_snapshot

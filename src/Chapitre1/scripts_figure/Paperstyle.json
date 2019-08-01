@@ -1,0 +1,30 @@
+{
+  "axes.grid": true,
+  "axes.labelsize": 12,
+  "axes.titlesize": 16,
+  "figure.autolayout": true,
+  "figure.dpi": 100,
+  "figure.figsize": [
+    5,
+    5
+  ],
+  "font.family": "STIXGeneral",
+  "grid.alpha": 0.5,
+  "grid.color": "grey",
+  "grid.linestyle": "dotted",
+  "grid.linewidth": 0.8,
+  "image.aspect": "auto",
+  "image.cmap": "plasma",
+  "image.interpolation": "nearest",
+  "image.origin": "lower",
+  "lines.linewidth": 2,
+  "lines.markersize": 5,
+  "mathtext.fontset": "stix",
+  "savefig.format": "eps",
+  "xtick.labelsize": 10,
+  "xtick.minor.visible": true,
+  "xtick.top": true,
+  "ytick.labelsize": 10,
+  "ytick.minor.visible": true,
+  "ytick.right": true
+}

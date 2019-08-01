@@ -149,9 +149,31 @@
     Other parameters are also expected to modify $\gamma$.
     For instance the size of the simulation, the electron mean energy, and the nature of the gas.
 
-  \subsection{Coulomb collision and improvements}
-    \inlinenote{This part must be written !}
-    \begin{itemize}
-      \item compare the order of magnitude of coulom collision and the others
-      \item Discuss about the thermalization model of Krooks (or something like that)
-    \end{itemize}
+  \subsection{Coulomb collision and possible improvements}
+  
+    In the \ac{PIC} simulations, the Coulomb collisions (electron-electron, electron-ion, and ion-ion) are not modeled.
+    HOwever, they are known to modify the distribution function.
+    More precisely, they make the electron distribution tend toward a Maxwellian \citep{bhatnagar1954,sydorenko2006b}.
+    
+     Using the density $n_e=\sn{1}{15}\,\per\meter\cubed$ and the electron temperature $\Te=3\,\volt$ we find the electron-electron Coulomb collision at 90$^{\circ}$ \citep{lieberman2005,chen2006}
+     \begin{equation} \label{eq-nu_Coulomb}
+       \nu_{90} = 15 \,\kilo\hertz
+     \end{equation}
+     which is significantly smaller than the electron-neutral scattering frequency.
+     However, we know that the Coulomb collisions cross-section is highly dependent on the electron velocity.
+     
+     \Cref{fig-mfp_coulomb} shows the evolution of the mean free path for the electron-electron Coulomb collision $l_{CC} = v_e/\nu_{90}$.
+     We can see that it is of the order of the domain size ($L=10\,\centi\meter$) only for very low energy.
+     \begin{figure}[hbtp]
+       \centering
+       \includegraphics[width=\defaultwidth]{Coulomb_collision_meanfreepath_zoom}
+       \caption{Mean free paths of the Coulomb collision as a function of the electron energy.}
+       \label{fig-mfp_coulomb}
+     \end{figure}
+     
+     On the other hand, the collision frequency for small angle is higher.
+     In \citet{sydorenko2006b}, the authors showed that under some conditions, the Coulomb collisions can modify the simulation results by a few tens of percent.
+     Hence, the impact of the small angle Coulomb collisions on the distribution functions should be asserted, but is out of the scope of the current work.
+     Modeling the Coulomb collision in \ac{PIC} simulations currently require a different model than the \ac{MCC} algorithm, thus requires more time to be implemented and tested before being used.
+
+     

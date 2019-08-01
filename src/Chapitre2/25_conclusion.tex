@@ -1,15 +1,13 @@
 % !TEX root=/home/tavant/these/manuscript/src/manuscript.tex
 
-\section{Conclusion}
+\section{Conclusion of the parametric study}
   \label{sec-conclusion_ch2}
   
   Using the \ac{PIC} simulation code introduced in \cref{ch-1}, we studied the effects of the dielectric walls on the discharge, and more precisely the effects on the electron axial mobility.
-  
   To begin with, a \emph{canonical} case, with metallic walls was defined and studied.
   The metallic walls correspond to grounded and non-emissive walls.
   For this reference case, we observed that the convection model used allows us to obtain a steady state.
   We observed an enhanced electron transport transverse to the magnetic field lines, because of the azimuthal instability.
-  
   Both effects of the dielectric -- the electron induced electron emission and the electrostatic boundary condition -- were investigated.
   First, we  only modeled the dielectric boundary condition. Then, we studied only the electron emission. Afterwards, the two phenomena have been studied together.
   
@@ -17,20 +15,19 @@
   
   The electrostatic boundary condition is modeled by including in the domain of simulation the thickness of the wall ($L_{\rm wall} = 3 \centi\meter$).
   Surface charges accumulate at the interface between the plasma and the wall.
-  We observed that the modified boundary condition did not modify significantly the discharge and the axial electron mobility.
-  We saw that the boundary condition used results in a radial electric field $E_r$ of the same order of magnitude than the Neumann boundary condition of \cref{eq-neuman}.
-  \inlinenote{Anne: axial not very clear here, same problem  for radial}
-  However, the spatio-temporal evolution are not similar.
+  We observed that the modified boundary condition did not modify significantly the discharge and the axial crossfield electron mobility.
+  Moreover, we saw that the boundary condition used results in a radial electric field $E_r$ of the same order of magnitude than the Neumann boundary condition of \cref{eq-neuman}.
+  We only remark that the spatio-temporal evolution are not strictly identical.
   
-  More importantly, when the electron emission is modeled as when, the observed behaviour differs significantly from the Neumann condition.
+  In contrary, when the electron emission is modeled as when, the observed behaviour differs significantly from the Neumann condition.
   This leads to differences in the electron emission rate.
   As the dielectric model used here do not increase significantly the computational time, we recommend to use it instead of the Neumann boundary condition, that do not reproduce the same plasma-wall interaction.
   
   
-  \subsubsection*{Electron induced {\bf Anne: Secondary} electron emission}
+  \subsubsection*{Electron induced electron emission}
   
-  Electron induced \improvement{Anne: Secondary} electron  emission from the wall is modeled using a linear model in \cref{sec-seemodel}.
-  The crossover energy $\crover$ is varied from a large value (low emissivity material) to small values (high emissivity).
+  The electron  emission from the wall due to the impact of primary electron reaching the wall is modeled using a linear model, described in \cref{sec-seemodel}.
+  The value of the crossover energy $\crover$ is varied from a large value (low emissivity material) to small values (high emissivity).
   We observed in the simulations that when the electron emission rate increases, the mean electron temperature decreases.
   This decreases the amplitude of the \ac{ECDI} at saturation, hence decreases the electron mobility in the plasma (see \cref{fig-radial-data}).
   However, electron emission induces \ac{NWC}, which almost doubles the electron mobility close to the wall when $\crover$ passes from $200\volt$ to $30\volt$.
@@ -55,10 +52,9 @@
   
   The sheath model currently used is based mainly on two hypothesis
   \begin{itemize}
-    \item Maxwellian electrons,
+    \item Maxwellian electron distribution function
     \item Isothermal evolution of the electrons in the sheath
   \end{itemize}
   
   Both hypotheses will be questioned in the next chapter.
   
-  \inlinenote{Anne: End of Cp. 2 (???)}

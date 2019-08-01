@@ -1,0 +1,114 @@
+!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+!   _        _____    _____    _            ___    _____     __   __
+!  | |      |  __ \  |  __ \  (_)          |__ \  |  __ \    \ \ / /
+!  | |      | |__) | | |__) |  _    ___       ) | | |  | |    \ V /    ___
+!  | |      |  ___/  |  ___/  | |  / __|     / /  | |  | |     > <    / _ \
+!  | |____  | |      | |      | | | (__     / /_  | |__| |    / . \  |  __/
+!  |______| |_|      |_|      |_|  \___|   |____| |_____/    /_/ \_\  \___|
+!
+!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+!
+! INPUT FILE version 2.2 (BY ROMAIN) 2017-03-27
+!   any comment line can be written with '!'
+!   to set a value to something different from the default, add a line with
+!<VARIABLE_NAME> [some spaces] =<VALUE>            ;[comments] WARNING the '=' is necessary
+!
+!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+!
+!SIMULATION Parameters
+!
+dT                             =3.687315634218289e-11        ;[s] simulation time step
+N_part_per_cell                =300                ;Initial nb of part./cell (for 1 species)
+ymax                           =450               ;number of gridpoints along the Oy axis
+xmax                           =7               ;number of gridpoints along the Ox axis (for HYPRE xmax must be (2^n)-1 when periodicx = .TRUE.)
+N_average                      =1000              ;number of time steps used for the averga ein the diagnostics
+No_average                     =0         ;In number of NA ;number of elapsed time steps before the 1st diagnostic
+loops                          =1000       ;In number of NA
+running_time                   =40000              ;[s] Computation time before restart instatiation
+hypre                          =.TRUE.             ;Use HYPRE (.TRUE.) or not (.FALSE.)
+optimized_dims                =.TRUE.                ; to get a square mesh
+periodicx                      =.TRUE.               ;
+!
+!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+!
+!PHYSICAL PARAMETERS
+!
+propellant                     =Ar               ;String to define the type of particles ('Xe', 'He', 'I')
+Ly                             =0.10             ;[m] length of the system in the Oy direction
+n                              =2D15           ;[m-3] plasma density
+Tn                             =300.             ;[K] neutral gas temperature
+Pn                             =0.001               ;[mTorr] neutral gas pressure
+B_Oy                           =0.0d4            ;[T] magnetic field along the Oy direction
+B_Oz                           =0.0D0           ;[T] magnetic field along the Oy direction
+Ez_vertical                    =0.0D0            ;[V/m] electric field along th Oz direction
+Ez_amp                         =1.0D2            ;[V/m] amplitude of the E-field oscillations in Oz
+Te                             =5.               ;[eV] electron temperature
+Ti                             =0.026            ;[eV] ion temperature
+periodicx                      =.TRUE.
+!
+!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+!
+!EXCITATION condition
+!
+ionization_process             =0                 ; 1 if we want to create particles by ionization process, 1 for a non selfconsistent simulation(blank), 2 for ionization forced (z,theta)
+inject_couples                 =.TRUE.           ;to True for a not selfconsistent simulation 
+V0                             =0.                ;[V] amplitude of the external electric field excitation
+Omega                          =8.51999927654D7   ;[rad/s] pulsation of the elecetrode potential
+Omega_E                        =0d0   ;[rad/s] pulsation of the external electric field excitation
+Pabs                           =0.0d-4           ; ICP absorbed power [W]
+skin_heating                   =0                 ; ICP heating localized in a skin depth if >0. 1: consistent, 2: forced slope
+!
+!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+!
+!Third dimension
+!
+Lz_infinite                    =.TRUE.        ;
+zmax                           =1             ; number of gridpoints along the Oz axis
+Vz_ions_constant               =.FALSE.
+Vz_ions                        =0.d0          ; [m/s] ion velocity along the Oz direction
+absorption_elec_Oz             =.FALSE.       ;
+absorption_ions_Oz             =.FALSE.       ;
+!
+!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+!
+!DIELECTRIC PARAMETERS
+!
+isdiel                         =.FALSE.            ;set to .TRUE. to add a dielectric, to .FALSE. for metalic electrods
+ndiel                          =15                 ;
+Ldiel                          =0.03               ;[m]
+eps_r                          =1                  ;
+!
+!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+!
+!DIAGNOSTICS
+!
+follow_grid                    =.TRUE.            ;If we want to create grid file every Na loop (.TRUE.) or only for restart reason (.FALSE.)
+follow_particles               =.FALSE.           ;If we want to create particles file every Na loop (.TRUE.) or only for restart reason (.FALSE.)
+Bmoment                        =2                 ;Boltzmann moment equation needed in diagnostics
+Do_profiler                    =.TRUE.            ; to get time consumption
+Do_distrib                     =.TRUE.             ; to get distribution functions
+N_distrib                      =5                ; time step number between each sorting
+probe_number                   =11                  ; increment if you want only specific probes
+probe_coord                    =0,0,7,1            ; xmin, ymin, xmax, ymax, copy paste for more
+probe_coord                    =0,2,7,3            ; xmin, ymin, xmax, ymax, copy paste for more
+probe_coord                    =0,4,7,6            ; xmin, ymin, xmax, ymax, copy paste for more
+probe_coord                    =0,7,7,9            ; xmin, ymin, xmax, ymax, copy paste for more
+probe_coord                    =0,10,7,20            ; xmin, ymin, xmax, ymax, copy paste for more
+probe_coord                    =0,21,7,40            ; xmin, ymin, xmax, ymax, copy paste for more
+probe_coord                    =0,41,7,50            ; xmin, ymin, xmax, ymax, copy paste for more
+probe_coord                    =0,60,7,80            ; xmin, ymin, xmax, ymax, copy paste for more
+probe_coord                    =0,81,7,100            ; xmin, ymin, xmax, ymax, copy paste for more
+probe_coord                    =0,120,7,130            ; xmin, ymin, xmax, ymax, copy paste for more
+probe_coord                    =0,130,7,150            ; xmin, ymin, xmax, ymax, copy paste for more
+Do_diag_JouleHeating          =.FALSE.             ; compute <j_e⋅E>
+!
+!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+!
+!SEE
+!
+SEE_model                      =0                  ;SEE_model to be used: Set to 1 for constant probability, 2 for linear dependency over the energy, 3 for finer energy/angle dependency model
+sigma_0                        =0.0d0              ;[proba] Only used if SEE_model =1
+epsilon_star                   =30.0d0             ; [eV] Only used if SEE_model   =2
+P_see                          =0                  ;[proba] Only used if SEE_model =2
+Tes                            =1.0                ;[eV] secondary electron temperature
+!

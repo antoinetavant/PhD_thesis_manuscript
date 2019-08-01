@@ -56,11 +56,11 @@
   \inlinenote{Anne: For epsilon=0, we have the values presented in section 2.2 without dielectrics.}
   \begin{figure}[hbtp]
     \centering
-    \includegraphics[width=\defaultwidth]{parametric_mobs_eps_complete}
+    \includegraphics[width=\defaultwidth]{parametric_mobs_eps_complete.pdf}
     \caption{Evolution of the electron mobility as a function of the crossover energy $\crover$. In blue $\mobpic$ is the mobility measured in the simulations, while $\mobcla, \mobeff$ and $\mobeffsat$ in purple, red and green respectively are calculated with \cref{eq-mudef,eq-mobclas,eq-defmobeff,eq-mobeffsat}. The three regimes {\bf I, II} and {\bf III}, described in \cref{subsec-regimes} are identified.}
     \label{fig-mob-epsstar}
   \end{figure}
-  \inlinenote{Units, in italic !}
+  
   
   As expected, the classical mobility in  \cref{fig-mob-epsstar} is underestimated by more than one order of magnitude compared to $\mobpic$.
   The effective mobility $\mobeff$ and the effective mobility at saturation $\mobeffsat$  are much closer to $\mobpic$, with an underestimation of roughly 10\% and 30\% respectively.
@@ -128,7 +128,7 @@
    It is computed using \cref{eq-seemaxw} for $\rate$ and \cref{eq-sheathhobbs} for the potential drop, which is summarized as 
    \begin{equation} \label{eq-dphi_vs_Te_Maxw}
      \begin{cases}
-       \rate = \proba_0 + (1- \proba_0) \frac{2 \Te}{\crover} \\
+       \rate = \ratemaxw = \proba_0 + (1- \proba_0) \frac{2 \Te}{\crover} \\
        \dphi = \Te \ln \lp [1 - \rate] \sqrt{ \frac{m_i}{2 \pi m_e}}  \rp
      \end{cases}
    \end{equation}
@@ -159,16 +159,13 @@
       
    We have seen in \ref{fig-canon_Te_all} that without electron emission, $\Te$ is of the order of $45$~V.
    Using \cref{fig-dphivsTe}, we can expect to observe the transition between regime {\bf III} and {\bf II} for $\crover \gtrsim 60$~V, as for $\crover = 60$~V, the maximum of $\dphi$ is at $\Te\sim 25$~V, which is significantly lower than 45~V.
-   The fact that regime {\bf II} appears at $\crover=50$~V can be explained because
-   \begin{enumerate}
-     \item a lower $\crover$ increases the electron losses, hence decreases the electron temperature at equilibrium,
-     \item the electrons are not Maxwellian.
-   \end{enumerate}
    
-   The evolution of the temperature with $\crover$ is shown in \cref{fig-Tevsproba}.
+   The fact that regime {\bf II} appears at $\crover=50$~V could be explained because a smaller value of $\crover$ (hence a greater $\rate$) increases the electron losses, hence decreases the electron temperature at equilibrium.
+   The evolution of the temperature with  $\rate$ is shown in \cref{fig-Tevsproba}.
    We can see that $\Te \simeq 45\,\volt$ for emission rate up to $\sigma = 0.8$, and decreases down to $\Te=30\,\volt$ for higher emission rates.
    Consequently, even if $\Te$ does indeed decreases when increasing $\crover$, it remains too large compared to the observations of \cref{fig-dphivsTe}.
-   The impact of second point will be studied in \cref{ch-3}.
+   Hence, the cause of the difference if the threshold value for regime {\bf II} remain unknown for now.
+   It will how be discussed again in \cref{ch-4}, using a modify plasma-wall interaction model.
    
    
   

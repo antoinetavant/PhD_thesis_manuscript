@@ -33,11 +33,10 @@
 
     \begin{figure}[hbtp]
       \centering
-      \includegraphics[width=\defaultwidth]{EEPF_PIC}
-      \caption{Electron energy probability function obtained from (orange) the PIC simulation after convergence, and (blue) at the beginning of the Monte Carlo simulation. Is overlaid the local plasma potential.}
+      \includegraphics[width=\defaultwidth]{EEPF_PIC.pdf}
+      \caption{Electron energy probability function obtained from (orange) the PIC simulation after convergence, and (blue) at the beginning of the Monte Carlo simulation. A Maxwellian distribution function at the $\Te{}_{,inj}$ and the local plasma potential are also given.}
       \label{fig-EEPF_start_end}
     \end{figure}
-    \improvement{\cref{fig-EEPF_start_end}: Maxwellian + $\Te$ in V, not eV}
 
     \paragraph{Time scales \\}
     The electrons collected at the wall have a kinetic energy at least equal to the potential drop to the wall $\ek = e \dphi$, which corresponds in our case to a limit velocity of $v_{\rm lim} = \sn{1.5}{6} \,\meter\per\second$.
@@ -72,7 +71,8 @@
     \end{equation}
     which gives in our condition a time-scale several orders of magnitude larger than the other time scales $T_{\rm ela}$ and $T_{\rm flight}$ .
     Hence, the effects of numerical parameters on the kinetics informations of the simulation are expected to be negligible.
-
+    We confirmed it by doubling the number of particle per cell for one pressure condition.
+    No observable impact has been detected.
 
   \subsection{Results of the Monte Carlo computation} \label{subsec-MCMresults}
 
@@ -111,14 +111,13 @@
 
     \begin{figure}[hbtp]
       \begin{tabular}{ccc}
-        \includegraphics[width=0.3\textwidth]{MCC_EEDF/Heelo_1_10} &
-        \includegraphics[width=0.3\textwidth]{MCC_EEDF/Heelo_1_100} &
-        \includegraphics[width=0.3\textwidth]{MCC_EEDF/Heelo_1_200} \\
+        \includegraphics[width=0.3\textwidth]{MCC_EEDF/Heelo_1_10.pdf} &
+        \includegraphics[width=0.3\textwidth]{MCC_EEDF/Heelo_1_100.pdf} &
+        \includegraphics[width=0.3\textwidth]{MCC_EEDF/Heelo_1_150.pdf} \\
       \end{tabular}
       \caption{Evolution of the directed EEPF measured at $x=3\,\centi\meter$ from a wall. The dotted line corresponds to the local potential. Are overlaid (organge) the initial Maxwellian distribution and (green) the EEPF obtained at the end of the \ac{PIC} simulation. }
       \label{fig-zoom_Mc_later}
     \end{figure}
-    \unsure{The legend can be improved here}
 
     \vspace{1em}
     This Monte Carlo investigation has shown that in the \ac{1D} model, the EEPF depends on the absorption at the wall but also the electron-neutral collisions.
