@@ -55,7 +55,7 @@
         e + Xe = e + Xe$^*$   & 9.917eV   & \cite{Lxcat_Xe,Lxcat_Xe2} \\
         e + Xe = e + Xe$^*$   & 11.7eV    & \cite{Lxcat_Xe,Lxcat_Xe2} \\
         {\it Ionization} & &\\
-        e + Xe = e + Xe$^+$   & 8.315eV   & \cite{Lxcat_Xe,Lxcat_Xe2} \\
+        e + Xe = e + Xe$^+$   & 12.13eV   & \cite{Lxcat_Xe,Lxcat_Xe2} \\
         \bottomrule
       \end{tabular}
     \end{table}
@@ -77,10 +77,15 @@
   The different steps constituting the PIC-loop are described in the next subsections.
   \begin{figure}[hbtp]
     \centering
-    \includegraphics{picloop.png}
+    \smartdiagramset{circular distance=4.5cm,
+    module minimum width=3.5cm,
+    text width=3cm,
+    arrow tip=to}
+    \smartdiagram[circular diagram:clockwise]{Particle Motion ,Boundary,Collision,Density weighting, Poisson Equation, Field weighting}
     \caption{\ac{PIC}-\ac{MCC} loop executed every time steps.}
     \label{fig-picloop}
   \end{figure}
+
 
   \subsection{Data used}
     In \ac{PIC} simulations, there are two kinds of data used\string:
@@ -93,7 +98,8 @@
     For each particles, are known its position $\vec{x}$ and its velocity $\vec{v}$.
     In most \ac{PIC}-\ac{MCC} simulations, the 3 directions of the velocity vector are followed in order to take into account scattering.
     It is abbreviated as \acs{3V}.
-    
+    The particle positions and velocity are not discretize, except to the numerical floating-point precision.
+
     \paragraph{Fields\\}
     The fields are defined at the center of each cell of the mesh.
     The charge density $\rho$ is computed by depositing the particle on the mesh, using the Cloud-in-cell model \cite{birdsall1991}.
@@ -103,7 +109,6 @@
 
     \subsection{Particle pusher}
     The interaction of the movement equation \cref{eq-Lor} is different for magnetized and non-magnetized particles.
-
     For non-magnetized particles, we use the leapfrog scheme \cite{birdsall1991}
     \begin{align}\label{eq-leapfrog}
       \vect{v}^t &= \vect{v}^{t-1} + \frac{q}{m} \vect{E} \dt, \\
@@ -145,8 +150,8 @@
   \subsection{Poisson equation solver}
   \label{subsec-poissonintro}
 
-    The Poisson equation \cref{eq-poisson} is an elliptic equation.
-    We can directly discretize the differential operator by finite volume on the cell mesh.
+    In order to compute the electron field due to the particle charge density, the Poisson equation \cref{eq-poisson}  need to be discretized over the mesh.
+    We can directly discretize the differential operator by using the finite volume approach over a cell of the mesh.
     The formal discretization is developed in \cref{sec-diel}, for the special case of taking into account the presence of dielectric boundaries.
 
     In \ac{1D}, the obtained linear system is tridiagnonal.
@@ -157,4 +162,3 @@
     Hence, an iterative solver using the previous solution as initial guess seems more reasonable from both the memory storage and the computational time.
 
     
-    \inlinenote{Le style du discourd est inconsistant... Trop précis, ou pas access.}

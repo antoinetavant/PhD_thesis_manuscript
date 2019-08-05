@@ -32,7 +32,7 @@
   However, the electric field in a dielectric material is not zero, but depends on the global system.
   Hence, in order to model correctly the dielectric wall of the \ac{HET}, we choose to include the whole dielectric layers inside of the simulation domain.
 
-  In this section, we derive the discretization of the Poisson equation with non-uniform permittivity in the \ac{2D} radial azimuthal plane using the finite volume approach.
+  In this section, we derive the discretization of the Poisson equation with a non-uniform permittivity in the \ac{2D} radial azimuthal plane using the finite volume approach.
 
 
   \subsection{Non-uniform mesh}
@@ -48,14 +48,12 @@
 
 
   The dielectric permittivity is $\epsilon= \epsr \epsilon_0$ with $\epsr$ the relative permittivity of the dielectric.
-
-  The Poisson equation with not-constant permittivity is
+  The Poisson equation with a not-constant permittivity is
   \begin{equation} \label{eq-poissondiel}
     \grad \cdot \epsilon \grad \phi = \rho
   \end{equation}
   with $\rho$ the charge density.
   We note $\vect{D}=\epsilon \vect{E} = \epsilon \grad \phi$ the electric flux.
-
   \Cref{fig-decompo1} shows the Cartesian decomposition of the \ac{2D} domain.
   The cell $(i,j)$ has four direct neighbours\string:
   \begin{itemize}
@@ -110,7 +108,6 @@
                                       &= - \epsilon_{i,j} \frac{\phi_{i+1/2,j} - \phi_{i,j}}{d_i/2},
     \end{align}
     with an off-center discretization of the electric field.
-
     Using the Gauss's law without charges
     \begin{equation} \label{eq-gausslaw}
       \epsilon_{i,j}E_{x, i+1/2,j}^- - \epsilon_{i+1,j}E_{x, i+1/2,j}^+ =0,
@@ -123,7 +120,7 @@
     \begin{equation} \label{eq-phidemi1}
       \phi_{i+1/2,j} = \frac{\epsilon_{i,j} d_{i+1} \phi_{i,j} + \epsilon_{i+1,j} d_{i} \phi_{i+1,j} }{\epsilon_{i,j} d_{i+1} + \epsilon_{i+1,j} d_{i} },
     \end{equation}
-    which corresponds to the usual discretization when $\epsilon$ and $d_i$ are both constant.
+    which corresponds to the usual discretization \citep{croes2017} when $\epsilon$ and $d_i$ are both constant.
     Using \cref{eq-phidemi1} in \cref{eq-flux1} we obtain
     \begin{align}
       \label{eq-nosc}
@@ -153,7 +150,8 @@
     
     A symmetric system is a linear system of equation $A \cdot X = B$  which matrix $A$ is equal to is transpose: $A = A^T$.
     It allows to reduce by a factor of two the memory needed to store the matrix.
-    It also allows to use algorithm exploiting this aspect. For instance, the eigenvalues are real-valued, and the matrix factorisation only need to store one factor using Cholesky decomposition, which gives $A = L L^T$ with L an upper-triangular matrix. 
+    It also allows to use algorithms exploiting this aspect.
+    For instance, the eigenvalues are real-valued, and the matrix factorisation only need to store one factor using Cholesky decomposition, which gives $A = L L^T$ with L an lower-triangular matrix. 
 
     \subsection{Including surfaces charges}
     Let's now considerer the presence of surface charges on the surface $S^E_{i,j}$.
@@ -194,13 +192,13 @@
     \Cref{fig-surface} shows the electric field computed using the obtained decomposition.
     We see that we obtain the expected value for the electric field.
 
-
     \begin{figure}[hbtp]
-      \label{fig-surface}
       \centering
       \includegraphics[width=\defaultwidth]{potential.pdf}
       \caption{Electric field of the capacitor configuration calculated by the Poisson solver in order to validate the discretization and the solver. }
+      \label{fig-surface}
     \end{figure}
+    \inlinenote{Improve the figure: Labels, theoretical value, legend, etc. Maybe Zoom at the boundary ?}
 
 
   \subsection{Interface at the cell centre}
@@ -276,6 +274,20 @@
     
   \subsection{Electric field computation}
   
-  \subsection{Numerical resolution the Poisson equation}
+    The resolution of the Poisson equation returns the value of the plasma potential $\phi$ at the cell centres.
+    The electric field is computed by taking the first derivative of the potential at the cell interface, as in \cref{eq-flux1},
+    \begin{equation} \label{eq-E_ihalf}
+      E_{x, i+1/2,j}^- = - \epsilon_{i,j} \frac{\phi_{i+1/2,j} - \phi_{i,j}}{d_i/2},
+    \end{equation}
+    with $\phi_{i+1/2,j}$ defined with \cref{eq-phidemi1}.
+    However, in order to have consistent data, the electric field is also computed at the cell center by interpolation
+    \begin{equation} \label{eq-E_mean}
+      E_{x, i, j} = \frac{1}{2} \lp E_{x, i-1/2,j} + E_{x, i+1/2,j} \rp =  - \epsilon_{i,j} \frac{\phi_{i+1/2,j} - \phi_{i-i/2,j}}{d_i}.
+    \end{equation}
+    
+    In the cells along to the plasma-wall interface, the effect of the surface charge must be taken into account, is previously described.
+    
+    \improvement{Can be more explicit here. Add exact expression of $E$ with $\phi_{i,j}$ and the effect of the surface charge.}
+  
   
   

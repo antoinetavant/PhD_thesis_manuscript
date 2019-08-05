@@ -4,11 +4,9 @@
 
 We are interested in studying the azimuthal instabilities and the induced electron transport in the axial direction.
 In addition, we want to study the plasma-wall interactions.
-
 As realistic \ac{3D} simulations are not yet achievable, we choose to simulate the radial-azimuthal plan.
 The axial location where the electron drift is the highest is close to the exit plan, where the axial electric field is the highest.
 Hence, we choose this location to be simulated.
-
 In this section, we describe the characteristics of the radial-azimuthal simulation.
 
 
@@ -16,18 +14,17 @@ In this section, we describe the characteristics of the radial-azimuthal simulat
 The \ac{ECDI} features oscillations of short wavelength of the order of the mm.
 Hence, neglecting the curvature of the channel is expected not the change the \ac{ECDI} characteristics while improving the simulation performances.
 
-In  \citet{heron2013},  the authors have performed an \ac{2D} simulation including the channel curvature.
+In  \citet{heron2013},  the authors have performed a \ac{2D} \ac{PIC} simulation including the channel curvature.
 They have observed a small difference between the inner and the outer walls.
 In  \citet{dominguez-vazquez2018}, the authors studied the effect of the curvature using a \ac{1D} radial model.
 They have shown asymmetries due to the combination of the geometric expansion, the magnetic mirror effect and the centrifugal force.
 However, the global behaviour of the discharge is not affected compared to simulations without the curvature model.
-Hence, we choose to neglect the curvature.
-
+Hence, in order to simplify the analogy, we choose to neglect the curvature.
 Consequently, we can use a Cartesian mesh (also called a rectangular mesh).
-For the sake of clarity, the usual notation $x,y$ is used in the simulation for the radial ($r$) and azimuthal directions $\theta$, respectively.
+The usual notation $x,y$ is used in the simulation for the radial ($r$) and azimuthal directions $\theta$, respectively.
+The $z$ component correspond to the axial direction, normal to the simulation domain.
 
 \subsection{Radial-azimuthal domain description}
-
 
 The azimuthal directions is closed using periodic boundary condition for both the particles and the fields.
 The radial direction is closed by walls.
@@ -51,13 +48,16 @@ A constant and uniform axial electric field $E_0$ is imposed.
 \subsection{Particle balance}
 As the axial position simulated is the exit plane, the ionization is too low to balance the particle losses to the wall.
 Instead, the ionization takes place upstream, and the particles are convected downstream.
-In these conditions, two models can be used,
+In these conditions, two models can be used concerning the particle losses at the walls\string:
 \begin{itemize}
   \item having a simulation that dies off, as done in \citet{janhunen2018},
   \item forcing an arbitrary ionization to occur in order to compensate the radial losses \citep{dominguez-vazquez2018}.
 \end{itemize}
 The second option is slightly less realistic, but allows to obtain a steady state and is supposed not to affect significantly the simulation.
 Hence, we uses this model to obtain a constant mean plasma density during the simulation.
+The forced ionization rate is computed in order to compensate the losses of the ions at each time step.
+The ionization spacial profile is uniform.
+
 
 \subsection{Axial convection}
 
@@ -70,7 +70,6 @@ We implemented a model of convection initially proposed for a \ac{1D} simulation
 The model uses a finite axial length $L_z$.
 When a particle reaches the boundary $z=0$ or $z=L_z$, it is removed from the simulation.
 In order to conserve the particle (and charge) balance, a particle is created at $z=0$ for the ions (that are accelerated toward $z>0$) or at $z=L_z$ for the electrons.
-
 It has been observed that using a radial position chosen uniformly at random for the newly injected particle would affect the sheath \citep{croes2017a}.
 Hence, the radial position of the new particle is the same of the removed particle.
 
