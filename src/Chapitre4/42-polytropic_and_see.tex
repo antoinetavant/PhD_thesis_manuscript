@@ -4,24 +4,26 @@
 \section{Sheath model with polytropic electron and electron emission}
 \label{sec-fluid_poly_see}
 
-We have seen in \cref{sec-PIC_poly} that even in the presence of electron emission from the wall, the electrons can be decreased using a polytropic state law.
-The value of the polytropic index obtained from the mean electron density and temperature is for $\crover \geq 40 \,\volt$ is $\gamma = 1.35$.
+\subsection{Definition of the sheath equation} \label{subsec-def_sheat_see}
 
-Hence, we modify the polytropic sheath model of \cref{sec-fluid} to take into account the electron emission fromthe wall.
+We have seen in \cref{sec-PIC_poly} that in the presence of electron emission from the wall, the electrons can be decreased using a polytropic state law.
+The value of the polytropic index obtained from the mean electron density and temperature is for $\crover \geq 40 \,\volt$ is $\gamma = 1.35$.
+Using the electron distribution function, the evolution of the forward electron seems to follow a polytropic low of index $\gamma=1.28$.
+Hence, we modify the polytropic sheath model of \cref{sec-fluid} to take into account the electron emission from the wall.
 This modify the current equality at the wall to
 \begin{equation} \label{eq-see-J_eq}
-  J_i = (1 - \rate) J_e.
+  \Gamma_i = (1 - \rate) \Gamma_e.
 \end{equation}
 
-Using \cref{eq-gi,eq-ge,eq-tew}, we obtain the equality
+Using \cref{eq-gi,eq-ge,eq-tew} for $\Gamma_i$ and $\Gamma_e$, we obtain the equality
 \begin{equation}\label{eq-sheathsee}
   (1 - \rate )\left[ 1 +\frac{\gamma -1}{\gamma} \frac{ \dphi_0}{ \Te_0}  \right]^{\frac{1}{\gamma - 1}} \sqrt{1 - \frac{\gamma -1}{\gamma}\frac{\dphi_0}{\Te_0}} = \sqrt{\frac{4 \gamma \pi m_e}{m_i}}
 \end{equation}
 
-As in the case without electron emission, \cref{eq-sheathsee} cannot be solved analytically, but it can be solved numerically.
-
+Similarly to the case without electron emission in \cref{sec-fluid}, \cref{eq-sheathsee} cannot be solved analytically, but it can be solved numerically.
 The solution for $\rate=0.8$ is compared to the case without electron emission for a \ac{Xe} plasma in \cref{fig-dphi_see}.
-As expected, the potential difference decrease with increasing $\rate$, but the difference decreases with increases $\gamma$.
+As expected, the potential difference decrease with increasing $\rate$.
+However, the gap between the two cases decreases when $\gamma$ increases.
 
 \begin{figure}[hbtp]
   \centering
@@ -31,7 +33,7 @@ As expected, the potential difference decrease with increasing $\rate$, but the 
 \end{figure}
 
 The electron emission rate is actually a function of the electron energy at the wall.
-Hence, using the same hypothesis that used in \cref{eq-ge}, we can compute the emission rate with \cref{eq-seemaxw}
+Using the same hypothesis that used in \cref{eq-ge}, we can define the emission rate from \cref{eq-seemaxw} by
 \begin{equation} \label{eq-seemaxw_poly}
   \rate = \ratemaxw(\Tew) = \sigo + ( 1 - \sigo) \frac{ 2 \Tew  }{\crover}.
 \end{equation}
@@ -41,18 +43,19 @@ Combined with \cref{eq-tew}, we obtain
   \rate = \sigo + ( 1 - \sigo) \frac{ 2 \lp \Teb - \frac{\gamma - 1}{\gamma} \dphi \rp }{\crover}.
 \end{equation}
 Here, for sake of clarity we do not write the saturation of $\rate$ to $\ratecr$ due to the \ac{SCL} regime.
-However, we include it the the next calculations.
+Indeed, we know that it  changes only slightly the value of $\rate$.
+%However, we include it the the next calculations.
 
 
 Noting $\chi = \frac{\gamma -1}{\gamma} \frac{ \dphi_0}{ \Te_0} $, we finely obtain the equation to be solved
 \begin{equation} \label{eq-costseepoly}
-  \left[ 1 + \chi  \right]^{\frac{1}{\gamma - 1}} \sqrt{1 - \chi} - \frac{ \crover \sqrt{4 \gamma m_e / m_i}}{ 2 \Teb (1 - \sigo) [1 -  (1 - \chi ) ] } = 0.
+  \left[ 1 + \chi  \right]^{\frac{1}{\gamma - 1}} \sqrt{1 - \chi} - \frac{  \sqrt{4 \gamma m_e / m_i}}{  (1 - \sigo) [1 - \frac{2 \Teb}{\crover} (1 - \chi ) ] } = 0.
 \end{equation}
 
 \Cref{eq-costseepoly} depends explicitly on $\Teb$, hence $\chi$ is no longer independent of $\Teb$.
-Moreover, the \ac{RHS} of \cref{eq-costseepoly} is more complex that before, leading to multiple solutions.
+This adds a free parameter when solving the sheath equation.
+Moreover, the \ac{RHS} of \cref{eq-costseepoly} is more complex than before, leading to multiple solutions.
 \Cref{fig-costfunction} shows the \ac{RHS} of \cref{eq-costseepoly} for several values of ({\bf a}) $\Teb$ and ({\bf b}) $\crover$, while keeping the polytropic index to $\gamma=1.35$.
-
 The \ac{SCL} regime has been taken into account by saturating $\rate$ to $\ratecr=0.982$. 
 It corresponds to the branch which crosses the abscissa axis close to $\frac{\dphi}{\Teb}=1$. 
 
@@ -66,8 +69,11 @@ It corresponds to the branch which crosses the abscissa axis close to $\frac{\dp
   \label{fig-costfunction}
 \end{figure}
 
-We can see that \cref{eq-costseepoly} can present one or three solutions, depending of the relative values of $crover$ and $\Teb$.
+We can see that \cref{eq-costseepoly} can present one or three solutions, depending of the relative values of $\crover$ and $\Teb$.
 Hence, a particular care must be taken now when finding numerically the sheath potential drop.
+
+\subsection{Resolution of the sheath equation} \label{subsec-def_sheat_see}
+
 
 \Cref{fig-rso_crit_see} shows the evolution of the sheath potential drop with the electron temperature for different values of $\crover$.
 It is similar to \cref{fig-dphivsTe} but with the use of a polytropic state law for the electrons.
@@ -101,7 +107,6 @@ On the other hand, we can expect the overall behaviour not to be significantly a
 
 \vspace{1em}
 To summarize, the polytropic law is combined with electron emission to model the sheath.
-The model is richer than the usual isothermal model, as it allows multiple values of potential drop to the wall for the same electron bulk temperature.
-
+The model obtained is richer than the usual isothermal model, as it allows multiple values of potential drop to the wall for the same electron bulk temperature.
 This model only uses the electron bulk temperature and self-consistently compute both the potential drop and the electron emission rate.
 It is compared in the next section to the \ac{PIC} simulation results.
