@@ -13,24 +13,26 @@
    %Packages
 \input{texfiles/settings}
 
-\pdfcompresslevel=0
+\pdfcompresslevel=9
 
-\pagecolor{gray}
+%\pagecolor{gray}
   
 \selectlanguage{english}%
 
 % ===============================
 %   INCLUDE
 % ===============================
-\includeonly{structure/structure,%
- structure/lists,%
- Context/0_concepts,%
+\includeonly{
+structure/structure,%
+ % structure/lists,%
+ % Context/0_concepts,%
  % Chapitre1/1-introduction,%
  % Chapitre2/2-mean_values,%
  % Chapitre3/3-non_isothermal_sheath,%
- Chapitre4/4-polytropic_SEE,%
+ % Chapitre4/4-polytropic_SEE,%
  % Chapitre5/5-ECDI, %
- texfiles/1ere
+ % texfiles/1ere
+ Chapitre6/6-Z-theta, %
  }
 
  
@@ -46,6 +48,7 @@
 {Chapitre3/figure/}%
 {Chapitre4/figure/}%
 {Chapitre5/figure/}%
+{Chapitre6/figure/}%
 }  % Location of the graphics files (set up for graphics to be in PDF format)
 
 \geometry{  % the margins
@@ -117,20 +120,20 @@
 
 % \acresetall
 
-
-\let\oldthechapter\thechapter
-\let\oldthechaptername\chaptername
-
-\renewcommand\thechapter{}
-\renewcommand\chaptername{}
-\include{Context/0_concepts}
-% \acresetall
-
-\let\leftmark=\oldleftmark
-\let\rightmark=\oldrightmark
-
-\renewcommand\thechapter\oldthechapter
-\renewcommand\chaptername{Chapter}
+% 
+% \let\oldthechapter\thechapter
+% \let\oldthechaptername\chaptername
+% 
+% \renewcommand\thechapter{}
+% \renewcommand\chaptername{}
+% \include{Context/0_concepts}
+% % \acresetall
+% 
+% \let\leftmark=\oldleftmark
+% \let\rightmark=\oldrightmark
+% 
+% \renewcommand\thechapter\oldthechapter
+% \renewcommand\chaptername{Chapter}
 
 \include{Chapitre1/1-introduction}
 % \acresetall
@@ -141,12 +144,19 @@
 \include{Chapitre4/4-polytropic_SEE}
 % \acresetall
 \include{Chapitre5/5-ECDI}
+
+\include{Chapitre6/6-Z-theta}
+
 \appendix
 
 
 \backmatter
-\let\leftmark=\oldleftmark
-\let\rightmark=\oldrightmark
+% \let\leftmark=\oldleftmark
+% \let\rightmark=\oldrightmark
+
+\renewcommand\leftmark{BIBLIOGRAPHY}
+\renewcommand\rightmark{BIBLIOGRAPHY}
+
 % \bibliographystyle{ieeetr}
 % \newcommand*{\doi}[1]{\href{http://dx.doi.org/#1}{doi: \lstinline|#1|}}
 % \newcommand*{\doi}[1]{\url{http://dx.doi.org/#1}}
