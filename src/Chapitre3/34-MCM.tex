@@ -4,7 +4,7 @@
 \label{sec-MCM}
   
   The \ac{1D} \ac{PIC} simulations were computed faster than the \ac{2D} simulations, as the latter needed around a week to compute $10\,\micro\second$ on 360 CPUs, while the former needed only a few days on 64 CPUs to compute $20\,\micro\second$ of physical time.
-  However, they still took a rather long time, especially when compared to fluid models that can be solve from under one second to around one day on a single core, depending of the hypotheses used.
+  However, they still took a rather long time, especially when compared to fluid models that can be solve from under one second to around one day on a single core, depending on the hypotheses used.
   
   We have seen that the the polytropic index depends on several conditions, as the background pressure (see \cref{fig-p}) but also the densities, sizes, heating mechanism, and so on.
   We have seen in \cref{sec-fluid} that the only value of the polytropic index $\gamma$ is enough to describe the \ac{PIC} simulation.
@@ -58,7 +58,7 @@
     \paragraph{Numerical artefacts \\}
     In PIC simulations, numerical parameters can induce numerical heating and thermalization \citep{lai2014}.
     The numerical heating has been studied in detail \citep{birdsall1991}.
-    It is due to aliasing effects, and depends of the grid size, time step and number of particles per cell.
+    It is due to aliasing effects, and depends on the grid size, time step and number of particles per cell.
     The choice of these parameter leads to reduce the effect of the heating.
 
     The thermalization is the fact that the distribution of the particle tends toward a Maxwellian.

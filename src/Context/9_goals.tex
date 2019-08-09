@@ -5,19 +5,21 @@
 \addcontentsline{toc}{section}{Problematic of the thesis}
 
 My thesis takes part in the collaboration between Safran Aircraft Engines and the Laboratory of Plasma Physics, which objective is to study the fundamental physics governing the \ac{HET}, in the optic to accelerate the developments of the next generations of thrusters.
-I mainly focused on the the electron transport and the plasma-wall interaction,
+I mainly focused on the electron transport and the plasma-wall interaction,
 both aspects requiring the use of kinetic tools.
 
 Indeed, the electron transport is affected by instabilities that can only be described by kinetic models \citep{adam2008a,lafleur2016a}.
-In addition, the plasma-wall interaction is also affected by kinetic effects, both concerning the electron emission induced by electron impact \citep{barral2003a,raitses2011,sydorenko2006} and the wall erosion by ion impact sputtering.
+Furthermore, the plasma-wall interaction is also affected by kinetic effects, both concerning the electron emission induced by electron impact \citep{barral2003a,raitses2011,sydorenko2006} and the wall erosion by ion impact sputtering.
 Relatively few simulation codes highly parallelized have been developed, that could allow parametric studies.
-But the ever increasing computational power available allows bigger simulations to be conducted.
+But the ever-increasing computational power available allows bigger simulations to be conducted.
 Thus, a significant part of my work involves the development of a highly efficient \ac{PIC} simulation code, with all of the technical difficulties related to it.
 The simulation code is then used to proceed to several parametric studies, that I used to derived reliable low-dimensional models.
 
 
 \vspace{1em}
-In Chapter 1, we introduce the main simulation model.
+In Chapter 1, we introduce the primary simulation model, as well as the fundamental theories of the plasma-wall interaction and the electron transport.
 Chapter 2 presents the results of a parametric study investigating the wall effect.
-In chapters 3 and 4, we modify the sheath model in order to reproduce the simulation results.
-Chapter 5 (and maybe 6) focus on the azimuthal instability.
+In Chapters 3 and 4, we modify the sheath model in order to reproduce the \ac{PIC} simulation results.
+Chapter 3 focuses on a simplified \ac{1D} simulation to study the electron state law, while Chapter 4 continues the same model by including the secondary electron emission.
+Chapter 5 focus on the azimuthal instability observed in the simulation and compares it to the dispersion relation.
+While the majority of the work studied the \ac{2D} radial and azimuthal simulation, we finish by study the radial direction in a \ac{2D} axial and azimuthal simulation.

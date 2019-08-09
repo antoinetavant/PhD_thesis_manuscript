@@ -34,7 +34,7 @@ Consequently, the radial losses are far from the one expected in reality.
 
 \subsection{Boeuf model: Axial profiles} \label{subsec-axial_boeuf}
 
-Here: the axial profiles at steady state.
+Here: the axial profiles at steady-state.
 
 \begin{figure}[hbtp]
   \centering
@@ -56,6 +56,77 @@ It is confirmed by \cref{fig-boeuf-instability}.
 
 \inlinenote{Discussion of the role of the numerical noise, that could impact the instability as well.}
 
-\subsection{Boeuf model: with MCC} \label{subsec-MCC_boeuf}
-\inlinenote{We could add here the results of the Boeuf case with the MCC modeled.
-See the value of $T_{e, R}$ and discuses on the heating indused by the waves. }
+
+
+\subsection{Boeuf model with collisions} \label{subsec-MCC_boeuf}
+% Script on Juno (CH-6_Boeuf)
+
+We have seen that because there is no collision in the case of Boeuf, there is no energy transfer toward the radial direction.
+Thus, we investigate here the impact of a neutral on the electron anisotropy by modeling the collision with the \ac{MCC} algorithm.
+
+The xenon neutrals are injected at the anode side with density of $n_g=1e17\,meter$${-3}$, an axial velocity $v_g = 200 \,\meter\per\second$ and a temperature $T_g=640\,\kelvin$.
+We model the neutral flow with the continuity and momentum conservation equation, while keeping their temperature constant.
+The ionization source term used to sustains the plasma is a loss term in the continuity equation.
+\Cref{fig-boeuf-neutrals} shows the neutral density and velocity obtained at steady-state.
+
+\begin{figure}[hbtp]
+  \centering
+  \begin{tabular}{cc}
+    \subfigure{boeuf_MCC_ng}{a}{20,20} &
+    \subfigure{boeuf_MCC_vg}{b}{20,15} \\
+  \end{tabular}
+  \caption{Axial profile at steady-state ($t=14\,\micro\second$) of ({\bf a}) the neutral density and  ({\bf b})  the neutral axial velocity, for  simulation case of Boeuf with the electron-neutral scattering. }
+  \label{fig-boeuf-neutrals}
+\end{figure}
+We can see in \cref{fig-boeuf-neutrals} that the neutrals are significantly depleted because of the forced the ionization source term.
+The neutral density gradient accelerates the neutrals in the axial direction by a factor of two, which reduces even more the neutral density.
+thus, the electron-neutral scattering will be important on the anode side of the chamber.
+
+\begin{figure}[hbtp]
+  \centering
+  \begin{tabular}{cc}
+    \subfigure{boeuf_mean_Te}{a}{20,20} &
+    \subfigure{boeuf_mean_Tez_profile_MCC}{b}{20,15} \\
+  \end{tabular}
+  \caption{({\bf a}) temporal evolution of the electron kinetic energy and  ({\bf b}) axial profile of the electron temperature obtained for the simulation case of Boeuf with the electron-neutral scattering. }
+  \label{fig-boeuf-temporal}
+\end{figure}
+
+\Cref{fig-boeuf-temporal} shows the temporal evolution of the mean electron kinetic energy of the left, and on the right it shows the axial profile of the electron temperatures, decomposed on the three directions.
+We can see now that they is a small transfer of energy between the radial direction and the others.
+In particular, close the the anode, the radial and axial temperatures decreases below the initial temperature $\Te_{, inj}=5\,\volt$.
+In contrast, at the maximum of the magnetic field, the radial energy increases to $\Te_R=7\,\volt$.
+However, the anisotropy stays significant, compared to the  radial-azimuthal simulations (\cref{ch-2}).
+
+\subsection{Radial electron heating} \label{subsec-radial-heating}
+The large anisotropy observed in \Cref{fig-boeuf-temporal} compared to the results of \cref{ch-2} might be due to the difference on neutral density.
+However, the collisions are usually neglected in \ac{HET}s compared to the instability.
+Hence, the plasma fluctuations may be responsible for the electron radial heating.
+
+The electron are power gain is the Joule heating
+\begin{equation} \label{eq-epower}
+    \vect{P_{\rm J}} = \vect{J_e} \cdot \vect{E},
+\end{equation}
+with $\vect{J_e}$ the electron density current and $\vect{E}$ the electric field.
+\Cref{fig-epower_radial} shows the mean Joule heating in the radial direction $\bar{P_{\rm J, R}} = < J_{e, R} E_R >$, and the product of the mean quantities $< J_{e, R}>  < E_R >$.
+
+\begin{figure}[hbtp]
+  \centering
+  \includegraphics[width=\defaultwidth]{Power_radial.png}
+  \caption{Electron power gain in the Radial-azimuthal }
+  \label{fig-epower_radial}
+\end{figure}
+
+We see that the mean Joule heating $\bar{P_{\rm J, R}}$ is not zero in the center of the simulation, while the product of the mean is zero.
+Indeed, the mean electric field in the bulk is almost zero.
+This means that there is an energy transfer to the radial direction of the electrons due to the correlation between $\vect{J_e}$ and $\vect{E}$.
+For this energy transfer to be present, the radial direction needs to be resolved.
+
+A similar radial heating has been observed by \citet{heron2013}.
+The authors observe no heating when the instability was only perpendicular to the magnetic field, as it is in a \ac{1D} or a \ac{2D} axial-azimuthal simulation.
+However, when the direction parallel to the magnetic field is resolved, the electrons are heated, but the physical mechanism remains unclear.
+In \citet{janhunen}, the authors observe a similar radial electron heating, but due to the presence of a \ac{MTSI}.
+Has discussed previously, we do not observe the \ac{MTSI} in our simulation, meaning that it much comes from another mechanism.
+
+
+\subsection{Electron azimuthal drift velocity} \label{subsec-drift}

@@ -3,11 +3,11 @@
 \section*{Scientific challenges of the HETs}
 \addcontentsline{toc}{section}{Scientific challenges of the HETs}
 
-The scientific challenges are the key phenomena not understood enough that prevent the industrial development of \ac{HET}s.
+The scientific challenges are the critical phenomena not understood enough that prevent the industrial development of \ac{HET}s.
 As introduced before, they concern the electron transport and the plasma-wall interaction.
 
-\subsection*{Cross field transport of the elections}
-\addcontentsline{toc}{subsection}{Cross field transport of the elections}
+\subsection*{Cross-field transport of the elections}
+\addcontentsline{toc}{subsection}{Cross-field transport of the elections}
 
   \label{sec-mob}
   As a first approximation, the electrons are usually supposed frozen by the magnetic field.
@@ -19,8 +19,8 @@ As introduced before, they concern the electron transport and the plasma-wall in
   \begin{equation} \label{eq-elec_momentum_mobility}
     \partial_t(m_e n_e \vect{v}_{de}) + \grad \cdot (m_e n_e  \vect{v}_{de} \vect{v}_{de}) = q_e n_e ( \vect{E} + \vect{v}_{de} \times \vect{B}) - \grad \cdot \vect{\Pi}_e - m_e \nu_m n_e \vect{v}_{de},
   \end{equation}
-  where $m_e, q_e$, $n_e$, $\vect{v}_{de}$ and $\vect{\Pi}_e $ are the electron mass, charge, density, drift velocity and pressure tensor, and $\nu_m$ is the electron-neutral momentum transfer collision frequency.
-  Ignoring the electron inertia and the pressure term, and with $\vect{B} = B_0 \vect{e}_r$, we can write the balance equation projected on the axial and azimuthal direction
+  where $m_e, q_e$, $n_e$, $\vect{v}_{de}$, and $\vect{\Pi}_e $ are the electron mass, charge, density, drift velocity and pressure tensor, and $\nu_m$ is the electron-neutral momentum transfer collision frequency.
+  Ignoring the electron inertia and the pressure term, and with $\vect{B} = B_0 \vect{e}_r$, we can write the conservation equation projected on the axial and azimuthal direction
   \begin{equation} \label{eq-elec_momentum_mobility2}
   \begin{cases}
     0 =  n_e E_z - n_e v_{de{\theta}} B_0 - \frac{m_e}{q_e} \nu_m n_e v_{dez}\\
@@ -36,7 +36,7 @@ As introduced before, they concern the electron transport and the plasma-wall in
   
   However, it has been observed in experiments by \citet{meezan2001} that the electron cross-field transport in the axial direction of the \ac{HET} is higher than $\mobcla$.
   Different phenomena have been proposed to explain the origin of this \emph{anomalous} transport.
-  Two phenomena are supposed to be mainly responsible for this enhanced mobility \citep{croes2017}\string: the azimuthal instability and the near wall mobility due to electron emission.
+  Two phenomena are supposed to be mainly responsible for this enhanced mobility \citep{croes2017}\string: the azimuthal instability and the near-wall mobility due to electron emission.
   A significant part of the work of this Ph.D. thesis concerns the quantitative comparison of the relative importance of the two phenomena.
 
   
@@ -48,34 +48,36 @@ As introduced before, they concern the electron transport and the plasma-wall in
   \begin{equation} \label{eq-exbdrift}
     v_{\rm d, ExB} = \bigg\lvert \frac{\vect{E} \times \vect{B}}{B^2} \bigg\rvert = \frac{E}{B} \sim \sn{1.5}{6} \,\meter\per\second
   \end{equation}
-  Because of their large mass, the ions are not significantly affected by the magnetic field, hence they do not drift azimuthally.
+  Because of their large mass, the ions are not significantly affected by the magnetic field.
+  Hence they do not drift azimuthally.
   As a consequence, there is a significant difference between the movement of electrons and ions in the azimuthal direction.
 
   This drift of electrons relative to the ions leads to instability in the azimuthal directions.
-  Because the drift is perpendicular to the magnetic field, it is usually refereed as \ac{ECDI}.
+  Because the drift is perpendicular to the magnetic field, it is usually referred to as \ac{ECDI}.
   However, as it rises from an $E\times B$ drift, some authors use the name \ac{EDI}.
   In this thesis, we will use the name \ac{ECDI}.
 
-  The actual nature of the \ac{ECDI} remains unclear\citep{boeuf2018}, as the \ac{ECDI} characteristic are very close to usual \ac{IAW}, and that experimental measurements are difficult to conducted in the range of parameter of interest.
+  The actual nature of the \ac{ECDI} remains unclear\citep{boeuf2018}, as the \ac{ECDI} characteristics are very close to usual \ac{IAW}, and that experimental measurements are challenging to conduct in the range of parameter of interest.
   Hence, the community is still arguing about the actual nature of wave observed.
-  A part of the work conducted during my theses concerns the study and characterization of the instabilities observed in the kinetic simulations.
-  These instability are treated in \cref{ch-5}.
+  A part of the work undertaken during my theses concerns the study and characterization of the instabilities observed in the kinetic simulations.
+  These instabilities are treated in \cref{ch-5}.
   
 \subsection*{Plasma-wall interaction}
 \addcontentsline{toc}{subsection}{Plasma-wall interaction}
 
   The ceramic wall closes the chamber in the radial directions.
-  It have been observed in experiments that the nature of the wall can affect significantly the discharge behaviour \citep{gascon2003}.
-  The main phenomenon hold responsible for this observation is the electron emission.
-  As usually observed in bounded plasmas, a floating plasmas sheath forms between the plasma and the dielectric wall.
+  It has been observed in experiments that the nature of the wall can significantly affect the discharge behavior \citep{gascon2003}.
+  The primary phenomenon hold responsible for this observation is the electron emission.
+  As usually observed in bounded plasmas, a floating sheath forms between the plasma and the dielectric wall.
   The sheath confines the electrons in the plasma and accelerates the ions toward the walls.
-  This allows to obtain a flux of electrons equals to the flux of ions, resulting in a charge conservation in the plasma, and a neutral flux, or also named zero-net current, to the surfaces.
+  This allows to obtain a flux of electrons equals to the flux of ions, resulting in charge conservation in the plasma, and a neutral flux, or also named zero-net current, to the surfaces.
   
-  Due to the relatively high electron energy, the impact of a primary electron can lead to the emission of a secondary electrons \citep{barral2003a,villemant2018}.
-  The probability of \ac{SEE} depends of the electron impact characteristics (energy, angle) but also of the material\string: some material are more emitting than others \citep{gascon2003}.
-  Ion induced electron emission is much less likely to happen as the ions have a small energy of impact.
-  In addition to the near wall conductivity discuss previously, these secondary electrons are accelerated toward the plasma by the sheath, and thus modify the plasma and the sheath properties.
-  Their impacts on the electron temperature affects also the ionization rate, which is directly linked to the thruster efficiency.
+  Due to the relatively high electron energy, the impact of a primary electron can lead to the emission of secondary electrons \citep{barral2003a,villemant2018}.
+  The probability of \ac{SEE} depends on the electron impact characteristics (energy, angle) but also of the material\string: some materials are more emitting than others \citep{gascon2003}.
+  Ion induced electron emission is much less likely to happen as the ions have a small impact energy.
+  In addition to the near-wall conductivity discuss previously, these secondary electrons are accelerated toward the plasma by the sheath.
+  Thus they modify the plasma and the sheath properties.
+  Their impact on the electron temperature also affects the ionization rate, which is directly linked to the thruster efficiency.
   
   
   \citet{raitses2005} have observed that the current models of plasma-wall interactions with secondary electron emission cannot reproduce the electron temperature measured experimentally.
@@ -84,7 +86,7 @@ As introduced before, they concern the electron transport and the plasma-wall in
     
   \vspace{1em}
   In addition to \ac{SEE}, the ion impact energy is large enough to erode the walls by sputtering.
-  This erosion is large enough to be the main limitation of \ac{HET}s lifetime.
+  This erosion is sufficient to be the main limitation of the lifetime of the \ac{HET}s.
   While most aspects of the erosion are well understood, we observe the apparition of  patterns with a typical scale of the order of the millimeter on the eroded surfaces.
   The origin and the possible implications of these erosion striations remain open questions.
   
@@ -93,22 +95,22 @@ As introduced before, they concern the electron transport and the plasma-wall in
 \label{sec-3Dphi}
 \addcontentsline{toc}{subsection}{Three-dimensional physics of the HET}
 
-The description of the the physics governing the \ac{HET} really are three dimensional\string:
+The physics governing the \ac{HET} are three dimensional\string:
 \begin{itemize}
   \item The plasma is accelerated in the axial direction by the electric field, and it is observed experimentally that the axial profile of the magnetic field is responsible for the performance of the thruster.
-  \item The radial dimension is closed by the chamber walls. The walls are responsible for most of the plasma losses, both on the particle and energy balances.
-  \item The electrons drifts in the azimuthal direction, leading to strong instabilities that affect the axial transport.
+  \item The chamber walls close the radial dimension. The walls are responsible for most of the plasma losses, both on the particle and energy balances.
+  \item The electrons drift in the azimuthal direction, leading to strong instabilities that affect the axial transport.
 \end{itemize}
 
-Consequently, when modeling or simulating an \ac{HET}, if one of the direction is not included, a part of the physics will be missing\string:
+Consequently, when modeling or simulating a \ac{HET}, if one of the direction is not included, a part of the physics will be missing\string:
 \begin{itemize}
   \item No axial direction\string: the ionization or the acceleration, as well as the plasma transport, are missing,
   \item No radial direction\string: the wall losses and interactions are missing,
-  \item No azimuthal direction\string: the instability is missing, hence the electron cross-field transport is not well represented.
+  \item No azimuthal direction\string: the instability is missing. Hence the electron cross-field transport is not well represented.
 \end{itemize}
 
-While \ac{3D}-simulations have recently been proposed, they uses scaling laws to simulate the system in a reasonable amount of time\citep{taccogna2019a}.
-For instance, a reduced geometry is used in \citet{taccogna2018} or a reduced density is used in \citet{fubiani2018a}.
+While \ac{3D}-simulations have recently been proposed, they use scaling laws to simulate the system in a reasonable amount of time\citep{taccogna2019a}.
+For instance, a reduced geometry is used in \citet{taccogna2018}, or a reduced density is used in \citet{fubiani2018a}.
 A \ac{3D} simulation at real scale is not yet accessible.
 Hence, we need to be able to rely on \ac{1D} or \ac{2D} simulations.
 Consequently, we have to take into account the missing physics or include a model of its effects on the system.

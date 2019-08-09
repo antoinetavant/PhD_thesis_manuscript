@@ -18,7 +18,7 @@ In  \citet{heron2013},  the authors have performed a \ac{2D} \ac{PIC} simulation
 They have observed a small difference between the inner and the outer walls.
 In  \citet{dominguez-vazquez2018}, the authors studied the effect of the curvature using a \ac{1D} radial model.
 They have shown asymmetries due to the combination of the geometric expansion, the magnetic mirror effect and the centrifugal force.
-However, the global behaviour of the discharge is not affected compared to simulations without the curvature model.
+However, the global behavior of the discharge is not affected compared to simulations without the curvature model.
 Hence, in order to simplify the analogy, we choose to neglect the curvature.
 Consequently, we can use a Cartesian mesh (also called a rectangular mesh).
 The usual notation $x,y$ is used in the simulation for the radial ($r$) and azimuthal directions $\theta$, respectively.
@@ -53,7 +53,7 @@ In these conditions, two models can be used concerning the particle losses at th
   \item having a simulation that dies off, as done in \citet{janhunen2018},
   \item forcing an arbitrary ionization to occur in order to compensate the radial losses \citep{dominguez-vazquez2018}.
 \end{itemize}
-The second option is slightly less realistic, but allows to obtain a steady state and is supposed not to affect significantly the simulation.
+The second option is slightly less realistic, but allows to obtain a steady-state and is supposed not to affect significantly the simulation.
 Hence, we uses this model to obtain a constant mean plasma density during the simulation.
 The forced ionization rate is computed in order to compensate the losses of the ions at each time step.
 The ionization spacial profile is uniform.
@@ -64,7 +64,7 @@ The ionization spacial profile is uniform.
 Due to the imposed axial electric field, ions and electrons gain energy.
 In the \ac{HET}, the axial convection of the particles balances the energy gain.
 However, in a purely \ac{2D} simulations, the convection is missing, resulting in an ever rising particle energy.
-This prevents the possibility to reach a steady state regime, as observed in \citet{heron2013,janhunen2018}.
+This prevents the possibility to reach a steady-state regime, as observed in \citet{heron2013,janhunen2018}.
 
 We implemented a model of convection initially proposed for a \ac{1D} simulation by \citet{lafleur2016a}, and addapted in \ac{2D} by \citet{croes2017a}.
 The model uses a finite axial length $L_z$.

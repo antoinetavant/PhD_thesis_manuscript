@@ -23,16 +23,16 @@
 %   INCLUDE
 % ===============================
 \includeonly{
-structure/structure,%
- % structure/lists,%
- % Context/0_concepts,%
- % Chapitre1/1-introduction,%
- % Chapitre2/2-mean_values,%
- % Chapitre3/3-non_isothermal_sheath,%
- % Chapitre4/4-polytropic_SEE,%
- % Chapitre5/5-ECDI, %
+% structure/structure,%
+ structure/lists,%
+ Context/0_concepts,%
+%  Chapitre1/1-introduction,%
+%  Chapitre2/2-mean_values,%
+%  Chapitre3/3-non_isothermal_sheath,%
+%  Chapitre4/4-polytropic_SEE,%
+%  Chapitre5/5-ECDI, %
  % texfiles/1ere
- Chapitre6/6-Z-theta, %
+ % Chapitre6/6-Z-theta, %
  }
 
  
@@ -120,20 +120,20 @@ structure/structure,%
 
 % \acresetall
 
-% 
-% \let\oldthechapter\thechapter
-% \let\oldthechaptername\chaptername
-% 
-% \renewcommand\thechapter{}
-% \renewcommand\chaptername{}
-% \include{Context/0_concepts}
-% % \acresetall
-% 
-% \let\leftmark=\oldleftmark
-% \let\rightmark=\oldrightmark
-% 
-% \renewcommand\thechapter\oldthechapter
-% \renewcommand\chaptername{Chapter}
+
+\let\oldthechapter\thechapter
+\let\oldthechaptername\chaptername
+
+\renewcommand\thechapter{}
+\renewcommand\chaptername{}
+\include{Context/0_concepts}
+% \acresetall
+
+\let\leftmark=\oldleftmark
+\let\rightmark=\oldrightmark
+
+\renewcommand\thechapter\oldthechapter
+\renewcommand\chaptername{Chapter}
 
 \include{Chapitre1/1-introduction}
 % \acresetall

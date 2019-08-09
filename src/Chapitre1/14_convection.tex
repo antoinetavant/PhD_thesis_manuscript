@@ -53,7 +53,7 @@
 
     \Cref{fig-energy_convection} shows the evolution as a function of time of the electron mean energy in the simulation in a typical \ac{2D} radial-azimuthal simulation, addapted from \citet{croes2017}.
     We can see that without the convection, the mean energy quickly rises to unphysical values.
-    When the convection is modeled, using an axial of $L_z=1$ cm, the energy reaches a steady state.
+    When the convection is modeled, using an axial of $L_z=1$ cm, the energy reaches a steady-state.
     \nomenclature[Q]{\ensuremath{ L_z}}{ Axial length}
     \begin{figure}[hbtp]
       \centering
@@ -101,12 +101,12 @@
     \end{figure}
     \inlinenote{Get $\theta$ back to $y$ instead of $x$}
     \FloatBarrier
-    \citet{croes2017} observed similar behaviour with the bidimensional  simulation.
+    \citet{croes2017} observed similar behavior with the bidimensional  simulation.
     The author investigated the values of the azimuthal length which presented physical and unphysical results
     for different values of the axial length.
     \Cref{fig-couplesCroes} shows the results obtained (adapted from \citep{croes2017}).
     We can see that for a given value of the axial length, the azimuthal must be less that a certain value to present physical results.
-    However, the value of this upper limit depends of the axial length, such that the if the axial length decreases, the upper limit of the azimuthal length decreases as well.
+    However, the value of this upper limit depends on the axial length, such that the if the axial length decreases, the upper limit of the azimuthal length decreases as well.
 
     \begin{figure}[hbtp]
       \centering
@@ -278,7 +278,7 @@
       Solving \cref{eq-aziE,eq-BC1,eq-BC2} analytically is much more difficult that the \ac{1D} development because of the Dirichlet \ac{BC}.
       \nomenclature[N]{Dirichlet Boundary condition\string:}{ a type of boundary conditions for which the field is fixed. For instance for grounded electrodes on the plasma potential\string: $\phi = 0$}
       However, we can investigate it numerically, by solving \cref{eq-aziE} for a given random source term.
-      Using a Monte Carlo approach, the results are averaged 50 times in order to better observe the mean behaviour in respect to the noise (i.e. increasing signal to noise ratio).
+      Using a Monte Carlo approach, the results are averaged 50 times in order to better observe the mean behavior in respect to the noise (i.e. increasing signal to noise ratio).
         
       \Cref{fig-dftLr} shows the \ac{DFT} of the source term \[\rho_1 = \N(0, \stdconv),\] the resulting azimuthal electric field $\aziE_{, 1}$ and plasma potential $\phi$ computed on the centreline of the simulation domain in the radial direction, for three different radial lengths expressed in number of cell $N_x$.
       Is also shown the "equivalent" source term $\rho_{\rm eq}$, which is the source term that would give the frequency spectra of $\aziE_{, 1}$ observed in a \ac{1D} domain
