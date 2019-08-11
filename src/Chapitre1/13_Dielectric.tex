@@ -4,7 +4,7 @@
   \label{sec-diel}
 
   \Cref{fig-2dschemat} shows the simulation of the radial-azimuthal domain with metallic grounded walls.
-  \Cref{fig-2D} illustrates the configuration in the radial-azimuthal planehighlighting the more realistic radial boundary conditions.
+  \Cref{fig-2D} illustrates the configuration in the radial-azimuthal plane highlighting the more realistic radial boundary conditions.
   The plasma is bounded in the radial direction by dielectric layers isolating the magnetic circuit.
   The magnetic circuit can be considered electrically grounded.
 
@@ -18,19 +18,19 @@
   \begin{figure}[hbtp]
     \centering
     \includegraphics[width=\defaultwidth]{2D_diel_Rtheta}
-    \caption{Schematic representation of the dielectric layers between the plasma in the \ac{2D} radial-azimuthal plan. Are present the dielectric in yellow, the plasma in blue, the surface charges in red and the grounded magnetic circuit in black.}
+    \caption{Schematic representation of the dielectric layers between the plasma in the \ac{2D} radial-azimuthal plan. Are present the dielectric in yellow, the plasma in blue, the surface charges in red, and the grounded magnetic circuit in black.}
     \label{fig-2D}
   \end{figure}
 
 
-  A common approach is to suppose that the electric field inside the dielectric is zero \citep{taccogna2019}. 
+  A common approach is to assume that the electric field inside the dielectric is zero \citep{taccogna2019}. 
   Using Gauss theorem, we obtain a Neumann boundary condition at the plasma-wall interface for the potential
   \begin{equation} \label{eq-gauss}
     \norm{\partial_r \phi} = \frac{\norm{\sigma}}{\epsilon_0}
   \end{equation}
   with $\sigma$ the surface charge and $\epsilon_0$ the vacuum permittivity.
-  However, the electric field in a dielectric material is not zero, but depends on the global system.
-  Hence, in order to model correctly the dielectric wall of the \ac{HET}, we choose to include the whole dielectric layers inside of the simulation domain.
+  However, the electric field in a dielectric material is not zero but depends on the global system.
+  Hence, in order to model the dielectric wall of the \ac{HET} correctly, we choose to include the whole dielectric layers inside of the simulation domain.
 
   In this section, we derive the discretization of the Poisson equation with a non-uniform permittivity in the \ac{2D} radial azimuthal plane using the finite volume approach.
 
@@ -39,7 +39,7 @@
 
     In the dielectric layers, there is no particle nor charge.
     Hence, the numerical constraints on the cell size are not applicable, and the cell size can be increased.
-    In order to reduce the cell size difference between two neighbouring cells, we use an exponential growth of the cell size in the radial direction.
+    In order to reduce the cell size difference between two neighboring cells, we use an exponential growth of the cell size in the radial direction.
     The cell size in the azimuthal direction $\dy$ is kept constant.
     The resulting non-uniform mesh can be seen in \cref{fig-2D}.
 
@@ -148,10 +148,10 @@
     as well as $S^E_{i,j} = S^W_{i,j} =d_id_z, S^N_{i,j} = S^S_{i,j}= d_jd_z$ et $\V = d_jd_id_z$.
     We observe that the evolution of the relative permittivity and the cell size affects the coefficients to be used, but the system remains symmetric as we have $Q^S_{i,j} = Q^N_{i-1,j}$ and $ Q^W_{i,j} = Q^E_{i-1,j}$.
     
-    A symmetric system is a linear system of equation $A \cdot X = B$  which matrix $A$ is equal to is transpose: $A = A^T$.
-    It allows to reduce by a factor of two the memory needed to store the matrix.
+    A symmetric system is a linear system of equation $A \cdot X = B$  which matrix $A$ is equal to its transpose\string: $A = A^T$.
+    It allows reducing by a factor of two the memory needed to store the matrix.
     It also allows to use algorithms exploiting this aspect.
-    For instance, the eigenvalues are real-valued, and the matrix factorisation only need to store one factor using Cholesky decomposition, which gives $A = L L^T$ with L an lower-triangular matrix. 
+    For instance, the eigenvalues are real-valued, and the matrix factorization only need to store one factor using Cholesky decomposition, which gives $A = L L^T$ with $L$ a lower-triangular matrix. 
 
     \subsection{Including surfaces charges}
     Let's now considerer the presence of surface charges on the surface $S^E_{i,j}$.
@@ -201,14 +201,14 @@
     \inlinenote{Improve the figure: Labels, theoretical value, legend, etc. Maybe Zoom at the boundary ?}
 
 
-  \subsection{Interface at the cell centre}
+  \subsection{Interface at the cell center}
     In the previous section, we supposed that the plasma-dielectric dielectric boundary was at the interface between the cells.
     However, this means that the electric field close to the interface is unknown, as it is defined at the cell center.
-    Moreover, the Dirichlet condition for the potential is better defined at the cell center, and for sake of simplicity, changing the boundary conditions should not change the particle domain.
+    Moreover, the Dirichlet condition for the potential is better defined at the cell center, and for the sake of simplicity, changing the boundary conditions should not change the particle domain.
     Hence, we chose to position the plasma-wall interface at the center of the cell.
     This means that the permittivity is not constant over a cell.
 
-    Because the wall boundaries are only in the radial directions, we consider only an interface in the North-South direction.
+    Because the wall boundaries are only in the radial direction, we consider only an interface in the North-South direction.
     \Cref{fig-decompo2} shows the domain decomposition.
     The decomposition is the same as previously, except for the permittivity that can have two different values\string: one in the North half-plane${\epsr}_{, i,j}^n$ and another in the South half plane${\epsr}_{, i,j}^s$.
 
@@ -219,7 +219,7 @@
       \label{fig-decompo2}
     \end{figure}
 
-    The discretization of the Poisson \cref{eq-poissonsum} is follows the same path as previously,except that the electric flux in equation in not constant any more, so that \cref{eq-poissonsum} becomes
+    The discretization of the Poisson \cref{eq-poissonsum} is follows the same path as previously, except that the electric flux in not constant anymore so that \cref{eq-poissonsum} becomes
     \begin{equation}
     \oint_{\C} (-\epsilon \grad \phi) \cdot \vect{n} dS = \sum_{k\in(E,W,N,S)} S^k_{i,j} <\vect{D}^k_{i,j} \cdot \vect{n}>.
     \end{equation}
@@ -230,7 +230,7 @@
      &= \frac{-1}{2} (\epsilon_{i,j}^N + \epsilon_{i,j}^S) \frac{\phi_{i+1/2,j} - \phi_{i,j}}{d_i/2}
      \label{eq-flux}
     \end{align}
-    so that in the Est-West direction, the flux behave as if the cell permittivity is the mean of the North and South half plane$\epsilon_{i,j} = \frac{1}{2} (\epsilon_{i,j}^N + \epsilon_{i,j}^S)$.
+    so that in the Est-West direction, the flux behave as if the cell permittivity is the mean of the North and South half-plane $\epsilon_{i,j} = \frac{1}{2} (\epsilon_{i,j}^N + \epsilon_{i,j}^S)$.
     Hence, the rest of the computation is similar.
     For the boundary North and South, the permittivity is constant, hence there is no modification.
     Consequently, we obtain the discretization
@@ -254,7 +254,7 @@
     However, we can suppose that the only permittivity jump happens at the cell center, so that  $\epsilon_{i,j}^S = \epsilon_{i,j-1}^N$.
     Hence, $Q^N_{i,j} = 2\frac{\epsilon_{i,j}^N}{ d_{j+1} + d_{j}}$ and the system is symmetric.
 
-  \subsection{Surface charges for centred interface}
+  \subsection{Surface charges for centered interface}
     in the case of centered plasma-wall interface, we have surfaces charges at the center of the cell.
     Hence
     \begin{equation}
@@ -266,15 +266,15 @@
     S^E_{i,j} Q^E_{i,j} \phi_{i+1,j} + S^W_{i,j} Q^W_{i,j} \phi_{i-1,j} + S^N_{i,j} Q^N_{i,j} \phi_{i,j+1} + S^S_{i,j} Q^S_{i,j} \phi_{i,j-1} - Q^C_{i,j} \phi_{i,j} = - \V \bar{\rho_{i,j}} - S^N_{i,j} \sigma_{i,j}
     \end{equation}
 
-    The discretization obtained for the plasma-wall interface cell-centred is very similar to the one obtained for the interface at the cell interface.
-    However, it conserves the particle domain when the dielectric layer is not modeled and that Dirichlet conditions are applied, and the electric field at the plasma-wall interface is better defined.
-    Hence, the cell-centred interface will be used.
+    The discretization obtained for the plasma-wall interface cell-centered is very similar to the one obtained for the interface at the cell interface.
+    However, it conserves the particle domain when the dielectric layer is not modeled, and that Dirichlet conditions are applied, and the electric field at the plasma-wall interface is better defined.
+    Hence, the cell-centered interface will be used.
 
     \inlinenote{Ajouter validation de la resolution}
     
   \subsection{Electric field computation}
   
-    The resolution of the Poisson equation returns the value of the plasma potential $\phi$ at the cell centres.
+    The resolution of the Poisson equation returns the value of the plasma potential $\phi$ at the cell centers.
     The electric field is computed by taking the first derivative of the potential at the cell interface, as in \cref{eq-flux1},
     \begin{equation} \label{eq-E_ihalf}
       E_{x, i+1/2,j}^- = - \epsilon_{i,j} \frac{\phi_{i+1/2,j} - \phi_{i,j}}{d_i/2},

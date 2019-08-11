@@ -13,7 +13,7 @@
     \end{equation}
 
     where $\phi$ is the electric potential, $\rho$ is the charge density, and $\epsilon_0$ the vacuum permittivity.
-    If the electrostatic approximation is not correct, one need to solve the Maxwell equations.
+    If the electrostatic approximation is not correct, one needs to solve the Maxwell equations.
 
     The particles move following the Lorenz forces
     \begin{equation}
@@ -27,18 +27,18 @@
     \end{equation}
     with $n$ the particle density, $V$ the volume of a cell, and $\Npc$ the number of numerical particles in a cell.
     A large enough number of particles is needed in order to obtain physical results.
-    Indeed, insufficient number of particles leads to numerical heating \cite{ueda1994}.
+    Indeed, an insufficient number of particles leads to numerical heating \cite{ueda1994}.
     Usually, a minimum of 100 particles per cell are used, but recent results seem to encourage to use more particles \cite{janhunen2018}.
 
   \subsection{Monte Carlo collisions}
 
     In \ac{PIC} simulations, collisions between charged and neutral particles can be modeled by binary collision, but this approach is computationally costly.
     Instead, a Monte-Carlo algorithm can be used \cite{vahedi1995}.
-    This approach is very efficient, and allow scattering, momentum transfer and ionization to be consistently modeled.
+    This approach is very efficient and allows scattering, momentum transfer, and ionization to be consistently modeled.
     The propellant used in \ac{HET} is \ac{Xe}.
-    The cross sections used for modeling \ac{Xe} or other gases collisions are taken from the {\sc LXCat} database project \cite{LXCat_web,pancheshnyi2012}.
+    The cross-sections used for modeling \ac{Xe} or other gases collisions are taken from the {\sc LXCat} database project \cite{LXCat_web,pancheshnyi2012}.
     Except if otherwise stated, the elastic, inelastic scattering and ionization reactions listed in \cref{tab-reactXe} are used.
-    The cross section values are summarised in \cref{fig-xexsection}.
+    The cross-section values are summarised in \cref{fig-xexsection}.
 
     \begin{table}[hbtp]
       \ra{1.3}
@@ -95,17 +95,17 @@
     \end{itemize}
 
     \paragraph{Particles\\}
-    For each particles, are known its position $\vec{x}$ and its velocity $\vec{v}$.
-    In most \ac{PIC}-\ac{MCC} simulations, the 3 directions of the velocity vector are followed in order to take into account scattering.
+    For each particle, are known its position $\vec{x}$ and its velocity $\vec{v}$.
+    In most \ac{PIC}-\ac{MCC} simulations, the three directions of the velocity vector are followed in order to take into account scattering.
     It is abbreviated as \acs{3V}.
     The particle positions and velocity are not discretize, except to the numerical floating-point precision.
 
     \paragraph{Fields\\}
     The fields are defined at the center of each cell of the mesh.
     The charge density $\rho$ is computed by depositing the particle on the mesh, using the Cloud-in-cell model \cite{birdsall1991}.
-    The electric field at the position of the particle is also obtained by bi-linear interpolation.
+    The electric field at the position of the particle is also obtained by bilinear interpolation.
     The mesh dimension defines the dimension of the simulation.
-    It is usual to find \acs{1D}\acs{3V} or \acs{2D}\acs{3V} \ac{PIC} simulations, for particles with 3 directions on the velocity but 1 (or 2) dimensions in space.
+    It is usual to find \acs{1D}\acs{3V} or \acs{2D}\acs{3V} \ac{PIC} simulations, for particles with 3 directions on the velocity but one (or two) dimensions in space.
 
     \subsection{Particle pusher}
     The interaction of the movement equation \cref{eq-Lor} is different for magnetized and non-magnetized particles.
@@ -123,7 +123,7 @@
       \caption{Illustration of the shift between the particle velocity and position.}
       \label{fig-leapfrog}
     \end{figure}
-    This shift can leads to erroneous diagnostics when computing moments of the particles distribution.
+    This shift can lead to erroneous diagnostics when computing moments of the particles distribution.
     For instance, the mean velocity of an ensemble of $N$ particles at the instant $t$ is computed as\string:
     \begin{equation} \label{eq-meanv}
       \mean{\vect{v}}^t = \frac{1}{N} \sum_i^N \lp \vect{v_i}^t + \frac{q}{m} \vect{E_i} \frac{\dt}{2} \rp.
@@ -150,15 +150,15 @@
   \subsection{Poisson equation solver}
   \label{subsec-poissonintro}
 
-    In order to compute the electron field due to the particle charge density, the Poisson equation \cref{eq-poisson}  need to be discretized over the mesh.
+    In order to compute the electron field due to the particle charge density, the Poisson equation \cref{eq-poisson}  needs to be discretized over the mesh.
     We can directly discretize the differential operator by using the finite volume approach over a cell of the mesh.
-    The formal discretization is developed in \cref{sec-diel}, for the special case of taking into account the presence of dielectric boundaries.
+    The formal discretization is developed in \cref{sec-diel}, for the particular case of taking into account the presence of dielectric boundaries.
 
-    In \ac{1D}, the obtained linear system is tridiagnonal.
-    It can be solved directly using {\sc Thomas} algorithm, which simply stores the Gauss elimination's coefficient.
+    In \ac{1D}, the obtained linear system is tridiagonal.
+    It can be solved directly using {\sc Thomas}' algorithm, which stores the Gauss elimination's coefficient.
     In \ac{2D}, the linear system is pentadiagonal.
-    A direct solver, like the $LU$ decomposition, would require a large amount a memory to store the factorisation matrices.
+    A direct solver, like the $LU$ decomposition, would require a large amount of memory to store the factorization matrices.
     On the other hand, as the time step is usually small in \ac{PIC} simulation, we expect the plasma potential $\phi$ not to change rapidly.
-    Hence, an iterative solver using the previous solution as initial guess seems more reasonable from both the memory storage and the computational time.
+    Hence, an iterative solver using the previous solution as an initial guess seems more reasonable from both the memory storage and the computational time.
 
     

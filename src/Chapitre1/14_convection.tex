@@ -11,7 +11,7 @@
     \Cref{fig-Fake_1d_1} shows a schematic illustration of the model.
     The principle is as follow
     \begin{itemize}
-      \item We set a finite axial length, noted $L_z$ on \cref{fig-Fake_1d_1}.
+      \item We set a finite axial length, noted $L_z$ in \cref{fig-Fake_1d_1}.
       \item We follow the positions of the particle in the axial direction $z$
       \item When a particle crosses the boundary, it is removed.
       \item A new particle is created
@@ -36,11 +36,11 @@
 
     Lafleur's model of convection has been adopted in \ac{2D} by \citet{croes2017a}.
     The principle is exactly similar.
-    The particles are followed in the 3 directions, and a finite length is used to close to axial direction.
-    It is important to note that even is the particle are followed in the 3 directions, the meshed domain is only \ac{2D}.
+    The particles are followed in the three directions, and a finite length is used to close the axial direction.
+    It is important to note that even if the particles are followed in the three directions, the meshed domain is only \ac{2D}.
     The simulation is not \ac{3D}-\ac{3V}, but only \ac{2D}-\ac{3V}.
 
-    In \citet{croes2017a}, the authors have observed that if the newly created particle has a radial position chosen uniformly at random, it would affect the sheath.
+    In \citet{croes2017a}, the authors have observed that if the newly created particle has a radial position chosen uniformly at random, it will affect the sheath.
     Hence, they decided to use the same radial position that the removed particle.
     \Cref{fig-Fake_2d} presents a schematic representation of the convection model in \ac{2D}.
 
@@ -51,7 +51,7 @@
       \label{fig-Fake_2d}
     \end{figure}
 
-    \Cref{fig-energy_convection} shows the evolution as a function of time of the electron mean energy in the simulation in a typical \ac{2D} radial-azimuthal simulation, addapted from \citet{croes2017}.
+    \Cref{fig-energy_convection} shows the evolution as a function of time of the electron mean energy in the simulation in a typical \ac{2D} radial-azimuthal simulation, adapted from \citet{croes2017}.
     We can see that without the convection, the mean energy quickly rises to unphysical values.
     When the convection is modeled, using an axial of $L_z=1$ cm, the energy reaches a steady-state.
     \nomenclature[Q]{\ensuremath{ L_z}}{ Axial length}
@@ -73,7 +73,7 @@
 
     On the first row (\cref{fig-convection_numerical}.{\bf a} and {\bf b}), the length of the periodic azimuthal direction is $L_{\theta}=0.5$~cm.
     \cref{fig-convection_numerical}.{\bf a} corresponds to the case without axial convection.
-    We clearly see that the \ac{ECDI} rises and does not saturate.
+    We see that the \ac{ECDI} rises and does not saturate.
     The wavelength is short, of the order of $\lambda = 1.5$~mm.
     \nomenclature[Q]{\ensuremath{ \lambda}}{ Wave length}
     \cref{fig-convection_numerical}.{\bf b} corresponds to the same case as \cref{fig-convection_numerical}.{\bf a} but this time with the axial convection modeled.
@@ -83,7 +83,7 @@
     \cref{fig-convection_numerical}.{\bf c} corresponds to the case without axial convection, and \cref{fig-convection_numerical}.{\bf b} corresponds to the same case but with the axial convection modeled.
     In \cref{fig-convection_numerical}.{\bf c}, we can see that increasing the azimuthal length did not affect the \ac{ECDI}, as expected.
     However, in  \cref{fig-convection_numerical}.{\bf d}, the instability is clearly affected.
-    A single oscillation is observed, corresponding to $\lambda=10$~mm, which seems almost certainly unphysical.
+    A single oscillation is observed, corresponding to $\lambda=10$~mm, which seems almost undoubtedly unphysical.
 
     \begin{figure}[hbtp]
       \centering
@@ -102,11 +102,11 @@
     \inlinenote{Get $\theta$ back to $y$ instead of $x$}
     \FloatBarrier
     \citet{croes2017} observed similar behavior with the bidimensional  simulation.
-    The author investigated the values of the azimuthal length which presented physical and unphysical results
+    The author investigated the values of the azimuthal length, which presented physical and unphysical results
     for different values of the axial length.
     \Cref{fig-couplesCroes} shows the results obtained (adapted from \citep{croes2017}).
-    We can see that for a given value of the axial length, the azimuthal must be less that a certain value to present physical results.
-    However, the value of this upper limit depends on the axial length, such that the if the axial length decreases, the upper limit of the azimuthal length decreases as well.
+    We can see that for a given value of the axial length, the azimuthal must be less than a specific value to present physical results.
+    However, the value of this upper limit depends on the axial length, such that if the axial length decreases, the upper limit of the azimuthal length decreases as well.
 
     \begin{figure}[hbtp]
       \centering
@@ -121,10 +121,10 @@
 
     Let us consider Lafleur's convection model in \ac{1D} on the charge density.
     When computing the charge density on the mesh vertices, the axial position is not taken into account.
-    Consequently, the convection process illustrated on \cref{fig-Fake_1d_1} is similar to moving a particle arbitrarily (read randomly).
-    Seen by the charge density, this is similar to a Poisson noise, also named shot noise, on the charge density.\footnote{Actually, this noise is the combination of a Poisson noise with a uniform noise, happening twice for every particles convection, once with a positive charge and once with a negative charge.}
+    Consequently, the convection process illustrated in \cref{fig-Fake_1d_1} is similar to moving a particle arbitrarily (read randomly).
+    Seen by the charge density, this is similar to Poisson noise, also named shot noise, on the charge density.\footnote{Actually, this noise is the combination of Poisson noise with a uniform noise, happening twice for every particles convection, once with a positive charge and once with a negative charge.}
 
-    After a certain number of particles removed and created, the Poisson noise is similar to a Gaussian noise, also named thermal noise, following a normal distribution $\N$ . 
+    After a certain number of particles removed and created, the Poisson noise is similar to a Gaussian noise, also named thermal noise, following a normal distribution $\N$. 
     \nomenclature[Q]{\ensuremath{ \N }}{ Normal distribution.}
     Hence, the charge density becomes \footnote{One can note that the mean of the noise is strictly zero (with probability 1), as the charge density is conserved.}
     \begin{equation} \label{eq-rhonoise}
@@ -144,7 +144,7 @@
      \stdconv \propto \frac{n}{L_z} v_z.
     \end{equation}
 
-    We can see on \cref{eq-convstd} that the amplitude of the convection induced noise on the charge density is proportional to the inverse of the axial length $L_z$.
+    We can see in \cref{eq-convstd} that the amplitude of the convection induced noise on the charge density is proportional to the inverse of the axial length $L_z$.
     This could explain the observation of \cref{fig-couplesCroes} when using a smaller $L_z$.
     However, it does not explain the effects of the azimuthal length observed in \cref{fig-couplesCroes,fig-convection_numerical}.
 
@@ -280,7 +280,7 @@
       However, we can investigate it numerically, by solving \cref{eq-aziE} for a given random source term.
       Using a Monte Carlo approach, the results are averaged 50 times in order to better observe the mean behavior in respect to the noise (i.e. increasing signal to noise ratio).
         
-      \Cref{fig-dftLr} shows the \ac{DFT} of the source term \[\rho_1 = \N(0, \stdconv),\] the resulting azimuthal electric field $\aziE_{, 1}$ and plasma potential $\phi$ computed on the centreline of the simulation domain in the radial direction, for three different radial lengths expressed in number of cell $N_x$.
+      \Cref{fig-dftLr} shows the \ac{DFT} of the source term \[\rho_1 = \N(0, \stdconv),\] the resulting azimuthal electric field $\aziE_{, 1}$ and plasma potential $\phi$ computed on the centerline of the simulation domain in the radial direction, for three different radial lengths expressed in number of cell $N_x$.
       Is also shown the "equivalent" source term $\rho_{\rm eq}$, which is the source term that would give the frequency spectra of $\aziE_{, 1}$ observed in a \ac{1D} domain
       
       \begin{equation} \label{eq-equirho}
@@ -300,7 +300,7 @@
       \begin{figure}[hbtp]
         \centering
         \includegraphics[width=\textwidth]{effect_Lr.pdf}
-        \caption{\ac{DFT} of the source term $\rho_1 = \N(0, \stdconv)$, the resulting azimuthal electric field $\aziE_{, 1}$ and plasma potential $\phi$ computed on the centreline of a radial-azimuthal simulation, and the Equivalent \ac{1D} source term defined by \cref{eq-equirho}. The azimuthal length is $L_{\theta}=50$ cm. }
+        \caption{\ac{DFT} of the source term $\rho_1 = \N(0, \stdconv)$, the resulting azimuthal electric field $\aziE_{, 1}$ and plasma potential $\phi$ computed on the centerline of a radial-azimuthal simulation, and the Equivalent \ac{1D} source term defined by \cref{eq-equirho}. The azimuthal length is $L_{\theta}=50$ cm. }
         \label{fig-dftLr}
         
       \end{figure}

@@ -12,7 +12,7 @@
   A possible application would be similar to \citet{kushner1983}, where the author uses a small population of electrons (typically 300-500) and observes their evolutions in a given plasma potential.
   
   This method gets rid of the Poisson equation, which can take between 30\% and 50\% of the total simulation time.
-  Hence, the Debye length does not have to be highly resolved any more for stability and numerical heating.
+  Hence, the Debye length does not have to be highly resolved anymore for stability and numerical heating.
   However, we still need to resolve the sheath, which length is of the order of 5 Debye lengths \citep{chabert2014}.
   Consequently, a coarser mesh of cell size 5 times larger can be used.
   The condition on the time step is also reduced.
@@ -69,7 +69,7 @@
     \begin{equation} \label{eq-taut}
       \tau_T = \frac{1}{\omega_{pe}} \frac{34.4}{N_D^{-2} + 28.0 N_D^{-1} \frac{\nu_m}{\omega_{pe}}}
     \end{equation}
-    which gives in our condition a time-scale several orders of magnitude larger than the other time scales $T_{\rm ela}$ and $T_{\rm flight}$ .
+    which gives in our condition a time-scale several orders of magnitude larger than the other time scales $T_{\rm ela}$ and $T_{\rm flight}$.
     Hence, the effects of numerical parameters on the kinetics informations of the simulation are expected to be negligible.
     We confirmed it by doubling the number of particle per cell for one pressure condition.
     No observable impact has been detected.
