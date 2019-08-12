@@ -149,4 +149,52 @@ However, in the upstream region the wave of maximum amplitude is the low frequen
 On the other hand, the case $L_R=2\,\centi\meter$ shows a small discontinuity, but the wave characteristics are very close.
 
 
+\subsection{Ion-trapping saturation } \label{subsec-boeuf_iontrapping}
+
+The model of Boeuf allows the simulation to reach a steady-state.
+We use the criteria developed in \cref{subsec-temp} and given by \cref{eq-criteriaIT} to determine whether or not the wave saturates because of ion-wave trapping.
+
+\begin{figure}[hbtp]
+  \centering
+  \includegraphics[width=\defaultwidth]{Boeuf_iontrapping_noLr}
+  \caption{Temporal evolution of the ion-wave trapping criteria for the model of Boeuf without radial losses at three positions\string: $z=0.25\,\centi\meter$, un the upstream region; $z=1.5\,\centi\meter$, and $z=2.3\,\centi\meter$, in the downstream region.}
+  \label{fig-ion-trap_temp_noLr}
+\end{figure}
+
+We can see in \cref{fig-ion-trap_temp_noLr} the temporal evolution of the ion-wave trapping criteria for the model of Boeuf without radial losses at three positions, one in the upstream region and two in the downstream region.
+We can see that in the upstream region, the criterion is never reached.
+On the other hand, the criteria is quickly reached in the downstream region, especially for $z=2.3\,\centi\meter$.
+For $z=1.5\,\centi\meter$, the criteria is reached during approximately two microsecond between $t=3.5$ and $t=5\,\micro\second$, but then return below the threshold value.
+
+\Cref{fig-ion-trap_temp_Lr} shows the same information than \cref{fig-ion-trap_temp_noLr} but with the radial losses modeled.
+We can see that at the end of the simulations ($t=10\,\micro\second$) the criterion is no more fulfilled.
+It means that the wave amplitude is smaller than the one expected with ion trapping.
+\begin{figure}[hbtp]
+  \centering
+  \begin{tabular}{cc}
+    \subfigure{Boeuf_iontrapping_Lr4}{a}{20,65} & 
+    \subfigure{Boeuf_iontrapping_Lr2}{b}{20,65} \\
+  \end{tabular}
+  \caption{Temporal evolution of the ion-wave trapping criteria for the model of Boeuf with ({\bf a}) $L_R=4\,\centi\meter$, and ({\bf b}) $L_R=2\,\centi\meter$  at three positions\string: $z=0.25\,\centi\meter$, un the upstream region; $z=1.5\,\centi\meter$, and $z=2.3\,\centi\meter$, in the downstream region.}
+  \label{fig-ion-trap_temp_Lr}
+\end{figure}
+
+\Cref{fig-ionwavetrapping_axial} shows the axial profile of the ion-wave trapping average in time between $t=6\,\micro\second$ and $t=10\,\micro\second$ for the three cases.
+It confirms the observations of \cref{fig-ion-trap_temp_noLr,fig-ion-trap_temp_Lr} that the case without the radial losses reaches the criteria, while the two other case do not.
+At the moment, we're not sure what the reason of this evolution is.
+The radial losses reduces the electron temperature and density, hence the thermal energy.
+But apparently, the amplitude of the instability diminishes more significantly.
+
+\begin{figure}[hbtp]
+  \centering
+  \includegraphics[width=\defaultwidth]{Boeuf_Axial_IonTrapping_criter}
+  \caption{Axial evolution of the ion-wave trapping criteria average between $t=6\,\micro\second$ and $t=10\,\micro\second$ for the three cases using the model of Boeuf. }
+  \label{fig-ionwavetrapping_axial}
+\end{figure}
+
+The reason of this reduction of the wave amplitude due to the radial losses is not determined.
+It could be simply due to the modification of the wave growth rate, compared to the wave convection velocity. 
+But the numerical noise induced by the radial loss algorithm.
+Indeed, the algorithm used here assures a quasi-neutrality at the level of the CPU domain  (approximately \nth{1/400} of the domain size).
+As the strictly local quasineutrality is not assured, a numerical noise similar to the one study in \cref{ch-1} in the radial-azimuthal simulation can be present. 
 
