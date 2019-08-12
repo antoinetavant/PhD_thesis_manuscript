@@ -96,7 +96,7 @@
         \subfigure{Lafleur_NoLz_2}{c}{20, 20} &
         \subfigure{Lafleur_Lz_2}{d}{20, 20} \\
       \end{tabular}
-      \caption{Effects of Lafleur's convection model for two different azimuthal length on the azimuthal electric field. ({\bf a}) No convection, $L_x=0.5$~cm,  ({\bf b}) convection modeled, $L_x=0.5$~cm,  ({\bf c}) No convection, $L_x=1$~cm,  ({\bf d}) convection modeled, $L_x=1$~cm. The colour of each plots is normalized to the maximum amplitude. Adapted from \citep{lafleur2016a}. }
+      \caption{Effects of Lafleur's convection model for two different azimuthal lengths on the azimuthal electric field. ({\bf a}) No convection, $L_x=0.5$~cm,  ({\bf b}) convection modeled, $L_x=0.5$~cm,  ({\bf c}) No convection, $L_x=1$~cm,  ({\bf d}) convection modeled, $L_x=1$~cm. The colour of each plot is normalized to the maximum amplitude. Adapted from \citep{lafleur2016a}. }
       \label{fig-convection_numerical}
     \end{figure}
     \inlinenote{Get $\theta$ back to $y$ instead of $x$}
@@ -105,13 +105,13 @@
     The author investigated the values of the azimuthal length, which presented physical and unphysical results
     for different values of the axial length.
     \Cref{fig-couplesCroes} shows the results obtained (adapted from \citep{croes2017}).
-    We can see that for a given value of the axial length, the azimuthal must be less than a specific value to present physical results.
+    We can see that for a given value of the axial length, the azimuthal length must be less than a specific value to present physical results.
     However, the value of this upper limit depends on the axial length, such that if the axial length decreases, the upper limit of the azimuthal length decreases as well.
 
     \begin{figure}[hbtp]
       \centering
       \includegraphics[width=\defaultwidth]{2D_couples.pdf}
-      \caption{Values of the azimuthal length and the axial length for which the simulation result is physical (similar to \cref{fig-convection_numerical}.{\bf b}) or unphysical  (similar to \cref{fig-convection_numerical}.{\bf d})}
+      \caption{For 2D PIC simulations\string: values of the azimuthal length and the axial length for which the simulation result is physical (similar to \cref{fig-convection_numerical}.{\bf b}) or unphysical  (similar to \cref{fig-convection_numerical}.{\bf d})}
       \label{fig-couplesCroes}
     \end{figure}
 
@@ -122,7 +122,7 @@
     Let us consider Lafleur's convection model in \ac{1D} on the charge density.
     When computing the charge density on the mesh vertices, the axial position is not taken into account.
     Consequently, the convection process illustrated in \cref{fig-Fake_1d_1} is similar to moving a particle arbitrarily (read randomly).
-    Seen by the charge density, this is similar to Poisson noise, also named shot noise, on the charge density.\footnote{Actually, this noise is the combination of Poisson noise with a uniform noise, happening twice for every particles convection, once with a positive charge and once with a negative charge.}
+    Seen by the charge density, this is similar to Poisson noise, also named shot noise, on the charge density.\footnote{Actually, this noise is the combination of Poisson noise with a uniform noise, happening twice for every particle convection, once with a positive charge and once with a negative charge.}
 
     After a certain number of particles removed and created, the Poisson noise is similar to a Gaussian noise, also named thermal noise, following a normal distribution $\N$. 
     \nomenclature[Q]{\ensuremath{ \N }}{ Normal distribution.}
@@ -151,13 +151,13 @@
   \subsection{Effect of the noise on the electric field}
     \label{sec-mathnoise}
     In order to explain the impact of the azimuthal length on the instability, we can study the azimuthal electric field $\aziE$ resulting of the charge density $\rho$.
-    As the Pouisson equation is linear, we have
+    As the Poisson equation is linear, we have
     \begin{align}
       \aziE(\theta) &= C + \frac{1}{\epsilon_0} \int_0^{\theta} \rho(s) ds\\
                     &= C + \frac{1}{\epsilon_0} \int_0^{\theta} (\rho_0(s) + \N(0, \stdconv) ) ds \\ 
                     &= C + \aziE_{, 0} + \aziE_{, 1}
     \end{align}
-    with $C$ a constant that ensure that the periodical \ac{BC} are respected.
+    with $C$ a constant that ensures that the periodical \ac{BC} are respected.
     The part of the electric field $\aziE_{, 0}$ corresponds to the unperturbed charge density $\rho_0$ and $\aziE_{, 1}$  corresponds to the noisy charge density $\N(0, \sigma_{\rm stat})$.
     Hence, let us focus now on $\aziE_{, 1}$.
     We can study $\aziE_{, 1}$ using two equivalent means\string: the \ac{FT} and the Brownian bridge.
@@ -173,14 +173,14 @@
                                      &= \frac{1}{\epsilon_0} \frac{ \N(\mu_{\rm FT}, \sigma_{\rm FT})}{k} \label{eq-fft}
       \end{align}
       
-      \Cref{eq-fft} shows that $\aziE_{, 1}$ is also follows a Gaussian distribution, but with a non-zero mean value.
+      \Cref{eq-fft} shows that $\aziE_{, 1}$ also follows a Gaussian distribution, but with a non-zero mean value.
       It is also inversely proportional to the wave number $k$.
-      Hence, when we increase the azimuthal length, which means that small wave number can exit in the simulation domain, the amplitude of $\aziE_{, 1}$ increases as well.
+      Hence, when we increase the azimuthal length, which means that small wave numbers can exist in the simulation domain, the amplitude of $\aziE_{, 1}$ increases as well.
       
     \paragraph{Brownian Bridge\\}
-      \Cref{eq-aziE1}, combined with the \ac{BC}, is the definition of the a Browning bridge.
+      \Cref{eq-aziE1}, combined with the \ac{BC}, is the definition of the a Brownian bridge.
       
-      A Brownian bridge is a particular Brownian motion that reaches at a given distance the same value that the initial value.
+      A Brownian bridge is a particular Brownian motion that reaches at a given distance the same value as the initial value.
       Hence, we have \citep{ibe2013}
       \begin{align*}
         \mathbb{E}(\aziE_{, 1}) &= 0,  \\
@@ -198,7 +198,7 @@
       In previous section, we have shown that the convection model induces a noise in the charge density, that produces an azimuthal electric field which amplitudes depends on the azimuthal length.
       
       We propose here a modified version of Lafleur's convection model in order to remove the noise in the charge density
-      The noiseless convection model follows the same algorithm that before, but the azimuthal position of the particle created is not chosen uniformly as random, but instead the new particle has the same position as the removed particle.
+      The noiseless convection model follows the same algorithm as before, but the azimuthal position of the particle created is not chosen uniformly as random, but instead the new particle has the same position as the removed particle.
       \Cref{fig-fakez3} shows a schematic illustration of the noiseless convection algorithm applied on a particle.
       
       \begin{figure}[hbtp]
@@ -211,7 +211,7 @@
       We have implemented this modified convection model in the \ac{2D} radial-azimuthal simulation.
       
       \Cref{fig-newconv_noconv} shows the time  evolution of the azimuthal electric field at the center of the radial dimension with and without the noiseless convection model.
-      It presents the same conditions that in \cref{fig-convection_numerical}.{\bf a} and {\bf b}. 
+      It presents the same conditions as in \cref{fig-convection_numerical}.{\bf a} and {\bf b}. 
       As previously, the convection stabilises the growth of the instability to a steady-state, but it does not affect the physics.
        
       
@@ -221,45 +221,47 @@
         \caption{Time evolution of the azimuthal electric field at the center of the radial dimension with and without the noiseless convection model. }
         \label{fig-newconv_noconv}
       \end{figure}
+      \inlinenote{Anne: Azimuthal dans la legende}
+      
       
       \Cref{fig-oldeconv_newconv} shows the  time  evolution of the azimuthal electric field at the center of the radial dimension  with the convection modeled using Lafleur's model and the noiseless model with a small azimuthal length.
-      We can see that the two models gives almost exactly the same results.
+      We can see that the two models give almost exactly the same results.
       
       \begin{figure}[hbtp]
         \centering
         \includegraphics[width=0.8\textwidth]{Compare_old_new_Reinj_Oz}
-        \caption{Time evolution of the azimuthal electric field at the center of the radial dimension with the convection modeled using (left) Lafleur's model and (right) the noiseless model with a small azimuthal length.}
+        \caption{Time evolution of the azimuthal electric field at the center of the radial dimension with the convection modeled using (left) Lafleur's model and (right) the noiseless model with a small azimuthal length (0.325cm).}
         \label{fig-oldeconv_newconv}
       \end{figure}
       
       
       \Cref{fig-oldeconv_newconv_longLZ} shows the  time  evolution of the azimuthal electric field at the center of the radial dimension  with the convection modeled using Lafleur's model and the noiseless model but using a longer azimuthal length than \cref{fig-oldeconv_newconv}.
-      In this cases, we can see that Lafleur's convection model induces oscillations that are not observed with the noiseless model.
+      In this case, we can see that Lafleur's convection model induces oscillations that are not observed with the noiseless model.
       
       \begin{figure}[hbtp]
         \centering
         \includegraphics[width=0.8\textwidth]{Compare_old_new_Reinj_Oz_LongLx}
-        \caption{Time evolution of the azimuthal electric field at the center of the radial dimension with the convection modeled using (left) Lafleur's model and (right) the noiseless model with a longer azimuthal length.}
+        \caption{Time evolution of the azimuthal electric field at the center of the radial dimension with the convection modeled using (left) Lafleur's model and (right) the noiseless model with a longer azimuthal length (0.65cm).}
         \label{fig-oldeconv_newconv_longLZ}
       \end{figure}
-      
+      \inlinenote{Anne: Azimuthal dans la legende}
 
 
-      Theses observations have shown that Lafleur's convection model induces a noise on the charge density, that do not affect the simulation when the domain size is small, but can rise numerical artefacts when the domain size is larger.
-      We have seen that the minor modification on the model do not affect the simulations results on a small domain, but allow us to use larger simulation domain without any numerical artefacts.
+      These observations have shown that Lafleur's convection model induces a noise on the charge density, that does not affect the simulation when the domain size is small, but can rise numerical artefacts when the domain size is larger.
+      We have seen that the minor modifications on the model do not affect the simulation results on a small domain, but allow us to use larger simulation domain without any numerical artefact.
       
       Unfortunately, the new model has been developed during the last year of my thesis.
       Hence, the first simulation results have been obtained using Lafleur's convection model.
       As seen in \cref{fig-oldeconv_newconv}, on a small geometry the results are not affected, hence there is no need to verify all of the simulations obtained.
-      This model is used in \cref{ch-2,ch-4}. 
+      Lafleur's model is used in \cref{ch-2,ch-4}. 
       
       On the other hand, it is useful to have a longer azimuthal length to study the instability, as it allows to obtain a more resolved wave-number spectrum.
-      Hence, in \cref{ch-5} we uses the modified convection model.
+      Hence, in \cref{ch-5} we use the modified convection model.
           
     \subsection{Effects on a \ac{2D} simulation domain}
       
       The mathematical development of \cref{sec-mathnoise} has been done in \ac{1D}.
-      We can legitimately wonder is the results  can be extended directly to a \ac{2D} domain.
+      We can legitimately wonder if the results  can be extended directly to a \ac{2D} domain.
       A mathematical definition of $\aziE_{, 1}$ is more difficult, as we have, neglecting the dielectric layers,
       \begin{equation} \label{eq-aziE}
         \aziE_{, 1} = \partial_{\theta} \phi_1 \text{ such that } \grad \cdot \grad \phi_1 = - \frac { \N(0, \stdconv)}{\epsilon_0} \text{ following the \ac{BC}}.
@@ -279,15 +281,17 @@
       \nomenclature[N]{Dirichlet Boundary condition\string:}{ a type of boundary conditions for which the field is fixed. For instance for grounded electrodes on the plasma potential\string: $\phi = 0$}
       However, we can investigate it numerically, by solving \cref{eq-aziE} for a given random source term.
       Using a Monte Carlo approach, the results are averaged 50 times in order to better observe the mean behavior in respect to the noise (i.e. increasing signal to noise ratio).
-        
+      \inlinenote{Anne: JJ'ai un peu de mal sur cette section 1.5.6. Honnetement, je pense que c'est parce que je ne comprends pas bien ce que tu as pris comme conditions. 
+Je pense que peut-etre ca serait plus clair si tu expliquais plus precisement ce que tu as simulé d'abord en spatial avant de passer aux DFT. }
+      
       \Cref{fig-dftLr} shows the \ac{DFT} of the source term \[\rho_1 = \N(0, \stdconv),\] the resulting azimuthal electric field $\aziE_{, 1}$ and plasma potential $\phi$ computed on the centerline of the simulation domain in the radial direction, for three different radial lengths expressed in number of cell $N_x$.
       Is also shown the "equivalent" source term $\rho_{\rm eq}$, which is the source term that would give the frequency spectra of $\aziE_{, 1}$ observed in a \ac{1D} domain
       
       \begin{equation} \label{eq-equirho}
         \rho_{\rm eq} = \epsilon_0 \partial_\theta \aziE_{, 1}.
       \end{equation}
-      The results are given for different radial lengths $N_x=15,50 \text{ and } 200$, while the azimuthally length $N_y=200$ is kept constant.
-      We can see that the plasma potential and the electric field show larger amplitude for small wave numbers (large wavelength) compared to large wave numbers in the three cases.
+      The results are given for different radial lengths $N_x=15,50 \text{ and } 200$, while the azimuthal length $N_y=200$ is kept constant.
+      We can see that the plasma potential and the electric field show larger amplitudes for small wave numbers (large wavelength) compared to large wave numbers in the three cases.
       However, the amplitude of the smaller wave numbers is affected.
       In the cases of small radial length ($N_x=15 \text{ and } 50$), the spectra of the electric field is not monotonic.
       This can be explained by the Dirichlet \ac{BC}s that {\it pins down} the fluctuation of the plasma potential.

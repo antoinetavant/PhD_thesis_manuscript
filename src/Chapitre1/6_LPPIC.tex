@@ -1,23 +1,23 @@
 % !TEX root=/home/tavant/these/manuscript/src/manuscript.tex
 
 
-\section*{The \LPPic simulation code }
+\section*{Characteristics and performances of the  \LPPic simulation code }
 \label{sec-lppic}
 \addcontentsline{toc}{section}{The \LPPic simulation code}
 
 
 \LPPic is the electrostatic particle-in-cell simulation code developed at \ac{LPP} to study principally magnetized plasma thruster, such as the \ac{HET}.
-Wrote with Fortran, it uses the Message Passing Interface (MPI) to parallelized the computational load using a domain decomposition.
+Written with Fortran, it uses the Message Passing Interface (MPI) to parallelize the computational load using a domain decomposition.
 The principle of the domain decomposition is that each Central Processing Unit (CPU) knows a small chunk of the whole domain.
-We uses {\sc Hypre}'s multigrid solver to solve Poisson equation in \ac{2D} \citep{falgout2002}.
+We use {\sc Hypre}'s multigrid solver to solve Poisson equation in \ac{2D} \citep{falgout2002}.
 
-The main data input/output is done using the HDF5 format, which enable parallel access two a hierarchical file.
-The output data does not yet implement the open standard for particle-mesh data files (openPMD).
+The main data input/output is done using the HDF5 format, which enables parallel access two a hierarchical file.
+The output data does not yet use the open standard for particle-mesh data files (openPMD).
 Thus, the data post processing is done using a python packaged.
 
-The uses of these efficient libraries allow to obtain a good scalability.
+The use of these efficient libraries allows us to obtain a good scalability.
 \Cref{fig-strongperfo} shows the speed up measured for the Strong Scalability test.
-The Strong scalability compare the performances of a the execution of the task at fixed workload with varying the number of CPUs.
+The Strong scalability compares the performances of the execution of the task at fixed workload with varying the number of CPUs.
 The theoretical speedup accessible is given by \citet{amdahl1967} as
 \begin{equation} \label{eq-amdahl}
   S = \frac{1}{1 - \alpha + \frac{\alpha}{s}}
@@ -25,21 +25,23 @@ The theoretical speedup accessible is given by \citet{amdahl1967} as
 with $\alpha$ the proportion of the task that is parallel, and $s$ the speedup of the parallelized part.
 A perfectly parallel code has a speedup $S=s$.
 
-In \cref{fig-strongperfo} are shown the speedup as the overall simulation, as well as the main functions of the \ac{PIC} algorithm (Charge deposition to the mesh, Particle pusher, Monte Carlo Collision and the Poisson solver).
+In \cref{fig-strongperfo} are shown the speedup for the overall simulation, as well as the main functions of the \ac{PIC} algorithm (Charge deposition to the mesh, Particle pusher, Monte Carlo Collision and the Poisson solver).
 The scalability test is realized over two cases. 
-The bigger case uses a mesh of $1000\times1024$ cells with $140$ particles per cells, which corresponds to a typical simulation case.
+The bigger case uses a mesh of $1000\times1024$ cells with $140$ particles per cell, which corresponds to a typical simulation case.
 Unfortunately, this case cannot be run with less than 240 CPUs because of the maximum memory disposable per CPU. 
-Hence, we uses a case 4 times smaller to test fewer number of CPU.
-
+Hence, we use a case 4 times smaller to test fewer number of CPU.
+\inlinenote{Anne: mettre precisement les infos sur ces 2 cas-tests en annexe...serait interessant d'avoir precisement les infos si on doit les refaire dans une prochaine these}
 \begin{figure}[hbtp]
   \centering
   \includegraphics[width=\textwidth]{StrongScalingOccigen_speedup.pdf}
-  \caption{Strong scalability profile of \LPPic with a small and a larger job on the Cluster Occigen (CINES). In addition to the overall performance, is given the profiles of the main sub-functions of the \ac{PIC} loops. }
+  \caption{Strong scalability profile of \LPPic with a small and a large job on the Cluster Occigen (CINES). In addition to the overall performance, the profiles of the main sub-functions of the \ac{PIC} loops are given. }
   \label{fig-strongperfo}
 \end{figure}
+\inlinenote{Anne: peut-etre rajouter cas 1 et 2 sur la figure pour eviter la confusion...(mais lisible comme ca)}
+\inlinenote{Anne: test sur 1 iteration? (a mettre dans l'annexe)}
 
-We can see that the overall performance of the code are very good, as it scale as if it is parallelized at 91\% from Amdahl's law.
-Most of the sub-functions are much better, but the Poisson solver do not scale at all.
+We can see that the overall performance of the code is very good, as it scale as if it is parallelized at 91\% from Amdahl's law.
+Most of the sub-functions are much better, but the Poisson solver does not scale at all.
 Is is due to the size of the chunk of domain of each CPU, which are too small.
 A way to improve the performances of \LPPic would be to use an hybridization of the parallelization with the shared memory openMP library.
 But the current performance is acceptable, as the typical simulation case presented here runs in around one week (7 days) on 360 CPUs.

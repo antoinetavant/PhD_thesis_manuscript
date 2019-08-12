@@ -1,18 +1,18 @@
 % !TEX root=/home/tavant/these/manuscript/src/manuscript.tex
 
-\section{Bidimentionnal simulation of an \ac{HET}}
+\section{Bidimensional simulation of an \ac{HET}}
 
 We are interested in studying the azimuthal instabilities and the induced electron transport in the axial direction.
 In addition, we want to study the plasma-wall interactions.
-As realistic \ac{3D} simulations are not yet achievable, we choose to simulate the radial-azimuthal plan.
-The axial location where the electron drift is the highest is close to the exit plan, where the axial electric field is the highest.
+As realistic \ac{3D} simulations are not yet achievable, we choose to simulate the radial-azimuthal plane.
+The axial location where the electron drift is the highest is close to the exit plane, where the axial electric field is the highest.
 Hence, we choose this location to be simulated.
 In this section, we describe the characteristics of the radial-azimuthal simulation.
 
 
 \subsection{Neglecting curvature}
 The \ac{ECDI} features oscillations of short wavelength of the order of the mm.
-Hence, neglecting the curvature of the channel is expected not the change the \ac{ECDI} characteristics while improving the simulation performances.
+Hence, neglecting the curvature of the channel is expected not to change the \ac{ECDI} characteristics while improving the simulation performances.
 
 In  \citet{heron2013},  the authors have performed a \ac{2D} \ac{PIC} simulation including the channel curvature.
 They have observed a small difference between the inner and the outer walls.
@@ -29,8 +29,10 @@ The $z$ component corresponds to the axial direction, normal to the simulation d
 
 The azimuthal direction is closed using a periodic boundary condition for both the particles and the fields.
 The radial direction is closed by walls.
-The walls can be grounded metallic, or a dielectric boundary can be model.
+The walls can be grounded metallic, or a dielectric boundary can be modeled.
 They are described and discussed in \cref{sec-diel}.
+
+\inlinenote{Anne: tu ne dis rien de "technique" sur les conditions periodiques et de Dirichlet. Peut-etre rajouter une phrase quand meme, non?}
 
 A constant and uniform magnetic field $B_0$ is imposed in the radial direction.
 This does not take into account the magnetic mirror, that has been shown to be important \citep{keidar2005,yu2008a,dominguez-vazquez2018}.
@@ -41,7 +43,7 @@ A constant and uniform axial electric field $E_0$ is imposed.
 \begin{figure}[hbtp]
   \centering
   \includegraphics[width=\defaultwidth]{2D_schema.pdf}
-  \caption{Schematic representation of the radial-azimuthal simulation domain. Overlaid is the computed azimuthal electric field given as an example. The radial dimensions lengths 2\,cm, and the azimuthal length is 1\,cm.
+  \caption{Schematic representation of the radial-azimuthal simulation domain. Overlaid is the computed azimuthal electric field given as an example. The radial length is 2\,cm, and the azimuthal length is 1\,cm.
   The magnetic field is $B_0=0.02\,\tesla$, the axial electric field is $E_0=\sn{2}{4}\,\volt\per\meter$, and the walls are grounded. More parameters are given in \cref{parameters}.}
   \label{fig-2dschemat}
 \end{figure}
@@ -57,7 +59,7 @@ In these conditions, two models can be used concerning the particle losses at th
 The second option is slightly less realistic, but allows to obtain a steady-state and is supposed not to affect the simulation significantly.
 Hence, we use this model to achieve a constant mean plasma density during the simulation.
 The forced ionization rate is computed in order to compensate the losses of the ions at each time step.
-The spacial ionization  profile is uniform.
+The spatial ionization  profile is uniform.
 
 
 \subsection{Axial convection}

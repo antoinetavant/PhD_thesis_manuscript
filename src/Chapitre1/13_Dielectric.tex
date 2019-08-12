@@ -18,7 +18,7 @@
   \begin{figure}[hbtp]
     \centering
     \includegraphics[width=\defaultwidth]{2D_diel_Rtheta}
-    \caption{Schematic representation of the dielectric layers between the plasma in the \ac{2D} radial-azimuthal plan. Are present the dielectric in yellow, the plasma in blue, the surface charges in red, and the grounded magnetic circuit in black.}
+    \caption{Schematic representation of the dielectric layers between the plasma in the \ac{2D} radial-azimuthal plane. Are present the dielectric in yellow, the plasma in blue, the surface charges in red, and the grounded magnetic circuit in black.}
     \label{fig-2D}
   \end{figure}
 
@@ -68,7 +68,7 @@
   The boundaries are noted $S^s_{i,j}$ with $s=E,W,N$ or $S$.
   We can see that $S^W_{i,j}=S^E_{i-1,j}$, and the same goes for the other borders.
   We note $\C = S^E_{i,j} \cup S^W_{i,j} \cup S^N_{i,j} \cup S^S_{i,j}$ the cell surface boundary.
-  The center of the cell is located in $i,j$ and the borders are located in $i\pm 1/2$ in the East-West direction and $j\pm 1/2$ in the North-Sourth direction.
+  The center of the cell is located in $i,j$ and the borders are located in $i\pm 1/2$ in the East-West direction and $j\pm 1/2$ in the North-South direction.
   \begin{figure}[hbt]
     \centering
     \includegraphics[width=\defaultwidth]{discrect1.pdf}
@@ -205,12 +205,12 @@
     In the previous section, we supposed that the plasma-dielectric dielectric boundary was at the interface between the cells.
     However, this means that the electric field close to the interface is unknown, as it is defined at the cell center.
     Moreover, the Dirichlet condition for the potential is better defined at the cell center, and for the sake of simplicity, changing the boundary conditions should not change the particle domain.
-    Hence, we chose to position the plasma-wall interface at the center of the cell.
+    Hence, we chose to position the plasma-wall interface at the center of the cell as shown in \cref{fig-2D,fig-decompo2}.
     This means that the permittivity is not constant over a cell.
 
     Because the wall boundaries are only in the radial direction, we consider only an interface in the North-South direction.
     \Cref{fig-decompo2} shows the domain decomposition.
-    The decomposition is the same as previously, except for the permittivity that can have two different values\string: one in the North half-plane${\epsr}_{, i,j}^n$ and another in the South half plane${\epsr}_{, i,j}^s$.
+    The decomposition is the same as previously, except for the permittivity that can have two different values\string: one in the North half-plane ${\epsr}_{, i,j}^n$ and another in the South half plane ${\epsr}_{, i,j}^s$.
 
     \begin{figure}[hbt]
       \centering
@@ -219,7 +219,7 @@
       \label{fig-decompo2}
     \end{figure}
 
-    The discretization of the Poisson \cref{eq-poissonsum} is follows the same path as previously, except that the electric flux in not constant anymore so that \cref{eq-poissonsum} becomes
+    The discretization of the Poisson \cref{eq-poissonsum} follows the same path as previously, except that the electric flux in not constant anymore so that \cref{eq-poissonsum} becomes
     \begin{equation}
     \oint_{\C} (-\epsilon \grad \phi) \cdot \vect{n} dS = \sum_{k\in(E,W,N,S)} S^k_{i,j} <\vect{D}^k_{i,j} \cdot \vect{n}>.
     \end{equation}
@@ -230,7 +230,7 @@
      &= \frac{-1}{2} (\epsilon_{i,j}^N + \epsilon_{i,j}^S) \frac{\phi_{i+1/2,j} - \phi_{i,j}}{d_i/2}
      \label{eq-flux}
     \end{align}
-    so that in the Est-West direction, the flux behave as if the cell permittivity is the mean of the North and South half-plane $\epsilon_{i,j} = \frac{1}{2} (\epsilon_{i,j}^N + \epsilon_{i,j}^S)$.
+    so that in the East-West direction, the flux behaves as if the cell permittivity is the mean of the North and South half-plane  $\epsilon_{i,j} = \frac{1}{2} (\epsilon_{i,j}^N + \epsilon_{i,j}^S)$.
     Hence, the rest of the computation is similar.
     For the boundary North and South, the permittivity is constant, hence there is no modification.
     Consequently, we obtain the discretization
