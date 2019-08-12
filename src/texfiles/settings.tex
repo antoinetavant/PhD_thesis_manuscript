@@ -290,3 +290,5 @@
 \newcommand\headerchaptername[1]{
 \renewcommand\leftmark{  \expandafter\MakeUppercase{ \chaptername\ \thechapter.\ #1}}
 }
+
+\newcommand\pageCompt[2]{ \ref{#1} has [\the\numexpr\getpagerefnumber{#2}-\getpagerefnumber{#1}\relax] pages in it. }

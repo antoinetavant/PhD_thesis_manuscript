@@ -46,7 +46,7 @@ where $n=\iiint f d^3v$ is the density, $\vect{u} = \frac{1}{n} \iiint \vect{v} 
 \Cref{eq-conc} is the continuity equation for a given species.
 
 In a similar fashion, integrating the Boltzmann equation times the velocity and the kinetic energy gives the momentum conservation equation and the energy conservation equation, respectively.
-This set of equations is simpler to approach, although it relies on more hypotheses.
+This set of equations is simpler, although it relies on additional hypotheses.
 
 One of them is the closure of the system.
 Indeed, the continuity equation describes the evolution of the density $n$ but needs the mean velocity $\vect{u}$.
@@ -54,7 +54,7 @@ However, the velocity is described by the momentum conservation equation that ne
 To close the system, one has to make a hypothesis on the higher moment of the distribution function.
 A usual closure is the isothermal hypothesis, that fixes the temperature. 
 Hence, the energy conservation equation is not needed.
-Other closures possibles are the adiabatic hypothesis (no heath flux, the \nth{3} moment of $f$), the polytropic law linking the evolution of $n$ with $T$, or the Fourier law for heat diffusion.
+Other possible closures are the adiabatic hypothesis (no heat flux, the \nth{3} moment of $f$), the polytropic law linking the evolution of $n$ with $T$, or the Fourier law for heat diffusion.
 % \inlinenote{Should we write the closes as equations ? $q = 0$, $T_e n_e ^{a}=cst$, etc. ?}
 
 
@@ -76,11 +76,11 @@ An example of such phenomena is the particle-wave interaction, such as the Landa
 In contrast to the fluid descriptions, \emph{kinetic} simulations solve the distribution function $f$ for both position and velocities.
 Two approaches are usually used for kinetic simulations\string:
 \begin{itemize}
-  \item The \ac{DK} model, that discretize \cref{eq-boltzmann} in the full phase space.
+  \item The \ac{DK} model, that discretizes \cref{eq-boltzmann} in the full phase space.
   \item The \ac{PIC} model, which uses an ensemble of particles to discretize the distribution function.
 \end{itemize} 
 While the \ac{DK} simulations use a Eulerian description of the distribution function, we can see the \ac{PIC} simulations as a Lagrangian approach.
-The \ac{DK} simulations can theoretically better describe the plasma, mostly because there is less numerical noise and we can model binary collision more easily, especially Coulomb collisions.
+The \ac{DK} simulations can theoretically better describe the plasma, mostly because there is less numerical noise and we can model binary collisions more easily, especially Coulomb collisions.
 On the other hand, \ac{PIC} simulations are much simpler to develop on both a mathematical and a computation perspective.
 For instance, the kinetic effects of electron emission have been recently studied using \ac{DK} simulation by \citet{cagas2019}, while it has been done since the last century in \ac{PIC} simulations \citep{boswell1988}.
 

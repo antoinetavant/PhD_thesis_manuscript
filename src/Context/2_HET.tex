@@ -40,14 +40,14 @@
   The axial length of the chamber is between $1$ and $3\,\centi\meter$; the radial width of the chamber is between $1$ and $2\,\centi\meter$. 
   The walls are usually constituted by a ceramic, as the \ac{BNSiO2}.
   The material needs to be resistant to erosion by ion impact sputtering.
-  But changing the material is also known to affects the behavior of the discharge.
+  But changing the material is also known to affect the behavior of the discharge.
   The usually supposed phenomenon for this impact is the secondary electron emission yield that is a function of the material nature.
   For materials used in HET, this yield may be higher than one.
 
 
   \paragraph{The anode} is at the bottom of the chamber.
   The anode voltage is imposed to a few hundred volts.
-  Usually, the neutral gas is injected through the anode itself, or it close to the anode.
+  Usually, the neutral gas is injected through the anode itself, or close to the anode.
   The mass flow rate is of the order of a few mg/s.
 
   \paragraph{The cathode} is outside of the chamber.
@@ -83,7 +83,7 @@
   The ionization energy needed is $\mathcal{E}_{\rm Xe, iz} = 12.13 \,\volt$, which corresponds to an electron velocity of $2000\,\kilo\meter\per\second$.
   Due to the low pressure (around $\sn{1}{-4}$ Pa), the mean free path of the electrons is larger than the chamber size.
   In consequence, a magnetic field is imposed in order to trap the electrons in a cyclotron motion.
-  It increases the residence time of the electrons, thus promote  ionization.
+  It increases the residence time of the electrons, thus promotes  ionization.
   In average in a well designed \ac{HET}, 90\% of the propellant is ionized.
 
   \paragraph{Acceleration\\}
@@ -94,7 +94,7 @@
 
   \paragraph{Ionization and Acceleration regions overlap\\}
   \Cref{fig-zones} shows an illustration of the usual axial evolutions of the ionization and the electric and magnetic fields.
-  As the magnetic field governs both the ionization and the acceleration regions, it can be challenging to obtain a clear separation.
+  As the magnetic field governs both the ionization and the acceleration regions, it can be challenging to obtain a clear separation between the two regions.
   However, if ionization happens in the acceleration region, the newly created ions will not be accelerated at their maximum velocity, hence resulting in a loss compared to the maximum theoretical thrust.
   The theoretical maximum speed is, by conservation of the total energy of the ion
   \begin{equation} \label{eq-vmaxtheo}
@@ -111,8 +111,8 @@
   \end{figure}
 
   The thruster efficiency, in the usual configuration, is governed by its magnetic field topology.
-  Hence, it can be tough to find the best topology that will optimize the ionization and the location of the regions.
-  Some concepts of double stage \ac{HET} have been proposed to decouple the two phenomena to control them independently.
+  Hence, it can be tough to find the best topology that will optimize the ionization and the location of the ionization and acceleration regions.
+  Some concepts of double stage \ac{HET} have been proposed to decouple the two phenomena to control them independently and are still under study \citep{dubois2018}.
   
   % However, the preliminary results are not as satisfactory as expected. 
   % \inlinenote{Add referecne here}
@@ -129,17 +129,17 @@
     \item Low frequency (10-20\,\kilo\hertz) ionization oscillations, usually referred to as breathing mode,
     \item Azimuthal low frequency rotating spokes, also in the \kilo\hertz{} range,
     \item Axial ion transit time oscillations, of the order of 100-500 \kilo\hertz,
-    \item Azimuthal fast oscillation, of frequency of the order of the ion plasma frequency.
+    \item Azimuthal fast oscillations, of frequency of the order of the ion plasma frequency.
   \end{enumerate} 
 
   \paragraph{1. Breathing mode\\}
   The breathing mode is relatively well understood \citep{boeuf1998,barral2009,hara2014}.
   Indeed, a simple predator-prey model of two equations is enough to obtain the observed behaviour qualitatively.
   It is related to the idea that when the ionization is important, the neutral atom density decreases, reducing the ionization.
-  Hence, the plasma density decreases, allowing the neutral density to rise again until the ionization growth back.
+  Hence, the plasma density decreases, allowing the neutral density to rise again until the ionization grows up again.
 
   \paragraph{2. Rotating spokes\\}
-  Experimental measurements with segmented anode \citep{ellison2012,mcdonald2011} seem to indicate that the rotating spokes are present in the anode region.
+  Experimental measurements with segmented anode \citep{ellison2012,mcdonald2011} seem to indicate that rotating spokes are present in the anode region.
   Their physical origins are less understood, as they were first attributed to ionization \citep{janes1966} but were later related to Simon-Hoh instability, and they were observed in \ac{PIC} simulations even with neglecting ionization \citep{carlsson2018}.
   However, in recent experiments, the presence of spokes did not seem to affect the \ac{HET} performances \citep{boeuf2018}.
 
@@ -149,6 +149,6 @@
   This oscillation could reduce the performance of the thruster by increasing the overlap between the acceleration and ionization regions \citep{boeuf2018}.
 
   \paragraph{4. High-frequency azimuthal oscillations\\}
-  These oscillations were first observed in \ac{PIC} simulation \citep{adam2004,ducrocq2006,adam2008a,heron2013} before being witnessed by electron Thomson scattering \citep{tsikata2009a,tsikata2009,tsikata2013}.
+  These oscillations were first observed in \ac{PIC} simulations \citep{adam2004,ducrocq2006,adam2008a,heron2013} before being witnessed by electron Thomson scattering \citep{tsikata2009a,tsikata2009,tsikata2013}.
   They are essential, as they enhance the electron transport in the axial direction \citep{adam2004,lafleur2016a}.
   They are further described in the next section.
