@@ -1,16 +1,16 @@
 % !TEX root=/home/tavant/these/manuscript/src/manuscript.tex
 
 % \FloatBarrier
-\section{Sheath model with polytropic electron and electron emission}
+\section{Sheath model with polytropic electrons and electron emission}
 \label{sec-fluid_poly_see}
 
 \subsection{Definition of the sheath equation} \label{subsec-def_sheat_see}
 
-We have seen in \cref{sec-PIC_poly} that in the presence of electron emission from the wall, the electrons can be decreased using a polytropic state law.
+We have seen in \cref{sec-PIC_poly} that in the presence of electron emission from the wall, the electrons can be described using a polytropic state law.
 The value of the polytropic index obtained from the mean electron density and temperature is for $\crover \geq 40 \,\volt$ is $\gamma = 1.35$.
 Using the electron distribution function, the evolution of the forward electron seems to follow a polytropic low of index $\gamma=1.28$.
 Hence, we modify the polytropic sheath model of \cref{sec-fluid} to take into account the electron emission from the wall.
-This modify the current equality at the wall to
+This modifies the current equality at the wall to
 \begin{equation} \label{eq-see-J_eq}
   \Gamma_i = (1 - \rate) \Gamma_e.
 \end{equation}
@@ -21,9 +21,9 @@ Using \cref{eq-gi,eq-ge,eq-tew} for $\Gamma_i$ and $\Gamma_e$, we obtain the equ
 \end{equation}
 
 Similarly to the case without electron emission in \cref{sec-fluid}, \cref{eq-sheathsee} cannot be solved analytically, but it can be solved numerically.
-The solution for $\rate=0.8$ is compared to the case without electron emission for a \ac{Xe} plasma in \cref{fig-dphi_see}.
-As expected, the potential difference decrease with increasing $\rate$.
-However, the gap between the two cases decreases when $\gamma$ increases.
+The solution for $\rate=0.8$ is compared to the case without electron emission ($\rate=0$) for a \ac{Xe} plasma in \cref{fig-dphi_see}.
+As expected, the potential difference decreases with increasing $\rate$.
+However, the gap between the two cases decreases when $\gamma$ increases from 1 to 2.
 
 \begin{figure}[hbtp]
   \centering
@@ -32,8 +32,8 @@ However, the gap between the two cases decreases when $\gamma$ increases.
   \label{fig-dphi_see}
 \end{figure}
 
-The electron emission rate is actually a function of the electron energy at the wall.
-Using the same hypothesis that used in \cref{eq-ge}, we can define the emission rate from \cref{eq-seemaxw} by
+The electron emission rate is a function of the electron energy at the wall.
+Using the same hypothesis as in \cref{eq-ge}, we can define the emission rate from \cref{eq-seemaxw} by
 \begin{equation} \label{eq-seemaxw_poly}
   \rate = \ratemaxw(\Tew) = \sigo + ( 1 - \sigo) \frac{ 2 \Tew  }{\crover}.
 \end{equation}
@@ -54,10 +54,13 @@ Noting $\chi = \frac{\gamma -1}{\gamma} \frac{ \dphi_0}{ \Te_0} $, we finely obt
 
 \Cref{eq-costseepoly} depends explicitly on $\Teb$, hence $\chi$ is no longer independent of $\Teb$.
 This adds a free parameter when solving the sheath equation.
-Moreover, the \ac{RHS} of \cref{eq-costseepoly} is more complex than before, leading to multiple solutions.
-\Cref{fig-costfunction} shows the \ac{RHS} of \cref{eq-costseepoly} for several values of ({\bf a}) $\Teb$ and ({\bf b}) $\crover$, while keeping the polytropic index to $\gamma=1.35$.
+Moreover, the \ac{LHS} of \cref{eq-costseepoly} is more complex than before, leading to multiple solutions.
+\Cref{fig-costfunction} shows the \ac{LHS} of \cref{eq-costseepoly} for several values of ({\bf a}) $\Teb$ and ({\bf b}) $\crover$, while keeping the polytropic index to $\gamma=1.35$.
 The \ac{SCL} regime has been taken into account by saturating $\rate$ to $\ratecr=0.982$. 
 It corresponds to the branch which crosses the abscissa axis close to $\frac{\dphi}{\Teb}=1$. 
+
+\inlinenote{Anne: je rajouterai ici une sous-section avec la discussion sur les Te1 et Te2 que tu mets actuellement dans la section 4.3.3
+Je pense que tu pourrais garder dans 4.3.3 juste la comparaison avec Raitses, tes resultats PIC et le cas isotherme.}
 
 \begin{figure}[hbtp]
   \centering
@@ -65,10 +68,10 @@ It corresponds to the branch which crosses the abscissa axis close to $\frac{\dp
     \subfigure{cost_function_bis.pdf}{a}{20,20} &
     \subfigure{cost_function_2bis.pdf}{b}{20,20} \\
   \end{tabular}
-  \caption{Value of the \ac{RHS} of \cref{eq-costseepoly}, labelled cost function, for several values of ({\bf a}) $\Teb$ and ({\bf b}) $\crover$.}
+  \caption{Value of the \ac{LHS} of \cref{eq-costseepoly}, labelled cost function, for several values of ({\bf a}) $\Teb$ and ({\bf b}) $\crover$.}
   \label{fig-costfunction}
 \end{figure}
-
+\inlinenote{Anne: Normalized pour les 2 axes des x}
 We can see that \cref{eq-costseepoly} can present one or three solutions, depending on the relative values of $\crover$ and $\Teb$.
 Hence, a particular care must be taken now when finding numerically the sheath potential drop.
 
@@ -94,13 +97,13 @@ Moreover, we see that the critical temperature for $\crover=40 \,\volt$ is close
 In addition, for some values of electron temperature, there are three solutions.
 This could explain the oscillations observed in regime {\bf II}.
 Indeed, when the electron temperature increases, the sheath follows the first solutions.
-When the critical electron temperature, the sheath jump to the third solution.
+When the critical electron temperature is reached, the sheath jumps to the third solution.
 It corresponds to the \ac{SCL} regime with an inverted sheath.
 There, the electron temperature in the bulk decreases because of the increased electron power losses at the wall.
 The electron temperature decreases until the second critical temperature, which corresponds to the moment when the third solution disappear, so that the sheath jumps back to the first solution.
 We do not expect the third solution in-between to be observed in the simulations.
 
-Obviously, the current model suppose that the polytropic index is constant.
+Obviously, the current model supposes that the polytropic index is constant.
 However, we saw in the \ac{PIC} simulations that it increases from $\gamma = 1.34$ to $1.59$.
 Hence, the exact values of the critical temperature may not exactly correspond to the one observed in the simulations.
 On the other hand, we can expect the overall behavior not to be significantly affected.
@@ -108,5 +111,5 @@ On the other hand, we can expect the overall behavior not to be significantly af
 \vspace{1em}
 To summarize, the polytropic law is combined with electron emission to model the sheath.
 The model obtained is richer than the usual isothermal model, as it allows multiple values of potential drop to the wall for the same electron bulk temperature.
-This model only uses the electron bulk temperature and self-consistently compute both the potential drop and the electron emission rate.
+This model only uses the electron bulk temperature and self-consistently computes both the potential drop and the electron emission rate.
 It is compared in the next section to the \ac{PIC} simulation results.

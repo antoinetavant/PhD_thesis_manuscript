@@ -8,10 +8,13 @@ We have developed in \cref{ch-3} a sheath model that uses a polytropic state law
 This model successfully reproduced the sheath characteristics  when no secondary electron emission was modeled (fully absorbing walls).
 In this chapter, we study the effects of the electron emission from the wall on the sheath characteristics, based on the \ac{PIC} simulations presented in \cref{sec-see}.
 
-We recall that in this simulations, the dielectric electrostatic boundary condition is not modeled, but instead the walls are grounded.
-In addition, the axial convection is model using Lafleur's model of convection, as discussed in \cref{sec-reinjectionnoise}.
+We recall that in these simulations, the dielectric electrostatic boundary condition is not modeled, but instead the walls are grounded.
+In addition, the axial convection is modeled using Lafleur's model of convection, as discussed in \cref{sec-reinjectionnoise}.
 
-\subsection{Polytropic index determination from the PIC simulations} \label{subsec-fluid_see_polyfit}
+\subsection{Polytropic index determination from PIC simulations} \label{subsec-fluid_see_polyfit}
+
+\inlinenote{repreciser en 1 phrase les conditions de simulation (en faisant reference au chapitre 3) + citer section ou tu parles de l'emission (penser au lecteur qui commence la lecture au chapitre 4)}
+\inlinenote{pourquoi pas montrer une image de calcul 2D....a force de voir que des resultats 1D, on va finir par oublier que ton code PIC est 2D ;-)}
 
 As previously done in \cref{ch-3}, we use the mean values of the electron density $n_e$ and the electron pressure $ p_e = q_e n_e T_e$ to find the value of the polytropic index.
 \Cref{fig-radial_profiles_see} shows the radial profiles of the electron density and temperature for different values of the cross-over energy $\crover$.
@@ -27,7 +30,7 @@ Regime {\bf II} is not presented, as the oscillating nature of the sheath is not
   \label{fig-radial_profiles_see}
 \end{figure}
 
-We can see that the electron temperature presents a monotonic profile for all the values of $\crover$.
+We see that the electron temperature presents a monotonic profile for all the values of $\crover$.
 However, the electron density is not monotonic, but instead presents an increase close to the wall.
 This is clearly visible in \cref{fig-log_pe-ne}, which presents the electron pressure $p_e$ as a function of the electron density $n_e$, in log scale and normalized by the values at the center.
 We see that close to the wall, where the electron pressure is the lowest, the curves present an inversion, in contrast with the case without electron emission seen in \cref{fig-polyFit}.
@@ -60,23 +63,23 @@ It will be used in the next sections to compare the \ac{PIC} results with a flui
 
 \subsection{Evolution of the electron distribution function} \label{subsec-EVDF_see_polyfit}
 
-\Cref{fig-evdf_epsstar} presents the electron distribution functions measured at the center of the simulation. 
+\Cref{fig-evdf_epsstar} presents the electron distribution functions measured at the center of the simulation domain. 
 %\unsure{Is it the center or the sheath-edge ?}
-We can see that the \ac{EVDF} presents similar profiles for the three cases, except for the mean energy that decreases with increasing value of $\crover$.
+We see that the \ac{EVDF} presents similar profiles for the three cases, except for the mean energy that decreases with increasing value of $\crover$.
 
 \begin{figure}[hbtp]
   \centering
   \includegraphics[width=\defaultwidth]{EVDF_Bulk.pdf}
-  \caption{Electron velocity distribution function at the center of the simulation, under the same parameters than the cases in \cref{fig-log_pe-ne,fig-polyfit_see}. The sign of the energy correspond to the direction of the movement.}
+  \caption{Electron velocity distribution function at the center of the simulation, under the same parameters than the cases in \cref{fig-log_pe-ne,fig-polyfit_see}. The sign of the energy corresponds to the direction of the movement.}
   \label{fig-evdf_epsstar}
 \end{figure}
 
 
-We can note that no beam is present here, even in the case of very large electron emission at $\crover=10\,\volt$, in contrast with observations of \ac{1D} PIC simulations \citep{sydorenko2006b,sydorenko2007} but in agreement with the \ac{2D} results of \citet{heron2013}.
-This subtest that the instability self-consistently modeled in the \ac{2D} simulations thermalizes the secondary electron.
+We note that no beam is present here, even in the case of very large electron emission at $\crover=10\,\volt$, in contrast with observations of \ac{1D} PIC simulations \citep{sydorenko2006b,sydorenko2007} but in agreement with the \ac{2D} results of \citet{heron2013}.
+This shows that the instability, self-consistently modeled in the \ac{2D} simulations, thermalizes the secondary electron.
 
 Using the solution of the stationary Vlasov equation \cref{eq-sol}, we compute the evolution of the density and temperature of the electron population going toward the wall.
-The results is compared to the mean density and temperature measured in the \ac{PIC} simulations in \cref{fig-evdf_polyfit}.
+The results are compared to the mean density and temperature measured in the \ac{PIC} simulations in \cref{fig-evdf_polyfit}.
 
 \begin{figure}[hbtp]
   \centering
@@ -85,8 +88,8 @@ The results is compared to the mean density and temperature measured in the \ac{
   \label{fig-evdf_polyfit}
 \end{figure}
 
-We can see that the pressure of the forward electron population decreases slower than the total electrons pressure.
-The may be due to the partial absorption and emission of secondary electrons at the wall, injected at $\Tsee=2\,\volt$.
-Hence, we can expect that the emission rate $\sigma$, which directly depends on the forward electron population, to be better decreased with the polytropic index computed in \cref{fig-evdf_polyfit} than in \cref{subsec-fluid_see_polyfit}.
+We see that the pressure of the forward electron population decreases slower than the total electron pressure.
+This may be due to the partial absorption and emission of secondary electrons at the wall, injected at $\Tsee=2\,\volt$.
+Hence, we can expect that the emission rate $\sigma$, which directly depends on the forward electron population, be better described with the polytropic index computed in \cref{fig-evdf_polyfit} than in \cref{subsec-fluid_see_polyfit}.
 The polytropic index of the forward population computed here is $\gamma=1.28$.
 
