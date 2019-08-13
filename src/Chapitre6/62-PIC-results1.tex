@@ -1,19 +1,25 @@
 % !TEX root=/home/tavant/these/manuscript/src/manuscript.tex
 
-\section{PIC simulation results: Boeuf model}
+\section{PIC simulation results: Boeuf test-case}
 
 
-We start by presenting the results of the simulation case of Boeuf, since it is simpler to analyse.
+First in this section, we present the results of the simulation case of Boeuf, since it is simpler to analyse.
 Three different cases are presented.
 The first is the usual case, without the effects of the radial direction.
 It is expected to return the same results as obtained in \citet{boeuf2018}.
-The two other cases model the radial effect of the radial direction.
+The two other cases model the effect of the radial direction.
 Two values of the radial length are used\string: $L_R=4\,\centi\meter$ and $2\,\centi\meter$.
 
-\subsection{Boeuf model: Temporal evolution} \label{subsec-temp_boeuf}
 
-\Cref{fig-boeuf-temporal} present the temporal evolution of the mean plasma density and temperature.
-We can see that when the radial direction is modeled, the density and the temperature is reduces as expected when increasing the losses.
+\subsection{Boeuf test-case: Temporal evolution} \label{subsec-temp_boeuf}
+\inlinenote{Anne: un peu rapide: redire qu'après une phase transitoire, un etat stationnaire est atteint au bout de XXX microsecondes.
+Donner une table ou faire reference au papier de Thomas pour donner toutes les caracteristiques de tes simulations
+
+Si quelqu'un essaie de refaire tes calculs de thèse, on doit avoir les informations pour les refaire ;-)
+}
+
+\Cref{fig-boeuf-temporal} presents the temporal evolution of the mean plasma density and temperature.
+We see that when the radial direction is modeled, the density and the mean electron temperature and the radial electron temperature is reduced as expected when increasing the losses.
 
 \begin{figure}[hbtp]
   \centering
@@ -21,25 +27,27 @@ We can see that when the radial direction is modeled, the density and the temper
     \subfigure{Boeuf_ne_temporal}{a}{20,20} &
     \subfigure{Boeuf_Te_temporal}{b}{20,15} \\
   \end{tabular}
-  \caption{({\bf a}) temporal evolution of the mean plasma density and  ({\bf b})  temporal evolution of the mean  electron temperature obtained with 3 different radial model for the simulation case of Boeuf. }
+  \caption{({\bf a}) temporal evolution of the mean plasma density and  ({\bf b})  temporal evolution of the  electron temperatures obtained with three different radial models for the simulation case of Boeuf. }
   \label{fig-boeuf-temporal}
 \end{figure}
 
-We can see on \cref{fig-boeuf-temporal}.{\bf b} that the radial temperature stays constant when the radial direction is not modeled.
-this is due to the fact that the collisions are not modeled in the simulations, so that there is not momentum and energy transfer possible from the axial and azimuthal direction, and the radial direction.
+We see on \cref{fig-boeuf-temporal}.{\bf b} that the radial temperature remains constant when the radial direction is not modeled.
+this is due to the fact that the collisions are not modeled in the simulations, so that there is not momentum and energy transfer possible from the axial and azimuthal directions, and the radial direction.
 
 However, we know from the radial-azimuthal simulations that there is a transfer, resulting in a plasma less anisotropic than observed here.
 Consequently, the radial losses are far from the one expected in reality.
+\inlinenote{Anne: Phrase ambigue\\ tu ne commentas pas du tout les resultats avec Lr=2 et 4cm}
 
-
-\subsection{Boeuf model: Axial profiles} \label{subsec-axial_boeuf}
+\subsection{Boeuf test-case: Axial profiles} \label{subsec-axial_boeuf}
 
 \Cref{fig-boeuf_axialone,fig-boeuf_axialtwo}  show the axial profile at steady-state of several plasma quantities.
 The variables are averaged in the azimuthal direction and in time between $t=8$ and $t=10\,\micro\second$.
-The results  obtained with 3 different radial model for the simulation case of Boeuf are overlaid.
+The results  obtained with three different radial models for the simulation case of Boeuf are overlaid.
 \cref{fig-boeuf_axialone}.{\bf a} shows the axial electric field $E_z$.
 The differences in $E_z$ are small, but we can still distinguish that the amplitude of $E_z$ is reduced with the increased radial losses.
-The electron density $n_e$ showed in \cref{fig-boeuf_axialone}.{\bf b} is almost not affected, except in for $z>1\,\centi\meter$, where the electron losses at the wall can be seen.
+The electron density $n_e$ shown in \cref{fig-boeuf_axialone}.{\bf b} is almost not affected, except in for $z>1\,\centi\meter$, where the electron losses at the wall can be seen.
+
+\inlinenote{Anne: tu as dit quelquepart que tu mettais des pertes radiales pour toutes les valeurs de z et pas seulement dans le canal?}
 
 \begin{figure}[hbtp]
   \centering
@@ -47,12 +55,12 @@ The electron density $n_e$ showed in \cref{fig-boeuf_axialone}.{\bf b} is almost
     \subfigure{Boeuf_electric_field}{a}{30,22} &
     \subfigure{Boeuf_ne_axial}{b}{30,22} \\
   \end{tabular}
-  \caption{Averaged axial profile at steady state of ({\bf a}) the axial electric field $E_z$, ({\bf b}) the mean plasma density obtained with 3 different radial model for the simulation case of Boeuf. }
+  \caption{Averaged axial profiles at steady state of ({\bf a}) the axial electric field $E_z$, ({\bf b}) the mean plasma density obtained with three different radial models for the simulation case of Boeuf. }
   \label{fig-boeuf_axialone}
 \end{figure}
 
 On the other hand, the axial electron density current $J_{e, z}$ (\cref{fig-boeuf_axialtwo}.{\bf a}) and the electron temperature (\cref{fig-boeuf_axialtwo}.{\bf b}) are significantly reduced when the radial losses are modeled.
-We can see a factor of two on $J_{e, z}$ between the case $L_R=2\,\centi\meter$ and the case without losses.
+We see a factor of two on $J_{e, z}$ between the case $L_R=2\,\centi\meter$ and the case without losses.
 However, we have seen that the electron density is almost unaffected.
 This means that the electron axial velocity is reduced, because of the radial losses.
 
@@ -62,7 +70,7 @@ This means that the electron axial velocity is reduced, because of the radial lo
     \subfigure{Boeuf_Je_axial}{a}{30,22} &
     \subfigure{Boeuf_Te_axial}{b}{25,80} \\
   \end{tabular}
-  \caption{Averaged axial profile at steady state of ({\bf a})  the axial electron current density $J_{e, z}$, and ({\bf b}) the  electron temperature obtained with 3 different radial model for the simulation case of Boeuf. }
+  \caption{Averaged axial profile at steady state of ({\bf a})  the axial electron current density $J_{e, z}$, and ({\bf b}) the  electron temperature obtained with three different radial models for the simulation case of Boeuf. }
   \label{fig-boeuf_axialtwo}
 \end{figure}
 
@@ -71,33 +79,33 @@ We see that the electron transport is highly affected.
 This is expected to be due to the reduced electron temperature, which reduces the amplitude of the instability at saturation.
 It is confirmed by the values presented in \Cref{fig-boeuf-instability}.
 \cref{fig-boeuf-instability} shows on the left the average standard deviation of the azimuthal electric field.
-It represent the amplitude of the oscillation.
-We can see that the amplitude of the instability is significantly affected by the electron radial losses.
+It represents the amplitude of the oscillation.
+We casee that the amplitude of the instability is significantly affected by the electron radial losses.
 
 \begin{figure}[hbtp]
   \centering
   \includegraphics[width=\textwidth]{Boeuf_instability_characteristics}
-  \caption{Axial profile of the characteristics of the instability, (left) average of the standard deviation of the azimuthal electric field, (right) electron-ion friction force calculated by the correlation between $n_e$ and $\Te$.    }
+  \caption{Axial profiles of the characteristics of the instability, (left) average of the standard deviation of the azimuthal electric field, (right) electron-ion friction force calculated by the correlation between $n_e$ and $\Te$.    }
   \label{fig-boeuf-instability}
 \end{figure}
 
-On the right panel of \cref{fig-boeuf-instability} we can see the correlation term
+On the right panel of \cref{fig-boeuf-instability} we see the correlation term
 \begin{equation} \label{eq-rei}
   R_{ei} = < n_e E_{\theta} >
 \end{equation}
 responsible for the electron axial enhanced transport.
-Again, we can see a decrease on the amplitude of $R_{ei}$ because of the reduced oscillation amplitude.
+Again, we see a decrease on the amplitude of $R_{ei}$ because of the reduced oscillation amplitude.
 
 
-\subsection{Boeuf model with collisions} \label{subsec-MCC_boeuf}
+\subsection{Boeuf test-case with collisions} \label{subsec-MCC_boeuf}
 % Script on Juno (CH-6_Boeuf)
 
-We have seen that because there is no collision in the case of Boeuf, there is no energy transfer toward the radial direction.
-Thus, we investigate here the impact of a neutral on the electron anisotropy by modeling the collision with the \ac{MCC} algorithm.
+We have seen that because there is no collision in the test-case of Boeuf, there is no energy transfer toward the radial direction.
+Thus, we investigate here the impact of the neutrals on the electron anisotropy by modeling the collisions with the \ac{MCC} algorithm.
 
-The xenon neutrals are injected at the anode side with density of $n_g=1e17\,meter$${-3}$, an axial velocity $v_g = 200 \,\meter\per\second$ and a temperature $T_g=640\,\kelvin$.
+The xenon neutrals are injected at the anode side with density of $n_g=\sn{1}{17}\,\meter$${-3}$, an axial velocity $v_g = 200 \,\meter\per\second$ and a temperature $T_g=640\,\kelvin$.
 We model the neutral flow with the continuity and momentum conservation equation, while keeping their temperature constant.
-The ionization source term used to sustains the plasma is a loss term in the continuity equation.
+The ionization source term used to sustain the plasma is a loss term in the continuity equation.
 \Cref{fig-boeuf-neutrals} shows the neutral density and velocity obtained at steady-state.
 
 \begin{figure}[hbtp]
@@ -109,9 +117,9 @@ The ionization source term used to sustains the plasma is a loss term in the con
   \caption{Axial profile at steady-state ($t=14\,\micro\second$) of ({\bf a}) the neutral density and  ({\bf b})  the neutral axial velocity, for  simulation case of Boeuf with the electron-neutral scattering. }
   \label{fig-boeuf-neutrals}
 \end{figure}
-We can see in \cref{fig-boeuf-neutrals} that the neutrals are significantly depleted because of the forced the ionization source term.
+We see in \cref{fig-boeuf-neutrals} that the neutrals are significantly depleted because of the forced ionization source term.
 The neutral density gradient accelerates the neutrals in the axial direction by a factor of two, which reduces even more the neutral density.
-thus, the electron-neutral scattering will be important on the anode side of the chamber.
+Thus, the electron-neutral scattering will be significant on the anode side of the chamber.
 
 \begin{figure}[hbtp]
   \centering
@@ -119,22 +127,22 @@ thus, the electron-neutral scattering will be important on the anode side of the
     \subfigure{boeuf_mean_Te}{a}{20,20} &
     \subfigure{boeuf_mean_Tez_profile_MCC}{b}{20,15} \\
   \end{tabular}
-  \caption{({\bf a}) temporal evolution of the electron kinetic energy and  ({\bf b}) axial profile of the electron temperature obtained for the simulation case of Boeuf with the electron-neutral scattering. }
+  \caption{({\bf a}) temporal evolution of the electron kinetic energy in the three directions and  ({\bf b}) axial profile of the electron temperature at steady state obtained for the simulation case of Boeuf with the electron-neutral scattering. }
   \label{fig-boeuf-temporalMCC}
 \end{figure}
 
-\Cref{fig-boeuf-temporalMCC} shows the temporal evolution of the mean electron kinetic energy of the left, and on the right it shows the axial profile of the electron temperatures, decomposed on the three directions.
-We can see now that they is a small transfer of energy between the radial direction and the others.
-In particular, close the the anode, the radial and axial temperatures decreases below the initial temperature $\Te_{, inj}=5\,\volt$.
-In contrast, at the maximum of the magnetic field, the radial energy increases to $\Te_R=7\,\volt$.
-However, the anisotropy stays significant, compared to the  radial-azimuthal simulations (\cref{ch-2}).
+\Cref{fig-boeuf-temporalMCC} shows the temporal evolution of the mean electron kinetic energy on the left, and on the right it shows the axial profile of the electron temperatures, decomposed on the three directions.
+We see that they is a small transfer of energy between the radial direction and the others.
+In particular, close to the anode where the gas density is high, the radial and axial temperatures decrease below the initial temperature $\Te_{, inj}=5\,\volt$.
+In contrast, at the maximum of the magnetic field where the gas density is low (and then electron neutral scattering is considered to be negligible), the radial energy increases to $\Te_R=7\,\volt$.
+However, the anisotropy stays significant, compared to the  radial-azimuthal simulations presented in \cref{ch-2}.
 
-\subsection{Radial electron heating} \label{subsec-radial-heating}
+\subsection{Radial heating of electrons} \label{subsec-radial-heating}
 The large anisotropy observed in \Cref{fig-boeuf-temporal,fig-boeuf-temporalMCC}, compared to the results of \cref{ch-2} might be due to the difference on neutral density.
 However, the collisions are usually neglected in \ac{HET}s compared to the instability.
 Hence, the plasma fluctuations may be responsible for the electron radial heating.
 
-The electron are power gain is the Joule heating
+The electron power gain is due to Joule heating
 \begin{equation} \label{eq-epower}
     \vect{P_{\rm J}} = \vect{J_e} \cdot \vect{E},
 \end{equation}
@@ -147,6 +155,8 @@ with $\vect{J_e}$ the electron density current and $\vect{E}$ the electric field
   \caption{Electron current and radial electric field in the Radial-azimuthal simulations }
   \label{fig-epower_radialone}
 \end{figure}
+
+\inlinenote{Anne: je ne vois pas ou tu parles de cette figure dans le texte...}
 
 
 \begin{figure}[hbtp]
@@ -164,14 +174,14 @@ For this energy transfer to be present, the radial direction needs to be resolve
 A similar radial heating has been observed by \citet{heron2013}.
 The authors observe no heating when the instability was only perpendicular to the magnetic field, as it is in a \ac{1D} or a \ac{2D} axial-azimuthal simulation.
 However, when the direction parallel to the magnetic field is resolved, the electrons are heated, but the physical mechanism remains unclear.
-In \citet{janhunen}, the authors observe a similar radial electron heating, but due to the presence of a \ac{MTSI}.
-Has discussed previously, we do not observe the \ac{MTSI} in our simulation, meaning that it much comes from another mechanism.
+In \citet{janhunen}, the authors observe a similar radial heating of the electrons, but due to the presence of a \ac{MTSI}.
+As discussed previously, we do not observe the \ac{MTSI} in our simulation, meaning that it has to be due to another mechanism.
 
 
 \subsection{Electron azimuthal drift velocity} \label{subsec-drift}
 
 We showed in \cref{ch-5} that the instability growth rate is proportional to the electron azimuthal drift.
-The the radial-azimuthal simulation, the drift was only due to the $\vect{E} \times \vect{B}$ drift
+In the radial-azimuthal simulation, the drift was only due to the $\vect{E} \times \vect{B}$ drift
 \begin{equation} \label{eq-exbdrift}
   u_{E \times B} = - \frac{E_z}{B_r}
 \end{equation}
@@ -188,11 +198,12 @@ The value of the diamagnetic can be seen in \cref{fig-Jetheta_sum}.
 \begin{figure}[hbtp]
   \centering
   \includegraphics[width=\defaultwidth]{Boeuf_Je_x_axial_one}
-  \caption{Axial profile of the electron azimuthal velocity, the $\vect{E} \times \vect{B}$ drift velocity and the diamagnetic velocity and some of the $\vect{E} \times \vect{B}$ and diamagnetic velocity at steady state for the simulation case of Boeuf without radial losses.}
+  \caption{Axial profile of the electron azimuthal velocity, the $\vect{E} \times \vect{B}$ drift velocity and the diamagnetic velocity and some of the $\vect{E} \times \vect{B}$ and diamagnetic velocities at steady state for the simulation case of Boeuf without radial losses.}
   \label{fig-Jetheta_sum}
 \end{figure}
+\inlinenote{Anne: Ca fait bizarre de voir la courbe orange que s'arrete avant les autres a 2.3cm, au moins le mentionner dans le texte ou simplement dans la legende sous la figure}
 
-We can see that $u_{\rm Dia}$ is of the same order of magnitude that $u_{E \times B}$, but of the opposite sign.
+We see that $u_{\rm Dia}$ is of the same order of magnitude as $u_{E \times B}$, but of the opposite sign.
 Moreover, we see that we have 
 $$ u_{e, \theta} =   u_{E \times B} + u_{\rm Dia}$$
 everywhere in the simulation domain.
@@ -204,7 +215,7 @@ However, the amplitude of both $u_{\rm Dia}$ and $u_{E \times B}$ decreases as w
 \begin{figure}[hbtp]
   \centering
   \includegraphics[width=\defaultwidth]{Boeuf_Je_x_axial}
-  \caption{Axial profile of the electron azimuthal velocity, the $\vect{E} \times \vect{B}$ drift velocity and the diamagnetic velocity at steady state with 3 different radial model for the simulation case of Boeuf.}
+  \caption{Axial profile of the electron azimuthal velocity, the $\vect{E} \times \vect{B}$ drift velocity and the diamagnetic velocity at steady state with three different radial models for the simulation case of Boeuf.}
   \label{fig-Jetheta}
 \end{figure}
 

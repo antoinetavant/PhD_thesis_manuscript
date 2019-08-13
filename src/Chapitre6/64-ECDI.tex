@@ -2,30 +2,29 @@
 
 \section{Characteristics of the azimuthal instability}
 
-\inlinenote{Here, 
-Discuss on the saturation by ion trapping via the same equation as \cref{subsec-temp}.  }
+\inlinenote{Anne: position de ce paragraphe....pourquoi ne pas inverser : presenter Coche avant et Boeuf apres, comme ca tu enchainerais ;-)}
 
-The case defined by Boeuf is more efficient to  study the instability.
-Indeed, at the ionization is not self-consistent, it removes the breathing mode.
-Hence, we will focus on the results obtained with Boeuf model this section.
-We recall that thee cases have been simulated\string: the nominal case without radial losses and two other cases with the radial losses modeled with $L_R=2\,\centi\meter$ and $L_R=4\,\centi\meter$.
+The test-case defined by Boeuf is more adapted to  study the instability.
+Indeed, as the ionization is not self-consistent, it removes the breathing mode.
+Hence, we will focus on the results obtained with Boeuf model in this section.
+We recall that three cases have been simulated\string: the nominal case without radial losses and two other cases with the radial losses modeled with $L_R=2\,\centi\meter$ and $L_R=4\,\centi\meter$.
 
 \subsection{Overview of the azimuthal instability} \label{subsec-azi_insta_Ztheta}
 \Cref{fig-snapshots} shows the azimuthal electric field at the end of the simulations for the three cases.
-We can see the azimuthal instability in all of the simulation domain.
+We can see the azimuthal instability in all the simulation domain.
 We note that the radial losses do not modify significantly the instability.
 From the characteristics of the instability seen in \cref{fig-snapshots}, two zones can be discerned\string:
 \begin{itemize}
-  \item The upstream region, $z < 8 \,\milli\meter$, the instability present a short wavelength, and is oblique.
+  \item The upstream region, $z < 8 \,\milli\meter$, the instability presents a short wavelength, and is oblique.
   \item The downstream region, $z > 1\,\centi\meter$, the wavelength of the instability is larger and is almost perfectly azimuthal.
 \end{itemize}
-The radial losses seems to reduce the wavelength of the instability in both the upstream and the downstream regions.
+The radial losses seem to reduce the wavelength of the instability in both the upstream and the downstream regions.
 
 
 \begin{figure}[hbtp]
   \centering
   \includegraphics[width=\textwidth]{Boeuf_Ex_snapshot}
-  \caption{Azimuthal electric field obtained at the end of the simulation for the three cases using the model of Boeuf.}
+  \caption{Azimuthal electric field obtained at $t=10 \,\micro\second$ for the three cases using the model of Boeuf.}
   \label{fig-snapshots}
 \end{figure}
 
@@ -37,17 +36,18 @@ We can see that $\opi$ is not significantly affected, in the upstream region, bu
 \begin{figure}[hbtp]
   \centering
   \includegraphics[width=\textwidth]{Boeuf_opi_Lde}
-  \caption{Axial evolution of (right) the ion plasma frequency and (left) the Debye length for the three cases using the model of Boeuf.}
+  \caption{Axial evolution of (left) the ion plasma frequency and (right) the Debye length for the three cases using the model of Boeuf.}
   \label{fig-wpi_Lde}
 \end{figure}
+\inlinenote{Legend: missing minus}
 
-Concerning the Debye length, we can see in \cref{fig-wpi_Lde} that the radial losses change $\lde$ in both region, but not is the same order.
+Concerning the Debye length, we see in \cref{fig-wpi_Lde} that the radial losses change $\lde$ in both regions, but not is the same order.
 In the upstream region, the radial losses decrease $\lde$, while they increase $\lde$ in the downstream region.
 This means that the evolution of the wavelength observed in \cref{fig-snapshots} is not due to the differences in the Debye length.
 
 \subsection{Spectral analyses of the waves} \label{subsec-fft}
 
-We proceed to a quantitative analyze of the instability, to better understand the modifications of the instability.
+We proceed to a quantitative analysis of the instability, to better understand the modifications of the instability.
 The spectral analyses are perfomed at $z_u=0.25\,\centi\meter$ for the upstream region, and $z_d=1.5\,\centi\meter$ for the downstream region.
 \Cref{fig-cut2D} shows the temporal evolution of the azimuthal electric field $E_{\theta}$ when no radial losses are modeled for $z_u$ and $z_d$.
 
@@ -66,13 +66,13 @@ The downstream region is more complex, as there is a combination of two waves.
 We perform a \ac{2D} \ac{FFT} on the spatio-temporal azimuthal electric field to obtain the relation dispersion of the wave observed.
 \Cref{fig-fft2D_noLr_zu} shows the \ac{2D} \ac{FFT} in the upstream region.
 We also display the \ac{1D} \ac{FFT} obtained by summing the \ac{2D} \ac{FFT} in one direction.
-We can see that the waves follow one well-defined curve, wich is close to the \ac{IAW} of \cref{eq-MIAW} using the local Debye length and ion plasma pulsation.
+We see that the waves follow one well-defined curve, which is close to the \ac{IAW} of \cref{eq-MIAW} using the local Debye length and ion plasma pulsation.
 The maximum of the wave is located at $k_{\theta} = 8.5\,\radian\per\milli\meter$ and $\omega = 35\, \radian\per\mega\hertz$.
 
 \begin{figure}[hbtp]
   \centering
   \includegraphics[width=5in]{Boeuf_noLr_FFT2D_y50_full}
-  \caption{\ac{2D} and \ac{1D} \ac{FFT} of the azimuthal electric field in the upstream region $z=z_u$ without radial losses. The black dotted lines highlight the position of the maximum of the \ac{2D} \ac{FFT}. The red dash line corresponds the the \ac{IAW} dispersion relation of \cref{eq-MIAW}.}
+  \caption{\ac{2D} and \ac{1D} \ac{FFT} of the azimuthal electric field in the upstream region $z=z_u$ without radial losses. The black dotted lines highlight the position of the maximum of the \ac{2D} \ac{FFT}. The red dashed line corresponds the the \ac{IAW} dispersion relation of \cref{eq-MIAW}.}
   \label{fig-fft2D_noLr_zu}
 \end{figure}
 
@@ -80,13 +80,13 @@ The \ac{2D} \ac{FFT} in the downstream region is presented in \cref{fig-fft2D_no
 In contrast to the upstream region, we can see that the waves do not follow one well-defined curve.
 The maximum of the wave is located at $k_{\theta} = 3\,\radian\per\milli\meter$ and $\omega = 20\, \radian\per\mega\hertz$.
 The wave characteristics of the upstream region can still be seen, but a larger and slower wave is overlaid to it.
-However, this new wave seems to follow the same dispersion relation as in the upstream, but not the one using the local plasma parameters, which underestimates the waves parameters.
+However, this new wave seems to follow the same dispersion relation as in the upstream, but not the one using the local plasma parameters, which underestimates the wave parameters.
 
 
 \begin{figure}[hbtp]
   \centering
   \includegraphics[width=5in]{Boeuf_noLr_FFT2D_y300_full}
-  \caption{\ac{2D} and \ac{1D} \ac{FFT} of the azimuthal electric field in the downstream region $z=z_d$ without radial losses.  The black dotted lines highlight the position of the maximum of the \ac{2D} \ac{FFT}, and the red dash line corresponds the the \ac{IAW} dispersion relation of \cref{eq-MIAW}.}
+  \caption{\ac{2D} and \ac{1D} \ac{FFT} of the azimuthal electric field in the downstream region $z=z_d$ without radial losses.  The black dotted lines highlight the position of the maximum of the \ac{2D} \ac{FFT}, and the red dashed line corresponds the the \ac{IAW} dispersion relation of \cref{eq-MIAW}.}
   \label{fig-fft2D_noLr_zd}
 \end{figure}
 
@@ -94,13 +94,13 @@ However, this new wave seems to follow the same dispersion relation as in the up
 
 \Cref{fig-fft2D_Lr4_zd,fig-fft2D_Lr2_zd} show the \ac{2D} \ac{FFT} obtained with the radial losses in the downstream region.
 In the upstream region, the results are similar to the case without radial losses.
-We can see that for $L_R=4\,\centi\meter$
-
+We see that for $L_R=4\,\centi\meter$
+\inlinenote{Anne: manque fin de phrase ici + le commentaire pour la figure 6.23}
 
 \begin{figure}[hbtp]
   \centering
   \includegraphics[width=5in]{Boeuf_Lr4_FFT2D_y300_full}
-  \caption{\ac{2D} and \ac{1D} \ac{FFT} of the azimuthal electric field in the downstream region $z=z_d$ with $L_R=4\,\centi\meter$.  The black dotted lines highlight the position of the maximum of the \ac{2D} \ac{FFT}, and the red dash line corresponds the the \ac{IAW} dispersion relation of \cref{eq-MIAW}.}
+  \caption{\ac{2D} and \ac{1D} \ac{FFT} of the azimuthal electric field in the downstream region $z=z_d$ with $L_R=4\,\centi\meter$.  The black dotted lines highlight the position of the maximum of the \ac{2D} \ac{FFT}, and the red dashed line corresponds the the \ac{IAW} dispersion relation of \cref{eq-MIAW}.}
   \label{fig-fft2D_Lr4_zd}
 \end{figure}
 
@@ -123,7 +123,7 @@ To do so, we present in \Cref{fig-axial_fft1D} the axial evolution of the \ac{1D
   \includegraphics[width=\textwidth]{Boeuf_axila_evolution_fft1D_noLr}
   \includegraphics[width=\textwidth]{Boeuf_axila_evolution_fft1D_Lr4}
   \includegraphics[width=\textwidth]{Boeuf_axila_evolution_fft1D_Lr2}
-  \caption{Axial evolution of the \ac{1D} \ac{FT} on (left) the frequency and (right) the wavenumber for (top) no radial losses, (middle) $L_r=4\,\centi\meter$, and (bottom) $L_r=\,\centi\meter$ using the model of Boeuf. }
+  \caption{Axial evolution of the \ac{1D} \ac{FT} on (left) the frequency and (right) the wavenumber for (top) no radial losses, (middle) $L_r=4\,\centi\meter$, and (bottom) $L_r=2\,\centi\meter$ using the model of Boeuf. }
   \label{fig-axial_fft1D}
 \end{figure}
 
@@ -144,9 +144,9 @@ The azimuthal wavenumber $k_{\theta}$ is normalized by the local Debye length.
   \label{fig-axial_maxwave_normalized}
 \end{figure}
 
-We can see in \cref{fig-axial_maxwave_normalized} that the in the upstream region, the cases with radial losses ($L_R=2 and 4\,\centi\meter$) present similar waves characteristics, with higher frequency and wavenumber that the case without radial losses.
-However, in the upstream region the wave of maximum amplitude is the low frequency wave for both cases without losses and with $L_r=4\,\centi\meter$.
-On the other hand, the case $L_R=2\,\centi\meter$ shows a small discontinuity, but the wave characteristics are very close.
+We can see in \cref{fig-axial_maxwave_normalized} that the in the upstream region, the cases with radial losses ($L_R=2$ and $4\,\centi\meter$) present similar waves characteristics, with higher frequency and wavenumber than the case without radial losses.
+However, in the downstream region the wave of maximum amplitude is the low frequency wave for both cases without losses and with $L_r=4\,\centi\meter$.
+On the other hand, the case $L_R=2\,\centi\meter$ shows a small discontinuity, but the wave characteristics are very close to the wave in the upstream region.
 
 
 \subsection{Ion-trapping saturation } \label{subsec-boeuf_iontrapping}
