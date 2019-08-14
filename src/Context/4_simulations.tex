@@ -33,6 +33,44 @@ In the general electromagnetic case,
 \end{equation*}
 with $q$ the particle charge, $\vect{E}$ the electric field, and $\vect{B}$ the magnetic field.
 
+The distribution function of the stationary Boltzmann equation without collision, also known as the stationary Vlasov equation, is
+\begin{equation} \label{eq-Maxwellian}
+  f(\vect{v}) = N (\frac{m}{2 \pi k_B T})^{3/2} \exp \lp - \frac{q \phi + m v^2/2}{k_B T } \rp,
+\end{equation}
+with $k_B$ the Boltzmann constant, $T$ is the temperature of the particle population, and $\phi$ is the electric potential, defined as $\vect{E} = \grad \phi$, and $N$ is the density at the position where $\phi = 0$.
+\cref{eq-Maxwellian} is the Maxwell-Boltzmann distribution function in velocity.
+The unit of the temperature $T$ is the Kelvin, but in plasma physics, it is usual to us ${\rm T}$, defined as
+\begin{equation} \label{eq-T_def}
+  e {\rm T} = k_B T.
+\end{equation}
+The unit of ${\rm T}$ is therefore the Volt.
+The equivalence is $1 \,\volt \simeq 10^4 \,\kelvin$.
+\footnote{It is usual to find in the literature the temperature ${\rm T}$ expressed in electron-Volt eV.
+This is not coherent with the definition \cref{eq-T_def}, but mark the fact that the temperature is related to an energy via $k_B$. therefore, the reader needs not to be confused by the equivalence between the electron-Volt and the Volt.  }
+\nomenclature[Q]{\ensuremath{ \rm T}}{Temperature in Volt }
+\nomenclature[Q]{\ensuremath{ T}}{Temperature in Kelvin }
+
+We can write \cref{eq-Maxwellian} with the particle kinetic energy $\epsilon = \frac{1}{2} m v^2$ to defined the energy distribution function
+\begin{equation} \label{eq-Maxwellina_energy}
+  f_{\epsilon}(\epsilon) = N \frac{2 \sqrt{\epsilon}}{{k_B T}^{3/2} \sqrt{\pi}} \exp \lp- \frac{q \phi + \epsilon}{k_B T} \rp.
+\end{equation}
+The factor $\sqrt{\epsilon}$ in \cref{eq-Maxwellina_energy} appears because of the integration of the velocity distribution function $f$ over the three direction.
+Thus, it is convenient to use the energy probability function 
+\begin{equation} \label{eq-EPF}
+  f_P(\epsilon) = \frac{f_{\epsilon}}{\sqrt{\epsilon}}.
+\end{equation}
+
+We name the Maxwellian distribution function the distribution
+\begin{equation} \label{eq-Maxwelliantwo}
+  f_{\rm M}(\vect{v}) = n (\frac{m}{2 \pi k_B T})^{3/2} \exp \lp - \frac{ m v^2/2}{k_B T } \rp,
+\end{equation}
+with $n$ the density.
+One can show that the Maxwellian distribution function is the solution of the Boltzmann with only elastic collisions \citet{lieberman2005}.
+In one dimension, the Maxwellian distribution function becomes
+\begin{equation}
+  f_{\rm M, 1D}(v) =  n (\frac{m}{2 \pi k_B T})^{1/2} \exp \lp - \frac{ m v^2/2}{k_B T } \rp,
+\end{equation}
+
 \paragraph{Fluid equations \\}
 The description on the plasma in 7 dimensions (3 of space, 3 of velocity, and one of time) can complicate the resolution of the Boltzmann equation.
 If the precise description of $f$ is not needed, we can instead use the first moments of \cref{eq-boltzmann} on the velocity to obtain a set of simpler equations.
@@ -44,7 +82,6 @@ The first equation is obtained by integrating \cref{eq-boltzmann} over the veloc
 \end{align} 
 where $n=\iiint f d^3v$ is the density, $\vect{u} = \frac{1}{n} \iiint \vect{v} f d^3v$ is the mean velocity, and $S_{\rm iz}$ is the source term of particle due to ionization.
 \Cref{eq-conc} is the continuity equation for a given species.
-
 In a similar fashion, integrating the Boltzmann equation times the velocity and the kinetic energy gives the momentum conservation equation and the energy conservation equation, respectively.
 This set of equations is simpler, although it relies on additional hypotheses.
 
@@ -57,6 +94,19 @@ Hence, the energy conservation equation is not needed.
 Other possible closures are the adiabatic hypothesis (no heat flux, the \nth{3} moment of $f$), the polytropic law linking the evolution of $n$ with $T$, or the Fourier law for heat diffusion.
 % \inlinenote{Should we write the closes as equations ? $q = 0$, $T_e n_e ^{a}=cst$, etc. ?}
 
+Besides, one may be led to believe that the temperature is defined by the Maxwell-Boltzmann distribution \cref{eq-Maxwellian}, and therefore that the fluid set of equation equations need to use hypothesis that $f = f_{\rm M}$.
+As a matter of fact in this work, the temperature is defined by the second moment of the distribution function
+\begin{equation} \label{eq-defTe}
+  k_B T = \frac{m}{3 n} \iiint (\vect{v} - \vect{u})^2 f(\vect{v}) d^3v.
+\end{equation}
+It happens that in the case of the Maxwell-Boltzmann distribution, the quantity define by \cref{eq-defTe} is the denominator of the argument of the exponential in \cref{eq-Maxwellian}.
+
+The integral in \cref{eq-defTe} can be decomposed over the three directions $x,y$, and $z$ as
+\begin{equation} \label{eq-3Te}
+  k_B T = \frac{m}{3 n} \sum_{i=x,y,z} \iiint (v_i - u_i)^2 f(\vect{v}) d^3v = \frac{ T_x + T_y + T_z}{3},
+\end{equation}
+which defines the directed temperatures.
+A distribution is said anisotropic if the three temperatures differ.
 
 \subsection*{Plasma simulation models} \label{subsec-simulations}
 As there are two different models to describe the plasma, there are two different simulation approaches\string: the fluid simulations and the kinetic simulations.

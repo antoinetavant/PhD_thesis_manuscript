@@ -28,11 +28,11 @@ The $z$ component corresponds to the axial direction, normal to the simulation d
 \subsection{Radial-azimuthal domain description}
 
 The azimuthal direction is closed using a periodic boundary condition for both the particles and the fields.
-The radial direction is closed by walls.
-The walls can be grounded metallic, or a dielectric boundary can be modeled.
-They are described and discussed in \cref{sec-diel}.
-
-\inlinenote{Anne: tu ne dis rien de "technique" sur les conditions periodiques et de Dirichlet. Peut-etre rajouter une phrase quand meme, non?}
+Consequently, when a particle crosses the azimuthal boundary, it is moved to the other side of the domain.
+The plasma potential and the azimuthal electric field are continuous in the azimuthal direction.
+The radial direction is closed by the walls.
+They can be grounded metallic, or a dielectric boundary can be modeled.
+The physics related to the boundary conditions of the walls are described and discussed in \cref{sec-diel}.
 
 A constant and uniform magnetic field $B_0$ is imposed in the radial direction.
 This does not take into account the magnetic mirror, that has been shown to be important \citep{keidar2005,yu2008a,dominguez-vazquez2018}.

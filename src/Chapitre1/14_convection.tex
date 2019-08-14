@@ -6,6 +6,7 @@
   As introduced in the previous section, the \ac{2D} radial-azimuthal simulation does not model a priori the axial convection of the particles.
 
   \subsection{Lafleur's model of convection}
+  \inlinenote{In all this section: get $\theta$ back to $y$ instead of $x$}
 
     \citet{lafleur2016a} proposed a way to model the axial convection of the particles in a \ac{1D} purely azimuthal simulation.
     \Cref{fig-Fake_1d_1} shows a schematic illustration of the model.
@@ -25,7 +26,11 @@
     The new particle has a velocity following a Maxwellian flux distribution function of a given temperature.
     The azimuthal position of the particle is chosen uniformly at random.
 
-    \improvement{Add definition of the Maxwellian and maxellian flux VDF ?}
+    The Maxwellian flux distribution is the velocity distribution of the particles traversing a surface is the particles follow a Maxwellian distribution function. Thus we have
+    \begin{equation} \label{eq-Maxwflux} 
+      f_{\rm flux}(\vect{v}) = \vect{v} \cdot \vect{n} f_{\rm M}(\vect{v}),
+    \end{equation}
+    with $f_{\rm M}$ the Maxwellian distribution function defined in \cref{eq-Maxwellian} and $\vect{n}$ the vector normal to the surface.
 
     \begin{figure}[hbtp]
       \centering
@@ -99,7 +104,6 @@
       \caption{Effects of Lafleur's convection model for two different azimuthal lengths on the azimuthal electric field. ({\bf a}) No convection, $L_x=0.5$~cm,  ({\bf b}) convection modeled, $L_x=0.5$~cm,  ({\bf c}) No convection, $L_x=1$~cm,  ({\bf d}) convection modeled, $L_x=1$~cm. The colour of each plot is normalized to the maximum amplitude. Adapted from \citep{lafleur2016a}. }
       \label{fig-convection_numerical}
     \end{figure}
-    \inlinenote{Get $\theta$ back to $y$ instead of $x$}
     \FloatBarrier
     \citet{croes2017} observed similar behavior with the bidimensional  simulation.
     The author investigated the values of the azimuthal length, which presented physical and unphysical results

@@ -87,26 +87,72 @@
   \end{figure}
 
 
-  \subsection{Data used}
+  \subsection{Computational characteristics}
     In \ac{PIC} simulations, there are two kinds of data used\string:
     \begin{itemize}
-      \item Particles (electrons, ions, neutrals can be followed as well but not in \LPPic)
-      \item Mesh, also named fields (densities, electric and magnetic fields, and so on)
+      \item Particles (electrons and ions; neutrals can be followed as well but not in \LPPic),
+      \item Mesh, also named fields (densities, electric and magnetic fields, and so on).
     \end{itemize}
 
+
     \paragraph{Particles\\}
-    For each particle, are known its position $\vec{x}$ and its velocity $\vec{v}$.
+    For each particle, its position $\vec{x}$ and its velocity $\vec{v}$ are known.
     In most \ac{PIC}-\ac{MCC} simulations, the three directions of the velocity vector are followed in order to take into account scattering.
     It is abbreviated as \acs{3V}.
     The particle positions and velocity are not discretized, except to the numerical floating-point precision.
 
+    One numerical particle represents a large number of physical particle. 
+    Therefore they can be called \emph{superparticle} or \emph{macroparticle} in the literature.
+    We will simply call them particle, except if the context require a precision.
+    
     \paragraph{Fields\\}
     The fields are defined at the center of each cell of the mesh.
     The charge density $\rho$ is computed by depositing the particle on the mesh, using the Cloud-in-cell model \cite{birdsall1991}.
     The electric field at the position of the particle is also obtained by bilinear interpolation.
     The mesh dimension defines the dimension of the simulation.
     It is usual to find \acs{1D}\acs{3V} or \acs{2D}\acs{3V} \ac{PIC} simulations, for particles with 3 directions on the velocity but one (or two) dimensions in space.
-
+    
+    Early studies on the stability of the \ac{PIC} simulations gave conditions for the cell size and the time step as functions of the physical parameters \citep{birdsall1991,turner2013}
+    \begin{align}
+      \dt  \ope &\leq 0.2,  \label{eq-dt_limit} \\
+      \dx &\leq 0.5 \lde, \label{eq-dx_limit}
+    \end{align}
+    where 
+    \begin{equation} \label{eq-def_ope}
+      \ope =  \sqrt{\frac{e^2 n_e}{ \epsilon_0 m_e}}
+    \end{equation}
+    is the electron plasma frequency, and 
+    \nomenclature[Q]{\ensuremath{ \ope}}{  electron plasma frequency $\ope =  \sqrt{\frac{e^2 n_e}{ \epsilon_0 m_e}}$}
+    \begin{equation} \label{eq-def_lde}
+        \lde = \sqrt{\frac{ \epsilon_0 \Te}{e n_e}} 
+    \end{equation}
+    is the Debye length.\footnote{The Debye length usually refers to the spatial scale over with a charge is screened by the other charged particles. }
+    
+    The conditions \ref{eq-dt_limit} and \ref{eq-dx_limit} can be combined to produce 
+    \begin{equation} \label{eq-CFL}
+      \frac{\dt}{\dx}\sqrt{\frac{e \Te}{m_e}} \leq 0.4,
+    \end{equation}
+    which can be seen as a constraint on the thermal electron velocity that much be much less than one cell per time step.
+    Hence, condition \ref{eq-CFL} is usually referred as the Current condition.
+    
+    A third condition applies on the  the ratio between the superparticle density and the physical particle density. 
+    No universal rule exist, as a wide range of values may be appropriate to different context \citep{turner2006,turner2013}.
+    A general consensus in low temperature plasma agree on using approximately 100 numerical particles per cell.
+    
+    \subsection{Memory requirement}
+    Because of the particle discretization, the memory requirement for \ac{PIC} simulation can be tremendous.
+    For instance, we estimate here the numerical parameters of a \ac{2D} \ac{HET} simulation.
+    With a density $n_e = \sn{3}{17}\,\per\meter\cubed$, and an electron temperature $\Te=20\,\volt$, the Debye length is $\lde=\sn{6}{-5}\,\meter$.
+    The simulation of a square domain of $2\,\centi\meter$ aside needs a mesh of approximately 650 cells in each direction, hence more than $\sn{4}{5}$ cells in total.
+    With 100 electrons and 100 ions per cell, it is 85 million particles that are simulated.
+    
+    For every particles, we need to store at least the three values of position and the three values of velocity, thus 6 real number.
+    Using the double-precision floating-point format, it corresponds to approximately 400 bits per particles.
+    In total, around 33 billion bits, or 4 Go (gigaoctet) are needed to store the particle ! 
+    To give a reference to the reader, a modern laptop has a RAM of 8 Go.
+    Adding a thirst dimension of size 2 cm increases the number of cells to 300 millions, and the memory requirement for the particles to 2.5 Terabytes of memory.
+    
+    
     \subsection{Particle pusher}
     The interaction of the movement equation \cref{eq-Lor} is different for magnetized and non-magnetized particles.
     For non-magnetized particles, we use the leapfrog scheme \cite{birdsall1991}
@@ -160,8 +206,7 @@
     A direct solver, like the $LU$ decomposition, would require a large amount of memory to store the factorization matrices.
     On the other hand, as the time step is usually small in \ac{PIC} simulation, we expect the plasma potential $\phi$ not to change rapidly.
     Hence, an iterative solver using the previous solution as an initial guess seems more reasonable from both the memory storage and the computational time.
-    
-    \inlinenote{Anne: dire ici dans quelle section, tu vas en reparler}
+    The choice of the Poisson solver is discussed later in \cref{sec-lppic}.
     
 
     
