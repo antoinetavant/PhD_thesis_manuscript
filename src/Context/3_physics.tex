@@ -8,23 +8,16 @@ As introduced before, in this Ph.D. manuscript, we focus on 2 of them : the elec
 
 \subsection*{Cross-field transport of the elections}
 \addcontentsline{toc}{subsection}{Cross-field transport of the elections}
-
-\inlinenote{Anne:  j'ai l'impression que tu pourrais rajouter quelques phrases avec des references ici pour expliquer "qu'est ce qui est compris et pas compris". 
-Si je caricature, en lisant ton paragraphe, tu n'expliques pas pourquoi c'est important de travailler sur ca maintenant ;-)
-Il y a eu plein de chose depuis Meezan...tu peux mentionner ici le travail de Jorns.}
-\inlinenote{Anne: si tu regades tes deux autres paragraphes suivants, tu justifies mieux ce que tu fais dans cette these par rapport a la connaissance actuelle ;-) Il suffit juste de rajouter 1 phrase ou 2 ici ;-)}
-\inlinenote{Anne: voir note page 45, je pense que tu peux ramener une partie du texte ici et y faire reference dans le chapitre 1. Il te suffira de rappeler dans le chapitre 1 les expressions que tu utilises et comment "techniquement" tu les calcules en PIC}
-
   \label{sec-mob}
+  
   As a first approximation, the electrons are usually supposed frozen by the magnetic field.
   But in fact, they present a so-called cross-field transport toward the anode.
   For instance, because of collisions, the electrons can move from one magnetic line to another.
   This leads to a transport in the direction of the electric field.
-  
   This transport can be expressed considering the electron momentum conservation equation \citep{lafleur2016a}\string:
-  \begin{equation} \label{eq-elec_momentum_mobility}
-    \partial_t(m_e n_e \vect{v}_{de}) + \grad \cdot (m_e n_e  \vect{v}_{de} \vect{v}_{de}) = q_e n_e ( \vect{E} + \vect{v}_{de} \times \vect{B}) - \grad \cdot \vect{\Pi}_e - m_e \nu_m n_e \vect{v}_{de},
-  \end{equation}
+  \begin{align*} %\label{eq-elec_momentum_mobility}
+    \partial_t(m_e n_e \vect{v}_{de}) + \div(m_e n_e  \vect{v}_{de} \vect{v}_{de})  = & q_e n_e ( \vect{E} + \vect{v}_{de} \times \vect{B})  &&\text{(Lorenz force)}\\ &- \div \vect{\Pi}_e &&\text{(pressure gradient)}\\ & - m_e \nu_m n_e \vect{v}_{de}, &&\text{(collisions)}
+  \end{align*}
   where $m_e, q_e$, $n_e$, $\vect{v}_{de}$, and $\vect{\Pi}_e $ are the electron mass, charge, density, drift velocity and pressure tensor, and $\nu_m$ is the electron-neutral momentum transfer collision frequency.
   Ignoring the electron inertia and the pressure term, and with $\vect{B} = B_0 \vect{e}_r$, we can write the conservation equation projected on the axial and azimuthal direction
   \begin{equation} \label{eq-elec_momentum_mobility2}
@@ -38,13 +31,44 @@ Il y a eu plein de chose depuis Meezan...tu peux mentionner ici le travail de Jo
     \mobcla = \frac{n_e v_{dez}}{n_e E_z} = \frac{ \frac{\norm{q}}{m \nu_m}}{1 + \frac{\oce^2}{\nu_m}}
   \end{equation}
   with $\oce= \frac{\norm{q}B_0}{m}$ the cyclotron frequency.
-  
-  
+  \nomenclature[Q]{\ensuremath{ \oce}}{ Electron cyclotron frequency $\oce=\frac{e B}{m_e}$}
+  \nomenclature[Q]{\ensuremath{ \nu_m}}{  electron-neutral momentum transfer collision frequency}
+  At the exit plane, the classical mobility predicts a mobility of the order of $\mobcla=0.001-0.01\mobunit$ \citep{adam2008a}.
+    
   However, it has been observed in experiments by \citet{meezan2001} that the electron cross-field transport in the axial direction of the \ac{HET} is higher than $\mobcla$.
   Different phenomena have been proposed to explain the origin of this \emph{anomalous} transport.
   Two phenomena are supposed to be mainly responsible for this enhanced mobility \citep{croes2017}\string: the azimuthal instability and the near-wall mobility due to electron emission.
   A significant part of the work of this Ph.D. thesis concerns the quantitative comparison of the relative importance of the two phenomena.
-
+  
+  The mobility induced by the azimuthal instability has first been observed in \ac{PIC} simulations by \citet{adam2004}, since then, it has been reproduced several times \citep{adam2008a,heron2013,lafleur2016a,croes2017,boeuf2018,taccogna2019}.
+  The kinetic approach allowed \citet{lafleur2016a} to propose a modified mobility due to the oscillations of the electron density and the azimuthal electric field of the \ac{ECDI}.
+  This effective mobility obtained is 
+  \begin{equation} \label{eq-defmobeff}
+    \mobeff = \mobcla \lp 1 - \frac{\oce}{\nu_m}  \frac{< \dne \dEt >_{\theta} }{n_0 E_z}   \rp
+  \end{equation}
+  with \dne{} and \dEt{} the fluctuations in the azimuthal directions of the electron density and azimuthal electric field, respectively, the operator $< . >_{\theta}$ is the average in the azimuthal direction, and $n_0$ is the average plasma density.
+  In the case where $\nu_m << \oce$, \cref{eq-defmobeff} can be simplified to 
+  \begin{align} 
+    \mobeff &= \frac{\frac{e}{m_e} \nu_m}{\oce^2} \lp 1 - \frac{\oce^2}{\nu_m}  \frac{< \dne \dEt >_{\theta} }{n_0 E_z}   \rp \nonumber \\
+    &= \frac{< \dne \dEt >_{\theta} }{n_0 E_z}   \frac{1}{B_r} \label{eq-mobeffsimple}
+  \end{align}
+  which shows that the instability enhances the electron axial mobility in a wave similar to an $E \times B$ drift.
+  The electric field $E_{\theta}$ oscillates and presents a zero mean value, but the average effect on the electron transport is not zero if the correction between \dEt{} and \dne{} is not zero.
+  
+  The amplitude of the instability at steady-state depends on the saturation mechanisms and the convection of the wave.
+  Studies have been  undertaken very recently but more work is still needed to derive expressions of the effective cross-field mobility that could be used in fluid models \citep{boeuf2017}.
+  Another approach has been recently proposed by \citet{jorns2018}.
+  The author compared the experimental measurements of four different \ac{HET} with a radial-axial fluid code, Hall2De.
+  Following a data-driven approach, the author proposes five models of anomalous transport.
+  These models uses local plasma characteristics, such as the ion sound speed $c_s$, the ion velocity $u_i$, the electron velocity $u_e$, and the Debye length $\lde$.
+  Unfortunately, the experimental dataset is sparse, hence the domain of validity of the model is difficult to estimate.
+  More precisely, the four \ac{HET} used operate between 1 and 6 \kilo\watt, thus the model may not be usable for smaller thruster.
+  
+  \vspace{1em}
+  The other mechanism enhancing the electron mobility is the secondary electron emission, responsible for a near-wall conductivity \citep{morozov1972,morozov2001, barral2003a}.
+  The coupling between the instability and the electron emission has first been studied in \citet{heron2013}, but the mechanism is still not clearly understood.
+  
+  Consequently, a better understanding of the electron cross-field mobility, the azimuthal instability, and the secondary electron emission is required before being able to model realistically the \ac{HET}.
   
   \subsection*{Electron drift and azimuthal instability in the HETs}
   \addcontentsline{toc}{subsection}{Electron drift and azimuthal instability in the HETs}

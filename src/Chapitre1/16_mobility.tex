@@ -3,14 +3,8 @@
 \section{Study of electron cross field transport with a 2D radial-azimuthal PIC simulation}
   \label{sec-transport}
   
-  \inlinenote{Rq de Anne: Mettre cette section sur la mobilite dans Chapter 0. Reponse: Ok, peut etre pas toutes les formules...? }
-  \inlinenote{Anne: Revoir la transition, et mettre ici que les calcules numerique. L'état de l'art peut être ajouter au ch 0.}
-  \inlinenote{Anne: transition ici à revoir....c'est un peu brutal : jusqu'ici on te suit car tu pars d'une description generale du PIC pour parler plus en detail des parois (Poisson, emission secondaire, gaine...)
-Je pense que la premiere phrase de la 1.8 pourrait etre un truc du genre...
-A key topic of my PhD work is to study the impact of surface processes on the plasma discharge and in particular on the electron mobility. }
-  
-  \inlinenote{Anne: je mettrai une grande partie du texte de cette page dans le chapitre 0 et je rappellerai ici juste les expressions de mu eff, mu classic, mu sat...et dire en 2 phrases comment ils sont calculés en PIC.}
-  
+
+  A key topic of my PhD work is to study the impact of surface processes on the plasma discharge and in particular on the electron mobility.   
   The electron mobility in the axial direction $\mobe$ is defined as the ratio between the mean velocity $u$ and the electric field
   \begin{equation} \label{eq-mudef}
     \mobe = \frac{u_{e,z}}{E_z}
@@ -18,30 +12,22 @@ A key topic of my PhD work is to study the impact of surface processes on the pl
   with $u_{e,z}=<v_{e,z}>$ the electron mean velocity.
   \nomenclature[Q]{\ensuremath{ u_{e,z}}}{Electron mean velocity in the axial direction\string: $u_{e,z} = < v_{e,z}>$}
   In the \ac{PIC} simulations, \cref{eq-mudef} can be used directly to compute $\mobpic$.
+  As introduced before, in the \ac{PIC} simulation the velocity is shifted by half a time step compared to the position.
+  Thus, a special attention must be given in to compute $\mobpic$.
   
   In the classical drift diffusion theory of the electron mobility transverse to a magnetic field, the mobility is due to collisions as seen in \cref{eq-mobility} 
   \begin{equation} \label{eq-mobclas}
     \mobcla = \frac{e}{m_e} \frac{\nu_m}{\nu_m^2 + \oce^2}
   \end{equation}
   with $\oce=\frac{e B}{m_e}$ the electron cyclotron frequency and $\nu_m$ the electron-neutral momentum transfer collision frequency.
-  \nomenclature[Q]{\ensuremath{ \oce}}{ Electron cyclotron frequency $\oce=\frac{e B}{m_e}$}
-  \nomenclature[Q]{\ensuremath{ \nu_m}}{  electron-neutral momentum transfer collision frequency}
-  
-  At the exit plane, the classical mobility predicts a mobility of the order of $\mobcla=0.001-0.01\mobunit$ \citep{adam2008a}.
-  
-  The kinetic approach allowed \citet{lafleur2016a} to propose a modified mobility due to the oscillations of the electron density and the azimuthal electric field of the \ac{ECDI}.
-  This effective mobility obtained is 
-  \begin{equation} \label{eq-defmobeff}
-    \mobeff = \mobcla \lp 1 - \frac{\oce}{\nu_m}  \frac{< \dne \dEt >_{\theta} }{n_0 E_z}   \rp
+  in order to evaluate \cref{eq-mobclas},  $\nu_m$ is measured in the \ac{PIC} simulations at every cell.
+
+  The mobility induced by the instability when neglecting the collision , as introduced in \cref{sec-mob}, is 
+  \begin{equation} \label{eq-eq_mobeffsimple_two}
+      \mobeff = \frac{< \dne \dEt >_{\theta} }{n_0 E_z}   \frac{1}{B_r}
   \end{equation}
-  with \dne{} and \dEt{} the fluctuations in the azimuthal directions of the electron density and azimuthal electric field, respectively, the operator $< . >_{\theta}$ is the average in the azimuthal direction, and $n_0$ is the average plasma density.
-  In the case where $\nu_m << \oce$, \cref{eq-defmobeff} can be simplified to 
-  \begin{align} 
-    \mobeff &= \frac{\frac{e}{m_e} \nu_m}{\oce^2} \lp 1 - \frac{\oce^2}{\nu_m}  \frac{< \dne \dEt >_{\theta} }{n_0 E_z}   \rp \nonumber \\
-    &= \frac{< \dne \dEt >_{\theta} }{n_0 E_z}   \frac{1}{B_r} \label{eq-mobeffsimple}
-  \end{align}
-  which shows that the instability enhances the electron axial mobility in a wave similar to an $E \times B$ drift.
-  The electric field $E_{\theta}$ oscillates and presents a zero mean value, but the average effect on the electron transport is not zero if the correction between \dEt{} and \dne{} is not zero.
+  The correlation term $< \dne \dEt >_{\theta}$ can be computed in the \ac{PIC} simulation at every radial position.
+  Using its radial profile, we will be able to determine where the instability enhances the electron mobility the most.
   
   In  \citet{lafleur2016a}, the authors present the instability effect as an electron-ion friction force $\Rei = - e < \dne \dEt >_{\theta}$.
   Under the assumption that the saturation of the instability is mainly due to ion trapping, the electron-ion friction force can be simplified in the \ac{2D} geometry of the simulation to
