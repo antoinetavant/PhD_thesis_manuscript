@@ -51,6 +51,9 @@ The simulation proposed by \citet{coche2014} models self-consistently the ioniza
 The simulation domain geometry is realistic, with a channel length $L_{chanel} = 2.5\,\centi\meter$ for a total axial length of the simulation domain $L_z=4\,\centi\meter$.
 Hence, all of the chamber and a part of the near plume is simulated.
 
+\renewcommand\subfigurewidth{0.4\textwidth}
+
+
 \begin{figure}[hbtp]
   \centering
   \begin{tabular}{cc}
@@ -113,28 +116,29 @@ When an ion crosses the boundary, it is removed from the simulation.
 The electrons should be reflected by a sheath that results in an electron flux absorbed at the wall equal to the ion flux.
 We suppose that the sheath is infinitely thin, so that the wall corresponds to a partially reflecting surface.
 Two approaches have been investigated to model efficiently the effect of the sheath.
-\paragraph{Model 1 for the  radial losses\string: flux equality\\}
-The first approach directly imposes the flux equality by absorbing every time step the same number of electrons as ions.
-The electrons crossing the radial boundaries are sorted by their energy, and the electrons absorbed are the morst energetic ones.
-The others are reflected elastically.
-Due to the small number of ions crossing the boundary, and for performance issues, we choose to impose the flux equality averaged over the domain of the CPU.
-As 360 CPU domains are used to decompose the whole simulation domain, this allows a partial locality of the flux equality. 
 
-\paragraph{ Model 2 for the radial losses\string: sheath model\\}
 
-The second approach defines the potential drop at the walls by  using  a sheath model.
-Hence, the screening of the electrons depends on the electron temperature.
+\paragraph{ Model 1 for the radial losses\string: sheath model\\}
+The first approach set the potential drop at the walls by using  a sheath model, such as the one in \cref{sec-sheath}, or in \cref{ch-3,ch-4}.
+The ions would be absorbed by the radial boundary, as well as the electrons of energy higher than the sheath potential.
+Electrons with smaller energy are reflected spectacularly.
+
 This model is more physical, but it would allow local charge imbalance.
 Moreover, as there is no electric field self-consistently computed in the radial direction, the plasma cannot react to such imbalances.
 Hence, we chose not to use it.
 
+\paragraph{Model 1 for the  radial losses\string: flux equality\\}
+The second approach directly imposes the flux equality by absorbing every time step the same number of electrons as ions.
+The electrons crossing the radial boundaries are sorted by their energy, and the electrons absorbed are the most energetic ones.
+The others are reflected elastically.
+Due to the small number of ions crossing the boundary, and for performance issues, we choose to impose the flux equality averaged over the domain of a CPU.
+As 360 CPU domains are used to decompose the whole simulation domain, this allows a partial locality of the flux equality. 
 \vspace{1ex}
-While the sheath can be supposed infinitely fin, the ion flux to the wall depends on the pre-sheaths, which display an ambipolar electric field that accelerates the ions to the ion sound speed at the sheath edge.
-Since the development and validation of a pre-sheath model in the radial model required more ressources than available, there is no such pre-sheath model present in the results presented in this chapter.
-
+While the sheath can be supposed infinitely fin, the ion flux to the wall depends on the pre-sheaths, which usually display an ambipolar electric field that accelerates the ions to the ion sound speed at the sheath edge.
+Since the development and validation of a pre-sheath electric field in the radial model required more resources than available, there is no such pre-sheath model present in the results presented in this chapter.
 Consequently, the ion flux to the wall is a thermal flux, which is much smaller than the flux created by a pre-sheath.
 Hence, using a realistic radial length  of the order of 1 or $2\,\centi\meter$, the particle losses are underestimated.
-One solution is to reduce the radial length, so that the particle losses are closer to physical losses.
+One solution is to reduce the radial length, so that the particle flux are closer to physical losses.
 
 In the results given in the next sections are obtained with modeling the radial losses in all of the simulation domain.
 This is done in order not to introduce a discontinuity, as well as to increase the impact of the radial losses on the simulation results.
