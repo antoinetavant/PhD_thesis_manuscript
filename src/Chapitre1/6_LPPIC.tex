@@ -26,10 +26,11 @@ with $\alpha$ the proportion of the task that is parallel, and $s$ the speedup o
 A perfectly parallel code has a speedup $S=s$.
 
 In \cref{fig-strongperfo} are shown the speedup for the overall simulation, as well as the main functions of the \ac{PIC} algorithm (Charge deposition to the mesh, Particle pusher, Monte Carlo Collision and the Poisson solver).
-The scalability test is realized over two cases. 
+The scalability test is realized over two \ac{2D} radial-azimuthal cases. 
 The bigger case uses a mesh of $1000\times1024$ cells with $140$ particles per cell, which corresponds to a typical simulation case.
 Unfortunately, this case cannot be run with less than 240 CPUs because of the maximum memory disposable per CPU. 
-Hence, we use a case 4 times smaller to test fewer number of CPU.
+Hence, we use a case four times smaller to test fewer number of CPU.
+The simulation is run over 2000 time steps.
 \inlinenote{Anne: mettre precisement les infos sur ces 2 cas-tests en annexe...serait interessant d'avoir precisement les infos si on doit les refaire dans une prochaine these}
 \begin{figure}[hbtp]
   \centering
@@ -37,8 +38,7 @@ Hence, we use a case 4 times smaller to test fewer number of CPU.
   \caption{Strong scalability profile of \LPPic with a small and a large job on the Cluster Occigen (CINES). In addition to the overall performance, the profiles of the main sub-functions of the \ac{PIC} loops are given. }
   \label{fig-strongperfo}
 \end{figure}
-\inlinenote{Anne: peut-etre rajouter cas 1 et 2 sur la figure pour eviter la confusion...(mais lisible comme ca)}
-\inlinenote{Anne: test sur 1 iteration? (a mettre dans l'annexe)}
+
 
 We can see that the overall performance of the code is very good, as it scale as if it is parallelized at 91\% from Amdahl's law.
 Most of the sub-functions are much better, but the Poisson solver does not scale at all.

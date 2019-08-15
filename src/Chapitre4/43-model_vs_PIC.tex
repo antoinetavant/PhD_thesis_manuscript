@@ -59,7 +59,7 @@
     The regime {\bf II} is characterized by the presence of oscillations between two meta-stable regimes {\bf III} and {\bf I}, one with a low emissivity and the other with a high emissivity.
     \Cref{fig-long_time} shows the temporal evolution of the electron temperature and the plasma potential relative to the wall for $\crover=45\,\volt$.
     The electron temperature is computed over the whole electron population in the \ac{PIC} simulations.
-    Both the radial temperature $\Te_{,R}$ and the total and averaged, temperature $\Te$ are shown.
+    Both the radial temperature $\Te_{,R}$ and the total temperature $\Te$ are shown (see \cref{eq-3Te} for their definition).
     The plasma potential $\dphi$ shown is measured at the center of the radial direction of the simulation, averaged over the azimuthal direction.
     
     
@@ -69,10 +69,10 @@
         \subfigure{long_time_dphi}{a}{20,20} &
         \subfigure{long_time_Te}{b}{20,20} \\
       \end{tabular}
-      \caption{Temporal evolution of ({\bf a}) the plasma potential $\dphi$ and ({\bf b}) the electron temperature.}
+      \caption{Temporal evolution of ({\bf a}) the plasma potential $\dphi$ and ({\bf b}) the electron temperatures\string: $\Te_{,R}$ is the radial temperature, and $\Te$ is the total temperature.}
       \label{fig-long_time}
     \end{figure}
-    \inlinenote{Anne: define the two electron temperatures in the caption}
+
     
     We clearly see in \cref{fig-long_time} the quasi-periodic oscillations between the two states.
     We observe that the electron temperature is slightly anisotropic, with the radial temperature smaller than the axial temperature.
@@ -117,7 +117,7 @@
       \tau_i = \frac{2 \pi}{\opi} = 0.1 \,\micro\second
     \end{equation}
     
-    \inlinenote{Ha bah en fait non ! Voir avec le temps pour le temps de formation de la pres-gaine via le time-of-flight des ions. \\ Anne: a rediscuter....je pense que l'hypothèse stationnaire peut effectivement etre utilisée pour expliquer les ecarts}
+    \unsure{Antoine: Ha bah en fait non ! Voir avec le temps pour le temps de formation de la pres-gaine via le time-of-flight des ions. \\ Anne: a rediscuter....je pense que l'hypothèse stationnaire peut effectivement etre utilisée pour expliquer les ecarts}
     
     The sheath oscillations of regime {\bf II} have been observed in \citet{croes2017} with three different ion masses: xenon, krypton and argon.
     The results are shown in \cref{fig-RSO_altern}.

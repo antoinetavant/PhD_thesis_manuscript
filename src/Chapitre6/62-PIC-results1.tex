@@ -44,8 +44,6 @@ The results  obtained with three different radial models for the simulation case
 The differences in $E_z$ are small, but we can still distinguish that the amplitude of $E_z$ is reduced with the increased radial losses.
 The electron density $n_e$ shown in \cref{fig-boeuf_axialone}.{\bf b} is almost not affected, except in for $z>1\,\centi\meter$, where the electron losses at the wall can be seen.
 
-\inlinenote{Anne: tu as dit quelquepart que tu mettais des pertes radiales pour toutes les valeurs de z et pas seulement dans le canal?}
-
 \begin{figure}[hbtp]
   \centering
   \begin{tabular}{cc}
@@ -144,17 +142,20 @@ The electron power gain is due to Joule heating
     \vect{P_{\rm J}} = \vect{J_e} \cdot \vect{E},
 \end{equation}
 with $\vect{J_e}$ the electron density current and $\vect{E}$ the electric field.
-\Cref{fig-epower_radial} shows the mean Joule heating in the radial direction $\bar{P_{\rm J, R}} = < J_{e, R} E_R >$, and the product of the mean quantities $< J_{e, R}>  < E_R >$.
+\Cref{fig-epower_radialone} shows the radial profiles of the electron (and ion) current density $< J_{e, R}>$ and the radial electric field $ < E_R >$, averaged in the azimuthal direction.
+The current density increases linearly with the radial position.
+This is due to the artificial uniform injection of particles that compensates the radial losses (see \cref{sec-bidimentionnal_simulation} for more details).
+
 
 \begin{figure}[hbtp]
   \centering
   \includegraphics[width=\textwidth]{R_joule_heating_one}
-  \caption{Electron current and radial electric field in the Radial-azimuthal simulations }
+  \caption{Radial profiles averaged in the azimuthal direction of (left) the electron and ion current densities and (right) radial electric field in the radial-azimuthal \ac{PIC} simulation presented in \cref{ch-2}. }
   \label{fig-epower_radialone}
 \end{figure}
 
-\inlinenote{Anne: je ne vois pas ou tu parles de cette figure dans le texte...}
-
+\Cref{fig-epower_radial} shows the mean Joule heating in the radial direction $\bar{P_{\rm J, R}} = < J_{e, R} E_R >$, and the product of the mean quantities $< J_{e, R}>  < E_R >$.
+The product $< J_{e, R}>  < E_R >$ is close to zero , except in the sheaths.
 
 \begin{figure}[hbtp]
   \centering

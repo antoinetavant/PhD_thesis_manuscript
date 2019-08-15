@@ -2,7 +2,7 @@
 
 \documentclass[
    a4paper,	%Pour papier A4
-   12pt,		%Taille de la police 12
+   11pt,		%Taille de la police 12
    twoside,	%recto-verso
    headinclude, headsepline, plainheadsepline,
    bibliography=totoc, toc=listof,
@@ -27,12 +27,12 @@ structure/structure,%
  structure/lists,%
  Context/0_concepts,%
  Chapitre1/1-introduction,%
- % Chapitre2/2-mean_values,%
- % Chapitre3/3-non_isothermal_sheath,%
- % Chapitre4/4-polytropic_SEE,%
- % Chapitre5/5-ECDI, %
- % texfiles/1ere,%
- % Chapitre6/6-Z-theta, %
+ Chapitre2/2-mean_values,%
+ Chapitre3/3-non_isothermal_sheath,%
+ Chapitre4/4-polytropic_SEE,%
+ Chapitre5/5-ECDI, %
+ texfiles/1ere,%
+ Chapitre6/6-Z-theta, %
  }
 
  
@@ -51,12 +51,14 @@ structure/structure,%
 {Chapitre6/figure/}%
 }  % Location of the graphics files (set up for graphics to be in PDF format)
 
-\geometry{  % the margins
-	left=26mm,
-	top=30mm,
-	right=16mm,
-	bottom=30mm
-}
+% \geometry{  % the margins
+% 	left=26mm,
+% 	top=30mm,
+% 	right=16mm,
+% 	bottom=30mm
+% }
+
+
 
 \SIunits[cdot]
 \SIunits[thickqspace]
@@ -67,6 +69,15 @@ structure/structure,%
 
 \include{texfiles/1ere}
 
+\newgeometry{twoside,
+  bindingoffset=5mm, 
+  includehead, 
+  heightrounded=true, 
+  hmarginratio=1:2, 
+  vmarginratio=10:15,
+  textwidth=129mm
+   }
+   
 \frontmatter
 %dedicace
 % \include{dedicace}

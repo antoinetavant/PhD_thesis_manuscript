@@ -44,7 +44,6 @@ Two approaches have been followed:
   \item the approach of \citet{boeuf2017}, using a forced ionization source term.
 \end{enumerate} 
 
-\inlinenote{Remark the Figures (here, it only is screen-shots !!)}
 \paragraph{Coche's simulation case \\}
 
 The simulation proposed by \citet{coche2014} models self-consistently the ionization with the \ac{MCC} algorithm, as well as the neutral gas flow by supposing a constant velocity.
@@ -114,16 +113,15 @@ When an ion crosses the boundary, it is removed from the simulation.
 The electrons should be reflected by a sheath that results in an electron flux absorbed at the wall equal to the ion flux.
 We suppose that the sheath is infinitely thin, so that the wall corresponds to a partially reflecting surface.
 Two approaches have been investigated to model efficiently the effect of the sheath.
-\inlinenote{Anne: Je ferai 2 paragraphes avec un titre:
-Model 1 for the "fake R" direction : flux equality}
-
+\paragraph{Model 1 for the  radial losses\string: flux equality\\}
 The first approach directly imposes the flux equality by absorbing every time step the same number of electrons as ions.
 The electrons crossing the radial boundaries are sorted by their energy, and the electrons absorbed are the morst energetic ones.
 The others are reflected elastically.
 Due to the small number of ions crossing the boundary, and for performance issues, we choose to impose the flux equality averaged over the domain of the CPU.
 As 360 CPU domains are used to decompose the whole simulation domain, this allows a partial locality of the flux equality. 
 
-\inlinenote{Anne: Model 2 for the "fake R": sheath model}
+\paragraph{ Model 2 for the radial losses\string: sheath model\\}
+
 The second approach defines the potential drop at the walls by  using  a sheath model.
 Hence, the screening of the electrons depends on the electron temperature.
 This model is more physical, but it would allow local charge imbalance.
@@ -138,3 +136,5 @@ Consequently, the ion flux to the wall is a thermal flux, which is much smaller 
 Hence, using a realistic radial length  of the order of 1 or $2\,\centi\meter$, the particle losses are underestimated.
 One solution is to reduce the radial length, so that the particle losses are closer to physical losses.
 
+In the results given in the next sections are obtained with modeling the radial losses in all of the simulation domain.
+This is done in order not to introduce a discontinuity, as well as to increase the impact of the radial losses on the simulation results.

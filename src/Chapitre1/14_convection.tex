@@ -266,9 +266,9 @@
       
       The mathematical development of \cref{sec-mathnoise} has been done in \ac{1D}.
       We can legitimately wonder if the results  can be extended directly to a \ac{2D} domain.
-      A mathematical definition of $\aziE_{, 1}$ is more difficult, as we have, neglecting the dielectric layers,
+      A mathematical definition of $\aziE_{, 1}$ i \ac{2D} is more difficult, as we have, neglecting the dielectric layers,
       \begin{equation} \label{eq-aziE}
-        \aziE_{, 1} = \partial_{\theta} \phi_1 \text{ such that } \grad \cdot \grad \phi_1 = - \frac { \N(0, \stdconv)}{\epsilon_0} \text{ following the \ac{BC}}.
+        \aziE_{, 1} = -\partial_{\theta} \phi_1 \text{ such that } \grad \cdot \grad \phi_1 = - \frac { \N(0, \stdconv)}{\epsilon_0} \text{ following the \ac{BC}}.
       \end{equation}
       The \ac{BC}s are
       \begin{itemize}
@@ -281,14 +281,25 @@
         &\phi(\theta = 0)= \phi(\theta = L_{\theta}) , &\forall r \label{eq-BC2}
       \end{align}
       
-      Solving \cref{eq-aziE,eq-BC1,eq-BC2} analytically is much more difficult that the \ac{1D} development because of the Dirichlet \ac{BC}.
+      Solving \cref{eq-aziE} with the conditions \cref{eq-BC1,eq-BC2} analytically is much more difficult that the \ac{1D} development, because of the Dirichlet \ac{BC}.
       \nomenclature[N]{Dirichlet Boundary condition\string:}{ a type of boundary conditions for which the field is fixed. For instance for grounded electrodes on the plasma potential\string: $\phi = 0$}
       However, we can investigate it numerically, by solving \cref{eq-aziE} for a given random source term.
-      Using a Monte Carlo approach, the results are averaged 50 times in order to better observe the mean behavior in respect to the noise (i.e. increasing signal to noise ratio).
-      \inlinenote{Anne: JJ'ai un peu de mal sur cette section 1.5.6. Honnetement, je pense que c'est parce que je ne comprends pas bien ce que tu as pris comme conditions. 
-Je pense que peut-etre ca serait plus clair si tu expliquais plus precisement ce que tu as simulé d'abord en spatial avant de passer aux DFT. }
+      Using a Monte Carlo approach, we average the results  200 times to better observe the mean behavior in respect to the noise (i.e. increasing signal to noise ratio).
+      For each computation, a normalized source term $\rho_1 = \N(0, 1)$ is generated over a \ac{2D} domain, then the \ac{2D} Poisson equation is solved numerically\footnote{The SOR algorithm is used in this MC calculation. The iterations are stopped using a relative tolerance of $\sn{2}{-6}$ on the mean square error.} to obtain $\phi_1$, and the azimuthal electric field $\aziE_{, 1} =- \partial_{\theta} \phi_1 $ is computed.
+    
+      \begin{figure}[hbtp]
+        \centering
+        \includegraphics[width=\textwidth]{2D_MC_noise.png}
+        \caption{Results for one case used in the Monte Carlo calculation with 100 cells in radial direction and 500 cells in the azimuthal direction, with (left) the normalized source term $\rho = \N(0, 1)$, (center) the azimuthal electric field, and (right) the plasma potential. }
+        \label{fig-one}
+      \end{figure}
       
-      \Cref{fig-dftLr} shows the \ac{DFT} of the source term \[\rho_1 = \N(0, \stdconv),\] the resulting azimuthal electric field $\aziE_{, 1}$ and plasma potential $\phi$ computed on the centerline of the simulation domain in the radial direction, for three different radial lengths expressed in number of cell $N_x$.
+      One typical result is shown in \cref{fig-one}.
+      We can see the impact of the radial Dirichlet boundary conditions, \cref{eq-BC1}, on the potential $\phi_1$ induced by the noise.
+      The potential mostly oscillates in the azimuthal direction, and its amplitude is larger on the centerline between the walls.
+      A similar behavior is observed for the azimuthal electric field.      
+      
+      \Cref{fig-dftLr} shows the \ac{DFT} of the source term $\rho_1$, the resulting azimuthal electric field $\aziE_{, 1}$ and plasma potential $\phi_1$ computed on the centerline of the simulation domain, for three different radial lengths expressed in number of cell in the radial direction $N_x$.
       Is also shown the "equivalent" source term $\rho_{\rm eq}$, which is the source term that would give the frequency spectra of $\aziE_{, 1}$ observed in a \ac{1D} domain
       
       \begin{equation} \label{eq-equirho}
@@ -296,24 +307,23 @@ Je pense que peut-etre ca serait plus clair si tu expliquais plus precisement ce
       \end{equation}
       The results are given for different radial lengths $N_x=15,50 \text{ and } 200$, while the azimuthal length $N_y=200$ is kept constant.
       We can see that the plasma potential and the electric field show larger amplitudes for small wave numbers (large wavelength) compared to large wave numbers in the three cases.
-      However, the amplitude of the smaller wave numbers is affected.
+      However, the amplitude of the smallest wave numbers is affected.
       In the cases of small radial length ($N_x=15 \text{ and } 50$), the spectra of the electric field is not monotonic.
       This can be explained by the Dirichlet \ac{BC}s that {\it pins down} the fluctuation of the plasma potential.
       
+      To compare the results to the purely azimuthal \ac{1D} case, \cref{fig-dftLr} shows the frequency spectra of the equivalent source term $\rho_{\rm eq}$.
+      We see that $\rho_{\rm eq}$ is always smaller than $\rho_1$, and is significantly reduced in the small and large wavenumber.
       However, even though the amplitude is reduced in \ac{2D} with small radial direction compared to a \ac{1D} model, we still observe large amplitude of small wave number oscillations in both the electric field and the plasma potential.
+      In means that the \ac{2D} domain changes significantly the impact of the noise.
       Hence, the conclusions of  \cref{sec-mathnoise} derived in \ac{1D} can be legitimately used for \ac{2D} domains.
-      
-      
       
       \begin{figure}[hbtp]
         \centering
-        \includegraphics[width=\textwidth]{effect_Lr.pdf}
-        \caption{\ac{DFT} of the source term $\rho_1 = \N(0, \stdconv)$, the resulting azimuthal electric field $\aziE_{, 1}$ and plasma potential $\phi$ computed on the centerline of a radial-azimuthal simulation, and the Equivalent \ac{1D} source term defined by \cref{eq-equirho}. The azimuthal length is $L_{\theta}=50$ cm. }
+        \includegraphics[width=\textwidth]{effect_Lr_noEq1D.pdf}
+        \caption{\ac{DFT} of the source term $\rho_1 = \N(0, \stdconv)$, the resulting azimuthal electric field $\aziE_{, 1}$ and plasma potential $\phi$ computed on the centerline of a radial-azimuthal simulation, and the Equivalent \ac{1D} source term defined by \cref{eq-equirho}. The azimuthal length is $L_{\theta}=50$ cm. The \ac{DFT} are averaged 200 times  }
         \label{fig-dftLr}
         
       \end{figure}
-            
-      \inlinenote{Rq Anne: je ne comprends pas la difference entre la courbe bleu et l'orange. Peut-être faut-il l'enlever ?}
 
 
 
