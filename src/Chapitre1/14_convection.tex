@@ -4,9 +4,10 @@
   \label{sec-reinjectionnoise}
 
   As introduced in the previous section, the \ac{2D} radial-azimuthal simulation does not model a priori the axial convection of the particles.
-
+  We present in this section an algorithm to model the convection of the particle.
+  Its drawbacks are discussed, and we propose a way to reduce them.
+  
   \subsection{Lafleur's model of convection}
-  \inlinenote{In all this section: get $\theta$ back to $y$ instead of $x$}
 
     \citet{lafleur2016a} proposed a way to model the axial convection of the particles in a \ac{1D} purely azimuthal simulation.
     \Cref{fig-Fake_1d_1} shows a schematic illustration of the model.
@@ -35,7 +36,7 @@
     \begin{figure}[hbtp]
       \centering
       \includegraphics[width=\defaultwidth]{Fake_1d_2}
-      \caption{Schematic representation of Lafleur's convection model \citep{lafleur2016a}. The red particle is removed of the simulation, and the green particle is created. In this illustration, the particle is an ion, and the reinjection is at $z=0$. }
+      \caption{Schematic representation of Lafleur's convection model \citep{lafleur2016a}. The red particle is removed of the simulation, and the green particle is created. In this illustration, the particle is an ion, and the reinjection is at $z=0$. The x direction corresponds to the azimuthal direction.}
       \label{fig-Fake_1d_1}
     \end{figure}
 
@@ -221,11 +222,10 @@
       
       \begin{figure}[hbtp]
         \centering
-        \includegraphics[width=0.8\textwidth]{Compare_no_new_Reinj_Oz}
+        \includegraphics[width=0.95\textwidth]{Compare_no_new_Reinj_Oz}
         \caption{Time evolution of the azimuthal electric field at the center of the radial dimension with and without the noiseless convection model. }
         \label{fig-newconv_noconv}
       \end{figure}
-      \inlinenote{Anne: Azimuthal dans la legende}
       
       
       \Cref{fig-oldeconv_newconv} shows the  time  evolution of the azimuthal electric field at the center of the radial dimension  with the convection modeled using Lafleur's model and the noiseless model with a small azimuthal length.
@@ -233,7 +233,7 @@
       
       \begin{figure}[hbtp]
         \centering
-        \includegraphics[width=0.8\textwidth]{Compare_old_new_Reinj_Oz}
+        \includegraphics[width=0.95\textwidth]{Compare_old_new_Reinj_Oz}
         \caption{Time evolution of the azimuthal electric field at the center of the radial dimension with the convection modeled using (left) Lafleur's model and (right) the noiseless model with a small azimuthal length (0.325cm).}
         \label{fig-oldeconv_newconv}
       \end{figure}
@@ -244,11 +244,10 @@
       
       \begin{figure}[hbtp]
         \centering
-        \includegraphics[width=0.8\textwidth]{Compare_old_new_Reinj_Oz_LongLx}
-        \caption{Time evolution of the azimuthal electric field at the center of the radial dimension with the convection modeled using (left) Lafleur's model and (right) the noiseless model with a longer azimuthal length (0.65cm).}
+        \includegraphics[width=0.95\textwidth]{Compare_old_new_Reinj_Oz_LongLx}
         \label{fig-oldeconv_newconv_longLZ}
+        \caption{Time evolution of the azimuthal electric field at the center of the radial dimension with the convection modeled using (left) Lafleur's model and (right) the noiseless model with a longer azimuthal length (0.65cm).}
       \end{figure}
-      \inlinenote{Anne: Azimuthal dans la legende}
 
 
       These observations have shown that Lafleur's convection model induces a noise on the charge density, that does not affect the simulation when the domain size is small, but can rise numerical artefacts when the domain size is larger.
