@@ -3,20 +3,25 @@
 
 %-----------
 \dominitoc%[n] 		% Initialisation de minitoc ([n] enleve le ``content'')
+
 \tableofcontents  		% Table des Matières
+\addcontentsline{toc}{chapter}{\contentsname} \mtcaddchapter
 %-----------
 \makeatletter
   \providecommand\@dotsep{5}
 \makeatother
+
+
 \listoftodos
+\addcontentsline{toc}{chapter}{List of notes} \mtcaddchapter
 \relax
 
 % % liste des figures
- % \listoffigures \addcontentsline{toc}{chapter}{\listfigurename} \mtcaddchapter
+\listoffigures \addcontentsline{toc}{chapter}{\listfigurename} \mtcaddchapter
 % \cleardoublepage
 %
 % % liste des tableaux
- \listoftables \addcontentsline{toc}{chapter}{\listtablename} \mtcaddchapter
+\listoftables \addcontentsline{toc}{chapter}{\listtablename} \mtcaddchapter
 % \cleardoublepage
 %
 % % liste des algos
@@ -24,7 +29,6 @@
 
 % % Add List of Acronymes
 \input{texfiles/acronyms}
-% % \addcontentsline{toc}{chapter}{Acronyms} \mtcaddchapter
 
 % % Add list of symbols
 
@@ -34,3 +38,4 @@
 
 
 \printnomenclature
+\addcontentsline{toc}{chapter}{\nomname} \mtcaddchapter

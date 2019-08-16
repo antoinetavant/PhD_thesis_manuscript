@@ -2,11 +2,20 @@
 
 \section{Sheath model with electron emission}
   \label{sec-sheath}
+    
+  The floating sheath is the plasma response to the presence of an absorbing boundary.
+  The lights electrons are quickly absorbed by the material.
+  Hence, in order to balance the particles fluxes, a non-neutral region appears between the plasma and the boundary.
   
-  \inlinenote{Ici, le model est introduit rapidement... Peut-etre le faire plus explicitement a partire des equations fluid ?}
   
   The sheath model featuring SEE processes has been historically studied by \citet{hobbs1967}, but is still an active research topic nowadays \citep{ahedo2005}.
   The sheath is often considered to be collision-less and isothermal, while the plasma is composed of hot Maxwellian electrons and cold ions. A third population of electron-induced secondary electrons is also present in the sheath, and the re-emission rate $\rate$ is assumed to be constant.
+  The sheath must assure the charge balance, hence
+  \begin{equation} \label{eq-sheath_SEE}
+    \Gamma_i = ( 1 - \rate) \Gamma_e
+  \end{equation}
+  with $\Gamma_i$ and $\Gamma_e$ the ion and electron particle flux to the wall, respectively.
+  \nomenclature[Q]{\ensuremath{ \Gamma_s}}{Particle flux of the species $s$}
   The SEE process modifies the potential drop in the sheath as \citep{hobbs1967}
   \begin{equation} \label{eq-sheathhobbs}
     \dphisheath = \Tepar \ln \lp (1 - \rate) \sqrt{\frac{m_i}{2 \pi m_e}}   \rp
@@ -19,7 +28,6 @@
   \end{equation}
   
   In \Cref{eq-sheathhobbs,eq-total_drop}, we use $\Tepar$ as in general, and more precisely for low-pressure magnetized plasma, the electrons can be anisotropic.
-  
   We can see that \cref{eq-sheathhobbs} becomes negative for a critical value of the emission rate
   \begin{equation} \label{eq-ratecrone}
     \rate_{\rm max} = 1 - \sqrt{\frac{2 \pi m_e}{m_i}} \simeq 0.985 \text{ for Xenon.}
@@ -40,7 +48,6 @@
   \end{equation}
 
   For xenon, \cref{eq-ratecr} gives $\ratecr = 0.983$ \citep{goebel2008}.\footnote{This value of 0.983 is obtained after several approximations, as \cref{eq-scl_Er} , some of which should not allow to use three significant digits. That's why it does not exactly match with the numerical results presented in \cref{fig-potential_profile}.}
-
   \Cref{fig-potential_profile} illustrates the sheath model of \citet{hobbs1967} by showing the plasma potential profile in the sheath for different values of electron emission rate for a xenon plasma.
   \cref{fig-potential_profile}.{\bf a} gives the potential $\phi$ normalized by $\dphisheath$ from \cref{eq-sheathhobbs}, and \cref{fig-potential_profile}.{\bf b} gives $\phi$ normalized by $\Te$.
   We can see in \cref{fig-potential_profile}  that for $\rate < \ratecr$, the plasma potential reached $\dphisheath$.
@@ -51,13 +58,11 @@
   \begin{figure}[hbtp]
     \centering
     \begin{tabular}{c c}
-      \subfigure{plasma_profile_normed}{a}{25,20} & 
+      \subfigure{plasma_profile_normed}{a}{25,70} & 
       \subfigure{plasma_profile}{b}{25,20} 
     \end{tabular}
     \caption{Evolution of the plasma potential in the sheath for different values of electron emission rate $\rate$ fro a xenon plasma, ({\bf a}) normalized by the total potential drop $\dphisheath$ from \cref{eq-sheathhobbs}, and ({\bf b}) normalized by the electron temperature, but $\dphisheath/\Te$ is noted with the black dotted line.  }
     \label{fig-potential_profile}
   \end{figure}
-  
-  \inlinenote{Legend: normalized}
-  
+    
   

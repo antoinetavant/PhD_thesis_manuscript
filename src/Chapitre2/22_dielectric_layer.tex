@@ -29,41 +29,50 @@
   
   The simulation results are qualitatively the same as in the case without the dielectric layer.
   As an example, \Cref{fig-mod_diel_comp} shows the temporal evolution of the axial electron mobility with and without the dielectric layer.
-  We can see a small difference, but not really significant concerning the physical origin of the electron enhanced mobility, and the effect of the dielectric layer.
-  The other variables (mean electron temperature, radial profiles, and so on) follow the same conclusion.
+  We see that the results for the electron temperature and mobility are similar.
+  The low amplitude oscillation of the case with the dielectric decreases slightly slower.
   
   \begin{figure}[hbtp]
     \centering
-    \includegraphics[width=\defaultwidth]{diel_mob_vs_time}
-    \caption{Temporal evolution of the axial electron mobility with the dielectric layer and without (ground walls).}
+    \includegraphics[width=\defaultwidth]{Dielectric_noSEE_temporal.pdf}
+    \caption{Temporal evolution of (left) the axial electron mobility and (right) the electron temperature with and without the dielectric layer modeled.}
     \label{fig-mod_diel_comp}
   \end{figure}
-  \inlinenote{ Waiting for the rerun of the cases !!}
+
   
-  \subsection{Near-wall parameters} \label{subsec-nearwall}
+  \subsection{Near-wall and in-wall parameters} \label{subsec-nearwall}
     In this section, we focus on the surface charge and the near-wall electric field.
     \Cref{fig-sigma_time} shows the temporal evolution of the surface charge at one point of the wall.
     The position has been chosen to be the center ($L_{\theta} = 0.25$~cm) of the lower wall, but the observations are similar at other positions.
      
     \begin{figure}[hbtp]
       \centering
-      \includegraphics[width=\defaultwidth]{surface_charges_vstime}
-      \caption{Temporal evolution of the surface charges at one position of the lower dielectric wall}
+      \includegraphics[width=\defaultwidth]{temporal_sigma}
+      \caption{Temporal evolution of the surface charge $\sigma$ at one position of the lower dielectric wall}
       \label{fig-sigma_time}
     \end{figure}
-  
-    \inlinenote{Anne: evolution temporelle de 1 a 5...pas clair pourquoi tu montres pas avant et apres...}
+
+    We can see on \cref{fig-sigma_time} that the value of the surface charge start by decreasing significantly (increasing in absolute value), due to the hot electrons that reach quickly the walls.
+    Then, $\sigma$ growth and around a mean value close to $-3.5 \,\micro\coulomb/\square\meter$ and an amplitude of approximately $1.2 \,\micro\coulomb/\square\meter$.
     
-    We can see on \cref{fig-sigma_time} that the surface charge oscillates around a mean value close to $-4.5$ nC/\square\meter and an amplitude of around 1 nC/\square\meter.
-    
-    \inlinenote{Est-ce qu'on compare la valeur moyenne à la valeur theo d'un model de gain ? Ajouter quelque chose dans cette partie ?}
-    
+    \cref{fig-indiel} shows the azimuthal evolution of the radial electric field inside the dielectric layer.
+    The electric field is given at three different positions ($r=0.2, 0.9,$ and $1.8\,\milli\meter$ away from the plasma-wall interface) to highlight its evolution.
+    We can see that, even thought there is no charge in the dielectric, the amplitude of the electric field decreases when going further away from the plasma.
+    This is due to the \ac{2D} Poisson equation, which smooth-out the inhomogeneity.
+     
+    \begin{figure}[hbtp]
+      \centering
+      \includegraphics[width=\defaultwidth]{Radial_electric_feld_in_diel.pdf}
+      \caption{Azimuthal evolution of the radial electric field inside of the dielectric layer at three different positions; the reference $r=0$ is the plasma-wall interface, the grounded electrode is in $r=-3\,\milli\meter$.}
+      \label{fig-indiel}
+    \end{figure}
+
     
   \subsection{Dielectric model comparison} \label{subsec-modelcomp}
   
   \inlinenote{Anne: {\bf Beaucoup de remarques sur cette partie: pas assez claire, décrire plus les valeures observées, etc. Voir les notes sur le pdf (22 juillet)}}
   
-  As introduced in \cref{sec-diel}, a simplified approach to model the effect of the surface charges on the plasma is to use a Neumann boundary condition [{\bf REF}]
+  As introduced in \cref{sec-diel}, a simplified approach to model the effect of the surface charges on the plasma is to use a Neumann boundary condition \citep{taccogna2019}
   \begin{equation} \label{eq-neuman}
     E_r = \frac{\sigma}{\epsilon_0}.
   \end{equation}
@@ -72,27 +81,23 @@
     \item one dimensional
     \item No electric field in the dielectric
   \end{itemize}
-  
-  \Cref{fig-er_time} shows the radial electric field inside of the dielectric and compare the electric field at the wall and compares it to \cref{eq-neuman}.
-  
-  \renewcommand\subfigurewidth{0.45\textwidth}
-
-  \begin{figure}[hbtp]
-    \centering
-    \begin{tabular}{c c}
-      \subfigure{electric_field_vstime}{a}{10, 20}
-          &
-      \subfigure{comp_sigma_Er_vstime}{b}{10, 20}
-    \end{tabular}
-    \caption{Temporal evolution of ({\bf a}) the radial electric field near the wall at the same azimuthal position than \cref{fig-sigma_time}, and ({\bf b}) the comparison with the near-wall electric field and  \cref{eq-neuman}, using the surface charge of \cref{fig-sigma_time}. }
-    \label{fig-er_time}
-  \end{figure}
-  
-  We can see on \cref{fig-er_time}.{\bf a} that the electric field in the wall in not zero, but oscillates around a value close to zero ($\sim 100$~V/m).
-  Its amplitude is of the order of $4$~kV/m.
-  
-  \Cref{fig-er_time}.{\bf b} shows the near-wall  radial electric field compared to \cref{eq-neuman} at the same position than \cref{fig-sigma_time}.
+  We have already seen in \cref{fig-indiel} that the electric field in the dielectric is not zero, but instead it oscillates in respect to the azimuthal instability present in the plasma.  
+  \Cref{fig-spacial_comparaison} shows the radial electric field at the wall and compares it to would be obtained by \cref{eq-neuman}.
   We can see that the two values are of the same order of magnitude, close to $-500$~kV/m.
-  However, the two values are not strictly equal, but the maximum error between the two are only of the order of $20\%$, which mean that the \ac{RMS} error is around 10\%.
+  However, the two values are not equal, as they oscillates around their mean value.
+  We can see that the surface charge oscillates more than the actual electric field obtained by solving the Poisson equation.
+
+\begin{figure}[hbtp]
+  \centering
+  \includegraphics[width=\defaultwidth]{Radila_electric_field.pdf}
+  \caption{Azimuthal evolution of the radial electric field at the plasma-wall interface and the electric field that would be due to the surface charge using \cref{eq-neuman}.}
+  \label{fig-spacial_comparaison}
+\end{figure}
+\renewcommand\subfigurewidth{0.45\textwidth}
+
+  As a conclusion, we have observed that the dielectric layer does not change the simulation results much, but it can modify the surface processes.
+  The model use here for the dielectric layer does not modify the performance of the simulation, while allowing to take into account the \ac{2D} effects.
+  In this section, no secondary electron emission has been taken into account.
+  In \cref{sec-fulldiel}, we will discuss the influence of using the simplified \cref{eq-neuman} in the case where secondary electron emission is important.
+
   
-  \inlinenote{Anne: Small conclusion needed here. maybe conclude that this difference on electric field could have an influence on surface processes + not so difficult to include dielectric + 2D effects could be modeled more accurately Also you use it in the section 2.6 so you could already mention it here...In this section, no secondary electron has been taken into account, in section 2.6, we will also disuss the influence of using the simplified equation 2.8 in the case where secondary electron emission is important.}
