@@ -1,9 +1,8 @@
 % !TEX root=/home/tavant/these/manuscript/src/manuscript.tex
 
 
-\section*{Characteristics and performances of the  \LPPic simulation code }
+\section{Characteristics and performances of the  \LPPic simulation code }
 \label{sec-lppic}
-\addcontentsline{toc}{section}{The \LPPic simulation code}
 
 
 \LPPic is the electrostatic particle-in-cell simulation code developed at \ac{LPP} to study principally magnetized plasma thruster, such as the \ac{HET}.
@@ -31,7 +30,7 @@ The bigger case uses a mesh of $1000\times1024$ cells with $140$ particles per c
 Unfortunately, this case cannot be run with less than 240 CPUs because of the maximum memory disposable per CPU. 
 Hence, we use a case four times smaller to test fewer number of CPU.
 The simulation is run over 2000 time steps.
-\inlinenote{Anne: mettre precisement les infos sur ces 2 cas-tests en annexe...serait interessant d'avoir precisement les infos si on doit les refaire dans une prochaine these}
+More informations on the scalability is given in \cref{an-scalability}.
 \begin{figure}[hbtp]
   \centering
   \includegraphics[width=\textwidth]{StrongScalingOccigen_speedup.pdf}

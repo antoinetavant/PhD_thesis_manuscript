@@ -24,15 +24,16 @@
 % ===============================
 \includeonly{
 structure/structure,%
- % structure/lists,%
+ structure/lists,%
  Context/0_concepts,%
  Chapitre1/1-introduction,%
- Chapitre2/2-mean_values,%
- Chapitre3/3-non_isothermal_sheath,%
+ % Chapitre2/2-mean_values,%
+ % Chapitre3/3-non_isothermal_sheath,%
  Chapitre4/4-polytropic_SEE,%
  Chapitre5/5-ECDI, %
  % texfiles/1ere,%
- Chapitre6/6-Z-theta, %
+ % Chapitre6/6-Z-theta, %
+ annexes/scalability_tests,
  }
 
  
@@ -73,12 +74,12 @@ structure/structure,%
 \include{texfiles/1ere}
 
 \newgeometry{twoside,
-  bindingoffset=5mm, 
+  bindingoffset=0mm, 
   includehead, 
   heightrounded=true, 
-  hmarginratio=1:2, 
-  vmarginratio=10:15,
-  textwidth=129mm
+  hmarginratio=1:1, 
+  vmarginratio=10:10,
+  textwidth=159mm
    }
    
 \frontmatter
@@ -180,6 +181,7 @@ structure/structure,%
 
 \appendix
 
+\include{annexes/scalability_tests}
 
 \backmatter
 % \let\leftmark=\oldleftmark

@@ -13,8 +13,29 @@ In addition, the axial convection is modeled using Lafleur's model of convection
 
 \subsection{Polytropic index determination from PIC simulations} \label{subsec-fluid_see_polyfit}
 
-\inlinenote{repreciser en 1 phrase les conditions de simulation (en faisant reference au chapitre 3) + citer section ou tu parles de l'emission (penser au lecteur qui commence la lecture au chapitre 4)}
-\inlinenote{pourquoi pas montrer une image de calcul 2D....a force de voir que des resultats 1D, on va finir par oublier que ton code PIC est 2D ;-)}
+
+The simulation domain is described in \cref{ch-2}, but we recall here the main parameter.
+The bidimensional domain lengths $2\,\centi\meter$ in the radial direction, and $0.25\,\centi\meter$ in the azimuthal direction.
+A radial magnetic field $B=200\,$G and an axial electric field $E=20\,\kilo\volt\per\meter$ are applied.
+The mean plasma density is $n_e = \sn{3}{17}\,\meter^{-3}$.
+
+The radial direction is closed by grounded wall, but we model the electron induced electron emission from the wall.
+The model used is described in \cref{sec-seemodel}, using the parameters of \cref{tab-tabe_parameters_see}.
+
+\cref{fig-2DneTe} shows the electron density and the electron temperature in the \ac{2D} simulation at the end of the simulation ( $t=10\,\micro\second$) in the case $\crover=200\,\volt$.
+We can see the azimuthal instability in both $n_e$ and $\Te$.
+However, these azimuthal oscillations will be neglected in the following development. 
+\begin{figure}[hbtp]
+  \centering
+  \begin{tabular}{c c}
+    \includegraphics[width=0.45\textwidth]{2D_ne_SEE200} &
+    \includegraphics[width=0.45\textwidth]{2D_Te_SEE200} \\
+  \end{tabular}
+  \caption{Maps of the (left) electron density $n_e$ and (right) electron temperature $T_e$ at $t=10\,\micro\second$ in the \ac{2D} simulation domain with $\crover=200\,\volt$.}
+  \label{fig-2DneTe}
+\end{figure}
+
+
 
 As previously done in \cref{ch-3}, we use the mean values of the electron density $n_e$ and the electron pressure $ p_e = q_e n_e T_e$ to find the value of the polytropic index.
 \Cref{fig-radial_profiles_see} shows the radial profiles of the electron density and temperature for different values of the cross-over energy $\crover$.

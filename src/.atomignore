@@ -19,3 +19,6 @@
 *.xml
 *.toc
 *.M*
+*.lof
+*.lot
+*.tdo
