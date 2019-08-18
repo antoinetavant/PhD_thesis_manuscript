@@ -113,25 +113,7 @@
 \usepackage{varioref} % add the page when the object is far away
 
 
-\ifpdf
-  \usepackage[pagebackref=false,  % add the pages where the citation is used
-              hyperindex=true,
-              colorlinks=true]{hyperref}
-  \hypersetup{pdfstartview={FitH}, bookmarksnumbered={true}}
 
-\else
-  \usepackage[hypertex=true,hyperindex=true,colorlinks=false]{hyperref}
-\fi
-\hypersetup{
-    colorlinks,
-    linkcolor={red!30!black},
-    anchorcolor={red!80!black}
-    citecolor={blue!50!black},
-    urlcolor={blue!80!black},
-    breaklinks
-}
-
-\usepackage[capitalise]{cleveref}  %hance, uyse \vref for the page reference, else \cref only
 
 
 % For better citations.
@@ -274,10 +256,12 @@
 
 \newcommand\quotechapt[2]{
 \begin{flushright}
+  \begin{minipage}{8cm}
   \emph{ #2}
 \rule{0.4\textwidth}{1pt}
 
 #1
+\end{minipage}
 \end{flushright}
 }
 
@@ -294,8 +278,26 @@
 
 \newcommand\pageCompt[2]{ \ref{#1} has [\the\numexpr\getpagerefnumber{#2}-\getpagerefnumber{#1}\relax] pages in it. }
 
+\ifpdf
+  \usepackage[pagebackref=false,  % add the pages where the citation is used
+              hyperindex=true,
+              colorlinks=true]{hyperref}
+  \hypersetup{pdfstartview={FitH}, bookmarksnumbered={true}}
 
-\renewcommand{\listfigurename}{List of Figures}
- 
-\renewcommand{\listtablename}{List of Tables}
-\renewcommand\contentsname{Table of Content}
+\else
+  \usepackage[hypertex=true,hyperindex=true,colorlinks=false]{hyperref}
+\fi
+
+\usepackage{bookmark}
+
+
+
+\hypersetup{
+    colorlinks,
+    linkcolor={red!30!black},
+    anchorcolor={red!80!black}
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black},
+    breaklinks
+}
+\usepackage[capitalise]{cleveref}  %hance, uyse \vref for the page reference, else \cref only

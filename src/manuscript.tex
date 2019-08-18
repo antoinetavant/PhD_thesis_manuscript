@@ -24,14 +24,14 @@
 % ===============================
 \includeonly{
 structure/structure,%
- structure/lists,%
+ % structure/lists,%
  Context/0_concepts,%
  Chapitre1/1-introduction,%
  Chapitre2/2-mean_values,%
  Chapitre3/3-non_isothermal_sheath,%
  Chapitre4/4-polytropic_SEE,%
  Chapitre5/5-ECDI, %
- texfiles/1ere,%
+ % texfiles/1ere,%
  Chapitre6/6-Z-theta, %
  }
 
@@ -66,6 +66,9 @@ structure/structure,%
 \begin{document}
 
 
+\renewcommand{\listfigurename}{List of Figures}
+\renewcommand{\listtablename}{List of Tables}
+\renewcommand\contentsname{Table of Content}
 
 \include{texfiles/1ere}
 
@@ -132,9 +135,25 @@ structure/structure,%
 % \acresetall
 
 
+% Context \pageCompt{ch-concepts}{ch-1}
+% 
+% Chapitre \pageCompt{ch-1}{ch-2}
+% 
+% Chapitre \pageCompt{ch-2}{ch-3}
+% 
+% Chapitre \pageCompt{ch-3}{ch-4}
+% 
+% Chapitre \pageCompt{ch-4}{ch-5}
+% 
+% Chapitre \pageCompt{ch-5}{ch-6}
+% 
+% Chapitre \pageCompt{ch-6}{ch-bibliography}
+
+\let\oldtheHchapter\theHchapter
 \let\oldthechapter\thechapter
 \let\oldthechaptername\chaptername
 
+\renewcommand\theHchapter{}
 \renewcommand\thechapter{}
 \renewcommand\chaptername{}
 \include{Context/0_concepts}
@@ -144,6 +163,7 @@ structure/structure,%
 \let\rightmark=\oldrightmark
 
 \renewcommand\thechapter\oldthechapter
+\renewcommand\theHchapter\oldtheHchapter
 \renewcommand\chaptername{Chapter}
 
 \include{Chapitre1/1-introduction}
