@@ -16,7 +16,7 @@
  id="svg5509"
  version="1.1"
  inkscape:version="0.92.4 (unknown)"
- inkscape:export-filename="/home/tavant/these/manuscript/src/Chapitre1/figure/2D_diel_Rtheta.png"
+ inkscape:export-filename="/home/tavant/these/manuscript/src/Chapitre1/figure/2D_Ztheta.png"
  inkscape:export-xdpi="413"
  inkscape:export-ydpi="413"
  sodipodi:docname="2D_Ztheta.svg">
@@ -107,9 +107,9 @@
  borderopacity="1.0"
  inkscape:pageopacity="0.0"
  inkscape:pageshadow="2"
- inkscape:zoom="1.4142136"
- inkscape:cx="338.28688"
- inkscape:cy="425.40212"
+ inkscape:zoom="2.0000001"
+ inkscape:cx="190.2783"
+ inkscape:cy="151.87245"
  inkscape:document-units="px"
  inkscape:current-layer="layer1"
  showgrid="false"
@@ -4129,6 +4129,50 @@
  x="249.40103"
  id="tspan3300"
  sodipodi:role="line">e,c</tspan></text>
+</g>
+<g
+ id="g3494"
+ transform="matrix(0.56836638,0,0,0.56836638,165.13214,72.82826)">
+<circle
+ r="18.934441"
+ cy="186.00504"
+ cx="351.28241"
+ id="path3488"
+ style="opacity:1;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:2.0625;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+<ellipse
+ ry="1.0772328"
+ rx="1.0358009"
+ cy="186.12933"
+ cx="351.36526"
+ id="path3490"
+ style="opacity:1;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:2.0625;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+</g>
+<g
+ id="g3514"
+ transform="translate(-9.2807759,-7.7063585)">
+<flowRoot
+ transform="matrix(0.93749995,0,0,0.93749995,222.96739,48.925901)"
+ style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.66666603px;line-height:1.25;font-family:erewhon;-inkscape-font-specification:'erewhon, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+ id="flowRoot3496"
+ xml:space="preserve"><flowRegion
+ id="flowRegion3498"><rect
+ y="131.74721"
+ x="165.60133"
+ height="39.207016"
+ width="32.710484"
+ id="rect3500" /></flowRegion><flowPara
+ style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:18.66666603px;font-family:erewhon;-inkscape-font-specification:'erewhon, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle"
+ id="flowPara3502">B</flowPara></flowRoot><text
+ id="text3506"
+ y="189.85822"
+ x="401.70517"
+ style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:17.49999809px;line-height:1.25;font-family:erewhon;-inkscape-font-specification:'erewhon, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.93749994"
+ xml:space="preserve"><tspan
+ style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.49999905px;font-family:erewhon;-inkscape-font-specification:'erewhon, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.93749994"
+ y="189.85822"
+ x="401.70517"
+ id="tspan3504"
+ sodipodi:role="line">r</tspan></text>
 </g>
 </g>
 </svg>

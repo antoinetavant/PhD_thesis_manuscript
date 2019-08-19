@@ -2,53 +2,93 @@
 
 \section{Presentation of the Axial-azimuthal simulation}
 
+The objectives of the axial-azimuthal simulation is to allows the azimuthal \ac{ECDI} to grow and study the impacts of the axial direction.
+These impacts are mostly due to the radial magnetic field  that present a maximum close to the exit plane.
 
-Here we present the Z-theta simulation domain.
-
+\subsection{Description of the simulation domaine} \label{subsec-ztheta_description}
+\Cref{fig-3Dschematic} shows the simplified \ac{HET} annular channel with both the radial-azimuthal and the axial-azimuthal \ztheta domain.
 
 \begin{figure}[hbt]
   \centering
-  \includegraphics[width=\defaultwidth]{3D_shematic}
+  \includegraphics[width=0.6\textwidth]{3D_shematic}
   \caption{Schematic representation of the chamber of a \ac{HET} and (green) the Radial-azimuthal and (red) the axial-azimuthal 2D simulation domains.}
   \label{fig-3Dschematic}
 \end{figure}
 
-\subsection{Dealing with the breathing mode} \label{subsec-breathmod}
-\inlinenote{Anne: reformuler un peu pour faire apparaitre que la difficulté vient des echelles de temps et d'espace très différentes entre notamment l'ECDI et le breathing mode.}
-The breathing mode comes from the coupling between the neutral gas flow, the plasma dynamics and the ionization.
-Hence, if the ionization and the neutral gas are self-consistently modeled, the mean neutral density will oscillates with a frequency of about $10$ kHz.
-If these oscillations are not problematic to simulate in fluid or \ac{DK} simulations, they are for particular simulations.
-\inlinenote{Anne: quand tu dis "oscillates", je pense qu'il faut donner un chiffre pour montrer que ce ne sont pas juste des "petites oscillations".}
-\inlinenote{Anne: euh en DK a mon avis, ca prendrait trop de temps a simuler...}
+The \ac{2D} \ztheta domain is located at the mean radius of the channel, but its curvature is neglected.
+\Cref{fig-2D_ztheta_bis} presents a schematic representation of the \ztheta simulation domain.
+The anode side is closed by a metallic fully absorbing electrode, with a fixed non-zero potential.
+On the other side of the domain, the near-plume region (a few centimetres from the exit plane) is modeled.
+The boundary located in the near-plume is also a Dirichlet boundary condition, this time grounded.
+The azimuthal direction is closed with periodic boundaries for both the particles and the fields.
 
-Indeed, the total number of numerical particles is proportional to the mean plasma density, and a minimal number of particles is required to limit the numerical heating \citep{turner2006}.
-Thus, when the mean plasma density oscillates, the number of numerical particles (hence the amount of memory used) oscillates.
+\begin{figure}[hbt]
+  \centering
+  \includegraphics[width=0.6\textwidth]{2D_ztheta}
+  \caption{Schematic representation of the \ac{2D} \ztheta simulation domain.}
+  \label{fig-2D_ztheta_bis}
+\end{figure}
+
+The axial and azimuthal electric fields are self-consistently computed from the charge density by solving the Poisson equation.
+Consequently, the simulation domain is not so different from the radial-azimuthal simulation domain.
+This has allow us to adapt the code \LPPic to simulate both domain.
+
+Two particular aspects have been developed\string: the cathode electron emission and the dynamic computational load balancing.
+
+\paragraph{Cathode electron emission\\}
+The cathode used in electrical propulsion are mostly used to neutralize the ion beam, but a significant fraction of the emitted elections enters the channel and travels toward the anode.
+The electrons are injected at (or close to) the cathode boundary following a Maxwellian distribution of a few electron volts.
+The number of electrons to inject at each time step is computed by closing the eternal circuit between the anode and the cathode.
+
+In the real set-up, an electric filter is placed between the thruster and the generator \citep{barral2008}, originally placed to protect the power supply against AC current.
+While this external circuit can be modeled \citep{verboncoeur1993}, and is susceptible to impact the thruster behavior \citep{barral2008,wei2017}, we neglect it in this study for sake of clarity.
+Thus, the cathode current equals the anode current \[ I_a = I_c. \]
+The corresponding number of electron to inject in the simulation domain depends whether the electron are injected at the boundary or in the domain. 
+Therefore, they are developed in the next section.
+
+\paragraph{Dynamic computational load balancing\\}
+The axial profile of the plasma density presents a maximum that can be one order of magnitude higher than the mean plasma density.
+Consequently, a static MPI domain decomposition would produce an unbalance in the number of numerical particle per CPU, which results in an under-efficient code.
+
+One possibility is to modify dynamically the weigh of the numerical particle relative to the plasma density, in order to keep a relatively constant number of particle per cell.
+This can be done by fissioning (merging) the particles when they are too small, or by slitting them in smaller particles when they are too big \citep{shon2001,teunissen2014}.
+However, such algorithm can modify the charge, momentum, or the energy of the system if not done carefully.
+In \citet{vranic2015}, the authors present an algorithm to  conserve these quantities.
+However, we chose not to implement it because of its error-prone complexity.
+
+Instead, we implemented a dynamic redistribution of the CPU domain, so that every CPU own approximately the same number of particle.
+As the density gradient is in the axial direction, we only change the axial size of the CPU domains.
+
+
+
+\subsection{Facing the breathing mode} \label{subsec-breathmod}
+The breathing mode comes from the coupling between the neutral gas flow and the plasma dynamics, via the ionization.
+Under the typical conditions of the \ac{HET}, we observed this oscillation with a slows frequency, around  $10-30$ kHz, and a large amplitude, as the plasma density can change up to one order of magnitude during the oscillation period \citep{barral2003a,barral2009}.
+This oscillation is much slower than the \ac{ECDI}, and is present in the totality of the channel.
+
+If these oscillations are not problematic for the fluid or \ac{DK} simulations, they are for \ac{PIC} simulations.
+Indeed, the total number of numerical particles is proportional to the plasma density, and a minimal number of particles is required to limit the numerical heating \citep{turner2006}.
+Thus, when the mean plasma density oscillates, the number of numerical particles (hence the amount of memory used) can change drastically.
 This reduces significantly the performance of the simulation code, and can lead to memory overflow if the memory available is not high enough to store all of the particles during the peak of density  of the oscillation.
-
-A method that can be used to reduce the computational load due to the oscillation is the \emph{merging-splitting} of the particles.
-When too many particles are present in a cell, they are merged into fewer particles.
-Respectively, if too few particles are present, they are split into more particles.
-The difficulty of this method is the conservation of the particle distribution function.
-For instance, merging two particles into one cannot conserve both density and momentum.
-More importantly, the temperature of the particles is lost.
+The \emph{merging-splitting} of the particles  can be used to reduce the variation of the number of numerical particles, but it is not used for the same reason than discussed above.
 
 In addition to the number of particles, the numerical parameters (time step and cell size) have to be chosen to satisfy the stability criteria during all of the simulation, which also reduces significantly the performance of the simulation. 
 This could be overcome by adapting dynamically the mesh and the time step.
-However, too few studies of the consequences of the use of merging-splitting and adaptative mesh on the simulation results have been conducted.
-Thus, we have chosen not to modify the current algorithm.
+However, too few studies of the consequences of the use of merging-splitting and adaptive mesh on the simulation results have been conducted.
+Thus, we have chosen not to modify the \ac{PIC} algorithm.
 
 
-Two approaches have been followed:
+Two other approaches have been followed to reduce the computational cost of the breathing mode\string:
 \begin{enumerate}
-  \item the approach used by \citet{coche2014}, using a scaling of the permittivity to reduce the computational load,
+  \item the approach used by \citet{coche2014}\string: using a scaling of the permittivity to reduce the computational load,
   \item the approach of \citet{boeuf2017}, using a forced ionization source term.
 \end{enumerate} 
 
 \paragraph{Coche's simulation case \\}
 
 The simulation proposed by \citet{coche2014} models self-consistently the ionization with the \ac{MCC} algorithm, as well as the neutral gas flow by supposing a constant velocity.
-\Cref{fig-coche-presnetation} presents the domain of simulation 
-The simulation domain geometry is realistic, with a channel length $L_{chanel} = 2.5\,\centi\meter$ for a total axial length of the simulation domain $L_z=4\,\centi\meter$.
+\Cref{fig-coche-presnetation} presents the domain of simulation.
+The simulation domain geometry is realistic, with a channel length $L_{channel} = 2.5\,\centi\meter$ for a total axial length of the simulation domain $L_z=4\,\centi\meter$.
 Hence, all of the chamber and a part of the near plume is simulated.
 
 \renewcommand\subfigurewidth{0.4\textwidth}
@@ -79,8 +119,7 @@ Hence, the constraints on the time step and the cell size are reduced by a facto
   \Delta x ^*&= \alpha^{1/2} \Delta x  
 \end{align*}
 
-By doing so, \citet{coche2014} successfully observed the breathing mode in the \ac{PIC}-\ac{MCC} simulation.
-The value of scaling used is $\alpha=80$, which correspond to increase of $9$ on the time step and the cell size.
+By using a factor $\alpha=80$,  which correspond to a factor of $9$ on the time step and the cell size,  \citet{coche2014} successfully observed the breathing mode in the \ac{PIC}-\ac{MCC} simulation.
 
 
 \paragraph{Boeuf's simulation case \\}
