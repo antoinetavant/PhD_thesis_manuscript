@@ -1,4 +1,11 @@
 % !TEX root=/home/tavant/these/manuscript/src/manuscript.tex
+\let\oldtheHchapter\theHchapter
+\let\oldthechapter\thechapter
+\let\oldthechaptername\chaptername
+
+\renewcommand\theHchapter{}
+\renewcommand\thechapter{}
+\renewcommand\chaptername{}
 
 \let\oldleftmark=\leftmark
 \let\oldrightmark=\rightmark
@@ -35,3 +42,12 @@
 % \input{Context/6_LPPic}
 \input{Context/9_goals}
 
+
+
+% Remove the setting for the introduction
+\let\leftmark=\oldleftmark
+\let\rightmark=\oldrightmark
+
+\renewcommand\thechapter\oldthechapter
+\renewcommand\theHchapter\oldtheHchapter
+\renewcommand\chaptername{Chapter}

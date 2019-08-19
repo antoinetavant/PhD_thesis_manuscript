@@ -1,7 +1,8 @@
 % !TEX root=/home/tavant/these/manuscript/src/manuscript.tex
 
 \documentclass[
-   a4paper,	%Pour papier A4
+  % a4paper,	%Pour papier A4
+   b5paper,	%Pour papier A4
    11pt,		%Taille de la police 12
    twoside,	%recto-verso
    headinclude, headsepline, plainheadsepline,
@@ -14,6 +15,7 @@
 \input{texfiles/settings}
 
 \pdfcompresslevel=0
+\usepackage[a4,center,frame]{crop}
 
 %\pagecolor{gray}
   
@@ -24,16 +26,16 @@
 % ===============================
 \includeonly{
 structure/structure,%
- structure/lists,%
- Context/0_concepts,%
+ % structure/lists,%
+ % Context/0_concepts,%
  Chapitre1/1-introduction,%
  % Chapitre2/2-mean_values,%
  % Chapitre3/3-non_isothermal_sheath,%
- Chapitre4/4-polytropic_SEE,%
- Chapitre5/5-ECDI, %
+ % Chapitre4/4-polytropic_SEE,%
+ % Chapitre5/5-ECDI, %
  % texfiles/1ere,%
- % Chapitre6/6-Z-theta, %
- annexes/scalability_tests,
+ Chapitre6/6-Z-theta, %
+ % annexes/scalability_tests,
  }
 
  
@@ -73,15 +75,25 @@ structure/structure,%
 
 \include{texfiles/1ere}
 
+% Taille papier B5:
+% 176 par 250 mm
+% Avec 2cm à gauche et à droite: textwidth = 176-40 = 136 
+% Avec 1.5cmen haut et 3cm en bas:: textwidth = 250-45 = 205 
+
 \newgeometry{twoside,
   bindingoffset=0mm, 
   includehead, 
   heightrounded=true, 
   hmarginratio=1:1, 
-  vmarginratio=10:10,
-  textwidth=159mm
+  vmarginratio=10:15,
+  textwidth=136mm,
+  textheight=205mm,
+  % textwidth=159mm
    }
-   
+
+% Cropping from a4 printing after newgeometry
+\makeatletter\CROP@center\makeatother
+
 \frontmatter
 %dedicace
 % \include{dedicace}
@@ -150,22 +162,13 @@ structure/structure,%
 % 
 % Chapitre \pageCompt{ch-6}{ch-bibliography}
 
-\let\oldtheHchapter\theHchapter
-\let\oldthechapter\thechapter
-\let\oldthechaptername\chaptername
 
-\renewcommand\theHchapter{}
-\renewcommand\thechapter{}
-\renewcommand\chaptername{}
 \include{Context/0_concepts}
 % \acresetall
 
-\let\leftmark=\oldleftmark
-\let\rightmark=\oldrightmark
 
-\renewcommand\thechapter\oldthechapter
-\renewcommand\theHchapter\oldtheHchapter
-\renewcommand\chaptername{Chapter}
+
+
 
 \include{Chapitre1/1-introduction}
 % \acresetall
@@ -187,8 +190,8 @@ structure/structure,%
 % \let\leftmark=\oldleftmark
 % \let\rightmark=\oldrightmark
 
-\renewcommand\leftmark{BIBLIOGRAPHY}
-\renewcommand\rightmark{BIBLIOGRAPHY}
+
+\markboth{BIBLIOGRAPHY}{}
 
 % \bibliographystyle{ieeetr}
 % \newcommand*{\doi}[1]{\href{http://dx.doi.org/#1}{doi: \lstinline|#1|}}
