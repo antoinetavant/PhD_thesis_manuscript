@@ -4,14 +4,14 @@
 
 \section{Comparison of the sheath model with PIC simulations} \label{subsec-picandmodel}
 
-  % \begin{figure}[hbtp]
+  % \begin{figure}[hbt]
   %   \centering
   %   \includegraphics[width=\textwidth]{dphi_polytropic_noSEE}
   %   \caption{PIC simulation results (with SEE) compared to the polytropic limit without SEE.}
   %   \label{fig-polytropic_pic_noSEE}
   % \end{figure}
   % 
-  % \begin{figure}[hbtp]
+  % \begin{figure}[hbt]
   %   \centering
   %   \includegraphics[width=\textwidth]{Summary_polytropic_SEE.pdf}
   %   \caption{Comparison of the PIC simulation results with the polytropic model with SEE.}
@@ -38,7 +38,7 @@
     The plasma potential drop computed is increased by $\Teb/2$ corresponding to the pre-sheath drop to better match the plasma potential measured in the simulations.
     \improvement{The Bhom criterion is slightly modified with the polytropic model, so it should not exactly be $\Teb/2$. however, it matches to well here that I do not really want to change !}
 
-    \begin{figure}[hbtp]
+    \begin{figure}[hbt]
       \centering
       \includegraphics[width=\textwidth]{Poly_model_vs_pic}
       \caption{Comparison of the PIC simulations and the sheath model for the plasma potential drop from the center to the wall and the electron emission yield. }
@@ -63,7 +63,7 @@
     The plasma potential $\dphi$ shown is measured at the center of the radial direction of the simulation, averaged over the azimuthal direction.
     
     
-    \begin{figure}[hbtp]
+    \begin{figure}[hbt]
       \centering
       \begin{tabular}{c c}
         \subfigure{long_time_dphi}{a}{20,20} &
@@ -86,7 +86,7 @@
     \Cref{fig-dphi_te_PIc} shows the potential drop as a function of the radial electron temperature $\Te_R$ and the total electron temperature $\Te = (\Te_R + \Te_{\theta} + \Te_z)/3$ measured in the \ac{PIC} simulation (same case as \cref{fig-long_time}).
     Is also shown the theoretical solutions obtained with the model of \cref{sec-fluid_poly_see} using a constant polytropic index $\gamma=1.35$ and $\crover=45\,\volt$.
     
-    \begin{figure}[hbtp]
+    \begin{figure}[hbt]
       \centering
       \includegraphics[width=\textwidth]{parametric_PIC_dphi_Te_bis}
       \caption{Plasma potential as a function of (left) the radial electron temperature and (right) the total electron temperature. The blue markers represent the \ac{PIC} results presented in \cref{fig-long_time}, and the orange dashed lines correspond to the theoretical values with $\gamma=1.35$.}
@@ -104,7 +104,7 @@
     We see that using the value $\gamma=1.28$ does not change significantly the value of the solution, except for the maximum value of the electron temperature $\Te^1$ for the first branch of the solution, hence the domain of temperature where the three solutions coexist.
     In the case of $\gamma=1.28$, the \ac{PIC} simulation result agreement with the theory is worse than for $\gamma=1.35$.
     
-    \begin{figure}[hbtp]
+    \begin{figure}[hbt]
       \centering
       \includegraphics[width=\textwidth]{parametric_PIC_dphi_Te_two_gamma_bis}
       \caption{Similarly to \cref{fig-dphi_te_PIc}, Plasma potential as a function of (left) the radial electron temperature and (right) the total electron temperature. The blue markers represent the \ac{PIC} results presented in \cref{fig-long_time}, the orange dashed lines correspond to the theoretical values with $\gamma=1.35$, and the green dotted-dashed line is computed with $\gamma=1.28$.}
@@ -136,7 +136,7 @@
     More precisely, the period of oscillation decreases with the decrease of the ion mass.
     This observation confirm that the ions have a role in the dynamics of the oscillation.
     
-    \begin{figure}[hbtp]
+    \begin{figure}[hbt]
       \centering
       \includegraphics[width=\defaultwidth]{SEE_RSOs.png}
       \caption{Temporal evolution of the SEE rate $\rate$ measured in the PIC simulations for different gases (xenon, krypton, and argon), taken from \citet{croes2017}.}

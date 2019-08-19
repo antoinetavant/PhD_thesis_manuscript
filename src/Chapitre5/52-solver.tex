@@ -17,7 +17,7 @@
   An interesting point is that the evaluation of $\tilde{Z}(\eta)$ is done by a polynomial, which coefficients depends only on the distribution function $f$. 
   Hence, they need to be determined only once, and evaluating $\tilde{Z}(\eta)$ is relatively fast.
   
-  \begin{figure}[hbtp]
+  \begin{figure}[hbt]
     \centering
     \includegraphics[width=\textwidth]{Validation_numericalZ.pdf}
     \caption{Comparison of the numerical evaluation of $\tilde{Z}_M(\eta)$ for a Maxwellian distribution function with the Fried and Conte function (from the \texttt{plasmapy} python package).  }
@@ -35,7 +35,7 @@
   
 
 
-  \begin{figure}[hbtp]
+  \begin{figure}[hbt]
     \centering
     \includegraphics[width=0.9\textwidth]{Validation_numericalZ_bis.png}
     \caption{Comparison of the numerical evaluation of $\hat\epsilon$ from \cref{eq-drECDI} for a Maxwellian distribution function with (left) the Fried and Conte function (from the \texttt{plasmapy} python package) and (right) the numerical $\tilde{Z}$, in logarithmic scale.  }
@@ -104,7 +104,7 @@
   The plasma density is $n_e = n_i = \sn{1}{17} \,\per\meter\cubed$.
   The frequency and growth rate obtained the simplified dispersion relation of \cref{eq-MIAW} is also shown. 
   
-  \begin{figure}[hbtp]
+  \begin{figure}[hbt]
     \centering
     \includegraphics[width=\defaultwidth]{IAW_Maxw}
     \caption{\ac{IAW} frequency and growth rate for a Maxwellian distribution function using the Freid and Conte function (labelled Analytic $Z_M$), the numerical estimation of $\tilde{Z}_M$, and the simplified analytic expressions of \cref{eq-MIAW}. }
@@ -124,7 +124,7 @@
   with $C1 \simeq 0.63$ and $C2 \sim 0.84$ two normalizing constants.
   We can see that there is no much impact of the Druyvesteyn electron velocity distribution function on the electron, except that the maximum growth rate is sightly diminished.
   
-  \begin{figure}[hbtp]
+  \begin{figure}[hbt]
     \centering
     \includegraphics[width=\defaultwidth]{IAW_druv}
     \caption{\ac{IAW} frequency and growth rate for a Maxwellian distribution function using the Freid and Conte function and a Druyvesteyn distribution evaluated with the numerical estimation of $\tilde{Z}$. }
@@ -137,7 +137,7 @@
     The infinite sum over the cyclotron resonances is stopped at $N_{max} = 20$.
     
     
-    \begin{figure}[hbtp]
+    \begin{figure}[hbt]
     \centering
     \includegraphics[width=\defaultwidth]{ECDI_druv}
     \caption{\ac{ECDI} frequency and growth rate for a Maxwellian distribution function using the Freid and Conte function and a Druyvesteyn distribution evaluated with the numerical estimation of $\tilde{Z}$, the radial wave number is $k_r \lambda_{De} = 0.1 $.}

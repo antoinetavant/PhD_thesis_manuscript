@@ -40,7 +40,7 @@
     Except if otherwise stated, the elastic, inelastic scattering and ionization reactions listed in \cref{tab-reactXe} are used.
     The cross-section values are summarised in \cref{fig-xexsection}.
 
-    \begin{table}[hbtp]
+    \begin{table}[hbt]
       \ra{1.3}
       \centering
       \caption{Reactions for xenon used in the PIC simulations}
@@ -62,7 +62,7 @@
 
 
 
-    \begin{figure}[hbtp]
+    \begin{figure}[hbt]
       \centering
       \includegraphics[width=\defaultwidth]{figure/xenon_cross_section.pdf}
       \caption{Cross section values used in the Monte Carlo procedure \cite{Lxcat_Xe,Lxcat_Xe2}.}
@@ -75,7 +75,7 @@
   \LPPic is an explicit electrostatic \ac{PIC}-\ac{MCC} simulation code.
   Every time-step, the simulation loop presented in \cref{fig-picloop} is computed.
   The different steps constituting the PIC-loop are described in the next subsections.
-  \begin{figure}[hbtp]
+  \begin{figure}[hbt]
     \centering
     \smartdiagramset{circular distance=4.5cm,
     module minimum width=3.5cm,
@@ -162,7 +162,7 @@
     with the superscript $t$ designing the time step, $q$ and $m$ the particle electric charge and mass, $\vect{E}$ the electric field at the particle position, and \dt the time step duration.
 
     It is important to note that the leapfrog induces a shift of $\frac{\dt}{2}$ between the position and the velocity, as illustrated in \cref{fig-leapfrog}.
-    \begin{figure}[hbtp]
+    \begin{figure}[hbt]
       \centering
       \includegraphics[width=\defaultwidth]{leapfrog.png}
       \caption{Illustration of the shift between the particle velocity and position.}

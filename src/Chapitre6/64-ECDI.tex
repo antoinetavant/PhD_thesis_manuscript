@@ -19,7 +19,7 @@ From the characteristics of the instability seen in \cref{fig-snapshots}, two zo
 The radial losses seem to reduce the wavelength of the instability in both the upstream and the downstream regions.
 
 
-\begin{figure}[hbtp]
+\begin{figure}[hbt]
   \centering
   \includegraphics[width=\textwidth]{Boeuf_Ex_snapshot}
   \caption{Azimuthal electric field obtained at $t=10 \,\micro\second$ for the three cases using the model of Boeuf.}
@@ -31,7 +31,7 @@ We have seen in \cref{ch-5} that the instability wavelength is of the order of t
 Because of the large anisotropy of the electron temperature, the Debye length is calculated using the azimuthal temperature $\Te_{\theta}$.
 We can see that $\opi$ is not significantly affected, in the upstream region, but decreases with the increase of the losses in the downstream region.
 
-\begin{figure}[hbtp]
+\begin{figure}[hbt]
   \centering
   \includegraphics[width=\textwidth]{Boeuf_opi_Lde}
   \caption{Axial evolution of (left) the ion plasma frequency $\opi$ and (right) the Debye length $\lde$ for the three cases using the model of Boeuf.}
@@ -49,7 +49,7 @@ We proceed to a quantitative analysis of the instability, to better understand t
 The spectral analyses are perfomed at $z_u=0.25\,\centi\meter$ for the upstream region, and $z_d=1.5\,\centi\meter$ for the downstream region.
 \Cref{fig-cut2D} shows the temporal evolution of the azimuthal electric field $E_{\theta}$ when no radial losses are modeled for $z_u$ and $z_d$.
 
-\begin{figure}[hbtp]
+\begin{figure}[hbt]
   \centering
   \includegraphics[width=\textwidth]{Boeuf_noLr_y50_t200}
   \includegraphics[width=\textwidth]{Boeuf_noLr_y300_t200}
@@ -67,7 +67,7 @@ We also display the \ac{1D} \ac{FFT} obtained by summing the \ac{2D} \ac{FFT} in
 We see that the waves follow one well-defined curve, which is close to the \ac{IAW} of \cref{eq-MIAW} using the local Debye length and ion plasma pulsation.
 The maximum of the wave is located at $k_{\theta} = 8.5\,\radian\per\milli\meter$ and $\omega = 35\, \radian\per\mega\hertz$.
 
-\begin{figure}[hbtp]
+\begin{figure}[hbt]
   \centering
   \includegraphics[width=5in]{Boeuf_noLr_FFT2D_y50_full}
   \caption{\ac{2D} and \ac{1D} \ac{FFT} of the azimuthal electric field in the upstream region $z=z_u$ without radial losses. The black dotted lines highlight the position of the maximum of the \ac{2D} \ac{FFT}. The red dashed line corresponds the the \ac{IAW} dispersion relation of \cref{eq-MIAW}.}
@@ -81,7 +81,7 @@ The wave characteristics of the upstream region can still be seen, but a larger 
 However, this new wave seems to follow the same dispersion relation as in the upstream, but not the one using the local plasma parameters, which underestimates the wave parameters.
 
 
-\begin{figure}[hbtp]
+\begin{figure}[hbt]
   \centering
   \includegraphics[width=5in]{Boeuf_noLr_FFT2D_y300_full}
   \caption{\ac{2D} and \ac{1D} \ac{FFT} of the azimuthal electric field in the downstream region $z=z_d$ without radial losses.  The black dotted lines highlight the position of the maximum of the \ac{2D} \ac{FFT}, and the red dashed line corresponds the the \ac{IAW} dispersion relation of \cref{eq-MIAW}.}
@@ -96,7 +96,7 @@ We see in \cref{fig-fft2D_Lr4_zd} that for $L_R=4\,\centi\meter$, the \ac{2D} \a
 However, the wave of maximum amplitude is of small frequency and small wavenumber.
 The case with $L_R=2\,\centi\meter$, shown in \cref{fig-fft2D_Lr2_zd}, the small frequency wave is not present.
 The axial evolution of the wave amplitude is analyse is the next section. 
-\begin{figure}[hbtp]
+\begin{figure}[hbt]
   \centering
   \includegraphics[width=5in]{Boeuf_Lr4_FFT2D_y300_full}
   \caption{\ac{2D} and \ac{1D} \ac{FFT} of the azimuthal electric field in the downstream region $z=z_d$ with $L_R=4\,\centi\meter$.  The black dotted lines highlight the position of the maximum of the \ac{2D} \ac{FFT}, and the red dashed line corresponds the the \ac{IAW} dispersion relation of \cref{eq-MIAW}.}
@@ -104,7 +104,7 @@ The axial evolution of the wave amplitude is analyse is the next section.
 \end{figure}
 
 
-\begin{figure}[hbtp]
+\begin{figure}[hbt]
   \centering
   \includegraphics[width=5in]{Boeuf_Lr2_FFT2D_y300_full}
   \caption{\ac{2D} and \ac{1D} \ac{FFT} of the azimuthal electric field in the downstream region $z=z_d$ with $L_R=2\,\centi\meter$.  The black dotted lines highlight the position of the maximum of the \ac{2D} \ac{FFT}.}
@@ -117,7 +117,7 @@ the \ac{2D} \ac{FFT} presented in \cref{subsec-fft,subsec-fft_losses} where only
 In this section, we investigate the axial evolution on the wave characteristics.
 To do so, we present in \Cref{fig-axial_fft1D} the axial evolution of the \ac{1D} \ac{FFT} for the three cases.
  
-\begin{figure}[hbtp]
+\begin{figure}[hbt]
   \centering
   \includegraphics[width=\textwidth]{Boeuf_axila_evolution_fft1D_noLr}
   \includegraphics[width=\textwidth]{Boeuf_axila_evolution_fft1D_Lr4}
@@ -136,7 +136,7 @@ We have see previously that the \ac{1D} spectral aggregates the waves informatio
 The pulsation $\omega$ is normalized by the local ion plasma pulsation $\opi$ given in \cref{fig-wpi_Lde}.
 The azimuthal wavenumber $k_{\theta}$ is normalized by the local Debye length.
  
-\begin{figure}[hbtp]
+\begin{figure}[hbt]
   \centering
   \includegraphics[width=\textwidth]{Boeuf_caracteristics_all_normalized}
   \caption{Axial evolution of (left) the frequency and (right) the wavenumber of the wave of maximum amplitude in the \ac{2D} \ac{FFT} for the three cases using the model of Boeuf. The pulsation and the wavenumber are normalized by the local ion plasma pulsation, respectively the Debye length.}
@@ -153,7 +153,7 @@ On the other hand, the case $L_R=2\,\centi\meter$ shows a small discontinuity, b
 The model of Boeuf allows the simulation to reach a steady-state.
 We use the criteria developed in \cref{subsec-temp} and given by \cref{eq-criteriaIT} to determine whether or not the wave saturates because of ion-wave trapping.
 
-\begin{figure}[hbtp]
+\begin{figure}[hbt]
   \centering
   \includegraphics[width=\defaultwidth]{Boeuf_iontrapping_noLr}
   \caption{Temporal evolution of the ion-wave trapping criteria for the model of Boeuf without radial losses at three positions\string: $z=0.25\,\centi\meter$, un the upstream region; $z=1.5\,\centi\meter$, and $z=2.3\,\centi\meter$, in the downstream region.}
@@ -168,7 +168,7 @@ For $z=1.5\,\centi\meter$, the criteria is reached during approximately two micr
 \Cref{fig-ion-trap_temp_Lr} shows the same information than \cref{fig-ion-trap_temp_noLr} but with the radial losses modeled.
 We can see that at the end of the simulations ($t=10\,\micro\second$) the criterion is no more fulfilled.
 It means that the wave amplitude is smaller than the one expected with ion trapping.
-\begin{figure}[hbtp]
+\begin{figure}[hbt]
   \centering
   \begin{tabular}{cc}
     \subfigure{Boeuf_iontrapping_Lr4}{a}{20,65} & 
@@ -184,7 +184,7 @@ At the moment, we're not sure what the reason of this evolution is.
 The radial losses reduces the electron temperature and density, hence the thermal energy.
 But apparently, the amplitude of the instability diminishes more significantly.
 
-\begin{figure}[hbtp]
+\begin{figure}[hbt]
   \centering
   \includegraphics[width=\defaultwidth]{Boeuf_Axial_IonTrapping_criter}
   \caption{Axial evolution of the ion-wave trapping criteria average between $t=6\,\micro\second$ and $t=10\,\micro\second$ for the three cases using the model of Boeuf. }

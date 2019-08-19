@@ -25,7 +25,7 @@ The model used is described in \cref{sec-seemodel}, using the parameters of \cre
 \cref{fig-2DneTe} shows the electron density and the electron temperature in the \ac{2D} simulation at the end of the simulation ( $t=10\,\micro\second$) in the case $\crover=200\,\volt$.
 We can see the azimuthal instability in both $n_e$ and $\Te$.
 However, these azimuthal oscillations will be neglected in the following development. 
-\begin{figure}[hbtp]
+\begin{figure}[hbt]
   \centering
   \begin{tabular}{c c}
     \includegraphics[width=0.45\textwidth]{2D_ne_SEE200} &
@@ -44,7 +44,7 @@ Indeed, $\crover=200\,\volt$ and $\crover=50\,\volt$ correspond to the upper and
 Regime {\bf II} is not presented, as the oscillating nature of the sheath is not taken into account by the stationary sheath modeled developed here. 
 
 
-\begin{figure}[hbtp]
+\begin{figure}[hbt]
   \centering
   \includegraphics[width=\textwidth]{ne_Te_profiles.pdf}
   \caption{Radial profiles of (left) the electron density and (right) the electron temperature, for different values of $\crover$. The variables are averaged over the azimuthal direction and in time between $t=5\,\micro\second$ and $t=10\,\micro\second$.  }
@@ -57,7 +57,7 @@ This is clearly visible in \cref{fig-log_pe-ne}, which presents the electron pre
 We see that close to the wall, where the electron pressure is the lowest, the curves present an inversion, in contrast with the case without electron emission seen in \cref{fig-polyFit}.
 Otherwise in the rest of the domain, the curves are almost linear, corresponding to a polytropic state law.
 
-\begin{figure}[hbtp]
+\begin{figure}[hbt]
   \centering
   \includegraphics[width=\defaultwidth]{SEE_polytropic_presheath_and_sheath.pdf}
   \caption{Electron pressure as a function of the electron density normalized by the center variable, in log scale. The data corresponds to the same as \cref{fig-radial_profiles_see}. Markers are used every 10 cells (corresponding to around one Debye length $\lde$)}
@@ -74,7 +74,7 @@ It will be used in the next sections to compare the \ac{PIC} results with a flui
 
 \renewcommand\subfigurewidth{3in}
 
-\begin{figure}[hbtp]
+\begin{figure}[hbt]
   \centering
   \includegraphics[width=\defaultwidth]{SEE_polyfit}
   \caption{Polytropic linear regression for different values of $\crover$, in the same conditions that \cref{fig-log_pe-ne}, but the last 10 cells near the wall are removed, the value of $\gamma$ fitted on the \ac{PIC} simulation data is given in the legend.}
@@ -88,7 +88,7 @@ It will be used in the next sections to compare the \ac{PIC} results with a flui
 %\unsure{Is it the center or the sheath-edge ?}
 We see that the \ac{EVDF} presents similar profiles for the three cases, except for the mean energy that decreases with increasing value of $\crover$.
 
-\begin{figure}[hbtp]
+\begin{figure}[hbt]
   \centering
   \includegraphics[width=\defaultwidth]{EVDF_Bulk.pdf}
   \caption{Electron velocity distribution function at the center of the simulation, under the same parameters than the cases in \cref{fig-log_pe-ne,fig-polyfit_see}. The sign of the energy corresponds to the direction of the movement.}
@@ -102,7 +102,7 @@ This shows that the instability, self-consistently modeled in the \ac{2D} simula
 Using the solution of the stationary Vlasov equation \cref{eq-sol}, we compute the evolution of the density and temperature of the electron population going toward the wall.
 The results are compared to the mean density and temperature measured in the \ac{PIC} simulations in \cref{fig-evdf_polyfit}.
 
-\begin{figure}[hbtp]
+\begin{figure}[hbt]
   \centering
   \includegraphics[width=\defaultwidth]{polyfit_evdf}
   \caption{Pressure and density in log scale of (orange) the forward electron using the stationary Vlasov equation, compared with (blue) the values measured in the \ac{PIC} simulations, for $\crover=200\,\volt$. Different polytropic models are given (the isothermal corresponds to $\gamma=1$).}

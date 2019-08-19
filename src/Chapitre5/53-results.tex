@@ -14,7 +14,7 @@
   The distributions are averaged in time over $4\,\nano\second$, and in space over all the azimuthal direction.
   In the radial direction, the distributions are averaged over a small length at the center of the channel, between $r=0.45\,\centi\meter$ and $r=0.55\,\centi\meter$.
   
-  \begin{figure}[hbtp]
+  \begin{figure}[hbt]
     \centering
     \includegraphics[width=0.95\textwidth]{Distributions_time_evolution_2.pdf}
     \caption{Electron and ion normalized azimuthal velocity distribution functions. The velocity in abscissa is normalized by the thermal speed of the corresponding species. Is overlaid the theoretical $E\times B$ drift velocity of the electrons $u_e = \frac{E_z}{B_r}$, and the ion sound speed $c_s$ normalized by the ion thermal velocity.}
@@ -54,7 +54,7 @@
     
 
     
-    \begin{figure}[hbtp]
+    \begin{figure}[hbt]
       \centering
       \includegraphics[width=\textwidth]{phi_fluctuation_summary.pdf}
       \caption{Snapshot of the plasma potential at different times during the linear phase of the simulation.}
@@ -69,7 +69,7 @@
     This is also clearly seen on the frequency spectra, showed in \Cref{fig-phi_fluctuation_summary_FFT}.
     We can see in the spectra the resonances at the cyclotron wavenumber $k_0 = \frac{\oce}{u_e} \simeq 3.5\,\milli\meter^{-1}$.
     
-    \begin{figure}[hbtp]
+    \begin{figure}[hbt]
       \centering
       \includegraphics[width=\textwidth]{phi_fluctuation_summary_FFT.pdf}
       \caption{Frequency spectra on the azimuthal instability presented in \cref{fig-phi_fluctuation_summary}. Each spectrum is averaged in the radial direction. The red dotted lines represent the cyclotron resonances.}
@@ -86,7 +86,7 @@
     The radial wavenumber taken is $k_r = 2 \pi/L_R \sim 0.6 \per\milli\meter$ \citep{lafleur2016,janhunen2018}.
     This value corresponds to $k_r \lde = 0.036$ at $t=0.2\,\micro\second$ and $k_r \lde = 0.044$ at $t=0.7\,\micro\second$, as the electron temperature increases.
     
-    \begin{figure}[hbtp]
+    \begin{figure}[hbt]
       \centering
       % \begin{tabular}{c}
         \includegraphics[width=0.45\textwidth]{ECDI_PIC_ionvcorrected_2mus.pdf} 
@@ -128,7 +128,7 @@
   \Cref{fig-Example_of_DR_IAW} illustrates the protocol used for 3 different cases.
   We can see the maximum of the growing rate, and its frequency.
   
-  \begin{figure}[hbtp]
+  \begin{figure}[hbt]
     \centering
     \includegraphics[width=4.5in]{Example_of_DR_IAW.pdf}
     \caption{Illustration of the \ac{IAW} dispersion relation obtained at two different time ($t=0$ and $t=1.2\,\micro\second$), using the hypothesis of Maxwellian distribution functions for both electrons and ions. The electron temperature measured in the simulation is always used, but the ion temperature is only used once. The most growing solution is marked with a circle on the growing rate and the frequency.}
@@ -139,7 +139,7 @@
   This calculation is automated for the whole duration of the simulation.
   The velocity distribution functions, when used, are obtained from the \ac{PIC} simulation the same way that in \cref{subsec-VDFpic}.
   \Cref{fig-time_wave} shows the temporal evolution of the three characteristics of the most growing wave: the growth rate $\gamma$, the azimuthal wavenumber $k$ and the frequency $\omega$.
-  \begin{figure}[hbtp]
+  \begin{figure}[hbt]
     \centering
     % \includegraphics[width=\textwidth]{GrowthRate_time_evolution_250_ter.pdf}
     \includegraphics[width=\textwidth]{GrowthRate_time_evolution_250_again.png}  %inverted ion velocity as a correction, to look like Lefleur... :/
