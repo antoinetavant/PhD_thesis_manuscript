@@ -83,15 +83,17 @@ Two other approaches have been followed to reduce the computational cost of the 
   \item the approach used by \citet{coche2014}\string: using a scaling of the permittivity to reduce the computational load,
   \item the approach of \citet{boeuf2017}, using a forced ionization source term.
 \end{enumerate} 
+These two cases are significantly different in the physics modeled and the behavior observed.
+Hence, we will study both of them.
 
-\paragraph{Coche's simulation case \\}
+\subsection{Simulation test-case of Coche} \label{subsec-boeuf_description}
 
-The simulation proposed by \citet{coche2014} models self-consistently the ionization with the \ac{MCC} algorithm, as well as the neutral gas flow by supposing a constant velocity.
+The simulation proposed by \citet{coche2014} models self-consistently the ionization with the \ac{MCC} algorithm, as well as the neutral gas flow.
 \Cref{fig-coche-presnetation} presents the domain of simulation.
 The simulation domain geometry is realistic, with a channel length $L_{channel} = 2.5\,\centi\meter$ for a total axial length of the simulation domain $L_z=4\,\centi\meter$.
-Hence, all of the chamber and a part of the near plume is simulated.
+Hence, the totality of the chamber and a part of the near plume is simulated.
 
-\renewcommand\subfigurewidth{0.4\textwidth}
+ \renewcommand\subfigurewidth{0.4\textwidth}
 
 
 \begin{figure}[hbt]
@@ -103,6 +105,23 @@ Hence, all of the chamber and a part of the near plume is simulated.
   \caption{(left) the \ac{2D} axial azimuthal domain; (right) the axial profile of the magnetic field and the initial xenon neutral gas profile used for the simulation case of Coche. }
   \label{fig-coche-presnetation}
 \end{figure}
+
+
+The neutral xenon is modeled by solving a system of \ac{1D} fluid equations.
+Indeed, the azimuthal variations of the neutrals are neglected in this section.
+The gas is modeled using the continuity and the momentum conservation equations\string:
+\begin{align}
+  \deriv{n_g}{t} &+ \deriv{n_g v_g}{z} = - S_{iz} \\
+  \deriv{n_g v_g}{t} &+ \deriv{n_g v_g^2}{z} +  \deriv{2 n_g D_g}{z} = - S_{iz} v_g
+\end{align}
+
+with $n_g$ and $v_g$ the neutral gas density and axial velocity, respectively, $S_{iz}$ is the ionization source term obtained by the \ac{MCC} algorithm, and $D_n$ is used to close the system, and is \citep{coche2013}
+\begin{equation} \label{eq-Dn}
+  D_n = \frac{k_B T_g}{6 m_i}.
+\end{equation}
+The gas temperature $T_g=300K$ and the initial condition is described on the density $n_g$ on \cref{fig-coche-presnetation}(right).
+The initial velocity is $v_g=200\,\meter\per\second$.
+
 
 The constraints on the time step and the cell size are alleviated by using a scaling on the permittivity.
 It is simply increased by a coefficient $\alpha$, as used in other low-temperature modelling \citep{fubiani2012,boeuf2012,liu2010}.
@@ -122,7 +141,7 @@ Hence, the constraints on the time step and the cell size are reduced by a facto
 By using a factor $\alpha=80$,  which correspond to a factor of $9$ on the time step and the cell size,  \citet{coche2014} successfully observed the breathing mode in the \ac{PIC}-\ac{MCC} simulation.
 
 
-\paragraph{Boeuf's simulation case \\}
+\subsection{Simulation test-case of Boeuf} \label{subsec-boeuf_description}
 
 In \citet{boeuf2018}, the authors used a simplified simulation set-up in order to better study the azimuthal instabilities.
 The simulation is collisionless and the ionization profile is not-self-consistent but  is given as an input of the model.
