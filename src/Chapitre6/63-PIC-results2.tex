@@ -2,9 +2,33 @@
 
 \section{PIC simulation results: Coche test-case}
 
-\inlinenote{Anne: remettre une table ou faire reference au debut du chapitre ou tu decris ce cas-test...
-Les transitions sont un peu raides !!! dire que dans ce cas, on va voir le breathing mode....
-}
+In this sections, we present the results of the \ac{2D} \ac{PIC} simuations using the test-case of Coche, described in \cref{subsec-coche_description}; the parameters used are given in \vref{tab-parameters-coche}.
+In this test-case, we uses a permittivity scaling ($\epsilon_0^* = 80 \epsilon_0$) that allow us to observe the breathing mode.
+
+The test-case of Coche has been simulated twice\string:
+\begin{itemize}
+  \item once without the radial losses, 
+  \item once with the radial losses modeled, using $L_R = 2\,\centi\meter$.
+\end{itemize}
+ 
+
+\subsection{Coche test-case: results overview} \label{subsec-choche-overview}
+
+In order to well resolve the breathing mode, the test-cases of Coche are simulated during 300\,\micro\second.
+\Cref{fig-overview_coche_neEx} shows the axial and azimuthal distribution of the azimuthal electric field $E_{\theta}$ and the electron density $n_e$ at $t=236\,\micro\second$ is the case where no radial losses are modeled.
+We see in both $E_{\theta}$ and $n_e$ the \ac{ECDI}, which wavelength is approximately $\lambda_{\theta} = 0.3\,\centi\meter$.
+The results observed are similar to the one presented by \citet{coche2014}.
+Hence, we expect that there is no error in the simulation.
+
+\begin{figure}[hbt]
+  \centering
+  \includegraphics[width=0.9\textwidth]{Coche_example_t=236}
+  \caption{ Axial-azimuthal distributions of (left) the azimuthal electric field $E_{\theta}$ and (right) the electron density $n_e$ at $t=236\,\micro\second$ for the test-case of Coche. } 
+  \label{fig-overview_coche_neEx}
+\end{figure}
+
+
+
 \subsection{Coche test-case: Temporal evolution} \label{subsec-temp_coche}
 
 \begin{figure}[hbt]
@@ -52,9 +76,11 @@ They showed that the electron power balance is important to describe the growth 
   
   \begin{figure}[hbt]
     \centering
-    \includegraphics[width=\defaultwidth]{Coches_mean_Tez_profile}
+    \includegraphics[width=0.6\textwidth]{Coches_mean_Tez_profile}
     \caption{ Axial profile of the mean electron temperature in the 3 directions for the case with radial losses. The variables are averaged  between $t=170\,\micro\second$ and $t=250\,\micro\second$ for the case without radial loss, and  between $t=200\,\micro\second$ and $t=300\,\micro\second$ for the case with the radial loss.}
     \label{fig-coche-axial-Te}
   \end{figure}
-  \inlinenote{Problem unité}
+  
+  \FloatBarrier
+
   

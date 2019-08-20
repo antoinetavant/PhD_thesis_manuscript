@@ -2,24 +2,37 @@
 
 \section{PIC simulation results: Boeuf test-case}
 
-
+  In this sections, we present the results of the \ac{2D} \ac{PIC} simuations using the test-case of Boeuf, described in \cref{subsec-boeuf_description}; the parameters used are given in \vref{tab-parameters-boeuf}.
+  In this test-case, the ionization is fixed, hence breathing mode is not present.
+  Consequently, the simulation converges quickly toward a steady state.
+  
   We uses the test-case of Boeuf for three different cases.
   The first is the usual case, without the effects of the radial direction.
   It is expected to return the same results as obtained in \citet{boeuf2018}.
   The two other cases model the effect of the radial direction.
   Two values of the radial length are used\string: $L_R=4\,\centi\meter$ and $2\,\centi\meter$.
 
+  
+  \subsection{Boeuf test-case: results overview} \label{subsec-boeuf-overview}
+  As the ionization is not self-consistently modeled in the Boeuf test-case, the simulations converges under $10\,\micro\second$.
+  \Cref{fig-overview_boeuf_neEx} shows the axial and azimuthal distribution of the azimuthal electric field $E_{\theta}$ and the electron density $n_e$ at $t=8\,\micro\second$ is the case where no radial losses are modeled.
+  We see in both $E_{\theta}$ and $n_e$ the \ac{ECDI}, which wavelength is approximately $\lambda_{\theta} = 0.08\,\centi\meter$.
+  The results observed are similar to the one presented by \citet{boeuf2018}.
+  Hence, we expect that there is no error in the simulation.
+
+  \begin{figure}[hbt]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Boeuf_example_t=8}
+    \caption{ Axial-azimuthal distributions of (left) the azimuthal electric field $E_{\theta}$ and (right) the electron density $n_e$ at $t=8\,\micro\second$ for the test-case of Boeuf. } 
+    \label{fig-overview_boeuf_neEx}
+  \end{figure}
 
   \subsection{Boeuf test-case: Temporal evolution} \label{subsec-temp_boeuf}
   
-  \inlinenote{Anne: Donner une table ou faire reference au papier de Thomas pour donner toutes les caracteristiques de tes simulations
-  Si quelqu un essaie de refaire tes calculs de these, on doit avoir les informations pour les refaire ;-) }
-
   Since the ionization source term is constant in this test-case, a steady state is reached after a 6 or $8\micro\second$.
   \Cref{fig-boeuf-temporal} presents the temporal evolution of the mean plasma density and temperature.
   We see that when the radial direction is modeled, the density and the mean electron temperature and the radial electron temperature is reduced, as expected when increasing the losses with a constant ionization source term.
 
-  \renewcommand\subfigurewidth{0.49\textwidth}
 
   \begin{figure}[hbt]
     \centering
@@ -101,10 +114,11 @@
 
   We have seen that because there is no collision in the test-case of Boeuf, there is no energy transfer toward the radial direction.
   Thus, we investigate here the impact of the neutrals on the electron anisotropy by modeling the collisions with the \ac{MCC} algorithm.
+  We uses the same model as in the test-case of Coche, described in \cref{subsec-coche_description}.
 
   The xenon neutrals are injected at the anode side with density of $n_g=\sn{1}{17}\,\meter$${-3}$, an axial velocity $v_g = 200 \,\meter\per\second$ and a temperature $T_g=640\,\kelvin$.
   We model the neutral flow with the continuity and momentum conservation equation, while keeping their temperature constant.
-  The ionization source term used to sustain the plasma is a loss term in the continuity equation.
+  The ionization source term used to sustain the plasma is used as the loss term in the continuity equation.
   \Cref{fig-boeuf-neutrals} shows the neutral density and velocity obtained at steady-state.
 
   \begin{figure}[hbt]
@@ -116,7 +130,7 @@
     \caption{Axial profile at steady-state ($t=14\,\micro\second$) of ({\bf a}) the neutral density and  ({\bf b})  the neutral axial velocity, for  simulation case of Boeuf with the electron-neutral scattering. }
     \label{fig-boeuf-neutrals}
   \end{figure}
-  We see in \cref{fig-boeuf-neutrals} that the neutrals are significantly depleted because of the forced ionization source term.
+  We see in \cref{fig-boeuf-neutrals} that the neutral density is significantly depleted because of the forced ionization source term.
   The neutral density gradient accelerates the neutrals in the axial direction by a factor of two, which reduces even more the neutral density.
   Thus, the electron-neutral scattering will be significant on the anode side of the chamber.
 
