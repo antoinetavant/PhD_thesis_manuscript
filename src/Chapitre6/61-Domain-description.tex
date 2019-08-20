@@ -86,7 +86,7 @@ Two other approaches have been followed to reduce the computational cost of the 
 These two cases are significantly different in the physics modeled and the behavior observed.
 Hence, we will study both of them.
 
-\subsection{Simulation test-case of Coche} \label{subsec-boeuf_description}
+\subsection{Simulation test-case of Coche} \label{subsec-coche_description}
 
 The simulation proposed by \citet{coche2014} models self-consistently the ionization with the \ac{MCC} algorithm, as well as the neutral gas flow.
 \Cref{fig-coche-presnetation} presents the domain of simulation.
@@ -111,15 +111,15 @@ The neutral xenon is modeled by solving a system of \ac{1D} fluid equations.
 Indeed, the azimuthal variations of the neutrals are neglected in this section.
 The gas is modeled using the continuity and the momentum conservation equations\string:
 \begin{align}
-  \deriv{n_g}{t} &+ \deriv{n_g v_g}{z} = - S_{iz} \\
-  \deriv{n_g v_g}{t} &+ \deriv{n_g v_g^2}{z} +  \deriv{2 n_g D_g}{z} = - S_{iz} v_g
+  \deriv{n_g}{t} &+ \deriv{(n_g v_g)}{z} = - S_{iz} \\
+  \deriv{(n_g v_g)}{t} &+ \deriv{(n_g v_g^2)}{z} +  2 \deriv{( n_g D_g)}{z} = - S_{iz} v_g
 \end{align}
 
 with $n_g$ and $v_g$ the neutral gas density and axial velocity, respectively, $S_{iz}$ is the ionization source term obtained by the \ac{MCC} algorithm, and $D_n$ is used to close the system, and is \citep{coche2013}
 \begin{equation} \label{eq-Dn}
   D_n = \frac{k_B T_g}{6 m_i}.
 \end{equation}
-The gas temperature $T_g=300K$ and the initial condition is described on the density $n_g$ on \cref{fig-coche-presnetation}(right).
+The gas temperature $T_g=640K$ and the initial condition is described on the density $n_g$ on \cref{fig-coche-presnetation}(right).
 The initial velocity is $v_g=200\,\meter\per\second$.
 
 
@@ -139,8 +139,50 @@ Hence, the constraints on the time step and the cell size are reduced by a facto
 \end{align*}
 
 By using a factor $\alpha=80$,  which correspond to a factor of $9$ on the time step and the cell size,  \citet{coche2014} successfully observed the breathing mode in the \ac{PIC}-\ac{MCC} simulation.
+The physical and numerical conditions used for the test-case of Coche are given in \cref{tab-parameters-coche}.
 
 
+
+\begin{table}[htbp] %PIC parameters
+     \centering
+     \ra{1.3}
+     \caption{\label{tab-parameters-coche} Physical and numerical parameters used in the \ac{2D} \ac{PIC} simulations of an axial and azimuthal \ztheta plane of a \ac{HET} in the test-case of Coche.}
+     \begin{tabular}{@{}r c c c@{}} 
+        \toprule
+        {\bf Physical Parameter} & notation & Value & Unit \\
+        \midrule
+        Gas & & Xenon & - \\
+        Domain dimensions & $L_{\theta} \times L_{z}$ & $0.5 \times 4.0$ & [cm$^2$] \\
+        Maximum magnetic field & $\max(B_{r})$                    & $170$                 & [{G}] \\
+        Position of  $\max(B_{r})$   & $z_{\max(B_{r})}$                    & $2.5$      & [cm] \\
+        Anode voltage & $U_d$                    & $300$     & [V] \\
+
+        Initial electron temperature & $\Te_{,0}  $               & $1.0$                 & [{V}] \\
+        Initial ion temperature & $T_{i,0}   $               & $1.0$                 & [{V}] \\
+        Neutral gas pressure & $P_{n}     $               & $2.0$                 & [{mTorr}] \\
+        Neutral gas temperature & $T_{n}     $               & $640$                 & [{K}] \\
+        Neutral gas density & $n_{g}     $               & $3.0 \times 10^{19}$ & [{m}$^{-3}$]\\
+        Initial plasma density & $n_0$ & $\sn{1}{18}$ &  [{m}$^{-3}$]\\
+        \midrule
+        {\bf Simulation Parameter} &  &   &  \\
+        Permittivity scaling & $\alpha$ & 80 & - \\
+        Cell size & $\Delta x = \Delta y$ & $4 \times 10^{-5}$  & [{m}] \\
+        Time step & $\Delta t  $                      & $3 \times 10^{-12}$ & [{s}] \\
+        Ion sub-cycling & $\frac{\dt_{i}}{\dt_{e}}$ & 11 & - \\
+        Initial number of particles per cell & $N/NG      $    & $200$   & [{part/cell}] \\
+        \bottomrule
+     \end{tabular}
+  \end{table}
+
+  The cathode emitted electrons are injected at the boundary, using a Maxwellian flux distribution.
+  The plume neutralization is not described, thus the current to inject is
+  \begin{equation} \label{eq-coche_Ice}
+    I_{ce } = I_a + I_b
+  \end{equation}
+  with $I_a$ the total current collected at the anode boundary $I_a = I_{, i} + I_{a, e}$ and $I_b$ the beam current $I_{b} = I_{b, i} + I_{b, e}$. 
+  At the anode, the current is mostly composed of the electron current, while the beam is mostly composed of ions.
+  
+  
 \subsection{Simulation test-case of Boeuf} \label{subsec-boeuf_description}
 
 In \citet{boeuf2018}, the authors used a simplified simulation set-up in order to better study the azimuthal instabilities.
