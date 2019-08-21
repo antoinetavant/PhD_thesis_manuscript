@@ -1,5 +1,5 @@
 % !TEX root=/home/tavant/these/manuscript/src/manuscript.tex
-
+\FloatBarrier
 \section{Comparison of the \ac{DR} with the \ac{PIC} simulations}
   \label{sec-DR-results}
   
@@ -36,7 +36,7 @@
   As both electron and ion velocity distribution functions are far from a drifting Maxwellian, we will study the influence of both distributions in the calculations of the dispersion relation.
   
   
-  
+  \FloatBarrier
   \subsection{Resolution of the electron cyclotron drift instability} \label{subsec-ECDIPIC}
   
   
@@ -106,7 +106,7 @@
     We can also observe that the deviation of the distribution function from the Maxwellian decreases the growth rate.
     This has been observed  in an axial-azimuthal \ac{PIC} simulation by \citet{lafleur2018}.
     This confirms that the exact distribution function should be used in the calculation of the distribution function.
-    
+  \FloatBarrier
   \subsection{Resolution of the ion acoustic wave} \label{subsec-VDFIAW}
   
   We have seen in the previous \cref{subsec-ECDIPIC} that the full \ac{ECDI} dispersion relation is not needed, but can instead be approximated by the \ac{IAW} \citep{lafleur2018,janhunen2018,taccogna2019}.
@@ -180,3 +180,8 @@
   As a dispersion relation solver for general distributions would benefit the whole plasma physics community, developing such a benchmark that would compare the solution of independent implementations of the same algorithm, or different algorithm, seems very interesting.
   
   \inlinenote{add a small summary here ? \\Anne: yes}
+  \vspace{1ex}
+  
+  To summarize the study of the ion accoustic wave dispersion relation.
+  
+  \FloatBarrier
