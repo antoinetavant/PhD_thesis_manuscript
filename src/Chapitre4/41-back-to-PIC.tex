@@ -1,15 +1,14 @@
 % !TEX root=/home/tavant/these/manuscript/src/manuscript.tex
 
 
-\section{Polytropic index in the \ac{HET} \ac{PIC} simulations}
+\section{Polytropic electrons in the presence of \ac{SEE}}
 \label{sec-PIC_poly}
 
-We have developed in \cref{ch-3} a sheath model that uses a polytropic state law for the electrons instead of the usual isothermal approximation.
+The sheath model developed in \cref{ch-3} uses a polytropic state law for the electrons instead of the usual isothermal approximation.
+Indeed, the results of the  \ac{1D} \ac{PIC} simulations presented a polytropic evolution of the electrons.
 This model successfully reproduced the sheath characteristics  when no secondary electron emission was modeled (fully absorbing walls).
-In this chapter, we study the effects of the electron emission from the wall on the sheath characteristics, based on the \ac{PIC} simulations presented in \cref{sec-see}.
+Before adapting this sheath model to the case with \ac{SEE}, we need to validate the polytropic hypothesis.
 
-We recall that in these simulations, the dielectric electrostatic boundary condition is not modeled, but instead the walls are grounded.
-In addition, the axial convection is modeled using Lafleur's model of convection, as discussed in \cref{sec-reinjectionnoise}.
 
 \subsection{Polytropic index determination from PIC simulations} \label{subsec-fluid_see_polyfit}
 
@@ -18,14 +17,15 @@ The simulation domain is described in \cref{ch-2}, but we recall here the main p
 The bidimensional domain lengths $2\,\centi\meter$ in the radial direction, and $0.25\,\centi\meter$ in the azimuthal direction.
 A radial magnetic field $B=200\,$G and an axial electric field $E=20\,\kilo\volt\per\meter$ are applied.
 The mean plasma density is $n_e = \sn{3}{17}\,\meter^{-3}$.
-
 The radial direction is closed by grounded wall, but we model the electron induced electron emission from the wall.
 The model used is described in \cref{sec-seemodel}, using the parameters of \cref{tab-tabe_parameters_see}.
+In addition, the axial convection is modeled using Lafleur's model of convection, as discussed in \cref{sec-reinjectionnoise}.
 
 \cref{fig-2DneTe} shows the electron density and the electron temperature in the \ac{2D} simulation at the end of the simulation ( $t=10\,\micro\second$) in the case $\crover=200\,\volt$.
 We can see the azimuthal instability in both $n_e$ and $\Te$.
 However, these azimuthal oscillations will be neglected in the following development. 
-\begin{figure}[hbt]
+
+\begin{figure}[!h]
   \centering
   \begin{tabular}{c c}
     \includegraphics[width=0.45\textwidth]{2D_ne_SEE200} &
@@ -44,7 +44,7 @@ Indeed, $\crover=200\,\volt$ and $\crover=50\,\volt$ correspond to the upper and
 Regime {\bf II} is not presented, as the oscillating nature of the sheath is not taken into account by the stationary sheath modeled developed here. 
 
 
-\begin{figure}[hbt]
+\begin{figure}[!h]
   \centering
   \includegraphics[width=\textwidth]{ne_Te_profiles.pdf}
   \caption{Radial profiles of (left) the electron density and (right) the electron temperature, for different values of $\crover$. The variables are averaged over the azimuthal direction and in time between $t=5\,\micro\second$ and $t=10\,\micro\second$.  }
@@ -57,7 +57,7 @@ This is clearly visible in \cref{fig-log_pe-ne}, which presents the electron pre
 We see that close to the wall, where the electron pressure is the lowest, the curves present an inversion, in contrast with the case without electron emission seen in \cref{fig-polyFit}.
 Otherwise in the rest of the domain, the curves are almost linear, corresponding to a polytropic state law.
 
-\begin{figure}[hbt]
+\begin{figure}[!htb]
   \centering
   \includegraphics[width=\defaultwidth]{SEE_polytropic_presheath_and_sheath.pdf}
   \caption{Electron pressure as a function of the electron density normalized by the center variable, in log scale. The data corresponds to the same as \cref{fig-radial_profiles_see}. Markers are used every 10 cells (corresponding to around one Debye length $\lde$)}
@@ -65,27 +65,44 @@ Otherwise in the rest of the domain, the curves are almost linear, corresponding
 \end{figure}
 
 We determine the value of the polytropic index $\gamma$ from the \ac{PIC} simulations with a least mean square linear regression.
-The results of the regressions are displayed in \cref{fig-polyfit_see}.
-We can see that the value of $\gamma$ does not evolve significantly in regime {\bf III}, as it evolves from $\gamma=1.35$ for $\crover=200\,\volt$ to $\gamma=1.37$ for $\crover=200\,\volt$.
-For $\crover=10\,\volt$, the value of the polytropic index, in the linear stage, is $\gamma=1.59$, which is not so different from regime {\bf III}.
+The results of the regressions are displayed in \cref{fig-polyfit_see}, and the polytropic index obtained are summarized in \cref{tab-summarygamma}.
+
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=\defaultwidth]{SEE_polyfit}
+  \caption{Polytropic linear regression for different values of $\crover$, in the same conditions that \cref{fig-log_pe-ne}, but the last 10 cells near the wall are removed The value of $\gamma$ fitted on the \ac{PIC} simulation data is given in the legend.}
+  \label{fig-polyfit_see}
+\end{figure}
+
+\begin{table}[!htb]
+\ra{1.3}
+  \centering
+  \caption{Polytropic index extracted from the \ac{2D}  \ac{PIC} simulations}
+  \label{tab-summarygamma}
+  \begin{tabular}{@{}r l@{}} \toprule
+  Crossover energy $\crover$ & Polytropic index $\gamma$ \\ \midrule
+  200 V & 1.35 \\
+  50 V & 1.37 \\
+  10 V & 1.59 \\
+  \bottomrule
+  \end{tabular}
+\end{table}
+
+
+We can see that the value of $\gamma$ does not evolve significantly in regime {\bf III}, as it evolves from $\gamma=1.35$  to $1.37$ when $\crover$ vary from $200$ to $50\,\volt$.
+For $\crover=10\,\volt$, the value of the polytropic index in the linear stage is $\gamma=1.59$, which is not so different from the values in regime {\bf III}.
 
 Consequently, we suppose in the following that the polytropic index in the \ac{PIC} simulation with secondary electron emission is constant and equals $\gamma=1.36$ for every value of $\crover$.
 It will be used in the next sections to compare the \ac{PIC} results with a fluid model of the sheath.
 
-\renewcommand\subfigurewidth{3in}
-
-\begin{figure}[hbt]
-  \centering
-  \includegraphics[width=\defaultwidth]{SEE_polyfit}
-  \caption{Polytropic linear regression for different values of $\crover$, in the same conditions that \cref{fig-log_pe-ne}, but the last 10 cells near the wall are removed, the value of $\gamma$ fitted on the \ac{PIC} simulation data is given in the legend.}
-  \label{fig-polyfit_see}
-\end{figure}
 
 
 \subsection{Evolution of the electron distribution function} \label{subsec-EVDF_see_polyfit}
 
+The electron density $n_e$ and  temperature $\Te$ showed in \cref{subsec-fluid_see_polyfit} actually include both the primary electrons going toward the wall and the secondary electron emitted from the wall.
+In order to separate the two populations, we use the \ac{EVDF} measured in the simulations.
 \Cref{fig-evdf_epsstar} presents the electron distribution functions measured at the center of the simulation domain. 
-%\unsure{Is it the center or the sheath-edge ?}
 We see that the \ac{EVDF} presents similar profiles for the three cases, except for the mean energy that decreases with increasing value of $\crover$.
 
 \begin{figure}[hbt]
@@ -99,8 +116,15 @@ We see that the \ac{EVDF} presents similar profiles for the three cases, except 
 We note that no beam is present here, even in the case of very large electron emission at $\crover=10\,\volt$, in contrast with observations of \ac{1D} PIC simulations \citep{sydorenko2006b,sydorenko2007} but in agreement with the \ac{2D} results of \citet{heron2013}.
 This shows that the instability, self-consistently modeled in the \ac{2D} simulations, thermalizes the secondary electron.
 
-Using the solution of the stationary Vlasov equation \cref{eq-sol}, we compute the evolution of the density and temperature of the electron population going toward the wall.
-The results are compared to the mean density and temperature measured in the \ac{PIC} simulations in \cref{fig-evdf_polyfit}.
+Using the solution of the stationary Vlasov equation \cref{eq-sol}, we compute the evolution of the density and temperature of the primary electron population going toward the wall through the plasma potential $\phi$ 
+\begin{equation} \label{eq-vlasov}
+  \begin{dcases}
+    f(\phi, v_e) = f \lp 0, \sqrt{v_e^2 + \frac{2 e}{m_e} \phi} \rp \\
+    n_e(\phi) = \int_0^{+\infty} f(\phi, v_e) dv_e \\
+    p_e(\phi) = \frac{m_e}{e} \int_0^{+\infty} v_e^2 f(\phi, v_e) dv_e \\
+  \end{dcases}
+\end{equation}
+The results obtained by the system of equations (\ref{eq-vlasov}) are compared to the mean density and temperature measured in the \ac{PIC} simulations in \cref{fig-evdf_polyfit}.
 
 \begin{figure}[hbt]
   \centering
@@ -109,7 +133,7 @@ The results are compared to the mean density and temperature measured in the \ac
   \label{fig-evdf_polyfit}
 \end{figure}
 
-We see that the pressure of the forward electron population decreases slower than the total electron pressure.
+We see that the pressure of the primary electron population decreases slower than the total electron pressure.
 This may be due to the partial absorption and emission of secondary electrons at the wall, injected at $\Tsee=2\,\volt$.
 Hence, we can expect that the emission rate $\sigma$, which directly depends on the forward electron population, be better described with the polytropic index computed in \cref{fig-evdf_polyfit} than in \cref{subsec-fluid_see_polyfit}.
 The polytropic index of the forward population computed here is $\gamma=1.28$.

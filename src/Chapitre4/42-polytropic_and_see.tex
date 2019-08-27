@@ -4,6 +4,10 @@
 \section{Sheath model with polytropic electrons and electron emission}
 \label{sec-fluid_poly_see}
 
+\let\oldrightmark=\rightmark
+\renewcommand\rightmark{\expandafter\MakeUppercase{Sheath with polytropic electron and SEE}}
+
+
 \subsection{Definition of the sheath equation} \label{subsec-def_sheat_see}
 
 We have seen in \cref{sec-PIC_poly} that in the presence of electron emission from the wall, the electrons can be described using a polytropic state law.
@@ -25,7 +29,7 @@ The solution for $\rate=0.8$ is compared to the case without electron emission (
 As expected, the potential difference decreases with increasing $\rate$.
 However, the gap between the two cases decreases when $\gamma$ increases from 1 to 2.
 
-\begin{figure}[hbt]
+\begin{figure}[!hbt]
   \centering
   \includegraphics[width=\defaultwidth]{Sheath_drop_with_SEE.pdf}
   \caption{Potential drop $\dphi$ normilized by the bulk electron temperature $\Te_0$ as a function of the polytropic index $\gamma$ for a xenon plasma ($m_i = 131\,\atomicmass$). The emission rate $\rate$ is fixed for clarity.}
@@ -42,51 +46,68 @@ Combined with \cref{eq-tew}, we obtain
 \begin{equation} \label{eq-seemaxw_Tew}
   \rate = \sigo + ( 1 - \sigo) \frac{ 2 \lp \Teb - \frac{\gamma - 1}{\gamma} \dphi \rp }{\crover}.
 \end{equation}
-Here, for sake of clarity we do not write the saturation of $\rate$ to $\ratecr$ due to the \ac{SCL} regime.
+Here, for sake of clarity we do not write the saturation of $\proba$ to $\sigm$
 Indeed, we know that it  changes only slightly the value of $\rate$.
-%However, we include it the the next calculations.
+On the other hand, we include in the next calculations the saturation of $\rate$ to $\ratecr$ due to the \ac{SCL} regime.
 
-
-Noting $\chi = \frac{\gamma -1}{\gamma} \frac{ \dphi_0}{ \Te_0} $, we finely obtain the equation to be solved
+Noting $\chi = \frac{\gamma -1}{\gamma} \frac{ \dphi_0}{ \Te_0} $, we finely obtain the sheath equation to be solved
 \begin{equation} \label{eq-costseepoly}
   \left[ 1 + \chi  \right]^{\frac{1}{\gamma - 1}} \sqrt{1 - \chi} - \frac{  \sqrt{4 \gamma m_e / m_i}}{  (1 - \sigo) [1 - \frac{2 \Teb}{\crover} (1 - \chi ) ] } = 0.
 \end{equation}
 
-\Cref{eq-costseepoly} depends explicitly on $\Teb$, hence $\chi$ is no longer independent of $\Teb$.
+\Cref{eq-costseepoly} depends now explicitly on $\Teb$, hence the solution of $\chi$ is no longer independent of $\Teb$.
 This adds a free parameter when solving the sheath equation.
-Moreover, the \ac{LHS} of \cref{eq-costseepoly} is more complex than before, leading to multiple solutions.
-\Cref{fig-costfunction} shows the \ac{LHS} of \cref{eq-costseepoly} for several values of ({\bf a}) $\Teb$ and ({\bf b}) $\crover$, while keeping the polytropic index to $\gamma=1.35$.
+\Cref{fig-costfunction} shows the \ac{LHS} of \cref{eq-costseepoly} for several values of ({\bf a})  the electron temperature at the sheath edge  $\Teb$ and ({\bf b}) the crossover energy $\crover$, while keeping the polytropic index to $\gamma=1.35$.
+We see that the \ac{LHS} of \cref{eq-costseepoly} is more complex than before, leading to multiple solutions.
 The \ac{SCL} regime has been taken into account by saturating $\rate$ to $\ratecr=0.982$. 
 It corresponds to the branch which crosses the abscissa axis close to $\frac{\dphi}{\Teb}=1$. 
+Because \cref{eq-costseepoly} can present one or three solutions, depending on the relative values of $\crover$ and $\Teb$.
+Hence, a particular care must be taken now when finding numerically the sheath potential drop.
 
+\renewcommand\subfigurewidth{0.45\textwidth}
 
-\renewcommand\subfigurewidth{0.4\textwidth}
-
-\begin{figure}[hbt]
+\begin{figure}[!hbt]
   \centering
   \begin{tabular}{c c}
     \subfigure{cost_function_bis.pdf}{a}{20,20} &
     \subfigure{cost_function_2bis.pdf}{b}{20,20} \\
   \end{tabular}
-  \caption{Value of the \ac{LHS} of \cref{eq-costseepoly}, labelled cost function, for several values of ({\bf a}) $\Teb$ and ({\bf b}) $\crover$.}
+  \caption{Value of the \ac{LHS} of \cref{eq-costseepoly}, labeled cost function, for several values of ({\bf a}) the electron temperature at the sheath edge $\Teb$ and ({\bf b}) the crossover energy $\crover$. The branch that crosses the $x$ axis at $\dphi/\Te \simeq 1$ corresponds to the saturation $\rate=\ratecr$.}
   \label{fig-costfunction}
 \end{figure}
 
-We can see that \cref{eq-costseepoly} can present one or three solutions, depending on the relative values of $\crover$ and $\Teb$.
-Hence, a particular care must be taken now when finding numerically the sheath potential drop.
+
+\Cref{eq-costseepoly} can be solve for a given electron temperature $\Teb$.
+We show in \cref{fig-iso_poly} the impact of the polytropic electrons on the potential drop $\dphi$ and the SEE rate $\rate$ compared to the isothermal model, as previously shown in \cref{ch-2} in \cref{fig-dphivsTe}.
+We see in \cref{fig-iso_poly}.{\bf a} that $\dphi$ is significantly impacted by the polytropic law.
+In particular the maximum potential drop which is more than twice as high as the isothermal maximum.
+In addition, we see in \cref{fig-iso_poly}.{\bf b} that, as expected, we observe that before saturation the polytropic sheath model predict as \ac{SEE} rate smaller than the isothermal model.
+
+
+\begin{figure}[!hbt]
+  \centering
+  \begin{tabular}{cc}
+    \subfigure{Iso_vs_poly_dphi}{a}{25,18} &
+    \subfigure{Iso_vs_poly_rate}{b}{20,18} 
+  \end{tabular}
+  \caption{Evolution as a function of the electron temperature $\Te$ of ({\bf a}) the plasma potential drop to the wall $\dphi$, and ({\bf b}) the SEE rate $\ratemaxw$ using the polytropic sheath model ($\gamma = 1.35$) and the isothermal sheath model. The crossover energy is $\crover=50\,\volt$.}
+  \label{fig-iso_poly}
+\end{figure}
+
+
 
 \subsection{Theoretical values of the critical electron temperatures} \label{subsec-theo_Tecr}
 
 As shown in \cref{fig-costfunction}, for a given $\Te$ the \ac{LHS} of  \cref{eq-costseepoly} presents a local minimum and a local maximum.
-Therefore, there exist two values of $\Te$ for which either the minimum or the maximum of the ac{LHS} crosses exactly the horizontal axis.
+Therefore, there exist two values of $\Te$ for which either the minimum or the maximum of the \ac{LHS} crosses exactly the horizontal axis.
 These values, noted $\Te^1$ and $\Te^2$ corresponds to the theoretical threshold values for which the usual sheath regime and  the \ac{SCL} regime exist, respectively.
+These threshold temperatures can be seen for $\gamma=1.35$ in \cref{fig-iso_poly}.{\bf a}, where $\Te^1\simeq 55\,\volt$ and $\Te^2\simeq 35\,\volt$ 
 
-\paragraph{Maximum electron temperature value, $\Te^1$\\}
+\paragraph{Maximum electron temperature value for regime {\bf III}, $\Te^1$\\}
 
-The first critical electron temperature  $\Te^1$  corresponds to the maximum temperature of the first branch (corresponding to regime {\bf III}).
-It corresponds to the solution of \cref{eq-costseepoly} that is also a solution of its derivative with respect to $\chi$.
-Once again, the equation is not trivial, and cannot be solved analytically.
-thus, we solve it numerically.
+The first critical electron temperature  $\Te^1$  corresponds to the maximum temperature of the usual monotonic sheath (corresponding to regime {\bf III}).
+It corresponds to the solution of \cref{eq-costseepoly} that is also a solution of its derivative with respect to $\chi$, as it is a double solution.
+Once again, the equation is not trivial, and cannot be solved analytically, thus, we solve it numerically.
 
 \begin{figure}[hbt]
   \centering
@@ -103,13 +124,10 @@ thus, we solve it numerically.
 We see that the maximum temperature $\Te^1$ increases linearly with $\crover$.
 This was expected, as in \cref{eq-costseepoly}, the only time that $\Teb$ is explicitly present is in the term $\frac{\Teb}{\crover}$.
 On the other hand, the variation with $\gamma$ follows a power law, monotonically increasing.
-The values observed correspond well with the theoretical values shown in \cref{fig-dphi_te_PIc2}.
-
-
 
 \paragraph{Minimum electron temperature value for regime {\bf I}, $\Te^2$\\}
 
-The minimum electron temperature value for regime {\bf I}, $\Te^2$, corresponds to the case where the electron temperature at the wall induces an emission rate $\ratemaxw (\Tew) = \ratecr$.
+The minimum electron temperature value for regime {\bf I}, $\Te^2$, corresponds to the case where the electron temperature at the wall induces exactly an emission rate $\ratemaxw (\Tew) = \ratecr$.
 Noting $C_1 = \frac{\ratecr - \sigo}{1-\sigo} = 0.964$, we obtain
 \begin{equation} \label{eq-Te2}
   (1-\ratecr) \lp 2 - \frac{C_1 \crover}{2 \Te^2} \rp^{\frac{1}{(\gamma-1)}} \sqrt{\frac{C_1 \crover}{2 \Te^2}} = \sqrt{\frac{4 \gamma \pi m_e}{m_i}}
@@ -169,3 +187,6 @@ To summarize, the polytropic law is combined with electron emission to model the
 The model obtained is richer than the usual isothermal model, as it allows multiple values of potential drop to the wall for the same electron bulk temperature.
 This model only uses the electron bulk temperature and self-consistently computes both the potential drop and the electron emission rate.
 It is compared in the next section to the \ac{PIC} simulation results.
+
+
+\let\rightmark=\oldrightmark
