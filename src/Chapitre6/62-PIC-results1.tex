@@ -2,12 +2,12 @@
 
 \section{PIC simulation results of the Axial-azimuthal simulations}
   \label{sec-Zthetaresults}
-  In this sections, we present the results of the \ac{2D} \ac{PIC} simulations using the test-case of Boeuf, described in \cref{subsec-boeuf_description}; the parameters used are given in \vref{tab-parameters-boeuf}.
-  In this test-case, the ionization is fixed, hence the breathing mode is absent.
-  Consequently, the simulation converges quickly toward a steady state.
+  In this sections, we present the results of the \ac{2D} \ac{PIC} simulations using the test-case of Boeuf \citep{boeuf2018}, described in \cref{subsec-boeuf_description}\string; the parameters used for the simulations are given in \vref{tab-parameters-boeuf}.
+  In this test-case, the ionization is fixed, Consequently the breathing mode is absent.
+  Thus, the simulation converges quickly toward a steady state.
   
-  We uses the test-case of Boeuf for three different cases.
-  The first is the usual case, without the effects of the radial direction.
+  We uses the test-case of Boeuf in three different cases\string:
+  the first is the usual case, without the effects of the radial direction.
   It is expected to return the same results as obtained in \citet{boeuf2018}.
   The two other cases model the effect of the radial direction.
   Two values of the radial length are used\string: $L_R=4\,\centi\meter$ and $2\,\centi\meter$.
@@ -29,7 +29,7 @@
   \subsection{Simulation results\string: temporal evolution} \label{subsec-temp_boeuf}
   
   \Cref{fig-boeuf-temporal} presents the temporal evolution of the mean plasma density and temperature.
-  We see that when the radial direction is modeled, the density and the mean electron temperature and the radial electron temperature is reduced, as expected when increasing the losses when the ionization source term is not self-consistent.
+  We see that when the radial direction is modeled, the density and the mean electron temperature and the radial electron temperature are reduced, as expected when increasing the losses when the ionization source term is constant.
 
   \begin{figure}[hbt]
     \centering
@@ -46,7 +46,7 @@
 
   However, we know from the radial-azimuthal simulations that there is a transfer of energy between the axial direction and the radial direction, resulting in a plasma less anisotropic than observed here.
   This aspect is discussed latter in \cref{subsec-MCC_boeuf,subsec-radial-heating}.
-  With the radial losses, the radial temperature decreases from the initial temperature $\Te=5\,\volt$ to $\Te_R\simeq 2.2$ and $ 3.3\,\volt$ for $L_R=2$ and $3\,\centi\meter$, respectively.
+  With the radial losses, the radial temperature decreases from the initial temperature $\Te=5\,\volt$ to $\Te_R\simeq 2.2$ and $ 3.3\,\volt$ for $L_R=2$ and $4\,\centi\meter$, respectively.
   The total temperature $\Te$ shows a similar decrease with the increase of the radial losses.
 
   \subsection{Simulation results\string: averaged axial profiles} \label{subsec-axial_boeuf}
@@ -71,11 +71,11 @@
   \Cref{fig-boeuf_axialtwo} shows the axial profiles of the electron axial density current and the electron temperatures.
   In contrast to $n_e$ and $E_z$, the electron temperatures are reduced by the radial losses in each direction ($\Te{}_{,\theta}, \Te{}_{,R}, \Te{}_{,Z}$).
   The radial temperature $\Te{}_{,R}$ is reduced uniformly everywhere, but the two other temperature are mostly affected before the axial position of their maxima, at approximately $z=0.8$.
-  However, the radial losses should not reduce the axial and azimuthal temperatures.
+  Surprisingly, the radial losses should not reduce the axial and azimuthal temperatures.
   The electron heating comes principally from the Joule heating $\vect{J_e} \cdot \vect{E}$.
-  As axial electric field $E_z$, seen in \cref{fig-boeuf_axialone}.{\bf a}, is almost unaffected, the difference in the electron temperature necessaryly comes from the differences in the axial electron current.
+  As axial electric field $E_z$, seen in \cref{fig-boeuf_axialone}.{\bf a}, is almost unaffected, the difference in the electron temperature necessarily comes from the differences in the axial electron current.
 
-  \begin{figure}[hbt]
+  \begin{figure}[!hbt]
     \centering
     \begin{tabular}{cc}
       \subfigure{Boeuf_Te_axial}{a}{25,80} &
@@ -85,34 +85,33 @@
     \label{fig-boeuf_axialtwo}
   \end{figure}
   
-  The axial electron density current $J_{e, z}$ \cref{fig-boeuf_axialtwo}.{\bf b} is even more significantly reduced by the radial losses.
+  The axial electron density current $J_{e, z}$ \cref{fig-boeuf_axialtwo}.{\bf b} is more significantly reduced by the radial losses.
   We observe a factor of two on $J_{e, z}$ between the case $L_R=2\,\centi\meter$ and the case without losses.
-  As we have seen in \cref{fig-boeuf_axialone}.{\bf b} that the electron density is almost unaffected.
-  This means that the electron axial velocity is reduced by the radial losses.
+  As we have seen in \cref{fig-boeuf_axialone}.{\bf b} that the electron density is almost unaffected, this means that the electron axial velocity is reduced by the radial losses.
   \Cref{fig-mobility} shows the average axial mobility \[ \mu_e = \frac{J_e}{-e n_e E_z}  \]
 
-  \begin{figure}[hbtp]
+  \begin{figure}[!hbt]
     \centering
     \includegraphics[width=\defaultwidth]{Boeuf_axial_mobility.pdf}
     \caption{Axial profile of the electron mobility measured in the \ac{PIC} simulations for the three cases of radial losses, in logarithmic scale.}
     \label{fig-mobility}
   \end{figure}
 
-  We can see that the electron mobility is reduced significantly affected by the radial losses.
-  However, since the the simulation is collisionless, the electron crossfield transport in the axial direction is only due to the azimuthal instability
-  It is confirmed by the values presented in \Cref{fig-boeuf-instability}, that shows on the left the average standard deviation of the azimuthal electric field, and on the right the correlation term $R_{ei}$.
+  We can see that the electron mobility is significantly affected by the radial losses.
+  However, since the simulation is collisionless, the electron crossfield transport in the axial direction is only due to the azimuthal instability.
+  It is confirmed by \Cref{fig-boeuf-instability}, that shows on the left the average standard deviation of the azimuthal electric field, and on the right the correlation term $R_{ei}$.
   We recall from \cref{sec-transport} that 
   \begin{equation} \label{eq-rei}
     R_{ei} =  - e < \dne \dEt >_{\theta},
   \end{equation}
-  wuth $\dne$, and $\det$ the fluctuations of the electron density and azimuthal electric field, respectively.
+  with $\dne$, and $\dEt$ the fluctuations of the electron density and azimuthal electric field, respectively.
   Moreover, we have from \cref{eq-mobeffsimple}
   \begin{equation*}
     \mu_e = \frac{< \dne \dEt >_{\theta} }{n_0 E_z}   \frac{1}{B_r}
   \end{equation*}
 
 
-  \begin{figure}[hbt]
+  \begin{figure}[!hbt]
     \centering
     \includegraphics[width=\textwidth]{Boeuf_instability_characteristics}
     \caption{Axial profiles of the characteristics of the instability, (left) average of the standard deviation of the azimuthal electric field, (right) electron-ion friction force calculated by the correlation between $n_e$ and $\Te$.    }
@@ -121,20 +120,22 @@
 
   
   We observe in \cref{fig-boeuf-instability} that the amplitude of the instabilities, as well as the correlation term, are significantly affected by the electron radial losses.
-  
-  To summarized the results presented in this section, we used a simple model to model the radial particle losses in the axial-azimuthal simulation.
-  We observe almost no impact on the axial electric field $E_z$, and a slight diminution of the mean electron density (up to 20\% in total, but mostly present in the near-plume region).
+  This explain the reduction of the axial electron current, but also the reduction on the Joule heating, which reduces the electron axial and azimuthal temperatures.
+
+  \vspace{1em}
+  To summarized the results presented in this section, we used a simple algorithm to model the radial particle losses in the \ac{2D} axial-azimuthal \ac{PIC} simulation.
+  We observe almost no impact on the axial electric field $E_z$, and a slight diminution of the mean electron density $n_e$ (up to 20\% in total, but mostly present in the near-plume region).
   
   The electron temperature is also reduced, not only in the radial direction, where the radial losses have a direction impact, but also on the azimuthal and axial temperatures.
-  This is consistent with the large reduction of the axial electron mobility, which lower the joule heating.
+  This is consistent with the large reduction of the axial electron mobility, which lower the Joule heating.
   The reduction of the crossfield electron transport comes from the diminished amplitude of the azimuthal instability.
-  
   Before analyzing in more details the instability in \cref{sec-Ztheta-instability}, we discuss in the next section the problematic of the radial electron heating.
 
 
-  \section{Radial electron heating}
+  \FloatBarrier
+  \section{Study of the radial electron heating}
     We have seen in \cref{fig-boeuf-temporal,fig-boeuf_axialtwo} that the radial electron temperature is constant in both time and space, leading to a large anisotropy.
-    This could be due to the lack of collision in the test-case of Boeuf
+    This could be due to the lack of collision in the test-case of Boeuf.
     Thus, we investigate thereafter the impact of the neutrals on the electron anisotropy by modeling the collisions with the \ac{MCC} algorithm.
     
   \subsection{Boeuf test-case with collisions} \label{subsec-MCC_boeuf}
@@ -160,15 +161,15 @@
   \end{equation}
   with $\gamma=5/3$.
   This Euler system is solved using the HLLC Riemann solver, which as been validated on the  shock tube test case.
-  For sake on simplicity, the neutral temperature is kept constant by adding an artificial source term is the third equation of \cref{eq-euler}
+  For sake on simplicity, the neutral temperature is kept constant by adding an artificial source term in the third equation of \cref{eq-euler}
   \begin{equation} \label{eq-artificial}
     S_3 = -\frac{1}{\tau} \lp  \frac{p}{\gamma - 1} - \frac{n_g R T_0}{\gamma-1} \rp
   \end{equation}
-  with $T_0$ the desired temperature, and $\tau$ the "thermalization time" to reach the $T_0$.
+  with $T_0$ the desired temperature, and $\tau$ the "thermalization time" to reach $T_0$.
   We chose $\tau$ small enough so that $T_n$ does not vary much, while preserving the Courant-Friedrich-Levy condition.
   In practice, we use $\tau = 10\,\micro\second$.
   
-  Finally, the neutral density is used in the \ac{MCC} algorithm to model the electron-neutral and ion-neutral scattering and momentum transfer, but the creation of particles remains imported by same the ionization profile $S_iz$ as in \cref{sec-Zthetaresults}.
+  Finally, the neutral density is used in the \ac{MCC} algorithm to model the electron-neutral and ion-neutral scattering and momentum transfer, but the creation of particles remains imposed by same the ionization profile $S_iz$ as in \cref{sec-Zthetaresults}.
   \Cref{fig-boeuf-neutrals} shows the neutral density and velocity obtained at steady-state.
 
   \begin{figure}[hbt]
@@ -182,9 +183,9 @@
   \end{figure}
   \inlinenote{The figure x label is wrong}
 
-  We see in \cref{fig-boeuf-neutrals} that the neutral density is significantly depleted because of the forced ionization source term.
-  The neutral density gradient accelerates the neutrals in the axial direction by a factor of two, which reduces even more the neutral density.
-  Thus, the impact of the neutral collisions will be more significant on the anode side of the chamber.
+  We see in \cref{fig-boeuf-neutrals} that the neutral density is depleted between the anode and the cathode because of the ionization.
+  The neutral density gradient and the ionization accelerates the neutrals in the axial direction by a factor of two, which reduces even more the neutral density.
+  Thus, the impact of the neutral collisions will be more significant close to the anode.
 
   \begin{figure}[hbt]
     \centering
@@ -195,13 +196,14 @@
     \caption{({\bf a}) temporal evolution of the electron kinetic energy in the three directions and  ({\bf b}) axial profile of the electron temperature at steady state obtained for the simulation case of Boeuf with the electron-neutral scattering. }
     \label{fig-boeuf-temporalMCC}
   \end{figure}
-
-  \Cref{fig-boeuf-temporalMCC} shows the temporal evolution of the mean electron kinetic energy on the left, and on the right it shows the axial profile of the electron temperatures, decomposed on the three directions.
+  \inlinenote{The colors are note the same !}
+  
+  \Cref{fig-boeuf-temporalMCC} shows the temporal evolution of the mean electron kinetic energy on the left, and on the right it shows the axial profile of the electron temperatures, decomposed on the three directions.\footnote{The kinetic energy is the sum of the temperature and the kinetic energy of the drift velocity}
   We see that they is a small transfer of energy between the radial direction and the others.
   In particular, close to the anode where the gas density is high, the radial and axial temperatures decrease below the initial temperature $\Te_{, inj}=5\,\volt$.
   In contrast, at the maximum of the magnetic field where the axial and azimuthal electron temperatures are the highest, the radial electron temperature increases to $\Te_R=7\,\volt$.
   However, the anisotropy stays significant, compared to the observation of the radial-azimuthal simulations presented in \cref{ch-2}.
-  therefore, the neutral density is not the main reason for the electron heating.
+  Therefore, the neutral density is not the main reason for the electron heating.
 
   \subsection{Radial heating of electrons in the radial-azimuthal simulation} \label{subsec-radial-heating}
   
@@ -225,8 +227,7 @@
   
   The radial electric field $E_r$ seen in \cref{fig-epower_radialone} is very small in the center of the system, and increases drastically in the sheath close to the walls.
   Consequently, from the product $< J_{e, R}>  < E_R >$ we could expect that the radial Joule electron heating to be small in the center of the discharge, and negative in the sheath.
-
-  \Cref{fig-epower_radial} shows the mean Joule heating in the radial direction $\bar{P_{\rm J, R}} = < J_{e, R} E_R >$ measured in the \ac{PIC} radial-azimuthal simulation, and the product of the mean quantities $< J_{e, R}>  < E_R >$.
+  \Cref{fig-epower_radial} shows the mean Joule heating in the radial direction ${P_{\rm J, R}} = < J_{e, R} E_R >$ measured in the \ac{PIC} radial-azimuthal simulation, and the product of the mean quantities $< J_{e, R}>  < E_R >$.
 
   \begin{figure}[hbt]
     \centering
@@ -237,12 +238,12 @@
 
   We see in \Cref{fig-epower_radial} that, unexpectedly,  the mean Joule heating $\bar{P_{\rm J, R}}$ is not zero in the center of the simulation.
   This means that there is an energy transfer to the radial direction of the electrons due to the correlation between the fluctuations of $\vect{J_e}$ and $\vect{E}$.
-  Consequently, for this energy transfer to be self-consistently observe, the radial direction needs to be resolved.
+  Consequently, for this energy transfer to be self-consistently observe in a simulation, the radial direction needs to be resolved.
 
   A similar radial heating has been observed by \citet{heron2013}.
   The authors observe no heating when the instability was only perpendicular to the magnetic field, as it is in a \ac{1D} or a \ac{2D} axial-azimuthal simulation.
   However, when the direction parallel to the magnetic field is resolved, the electrons are heated.
-  However, but the physical mechanism remains unclear.
+  However, the physical mechanism remains unclear.
   In \citet{janhunen}, the authors observe a similar radial heating of the electrons, but due to the presence of a \ac{MTSI}.
   As discussed in the previous chapters, we do not observe the \ac{MTSI} in our simulations, meaning that it has to be due to another mechanism.
 

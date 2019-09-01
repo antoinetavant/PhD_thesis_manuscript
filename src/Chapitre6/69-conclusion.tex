@@ -3,40 +3,39 @@
 \section{Conclusion on the 2D PIC axial-azimuthal simulations}
 
 In this chapter, we have investigated the impact of the radial direction in a \ac{PIC} simulation that simulates the axial and azimuthal directions.
-We propose a model in order to introduce in a \ac{2D} azimuthal-axial simulation the effects of the radial direction.
-More precisely, we model the losses of particle and energy, corresponding to fully absorbing walls without electron remission.
-The model imposes pseudo-local flux neutrality at the wall, reproducing the effect of a floating sheath.
+We proposed an algorithm in order to introduce in a \ac{2D} azimuthal-axial simulation the effects of the radial direction.
+More precisely, we modeled the losses of particles, corresponding to fully absorbing walls without secondary electron emission.
+The model imposes a pseudo-local flux neutrality at the wall, reproducing the effect of a floating sheath.
 
-We investigate two different test-cases have. The first one, proposed by \citet{boeuf2018}, uses a forced ionization source term.
-This approach allows us to suppress the ionization instability, also named breathing mode.
-The second one was proposed by \citet{coche2014}. 
-The ionization term is self-consistently computed using the \ac{MCC} algorithm.
-However, in order to reduce the computation load, the authors introduced a scaling of the vacuum permittivity, allowing us to to resolve the breathing mode.
+We followed the test-case proposed by \citet{boeuf2018}.
+It uses a forced ionization source term, which removes the breathing mode.
+The breathing mode is an ionization instability that makes the analyzing of the simulations more complex.
 
-\vspace{1em}
-The model of radial loss has successfully shown its ability to reduce the plasma density and electron temperature in the two test-cases.
-In the test-cases of Coche, the breathing mode is affected by the radial losses. 
-Its frequency is reduced, and its growth rate is increased.
+The model of radial loss has successfully shown its ability to reduce the plasma density and electron temperature.
+We were able the obtain a steady-state for three cases\string: one without radial losses, and two with losses using a radial length $L_R=4\,\centi\meter$ and $L_R=2\,\centi\meter$.
+We observe that the radial losses reduce the electron density slightly and that the axial electric field is almost not affected.
+On the other hand, the electron temperature is significantly reduced and not only in the radial direction but in the three directions.
+The reduction of the electron temperature is correlated to a substantial diminution of the electron axial mobility.
 
-Using the test-cases of Boeuf, we were able the obtain a steady-state for three cases\string: one without radial losses, and two with losses using a radial length $L_R=4\,\centi\meter$ and $L_R=2\,\centi\meter$.
-We observe that the radial losses reduce the electron density slightly, and the axial electric field is almost not affected.
-On the other hand, the electron temperature is significantly reduced in the three directions, and not only in the radial direction.
-Consequently, the amplitude of the azimuthal electric field is also reduced, diminishing the axial electron transport.
+As the simulations are collisionless, the electron mobility comes from the azimuthal instability.
+We observed that the amplitude of the instability, thus the induced electron axial mobility, is reduced by the radial losses.
+Several hypotheses that could explain the diminution of the wave amplitude have been discussed.
+The most probable reasons are the diminution of the electron azimuthal drift, hence the reduction of the growth rate, and the fact that the radial losses absorb the particles preferentially at the maximum of the oscillations.
 
-In addition, we see that the wave characteristics are affected.
-More precisely, in the downstream region, a low-frequency and large wavelength is present when no radial losses are modeled.
+The reduced wave amplitude is related by a reduce of the ion-wave trapping, which seems to be one of the dominant mechanism of saturation when the radial losses are not modeled.
+In addition, the characteristics of the wave (frequency, wavelength) are modified.
+More precisely, the upstream region, close to the maximum of the magnetic field, the waves are not affected.
+On the other hand,  in the downstream region, a low-frequency and large wavelength is present when no radial losses are modeled.
 The amplitude of this large wave is reduced for $L_R=4\,\centi\meter$, and disappears for $L_R=2\,\centi\meter$.
-The origin of the instability modification is not clear.
-It might be due to the change of the plasma density and the electron temperature.
-The numerical noise, induced by the radial loss algorithm, could also affect the wave.
-More investigation must be conducted.
+We believe that this large wavelength oscillation comes from a nonlinear inverse cascade mechanism, most certainly related to the ion-wave trapping.
+As the wave amplitude is smaller, the nonlinear stage of the wave is not reached when the radial losses are modeled.
+
 
 \vspace{1em}
-We observed that the electrons are less isotropic than seen in the radial-azimuthal simulation, even in the presence of electron-neutral scattering.
-We noted that in the radial-azimuthal simulation, where the radial electric field is self-consistently computed, the mean radial electron Joule heating is not zero in the plasma bulk.
-This radial heating seem to be due to the instability, that presents radial structures at saturations.
+Lastly, we observed that the electrons are less isotropic than seen in the radial-azimuthal simulation, even in the presence of electron-neutral scattering.
+We noted that in the radial-azimuthal simulation, where the radial electric field is self-consistently computed, the mean radial electron Joule heating is important in the plasma bulk.
+This radial heating seems to be due to the instability, that presents radial structures.
 This joule heating is absent of the \ac{2D} axial-azimuthal simulation.
 Therefore, a better understanding of the radial heating of the electrons is necessary, so that low-dimensional fluid and \ac{PIC} simulation can realistically model the plasma-wall interactions.
-
-The electron distribution function observed in a \ac{3D} \ac{PIC} simulation would be very useful to give to the community insights on the coupling and the relative importance of the radial, axial and azimuthal directions.
+The electron distribution function measured in experiments or observed in a \ac{3D} \ac{PIC} simulation would be beneficial to give to the community insights on the coupling and the relative importance of the radial, axial and azimuthal directions.
 
