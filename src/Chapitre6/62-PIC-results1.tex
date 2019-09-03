@@ -3,21 +3,22 @@
 \section{PIC simulation results of the Axial-azimuthal simulations}
   \label{sec-Zthetaresults}
   In this sections, we present the results of the \ac{2D} \ac{PIC} simulations using the test-case of Boeuf \citep{boeuf2018}, described in \cref{subsec-boeuf_description}\string; the parameters used for the simulations are given in \vref{tab-parameters-boeuf}.
-  In this test-case, the ionization is fixed, Consequently the breathing mode is absent.
+  In this test-case, the ionization is fixed, consequently the breathing mode is absent.
   Thus, the simulation converges quickly toward a steady state.
   
-  We uses the test-case of Boeuf in three different cases\string:
+  We use the test-case of Boeuf in three different cases\string:
   the first is the usual case, without the effects of the radial direction.
   It is expected to return the same results as obtained in \citet{boeuf2018}.
-  The two other cases model the effect of the radial direction.
+  The two other cases model the influence of the radial direction.
   Two values of the radial length are used\string: $L_R=4\,\centi\meter$ and $2\,\centi\meter$.
 
   
   \subsection{Simulation results\string: an overview} \label{subsec-boeuf-overview}
-  As the ionization is not self-consistently modeled, the simulations converges under $10\,\micro\second$.
+  As the ionization is not self-consistently modeled, the simulations converges after less than $10\,\micro\second$.
   \Cref{fig-overview_boeuf_neEx} shows the axial and azimuthal distribution of the azimuthal electric field $E_{\theta}$ and the electron density $n_e$ at $t=8\,\micro\second$ is the case where no radial losses are modeled.
   We see in both $E_{\theta}$ and $n_e$ the \ac{ECDI}, which wavelength is approximately $\lambda_{\theta} = 0.08\,\centi\meter$.
   The results observed are similar to the one presented by \citet{boeuf2018}, hence we believe that there is no error in the simulation and we expect to obtain the same results.
+  \inlinenote{Add reference to the benchmark}
 
   \begin{figure}[hbt]
     \centering
@@ -29,7 +30,7 @@
   \subsection{Simulation results\string: temporal evolution} \label{subsec-temp_boeuf}
   
   \Cref{fig-boeuf-temporal} presents the temporal evolution of the mean plasma density and temperature.
-  We see that when the radial direction is modeled, the density and the mean electron temperature and the radial electron temperature are reduced, as expected when increasing the losses when the ionization source term is constant.
+  We see that when the radial direction is modeled the density, the mean electron temperature, and the radial electron temperature are reduced, as expected when increasing the losses when the ionization source term is constant.
 
   \begin{figure}[hbt]
     \centering
@@ -72,6 +73,10 @@
   In contrast to $n_e$ and $E_z$, the electron temperatures are reduced by the radial losses in each direction ($\Te{}_{,\theta}, \Te{}_{,R}, \Te{}_{,Z}$).
   The radial temperature $\Te{}_{,R}$ is reduced uniformly everywhere, but the two other temperature are mostly affected before the axial position of their maxima, at approximately $z=0.8$.
   Surprisingly, the radial losses should not reduce the axial and azimuthal temperatures.
+  Indeed, if we suppose that the distribution function has separated variables
+  \[ f(\vect{v_e}) = f(v_{e,r})f(v_{e,\theta})f(v_{e,z}), \]
+  then the absorption of electrons with high radial energy does not modify the distribution function in the other directions.
+  
   The electron heating comes principally from the Joule heating $\vect{J_e} \cdot \vect{E}$.
   As axial electric field $E_z$, seen in \cref{fig-boeuf_axialone}.{\bf a}, is almost unaffected, the difference in the electron temperature necessarily comes from the differences in the axial electron current.
 
@@ -88,12 +93,12 @@
   The axial electron density current $J_{e, z}$ \cref{fig-boeuf_axialtwo}.{\bf b} is more significantly reduced by the radial losses.
   We observe a factor of two on $J_{e, z}$ between the case $L_R=2\,\centi\meter$ and the case without losses.
   As we have seen in \cref{fig-boeuf_axialone}.{\bf b} that the electron density is almost unaffected, this means that the electron axial velocity is reduced by the radial losses.
-  \Cref{fig-mobility} shows the average axial mobility \[ \mu_e = \frac{J_e}{-e n_e E_z}  \]
+  \Cref{fig-mobility} shows the average electron velocity\[ v_{e,z} = \frac{J_e}{-e n_e }  \]
 
   \begin{figure}[!hbt]
     \centering
-    \includegraphics[width=\defaultwidth]{Boeuf_axial_mobility.pdf}
-    \caption{Axial profile of the electron mobility measured in the \ac{PIC} simulations for the three cases of radial losses, in logarithmic scale.}
+    \includegraphics[width=\defaultwidth]{Boeuf_vez_axial.pdf}
+    \caption{Axial profile of the axial electron velocity measured in the \ac{PIC} simulations for the three cases of radial losses.}
     \label{fig-mobility}
   \end{figure}
 
@@ -126,7 +131,7 @@
   To summarized the results presented in this section, we used a simple algorithm to model the radial particle losses in the \ac{2D} axial-azimuthal \ac{PIC} simulation.
   We observe almost no impact on the axial electric field $E_z$, and a slight diminution of the mean electron density $n_e$ (up to 20\% in total, but mostly present in the near-plume region).
   
-  The electron temperature is also reduced, not only in the radial direction, where the radial losses have a direction impact, but also on the azimuthal and axial temperatures.
+  The electron temperature is also reduced, not only in the radial direction, where the radial losses have a direct impact, but also on the azimuthal and axial temperatures.
   This is consistent with the large reduction of the axial electron mobility, which lower the Joule heating.
   The reduction of the crossfield electron transport comes from the diminished amplitude of the azimuthal instability.
   Before analyzing in more details the instability in \cref{sec-Ztheta-instability}, we discuss in the next section the problematic of the radial electron heating.
@@ -141,7 +146,7 @@
   \subsection{Boeuf test-case with collisions} \label{subsec-MCC_boeuf}
   % Script on Juno (CH-6_Boeuf)
 
-  To model the neutral density, we inject at the anode a constant xenon flow of rate $m_a = 5 \milli\gram\per\second$ at a temperature of $T_g = 640\,\kelvin$.
+  To model the neutral density, we inject at the anode a constant xenon flow of rate $\dot{m} = 5 \milli\gram\per\second$ at a temperature of $T_g = 640\,\kelvin$.
   Using a typical surface area, this corresponds to a neutral density at the anode of $n_g=3.0 \times 10^{19}$ {m}$^{-3}$ and a mean velocity of $u_g = 200 \,\meter\per\second$.
   
   The evolution of the neutral density is model using the system of \ac{1D} fluid equations, as we neglect the evolution in the azimuthal direction\string:
@@ -150,7 +155,7 @@
   \begin{gathered}
   \partial_{t} n_g + \partial_{z}(n_g u_g) = - S_{iz}\\
   \partial_{t}(n_g u_g) + \partial_{z}(n_g u_g^{2}) = -\partial_{z}p_g - S_{iz} u_g \\
-  \partial_{t}E + \partial_{z}(Eu_g) = - \partial_{z}(pu_g)
+  \partial_{t}E + \partial_{z}(Eu_g) = - \partial_{z}(p_g u_g)
   \end{gathered}
   \right.
   \label{eq-euler}
@@ -161,15 +166,15 @@
   \end{equation}
   with $\gamma=5/3$.
   This Euler system is solved using the HLLC Riemann solver, which as been validated on the  shock tube test case.
-  For sake on simplicity, the neutral temperature is kept constant by adding an artificial source term in the third equation of \cref{eq-euler}
+  For sake of simplicity, the neutral temperature is kept constant by adding an artificial source term in the third equation of \cref{eq-euler}
   \begin{equation} \label{eq-artificial}
     S_3 = -\frac{1}{\tau} \lp  \frac{p}{\gamma - 1} - \frac{n_g R T_0}{\gamma-1} \rp
   \end{equation}
   with $T_0$ the desired temperature, and $\tau$ the "thermalization time" to reach $T_0$.
   We chose $\tau$ small enough so that $T_n$ does not vary much, while preserving the Courant-Friedrich-Levy condition.
-  In practice, we use $\tau = 10\,\micro\second$.
+  In practice, we use $\tau = 10\,\nano\second$.
   
-  Finally, the neutral density is used in the \ac{MCC} algorithm to model the electron-neutral and ion-neutral scattering and momentum transfer, but the creation of particles remains imposed by same the ionization profile $S_iz$ as in \cref{sec-Zthetaresults}.
+  Finally, the neutral density is used in the \ac{MCC} algorithm to model the electron-neutral and ion-neutral scattering and momentum transfer, but the creation of particles remains imposed by the same ionization profile $S_iz$ as in \cref{sec-Zthetaresults}.
   \Cref{fig-boeuf-neutrals} shows the neutral density and velocity obtained at steady-state.
 
   \begin{figure}[hbt]
@@ -198,7 +203,7 @@
   \end{figure}
   \inlinenote{The colors are note the same !}
   
-  \Cref{fig-boeuf-temporalMCC} shows the temporal evolution of the mean electron kinetic energy on the left, and on the right it shows the axial profile of the electron temperatures, decomposed on the three directions.\footnote{The kinetic energy is the sum of the temperature and the kinetic energy of the drift velocity}
+  \Cref{fig-boeuf-temporalMCC} shows the temporal evolution of the mean electron kinetic energy on the left, and on the right it shows the axial profile of the electron temperatures, decomposed in the three directions.\footnote{The kinetic energy is the sum of the temperature and the kinetic energy of the drift velocity}
   We see that they is a small transfer of energy between the radial direction and the others.
   In particular, close to the anode where the gas density is high, the radial and axial temperatures decrease below the initial temperature $\Te_{, inj}=5\,\volt$.
   In contrast, at the maximum of the magnetic field where the axial and azimuthal electron temperatures are the highest, the radial electron temperature increases to $\Te_R=7\,\volt$.

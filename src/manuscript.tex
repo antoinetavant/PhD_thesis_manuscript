@@ -12,10 +12,14 @@
    % fleqn,   % left alignment of formula
    amsmath, hidelinks  ]{book}
    %Packages
+   
 \input{texfiles/settings}
 
 \pdfcompresslevel=9
-\usepackage[a4,center,frame]{crop}
+\usepackage[a4,
+            center,
+            % frame
+            ]{crop}
 
 %\pagecolor{gray}
   
@@ -36,6 +40,7 @@ structure/structure,%
  texfiles/1ere,%
  Chapitre6/6-Z-theta, %
  annexes/scalability_tests,
+ bib/biliography,
  }
 
  
@@ -151,27 +156,35 @@ structure/structure,%
 % 
 Context \pageCompt{ch-concepts}{ch-1}
 
-Chapitre \pageCompt{ch-1}{ch-2}
+Chapitre \pageCompt{ch-1}{ch-5}
+
+Chapitre \pageCompt{ch-5}{ch-2}
 
 Chapitre \pageCompt{ch-2}{ch-3}
 
 Chapitre \pageCompt{ch-3}{ch-4}
 
-Chapitre \pageCompt{ch-4}{ch-5}
+Chapitre \pageCompt{ch-4}{ch-6}
 
-Chapitre \pageCompt{ch-5}{ch-6}
 
 Chapitre \pageCompt{ch-6}{ch-bibliography}
 
+
+
+\let\oldleftmark=\leftmark
+\let\oldrightmark=\rightmark
 
 \include{Context/0_concepts}
 % \acresetall
 
 
 
-
+\let\leftmark=\oldleftmark
+\let\rightmark=\oldrightmark
 
 \include{Chapitre1/1-introduction}
+% \acresetall
+\include{Chapitre5/5-ECDI}
 % \acresetall
 \include{Chapitre2/2-mean_values}
 % \acresetall
@@ -179,7 +192,6 @@ Chapitre \pageCompt{ch-6}{ch-bibliography}
 % \acresetall
 \include{Chapitre4/4-polytropic_SEE}
 % \acresetall
-\include{Chapitre5/5-ECDI}
 
 \include{Chapitre6/6-Z-theta}
 
@@ -191,7 +203,7 @@ Chapitre \pageCompt{ch-6}{ch-bibliography}
 % \let\leftmark=\oldleftmark
 % \let\rightmark=\oldrightmark
 
-
+\include{bib/biliography}
 \markboth{BIBLIOGRAPHY}{}
 
 % \bibliographystyle{ieeetr}
@@ -203,7 +215,6 @@ Chapitre \pageCompt{ch-6}{ch-bibliography}
 \bibliographystyle{unsrtnatperso}  
 % \bibliographystyle{theseen-nat-href}  
 \bibliography{bib/MyLibrary}{}
-
 
 % \include{texfiles/4eme}
 
