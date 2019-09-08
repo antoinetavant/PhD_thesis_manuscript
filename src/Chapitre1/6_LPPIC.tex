@@ -10,7 +10,7 @@ Written with Fortran, it uses the Message Passing Interface (MPI) to parallelize
 The principle of the domain decomposition is that each Central Processing Unit (CPU) knows a small chunk of the whole domain.
 We use {\sc Hypre}'s multigrid solver to solve Poisson equation in \ac{2D} \citep{falgout2002}.
 
-The main data input/output is done using the HDF5 format, which enables parallel access two a hierarchical file.
+The main data input/output is done using the HDF5 format, which enables parallel access to a hierarchical file.
 The output data does not yet use the open standard for particle-mesh data files (openPMD).
 Thus, the data post processing is done using a python packaged.
 
@@ -34,7 +34,7 @@ More informations on the scalability is given in \cref{an-scalability}.
 \begin{figure}[hbt]
   \centering
   \includegraphics[width=\textwidth]{StrongScalingOccigen_speedup.pdf}
-  \caption{Strong scalability profile of \LPPic with a small and a large job on the Cluster Occigen (CINES). In addition to the overall performance, the profiles of the main sub-functions of the \ac{PIC} loops are given. }
+  \caption{Strong scalability profile of \LPPic with a small and a large job on the Cluster Occigen (CINES). In addition to the overall performance, the profiles of the main sub-functions of the \acs{PIC} loops are given. }
   \label{fig-strongperfo}
 \end{figure}
 
@@ -55,7 +55,7 @@ This allows a systematic verification of the modification by the mean of unit, m
 The validation of the code is done using the Benchmark of \citet{turner2013}.
 While it allows to validate a significant part of the \ac{PIC} code, it is not magnetized and only in \ac{1D}.
 Unfortunately, this is the only Benchmark available.
-Hence, the comparison of several codes on a \ac{2D} magnetized  has been conducted by Thomas Charoy in order to create a new Benchmark to validate such simulation codes.
+Hence, the comparison of several codes on a \ac{2D} magnetized  has been conducted by Thomas Charoy in order to create a new Benchmark to validate such simulation codes \citep{charoy2019}.
 
 
 Since 2015, \LPPic has grown to 23000 lines of code, has been used on more than 5 different clusters of various architectures, and has been used to produce several publications \citep{croes2017a,croes2018,tavant2018,tavant2019,lucken2018,lucken2019}.

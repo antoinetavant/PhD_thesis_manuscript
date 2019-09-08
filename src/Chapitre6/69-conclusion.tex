@@ -1,6 +1,7 @@
 % !TEX root=/home/tavant/these/manuscript/src/manuscript.tex
 
 \section{Study of the radial electron heating}
+\label{sec-rheating}
     We have seen in \cref{fig-boeuf-temporal,fig-boeuf_axialtwo} that the radial electron temperature is constant in both time and space, leading to a large anisotropy.
     This could be due to the lack of collision in the test-case of Boeuf.
     Thus, we investigate thereafter the impact of the neutrals on the electron anisotropy by modeling the collisions with the \ac{MCC} algorithm.
@@ -24,13 +25,13 @@
     \end{equation}
     with $u_g, p_g$ the neutral axial velocity and the pressure, respectively, $S_{iz}$ is the imposed ionization source term, and $E$ the energy per volume unit
     \begin{equation}
-      E =  \frac{p}{\gamma - 1} + \frac{1}{2} n_g u^{2},
+      E =  \frac{p_g}{\gamma - 1} + \frac{1}{2} n_g u_g^{2},
     \end{equation}
     with $\gamma=5/3$.
     This Euler system is solved using the HLLC Riemann solver, which as been validated on the  shock tube test case.
     For sake of simplicity, the neutral temperature is kept constant by adding an artificial source term in the third equation of \cref{eq-euler}
     \begin{equation} \label{eq-artificial}
-      S_3 = -\frac{1}{\tau} \lp  \frac{p}{\gamma - 1} - \frac{n_g R T_0}{\gamma-1} \rp
+      S_3 = -\frac{1}{\tau} \lp  \frac{p_g}{\gamma - 1} - \frac{n_g R T_0}{\gamma-1} \rp
     \end{equation}
     with $T_0$ the desired temperature, and $\tau$ the "thermalization time" to reach $T_0$.
     We chose $\tau$ small enough so that $T_n$ does not vary much, while preserving the Courant-Friedrich-Levy condition.
@@ -62,7 +63,6 @@
       \caption{({\bf a}) temporal evolution of the electron kinetic energy in the three directions and  ({\bf b}) axial profile of the electron temperature at steady state obtained for the simulation case of Boeuf with the electron-neutral scattering. }
       \label{fig-boeuf-temporalMCC}
     \end{figure}
-    \inlinenote{The colors are note the same !}
     
     \Cref{fig-boeuf-temporalMCC} shows the temporal evolution of the mean electron kinetic energy on the left, and on the right it shows the axial profile of the electron temperatures, decomposed in the three directions.\footnote{The kinetic energy is the sum of the temperature and the kinetic energy of the drift velocity}
     We see that they is a small transfer of energy between the radial direction and the others.
@@ -87,10 +87,9 @@
   \begin{figure}[hbt]
     \centering
     \includegraphics[width=\textwidth]{R_joule_heating_one}
-    \caption{Radial profiles averaged in the azimuthal direction of (left) the electron and ion current densities and (right) radial electric field in the radial-azimuthal \ac{PIC} simulation presented in \cref{ch-2}. }
+    \caption{Radial profiles averaged in the azimuthal direction of (left) the electron and ion current densities and (right) radial electric field in the radial-azimuthal \acs{PIC} simulation presented in \cref{ch-2}. }
     \label{fig-epower_radialone}
   \end{figure}
-  \inlinenote{Wrong legends : $E_y$, and put $J_e$ in A/m$^2$.}
   
   The radial electric field $E_r$ seen in \cref{fig-epower_radialone} is very small in the center of the system, and increases drastically in the sheath close to the walls.
   Consequently, from the product $< J_{e, R}>  < E_R >$ we could expect that the radial Joule electron heating to be small in the center of the discharge, and negative in the sheath.
@@ -123,7 +122,6 @@ In this chapter, we have investigated the impact of the radial direction in a \a
 We proposed an algorithm in order to introduce in a \ac{2D} azimuthal-axial simulation the effects of the radial direction.
 More precisely, we modeled the losses of particles, corresponding to fully absorbing walls without secondary electron emission.
 The model imposes a pseudo-local flux neutrality at the wall, reproducing the effect of a floating sheath.
-
 We followed the test-case proposed by \citet{boeuf2018}.
 It uses a forced ionization source term, which removes the breathing mode.
 The breathing mode is an ionization instability that makes the analyzing of the simulations more complex.
@@ -142,7 +140,7 @@ The most probable reasons are the diminution of the electron azimuthal drift, he
 The reduced wave amplitude is related with a decreasing of the ion-wave trapping, which seems to be one of the dominant mechanism of saturation when the radial losses are not modeled.
 In addition, the characteristics of the wave (frequency, wavelength) are modified.
 More precisely, in the upstream region, close to the maximum of the magnetic field, the waves are not affected.
-On the other hand,  in the downstream region, a low-frequency and large wavelength is present when no radial losses are modeled.
+On the other hand,  in the downstream region, a low-frequency and large wavelength oscillation is present when no radial losses are modeled.
 The amplitude of this large wave is reduced for $L_R=4\,\centi\meter$, and disappears for $L_R=2\,\centi\meter$.
 We believe that this large wavelength oscillation comes from a nonlinear inverse cascade mechanism, most certainly related to the ion-wave trapping.
 As the wave amplitude is smaller, the nonlinear stage of the wave is not reached when the radial losses are modeled.
