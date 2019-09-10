@@ -3,7 +3,7 @@
 \section{Axial Convection model}
   \label{sec-reinjectionnoise}
 
-  As introduced in the previous section, the \ac{2D} radial-azimuthal simulation does not model a priori the axial convection of the particles.
+  As introduced in the previous section, the \ac{2D} radial-azimuthal simulation does not model the axial convection of the particles.
   We present in this section an algorithm to model the convection of the particle.
   Its drawbacks are discussed, and we propose a way to reduce them.
   
@@ -27,7 +27,7 @@
     The new particle has a velocity following a Maxwellian flux distribution function of a given temperature.
     The azimuthal position of the particle is chosen uniformly at random.
 
-    The Maxwellian flux distribution is the velocity distribution of the particles traversing a surface is the particles follow a Maxwellian distribution function. Thus we have
+    The Maxwellian flux distribution is the velocity distribution of the particles traversing a surface if the particles follow a Maxwellian distribution function. Thus we have
     \begin{equation} \label{eq-Maxwflux} 
       f_{\rm flux}(\vect{v}) = \vect{v} \cdot \vect{n} f_{\rm M}(\vect{v}),
     \end{equation}
@@ -94,7 +94,7 @@
     \begin{figure}[hbt]
       \centering
 
-      \begin{tabular}{cc}
+      \begin{tabular}{@{} cc @{}}
         \subfigure{Lafleur_NoLz_1}{a}{20, 20}
             &
         \subfigure{Lafleur_Lz_1}{b}{20, 20} \\
@@ -213,11 +213,10 @@
         \label{fig-fakez3}
       \end{figure}
       
-      We have implemented this modified convection model in the \ac{2D} radial-azimuthal simulation.
-      
+      We have implemented this modified convection model in the \ac{2D} radial and azimuthal simulation.
       \Cref{fig-newconv_noconv} shows the time  evolution of the azimuthal electric field at the center of the radial dimension with and without the noiseless convection model.
       It presents the same conditions as in \cref{fig-convection_numerical}.{\bf a} and {\bf b}. 
-      As previously, the convection stabilises the growth of the instability to a steady-state, but it does not affect the physics.
+      As previously, the convection stabilizes the growth of the instability to a steady-state, but it does not affect the physics.
        
       
       \begin{figure}[hbt]
@@ -228,7 +227,7 @@
       \end{figure}
       
       
-      \Cref{fig-oldeconv_newconv} shows the  time  evolution of the azimuthal electric field at the center of the radial dimension  with the convection modeled using Lafleur's model and the noiseless model with a small azimuthal length.
+      \Cref{fig-oldeconv_newconv} shows the time  evolution of the azimuthal electric field at the center of the radial dimension  with the convection modeled using Lafleur's model and the noiseless model with a small azimuthal length.
       We can see that the two models give almost exactly the same results.
       
       \begin{figure}[hbt]
@@ -245,14 +244,16 @@
       \begin{figure}[hbt]
         \centering
         \includegraphics[width=0.95\textwidth]{Compare_old_new_Reinj_Oz_LongLx}
-        \label{fig-oldeconv_newconv_longLZ}
         \caption{Time evolution of the azimuthal electric field at the center of the radial dimension with the convection modeled using (left) Lafleur's model and (right) the noiseless model with a longer azimuthal length (0.65cm).}
+        \label{fig-oldeconv_newconv_longLZ}
       \end{figure}
 
 
       These observations have shown that Lafleur's convection model induces a noise on the charge density, that does not affect the simulation when the domain size is small, but can rise numerical artefacts when the domain size is larger.
       We have seen that the minor modifications on the model do not affect the simulation results on a small domain, but allow us to use larger simulation domain without any numerical artefact.
       
+      
+      \inlinenote{A reformuler ! Trop negatif}
       Unfortunately, the new model has been developed during the last year of my thesis.
       Hence, the first simulation results have been obtained using Lafleur's convection model.
       As seen in \cref{fig-oldeconv_newconv}, on a small geometry the results are not affected, hence there is no need to verify all of the simulations obtained.
@@ -313,7 +314,7 @@
       To compare the results to the purely azimuthal \ac{1D} case, \cref{fig-dftLr} shows the frequency spectra of the equivalent source term $\rho_{\rm eq}$.
       We see that $\rho_{\rm eq}$ is always smaller than $\rho_1$, and is significantly reduced in the small and large wavenumber.
       However, even though the amplitude is reduced in \ac{2D} with small radial direction compared to a \ac{1D} model, we still observe large amplitude of small wave number oscillations in both the electric field and the plasma potential.
-      In means that the \ac{2D} domain changes significantly the impact of the noise.
+      It means that the \ac{2D} domain does not change significantly the effect of the numerical noise $\rho_1$.
       Hence, the conclusions of  \cref{sec-mathnoise} derived in \ac{1D} can be legitimately used for \ac{2D} domains.
       
       \begin{figure}[hbt]

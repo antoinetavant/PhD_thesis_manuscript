@@ -2,16 +2,14 @@
 
 \section{Elements of the 2D PIC-MCC simulations}
   \label{sec-elements}
-  \subsection{Principe of the PIC simulations}
-
+  \subsection{Principe of the PIC-MCC simulations}
+    \label{subsec-intro}
     The \ac{PIC} simulation models particles moving freely on a grid.
     The grid is used to compute the electric field, in the electrostatic approximation by solving the Poisson equation
-
     \begin{equation}
       \label{eq-poisson}
       \Delta \phi = - \frac{\rho}{\epsilon_0}
     \end{equation}
-
     where $\phi$ is the electric potential, $\rho$ is the charge density, and $\epsilon_0$ the vacuum permittivity.
     If the electrostatic approximation is not correct, one needs to solve the Maxwell equations.
 
@@ -37,8 +35,8 @@
     This approach is very efficient and allows scattering, momentum transfer, and ionization to be consistently modeled.
     The propellant used in \ac{HET} is \ac{Xe}.
     The cross-sections used for modeling \ac{Xe} or other gases collisions are taken from the {\sc LXCat} database project \cite{LXCat_web,pancheshnyi2012}.
-    Except if otherwise stated, the elastic, inelastic scattering and ionization reactions listed in \cref{tab-reactXe} are used.
-    The cross-section values are summarised in \cref{fig-xexsection}.
+    Unless otherwise stated, the elastic, inelastic scattering and ionization reactions listed in \cref{tab-reactXe} are used.
+    The cross-section values are summarized in \cref{fig-xexsection}.
 
     \begin{table}[hbt]
       \ra{1.3}
@@ -69,7 +67,8 @@
       \label{fig-xexsection}
     \end{figure}
 
-
+    In the context of this thesis, and except precised otherwise, the `\ac{PIC} simulation' refers to the `\ac{PIC}-\ac{MCC} simulation'.
+    In the case where no collision is modeled, we also call it `collisionless simulation'.
 \section{Numerical implementation of the Particle in cell simulation}
 
   \LPPic is an explicit electrostatic \ac{PIC}-\ac{MCC} simulation code.
@@ -103,7 +102,7 @@
 
     One numerical particle represents a large number of physical particle. 
     Therefore they can be called \emph{superparticle} or \emph{macroparticle} in the literature.
-    We will simply call them particle, except if the context require a precision.
+    We will simply call them particle, unless the context require a precision.
     
     \paragraph{Fields\\}
     The fields are defined at the center of each cell of the mesh.
@@ -124,17 +123,19 @@
     is the electron plasma frequency, and 
     \nomenclature[Q]{\ensuremath{ \ope}}{  electron plasma frequency $\ope =  \sqrt{\frac{e^2 n_e}{ \epsilon_0 m_e}}$}
     \begin{equation} \label{eq-def_lde}
-        \lde = \sqrt{\frac{ \epsilon_0 \Te}{e n_e}} 
+        \lde = \sqrt{\frac{ \epsilon_0 e\Te}{e^2 n_e}} 
     \end{equation}
-    is the Debye length.\footnote{The Debye length usually refers to the spatial scale over with a charge is screened by the other charged particles. }
+    is the Debye length.
+    We recall the relation $e \Te = k_B T_e$, with $T_e$ in Kelvin and $\Te$ in volt.
+    \footnote{The Debye length usually refers to the spatial scale over with a charge is screened by the other charged particles. }
     The conditions \ref{eq-dt_limit} and \ref{eq-dx_limit} can be combined to produce 
     \begin{equation} \label{eq-CFL}
       \frac{\dt}{\dx}\sqrt{\frac{e \Te}{m_e}} \leq 0.4,
     \end{equation}
-    which can be seen as a constraint on the thermal electron velocity that much be much less than one cell per time step.
+    which can be seen as a constraint on the thermal electron velocity that must be much less than one cell per time step.
     Hence, condition \ref{eq-CFL} is usually referred as the Current condition.
     
-    A third condition applies on the  the ratio between the superparticle density and the physical particle density. 
+    As presented before in \cref{subsec-intro}, a third condition applies on the ratio between the superparticle density and the physical particle density. 
     No universal rule exist, as a wide range of values may be appropriate to different context \citep{turner2006,turner2013}.
     A general consensus in low temperature plasma agree on using approximately 100 numerical particles per cell.
     
@@ -145,7 +146,7 @@
     The simulation of a square domain of $2\,\centi\meter$ aside needs a mesh of approximately 650 cells in each direction, hence more than $\sn{4}{5}$ cells in total.
     With 100 electrons and 100 ions per cell, it is 85 million particles that are simulated.
     
-    For every particles, we need to store at least the three values of position and the three values of velocity, thus 6 real number.
+    For every particles, we need to store at least the two values of position and the three values of velocity, thus 6 real number.
     Using the double-precision floating-point format, it corresponds to approximately 400 bits per particles.
     In total, around 33 billion bits, or 4 Go (gigaoctet) are needed to store the particle ! 
     To give a reference to the reader, a modern laptop has a RAM of 8 Go.

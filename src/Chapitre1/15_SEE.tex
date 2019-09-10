@@ -1,6 +1,6 @@
 % !TEX root=/home/tavant/these/manuscript/src/manuscript.tex
 
-\section{Electron induced secondary electron emission from the wall}
+\section{Electron-induced secondary electron emission}
 \label{sec-seemodel}
 When an incident electron reaches the wall material, several scenarii are possible, as described in \citet{villemant2018}
 \begin{enumerate}
@@ -19,7 +19,7 @@ which can be developed using the distribution function to
 \begin{equation*} \label{eq-ratedifinition_evdf}
   \rate = \frac{\iiint_{\Omega} v_x \proba(\vect{v_e}) f(\vect{v_e}) d^3v}{\iiint_{\Omega} v_x  f(\vect{v_e}) d^3v}
 \end{equation*}
-with $\Omega$ the ensemble of $\vect{v_e}$ directed toward the wall\string: $\vect{v_e} \cdot \vect{n} > 0$, with $\vect{n} $ the unit vector normal to and toward the wall.
+with $\Omega$ the ensemble of $\vect{v_e}$ directed towards the wall\string: $\vect{v_e} \cdot \vect{n} > 0$, with $\vect{n} $ the unit vector normal to and towards the wall.
 
 \subsection{Models of emission } \label{subsec-seemodels}
 Several models can be used to describe the electron emission.
@@ -50,7 +50,7 @@ It describes the total emission corresponding to the sum of the elastic and inel
     \probamax &\text{ if } \ek \geq \ek_{\max}
   \end{cases}
 \end{equation}
-where $\ek$ is the kinetic energy of the incoming electron, $\proba_0$ is the asymptotic probability of emission at energy null, $\crover$ is the crossover energy above which the probability of emission is higher that one, \probamax is the maximum probability and $\ek_{\max}= \frac{\probamax - \proba_0}{1 - \proba_0} \crover $ is the minimum energy for which $\rate = \probamax$.
+where $\ek$ is the kinetic energy of the incoming electron, $\proba_0$ is the asymptotic probability of emission at energy null, $\crover$ is the crossover energy above which the probability of emission is higher than one, \probamax is the maximum probability and $\ek_{\max}= \frac{\probamax - \proba_0}{1 - \proba_0} \crover $ is the minimum energy for which $\rate = \probamax$.
 \Cref{eq-proba_barral} is illustrated in \Cref{fig-modelbarral}.
 
 \begin{figure}[hbt]
@@ -81,5 +81,5 @@ where $\ek$ is the kinetic energy of the incoming electron, $\proba_0$ is the as
    \end{tabular}
  \end{table}
  
- Since the model used describes both the reflected and true secondary electron emission, we will use the general name \emph{electron emission}  to refer to the flux of electron coming from the wall toward the plasma.
+ Since the model used describes both the reflected and true secondary electron emission, we will use the general name \emph{electron emission}  to refer to the flux of electron coming from the wall towards the plasma.
  In contrast, the electrons reaching the plasma are referred to as the \emph{primary electrons}.

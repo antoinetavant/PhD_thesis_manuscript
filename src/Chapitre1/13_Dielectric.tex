@@ -13,7 +13,7 @@
   \begin{equation} \label{eq-sigmaintegrate}
     \sigma(t) = e \int_0^t (J_i - J_e) dt
   \end{equation}
-  with $J_i$ and $J_e$ the ion and electron flux respectively and $e$ is the elementary charge and supposing that there is no surface charge at the interface at the beginning.
+  with $J_i$ and $J_e$ the ion and electron flux respectively, $e$ is the elementary charge, and supposing that there is no surface charge at the interface at the beginning.
 
   \begin{figure}[hbt]
     \centering
@@ -24,6 +24,7 @@
 
 
   A common approach is to assume that the electric field inside the dielectric is zero \citep{taccogna2019}. 
+  Therefore, the dielectric layer does not need to be induced in the simulation domain.
   Using Gauss theorem, we obtain a Neumann boundary condition at the plasma-wall interface for the potential
   \begin{equation} \label{eq-gauss}
     \norm{\partial_r \phi} = \frac{\norm{\sigma}}{\epsilon_0}
@@ -77,9 +78,7 @@
   \end{figure}
 
 
-  \subsection{Poisson equation discretization}
-
-    We start by positioning the plasma-dielectric interface on the surface between two cells.
+    We start the discretization by positioning the plasma-dielectric interface on the surface between two cells.
     This means that the permittivity $\epsilon = \epsilon_0 \epsr$ is  constant over a cell.
     In order to discretize the Poisson equation, we integrate \cref{eq-poissondiel} over the cell volume
 
@@ -205,7 +204,7 @@
 
 
   \subsection{Interface at the cell center}
-    In the previous section, we supposed that the plasma-dielectric dielectric boundary was at the interface between the cells.
+    In the previous section, we supposed that the plasma-dielectric boundary was at the interface between the cells.
     However, this means that the electric field close to the interface is unknown, as it is defined at the cell center.
     Moreover, the Dirichlet condition for the potential is better defined at the cell center, and for the sake of simplicity, changing the boundary conditions should not change the particle domain.
     Hence, we chose to position the plasma-wall interface at the center of the cell as shown in \cref{fig-2D,fig-decompo2}.
@@ -239,7 +238,7 @@
     Consequently, we obtain the discretization
     \begin{equation}
     S^E_{i,j} Q^E_{i,j} \phi_{i+1,j} + S^W_{i,j} Q^W_{i,j} \phi_{i-1,j} + S^N_{i,j} Q^N_{i,j} \phi_{i,j+1} + S^S_{i,j} Q^S_{i,j} \phi_{i,j-1} - Q^C_{i,j} \phi_{i,j} = - \V \bar{\rho_{i,j}}
-    \label{eq-descretPoissoncentred}
+    \label{eq-descretPoissoncentered}
     \end{equation}
     with
     \begin{center}
@@ -257,8 +256,8 @@
     However, we can suppose that the only permittivity jump happens at the cell center, so that  $\epsilon_{i,j}^S = \epsilon_{i,j-1}^N$.
     Hence, $Q^N_{i,j} = 2\frac{\epsilon_{i,j}^N}{ d_{j+1} + d_{j}}$ and the system is symmetric.
 
-  \subsection{Surface charges for centred interface}
-    in the case of centred plasma-wall interface, we have surfaces charges at the center of the cell.
+  \subsection{Surface charges for centered interface}
+    in the case of centered plasma-wall interface, we have surface charges at the center of the cell.
     Hence
     \begin{equation}
     \int_{\Omega_{i,j}} \rho dv = \Omega_{i,j}\bar{\rho} + S_{i,j}^N \sigma_{i,j}.
@@ -269,12 +268,12 @@
     S^E_{i,j} Q^E_{i,j} \phi_{i+1,j} + S^W_{i,j} Q^W_{i,j} \phi_{i-1,j} + S^N_{i,j} Q^N_{i,j} \phi_{i,j+1} + S^S_{i,j} Q^S_{i,j} \phi_{i,j-1} - Q^C_{i,j} \phi_{i,j} = - \V \bar{\rho_{i,j}} - S^N_{i,j} \sigma_{i,j}
     \end{equation}
 
-    The discretization obtained for the plasma-wall interface cell-centred is very similar to the one obtained for the interface at the cell interface.
+    The discretization obtained for the plasma-wall interface cell-centered is very similar to the one obtained for the interface at the cell interface.
     However, it conserves the particle domain when the dielectric layer is not modeled, and that Dirichlet conditions are applied, and the electric field at the plasma-wall interface is better defined.
-    Hence, the cell-centred interface will be used.
+    Hence, the cell-centered interface will be used.
 
     \vspace{1em}
-    This decomposition has been validate with the same test than presented in \cref{subsec-poisson_validation}.
+    This decomposition has been validated with the same test than presented in \cref{subsec-poisson_validation}.
     We observed no difference between the two decompositions in term of precision.
     
     

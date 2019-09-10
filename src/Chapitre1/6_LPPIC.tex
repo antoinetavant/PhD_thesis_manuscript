@@ -1,7 +1,7 @@
 % !TEX root=/home/tavant/these/manuscript/src/manuscript.tex
 
 
-\section{Characteristics and performances of the  \LPPic simulation code }
+\section{Characteristics and performances of the LPPic simulation code }
 \label{sec-lppic}
 
 
@@ -12,7 +12,7 @@ We use {\sc Hypre}'s multigrid solver to solve Poisson equation in \ac{2D} \cite
 
 The main data input/output is done using the HDF5 format, which enables parallel access to a hierarchical file.
 The output data does not yet use the open standard for particle-mesh data files (openPMD).
-Thus, the data post processing is done using a python packaged.
+Thus, the data post processing is done using a python package.
 
 The use of these efficient libraries allows us to obtain a good scalability.
 \Cref{fig-strongperfo} shows the speed up measured for the Strong Scalability test.
@@ -22,7 +22,7 @@ The theoretical speedup accessible is given by \citet{amdahl1967} as
   S = \frac{1}{1 - \alpha + \frac{\alpha}{s}}
 \end{equation}
 with $\alpha$ the proportion of the task that is parallel, and $s$ the speedup of the parallelized part.
-A perfectly parallel code has a speedup $S=s$.
+A perfectly parallel code has $\alpha=1$, hence a speedup $S=s$.
 
 In \cref{fig-strongperfo} are shown the speedup for the overall simulation, as well as the main functions of the \ac{PIC} algorithm (Charge deposition to the mesh, Particle pusher, Monte Carlo Collision and the Poisson solver).
 The scalability test is realized over two \ac{2D} radial-azimuthal cases. 
@@ -41,7 +41,7 @@ More informations on the scalability is given in \cref{an-scalability}.
 
 We can see that the overall performance of the code is very good, as it scale as if it is parallelized at 91\% from Amdahl's law.
 Most of the sub-functions are much better, but the Poisson solver does not scale at all.
-Is is due to the size of the chunk of domain of each CPU, which are too small.
+It is due to the size of the chunk of domain of each CPU, which are too small.
 A way to improve the performances of \LPPic would be to use an hybridization of the parallelization with the shared memory openMP library.
 But the current performance is acceptable, as the typical simulation case presented here runs in around one week (7 days) on 360 CPUs.
 

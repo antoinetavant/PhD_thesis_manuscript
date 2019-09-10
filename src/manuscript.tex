@@ -171,6 +171,10 @@ Chapitre \pageCompt{ch-4}{ch-6}
 Chapitre \pageCompt{ch-6}{ch-bibliography}
 
 
+\renewcommand\subfigurewidth{0.47\textwidth}
+%% allows overfull \hbox by 5 points
+\hfuzz=5pt
+
 
 \let\oldleftmark=\leftmark
 \let\oldrightmark=\rightmark
@@ -182,17 +186,18 @@ Chapitre \pageCompt{ch-6}{ch-bibliography}
 
 \let\leftmark=\oldleftmark
 \let\rightmark=\oldrightmark
+\acresetall
 
 \include{Chapitre1/1-introduction}
-% \acresetall
+\acresetall
 \include{Chapitre5/5-ECDI}
-% \acresetall
+\acresetall
 \include{Chapitre2/2-mean_values}
-% \acresetall
+\acresetall
 \include{Chapitre3/3-non_isothermal_sheath}
-% \acresetall
+\acresetall
 \include{Chapitre4/4-polytropic_SEE}
-% \acresetall
+\acresetall
 
 \include{Chapitre6/6-Z-theta}
 
