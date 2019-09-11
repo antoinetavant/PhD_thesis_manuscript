@@ -39,14 +39,14 @@ The distribution function of the stationary Boltzmann equation without collision
 \end{equation}
 with $k_B$ the Boltzmann constant, $T$ is the temperature of the particle population, and $\phi$ is the electric potential, defined as $\vect{E} = \grad \phi$, and $N$ is the density at the position where $\phi = 0$.
 \cref{eq-Maxwellian} is the Maxwell-Boltzmann distribution function in velocity.
-The unit of the temperature $T$ is the Kelvin, but in plasma physics, it is usual to us ${\rm T}$, defined as
+The unit of the temperature $T$ is the Kelvin, but in plasma physics, it is usual to use ${\rm T}$, defined as
 \begin{equation} \label{eq-T_def}
   e {\rm T} = k_B T.
 \end{equation}
 The unit of ${\rm T}$ is therefore the Volt.
 The equivalence is $1 \,\volt \simeq 10^4 \,\kelvin$.
-\footnote{It is usual to find in the literature the temperature ${\rm T}$ expressed in electron-Volt eV.
-This is not coherent with the definition \cref{eq-T_def}, but mark the fact that the temperature is related to an energy via $k_B$. therefore, the reader needs not to be confused by the equivalence between the electron-Volt and the Volt.  }
+\footnote{It is usual to find in the literature the temperature ${\rm T}$ expressed in electron-Volt (eV).
+This is not coherent with the definition \cref{eq-T_def}, but it highlights the fact that the temperature is related to an energy via $k_B$. Therefore, the reader needs not to be confused by the equivalence between the electron-Volt and the Volt.  }
 \nomenclature[Q]{\ensuremath{ \rm T}}{Temperature in Volt }
 \nomenclature[Q]{\ensuremath{ T}}{Temperature in Kelvin }
 
@@ -65,7 +65,7 @@ We name the Maxwellian distribution function the distribution
   f_{\rm M}(\vect{v}) = n (\frac{m}{2 \pi k_B T})^{3/2} \exp \lp - \frac{ m v^2/2}{k_B T } \rp,
 \end{equation}
 with $n$ the density.
-One can show that the Maxwellian distribution function is the solution of the Boltzmann with only elastic collisions \citet{lieberman2005}.
+One can show that the Maxwellian distribution function is the solution of the Boltzmann equation with only elastic collisions \citep{lieberman2005}.
 In one dimension, the Maxwellian distribution function becomes
 \begin{equation}
   f_{\rm M, 1D}(v) =  n (\frac{m}{2 \pi k_B T})^{1/2} \exp \lp - \frac{ m v^2/2}{k_B T } \rp,
@@ -114,7 +114,7 @@ The fluid simulations solve the moments of the distribution function (the densit
 Depending on the conditions, the system of equations can be simplified before resolution.
 Under the electrodynamic conditions, mainly for space plasmas and fusion, the Maxwell equations are coupled to the fluid equations leading to magnetohydrodynamics (MHD).
 In the case of electrostatic conditions, as it is usual for Low-Temperature (LT) plasmas, the Poisson equation is coupled to the fluid equations.
-In most of LT plasmas, the plasma in quasi-neutral except in small regions as plasma sheaths close to walls.
+In most of LT plasmas, the plasma is quasi-neutral except in small regions as plasma sheaths close to walls.
 It is also common to neglect inertia terms and assume a steady-state in the momentum equations, leading to the drift-diffusion approximation.
 The fluid equations can be solved in \ac{3D}, \ac{2D}, or \ac{1D} for space.
 In a low dimension model, the effects of the missing dimensions are usually included, for instance, in the source terms as done by \citet{barral2003a}.

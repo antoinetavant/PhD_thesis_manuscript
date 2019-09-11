@@ -42,7 +42,7 @@
     
     where $\chi_s(\vect{k}, \omega)$ is the susceptibility of the species $s$.
     It is obtained by coupling the Poisson equation with the particles description.
-    The dispersion relation is obtained by setting $  \hat\epsilon(\vect{k},\omega) =0$
+    The dispersion relation is obtained by setting $  \hat\epsilon(\vect{k},\omega) =0$ ans solving for $\vect{k},\omega$.
     
     
     For the unmagnetized ions, supposing a Maxwellian distribution, the susceptibility is
@@ -85,7 +85,7 @@
     
 
 
-  \subsection{Modified Ion Accoustic Wave}
+  \subsection{Modified Ion Acoustic Wave}
     \label{sucsec-IAW}
     
     The dispersion relation of \cref{eq-drECDI} presents sharp resonances due to cyclotron resonances.
@@ -99,17 +99,25 @@
     \end{split}
     \end{equation}
 
-    
-    However, one can note that there is no consensus on the transition to an \ac{IAW}.
-    It can be is attributed to non-linear resonance broadening, because the electron orbit is distorted, leading to the loss of the phase relation between the electron and the wave \citep{taccogna2019}.
-    The electron demagnetisation leads to a dispersion relation where the ions and the electrons have the same type of contribution.
-    But recently, \citet{janhunen2018a} claimed that the demagnetisation condition due to nonlinear resonance broadening is not fulfilled.
-    \citet{lafleur2017a} uses the fact that in \ac{2D} simulations, the finite minimum value for the radial wave vector is responsible for the ion acoustic dispersion relation.
-    
     \citet{lafleur2016} and \citet{janhunen2018} show that after some assumptions -- mostly a drifting Maxwellian distribution, cold ions, and a small electron drift velocity compared to thermal speed -- \cref{eq-drIAWgene} can be solved to obtain
     \begin{equation} \label{eq-MIAW}
       \omega = \omega_r + i \gamma = \vect{k} \cdot \vect{u_{i}} \pm \frac{k c_s}{\sqrt{1 + k^2 \lde^2}} \pm i \sqrt{\frac{\pi m_e}{8 m_i}} \frac{\vect{k} \cdot \vect{u_{e}}}{( 1 + k^2 \lde^2)^{3/2}}.
     \end{equation}
     The above equation represents the analytic modified ion-acoustic dispersion relation.
-    We can see that the growth rate is proportional to the electron drift velocity.
+    The wave-number given the maximum of the growing rate is \citep{lafleur2016}
+    \begin{equation} \label{eq-mostk}
+      k_{max} = \frac{1}{\sqrt{2} \lde}
+    \end{equation}
+    which gives, subtituted in \cref{eq-MIAW}
+    \begin{equation} \label{eq-mostw}
+      \omega_{max} =  \vect{k} \cdot \vect{u_{i}} \pm \frac{\opi}{\sqrt{3}} + i \sqrt{ \frac{\pi m_e}{54 m_i}}\frac{u_e}{\lde}
+    \end{equation}
+    We can see that the growth rate is proportional to the electron drift velocity, and inversely proportional to the Debye length.
+    
+    However, one should note that there is no consensus on the transition to an \ac{IAW}.
+    It can be is attributed to non-linear resonance broadening, because the electron orbit is distorted, leading to the loss of the phase relation between the electron and the wave \citep{taccogna2019}.
+    The electron demagnetization leads to a dispersion relation where the ions and the electrons have the same type of contribution.
+    But recently, \citet{janhunen2018a} stated that the demagnetization condition due to nonlinear resonance broadening is not fulfilled.
+    \citet{lafleur2017a} uses the fact that in \ac{2D} simulations, the finite minimum value for the radial wave vector is responsible for the ion acoustic dispersion relation.
+    
     

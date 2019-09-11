@@ -1,29 +1,28 @@
 % !TEX root=/home/tavant/these/manuscript/src/manuscript.tex
 
 \section{Presentation of the axial-azimuthal simulation}
-
+\label{sec-ztheta_description}
 The \ac{2D} simulation plane used so far in this work was the radial-azimuthal plane so that the plasma-wall interaction could be studied while obtaining self-consistently the azimuthal instability responsible for the axial electron transport.
 In this configuration, we have implemented an algorithm that model the axial convection of the particles.
 However, there are other missing mechanism of the axial direction in this simulation, in particular\string: the axial electric field is imposed\string; the wave is not convected\string; the impact of the axial gradients, such as the diamagnetic drift, are not included\string; the ionization region is not modeled.
 
-The axial-azimuthal \ac{2D} simulation domain is used to study these mechanisms.
-Numerous  studies focused on modeling the axial-azimuthal plane \citep{adam2004,coche2014,boeuf2018,taccogna2019}.
+The axial-azimuthal \ac{2D} simulation domain is used to study these mechanisms, and there are several studies that focused on modeling this specific simulation plane \citep{adam2004,coche2014,boeuf2018,taccogna2019}.
 However, in these models, the impact of the radial direction is now missing.
-Therefore, we propose a first step to study the radial direction in the axial-azimuthal simulation.
+Therefore, we propose in this chapter a first step to study the radial direction in the axial-azimuthal simulation.
 
-After presenting the simulation domain and its characteristics in \cref{subsec-ztheta_description,subsec-breathmod,subsec-fakeR}, we compare the impact of the radial losses modeled on the simulation results.
-First, we analyze the discharge characteristics in \cref{sec-Zthetaresults}, then we focus in \cref{sec-Zthetaresults} on the azimuthal instability.
+After presenting the simulation domain and its characteristics in \cref{sec-ztheta_description}, we compare the impact of the radial losses modeled on the simulation results.
+First, we analyze the discharge characteristics in \cref{sec-Zthetaresults}, then we focus in \cref{sec-Ztheta-instability} on the azimuthal instability.
 
 
 \subsection{Description of the simulation domain} \label{subsec-ztheta_description}
 To ease the understanding of the different simulation domains, \Cref{fig-3Dschematic} shows the simplified \ac{HET} annular channel with both the radial-azimuthal and the axial-azimuthal \ztheta domain.
-The last \ac{2D} domain, the radial-axial domain, is not represented.
+The third \ac{2D} domain, the radial-axial domain, is not represented.
 Indeed, it does not model the electron transport due to the azimuthal instability, hence we discard it.
 
 \begin{figure}[hbt]
   \centering
   \includegraphics[width=0.5\textwidth]{3D_shematic}
-  \caption{Schematic representation of the chamber of a \ac{HET} and (green) the radial-azimuthal and (red) the axial-azimuthal 2D domains.}
+  \caption{Schematic representation of the chamber of a \acs{HET} and (green) the radial-azimuthal and (red) the axial-azimuthal 2D domains.}
   \label{fig-3Dschematic}
 \end{figure}
 
@@ -37,7 +36,7 @@ The azimuthal direction is closed with periodic boundaries for both the particle
 \begin{figure}[hbt]
   \centering
   \includegraphics[width=0.5\textwidth]{2D_ztheta}
-  \caption{Schematic representation of the \ac{2D} \ztheta simulation domain.}
+  \caption{Schematic representation of the \acs{2D} \ztheta simulation domain.}
   \label{fig-2D_ztheta_bis}
 \end{figure}
 
@@ -47,7 +46,7 @@ This allowed us to adapt the code \LPPic to simulate both domains using the same
 Three particular aspects have been developed\string: the cathode electron emission, the dynamic computational load balancing, and the electron sub-cycling.
 
 \paragraph{Cathode electron emission\\}
-The cathode present in \ac{HET} are mostly used to neutralize the ion beam, but a significant fraction of the emitted elections enters the channel and travels toward the anode, maintaining the discharge.
+In the \ac{HET},  the cathode is are mostly used to neutralize the ion beam, but a significant fraction of the emitted elections enters the channel and travels toward the anode, maintaining the discharge.
 Consequently in the simulation, electrons are injected close to the cathode boundary following a Maxwellian distribution of a few electron volts.
 The number of electrons to inject at each time step is computed by closing the eternal circuit between the anode and the cathode.
 
@@ -57,21 +56,21 @@ Thus, the cathode current equals the anode current \[ I_a = I_c. \]
 
 \paragraph{Dynamic computational load balancing\\}
 The axial profile of the plasma density presents a maximum that can be one order of magnitude higher than the mean plasma density.
-Consequently, a static MPI domain decomposition would produce an unbalance in the number of numerical particle per CPU, which results in an under-efficient code.
+Consequently, a static MPI domain decomposition would produce an unbalance in the number of numerical particles per CPU, which would result in an under-efficient code.
 
-One possibility is to modify dynamically the weigh of the numerical particle relative to the plasma density, in order to keep a relatively constant number of particle per cell.
-This can be done by merging the particles when they are too small, or by slitting them in smaller particles when they are too big \citep{shon2001,teunissen2014}.
+One possibility is to modify dynamically the weight of the numerical particles relative to the plasma density, in order to keep a relatively constant number of particles per cell.
+This can be done by merging the particles when they are too small, or by splitting them in smaller particles when they are too big \citep{shon2001,teunissen2014}.
 However, such algorithm can modify the charge, momentum, or the energy of the system if not done carefully.
 In \citet{vranic2015}, the authors present an algorithm claimed to conserve these quantities.
 However, we chose not to implement it because of its error-prone complexity.
 
-Instead, we implemented a dynamic redistribution of the CPU domain, so that every CPU own approximately the same number of particle.
+Instead, we implemented a dynamic redistribution of the CPU domain, so that every CPU own approximately the same number of particles.
 As the density gradient is principally in the axial direction, we only change the axial size of the CPU domains.
 
 \paragraph{Electron time-step sub-cycling\\}
-Due to the large mass ratio between the  ions and the electrons, the ion dynamic is much slower than described by the time-step $\dt$, which is constrained by the electron dynamic.
+Due to the large mass ratio between the  ions and the electrons, the ion dynamic is much slower than the electron dynamic that constrained the time step  $\dt$, which is constrained by the electron dynamic.
 In \citet{adam1982}, the authors propose to reduce the computational time by using a different time-step $\dt$ for the ions and the electrons.
-They show theoretically and numerically that numerical instability rises when $\ope \dt_i  \sim \pi$.
+They show theoretically and numerically that numerical instabilities rise when $\ope \dt_i  \sim \pi$.
 With the stability criterion on $\dt_e$ \cref{eq-dx_limit}, we find the stability criterion 
 \begin{equation} \label{eq-subcycling_criterion}
   \frac{\dt_i}{\dt_e} < \frac{\pi}{0.2} \simeq 15.7.
@@ -83,7 +82,7 @@ We verified for one case that using the same time-step for the ion and the elect
 
 \subsection{Facing the breathing mode} \label{subsec-breathmod}
 The breathing mode comes from the coupling between the neutral gas flow and the plasma dynamics, via the ionization.
-Under the typical conditions of the \ac{HET}, we observed this oscillation with a slow frequency, around  $10-30$ kHz, and a large amplitude, as the plasma density can change up to one order of magnitude during the oscillation period \citep{barral2003a,barral2009}.
+Under the typical conditions of the \ac{HET}, we observed this oscillation with a low frequency, around  $10-30$ kHz, and a large amplitude, as the plasma density can change up to one order of magnitude during the oscillation period \citep{barral2003a,barral2009}.
 This oscillation is much slower than the \ac{ECDI}, and is present throughout the entire channel.
 
 If these oscillations are not problematic for the fluid or \ac{DK} simulations, they are for \ac{PIC} simulations.
@@ -100,10 +99,10 @@ Thus, we have chosen not to modify the \ac{PIC} algorithm.
 Two other approaches have been followed to reduce the computational cost induce by the breathing mode\string:
 \begin{enumerate}
   \item the approach used by \citet{coche2014}\string: using a scaling of the permittivity to reduce the computational load,
-  \item the approach of \citet{boeuf2017}, using a forced ionization source term.
+  \item the approach of \citet{boeuf2018}, using a forced ionization source term.
 \end{enumerate} 
 These two cases are significantly different in the physics modeled and the behavior observed, as Boeuf's test-case will converge toward a steady-state, in contrast to Coche's test-case which model the breathing mode.
-Since we are not directly interested in the Breathing oscillations, we use in this study the test-case of Boeuf.
+Since we are not directly interested in the breathing oscillations, we use in this study the test-case of Boeuf.
 
 % 
 % \subsection{Simulation test-case of Coche} \label{subsec-coche_description}
@@ -118,11 +117,11 @@ Since we are not directly interested in the Breathing oscillations, we use in th
 % 
 %   \begin{figure}[hbt]
 %     \centering
-%     \begin{tabular}{cc}
+%     \begin{tabular}{@{} cc}
 %       \subfigure{coches_domain}{}{10,10} &
 %       \subfigure{coches_profiles}{}{10,10} \\
 %     \end{tabular}
-%     \caption{(left) the \ac{2D} axial azimuthal domain; (right) the axial profile of the magnetic field and the initial xenon neutral gas profile used for the simulation case of Coche. }
+%     \caption{(left) the \acs{2D} axial azimuthal domain; (right) the axial profile of the magnetic field and the initial xenon neutral gas profile used for the simulation case of Coche. }
 %     \label{fig-coche-presnetation}
 %   \end{figure}
 % 
@@ -172,7 +171,7 @@ Since we are not directly interested in the Breathing oscillations, we use in th
 %   \begin{table}[htb] %PIC parameters
 %        \centering
 %        \ra{1.3}
-%        \caption{\label{tab-parameters-coche} Physical and numerical parameters used in the \ac{2D} \ac{PIC} simulations of an axial and azimuthal \ztheta plane of a \ac{HET} in the test-case of Coche.}
+%        \caption{\label{tab-parameters-coche} Physical and numerical parameters used in the \acs{2D} \acs{PIC} simulations of an axial and azimuthal \ztheta plane of a \acs{HET} in the test-case of Coche.}
 %        \begin{tabular}{@{}r c c c@{}} 
 %           \toprule
 %           {\bf Physical Parameter} & notation & Value & Unit \\
@@ -203,7 +202,7 @@ Since we are not directly interested in the Breathing oscillations, we use in th
 \subsection{Description of the simulation test-case of Boeuf} \label{subsec-boeuf_description}
 
 In \citet{boeuf2018}, the authors used a simplified simulation set-up in order to study the azimuthal instabilities.
-The simulation is collisionless and the ionization profile is not-self-consistent but  instead is given as an input.
+The simulation is collisionless and the ionization profile is not-self-consistent but is rather given as an input.
 This removes the breathing mode oscillations from the discharge, and simplifies the parametric study.
 The ionization source term $S_{iz}$ used follow a cosine profile
 \begin{equation} \label{eq-siz_profile}
@@ -215,29 +214,24 @@ Indeed, the axial length in this case in $L_z=2.5\,\centi\meter$, with $L_{ch}=0
 \Cref{fig-boeuf-presnetation} presents the simulation domain and the axial profile of the ionization source term $S_{iz}$ and the magnetic field.
 \begin{figure}[hbt]
   \centering
-  \begin{tabular}{cc}
+  \begin{tabular}{@{} cc}
     \subfigure{boeuf-domain.png}{}{10,10} &
     \subfigure{boeuf-profiles.png}{}{10,10} \\
   \end{tabular}
-  \caption{(left) the \ac{2D} axial azimuthal domain\string; (right) the axial profile of the magnetic field and the ionization source term profiles used for the simulation case of Boeuf. }
+  \caption{(left) the \acs{2D} axial azimuthal domain\string; (right) the axial profile of the magnetic field and the ionization source term profiles used for the simulation case of Boeuf. }
   \label{fig-boeuf-presnetation}
 \end{figure}
 
-The electrons emitted by the cathode are injected inside of the simulation domain, at 0.5\,cm from the boundary.
-Consequently, the neutralization of the ion beam is modeled, thus the current injected is equal to the anode current:
-\begin{equation} \label{eq-boeuf_Ice}
-  I_{ce } = I_a,
-\end{equation}
- with $I_a$ the total current collected at the anode boundary $I_a = I_{a, i} + I_{a, e}$
+The electrons emitted by the cathode are injected inside of the simulation domain, at 1\,cm from the boundary.
 Since the electron injection is not located at the cathode boundary, a large cathode sheath is present.
-Therefor, the plasma potential is corrected so that the potential is $\phi=0$ at the location of injection, at 0.5\,cm from the boundary.
-This is done by adding a constant axial electric field, that respects the Poisson equation.
+Therefore, the plasma potential is corrected so that the potential is $\phi=0$ at the location of injection, at 1\,cm from the boundary.
+This is done by substracting the azimuthally averaged plasma potential at the injection plane, from the potential calculated with the Poisson equation.
 The physical and numerical conditions used for the test-case of Boeuf are given in \cref{tab-parameters-boeuf}.
 
 \begin{table}[htb] %PIC parameters
      \centering
      \ra{1.3}
-     \caption{\label{tab-parameters-boeuf} Physical and numerical parameters used in the \ac{2D} \ac{PIC} simulations of an axial and azimuthal \ztheta plane of a \ac{HET} in the test-case of Boeuf.}
+     \caption{\label{tab-parameters-boeuf} Physical and numerical parameters used in the \acs{2D} \acs{PIC} simulations of an axial and azimuthal \ztheta plane of a \acs{HET} in the test-case of Boeuf.}
      \begin{tabular}{@{}r c c c@{}} 
         \toprule
         {\bf Physical Parameter} & notation & Value & Unit \\
@@ -280,7 +274,7 @@ Two approaches have been investigated to model efficiently the effect of the she
 
 
 \paragraph{ Model 1 for the radial losses\string: sheath model\\}
-The first approach set the potential drop at the walls by using  a sheath model, such as the one described in \cref{sec-sheath}, or in \cref{ch-3,ch-4}.
+In the first approach, we set the potential drop at the walls by the use of a sheath model, such as the one described in \cref{sec-sheath}, or in \cref{ch-3,ch-4}.
 The ions would be absorbed by the radial boundary, as well as the electrons of energy higher than the sheath potential.
 Electrons with smaller energy are reflected spectacularly.
 
@@ -296,17 +290,18 @@ Hence, we chose not to use it.
 % The authors did not modeled the particle losses
 
 \paragraph{Model 2 for the  radial losses\string: flux equality\\}
-The second approach directly imposes the flux equality by absorbing every time step the same number of electrons as ions.
-The electrons crossing the radial boundaries are sorted by their energy, and the electrons absorbed are the most energetic ones.
+The second approach directly imposes the flux equality by absorbing every time step the same number of electrons than ions.
+The electrons crossing the radial boundaries are sorted by their energy in the radial direction, and the electrons absorbed are the most energetic ones.
 The others are reflected elastically.
 Due to the small number of ions crossing the boundary, and for performance issues, we choose to impose the flux equality averaged over the domain of a CPU.
 As 360 CPU domains are used to decompose the whole simulation domain, this allows a partial locality of the flux equality. 
+
 \vspace{1ex}
-While the sheath can be supposed infinitely fin, the ion flux to the wall usually depends on the pre-sheaths, which display an ambipolar electric field that accelerates the ions to the ion sound speed at the sheath edge.
-Since the development and validation of a pre-sheath electric field model in the radial model required more resources than available, there is no such pre-sheath model present in the results presented in this chapter.
+While the sheath can be supposed infinitely thin, the ion flux to the wall usually depends on the pre-sheaths, which display an ambipolar electric field that accelerates the ions to the ion sound speed at the sheath edge.
+Since the development and validation of a pre-sheath electric field model in the radial model required more resources than available, there is no such pre-sheath model in the results presented in this chapter.
 Consequently, the ion flux to the wall is a thermal flux, which is much smaller than the flux created by a pre-sheath.
-Hence, using a realistic radial length  of the order of 1 or $2\,\centi\meter$, the particle losses are underestimated.
+Hence, using a realistic radial length  of the order of $2\,\centi\meter$, the particle losses are underestimated.
 One solution could be to reduce the radial length, so that the particle flux are closer to physical losses.
 
-The results given in the next sections are obtained by modeling the radial losses in the totality of the simulation domain.
+The results given in the next sections are obtained by modeling the radial losses in the whole simulation domain.
 We choose to do so in order not to introduce a discontinuity in the radial boundary condition, as well as to increase the impact of the radial losses on the simulation results.

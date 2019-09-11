@@ -1,12 +1,12 @@
 % !TEX root=/home/tavant/these/manuscript/src/manuscript.tex
 
-\section{Canonical simulation results}
+\section{Canonical simulation result}
   \label{sec-canonical}
   
   
   The {\it canonical} case corresponds to the case when the walls are grounded, and are fully absorbing. 
   It is the reference case that will be extensively described and commented.
-  It will be used then to analyse and quantify the effects of two characteristics of the dielectric walls on the studied discharges : the secondary electron emission, and the modification of the electrostatic boundary condition.
+  Then, it will be used as reference to analyze and quantify the effects of two characteristics of the dielectric walls on the studied discharges : the secondary electron emission, and the modification of the electrostatic boundary condition.
   
   \subsection{Initial phase of the simulation: $t \leq 2\,\micro\second$} \label{subsec-initlaphase}
   
@@ -42,13 +42,12 @@
   The small difference between the azimuthal and the axial kinetic energy is of the order of $2\,\volt$, as expected from the cyclotron motion of the electrons and \cref{eq-kinetic}.
   This means that the electrons are almost isotropic.
   
-  \renewcommand\subfigurewidth{0.45\textwidth}
   
   \begin{figure}[hbt]
     \centering
-    \begin{tabular}{c}
-      \subfigure{time_r_mean_n}{a}{20, 20}
-          \\
+    \begin{tabular}{@{} c c}
+      \subfigure{time_r_mean_n}{a}{20, 20} &
+          
       \subfigure{time_r_mean_phi}{b}{20, 20} 
     \end{tabular}
     \caption{Temporal evolution of the radial profile of the ({\bf a}) electron density and ({\bf b}) the plasma potential averaged azimuthally.}
@@ -70,19 +69,19 @@
   
   \begin{figure}[hbt]
     \centering
-    \includegraphics[width=\defaultwidth]{canonical_Te_all_directions}
+    \includegraphics[width=\defaultwidth]{canonical_Te_all_directions_long}
     \caption{Temporal evolution of the electron mean kinetic energy decomposed over the three directions, similar to \cref{fig-canon_Te_strat} but for a longer period. We still see the difference between $\Ee_z$ and $\Ee_{\theta}$ due to the $E\times B$ drift, and the colder radial energy.}
     \label{fig-canon_Te_all}
   \end{figure}
   
 
-  \Cref{fig-profiles} shows the radial profiles of the electron and ion densities averaged azimuthally at steady-state.
+  \Cref{fig-profiles} shows the azimuthally averaged radial profiles of the electron and ion densities  at steady-state.
   The plasma is mostly quasineutral, expect close to the walls.
   In the sheath, close to the wall, the electron density falls more rapidly compared to the ions.
   The sheath length can be roughly estimated to be $1\,\milli\meter$.
   The Debye length in our conditions is
   \begin{equation} \label{eq-debye}
-    \lambda_D = \sqrt{\frac{\epsilon_0 k_b T_e}{n_e e^2}} \sim 0.2\,\milli\meter,
+    \lambda_D = \sqrt{\frac{\epsilon_0 k_b T_e}{n_e e^2}} \sim 0.4\,\milli\meter,
   \end{equation}
   which corresponds to the expected sheath length \citep{chabert2014}.
   
@@ -109,7 +108,7 @@
   \begin{figure}[hbt]
     \centering
     \includegraphics[width=\defaultwidth]{canonical_mu_all}
-    \caption{Temporal evolution of the electron axial mobility computed in the \ac{PIC} simulation.}
+    \caption{Temporal evolution of the electron axial mobility computed in the \acs{PIC} simulation.}
     \label{fig-canon_mu}
   \end{figure}
   
@@ -139,17 +138,36 @@
     f_{\rm max} = \frac{\omega_{pi}}{\sqrt{3}} \simeq 21 \,\mega\hertz,
   \end{equation}
   which gives a relatively good agreement with the oscillation observed.
-  The \ac{ECDI} instability is the subject of \Cref{ch-5}, hence it will not be further discussed here.
+  The \ac{ECDI} instability was the subject of \Cref{ch-5}, hence it will not be further discussed here.
   
   
   \begin{figure}[hbt]
     \centering
     \includegraphics[width=\defaultwidth]{time_and_FFT}
-    \caption{Azimuthal instability\string: temporal evolution of the azimuthal electric field at the center of the simulations, and its frequency spectra computed by \ac{FFT}. The frequency for which the amplitude is maximum is highlighted.}
+    \caption{Azimuthal instability\string: temporal evolution of the azimuthal electric field at the center of the simulations, and its frequency spectra computed by \acs{FFT}. The frequency for which the amplitude is maximum is highlighted.}
     \label{fig-exampleECDI}
   \end{figure}
   
-  \inlinenote{Anne: pour preparer ce que tu vas montrer sur la figure 2.11, je pense qu'il faut que tu donnes ici les différentes valeurs des différentes mobilités pour epsilon=0}
+  we measure in the simulation the characters relative to the electron mobility.
+  The effective mobility $\mobeff$ is determined by the correlation term $<\dEt \dne>$ and the parameters of the simulations.
+  The effectively mobility at saturation $\mobeffsat$, using the hypothesis of saturation by ion-wave trapping, only need the electron temperature $\Te$.
+  We can see that the three values $\mobpic, \mobeff$, and $\mobeffsat$ are close from each-others.
+  
+  \begin{table}[hbtp]
+  \ra{1.3}
+    \centering
+    \caption{Characteristics relative to the electron mobility measured in the simulation at $t=27\,\micro\second$.}
+    \label{tab-canonical_mobility}
+    \begin{tabular}{@{} r l @{}} \toprule
+    Quantity & Value \\ \midrule
+    Correlation $<\dEt \dne>$ & $\sn{6}{20}$ V/m${^4}$ \\
+    Effective mobility $\mobeff$ from \cref{eq-eq_mobeffsimple_two} & 4.4 m$^2$(sV)$^{-1}$ \\
+    Mobility saturation $\mobeffsat$ from \cref{eq-mobeffsat} & 3.3 m$^2$(sV)$^{-1}$ \\
+    Measured mobility $\mobpic$ from \cref{eq-mobpic} & 6 m$^2$(sV)$^{-1}$\\
+    \bottomrule
+    \end{tabular}
+  \end{table}
+  
 
   
   

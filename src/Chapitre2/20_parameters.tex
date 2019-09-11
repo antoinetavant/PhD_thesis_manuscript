@@ -5,8 +5,8 @@
   
   \begin{Chabstract}
     
-  This study is based on the preliminary work of V. Croes, that he has presented in his Ph.D. thesis \citep{croes2017}.
-  Based on this results, I continued the analyze which has been published in  \citet*{tavant2018}.
+  \emph{This study is based on the preliminary work of V. Croes, which he presented in his Ph.D. thesis \citep{croes2017}.
+  Based on these results, I continued the analyze which has been published in  \citet{tavant2018}.}
 \end{Chabstract}
   
   \vspace{1ex}
@@ -19,11 +19,11 @@
     \item the electron induced electron emission from the wall
   \end{itemize}
   In order to compare quantitatively the relative importance of the two phenomena, we propose to conduct a parametric study on the dielectric wall characteristics.
-
-  As highlighted before, the \ac{ECDI} rises due to the $E \times B$ electron drift, but saturates thanks to the axial convection model.
+  As highlighted in the introduction and in \cref{ch-5}, the \ac{ECDI} rises due to the $E \times B$ electron drift, but saturates due to both to the axial convection model which limits the electron heating, and the ion-wave trapping.
   Before investigating the time dependent behavior of the system, we focus in this \Cref{ch-2} on the average values at steady-state.
   The first section describes the parameters of the simulation, 
   while the second section highlights the main characteristics of the simulation results.
+  The other sections of the chapter presents the results of the parametric study on the wall characteristics.
 
   
   The simulation domain corresponds to the exit plane of the thruster.
@@ -34,7 +34,6 @@
   It is important to note that the results shown in this chapter have been obtained at the beginning of my thesis, before the study of the convection presented in \cref{ch-1}.
   Hence, in this chapter we use the convection model of \citet{lafleur2016a}.
   However, we have validated at posteriori that the convection model used does not modify the results under the conditions studied.
-  
   The numerical parameters are chosen to respect the stability criterion of \ac{PIC} simulation, and are presented in \Cref{parameters}
   
   \begin{table}[htbp] %PIC parameters
@@ -50,7 +49,7 @@
           Radial magnetic field & $B_{0}$                    & $200$                 & [{G}] \\
           Axial electric field & $E_{0}$                    & $2 \times 10^{4}$     & [{Vm}$^{-1}$] \\
           Mean plasma density & $n_{0}$                    & $3 \times 10^{17}$    & [{m}$^{-3}$] \\
-          Initial electron temperature & $\Te_{,0}  $               & $5.0$                 & [{V}] \\
+          Initial electron temperature & $\Te_{,0}  $               & $10.0$                 & [{V}] \\
           Initial ion temperature & $T_{i,0}   $               & $0.1$                 & [{V}] \\
           Secondary electron temperature & $T_{see}   $               & $1.0$                 & [{V}] \\
           Neutral gas pressure & $P_{n}     $               & $1.0$                 & [{mTorr}] \\

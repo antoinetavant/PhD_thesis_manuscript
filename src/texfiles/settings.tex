@@ -10,6 +10,10 @@
 
 % \usepackage{ebgaramond}
 
+% hid all of the warning related to acro package
+\usepackage{silence}
+\WarningFilter{latex}{Label `acro:}
+
 \usepackage{titlesec}
 \usepackage{titling}
 % Specify different font for section headings
@@ -203,7 +207,7 @@
 \usepackage[percent]{overpic}
 %Floats
 \usepackage{placeins}  % allows \FloatBarrier
-
+\usepackage{afterpage}
 \newcommand\subfiguretics[3]{
 \begin{overpic}[width=\subfigurewidth,grid,tics=10]{#1}
  \put (#3) {\bf #2}

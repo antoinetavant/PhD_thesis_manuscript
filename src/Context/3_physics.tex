@@ -6,13 +6,37 @@
 The scientific challenges are the critical phenomena that are currently not understood enough and prevent the industrial development of \ac{HET}s.
 As introduced before, in this Ph.D. manuscript, we focus on 2 of them : the electron transport and the plasma-wall interaction.
 
+
+\subsection*{Electron drift and azimuthal instability in the HETs}
+\addcontentsline{toc}{subsection}{Electron drift and azimuthal instability in the HETs}
+
+The axial electric field $E$ and the radial magnetic field $B$ induces an azimuthal $E\times B$ drift of the electrons.
+The drift velocity $v_{\rm d, ExB}$ is 
+\begin{equation} \label{eq-exbdriftbis}
+  v_{\rm d, ExB} = \bigg\lvert \frac{\vect{E} \times \vect{B}}{B^2} \bigg\rvert = \frac{E}{B} \sim \sn{1.5}{6} \,\meter\per\second
+\end{equation}
+Because of their large mass, the ions are not significantly affected by the magnetic field.
+Hence they do not drift azimuthally.
+As a consequence, there is a significant difference between the movement of electrons and ions in the azimuthal direction.
+
+This drift of electrons relative to the ions leads to instability in the azimuthal directions, so some  authors refers the instabilities as \ac{EDI}.
+However, as the drift is perpendicular to the magnetic field, it is subject to the cyclotron resonances.
+Therefore, in this these we use the more precise second name for these instabilities, the \ac{ECDI}.
+But it should be noted that both terms refer to the same physical phenomena.
+
+The actual nature of the \ac{ECDI} remains unclear\citep{boeuf2018}, as the \ac{ECDI} characteristics are very close to usual \ac{IAW}, and that experimental measurements are challenging to conduct in the range of parameter of interest.
+Hence, the community is still arguing about the actual nature of wave observed.
+A part of the work undertaken during my thesis concerns the study and characterization of the instabilities observed in the kinetic simulations.
+These instabilities are treated in \cref{ch-5}.
+
+
 \subsection*{Cross-field transport of the elections}
 \addcontentsline{toc}{subsection}{Cross-field transport of the elections}
   \label{sec-mob}
   
-  As a first approximation, the electrons are usually supposed frozen by the magnetic field.
-  But in fact, they present a so-called cross-field transport toward the anode.
-  For instance, because of collisions, the electrons can move from one magnetic line to another.
+  As a first approximation, electrons are usually assumed to be frozen by the magnetic field and rotate only in the azimuthal direction due to the drift $E \times B$.
+  But in fact, they present a so-called cross-field transport toward the anode in the axial direction.
+  For instance because of collisions, the electrons can jump from one magnetic line to another.
   This leads to a transport in the direction of the electric field.
   This transport can be expressed considering the electron momentum conservation equation \citep{lafleur2016a}\string:
   \begin{align*} %\label{eq-elec_momentum_mobility}
@@ -26,7 +50,7 @@ As introduced before, in this Ph.D. manuscript, we focus on 2 of them : the elec
     0 =  n_e E_{\theta} -  n_e v_{dez} B_0 - \frac{m_e}{q_e} \nu_m n_e v_{de{\theta}}
   \end{cases}
   \end{equation}
-  Supposing that there is no electric field in the azimuthal direction ($E_{\theta}=0$),  we can combine the two equations of \cref{eq-elec_momentum_mobility2} and have \citep{chen2006,meezan2001}
+  Supposing that there is no electric field in the azimuthal direction because of the azimuthal periodicity ($E_{\theta}=0$),  we can combine the two equations of \cref{eq-elec_momentum_mobility2} and have \citep{chen2006,meezan2001}
   \begin{equation} \label{eq-mobility}
     \mobcla = \frac{n_e v_{dez}}{n_e E_z} = \frac{ \frac{\norm{q}}{m \nu_m}}{1 + \frac{\oce^2}{\nu_m}}
   \end{equation}
@@ -54,8 +78,8 @@ As introduced before, in this Ph.D. manuscript, we focus on 2 of them : the elec
     \mobeff &= \frac{\frac{e}{m_e} \nu_m}{\oce^2} \lp 1 - \frac{\oce^2}{\nu_m}  \frac{< \dne \dEt >_{\theta} }{n_0 E_z}   \rp \nonumber \\
     &= \frac{< \dne \dEt >_{\theta} }{n_0 E_z}   \frac{1}{B_r} \label{eq-mobeffsimple}
   \end{align}
-  which shows that the instability enhances the electron axial mobility in a wave similar to an $E \times B$ drift.
-  The electric field $E_{\theta}$ oscillates and presents a zero mean value, but the average effect on the electron transport is not zero if the correction between \dEt{} and \dne{} is not zero.
+  which shows that the instability enhances the electron axial mobility in a way similar to an $E \times B$ drift.
+  The electric field $E_{\theta}$ oscillates and presents a zero mean value, but the average effect on the electron transport is not zero if the correlation between \dEt{} and \dne{} is not zero.
   
   The amplitude of the instability at steady-state depends on the saturation mechanisms and the convection of the wave.
   Studies have been  undertaken very recently but more work is still needed to derive expressions of the effective cross-field mobility that could be used in fluid models \citep{boeuf2017}.
@@ -72,27 +96,6 @@ As introduced before, in this Ph.D. manuscript, we focus on 2 of them : the elec
   
   Consequently, a better understanding of the electron cross-field mobility, the azimuthal instability, and the secondary electron emission is required before being able to model realistically the \ac{HET}.
   
-  \subsection*{Electron drift and azimuthal instability in the HETs}
-  \addcontentsline{toc}{subsection}{Electron drift and azimuthal instability in the HETs}
-
-  The axial electric field $E$ and the radial magnetic field $B$ induces an azimuthal $E\times B$ drift of the electrons.
-  The drift velocity $v_{\rm d, ExB}$ is 
-  \begin{equation} \label{eq-exbdriftbis}
-    v_{\rm d, ExB} = \bigg\lvert \frac{\vect{E} \times \vect{B}}{B^2} \bigg\rvert = \frac{E}{B} \sim \sn{1.5}{6} \,\meter\per\second
-  \end{equation}
-  Because of their large mass, the ions are not significantly affected by the magnetic field.
-  Hence they do not drift azimuthally.
-  As a consequence, there is a significant difference between the movement of electrons and ions in the azimuthal direction.
-
-  This drift of electrons relative to the ions leads to instability in the azimuthal directions.
-  Because the drift is perpendicular to the magnetic field, it is usually referred to as \ac{ECDI}.
-  However, as it rises from an $E\times B$ drift, some authors use the name \ac{EDI}.
-  In this thesis, we will use the name \ac{ECDI}.
-
-  The actual nature of the \ac{ECDI} remains unclear\citep{boeuf2018}, as the \ac{ECDI} characteristics are very close to usual \ac{IAW}, and that experimental measurements are challenging to conduct in the range of parameter of interest.
-  Hence, the community is still arguing about the actual nature of wave observed.
-  A part of the work undertaken during my thesis concerns the study and characterization of the instabilities observed in the kinetic simulations.
-  These instabilities are treated in \cref{ch-5}.
   
 \subsection*{Plasma-wall interaction}
 \addcontentsline{toc}{subsection}{Plasma-wall interaction}
@@ -106,7 +109,7 @@ As introduced before, in this Ph.D. manuscript, we focus on 2 of them : the elec
   
   Due to the relatively high electron energy, the impact of a primary electron can lead to the emission of secondary electrons \citep{barral2003a,villemant2018}.
   The probability of \ac{SEE} depends on the electron impact characteristics (energy, angle) but also of the material\string: some materials are more emitting than others \citep{gascon2003}.
-  Ion induced electron emission is much less likely to happen as the ions have a small impact energy.
+  Ion induced secondary electron emission is much less likely to happen at the range of energy impact \citep{ohya2004}, thus it is neglected compared to the electron induced \ac{SEE}.
   In addition to the near-wall conductivity discussed previously, these secondary electrons are accelerated toward the plasma by the sheath.
   Thus they modify the plasma and the sheath properties.
   Their impact on the electron temperature also affects the ionization rate, which is directly linked to the thruster efficiency.

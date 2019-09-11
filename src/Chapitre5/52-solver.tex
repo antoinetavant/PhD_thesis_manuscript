@@ -1,6 +1,6 @@
 % !TEX root=/home/tavant/these/manuscript/src/manuscript.tex
 
-\section{Solving the kinetic \ac{DR} for general distribution functions}
+\section{Solving the kinetic \acs{DR} for general distribution functions}
   \label{sec-DR-solver}
   \renewcommand\rightmark{\expandafter\MakeUppercase{Solver for the general DR}}
 
@@ -11,16 +11,21 @@
   
   \subsection{Numerical determination of $\hat\epsilon$} \label{subsec-numepsilon}
   
+  The calculation of $Z$, needed to determine $\hat{\epsilon}$, is usually done using the Maxwellian hypothesis \citep{cavalier2013} (hence using the Fried and Compte function $Z_M$), the kappa distribution \citep{ziebell2017}, or other analytic expressions.
+  We can also use a linear combination of such simple distribution functions, such as done in the software WHAMP, \citet{ronnmark1982}.
+  Here we propose to solve the dispersion relation $\hat{\epsilon}=0$ using the distribution function measured in the \ac{PIC} simulation.
+  
+  
   The numerical computation of $\norm{\hat\epsilon}$ is done using the method of \citet{xie2013} for computing $\tilde{Z}$ the numerical approximation of $Z$. 
   It uses the fact that $Z$ is an Hilbert transform of the distribution function, and that the Hilbert transform can be changed to a Fourier Transform, weighted by well chosen basis functions, so the \ac{FFT} algorithm can be used \citep{weideman1995}.
   
-  An interesting point is that the evaluation of $\tilde{Z}(\eta)$ is done by a polynomial, which coefficients depends only on the distribution function $f$. 
+  An interesting point is that the evaluation of $\tilde{Z}(\eta)$ is done by a polynomial function, which coefficients depends only on the distribution function $f$. 
   Hence, they need to be determined only once, and evaluating $\tilde{Z}(\eta)$ is relatively fast.
   
-  \begin{figure}[hbt]
+  \begin{figure}[!hbt]
     \centering
-    \includegraphics[width=\textwidth]{Validation_numericalZ.pdf}
-    \caption{Comparison of the numerical evaluation of $\tilde{Z}_M(\eta)$ for a Maxwellian distribution function with the Fried and Conte function (from the \texttt{plasmapy} python package).  }
+    \includegraphics[width=0.8\textwidth]{Validation_numericalZ.pdf}
+    \caption{Comparison of the numerical evaluation of $\tilde{Z}_M(\eta)$ for a Maxwellian distribution function with the Fried and Conte function (from the \texttt{plasmapy} python package) for different values of the imaginary part of $\eta: 5, 0,-1,$ and $-2.2$.  }
     \label{fig-numZ}
   \end{figure}
   \cref{fig-numZ} shows the comparison of the numerical evaluation of $\tilde{Z}(\eta)$ for a Maxwellian distribution function with the Fried and Conte function (from the `plasmapy` python package) for different values of the imaginary part of $\eta$.
@@ -28,7 +33,6 @@
   However, for larger negative values of $\Im(\eta)$, the two functions gives different results.
   
   This discrepancy between $Z_M$ and $\tilde{Z}_M$ for large negative imaginary argument is certainly due to the fact of the analytic expansion of $Z$ to the complex plane require the evaluation of the distribution function for complex velocities \citep{xie2013,weideman1995}.
-  \inlinenote{Anne: Pas clair}
   However, the discrete velocity distribution function measured in the \ac{PIC} simulation cannot be properly evaluated for complex velocities.
   On the other hand, we are only interested in instabilities, with positive growth rate.
   Hence, the discrepancy observed should not affect the conclusions of the study.
@@ -37,7 +41,7 @@
 
   \begin{figure}[hbt]
     \centering
-    \includegraphics[width=0.9\textwidth]{Validation_numericalZ_bis.png}
+    \includegraphics[width=0.8\textwidth]{Validation_numericalZ_bis.png}
     \caption{Comparison of the numerical evaluation of $\hat\epsilon$ from \cref{eq-drECDI} for a Maxwellian distribution function with (left) the Fried and Conte function (from the \texttt{plasmapy} python package) and (right) the numerical $\tilde{Z}$, in logarithmic scale.  }
     \label{fig-numZbis}
   \end{figure}
@@ -46,7 +50,6 @@
   We can see that the root with the greater imaginary part, located close to (0.2, 0), is the same in both cases, but that other roots for large negative imaginary part are not similar.
   But as said previously, theses roots are not our concern, hence the dispersion relation should be well computed using $\tilde{Z}$.
   
-  \FloatBarrier
   \subsection{Finding the root of $\hat\epsilon$}
   Now that we can compute $\hat\epsilon$, we can solve the dispersion relation.
   In order to find the root (the zeros) of $\hat\epsilon$, two methods have been tested.
@@ -71,7 +74,7 @@
     
     \vspace{1em}
     This algorithm have been implemented in a python package and successfully tested.
-    However, it takes a significant amount of time to obtain the solutions, as $\hat\epsilon$ needs to be evaluated a lot of time during the integrations.
+    However, it takes a significant amount of time to obtain the solutions, as $\hat\epsilon$ needs to be evaluated a lot of time during the integration.
     Moreover, we have observed that the dispersion relations \cref{eq-drECDI,eq-MIAW} present only one solution with a positive growth rate.
     This solution, corresponding to the instability, is isolated from the others as observed in \cref{fig-numZbis}.
     Hence, a simpler algorithm, as the Gradient descent, can be used.
@@ -96,7 +99,7 @@
 
     \FloatBarrier
 
-\subsection{Use of analytical distribution functions} \label{subsec-DRimpact}
+\subsection{Use of analytic distribution functions} \label{subsec-DRimpact}
   Before using the electron and ion distribution functions measured in the \ac{PIC} simulations, we compare the distribution relation for \ac{ECDI} and \ac{IAW} for different analytic distribution functions.
   
   \paragraph{Ion acoustic wave\\}
@@ -108,7 +111,7 @@
   \begin{figure}[hbt]
     \centering
     \includegraphics[width=\defaultwidth]{IAW_Maxw}
-    \caption{\ac{IAW} frequency and growth rate for a Maxwellian distribution function using the Freid and Conte function (labelled Analytic $Z_M$), the numerical estimation of $\tilde{Z}_M$, and the simplified analytic expressions of \cref{eq-MIAW}. }
+    \caption{IAW frequency and growth rate for a Maxwellian distribution function using the Freid and Conte function (labelled Analytic $Z_M$), the numerical estimation of $\tilde{Z}_M$, and the simplified analytic expressions of \cref{eq-MIAW}. }
     \label{fig-IAW_Maxw}
   \end{figure}
   
@@ -128,7 +131,7 @@
   \begin{figure}[hbt]
     \centering
     \includegraphics[width=\defaultwidth]{IAW_druv}
-    \caption{\ac{IAW} frequency and growth rate for a Maxwellian distribution function using the Freid and Conte function and a Druyvesteyn distribution evaluated with the numerical estimation of $\tilde{Z}$. }
+    \caption{IAW frequency and growth rate for a Maxwellian distribution function using the Freid and Conte function and a Druyvesteyn distribution evaluated with the numerical estimation of $\tilde{Z}$. }
     \label{fig-IAW_druv}
   \end{figure}
   
@@ -141,7 +144,7 @@
     \begin{figure}[hbt]
     \centering
     \includegraphics[width=\defaultwidth]{ECDI_druv}
-    \caption{\ac{ECDI} frequency and growth rate for a Maxwellian distribution function using the Freid and Conte function and a Druyvesteyn distribution evaluated with the numerical estimation of $\tilde{Z}$, the radial wave number is $k_r \lambda_{De} = 0.1 $.}
+    \caption{\acs{ECDI} frequency and growth rate for a Maxwellian distribution function using the Freid and Conte function and a Druyvesteyn distribution evaluated with the numerical estimation of $\tilde{Z}$, the radial wave number is $k_r \lambda_{De} = 0.1 $.}
     \label{fig-ECDI_druv}
   \end{figure}
   

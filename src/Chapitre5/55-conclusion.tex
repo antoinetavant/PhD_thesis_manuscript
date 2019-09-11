@@ -1,37 +1,37 @@
 % !TEX root=/home/tavant/these/manuscript/src/manuscript.tex
 
 \section{Conclusion}
-  Azimuthal instabilities have been observed in the \ac{PIC} simulations presented in \cref{ch-2} and by several groups of the community \citep{hara2019a,janhunen2018,taccogna2019}.
-  As their nature remain unclear, we investigated in \cref{ch-5} the simulation results in order to obtain more insights.
-  
+  Azimuthal instabilities have been observed in the \ac{PIC} simulations presented here, as well as by several groups of the community \citep{hara2019a,janhunen2018,taccogna2019}.
+  As their nature remain unclear, we investigated in this chapter the \ac{PIC} simulation results in order to obtain more insights on their nature and their behavior.
   The theoretical dispersion relations for the \ac{ECDI} and the \ac{IAW} have been used in both their simplified and general forms.
   The general form of the dispersion relation uses the particle velocity distribution function directly measured in the \ac{PIC} simulations.
   The solver used is presented in \cref{sec-DR-solver}.
   
   At the beginning, the resonances typical of the \ac{ECDI} are observed.
-  after about $1\,\micro\second$, they disappear, living place to the \ac{IAW}.
-  However, we show that the evolution from the \ac{ECDI} to the \ac{IAW}  is not due to the larger radial wavenumber, as there is no radial patterns.
-  Instead, it might be due to non-linear resonance broadening and electron demagnetisation.
+  After about $0.7\,\micro\second$, they disappear, living place to the \ac{IAW} dispersion relation.
+    However, we show that the evolution from the \ac{ECDI} to the \ac{IAW}  is not due to the larger radial wavenumber, as there is no radial patterns.
+  Instead, it might be due to non-linear resonance broadening and electron demagnetization.
   
   \vspace{1ex}
-  We also observed low frequency modulation of the amplitude of the instability.
-  This oscillation is impacted by the ion latency of being trapped by the wave.
-  The oscillation period is of the order of $\tau=1.5\,\micro\second$, which is slower than the bouncing frequency or the axial transit time.
+  We also observed low frequency modulations of the amplitude of the instability.
+  This oscillation is believed to be driven by the ion dynamic, especially the ion-wave trapping.
+  The oscillation period is of the order of $\tau=1.5\,\micro\second$, which is slower than the bouncing frequency or the axial transit time, this discrepancy could come from non-linear effects.
   
   The oscillation of the growth rate is also observed with the dispersion relation when the ion temperature is used and that they are supposed Maxwellian.
-  When the ion velocity distribution function measured in the \ac{PIC}  simulation is used, the growth rate stays close to zero.
-  However, This could be due to errors in the general relation dispersion solver.
+  However, when the ion velocity distribution function measured in the \ac{PIC}  simulation is used, the growth rate stays close to zero.
+  The origin of the discrepancy is unclear, as this could even be due to errors in the general relation dispersion solver.
   A proper cross-validation with other solvers using discrete distribution function is needed to confirm the result obtained.
   
-  Another approach, not yet used here, would be to fit the distribution function using a sum of analytic functions.
-  Usually, one or few simple distribution functions are used as done in \citet{ronnmark1982}.
-  A general algorithm finding the best fit in a large ensemble of analytic functions could be used to analyse more complex distribution function as the one observed here in the PIC simulation.
+  Another approach, not used here, would be to fit the distribution function using a sum of analytic functions.
+  This allows the use analytic functions to solve the dispersion relations.
+  Usually, one or few simple distribution functions are used, such as done by \citet{ronnmark1982}.
+  A general algorithm finding the best fit in a large ensemble of analytic functions could be used to analyze more complex distribution function as the one observed here in the PIC simulation.
 
   
   The results observed here are globally similar with the other simulation results of the community discussed in \cref{subsec-indroECDI}.
-  However, some significant difference remains, in particular during the non-linear saturation stage.
+  However, some differences remain, in particular during the non-linear saturation stage.
   In order to conclude on the origins of the discrepancy, a precise comparison between the simulation codes and the parameters used should be done.
-  A Benchmark is currently conducted, in order to compare some of these codes on the axial and azimuthal geometry.
+  A Benchmark is currently conducted, in order to compare some of these codes on the axial-azimuthal geometry.
   Once it is finished, efforts will be made on the radial and azimuthal case.
   
   
