@@ -9,16 +9,104 @@ This is the conclusion.
 
 \section{Summary}
 
-\begin{itemize}
-  \item 2D PIC simulation, study of SEE impact
-  \item Developpement of a general DR solver, used on PIC EVDFs
-  \item Isothermal sheath model do not represent well the plasma-wall interaction when electrons non-local.
-  \item Developpement of polytropic law without SEE
-  \item Developpement of polytropic law with SEE
-  \item Developpement of impact of radial losses in Z-theta.
-\end{itemize}
+The Hall Effect Thruster (HET) is mainly governed by two phenomena\string: the electron cross-field mobility - due to the azimuthal Electron Cyclotron Drift Instability (ECDI) and the electron collisions; and the wall interaction with the Secondary Electron Emission.
+As both phenomena are of kinetic nature, we used during this work a Particle-In-Cell (PIC) simulation model.
+Unfortunately, full 3 Dimensional (3D) realistic PIC simulation are still out of reach due to the excessive computational load.
+Therefore, we used in this work bi-dimensional simulation domains to study both the radial-azimythal and the axial-azimuthal planes of the HET.
+
+\subsection{Growth and saturation of the azimuthal instability}
+
+In this work, the radial-azimuthal domain has first been used to provide more insights on the \ac{ECDI}.
+The instability presents two phases\string: the first corresponding to the linear growth of the instability; the second phase correspond to the saturated phases, during which the amplitude of the instability oscillate around a mean value.
+
+We implemented a solver for the general Dispersion Relation (DR), that uses the Electron Velocity Distribution Function (EVDF) and the Ion Velocity Distribution Function (IVDF) measured in the PIC simulations to compute the growth rate and the frequency for a given wavevector.
+We observed a good agreement with the characteristics (wavenumber and frequency) observed in the \ac{PIC} simulation and the theoretical DR.
+During the linear phase, the wave presents the cyclotron resonances, characteristic of the ECDI.
+In contrast, during the saturated phase the resonances are not observed anymore, and the DR can be approximated by the Ion Accoustic Wave (IAW).
+
+We showed that the modulation of the amplitude during the saturated phase is certainly due to the ion.
+The main saturation mechanism is the ion-wave trapping.
+However, due to the large xenon ion mass, it seems that the damping of the wave due to the ion trapping is effective when the amplitude of the wave is much higher than the expected value.
+Consequently, the amplitude of the wave is significantly damped, and attain a level significantly lower than the expected value.
+
+This hypothesis is strengthened by the growth rate obtained by solution of the dispersion relation when the ion temperature is taken into account.
+Indeed, we observe the same temporal oscillation of the maximum of the  growth rate.
+However, the results of the General DR solver, using the IVDF, only yield a negative growth rate during the saturated phase.
+
+Lastly, be observed that the in our simulation, the oscillation does not present any radial modulation.
+On the contrary, the ration between the ion density fluctuation $\delta n_i$ and the mean value $n_i$ is constant. 
+This correspond to a wavevector strictly perpendicular to the magnetic field.
+
+{\bf TODO:} The linear phase of the instability seems now well understood, but effort in the understanding of the non-linear saturation must be pursue.
+The effect of the non-linear saturation on the cyclotron resonances should be better understood.
+The General Distribution Solver should be verified by comparing it to other independently developed solvers.
+Similar verification can be obtained by a comparison of the wave characteristics with independent PIC simulations codes.
+
+\subsection{Impact of the wall characteristics on the plasma-wall interaction }
+Using the 2D PIC simulation code, we performed a parametric study over the characteristics of the dielectric walls.
+We uncoupled the two main aspects of the dielectric wall\string: the physical insulating layer between the plasma and the grounded electron; and the electron induced Secondary Electron Emission (SEE).
+Both aspects have been studied separately, and combined.
+
+The dielectric layer has been modeled by solving the Poisson equation inside the layer.
+The impact of the insulating layer alone has been observed to induced only small impact on the discharge.
+The azimuthal instability in the electric field is observed to be larger at the vicinity of the wall, compared to the grounded wall.
+However, this difference decreases after one Debye length, and it is not observed on the ion density.
+Moreover, its impact on the electron mobility is not significant.
+
+The impact of the SEE has been study with a parametric study over the emissivity of the wall.
+We covered a large ensemble of parameter, from low emissive material (such as Graphiy) to very high emissive material (as Alumina Al$_2$O$_3$).
+We observed that the increase of SEE is associated with a decrease of the mean electron temperature, which in turn decreases the amplitude of the instability, and the axial electron mobility.
+However, the SEE induces a so-call nearwall mobility, which compensate the total electron  mobility.
+
+Three regimes of emission have been observed.
+For a low emissivity, the sheath observe follows the usual positive sheath.
+With a high emissivity, the sheath enter a Space-Charge Limited (SCL) regime, during which a potential well appears close to the wall.
+The potential well reflects the emitted electron to the wall, to that the effective total emission rate is strictly bellow one.
+The transition between the two regimes passes though a third unstable regime, during which the sheath oscillates between the two stable regimes.
+The nature of this regime's oscillation, and issues related to the value of the SEE rate are discussed in the next section.
+
+Lastly, we used both aspects of the dielectric wall together.
+We choose to uses the parameter that leased to the oscillating regime with the grounded wall.
+The overall quantities were not significantly affected by the dielectric.
+However, the amplitude of the sheath oscillation was reduced.
+
+\subsection{Non-isothermal sheath model}
+
+We observed with the parameter study that the rate of emission measured in the simulation was overestimated by the usual model.
+Moreover, the sheath characteristics, like the potential drop, also differed from the theory.
+It appears that the discrepancy was due to the isothermal hypothesis used so far in the sheath model.
+Indeed, the PIC simulation presents a decreases of the electron temperature from the center of the channel to the wall.
+
+This decrease of temperature is not due to the SEE, as the same results has been observed with a simplified 1D argon discharge without SEE.
+Instead, it comes from the absorption at the wall of the high energy tail of the electrons.
+As the gas pressure is low, the tail of the EVDF cannot be replenished by the collisions.
+Hence, the EVDF follows a 2-temperature profile, which present an evolution, through a potential drop, similar to the Polytropic state law. 
+We observed that the polytropic index for the electron evolution through the sheath depends on the neutral pressure.
+
+We developed a stationary fluid model with the same conditions than the simplified 1D PIC simulation.
+Given the polytropic index measured in the PIC simulation, the fluid model produced the results of the PIC simulation with a very good accuratie when the ionization source therm were imposed (no heating), and a acceptable agreement with a self-consistent ionization and one Inductively Coupled Radio-Frequency heating.
+
+\vspace{1ex}
+The sheath model with polytropic electrons has been extended to the case with Secondary Electron Emission (SEE).
+We observed in the PIC simulations that the polytropic index does not evolve significantly, so that we used in the latter a constant polytropic index value $\gamma=1.35$.
+Due to the reduction of the electron temperature with the polytropic state law, the modified sheath modeled allowed us to obtain the SEE rate and the plasma potential drop at the wall with a good agreement with the PIC simulation results.
+
+Interestingly, the sheath model with polytropic electrons and SEE presents for a domain of electron temperature three overlapping solutions.
+These overlapping solutions induce an hysteresis evolution of the sheath with the electron temperature.
+Indeed, starting from a low electron temperature and rising, the sheath will remain in the usual sheath regime until a maximum value, a which it will switch abruptly to the SCL regime.
+Reciprocally, starting from the SCL regime and decreasing the electron temperature, the sheath will remain over a large domain of temperature in the SCL regime until the a minimum value.
+This evolution is observed in the PIC simulations, during the intermediate regime, which presents quasi-periodic oscillations between the two regimes. 
+
+
+\subsection{Modeling the radial dimension in a 2D axial-azimuthal PIC simulation}
+
+Developpement of impact of radial losses in Z-theta.
+
+
+
 
 \section{Perspectives}
+
 \begin{itemize}
   \item Physics :
   \begin{itemize}
@@ -45,3 +133,6 @@ This is the conclusion.
   \end{itemize}
   
 \end{itemize}
+
+
+
