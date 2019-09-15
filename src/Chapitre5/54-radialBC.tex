@@ -5,10 +5,11 @@
     
   In the \ac{ECDI} dispersion relation described in \cref{sec-DR-kinetic}, the radial wavenumber must be non-zero.
   Hence, in \cref{sec-DR-results}, we have chosen a wavelength that fits between the two walls.
-  On the other hand, the oscillation seen in \cref{fig-phi_fluctuation_summary} seems not to present any oscillation in the radial direction.
+  On the other hand, the oscillation seen in \cref{fig-phi_fluctuation_summary} does not seem to present any oscillation in the radial direction.
   In this section, we investigate the interaction between the azimuthal instability and the wall in the radial direction.
   
   \subsection{Radial profile of the oscillation} \label{subsec-radial_prof}
+  \inlinenote{This section is confuse or non-conclusive.}
   \Cref{fig-phi_osci_profile} shows the amplitude of the azimuthal instability on the plasma potential.
   It is defined as
   \begin{equation} \label{eq-stdphi}
@@ -34,10 +35,10 @@
     \label{fig-ratio}
   \end{figure}
   
-  \Cref{fig-ratio} shows that the ration $\frac{\delta \phi}{ <\phi>_{\theta}}$ is almost constant in the plasma, except close to the wall, where the plasma potential decreases much faster than the oscillations.
-  The same behavior  observed in the profiles of the ion density, that can be seen in \Cref{fig-ion_oscilation}.
-  As a mater of fact, the behavior even more pronounced on the ion density, as the ratio $\delta n_i / n_i$ presents a radial profile almost constant.
-  It can be explains by the fact the ions reaches the wall with an supersonic speed, so that the wall does not directly affected the ions.
+  \Cref{fig-ratio} shows that the ratio $\frac{\delta \phi}{ <\phi>_{\theta}}$ is almost constant in the plasma, except close to the wall where the plasma potential reaches zero volt.
+  The same constant ratio is observed in the profiles of the ion density, as can be seen in \Cref{fig-ion_oscilation}.
+  As a mater of fact, the phenomena is even more pronounced on the ion density, as the ratio $\delta n_i / n_i$ presents a radial profile almost constant everywhere.
+  It can be explains by the fact the ions reaches the wall with a supersonic speed, so that the wall does not directly affect the ions.
   
   
   \begin{figure}[hbt]
@@ -61,25 +62,25 @@
   \begin{figure}[!hbt]
     \centering
     \includegraphics[width=\defaultwidth]{ECDI_ktheta_impact.pdf}
-    \caption{Evolution as a function of the azimuthal wavenumber $k_{\theta}$ of (solid line) the frequency $\omega$, and (dashed line) the growth rate $\gamma$ for three values of the normalized radial wavenumber $k_r \lde$. }
+    \caption{Evolution as a function of the azimuthal wavenumber $k_{\theta}$ of (solid line) the frequency $\omega$, and (dashed line) the growth rate $\gamma$ for three values of the normalized radial wavenumber $k_r \lde$ for the \acs{ECDI} with Maxwellian electrons and cold ions. }
     \label{fig-kreffect}
   \end{figure}
   
-  This reduction of the resonances explains the observations of \cref{fig-DRECDI}, where we saw similar reduction of the cyclotron resonances, due to the increase of $\lde$ the Debye length from $\lde=\sn{4.3}{-5}\,\meter$ at $t=0$ to $\lde=\sn{7.0}{-5}\,\meter$ at saturation.
-  However, if the radial wavenumber $k_r$ tends toward zero, in agreement with the observations of \cref{fig-ion_oscilation}, then the resonances would not smooth out for this reason.
+  This reduction of the resonances explains the observations of \cref{fig-DRECDI}, where we saw similar reduction of the cyclotron resonances, due to the increase of $\lde$ from $\lde=\sn{4.3}{-5}\,\meter$ at $t=0$ to $\lde=\sn{7.0}{-5}\,\meter$ at saturation.
+  However, if the radial wavenumber $k_r$ goes to zero, in agreement with the observations of \cref{fig-ion_oscilation}, then the resonances would not smooth out for this reason.
   Instead, the resonances would stay.
   
   \vspace{1em}
   As a conclusion, the interaction between the instability and the boundaries is not clearly understood.
   The sheaths seem to  screen the waves from the radial boundaries.
-  In \Cref{subsec-BC}, we will discuss on the impact of the radial boundary condition (metallic versus dielectric electrode) on the oscillation, but the conclusion will be similar.
+  In \Cref{subsec-BC}, we will discuss again the impact of the radial boundary condition (metallic versus dielectric electrode) on the oscillation.
 
   As there is no radial structure observed in the simulation showed here, it means that the oscillation is purely azimuthal, or at least $\lde k_r <<1$.
   In this case, the cyclotron resonances should non-longer disappear \citep{ducrocq2006}, except due to non-linear demagnetization of the electrons, as discussed before \citep{boeuf2018,taccogna2019}.
   The non-linear dispersion relations are out of the scope of the present work, but should be developed in order to better understand the evolution on the \ac{ECDI} in the \ac{HET}.
   
-  To understand the divergent observations of \citet{hara2019a,janhunen2018,taccogna2019}, a comparisons of the simulation results using similar parameter and models should be undertaken.
-  Such a comparison is currently undertook between the different working groups on another simulation case. 
+  To understand the divergent observations of \citet{hara2019a,janhunen2018}, and \citet{taccogna2019}, a comparison of the simulation results using similar parameter and models should be undertaken.
+  A comparison is currently in progress between the different working groups on another simulation case \citep{charoy2019}. 
   Once this first Benchmark is conducted, the radial-azimuthal geometry should be studied.
   
   

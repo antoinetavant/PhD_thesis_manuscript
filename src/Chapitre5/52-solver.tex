@@ -2,14 +2,15 @@
 
 \section{Solving the kinetic \acs{DR} for general distribution functions}
   \label{sec-DR-solver}
-  \renewcommand\rightmark{\expandafter\MakeUppercase{Solver for the general DR}}
+  % \renewcommand\rightmark{\expandafter\MakeUppercase{Solver for the general DR}}
 
 
   In order to solve the dispersion relation $\hat\epsilon(\vect{k}, \omega) = 0$ of \cref{eq-drECDI}, we solve for every $\vect{k}$ the complex value of $\omega$ that minimise $\norm{\hat\epsilon}$.
   Hence, we first need to evaluate $\hat\epsilon(\vect{k}, \omega)$ for given arguments $\vect{k}, \omega$.
   Then, we can find the root.
   
-  \subsection{Numerical determination of $\hat\epsilon$} \label{subsec-numepsilon}
+  \subsection{Numerical determination of the plasma dielectric function}
+   \label{subsec-numepsilon}
   
   The calculation of $Z$, needed to determine $\hat{\epsilon}$, is usually done using the Maxwellian hypothesis \citep{cavalier2013} (hence using the Fried and Compte function $Z_M$), the kappa distribution \citep{ziebell2017}, or other analytic expressions.
   We can also use a linear combination of such simple distribution functions, such as done in the software WHAMP, \citet{ronnmark1982}.
@@ -50,7 +51,7 @@
   We can see that the root with the greater imaginary part, located close to (0.2, 0), is the same in both cases, but that other roots for large negative imaginary part are not similar.
   But as said previously, theses roots are not our concern, hence the dispersion relation should be well computed using $\tilde{Z}$.
   
-  \subsection{Finding the root of $\hat\epsilon$}
+  \subsection{Finding the root of the plasma dielectric function}
   Now that we can compute $\hat\epsilon$, we can solve the dispersion relation.
   In order to find the root (the zeros) of $\hat\epsilon$, two methods have been tested.
   
@@ -80,12 +81,12 @@
     Hence, a simpler algorithm, as the Gradient descent, can be used.
     
   \paragraph{Fast root finding algorithm\\}
-    A faster root finding algorithm is proposed to solve the relation dispersion by supposing that the most growing wave is the only root over a domain sufficient large.
+    A faster root finding algorithm is proposed to solve the dispersion relation by supposing that the most growing wave is the only root over a domain sufficiently large.
     In other words, it is not close to other roots.
-    Hence, we can use an standard minimization method for non-linear equation.
+    Hence, we can use a standard minimization method for non-linear equation.
     As the analytic expression of the Hessian or the gradient are unknown, we use the Nelder-Mead method \citep{mckinnon1998}.
     We also tried the Conjugate gradient method by approximating the gradient using finite differences. 
-    However, even if this methods converges in fewer steps, the gradient estimation take a significant amount of time.
+    However, even if this method converges in fewer steps, the gradient estimation takes a significant amount of time.
     Powell's method \citep{powell1964} has also been implemented, but the Nelder-Mead method present the best performances.
     
     The first guess of the iterative Nelder-Mead method is either 
@@ -104,7 +105,7 @@
   
   \paragraph{Ion acoustic wave\\}
   
-  \Cref{fig-IAW_Maxw} shows the comparison with the relation dispersion \cref{eq-drIAWgene} for cold ions and drifting Maxwellian electrons of temperature $\Te=50\,\volt$ and drift velocity $u_e = \sn{2}{6} \,\meter\per\second$ for which the plasma dispersion function $Z_M$ is computed analytically (with the \texttt{plasmapy} package) or numerically.
+  \Cref{fig-IAW_Maxw} shows the comparison with the dispersion relation \cref{eq-drIAWgene} for cold ions and drifting Maxwellian electrons of temperature $\Te=50\,\volt$ and drift velocity $u_e = \sn{2}{6} \,\meter\per\second$ for which the plasma dispersion function $Z_M$ is computed analytically (with the \texttt{plasmapy} package) or numerically.
   The plasma density is $n_e = n_i = \sn{1}{17} \,\per\meter\cubed$.
   The frequency and growth rate obtained the simplified dispersion relation of \cref{eq-MIAW} is also shown. 
   
@@ -117,16 +118,17 @@
   
   We can see that all results gives almost the same solutions.
   The growth rates are all overlapping, hence it is difficult to see the differences.
-  For $\omega_r$, the simplified analytic expression returns a slightly different result, but the differences is negligible.
-  The numerical evaluation of $\tilde{Z}_M$ gives the same result as analytic evaluation.
+  For $\omega_r$, the simplified analytic expression returns a slightly different result, but the difference is negligible.
+  The numerical evaluation of $\tilde{Z}_M$ gives the same result as the analytic evaluation.
   
   \Cref{fig-IAW_druv} shows the effect of a Druyvesteyn electron distribution compared to a Maxwellian.
   We recall that a Druyvesteyn distribution follows the expression
+  \inlinenote{The Druyvertaein EVDF is $\epsilon^2$ !!!!!!! Needs to be redone !}
   \begin{equation} \label{eq-druyv}
     f_{D}(v) = \exp \lp C1 \frac{\norm{v}^3}{v_{th}^3}  \rp C2,
   \end{equation}
-  with $C1 \simeq 0.63$ and $C2 \sim 0.84$ two normalizing constants.
-  We can see that there is no much impact of the Druyvesteyn electron velocity distribution function on the electron, except that the maximum growth rate is sightly diminished.
+  where $C1 \simeq 0.63$ and $C2 \sim 0.84$ are two normalizing constants.
+  We can see that there is not much impact of the Druyvesteyn electron velocity distribution function on the electron, except that the maximum growth rate is sightly diminished.
   
   \begin{figure}[hbt]
     \centering

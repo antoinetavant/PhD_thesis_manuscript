@@ -5,6 +5,7 @@
   
   \subsection{Introduction and state of the art} \label{subsec-indroECDI}
     
+    \inlinenote{Add Vivien's work here}
     
     The presence of azimuthal instabilities in the Hall effect thrusters has first been shown with numerical simulations by \citet{adam2004}.
     Then, they have been the subject of numerous studies, especially numerical \citep{ducrocq2006,lafleur2016,lafleur2016a,croes2017,croes2018,janhunen2018,taccogna2019}, but also experimental \citep{honore2011,cavalier2013,cavalier2013a}.
@@ -15,7 +16,7 @@
     \citet{hara2019a} presents some kinetic simulation results of a \ac{2D} geometry, of size similar to the case studied here.
     However, the authors focused on the electron mobility values, and few information on the instability are given.
     
-    In \citet{janhunen2018}, the authors present a collision-less highly resolved \ac{2D} \ac{PIC} simulation.
+    In \citet{janhunen2018}, the authors present a collisionless highly resolved \ac{2D} \ac{PIC} simulation.
     No convection and no radial losses compensation models are used, hence the electron energy quickly rises and the density decreases.
     On the other hand, the domain is bigger, with a radial length of $L_r = 53.8\,\milli\meter$ for an azimythal length of $L_{\theta} = 13.45 \,\milli\meter$.
     Three cells by Debye length are used, while there are in average 800 particles per cell.
@@ -36,7 +37,7 @@
   \subsection{Instabilities observed with \LPPic} \label{subsec-lppic_ECDI}
   
   We present in this section the simulation results obtained in one case.
-  As we observed the same results when varying the  different physical parameters, for sake of brevity, results for other parameters are not shown.
+  As we observed the same results when varying the  different physical parameters, for the sake of brevity, results for other parameters are not shown.
   The parameters of the simulation are presented in \cref{tab-evdfpicparams}.
   The radial boundary condition includes a dielectric layer of width $L_{diel}$.
   No electron emission is modeled, and the convection is modeled with the new model (see \cref{sec-noiselessresults}).
@@ -69,20 +70,20 @@
   \begin{equation} \label{eq-Ee}
     \Ee_d = \frac{m_e}{2 e N_e} \sum_{j=1}^{N_e} v_{j, d}^2 
   \end{equation}
-  with $d$ the direction ($r,\theta$, or $z$), $N_e$ is the number of electron, and $v_{i, d}$ is the velocity in the direction $d$ of the $j^{\rm nt}$ electron.
-  We see that the simulation starts at $\Ee = \Te_{,0} /2$, and  that the after a few microseconds of transition, the simulations reaches a steady-state with small fluctuations.
-  The correspond to an initial Debye lenght $\lde=\sn{4.3}{-5}\,\meter$ to $\lde=\sn{7.0}{-5}\,\meter$ during the steady state.
+  with $d$ the direction ($r,\theta$, or $z$), $N_e$ is the number of electron, and $v_{j, d}$ is the velocity in the direction $d$ of the $j^{\rm nt}$ electron.
+  We see that the simulation starts at $\Ee = \Te_{,0} /2$, and  that after a few microseconds of transition, the simulations reaches a steady-state with small fluctuations.
+  This corresponds to an initial Debye lenght of $\lde=\sn{4.3}{-5}\,\meter$ and to $\lde=\sn{7.0}{-5}\,\meter$ at the saturated regime.
   \begin{figure}[!hbt]
     \centering
     \includegraphics[width=\defaultwidth]{canonical_Te_all_directions.pdf}
-    \caption{Temporal evolution of the electron mean kinetic energy decomposed $\Ee$ over the three directions. The kinetic energy include the internal energy (temperature) and the kinetic energy of the mean velocity.}
+    \caption{Temporal evolution of $\Ee$ the electron mean kinetic energy decomposed  over the three directions. The kinetic energy include the internal energy (temperature) and the kinetic energy of the mean velocity.}
     \label{fig-canon_Te_allch5}
   \end{figure}
   
 
   \subsection{General characteristics of the azimuthal instability }
-  We focus in this section on the azimuthal instability observed the \ac{2D} \ac{PIC} simulations.
-  \Cref{fig-2D_ne} shows the radial-azimuthal distribution of the electron density during the steady state.
+  We focus in this section on the azimuthal instability observed in the \ac{2D} \ac{PIC} simulations.
+  \Cref{fig-2D_ne} shows the radial-azimuthal distribution of the electron density during the saturated regime.
   We can see the instability in the azimuthal direction with a wavelength of a third of the azimuthal length.
   The instability can be seen in all of the plasma quantities (electron and ion densities, potential, electric field).
   In the radial direction, we can see the presheaths and the sheaths, characterized by the decrease of the plasma density between the center and the walls.
@@ -90,7 +91,7 @@
   \begin{figure}[hbtp]
     \centering
     \includegraphics[width=\defaultwidth]{2D_schema_ne}
-    \caption{Radial and azimuthal distribution of the electron density $n_e$ at $t=10\,\micro\second$, during the steady state. The azimuthal instability is clearly seen, as well as the sheaths in the radial direction. }
+    \caption{Radial and azimuthal distribution of the electron density $n_e$ at $t=10\,\micro\second$, during the saturated regime. The azimuthal instability is clearly seen, as well as the sheaths in the radial direction. }
     \label{fig-2D_ne}
   \end{figure}
   
@@ -104,9 +105,9 @@
     \label{fig-2DcutEx}
   \end{figure}
 
-  \Cref{fig-FFT_ex} shows the frequency spectrum of the azimuthal electric field presented in \cref{fig-2DcutEx} computed via \ac{FFT} in the stationary state ($t > 1.2\,\micro\second$).
-  The spectrum have been averaged in the azimuthal direction, in order to reduce the noise.
-  The theoretical frequency $f_{\rm theo} = \frac{\opi}{\pi \sqrt{6} }$ \citep{croes2018} is given. 
+  \Cref{fig-FFT_ex} shows the frequency spectrum of the azimuthal electric field presented in \cref{fig-2DcutEx} computed via \ac{FFT} in the saturated regime ($t > 1.5\,\micro\second$).
+  The spectrum has been averaged in the azimuthal direction, in order to reduce the noise.
+  The theoretical frequency $f_{\rm theo} = \frac{\opi}{\pi \sqrt{6} }$ \citep{croes2018} is shown with a dashed line. 
   We can see a very good agreement between $f_{\rm theo}$ and the maximum of the frequency spectrum.
   The value of the theoretical frequency $f_{\rm theo}$ is developed in \cref{sec-DR-kinetic}.
   \begin{figure}[!hbt]
@@ -119,10 +120,10 @@
   \subsection{Energy cascade} \label{subsec-turbul}
   
   We can see in \cref{fig-FFT_ex} a slow decrease of the frequency amplitude from $f_{\rm theo}$ to larger frequencies.
-  This sort of cascade is typical of turbulences, and can be a source of energy dissipation - hence saturation.
+  This type of cascade may be the signature of turbulence, and can be a source of energy dissipation - hence saturation.
   Kolmogorov's hypothesis of in-compressible fluid leads to a cascade in power law \[ W(f) = | \mathcal{FFT}(E_{\theta})(f) |^2 \propto f ^ {- \alpha}, \]
   with $\alpha = 5/3$.
-  
+  \inlinenote{Add kolmogorov's law}
   \begin{figure}[!hbt]
     \centering
     \includegraphics[width=\defaultwidth]{spectrum_frequency_turbul}
@@ -131,13 +132,14 @@
   \end{figure}
   
   \Cref{fig-turbul} shows the frequency power spectrum in log scale.
-  Is overlaid a fit of the cascade, for frequencies above the maximum amplitude.
-  The power law obtained is $\alpha \simeq 4.2$.
+  Overlaid is a fit of the cascade, for frequencies above the maximum amplitude.
+  The power law obtained is $\alpha \simeq 4.2$, which is much greater than the Kolmogorov's value.
   The oscillations observed present a decrease of the power spectrum much steeper than expected from turbulence.
-  Even if the mechanism of plasma turbulence differs from the fluid turbulence \citep{tsytovich1972}, the value of $\alpha$ is significantly larger than expected, hence we dismiss this phenomenon.
+  Even if the mechanism of plasma turbulence differs from the fluid turbulence \citep{tsytovich1972}, the value of $\alpha$ is significantly larger than expected.
+  Consequently, we expected that there is no significant dissipation or cascade to the small scales.
   
   \subsection{Temporal evolution of the oscillation amplitude} \label{subsec-temp}
-  We have seen in the previous section that after a growing phase, the amplitude of the instability saturates while oscillates slowly around the stable value.
+  We have seen in the previous section that after a growing phase, the amplitude of the instability saturates with a low frequency oscillation around the stable value.
   This section analyses these temporal characteristics.
   
   \Cref{fig-Ezstd_time} shows the temporal evolution of the characteristics of the electrostatic oscillation.
@@ -199,6 +201,7 @@
     \end{equation}
     
     We find the criterion for the ion-wave trapping
+    \inlinenote{The calculation may be more explicit}
     \begin{equation} \label{eq-criteriaIT}
       432 \epsilon_{\rm wave} = \epsilon_{\rm th}.
     \end{equation}
@@ -220,6 +223,6 @@
     However, a delay $\tau$ after the moment when the criterion is violated ($\tau = 0.40 \pm 0.07 \,\micro\second$ on the four oscillations), the wave abruptly stops rising and decreases instead.
     This delay between the time the ions should be trapped and the time the wave stops growing in most certainly due to the ion inertia, as we have $\tau \sim T_B$.
     
-    To summarized, the low frequency modulation of the azimuthal wave amplitude is certainly due to non-linear behavior of wave-particle interaction.
+    To summarize, the low frequency modulation of the azimuthal wave amplitude is certainly due to non-linear behavior of wave-particle interaction.
     Complementary results are presented in \cref{subsec-VDFIAW} by solving the dispersion relations.
     
