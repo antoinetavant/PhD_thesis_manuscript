@@ -4,7 +4,7 @@
 \label{sec-fluid}
 
 We have seen in \cref{sec-kinetic} that the polytropic law presented in \cref{eq-poly} can be used to describe the evolution of the electron temperature, hence closing the fluid equations.
-Provided that the electron pressure is $p_e = e n_e \Te$, assuming the sheath collisionless, and neglecting the electron mean velocity compared to the thermal velocity, the electron momentum conservation
+Provided that the electron pressure is $p_e = e n_e \Te$, assuming that the sheath is collisionless, and neglecting the electron mean velocity compared to the thermal velocity, the electron momentum conservation
 \begin{equation}
 \label{eq-elec_mom}
  \nabla (n_e \Te) + n_e \nabla \phi = 0
@@ -38,7 +38,7 @@ Using the normalized variables and parameters:
 \lambda &= \frac{S_{iz} L}{c_s}, &\Phi&=-\frac{e \phi}{\Te_{, c}}, &u &= \frac{v_i}{c_s}\\
 n &= \frac{n_i}{n_{e,c}}, &\chi&=\lambda \frac{x}{L}, &\epsilon &= \lambda \frac{\lambda_{De}}{L}\\
 \end{align}
-with $\Te_{,c}, n_{e,c}$ the electron temperature and density at the center, $c_s= \sqrt{\frac{\Te_{,c}}{m_i}}$ the ion sound speed, $v_i, n_i$ the ion speed and density, and $S_{iz}$ the ionization frequency, we can write the set of equations representing the plasma as\citep{riemann2005}:
+with $\Te_{,c}, n_{e,c}$ the electron temperature and density at the center, $c_s= \sqrt{\frac{\Te_{,c}}{m_i}}$ the ion sound speed, $v_i, n_i$ the ion speed and density, and $S_{iz}$ the ionization frequency, we can write the set of equations as \citep{riemann2005}:
 
 
 
@@ -61,7 +61,6 @@ The integration uses the \nth{4} order Runge-Kutta integration scheme of the pyt
 
 \begin{figure}[!htbp]
   \centering
-  % \includegraphics[width = 0.7\textwidth]{figures/sheathModel.pdf}
   \includegraphics[width = 0.9\textwidth]{FluidComparison.pdf}
   \caption{Comparison of the electron temperature and plasma potential measured in the PIC simulation with the prediction of the polytropic model with $\gamma = 1.42$.}
   \label{fig-comp}

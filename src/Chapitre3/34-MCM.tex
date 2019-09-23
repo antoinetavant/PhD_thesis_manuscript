@@ -31,31 +31,14 @@
     The maximum plasma potential, at the center of the domain, is $\max(\phi)=12.2\,\volt$.
     Is also shown in \cref{fig-EEPF_start_end} the EEPF at the beginning of the Monte Carlo computation, which corresponds to the Maxwellian distribution of temperature $\Te=5\,\volt$
 
-    \begin{figure}[hbt]
+    \begin{figure}[!hbt]
       \centering
       \includegraphics[width=\defaultwidth]{EEPF_PIC.pdf}
       \caption{Electron energy probability function obtained from (orange) the PIC simulation after convergence, and (blue) at the beginning of the Monte Carlo simulation. A Maxwellian distribution function at the $\Te{}_{,inj}$ and the local plasma potential are also given.}
       \label{fig-EEPF_start_end}
     \end{figure}
 
-    \paragraph{Time scales \\}
-    The electrons collected at the wall have a kinetic energy at least equal to the potential drop to the wall $\ek = e \dphi$, which corresponds in our case to a limit velocity of $v_{\rm lim} = \sn{1.5}{6} \,\meter\per\second$.
-    Hence, the limit time of flight between the two boundaries is
-    \[ T_{\rm flight} = \frac{L}{v_{\rm lim}} = 0.068 \,\micro\second  \]
-
-    \vspace{1em}
-    The electron-neutral scattering frequency is computed for a background pressure of $0.13$\,bar (${100}$\,mTorr) at the temperature of $300\,\kelvin$, which corresponds to a neutral density of $${n_g = \sn{3.2}{21} \meter^{-3}}.$$
-    For an electron temperature of $5\,\volt$, the thermal electron-neutral elastic scattering frequency is 
-    \[ \nu_{\rm ela} = 205 \,\mega\hertz.  \] 
-
-    However, at this high energy, electron-neutral scattering is not isotropic, but instead gives mostly small angles (forward scattering) \citep{vahedi1995}.
-    Hence, a large number of collision is required.
-    The resulting time scale corresponding of the electron-neutral scattering is of the order of 
-    \[ T_{\rm ela} \simeq \frac{100}{\nu_{\rm ela}} = 0.4 \,\micro\second  \]
-    
-    \inlinenote{Here, 1/$\nu = 0.004$, I don"t know why it is that low, while the MC calculations takes much more time to thermalize... Maybe due to the Injection ? \\ Anne: En regardant les temps sur tes resultats apres, j'ai compris ce qui te posait probleme ici. Tu es sur que dans ton monte carlo, ta densité de neutres n'est pas trop faible?}
-
-    \paragraph{Numerical artefacts \\}
+    \paragraph{Numerical artifacts \\}
     In PIC simulations, numerical parameters can induce numerical heating and thermalization \citep{lai2014}.
     The numerical heating has been studied in detail \citep{birdsall1991}.
     It is due to aliasing effects, and depends on the grid size, time step and number of particles per cell.
@@ -69,10 +52,9 @@
     \begin{equation} \label{eq-taut}
       \tau_T = \frac{1}{\omega_{pe}} \frac{34.4}{N_D^{-2} + 28.0 N_D^{-1} \frac{\nu_m}{\omega_{pe}}}
     \end{equation}
-    which gives in our condition a time-scale several orders of magnitude larger than the other time scales $T_{\rm ela}$ and $T_{\rm flight}$.
-    Hence, the effects of numerical parameters on the kinetics informations of the simulation are expected to be negligible.
-    We confirmed it by doubling the number of particle per cell for one pressure condition.
-    No observable impact has been detected.
+    which gives in our condition a time-scale several orders of magnitude larger than the typical simulation time.
+    We confirmed it by doubling the number of particle per cell for one pressure condition, and no observable impact has been detected.
+    Hence, the effects of numerical parameters on the simulation results are expected to be negligible.
 
   \subsection{Results of the Monte Carlo computation} \label{subsec-MCMresults}
 
@@ -80,7 +62,7 @@
     \Cref{fig-zoom_init_Mc} shows the evolution of the EEDF at the very early moments of the simulation, from $t=0.01$ to $0.08\,\micro\second$.
     The energy of the electrons is oriented, meaning that the electrons with positive energy are coming from the wall, while the negative energy is used for the electrons going toward the wall.
 
-    \begin{figure}[hbt]
+    \begin{figure}[!hbt]
       \centering
       \begin{tabular}{@{} cc}
         \includegraphics[width=0.4\textwidth]{MCC_EEDF/Heelo_1} &
@@ -97,7 +79,7 @@
     Two phenomena can be seen in \cref{fig-zoom_init_Mc}.
     The first is the rapid decrease of the tail of the distribution function, for energies higher than the plasma potential.
     The tail for positive energy decreases faster than for negative energy, as the EEPF is measured closer to one wall than the other ($x=3\,\centi\meter$ against $L-x=7\,\centi\meter$).
-    As expected, after $ T_{\rm flight}\simeq 0.07\,\micro\second$ the two tails are largely depleted, as they are one order of magnitude smaller than the Maxwellian EEPF.
+    After $ T \simeq 0.06\,\micro\second$ the two tails are largely depleted, as they are one order of magnitude smaller than the Maxwellian EEPF.
 
     The second phenomena is the presence of waves in the velocity space that can be seen in the low energy populations.
     They are due to the plasma potential profiles.
@@ -105,9 +87,7 @@
 
     \Cref{fig-zoom_Mc_later} shows the evolution of the EEDF over a longer time scale from $t=0.1$ to $2\,\micro\second$ compared to \cref{fig-zoom_init_Mc}.
     We can see the slow evolution of the low energy population from the initial, but slightly perturbed, Maxwellian distribution toward a distribution of smaller temperature.
-    After $t=2\,\micro\second$, the EEPF of the Monte Carlo computation is fairly close to the \ac{PIC} EEPF.
-    This is significantly longer than the estimated time scale of the elastic collisions ${T_{\rm ela}  = 0.4 \,\micro\second }$.
-    \inlinenote{Why so ?? Est-ce que c'est parce que $T_{ela}$ est mal calculé ?}
+    After $t=1.5\,\micro\second$, the EEPF of the Monte Carlo computation is fairly close to the \ac{PIC} EEPF.
 
     \begin{figure}[hbt]
       \begin{tabular}{@{} ccc}
@@ -121,7 +101,31 @@
 
     \vspace{1em}
     This Monte Carlo investigation has shown that in the \ac{1D} model, the EEPF depends on the absorption at the wall but also the electron-neutral collisions.
-    The final shape of the distribution is not simple, and is difficult to described and predict analytically.
+    The final shape of the distribution is not simple, and is difficult to describe and predict analytically.
     However, given the potential profile, the Monte Carlo computation reproduces the same distribution in a much shorter time compared to the \ac{PIC} simulation. 
     The obtained EEPF can then be used to determine the electron density and temperature evolution.
     This could be used to determine efficiently, and precisely, the electron polytropic coefficient.
+
+  \subsection{Discussion on the different time scales}
+    The results presented in the previous section show two main time scale.
+    In this section, compare the observed time scaled with the theoretical times.
+    
+    The electrons collected at the wall have a kinetic energy at least equal to the potential drop to the wall $\ek = e \dphi$, which corresponds in our case to a limit velocity of $v_{\rm lim} = \sn{1.5}{6} \,\meter\per\second$.
+    Hence, the limit time of flight between the two boundaries is
+    \[ T_{\rm flight} = \frac{L}{v_{\rm lim}} = 0.068 \,\micro\second.  \]
+    This is in agreement with the results of \cref{fig-zoom_init_Mc}, where we see that the high energy tails are depleted around $t=0.06\,\micro\second$.
+    
+    \vspace{1em}
+    The electron-neutral scattering frequency is computed for a background pressure of $13.3$\,Pa (${100}$\,mTorr) at the temperature of $300\,\kelvin$, which corresponds to a neutral density of $${n_g = \sn{3.2}{21} \meter^{-3}}.$$
+    For an electron temperature of $5\,\volt$, the thermal electron-neutral elastic scattering frequency for argon is \citep[p.73]{lieberman2005}
+    \[ \nu_{\rm ela} = 470 \,\mega\hertz,  \] 
+    which corresponds to a period of $\tau_{\rm ela} = 2 \,\nano\second$.
+    This period is much shorter than the one observed in the Monte-Carlo simulation.
+    We can see in \cref{fig-zoom_Mc_later} that the low energy part of the EEPF is significantly affected after $t=1\,\micro\second$.
+    
+    This discrepancy can be due to two reasons.
+    First, at high energy the electron-neutral scattering is not isotropic, but instead gives mostly small angles (forward scattering) \citep{vahedi1995}.
+    Hence, a large number of collision is required for the isotropization to be observable.
+    Secondly, the argon presents a significant Ramsauer minimum (a quantum mechanical resonance \citep{lieberman2005}) at $0.3 \,\volt$, were the cross-section is two orders of magnitude lower than on $5\,\volt$.
+    The two phenomena combined can explain the discrepancy between $\tau_{\rm ela}$ and the simulation results.
+  

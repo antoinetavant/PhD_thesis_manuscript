@@ -8,7 +8,7 @@
   The simulations are at low pressure, in which case  the electrons are non-local \cite{bernstein1954, godyak1993}.
   In low pressure bounded discharges, it is well-known that the EEDF is not Maxwellian in both capacitively coupled plasmas and inductively coupled plasmas \cite{mouchtouris2016, godyak2002, meige2006a, dominguez-vazquez2018}, in agreement with \cref{fig-EEDF}.
 
-  The impact of non-Maxwellian EEDF on the electron flux at the wall has been studied by Kaganovich et al. \citep{kaganovich2000,kaganovich2007}.
+  The impact of non-Maxwellian EEDF on the electron flux to the wall has been studied by Kaganovich et al. \citep{kaganovich2000,kaganovich2007}.
   They showed that the electron kinetics at low pressure can significantly reduce the electron flux to the wall, in agreement with kinetic simulations.
   The main parameter determining the electron flux was found to be the electron scattering frequency.
   However, to our knowledge no fluid model describes the sheath with non-Maxwellian EEDF.
@@ -16,7 +16,7 @@
   The evolution of the electron temperature and the non-locality of the electrons in bounded plasmas has been studied in \citet{meige2006a}.
   The authors showed that the high energy tail of the \ac{EEDF} is depleted.
   They observed that the energy at which the depletion starts correspond to the local plasma potential related to the wall.
-  Hence, we will use in this chapter similar physical conditions, in order to compare with their observation.
+  Hence, we will use in this chapter similar physical conditions, in order to compare our results to their observations.
 
   \subsection{Description of the \acs{1D} simulations}
 
@@ -34,7 +34,7 @@
     A second model will be used later, with a self-consistent heating and ionization.
 
     Monte Carlo collisions (MCC) are still used, but we do not model the particle generation of the ionization process, but only the scattering and momentum transfer.
-    As previously, Coulomb collisions are not included in the study as we are at low plasma density (at the steady-state the electron density is around $n_e = 10^{15}$m$^{-3}$).
+    As previously, Coulomb collisions are not included in the study as we are at low plasma density (at steady-state the electron density is around $n_e = 10^{15}$m$^{-3}$).
 
     To satisfy generally accepted accuracy conditions for the cell size and time step \citep{turner2013}, a time step of $3.7\cdot10^{-11}$\,s is used with a cell length of $1.7\cdot10^{-5}$\,m.
     This allows us to resolve properly the plasma frequency $\frac{2 \pi}{\omega_{pe}} = 3.5\cdot10^{-9} $\,s and the Debye length $\lambda_{De} = 3.10^{-4}$\,m.
@@ -63,7 +63,7 @@
     We only present in this section the result for neutral pressure $P=0.1$mTorr.
     The results obtained with different pressure show the same characteristics, and the effect of the pressure is further discussed in \cref{subsec-presurseffect}.
     
-    \begin{figure}[htbp]
+    \begin{figure}[!htb]
       \centering
       \includegraphics[width=\textwidth]{1D_PIC_summary.pdf}
       \caption{Profile of the electron and ion densities (left) and the plasma potential and electron temperature in the PIC simulation with the parameters of \cref{tab_1DPICParams}, with $P=0.1$mTorr.}
@@ -74,7 +74,7 @@
     On the left-hand side we observe the electron and ion density profiles, while on the right the plasma potential and the electron temperature are shown.
     In \cref{fig-PIC1}, the electron and ion densities and the plasma potential feature the usual symmetric profiles with a pre-sheath and a sheath.
     However, while the electron temperature is almost constant in the plasma bulk at the center of the simulation domain, we observe a steep decrease in the sheath.
-    The electron temperature gradient should affect the density profile in the sheath and the electron heat flux at the wall.
+    The electron temperature gradient should affect the density profile in the sheath and the electron heat flux to the wall.
 
     \vspace{1em}
     For isotropic distribution functions, it is convenient to introduce the electron energy distribution function (EEDF) $f_{\epsilon}$ \citep{chabert2011}:

@@ -76,14 +76,14 @@
     Hence in the following, we will neglect this asymmetry due to the wall.
 
 
-    \begin{figure}[!hbtp]
+    \begin{figure}[!hbt]
       \centering
       \includegraphics[width=\defaultwidth]{EVDFpm.pdf}
       \caption{EEPF measured in the PIC simulations of the electrons going toward and from the wall at $x=23.7mm$. The green dashed line corresponds to a Maxwellian distribution of 5$\eV$.}
       \label{fig-EVDFpm}
     \end{figure}
 
-    \begin{figure}[!hbtp]
+    \begin{figure}[!hbt]
       \centering
       \includegraphics[width=\defaultwidth]{EVDFshift.pdf}
       \caption{Evolution of the EEPF between 1.3mm (in blue) and 23.7mm (in orange) from the wall. Is overlaid (in dashed green) the expected  EEPF at $x=1.3$mm using the EEPF at $x=23.7$mm and the potential difference in \cref{eq-sol}. }
@@ -109,7 +109,7 @@
 
 
 
-    \begin{figure}[!htbp]
+    \begin{figure}[!htb]
       \centering
       \includegraphics[width =\defaultwidth]{Polytropic.pdf}
       \caption{Electron pressure as a function of the electron density observed in the PIC simulations of \cref{fig-PIC1} (black markers), and the linear fit (blue dotted line) in order to determine $\gamma$.}
@@ -139,9 +139,9 @@
     This is in agreement with the fact that the high energy electron population is mostly replenished by the electron-neutral scattering, in agreement with \citet{kaganovich2007}.
     Increasing the collisions while keeping the other parameters constant provides more electrons to the high energy tail, hence reducing the polytropic index, as observed by \citet{zhang2016}.
 
-    \begin{figure}[!htbp]
+    \begin{figure}[!htb]
       \centering
-      \includegraphics[width=\defaultwidth]{/pressur_effectLog.pdf}
+      \includegraphics[width=\defaultwidth]{pressur_effectLog.pdf}
       \caption{Effect of the background neutral pressure over the polytropic index $\gamma$ in the \acs{1D} \acs{PIC} simulations, under the conditions of \cref{tab_1DPICParams}. As a reminder, the isothermal case corresponds to $\gamma=1$.}
       \label{fig-p}
     \end{figure}
@@ -152,19 +152,19 @@
   \subsection{Coulomb collision and possible improvements}
   
     In the \ac{PIC} simulations, the Coulomb collisions (electron-electron, electron-ion, and ion-ion) are not modeled.
-    HOwever, they are known to modify the distribution function.
-    More precisely, they make the electron distribution tend toward a Maxwellian \citep{bhatnagar1954,sydorenko2006b}.
+    However, they are known to modify the distribution function.
+    More precisely, they isotropize the distribution and tend toward a Maxwellian \citep{bhatnagar1954,sydorenko2006b}.
     
      Using the density $n_e=\sn{1}{15}\,\per\meter\cubed$ and the electron temperature $\Te=3\,\volt$ we find the electron-electron Coulomb collision at 90$^{\circ}$ \citep{lieberman2005,chen2006}
      \begin{equation} \label{eq-nu_Coulomb}
        \nu_{90} = 15 \,\kilo\hertz
      \end{equation}
      which is significantly smaller than the electron-neutral scattering frequency.
-     However, we know that the Coulomb collisions cross-section is highly dependent on the electron velocity.
+     However, it is known that the Coulomb collisions cross-section is highly dependent on the electron velocity.
      
      \Cref{fig-mfp_coulomb} shows the evolution of the mean free path for the electron-electron Coulomb collision $l_{CC} = v_e/\nu_{90}$.
      We can see that it is of the order of the domain size ($L=10\,\centi\meter$) only for very low energy.
-     \begin{figure}[hbt]
+     \begin{figure}[!hbt]
        \centering
        \includegraphics[width=\defaultwidth]{Coulomb_collision_meanfreepath_zoom}
        \caption{Mean free paths of the Coulomb collision as a function of the electron energy.}
@@ -173,7 +173,7 @@
      
      On the other hand, the collision frequency for small angle is higher.
      In \citet{sydorenko2006b}, the authors showed that under some conditions, the Coulomb collisions can modify the simulation results by a few tens of percent.
-     Hence, the impact of the small angle Coulomb collisions on the distribution functions should be asserted, but is out of the scope of the current work.
+     Hence, the impact of the small angle Coulomb collisions on the distribution functions should be asserted in future work.
      Modeling the Coulomb collision in \ac{PIC} simulations currently require a different model than the \ac{MCC} algorithm, thus requires more time to be implemented and tested before being used.
 
      

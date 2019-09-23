@@ -3,21 +3,23 @@
 \section{Realistic heating and ionization}
   \label{sec-realistic_1D}
   In the study of \cref{{sec-1DPIC}}, the ionization and the heating mechanism are not physical, but allowed us to obtain a steady-state as in the simulations of \cref{ch-1}.
-
-  Hence, we study the impact of the wall absorption in a case of self-consistent heating and ionization.
+  We now study the impact of the wall absorption in a case of self-consistent heating and ionization.
   The electrons are heated "inductively" with a radio-frequency (RF) electric field in the direction normal to the simulation grid \cite{meige2006a, lucken2018, turner1993}.
   The electrons are heated in the $y$ direction, and momentum is transferred to the $x$ and $z$ axis via electron-neutral collisions.
   The heating electric field $\vec{E_{rf}} = E_{rf} \vec{e_y}$ is independent of $x$ in the simulation domain, its frequency is $13.56$\,MHz, and its amplitude is adjusted in order to obtain the desired absorbed power $P_{abs} = < \vec{J_e} \cdot  \vec{E_{rf}}>$.
   
 
 
-  \begin{table}[!htbp]
+  \begin{table}[!htb]
+    \ra{1.3}
     \centering
-    \begin{tabular}{@{} c | c | c}
-      Parameter & value & unit \\ \hline
+    \begin{tabular}{@{} r l l @{}}
+    \toprule
+      Parameter & value & unit \\ \midrule
       Pressure & $0.1$ & mTorr\\
       $P_{abs}$ & $0.25$ & W/m$^{-3}$\\
       Length $L$&10&cm\\
+      \bottomrule
     \end{tabular}
     \caption{Input parameters for the simulation using the self-consistent model.}
     \label{tab-PIC2}
@@ -58,5 +60,5 @@
   \end{figure}
 
   \Cref{fig-comp2} shows the comparison of the electron temperature and the plasma potential in the PIC simulation using the self-consistent model with the prediction of the fluid model of \cref{sec-fluid}.
-  We can see that the agreement between the PIC results and the fluid models is less satisfactory than in \cref{fig-comp} when using the model unphysical plasma source, but it is still significantly better than the isothermal model.
+  We can see that the agreement between the PIC results and the fluid models is less satisfactory than in \cref{fig-comp} when using the unphysical plasma source model, but it is still significantly better than the isothermal model.
   Hence, even with a self-consistent heating and ionization in the plasma, the polytropic model stands as a better model for the sheath and the pre-sheaths.
