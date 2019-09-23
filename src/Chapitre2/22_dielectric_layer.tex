@@ -3,16 +3,16 @@
 \section{Modeling the dielectric layer }
   \label{sec-diel_layer}
   
-  The first effect of the wall material studied is effect of adding a layer of dielectric material with its own permittivity, as introduced in \Cref{sec-diel}.
-  The simulation parameters are the same as in the canonical case, presented in \cref{sec-canonical}, but the plasma is separated from the ground wall by a dielectric layer of 3~cm.
-  Hence, the distance between the grounded electrodes is $2.6\,\milli\meter$.
+  The first effect of the wall material studied is adding a layer of dielectric material with its own permittivity, as introduced in \Cref{sec-diel}.
+  The simulation parameters are the same as in the canonical case, presented in \cref{sec-canonical}, but the plasma is separated from the ground wall by a dielectric layer of 3~mm.
+  Hence, the distance between the grounded electrodes is $2.6\,\centi\meter$.
   The relative permittivity of the dielectric is $\epsr=25$.
   %% SEE runs 250et 257 ?? Ly=1cm, Diel avec et sans SEE
   
   \Cref{fig-diel_radial_Er} shows the radial profile of the radial electric field $E_R$ at $t=10\,\micro\second$ averaged in the azimuthal direction.
   The plasma domain starts at $r=0$ and finishes at $r=2\,\centi\meter$.
   We note the jump in the value of the electric field at the plasma-wall transition.
-  This jump is due to the surface charges.
+  This jump is due to the surface charge.
   We can also notice that in the dielectric layer, in $r < 0$ and $r > 2\,\centi\meter$, the radial electric field is close to zero, compared to the value in the sheath.
   
   \begin{figure}[hbt]
@@ -34,8 +34,8 @@
   
   \begin{figure}[hbt]
     \centering
-    \includegraphics[width=\defaultwidth]{Dielectric_noSEE_temporal.pdf}
-    \caption{Temporal evolution of (left) the axial electron mobility and (right) the electron temperature with and without the dielectric layer modeled.}
+    \includegraphics[width=\textwidth]{Dielectric_noSEE_temporal.pdf}
+    \caption{Temporal evolution of the axial electron mobility (left), and the electron temperature (right) with and without the dielectric layer modeled.}
     \label{fig-mod_diel_comp}
   \end{figure}
 
@@ -53,17 +53,17 @@
     \end{figure}
 
     We can see on \cref{fig-sigma_time} that the value of the surface charge start by decreasing significantly (increasing in absolute value), due to the hot electrons that reach quickly the walls.
-    Then, $\sigma$ growth and around a mean value close to $-3.5 \,\micro\coulomb/\square\meter$ and an amplitude of approximately $1.2 \,\micro\coulomb/\square\meter$.
+    Then, $\sigma$ growth and oscillates around a mean value close to $-3.5 \,\micro\coulomb/\square\meter$ and with an amplitude of approximately $1.2 \,\micro\coulomb/\square\meter$.
     
     \cref{fig-indiel} shows the azimuthal evolution of the radial electric field inside the dielectric layer.
-    The electric field is given at three different positions ($r=0.2, 0.9,$ and $1.8\,\milli\meter$ away from the plasma-wall interface) to highlight its evolution.
+    The electric field is given at three different positions ($r=-0.2, -0.9,$ and $-1.8\,\milli\meter$ away from the plasma-wall interface) to highlight its evolution.
     We can see that, even thought there is no charge in the dielectric, the amplitude of the electric field decreases when going further away from the plasma.
     This is due to the \ac{2D} Poisson equation, which smooth-out the inhomogeneity.
      
     \begin{figure}[hbt]
       \centering
       \includegraphics[width=\defaultwidth]{Radial_electric_feld_in_diel.pdf}
-      \caption{Azimuthal evolution of the radial electric field inside of the dielectric layer at three different positions; the reference $r=0$ is the plasma-wall interface, the grounded electrode is in $r=-3\,\milli\meter$.}
+      \caption{Azimuthal evolution of the radial electric field inside of the dielectric layer at three different positions; the reference $r=0$ is the plasma-wall interface, the grounded electrode is located at $r=-3\,\milli\meter$.}
       \label{fig-indiel}
     \end{figure}
 
@@ -90,7 +90,7 @@
 \begin{figure}[hbt]
   \centering
   \includegraphics[width=\defaultwidth]{Radila_electric_field.pdf}
-  \caption{Azimuthal evolution of the radial electric field at the plasma-wall interface and the electric field that would be due to the surface charge using \cref{eq-neuman}.}
+  \caption{Azimuthal evolution of the radial electric field at the plasma-wall interface and the electric field that would result from surface charge according to \cref{eq-neuman}.}
   \label{fig-spacial_comparaison}
 \end{figure}
 \renewcommand\subfigurewidth{0.45\textwidth}

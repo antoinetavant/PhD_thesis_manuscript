@@ -1,10 +1,10 @@
 % !TEX root=/home/tavant/these/manuscript/src/manuscript.tex
 
-\section{Canonical simulation result}
+\section{The base case}
   \label{sec-canonical}
   
   
-  The {\it canonical} case corresponds to the case when the walls are grounded, and are fully absorbing. 
+  The {\it base} case corresponds to the case when the walls are grounded, and are fully absorbing. 
   It is the reference case that will be extensively described and commented.
   Then, it will be used as reference to analyze and quantify the effects of two characteristics of the dielectric walls on the studied discharges : the secondary electron emission, and the modification of the electrostatic boundary condition.
   
@@ -57,14 +57,13 @@
   We can see on \Cref{fig-tx_n_phi} the evolution of the radial profile of the electron density on the plasma potential over the same period as \cref{fig-canon_Te_strat}.
   We observe on both quantities the formation of the sheath and the evolution toward a steady-state.
   
-  \subsection{Stable phase of the simulation\string: \texorpdfstring{$t \geq 2\,\micro\second$}{t > 2 microseconds}  }
+  \subsection{Saturated quasi steady-state\string: \texorpdfstring{$t \geq 2\,\micro\second$}{t > 2 microseconds}  }
   \label{subsec-stablephase}
-  After the relatively fast rise of the plasma characteristics, the simulation stabilises at a steady-state, as we can see in \Cref{fig-canon_Te_all}.
+  After the relatively fast rise of the plasma characteristics, the simulation reaches a quasi steady-state, as we can see in \Cref{fig-canon_Te_all}.
   We observe that after $t\simeq2\mus$ , the electron energy $\Ee$ starts to oscillate around a mean value.
-  The oscillations are then damped and reach their minimum amplitude at  $t\simeq 7\mus$ and then remain with a small amplitude as shown on simulations carried out up to $25\,\micro\second$ on \cref{fig-canon_Te_all}.
+  The oscillations are then damped and reach their minimum amplitude at  $t\simeq 7\mus$ and then remain with a small amplitude as shown on simulations carried out up to $25\,\micro\second$ on \cref{fig-canon_Te_all} (the origin of these oscillations has been discussed in \Cref{subsec-temp}).
   Hence, there is no need to simulate for longer times than $10\mus$ in the following simulations.
   
-  The origin of these oscillations is discussed in \Cref{subsec-temp}.
   
   
   \begin{figure}[hbt]
@@ -75,15 +74,15 @@
   \end{figure}
   
 
-  \Cref{fig-profiles} shows the azimuthally averaged radial profiles of the electron and ion densities  at steady-state.
+  \Cref{fig-profiles} shows the azimuthally-averaged radial profiles of the electron and ion densities.
   The plasma is mostly quasineutral, expect close to the walls.
-  In the sheath, close to the wall, the electron density falls more rapidly compared to the ions.
+  In the sheath, close to the wall, the electron density falls more rapidly compared to that of ions.
   The sheath length can be roughly estimated to be $1\,\milli\meter$.
   The Debye length in our conditions is
   \begin{equation} \label{eq-debye}
     \lambda_D = \sqrt{\frac{\epsilon_0 k_b T_e}{n_e e^2}} \sim 0.4\,\milli\meter,
   \end{equation}
-  which corresponds to the expected sheath length \citep{chabert2014}.
+  which corresponds to the expected floating sheath length \citep{chabert2014} (a few $\lde$).
   
   \begin{figure}[hbt]
     \centering
@@ -122,13 +121,13 @@
   In the conditions of \cref{parameters}, $\mobcla \simeq 0.8$ \square\meter(sV)$^{-1}$.
   
   The measured electron mobility in the \ac{PIC} simulation is one order of magnitude larger than the classical mobility.
-  In the present case, as no electron is emitted from the wall, the enhancement can only come from the instabilities present in the plasma, which induce an azimuthal electric field.
+  In the present case, as no electron is emitted from the wall, the enhancement can only come from the instabilities present in the plasma.
 
   % K_ex = 2 10^-13
   % n_g = 1e19
   % wce = q B / m
   The oscillations can be seen in \cref{fig-2dschemat}, which shows the azimuthal electric field observed at $T=4\,\micro\second$.
-  It clearly features the oscillation of wavelength of the order of 1~mm, as observed in \citet{heron2013,janhunen2018}.
+  It clearly features the oscillation of wavelength of the order of 1~mm, as observed in \citet{heron2013}, and \citet{janhunen2018}.
   \Cref{fig-exampleECDI} shows the temporal evolution of the azimuthal electric field measured at the center of the channel.
   We can see that the instability rises and saturates quickly.
   Then, the oscillation remains quite stable.
@@ -148,7 +147,6 @@
     \label{fig-exampleECDI}
   \end{figure}
   
-  we measure in the simulation the characters relative to the electron mobility.
   The effective mobility $\mobeff$ is determined by the correlation term $<\dEt \dne>$ and the parameters of the simulations.
   The effectively mobility at saturation $\mobeffsat$, using the hypothesis of saturation by ion-wave trapping, only need the electron temperature $\Te$.
   We can see that the three values $\mobpic, \mobeff$, and $\mobeffsat$ are close from each-others.
