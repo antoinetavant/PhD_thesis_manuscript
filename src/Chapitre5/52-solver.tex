@@ -5,12 +5,12 @@
   % \renewcommand\rightmark{\expandafter\MakeUppercase{Solver for the general DR}}
 
 
-  In order to solve the dispersion relation $\hat\epsilon(\vect{k}, \omega) = 0$ of \cref{eq-drECDI}, we solve for every $\vect{k}$ the complex value of $\omega$ that minimise $\norm{\hat\epsilon}$.
+  In order to solve the dispersion relation $\hat\epsilon(\vect{k}, \omega) = 0$ of \cref{eq-drECDI}, we solve for every $\vect{k}$ the complex value of $\omega$ that minimize $\norm{\hat\epsilon}$.
   Hence, we first need to evaluate $\hat\epsilon(\vect{k}, \omega)$ for given arguments $\vect{k}, \omega$.
   Then, we can find the root.
   
-  \subsection{Numerical determination of the plasma dielectric function}
-   \label{subsec-numepsilon}
+
+  \subsection{Numerical determination of \texorpdfstring{$\hat\epsilon$}{the plasma dielectric function.}} \label{subsec-numepsilon}
   
   The calculation of $Z$, needed to determine $\hat{\epsilon}$, is usually done using the Maxwellian hypothesis \citep{cavalier2013} (hence using the Fried and Compte function $Z_M$), the kappa distribution \citep{ziebell2017}, or other analytic expressions.
   We can also use a linear combination of such simple distribution functions, such as done in the software WHAMP, \citet{ronnmark1982}.
@@ -51,7 +51,9 @@
   We can see that the root with the greater imaginary part, located close to (0.2, 0), is the same in both cases, but that other roots for large negative imaginary part are not similar.
   But as said previously, theses roots are not our concern, hence the dispersion relation should be well computed using $\tilde{Z}$.
   
-  \subsection{Finding the root of the plasma dielectric function}
+
+  \subsection{Finding the root of \texorpdfstring{$\hat\epsilon$}{the plasma dielectric function.} }
+
   Now that we can compute $\hat\epsilon$, we can solve the dispersion relation.
   In order to find the root (the zeros) of $\hat\epsilon$, two methods have been tested.
   
