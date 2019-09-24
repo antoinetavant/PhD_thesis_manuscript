@@ -4,13 +4,14 @@
   \label{sec-PIC-ECDI}
   
   \subsection{Introduction and state of the art} \label{subsec-indroECDI}
-    
-    \inlinenote{Add Vivien's work here}
-    
+        
     The presence of azimuthal instabilities in the Hall effect thrusters has first been shown with numerical simulations by \citet{adam2004}.
     Then, they have been the subject of numerous studies, especially numerical \citep{ducrocq2006,lafleur2016,lafleur2016a,croes2017,croes2018,janhunen2018,taccogna2019}, but also experimental \citep{honore2011,cavalier2013,cavalier2013a}.
     However, their nature remain unclear \citep{boeuf2018}.
 
+    Viven Croes studied the azimuthal instability in a radial-azimuthal simulation domain with the model of particle convection proposed by Lafleur \citep{croes2017,croes2018}.
+    The author showed that the saturation of the saturation was due to ion-wave trapping.
+    Using a parametric study over the plasma density and the ion mass, he observed that the main oscillation is consistent with the \ac{IAW}.
     \vspace{1ex}
     During the three years of my Ph.D., other groups presented new simulation results in similar radial-azimuthal geometries.
     \citet{hara2019a} presents some kinetic simulation results of a \ac{2D} geometry, of size similar to the case studied here.
@@ -18,7 +19,7 @@
     
     In \citet{janhunen2018}, the authors present a collisionless highly resolved \ac{2D} \ac{PIC} simulation.
     No convection and no radial losses compensation models are used, hence the electron energy quickly rises and the density decreases.
-    On the other hand, the domain is bigger, with a radial length of $L_r = 53.8\,\milli\meter$ for an azimythal length of $L_{\theta} = 13.45 \,\milli\meter$.
+    On the other hand, the domain is bigger, with a radial length of $L_r = 53.8\,\milli\meter$ for an azimuthal length of $L_{\theta} = 13.45 \,\milli\meter$.
     Three cells by Debye length are used, while there are in average 800 particles per cell.
     In these conditions, the instability rises, but a large radial structure, named Modified Two Stream Instability (MTSI), of wavelength twice as big as $L_r$  is observed.
     
@@ -40,7 +41,7 @@
   As we observed the same results when varying the  different physical parameters, for the sake of brevity, results for other parameters are not shown.
   The parameters of the simulation are presented in \cref{tab-evdfpicparams}.
   The radial boundary condition includes a dielectric layer of width $L_{diel}$.
-  No electron emission is modeled, and the convection is modeled with the new model (see \cref{sec-noiselessresults}).
+  No electron emission is modeled, and the convection is modeled with the new noiseless model (see \cref{sec-noiselessresults}).
   
   \begin{table}[!hbt]
   \ra{1.3}
@@ -123,11 +124,10 @@
   This type of cascade may be the signature of turbulence, and can be a source of energy dissipation - hence saturation.
   Kolmogorov's hypothesis of in-compressible fluid leads to a cascade in power law \[ W(f) = | \mathcal{FFT}(E_{\theta})(f) |^2 \propto f ^ {- \alpha}, \]
   with $\alpha = 5/3$.
-  \inlinenote{Add kolmogorov's law}
   \begin{figure}[!hbt]
     \centering
     \includegraphics[width=\defaultwidth]{spectrum_frequency_turbul}
-    \caption{Normalized frequency power spectrum in log-log scale. The black dotted line shows the  theoretical frequency $f_{\rm theo}$, and the orange solid line is a linear fit of coefficient $\alpha$. }
+    \caption{Normalized frequency power spectrum in log-log scale. The black dotted line shows the  theoretical frequency $f_{\rm theo}$, the orange solid line is a linear fit of coefficient $\alpha$, and the green dashed line correspond to Kolmogorov's turbulent spectra. }
     \label{fig-turbul}
   \end{figure}
   
@@ -200,8 +200,12 @@
       \epsilon_{\rm th} = \frac{3}{2} e n_e \Te
     \end{equation}
     
-    We find the criterion for the ion-wave trapping
-    \inlinenote{The calculation may be more explicit}
+    Using \cref{eq-iontropempl} in the definition of the wave energy \cref{eq-waveE} and the definition of the Debye length $\lde$ \cref{eq-def_lde}, we obtain
+    \begin{align*} \label{eq-step_1}
+      \epsilon_{\rm wave} &=  \frac{\epsilon_0}{2} \frac{\Te^2}{12^2} \frac{e^2 n_e}{ \epsilon_0 e\Te}\\
+      &= \frac{e n_e \Te }{288} = \frac{\epsilon_{\rm th}}{432}
+    \end{align*}
+    This gives us a criterion for the ion-wave trapping using the wave and thermal energies
     \begin{equation} \label{eq-criteriaIT}
       432 \epsilon_{\rm wave} = \epsilon_{\rm th}.
     \end{equation}
@@ -218,10 +222,31 @@
       \label{fig-tempITcrit}
     \end{figure}
     
-    In \cref{fig-tempITcrit}, as expected the period of the oscillations of $\epsilon_{\rm wave}$ is $T_{NL} = 1.5\,\micro\second$.
-    But here, we can see that when the criterion \cref{eq-criteriaIT} is fulfilled, the temporal derivative of the growth rate is positive.
-    However, a delay $\tau$ after the moment when the criterion is violated ($\tau = 0.40 \pm 0.07 \,\micro\second$ on the four oscillations), the wave abruptly stops rising and decreases instead.
-    This delay between the time the ions should be trapped and the time the wave stops growing in most certainly due to the ion inertia, as we have $\tau \sim T_B$.
+    The correlation between the wave amplitude and the ion temperature is shown in \Cref{fig-oscillation_ion_cret}.
+    \cref{fig-oscillation_ion_cret}.{\bf a} shows the temporal evolution of the ion temperature $\Ti$ and the standard deviation of the azimuthal electric field $\sigma_{E_{theta}}$, both normalized.
+    We see that the wave amplitude is a quarter of a period before the ion temperature.
+    This means that first the wave increases, then the ion temperature increases.
+    After that, the ave amplitude decreases, which leads to the decreases of the ion temperature.
+    
+    \begin{figure}[hbtp]
+      \centering
+        \begin{tabular}{cc}
+          \subfigure{Instability_amp_and_Ti}{a}{30,20} & 
+          \subfigure{Instability_criterion_and_gradTi}{b}{20,20} \\
+          
+        \end{tabular}
+        \caption{Temporal evolution of ({\bf a}) the ion temperature $\Ti$ and the standard deviation of the $\sigma_{E_{\theta}}$, and ({\bf b}) the temporal derivative of the ion temperature $\partial{\Ti}/\partial t$ and the ion-wave trapping criterion}
+      \label{fig-oscillation_ion_cret}
+    \end{figure}
+    
+    \cref{fig-oscillation_ion_cret}.{\bf b} shows the temporal derivative of the ion temperature $\partial_t \Ti$ and the ion-wave trapping criterion \cref{eq-criteriaIT}, both normalized.
+    When the ion-wave trapping criterion is negative, it means that the wave amplitude is too small, so that the ions are not trapped.
+    In contrast, if it is positive the ions will be trapped.
+    Again, we see a good correlation between the sign of the ion-wave trapping criteria and the growth, or decrease, of the ion temperature.
+    
+    In \cref{fig-tempITcrit,fig-oscillation_ion_cret}, the period of the oscillations of $\epsilon_{\rm wave}$ is $T_{NL} \simeq 1.5\,\micro\second$.
+    This period is related to the response time of the ions, as we have $$T_{NL}/4 \simeq 0.4\,\micro\second \sim T_B.$$
+    The hypothesis that the low frequency modulation of the amplitude of the azimuthal wave could be validated by varying the ion mass, and observe if $T_{NL}$ varies in $\sqrt{m_i}$.
     
     To summarize, the low frequency modulation of the azimuthal wave amplitude is certainly due to non-linear behavior of wave-particle interaction.
     Complementary results are presented in \cref{subsec-VDFIAW} by solving the dispersion relations.

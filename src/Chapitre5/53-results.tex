@@ -114,11 +114,11 @@
     \end{itemize}
     The two first \ac{DR} are already showed in \cref{fig-DRECDI} with there corresponding growth rates.
 
-    \inlinenote{Fig 2.17: give the time over with the FFT is computed. Idem, check problem $\omega_r$}
+
     \begin{figure}[!hbt]
       \centering
       \includegraphics[width=\defaultwidth]{compe_fft_theo}
-      \caption{Comparison of the \acs{2D} \acs{FFT} of the azimuthal electric field FFT$(E_{\theta})$ with the following \acs{DR}\string: (orange solid) \acs{ECDI} general \acs{DR} obtained with the \acs{PIC} \acs{EVDF}; (dotted red) \acs{ECDI} \acs{DR} obtained with the Maxwellian hypothesis; and (dotted blue) \acs{IAW} \acs{DR} using the analytic expression \cref{eq-MIAW}.   }
+      \caption{Comparison of the \acs{2D} \acs{FFT} of the azimuthal electric field $(E_{\theta})$ computed between  $t=0.6$ and $t=1.2\,\micro\second$ with the following \acs{DR}\string: (orange solid) \acs{ECDI} general \acs{DR} obtained with the \acs{PIC} \acs{EVDF}; (dotted red) \acs{ECDI} \acs{DR} obtained with the Maxwellian hypothesis; and (dotted blue) \acs{IAW} \acs{DR} using the analytic expression \cref{eq-MIAW}.   }
       \label{fig-DR_and_fft}
     \end{figure}
     
@@ -168,35 +168,37 @@
   \end{figure}
   
   Three different behaviors are observed depending on the hypotheses used.
-  First, the solution of the dispersion relation with Maxwellian electrons and cold ions (dashed green line in \cref{fig-time_wave}) presents a solution of $\omega$ and $k$ constant in time, and very close to the analytical values, beeing $k \lde = 1/\sqrt{2}$ and $\omega = \opi/\sqrt{3}$.
+  First, the solution of the dispersion relation with Maxwellian electrons and cold ions (dashed green line in \cref{fig-time_wave}) presents a solution of $\omega$ and $k$ constant in time, and very close to the analytic values, being $k \lde = 1/\sqrt{2}$ and $\omega = \opi/\sqrt{3}$.
   However, it also presents a constant growth rate.
+  
   Secondly, we observe that the solutions given with Maxwellian ions of temperature not zero are relatively similar for both the Maxwellian electrons  (dotted red line) and using the electron velocity distribution function measured in the \ac{PIC} simulation (dash-dotted orange line).
   In these cases, the growth rate decreases regularly to zero.
-  
   Interestingly, the periods during which the growth rate is zero (firstly between $t=1\,\micro\second$ and $t=2\,\micro\second$, then around $t=3\,\micro\second$ and so on) correspond precisely to the periods during which the wave energy density decreases in \cref{fig-tempITcrit}.
-  This means that the decrease of the wave amplitude would only be due to the ion temperature, and not its distribution function.
-  However, we note that the value of the ion temperature $\Ti$ is highly affected by the population of ions trapped, as seen in \cref{subsec-VDFpic}.
-  Hence, the effect of the trapped particle is indeed present, but only via its impact on the temperature.
-  \inlinenote{What about the ion landau damping ? Cf Work of Roberto}
+  This means that the decrease of the wave amplitude would only be due to the ion temperature, which corresponds to the ion Landau damping.
+  However, we must note that the value of the ion temperature $\Ti$ is mainly due to the population of ions trapped, as seen in \cref{subsec-VDFpic}.
+
   
-  \vspace{1em}
-  To finish with, we solved the \ac{IAW} dispersion relation without any hypothesis on the velocity distribution functions, by using the one measured in the PIC simulations (blue solid line in  \cref{fig-time_wave}).
+  To finish with, we solved the \ac{IAW} dispersion relation without any hypothesis on the velocity distribution functions, by using the VDF measured in the PIC simulations (blue solid line in  \cref{fig-time_wave}).
   In this case, the beginning ($t < 1 \,\micro\second$) is quite similar to the other results.
   However, after that ($t > 1 \,\micro\second$) the growth rate never rises above zero, expect very slightly around $t=4\,\micro\second$.
   This result is non consistent with the observations of \cref{sec-PIC-ECDI}, where we saw that the instability amplitude is modulated over the whole simulation time.
   It is also in contrast with \citet{lafleur2018}, where the authors obtained a non-zero growth rate in an axial- azimuthal geometry.
   
-  Up to now, there is non apparent explanation to the dependency  observed between the numerical resolution of the \ac{DR} and the results of the \ac{PIC} simulation.
-  It could be due to an error in the numerical algorithm, on both on the theory and in the implementation.
-  Concerning the theory, we have seen in \cref{sec-DR-solver} that the numerical algorithm used to compute the plasma dispersion function $\tilde{Z}$ proposed by \citet{xie2013} does not return a good result for certain argument complex values.
-  In addition, the truncation of the number of Fourier bases at $N=64$, which works well with a Maxwellian distribution, could generate a significant error when using distribution function far from a Maxwellian.
-  In our specific case, the ion population is composed of a majority of cold Maxwellian ions and a small number of high energetic trapped ions.
-  It is possible that this kind of distribution function is not well taken into account by the current algorithm.
-  \inlinenote{NO ! This paragraph is too pessimistic. Discuss more, give way to better understand the problem. }
   
-  Concerning the implementation of the algorithm, we tried to test and validate the code as much as we could, with systematic comparisons to analytic values.
-  But the presence of an error is always possible, that was not observed on the analytic functions.
-  A common practice to validate a simulation code when no theoretical solution can be used to compare to is to use a Benchmark \citep{turner2013}.
-  As a dispersion relation solver for general distributions would benefit the whole plasma physics community, developing such a benchmark that would compare the solution of independent implementations of the same algorithm, or different algorithm, seems very interesting.
+  
+  % \vspace{1em}
+  % 
+  % Up to now, there is non apparent explanation to the dependency  observed between the numerical resolution of the \ac{DR} and the results of the \ac{PIC} simulation.
+  % It could be due to an error in the numerical algorithm, on both on the theory and in the implementation.
+  % Concerning the theory, we have seen in \cref{sec-DR-solver} that the numerical algorithm used to compute the plasma dispersion function $\tilde{Z}$ proposed by \citet{xie2013} does not return a good result for certain argument complex values.
+  % In addition, the truncation of the number of Fourier bases at $N=64$, which works well with a Maxwellian distribution, could generate a significant error when using distribution function far from a Maxwellian.
+  % In our specific case, the ion population is composed of a majority of cold Maxwellian ions and a small number of high energetic trapped ions.
+  % It is possible that this kind of distribution function is not well taken into account by the current algorithm.
+  % \inlinenote{NO ! This paragraph is too pessimistic. Discuss more, give way to better understand the problem. }
+  % 
+  % Concerning the implementation of the algorithm, we tried to test and validate the code as much as we could, with systematic comparisons to analytic values.
+  % But the presence of an error is always possible, that was not observed on the analytic functions.
+  % A common practice to validate a simulation code when no theoretical solution can be used to compare to is to use a Benchmark \citep{turner2013}.
+  % As a dispersion relation solver for general distributions would benefit the whole plasma physics community, developing such a benchmark that would compare the solution of independent implementations of the same algorithm, or different algorithm, seems very interesting.
   
   \FloatBarrier

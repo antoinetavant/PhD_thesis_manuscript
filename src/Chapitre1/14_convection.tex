@@ -1,9 +1,10 @@
 % !TEX root=/home/tavant/these/manuscript/src/manuscript.tex
 
-\section{Axial Convection model}
+\section{Axial convection of the particles}
   \label{sec-reinjectionnoise}
 
   As introduced in the previous section, the \ac{2D} radial-azimuthal simulation does not model the axial convection of the particles.
+  This results in an ever increasing particle energy \citep{lafleur2016a,heron2013}.
   We present in this section an algorithm to model the convection of the particle.
   Its drawbacks are discussed, and we propose a way to reduce them.
   
@@ -70,7 +71,7 @@
 
 
 
-  \subsection{Numerical artefacts}
+  \subsection{Numerical artifacts}
     \citet{lafleur2016a} studied the impact of the convection model on the simulation results.
     The authors observed in particular that changing the azimuthal length of the simulation domain could affect the simulation results.
 
@@ -249,18 +250,10 @@
       \end{figure}
 
 
-      These observations have shown that Lafleur's convection model induces a noise on the charge density, that does not affect the simulation when the domain size is small, but can rise numerical artefacts when the domain size is larger.
-      We have seen that the minor modifications on the model do not affect the simulation results on a small domain, but allow us to use larger simulation domain without any numerical artefact.
+      These observations have shown that Lafleur's convection model induces a noise on the charge density, that does not affect the simulation when the domain size is small, but can rise numerical artifacts when the domain size is larger.
+      We have seen that the minor modifications on the model do not affect the simulation results on a small domain, and allows us to use a larger simulation domain without any numerical artifact.
       
       
-      \inlinenote{A reformuler ! Trop negatif}
-      Unfortunately, the new model has been developed during the last year of my thesis.
-      Hence, the first simulation results have been obtained using Lafleur's convection model.
-      As seen in \cref{fig-oldeconv_newconv}, on a small geometry the results are not affected, hence there is no need to verify all of the simulations obtained.
-      Lafleur's model is used in \cref{ch-2,ch-4}. 
-      
-      On the other hand, it is useful to have a longer azimuthal length to study the instability, as it allows to obtain a more resolved wavenumber spectrum.
-      Hence, in \cref{ch-5} we use the modified convection model.
           
     \subsection{Effects on a \acs{2D} simulation domain}
       
