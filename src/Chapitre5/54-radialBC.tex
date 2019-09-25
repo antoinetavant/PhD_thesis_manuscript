@@ -3,45 +3,46 @@
 \section{ Discussion on the radial wavenumber}
   \label{sec-DR-BC}
     
-  In the \ac{ECDI} dispersion relation described in \cref{sec-DR-kinetic}, the radial wavenumber must be non-zero.
+  In the \ac{ECDI} dispersion relation introduced in \cref{sec-DR-kinetic}, the radial wavenumber must be non-zero.
   Hence, in \cref{sec-DR-results}, we have chosen a wavelength that fits between the two walls.
   On the other hand, the oscillation seen in \cref{fig-phi_fluctuation_summary} does not seem to present any oscillation in the radial direction.
   In this section, we investigate the interaction between the azimuthal instability and the wall in the radial direction.
   
   \subsection{Radial profile of the oscillation} \label{subsec-radial_prof}
-  \inlinenote{This section is confuse or non-conclusive.}
+
+  In this section, we analyze the radial profile of the azimuthal instability described in the previous sections.
   \Cref{fig-phi_osci_profile} shows the amplitude of the azimuthal instability on the plasma potential.
   It is defined as
   \begin{equation} \label{eq-stdphi}
     \delta \phi^2 = 2 \sigma_{\phi}^2 = \frac{{2}}{L_{\theta}} \int_0^{L_{\theta}} \lp  \phi - <\phi>_{\theta}  \rp ^2 d\theta,
   \end{equation}
   
-  \begin{figure}[hbt]
+  \begin{figure}[!hbt]
     \centering
-    \includegraphics[width=\textwidth]{phi_oscillation}
-    \caption{(Left) Radial profile of the mean plasma potential averaged in the azimuthal direction  and in time during the steady-state of the simulation ($t > 3.5 \,\micro\second$) and the average azimuthal instability amplitude. (Right) Radial profile of the  azimuthal instability amplitude, compared with a sinusoidal profile. }
+    \includegraphics[width=\textwidth]{phi_oscillation_bis}
+    \caption{(Left) Radial profile of the mean plasma potential averaged in the azimuthal direction  and in time during the steady-state of the simulation ($t > 3.5 \,\micro\second$) and the average azimuthal instability amplitude. (Right) radial profile of the relative importance of the amplitude of the fluctuation to the mean plasma potential $<\phi>$. }
     \label{fig-phi_osci_profile}
   \end{figure}
   
+  \cref{fig-phi_osci_profile} shows on the left the mean plasma potential $<\phi>$ averaged in time and in the azimuthal direction , and the amplitude of the fluctuation at each radial position.
+  We see for $<\phi>$ the usual profile with the sheaths close to the wall characterized by a steep potential drop, and the presheaths in the plasma bulk with a more gentle variation.
+  However, we see no radial pattern in the plasma potential nor the amplitude of the azimuthal plasma potential oscillation.
   
-  We see in \cref{fig-phi_osci_profile} that the amplitude of the oscillation in the radial direction does not follow a sinusoidal profile, that would be the characteristic of a non-zero radial wavenumber.
-  This observation contradicts the hypothesis made previously on the value of $k_r$.
-  In order to better apprehend the radial profile of the instability amplitude, we study the ratio between $\delta \phi$ the fluctuation amplitude (showed on the right in \cref{fig-phi_osci_profile}) and $<\phi>_{\theta}$  the mean plasma potential (on the left in \cref{fig-phi_osci_profile}).
+  On the right panel of \cref{fig-phi_osci_profile}, we see the relative instability amplitude with respect to the mean plasma potential $\delta\phi / <\phi>$, in percent.
+  We see that the amplitude of the oscillation follows the mean value of the plasma potential.
+  Indeed, except close to the wall where $\phi$ reaches zero, the amplitude of the oscillation is approximately 8\% of $\phi$ in all of the simulation domain.
+  The oscillation to mean value ratio is compared to the analytic $\delta \phi \propto \sin( \pi \frac{r}{L_R})$ in \cref{fig-phi_osci_profile}.
+  The sin profile corresponds to a radial wavelength twice as large large as the radial width.
+  We can see that the sin profile decreases much faster toward the wall, compared to the simulation result.
   
-  \begin{figure}[hbt]
-    \centering
-    \includegraphics[width=\defaultwidth]{phi_oscillation_ratio}
-    \caption{Radial profile of the ratio between $\delta \phi$ the fluctuation amplitude (showed on the right in \cref{fig-phi_osci_profile}) and $<\phi>_{\theta}$  the mean plasma potential (on the left in \cref{fig-phi_osci_profile}).}
-    \label{fig-ratio}
-  \end{figure}
   
-  \Cref{fig-ratio} shows that the ratio $\frac{\delta \phi}{ <\phi>_{\theta}}$ is almost constant in the plasma, except close to the wall where the plasma potential reaches zero volt.
-  The same constant ratio is observed in the profiles of the ion density, as can be seen in \Cref{fig-ion_oscilation}.
-  As a mater of fact, the phenomena is even more pronounced on the ion density, as the ratio $\delta n_i / n_i$ presents a radial profile almost constant everywhere.
+
+  The same constant ratio between the amplitude of the oscillation and the mean value is observed in the ion density, that can be seen in \Cref{fig-ion_oscilation}.
+  As a mater of fact, the phenomena is even more pronounced on the ion density, as the ratio $\delta n_i / n_i$ presents a radial profile almost constant everywhere, even at the wall.
   It can be explains by the fact the ions reaches the wall with a supersonic speed, so that the wall does not directly affect the ions.
   
   
-  \begin{figure}[hbt]
+  \begin{figure}[!hbt]
     \centering
     \includegraphics[width=\textwidth]{Ion_oscilations.pdf}
     \caption{Radial profile of (left) the mean ion density profile and $\delta n_i$ the fluctuation amplitude and (right) the ratio between $\delta n_i$ and $n_i$.}
@@ -49,10 +50,11 @@
   \end{figure}
   
   \vspace{1em}
-  This may suggest that the sheaths screen  the walls significantly from the oscillations,  which are therefore not affected.
+  The fact that the amplitude of the oscillation is proportional to the mean azimuthal value may suggest that the sheaths significantly  screen  the oscillation from the walls .
+  Therefore, the instability is not affected by the walls.
   A screening of the wall have been observed in \citet{janhunen2018}, where the authors observed radial structures of wavelength larger than the radial length.
-  However, here we observe no radial structure.
-  The difference between  \citet{janhunen2018} and the results presented here may be due to the difference in the radial length ($L_R =1 \,\centi\meter$ here, against $L_R = 5.38\,\centi\meter$).
+  However, here we observe no radial structure at all.
+  The difference between  \citet{janhunen2018} and the results presented here may be due to the difference in the radial length ($L_R =1 \,\centi\meter$ is used here, against $L_R = 5.38\,\centi\meter$ in \citet{janhunen2018} ).
   
   \subsection{Impact of the radial wavenumber on the \acs{DR}}
    \label{subsec-kr}
