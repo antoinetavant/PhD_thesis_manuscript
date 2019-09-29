@@ -23,7 +23,7 @@ In addition, the axial convection is modeled using Lafleur's model of convection
 
 \cref{fig-2DneTe} shows the electron density and the electron temperature in the \ac{2D} simulation at the end of the simulation ( $t=10\,\micro\second$) in the case $\crover=200\,\volt$.
 We can see the azimuthal instability in both $n_e$ and $\Te$.
-However, these azimuthal oscillations will be neglected in the following development. 
+However, these azimuthal oscillations will be averaged in the following development. 
 
 \begin{figure}[!htb]
   \centering
@@ -52,7 +52,7 @@ Regime {\bf II} is not presented, as the oscillating nature of the sheath is not
 \end{figure}
 
 We see that the electron temperature presents a monotonic profile for all the values of $\crover$.
-However, the electron density is not monotonic, but instead presents an increase close to the wall.
+However, for low value of $\crover$ the electron density is not monotonic, but instead presents an increase close to the wall.
 This is clearly visible in \cref{fig-log_pe-ne}, which presents the electron pressure $p_e$ as a function of the electron density $n_e$, in log scale and normalized by the values at the center.
 We see that close to the wall, where the electron pressure is the lowest, the curves present an inversion, in contrast with the case without electron emission seen in \cref{fig-polyFit}.
 Otherwise in the rest of the domain, the curves are almost linear, corresponding to a polytropic state law.
@@ -63,6 +63,11 @@ Otherwise in the rest of the domain, the curves are almost linear, corresponding
   \caption{Electron pressure as a function of the electron density normalized by the center variable, in log scale. The data corresponds to the same as \cref{fig-radial_profiles_see}. Markers are used every 10 cells (corresponding to around one Debye length $\lde$)}
   \label{fig-log_pe-ne}
 \end{figure}
+
+The steep increase of the electron density is due to the cold secondary electron population, that resides next to the wall before being accelerated through the sheath toward the plasma.
+In addition, under the \ac{SCL} regime ($\crover = 10\,\volt$) the plasma potential presents a local minimum close to the wall, that reflect secondary electrons back to the wall.
+However, we see that it appends only over the last Debye length $\lde$.
+Consequently, in the following we neglect this increase of the electron density.
 
 We determine the value of the polytropic index $\gamma$ from the \ac{PIC} simulations with a least mean square linear regression.
 The results of the regressions are displayed in \cref{fig-polyfit_see}, and the polytropic index obtained are summarized in \cref{tab-summarygamma}.
@@ -92,20 +97,20 @@ The results of the regressions are displayed in \cref{fig-polyfit_see}, and the 
 
 We can see that the value of $\gamma$ does not evolve significantly in regime {\bf III}, as it evolves from $\gamma=1.35$  to $1.37$ when $\crover$ vary from $200$ to $50\,\volt$.
 For $\crover=10\,\volt$, the value of the polytropic index in the linear stage is $\gamma=1.59$, which is not so different from the values in regime {\bf III}.
-
-Consequently, we suppose in the following that the polytropic index in the \ac{PIC} simulation with secondary electron emission is constant and equals $\gamma=1.36$ for every value of $\crover$.
+However, we will see later that during the regime {\bf I}, the characteristics of the sheath is not affected by the polytropic index. 
+Consequently, we suppose in the following that the polytropic index in the \ac{PIC} simulation with secondary electron emission is constant and equals $\gamma=1.36$ for all values of $\crover$.
 It will be used in the next sections to compare the \ac{PIC} results with a fluid model of the sheath.
 
 
 
-\subsection{Evolution of the electron distribution function} \label{subsec-EVDF_see_polyfit}
+\subsection{Evolution of the forward electron population} \label{subsec-EVDF_see_polyfit}
 
 The electron density $n_e$ and  temperature $\Te$ showed in \cref{subsec-fluid_see_polyfit} actually include both the primary electrons going toward the wall and the secondary electron emitted from the wall.
 In order to separate the two populations, we use the \ac{EVDF} measured in the simulations.
 \Cref{fig-evdf_epsstar} presents the electron distribution functions measured at the center of the simulation domain. 
 We see that the \ac{EVDF} presents similar profiles for the three cases, except for the mean energy that decreases with increasing value of $\crover$.
 
-\begin{figure}[hbt]
+\begin{figure}[!hbt]
   \centering
   \includegraphics[width=\defaultwidth]{EVDF_Bulk.pdf}
   \caption{Electron velocity distribution function at the center of the simulation, under the same parameters than the cases in \cref{fig-log_pe-ne,fig-polyfit_see}. The sign of the energy corresponds to the direction of the movement.}

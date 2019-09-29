@@ -75,6 +75,21 @@ Hence, a particular care must be taken now when finding numerically the sheath p
   \caption{Value of the \acs{LHS} of \cref{eq-costseepoly}, labeled cost function, for several values of ({\bf a}) the electron temperature at the sheath edge $\Teb$ and ({\bf b}) the crossover energy $\crover$. The branch that crosses the $x$ axis at $\dphi/\Te \simeq 1$ corresponds to the saturation $\rate=\ratecr$.}
   \label{fig-costfunction}
 \end{figure}
+\inlinenote{Change this two figures to only one courbe. Add labels (a, b, c...) to better describe the curve in the text.}
+
+
+\Cref{fig-schematic-solutions} illustrates the three coexisting sheath solutions.
+The red solid line represents the standard sheath, with the largest potential drop to the wall.
+This solutions leads to the largest electron temperature drop to the wall, hence the smallest \ac{SEE} rate.
+The dashed blue line, with a potential well close to the wall, corresponds to the \acs{SCL} regime, for which $\rate=\ratecr$ and with $\dphi \simeq \Te$.
+Lastly, the dash-dotted green line represents the intermediate solution.
+ 
+\begin{figure}[hbtp]
+  \centering
+  \includegraphics[width=\defaultwidth]{sheath_solutions.png}
+  \caption{Schematic representation of the plasma potential profile in the sheath to the wall for the three solutions coexisting solutions. The red solid line is the standard solution, with the lowest \acs{SEE} rate; the dashed blue line corresponds to the \acs{SCL} regime, with $\rate=\ratecr$; the dash-dotted green line is the intermediate solution, with an intermediate \acs{SEE} rate.  }
+  \label{fig-schematic-solutions}
+\end{figure}
 
 
 \Cref{eq-costseepoly} can be solve for a given electron temperature $\Teb$.
@@ -93,7 +108,7 @@ In addition, we see in \cref{fig-iso_poly}.{\bf b} that, as expected, we observe
   \caption{Evolution as a function of the electron temperature $\Te$ of ({\bf a}) the plasma potential drop to the wall $\dphi$, and ({\bf b}) the SEE rate $\ratemaxw$ using the polytropic sheath model ($\gamma = 1.35$) and the isothermal sheath model. The crossover energy is $\crover=50\,\volt$.}
   \label{fig-iso_poly}
 \end{figure}
-
+\inlinenote{Remaque the solution for isothermal, espetially SCR regim is strange...}
 
 
 \subsection{Theoretical values of the critical electron temperatures} \label{subsec-theo_Tecr}
