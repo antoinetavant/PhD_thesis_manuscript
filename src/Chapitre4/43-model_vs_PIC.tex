@@ -19,7 +19,7 @@
   % \end{figure}
 
   We compare in this section the characteristics of the plasma wall interaction observed in the \ac{PIC} simulations with the fluid model developed in \cref{sec-fluid_poly_see}.
-  We first compare the mean values using in the parametric study over the crossover energy $\crover$, then we investigate the oscillations of regime {\bf II}.
+  We first compare the mean values in the parametric study over the crossover energy $\crover$, then we investigate the oscillations of regime {\bf II}.
 
   \subsection{Parametric study of the modified sheath model} \label{subsec-param_sheath_see}
 
@@ -31,12 +31,12 @@
 
     Using the mean electron temperature measured in the \ac{PIC} simulations, we first compute the plasma potential drop $\dphi$ by solving \cref{eq-costseepoly} with $\gamma=1.35$.
     As shown in \cref{fig-rso_crit_see}, up to three solutions are possible.
-    The emission rate $\rate$ is then computed using \cref{eq-seemaxw_Tew}, using the two values for $\gamma$.
+    The emission rate $\rate$ is then computed using \cref{eq-seemaxw_poly}, using the two values for $\gamma$.
     As discussed previously, the rate is limited to $\ratecr=0.982$ to take into account the \ac{SCL} regime.
 
     The results are shown in \Cref{fig-Poly_model_vs_pic}.
-    The plasma potential drop computed is increased by $\Teb/2$ corresponding to the pre-sheath drop to better match the plasma potential measured in the simulations.
-    \improvement{The Bhom criterion is slightly modified with the polytropic model, so it should not exactly be $\Teb/2$. however, it matches to well here that I do not really want to change !}
+    The plasma potential drop computed is increased by $\Teb/2$ to account for the pre-sheath drop.
+
 
     \begin{figure}[hbt]
       \centering
@@ -77,41 +77,79 @@
     We clearly see in \cref{fig-long_time} the quasi-periodic oscillations between the two states.
     We observe that the electron temperature is slightly anisotropic, with the radial temperature smaller than the axial temperature.
     This anisotropy observed was not taken into account in the sheath model.
-    More precisely, the $\Te_{,R}$ is linked to the thermal flux of electron toward the wall, while the total temperature $\Te$ is used in the computation of the electron emission rate $\ratemaxw$.
+    More precisely, the radial temperature $\Te_{,R}$ is linked to the thermal flux of electron toward the wall, while the total temperature $\Te$ is used in the computation of the electron emission rate $\ratemaxw$.
     However, the degree of anisotropy is not very high, as it is of the order of 10\% when the sheath is not inverted.
     When the sheath is inverted, the anisotropy is of the order of 25\%, as the electron with a large radial energy are quickly absorbed.
     However in the \ac{SCL} regime, we suppose that the electron emission rate saturates at $\rate=\ratecr$, hence the impact of the total energy is less important with respect of the radial energy.
     Hence, we will compare the prediction using only the radial temperature $\Te_{,R}$ or the total, averaged, temperature $\Te$, but not the two of them together.
     
-    \Cref{fig-dphi_te_PIc} shows the potential drop as a function of the radial electron temperature $\Te_R$ and the total electron temperature $\Te = (\Te_R + \Te_{\theta} + \Te_z)/3$ measured in the \ac{PIC} simulation (same case as \cref{fig-long_time}).
-    Is also shown the theoretical solutions obtained with the model of \cref{sec-fluid_poly_see} using a constant polytropic index $\gamma=1.35$ and $\crover=45\,\volt$.
-    
-    \begin{figure}[hbt]
-      \centering
-      \includegraphics[width=\textwidth]{parametric_PIC_dphi_Te_bis}
-      \caption{Plasma potential as a function of (left) the radial electron temperature and (right) the total electron temperature. The blue markers represent the \acs{PIC} results presented in \cref{fig-long_time}, and the orange dashed lines correspond to the theoretical values with $\gamma=1.35$.}
-      \label{fig-dphi_te_PIc}
-    \end{figure}
-    
-    We see in \cref{fig-dphi_te_PIc} that the sheath characteristics observed in the \ac{PIC}  simulations match relatively well the theoretically values.
-    In particular, we see the cohabitation of the two solutions of $\dphi$ observed for the same electron temperature, which corresponds to the domain of electron temperature for which the sheath model also predicts multiple solutions.
-    
-    During the state corresponding to regime {\bf III} (high value of  $\dphi$), the \ac{PIC} values are too noisy to clearly determine if the sheath follows the first or the second branch of the solutions.
-    On the other hand, we see relatively well the correspondence between the \ac{PIC} results and the theory for the regime {\bf I} (low value of $\dphi$).
-    
-    As discussed previously, the value of the polytropic index computed by propagating the \ac{EVDF}, is $\gamma=1.28$.
-    \Cref{fig-dphi_te_PIc2} shows the same results as \cref{fig-dphi_te_PIc}, but  the theoretical values of $\dphi$ using $\gamma=1.28$ are overlaid.
-    We see that using the value $\gamma=1.28$ does not change significantly the value of the solution, except for the maximum value of the electron temperature $\Te^1$ for the first branch of the solution, hence the domain of temperature where the three solutions coexist.
-    In the case of $\gamma=1.28$, the \ac{PIC} simulation result agreement with the theory is worse than for $\gamma=1.35$.
+    \Cref{fig-dphi_te_PIc2} shows the potential drop as a function of the radial electron temperature $\Te_R$ and the total electron temperature $\Te = (\Te_R + \Te_{\theta} + \Te_z)/3$ measured in the \ac{PIC} simulation (same case as \cref{fig-long_time}).
+    Is also shown the theoretical solutions obtained with the model of \cref{sec-fluid_poly_see} using a constant polytropic index $\gamma=1.35$ and $1.28$, and $\crover=45\,\volt$, using a pre-sheath potential drop of $\Teb/2$.
     
     \begin{figure}[hbt]
       \centering
       \includegraphics[width=\textwidth]{parametric_PIC_dphi_Te_two_gamma_bis}
-      \caption{Similarly to \cref{fig-dphi_te_PIc}, Plasma potential as a function of (left) the radial electron temperature and (right) the total electron temperature. The blue markers represent the \acs{PIC} results presented in \cref{fig-long_time}, the orange dashed lines correspond to the theoretical values with $\gamma=1.35$, and the green dotted-dashed line is computed with $\gamma=1.28$.}
+      \caption{Plasma potential as a function of (left) the radial electron temperature $\Te_R$ and (right) the total electron temperature. The blue line is the \acs{PIC} results presented in \cref{fig-long_time}, the orange dashed lines correspond to the theoretical values with $\gamma=1.35$, and the green dotted-dashed line is computed with $\gamma=1.28$.}
       \label{fig-dphi_te_PIc2}
     \end{figure}
+    % 
+    % 
+    % \begin{figure}[hbt]
+    %   \centering
+    %   \includegraphics[width=\textwidth]{parametric_PIC_dphi_Te_bis}
+    %   \caption{Plasma potential as a function of (left) the radial electron temperature and (right) the total electron temperature. The blue markers represent the \acs{PIC} results presented in \cref{fig-long_time}, and the orange dashed lines correspond to the theoretical values with $\gamma=1.35$.}
+    %   \label{fig-dphi_te_PIc}
+    % \end{figure}
     
-    \paragraph{Stationary of the sheath \\}
+    We see in \cref{fig-dphi_te_PIc2} that the sheath characteristics observed in the \ac{PIC}  simulations match relatively well the theoretically values obtained from the sheath model.
+    In particular, we see the cohabitation of the two solutions of $\dphi$ observed for the same electron temperature, which corresponds to the domain of electron temperature for which the sheath model also predicts multiple solutions.
+    
+    During the state corresponding to regime {\bf III} (high value of  $\dphi$), the \ac{PIC} values are too noisy to clearly determine if the sheath follows the first or the second branch of the solutions.
+    On the other hand, we see relatively well the correspondence between the \ac{PIC} results and the theory for the regime {\bf I} (low value of $\dphi$).
+    The agreement with the polytropic sheath model using $\gamma = 1.36$ 
+    
+    % As discussed previously, the value of the polytropic index computed by propagating the \ac{EVDF}, is $\gamma=1.28$.
+    % \Cref{fig-dphi_te_PIc2} shows the same results as \cref{fig-dphi_te_PIc}, but  the theoretical values of $\dphi$ using $\gamma=1.28$ are overlaid.
+    % We see that using the value $\gamma=1.28$ does not change significantly the value of the solution, except for the maximum value of the electron temperature $\Te^1$ for the first branch of the solution, hence the domain of temperature where the three solutions coexist.
+    % In the case of $\gamma=1.28$, the \ac{PIC} simulation result agreement with the theory is worse than for $\gamma=1.35$.
+    
+    % \begin{figure}[hbt]
+    %   \centering
+    %   \includegraphics[width=\textwidth]{parametric_PIC_dphi_Te_two_gamma_bis}
+    %   \caption{Similarly to \cref{fig-dphi_te_PIc}, Plasma potential as a function of (left) the radial electron temperature and (right) the total electron temperature. The blue markers represent the \acs{PIC} results presented in \cref{fig-long_time}, the orange dashed lines correspond to the theoretical values with $\gamma=1.35$, and the green dotted-dashed line is computed with $\gamma=1.28$.}
+    %   \label{fig-dphi_te_PIc2}
+    % \end{figure}
+    
+    \paragraph{Electron power balance\\}
+    The total electron power balance can be expressed as
+    \begin{equation} \label{eq-GMel}
+      \deriv{}{t} \lp 3/2 V n_e \Te \rp = P_{\rm abs} - P_{\rm loss},
+    \end{equation}
+    with $V$ the  volume of the simulation domain, $n_e$ the average electron density,  $P_{\rm abs}$ the total absorbed power, and $P_{\rm loss}$ the total power lost.
+    The absorbed power $P_{\rm abs}$ is mainly the Joule heating
+    \begin{equation} \label{eq-pabs}
+      P_{\rm abs} = V n_e \vect{v_e} \cdot \vect{E} = V n_e v_{e, z} E_z = V n_e \mu_e  E_z^2
+    \end{equation}
+    $E_z$ the imposed axial electric field and $\mu_e$ the electron axial mobility.
+    From the parametric study of \cref{ch-2}, we have $\mu_e \simeq 5.6 \,\meter\squared\per\volt\per\second$.
+    We observe that the absorbed power is constant.
+    
+    The power loss $P_{\rm loss}$ is assumed to be governed by the losses at the wall.
+    Hence, as developed in \cref{sec-fluid}
+    \begin{equation} \label{eq-Ploss}
+      P_{\rm loss} = S \frac{1}{4} h n_e u_b 2 \Tew
+    \end{equation}
+    with $S$ the surface of the wall of the simulation domain, $h \sim 1$ is the ratio between the mean plasma density and the plasma density at the sheath edge, $u_b = \sqrt{\frac{\gamma e \Te}{m_i}}$ is the modified Bhom velocity and $\Tew$ is the electron temperature at the wall.
+    Hence, we have
+    \begin{equation} \label{eq-MG_bis}
+    \frac{3}{2} \deriv{}{t} \Te = \mu_e  E_z^2 - \frac{S}{V} \frac{1}{2} \sqrt{\frac{\gamma e \Te}{m_i}}  \lp \Te - \frac{\gamma - 1}{\gamma} \dphi \rp.
+    \end{equation}
+    \Cref{eq-MG_bis} is coupled with the sheath model that return $\dphi$ as a function of $\Te$.
+    Concerning the three co-existing solutions, we assume that the sheath follows the same branch until the threshold temperature $\Te^2$, or $\Te^1$, is reached when the electron temperature increases, or decreases, respectively.
+    
+    
+    
+    \paragraph{ Ion dynamics \\}
 
     One has to note that the modified sheath model is stationary, while the oscillations observed are relatively fast.
     Indeed, the ion dynamic can be estimated to be
@@ -128,7 +166,6 @@
     The period of the sheath oscillations observed in \cref{fig-long_time} is approximately $T = 2\,\micro\second$, which is between $\tau_i$ and $t_{\rm flight}$.
     Hence, we can expect the ion dynamic to affect the plasma sheath characteristics during the sheath oscillations of the regime {\bf II}.
     
-    \paragraph{Role of the ion mass \\}
     
     The sheath oscillations of regime {\bf II} have been observed in \citet{croes2017} with three different ion masses: xenon, krypton and argon.
     The results are shown in \cref{fig-RSO_altern}.
