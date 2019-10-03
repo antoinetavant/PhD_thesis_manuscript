@@ -24,8 +24,8 @@
   \subsection{Parametric study of the modified sheath model} \label{subsec-param_sheath_see}
 
     The variables of interest to characterize the plasma-wall interaction are the averaged electron emission rate $\rate$ and the plasma potential drop to the wall.
-    The only input of the modified sheath model is the electron mean temperature in the bulk $\Teb$, as well as the polytropic index $\gamma$.
-    As seen in \cref{sec-PIC_poly}, the polytropic index of the electron population is measured in the \ac{PIC} simulations to be $\gamma=1.35$.
+    The only inputs of the modified sheath model are the electron mean temperature in the bulk $\Teb$, as well as the polytropic index $\gamma$.
+    As seen in \cref{subsec-fluid_see_polyfit}, the polytropic index of the electron population is measured in the \ac{PIC} simulations to be $\gamma=1.35$.
     However, the electrons going toward the wall present a different index, measured from the bulk \ac{EVDF} to $\gamma=1.28$.
     These two values will be compared.
 
@@ -51,6 +51,8 @@
     Concerning the emission rate $\rate$, we observe that the value $\gamma=1.35$ under estimates $\rate$ compared to the values of the \ac{PIC} simulations.
     On the other hand, $\gamma=1.28$ is in very good agreement.
     Interestingly, the saturation of the mean electron emission rate in the \ac{PIC} simulation is greater than the critical value $\ratecr$.
+    This is because the critical value corresponds to the start of the \ac{SCL} regime, with a radial electric at the wall equals to zero.
+    However, we observe in the \ac{PIC} simulation a small potential well, meaning that the \ac{SEE} rate is slightly above $\ratecr$.
     
     %\inlinenote{ As $\rate$ is better with $\gamma=1.28$, we should use both values in \cref{eq-costseepoly}. However, this increases the complexity the equations and the model, and add 1 more free parameters (they would be 2 values for $\gamma$ now). I can say that only in the discussion maybe ? }
     
@@ -62,29 +64,29 @@
     Both the radial temperature $\Te_{,R}$ and the total temperature $\Te$ are shown (see \cref{eq-3Te} for their definition).
     The plasma potential $\dphi$ shown is measured at the center of the radial direction of the simulation, averaged over the azimuthal direction.
     
-    
-    \begin{figure}[hbt]
+     \renewcommand\subfigurewidth{0.7\textwidth}
+    \begin{figure}[!hbt]
       \centering
-      \begin{tabular}{@{} c c}
-        \subfigure{long_time_dphi}{a}{20,20} &
-        \subfigure{long_time_Te}{b}{20,20} \\
+      \begin{tabular}{@{} c }
+        \subfigure{long_time_dphi}{a}{20,20}\\
+        \subfigure{long_time_Te}{b}{20,20} 
       \end{tabular}
       \caption{Temporal evolution of ({\bf a}) the plasma potential $\dphi$ and ({\bf b}) the electron temperatures\string: $\Te_{,R}$ is the radial temperature, and $\Te$ is the total temperature.}
       \label{fig-long_time}
     \end{figure}
-
+    \renewcommand\subfigurewidth{0.47\textwidth}
     
     We clearly see in \cref{fig-long_time} the quasi-periodic oscillations between the two states.
     We observe that the electron temperature is slightly anisotropic, with the radial temperature smaller than the axial temperature.
-    This anisotropy observed was not taken into account in the sheath model.
-    More precisely, the radial temperature $\Te_{,R}$ is linked to the thermal flux of electron toward the wall, while the total temperature $\Te$ is used in the computation of the electron emission rate $\ratemaxw$.
+    This anisotropy observed was not taken into account in the sheath model developed in this chapter.
+    More precisely, the radial temperature $\Te_{,R}$ is linked to the thermal flux of electron toward the wall, while the total temperature $\Te$ changes the electron emission rate $\ratemaxw$.
     However, the degree of anisotropy is not very high, as it is of the order of 10\% when the sheath is not inverted.
     When the sheath is inverted, the anisotropy is of the order of 25\%, as the electron with a large radial energy are quickly absorbed.
-    However in the \ac{SCL} regime, we suppose that the electron emission rate saturates at $\rate=\ratecr$, hence the impact of the total energy is less important with respect of the radial energy.
+    However in the \ac{SCL} regime, we suppose that the electron emission rate saturates at $\rate=\ratecr$, hence in this regime the impact of the total energy is less important with respect of the radial energy.
     Hence, we will compare the prediction using only the radial temperature $\Te_{,R}$ or the total, averaged, temperature $\Te$, but not the two of them together.
     
     \Cref{fig-dphi_te_PIc2} shows the potential drop as a function of the radial electron temperature $\Te_R$ and the total electron temperature $\Te = (\Te_R + \Te_{\theta} + \Te_z)/3$ measured in the \ac{PIC} simulation (same case as \cref{fig-long_time}).
-    Is also shown the theoretical solutions obtained with the model of \cref{sec-fluid_poly_see} using a constant polytropic index $\gamma=1.35$ and $1.28$, and $\crover=45\,\volt$, using a pre-sheath potential drop of $\Teb/2$.
+    Is also shown the theoretical solutions obtained with the model of \cref{sec-fluid_poly_see} using a constant polytropic indexes $\gamma=1.35$ and $1.28$, and $\crover=45\,\volt$, and a pre-sheath potential drop of $\Teb/2$.
     
     \begin{figure}[hbt]
       \centering
@@ -121,12 +123,12 @@
     % \end{figure}
     
     \paragraph{Electron power balance\\}
-    The total electron power balance can be expressed as
+    The total electron power balance integrated aver the simulation domain can be expressed as
     \begin{equation} \label{eq-GMel}
       \deriv{}{t} \lp 3/2 V n_e \Te \rp = P_{\rm abs} - P_{\rm loss},
     \end{equation}
     with $V$ the  volume of the simulation domain, $n_e$ the average electron density,  $P_{\rm abs}$ the total absorbed power, and $P_{\rm loss}$ the total power lost.
-    The absorbed power $P_{\rm abs}$ is mainly the Joule heating
+    The absorbed power $P_{\rm abs}$ is assumed to mainly be the Joule heating
     \begin{equation} \label{eq-pabs}
       P_{\rm abs} = V n_e \vect{v_e} \cdot \vect{E} = V n_e v_{e, z} E_z = V n_e \mu_e  E_z^2
     \end{equation}
@@ -142,17 +144,32 @@
     with $S$ the surface of the wall of the simulation domain, $h \sim 1$ is the ratio between the mean plasma density and the plasma density at the sheath edge, $u_b = \sqrt{\frac{\gamma e \Te}{m_i}}$ is the modified Bhom velocity and $\Tew$ is the electron temperature at the wall.
     Hence, we have
     \begin{equation} \label{eq-MG_bis}
-    \frac{3}{2} \deriv{}{t} \Te = \mu_e  E_z^2 - \frac{S}{V} \frac{1}{2} \sqrt{\frac{\gamma e \Te}{m_i}}  \lp \Te - \frac{\gamma - 1}{\gamma} \dphi \rp.
+    \frac{3}{2} \deriv{}{t} \Te = \mu_e  E_z^2 - \frac{S}{V} \frac{1}{2} \sqrt{\frac{\gamma e \Te}{m_i}}  \lp \Te - \frac{\gamma - 1}{\gamma} \dphi \rp,
     \end{equation}
+    where $\frac{V}{S} = L_R$.
     \Cref{eq-MG_bis} is coupled with the sheath model that return $\dphi$ as a function of $\Te$.
     Concerning the three co-existing solutions, we assume that the sheath follows the same branch until the threshold temperature $\Te^2$, or $\Te^1$, is reached when the electron temperature increases, or decreases, respectively.
+    When $\Te^1$ or $\Te^2$ is crosses, the sheath jumps to the other solution.
     
+    \begin{figure}[hbtp]
+      \centering
+      \includegraphics[width=\textwidth]{global_model.pdf}
+      \caption{Results of the electron power balance. ({\bf a}) shows the temporal evolution of the electron power balance from \cref{eq-MG_bis}, ({\bf b}) shows the temporal evolution of the electron temperature, and ({\bf c}) shows the evolution of the plasma potential $\dphi$ as a function of $\Te$. }
+      \label{fig-GM_results}
+    \end{figure}
     
+    \Cref{fig-GM_results} shows the results obtained by using the electron power balance.
+    \cref{fig-GM_results}.{\bf a} and {\bf b} shows the temporal evolution of the power balance and the electron temperature $\Te$, and \cref{fig-GM_results}.{\bf c} shows the plasma potential as a function of $\Te$.
+    Starting from an initial value $\Te=10\,\volt$, the electron temperature increases until reaching $\Te^1$.
+    Then, the sheath enters the \ac{SCL} regime and $\Te$ decreases until reaching $\Te^2$.
+    
+    The period of the oscillation is of the order of $0.1\,\micro\second$, which is significantly shorter than the \ac{PIC} simulation.
+    Indeed, the period of the sheath oscillations observed in \cref{fig-long_time} is approximately $T = 2\,\micro\second$.
     
     \paragraph{ Ion dynamics \\}
 
     One has to note that the modified sheath model is stationary, while the oscillations observed are relatively fast.
-    Indeed, the ion dynamic can be estimated to be
+    The ion dynamic can be estimated to be
     \begin{equation} \label{eq-ti}
       \tau_i = \frac{2 \pi}{\opi} = 0.1 \,\micro\second.
     \end{equation}
@@ -163,7 +180,7 @@
       t_{\rm flight} = L_R \sqrt{\frac{m_i}{e \Te}} = 3.7 \,\micro\second.
     \end{equation}
     with $L_R=2\,\centi\meter$ and $\Te=40\,\volt$.
-    The period of the sheath oscillations observed in \cref{fig-long_time} is approximately $T = 2\,\micro\second$, which is between $\tau_i$ and $t_{\rm flight}$.
+    The period of the sheath oscillations observed $T = 2\,\micro\second$ is between $\tau_i$ and $t_{\rm flight}$.
     Hence, we can expect the ion dynamic to affect the plasma sheath characteristics during the sheath oscillations of the regime {\bf II}.
     
     
