@@ -35,13 +35,18 @@
     To finish with; the impact of the radial boundary condition is investigated in \cref{sec-DR-BC}.
 
 
-  \subsection{Instabilities observed with \LPPic} \label{subsec-lppic_ECDI}
+  \subsection{Overview of the 2D simulation} \label{subsec-lppic_ECDI}
   
-  We present in this section the simulation results obtained in one case.
-  As we observed the same results when varying the  different physical parameters, for the sake of brevity, results for other parameters are not shown.
-  The parameters of the simulation are presented in \cref{tab-evdfpicparams}.
-  The radial boundary condition includes a dielectric layer of width $L_{diel}$.
-  No electron emission is modeled, and the convection is modeled with the new noiseless model (see \cref{sec-noiselessresults}).
+  
+  
+  We present in this section the simulation conducted to study the azimuthal instability.
+  The parameters of the simulation are given in \cref{tab-evdfpicparams}.
+  The imposed axial electric field $E_z$ and the radial magnetic field $B_r$ are uniform in space and constant in time.
+  The radial direction is closed with the dielectric boundary condition of dielectric width $L_{diel}$.
+  No \ac{SEE} is modeled, and the convection is modeled with the new noiseless model (see \cref{sec-noiselessresults}).
+  
+  The simulation is initialized with a uniform electron and ion density $n_e = n_i = \sn{3}{17}\per\meter\squared$, with an electron temperature $\Te=10\,\volt$ and an ion temperature $\Ti=0.025\,\volt$.
+  The mean particle density is conserved by imposing an ionization which compensate the particle losses at the wall a each time step.
   
   \begin{table}[!hbt]
   \ra{1.3}
@@ -50,21 +55,40 @@
     \label{tab-evdfpicparams}
     \begin{tabular}{@{}r l l l @{}} \toprule
       {\bf Physical Parameter} &  &   &  \\
-    Parameter  & notation   &   Value   &  Unit  \\ \midrule
-    Dimensions & $L_r\times L_{\theta}\times L_z$   & $1\times 0.26\times 0.5$ & cm \\
-    Radial magnetic field & $B_r$  & 0.02 & T \\
-    Axial electric field & $E_z$  & \sn{2}{4} & $s\volt\per\meter$ \\
-    Dielectric layer of width & $L_{diel}$ & 3 & \milli\meter  \\
-    Mean plasma density & $n_{0}$                    & $3 \times 10^{17}$    & {m}$^{-3}$ \\
-    Initial electron temperature & $\Te_{,0}  $               & $10.0$                 & V \\
+    Parameter                    & notation                         & Value                    & Unit \\ \midrule
+    Dimensions                   & $L_r\times L_{\theta}\times L_z$ & $1\times 0.26\times 0.5$ & cm \\
+    Radial magnetic field        & $B_r$                            & 0.02                     & T \\
+    Axial electric field         & $E_z$                            & \sn{2}{4}                & $s\volt\per\meter$ \\
+    Dielectric layer of width    & $L_{diel}$                       & 3                        & \milli\meter \\
+    Mean plasma density          & $n_{0}$                          & $3 \times 10^{17}$       & {m}$^{-3}$ \\
+    Initial electron temperature & $\Te_{,0} $                      & $10.0$                   & V \\
+    Initial ion temperature      & $\Ti_{,0} $                      & $0.025$                  & V \\
+    Duration of the simulation   & $T_{\rm simu}$                   & $7$                      & $\micro\second$ \\
     \midrule
-    {\bf Numerical Parameter} &  &   &  \\
-    Time step & $\Delta t  $                      & $4 \times 10^{-12}$ & s \\
-    Cell size & $\Delta x = \Delta y$ & $2 \times 10^{-5}$  & m \\
-    Number of particles per cell & $N/NG      $                      & $80$                & part/cell \\
+    {\bf Numerical Parameter}    &                                  &                          & \\
+    Time step                    & $\Delta t $                      & $4 \times 10^{-12}$      & s \\
+    Cell size                    & $\Delta x = \Delta y$            & $2 \times 10^{-5}$       & m \\
+    Number of particles per cell & $N/NG $                          & $80$                     & part/cell \\
     \bottomrule
     \end{tabular}
   \end{table}
+  
+  \Cref{fig-profiles_ne_one} shows the radial profile of the electron and ion densities, as well as the plasma potential, at the end of the simulation. 
+  The results are averaged azimuthally and in time over the 3 last microseconds.
+  We can observe on the radial profile of both the densities and the plasma potential the sheaths close to the walls (regions of high electric field due to a charge unbalance) and the quasineutral plasma bulk in the center.
+  These profiles are typical of low temperature low pressure bounded plasma.
+  
+  \begin{figure}[hbt]
+    \centering
+    \begin{tabular}{@{} cc @{}}
+      \subfigure{Ch5_radial_profiles}{a}{20, 15}
+          &
+      \subfigure{Ch5_radial_profiles_phi}{b}{20, 15} \\
+
+    \end{tabular}
+    \caption{Radial profile of ({\bf a}) the ion and electron densities, and ({\bf b}) the plasma potential at steady-state, averaged azimuthally and in time over the 3 last microseconds.}
+    \label{fig-profiles_ne_one}
+  \end{figure}
 
   \Cref{fig-canon_Te_allch5} shows the temporal evolution of the mean kinetic energy $\Ee$ during the simulations.
   The mean kinetic energy is computed in the simulations by averaging over the whole electron population
@@ -73,7 +97,7 @@
   \end{equation}
   with $d$ the direction ($r,\theta$, or $z$), $N_e$ is the number of electron, and $v_{j, d}$ is the velocity in the direction $d$ of the $j^{\rm nt}$ electron.
   We see that the simulation starts at $\Ee = \Te_{,0} /2$, and  that after a few microseconds of transition, the simulations reaches a steady-state with small fluctuations.
-  This corresponds to an initial Debye lenght of $\lde=\sn{4.3}{-5}\,\meter$ and to $\lde=\sn{7.0}{-5}\,\meter$ at the saturated regime.
+  This corresponds to an initial Debye length of $\lde=\sn{4.3}{-5}\,\meter$, increasing up to  $\lde=\sn{7.0}{-5}\,\meter$ at the saturated regime.
   \begin{figure}[!hbt]
     \centering
     \includegraphics[width=\defaultwidth]{canonical_Te_all_directions.pdf}
