@@ -1,8 +1,8 @@
 % !TEX root=/home/tavant/these/manuscript/src/manuscript.tex
 
 \documentclass[
-  % a4paper,	%Pour papier A4
-   b5paper,	%Pour papier A4
+  a4paper,	%Pour papier A4
+   % b5paper,	%Pour papier A4
    11pt,		%Taille de la police 12
    twoside,	%recto-verso
    headinclude, headsepline, plainheadsepline,
@@ -16,10 +16,10 @@
 \input{texfiles/settings}
 
 \pdfcompresslevel=0
-\usepackage[a4,
-            center,
-            % frame
-            ]{crop}
+% \usepackage[a4,
+%             center,
+%             % frame
+%             ]{crop}
 
 %\pagecolor{gray}
   
@@ -97,9 +97,24 @@
   textheight=205mm,
   % textwidth=159mm
    }
+   
+% Taille papier A4:
+% 210 par 297 mm
+% Avec 2.5cm à gauche et à droite: textwidth = 210-50 = 160 
+% Avec 1.5cmen haut et 3cm en bas:: textwidth = 297-45 = 252 
 
+\newgeometry{twoside,
+ bindingoffset=0mm, 
+ includehead, 
+ heightrounded=true, 
+ hmarginratio=10:15, 
+ vmarginratio=10:15,
+ textwidth=160mm,
+ textheight=252mm,
+ % textwidth=159mm
+  }
 % Cropping from a4 printing after newgeometry
-\makeatletter\CROP@center\makeatother
+% \makeatletter\CROP@center\makeatother
 
 \frontmatter
 %dedicace
