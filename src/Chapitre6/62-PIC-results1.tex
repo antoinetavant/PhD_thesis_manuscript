@@ -1,12 +1,12 @@
 % !TEX root=/home/tavant/these/manuscript/src/manuscript.tex
 
-\section{PIC simulation results of the Axial-azimuthal simulations}
+\section{Results of the axial-azimuthal PIC simulations}
   \label{sec-Zthetaresults}
-  In this sections, we present the results of the \ac{2D} \ac{PIC} simulations using the test-case of Boeuf \citep{boeuf2018}, described in \cref{subsec-boeuf_description}\string; the parameters used for the simulations are given in \vref{tab-parameters-boeuf}.
+  In this sections, we present the results of the \ac{2D} \ac{PIC} simulations using the test-case of Boeuf \citep{boeuf2018}, described in \cref{subsec-boeuf_description}\string; the parameters used for the simulations are given in \cref{tab-parameters-boeuf}.
   In this test-case, the ionization is fixed, consequently the breathing mode is absent.
-  Thus, the simulation converges quickly toward a steady state.
+  Thus, the simulation converges quickly towards a steady state.
   
-  We use the test-case of Boeuf in three different cases\string:
+  We run three different cases\string:
   the first is the usual case, without the effects of the radial direction.
   It is expected to return the same results as obtained in \citet{boeuf2018}.
   The two other cases model the influence of the radial direction.
@@ -16,9 +16,10 @@
   \subsection{Simulation results\string: an overview} \label{subsec-boeuf-overview}
     As the ionization is not self-consistently modeled, the simulations converges after less than $10\,\micro\second$.
     \Cref{fig-overview_boeuf_neEx} shows the axial and azimuthal distribution of the azimuthal electric field $E_{\theta}$ and the electron density $n_e$ at $t=10\,\micro\second$ is the case where no radial losses are modeled.
-    We see in both $E_{\theta}$ and $n_e$ the \ac{ECDI}, which wavelength is approximately $\lambda_{\theta} = 0.08\,\centi\meter$.
+    We see in both $E_{\theta}$ and $n_e$ the \ac{ECDI}, which wavelength is approximately $\lambda_{\theta} = 0.08\,\centi\meter$ at $z=0.5\,\centi\meter$.
     The results observed are similar to the one presented by \citet{boeuf2018}, but in order to validate the results, an exhaustive comparisons has been conducted between seven independently developed \ac{PIC} codes on this specific case.
     A good agreements has been shown \citep{charoy2019}.
+    
 
     \begin{figure}[hbt]
       \centering
@@ -43,8 +44,8 @@
     \end{figure}
 
     We see on \cref{fig-boeuf-temporal}.{\bf b} that the radial temperature remains constant when the radial direction is not modeled.
-    This is due to the fact that the collisions are not modeled in the simulations, so that there is not momentum and energy transfer possible from the axial and azimuthal directions, and the radial direction.
-    However, we know from the radial-azimuthal simulations that there is a transfer of energy between the axial direction and the radial direction, resulting in a plasma less anisotropic than observed here.
+    This is due to the fact that the collisions are not modeled in the simulations, so that there is no momentum and energy transfer from the axial and azimuthal directions to the radial direction.
+    However, we know from the radial-azimuthal simulations that there is a transfer of energy between the axial direction and the radial direction, resulting in a plasma more isotropic than observed here.
     This aspect is discussed latter in \cref{subsec-MCC_boeuf,subsec-radial-heating}.
     With the radial losses, the radial temperature decreases from the initial temperature $\Te=5\,\volt$ to $\Te_R\simeq 2.2$ and $ 3.3\,\volt$ for $L_R=2$ and $4\,\centi\meter$, respectively.
     The total temperature $\Te$ shows a similar decrease with the increase of the radial losses.
@@ -52,11 +53,11 @@
   \subsection{Simulation results\string: averaged axial profiles} \label{subsec-axial_boeuf}
 
     \Cref{fig-boeuf_axialone,fig-boeuf_axialtwo}  show the axial profile at steady-state of several plasma quantities.
-    The variables are averaged in the azimuthal direction and in time during the steady-state between $t=8$ and $t=10\,\micro\second$.
+    The variables are averaged in the azimuthal direction and in time between $t=8$ and $t=10\,\micro\second$.
     The results  obtained with three different radial models are overlaid.
     \cref{fig-boeuf_axialone}.{\bf a} shows the axial electric field $E_z$.
-    The differences in $E_z$ are small, but we can still distinguish that the amplitude of $E_z$ is reduced with the increased radial losses.
-    The electron density $n_e$ shown in \cref{fig-boeuf_axialone}.{\bf b} is almost not affected, except in for $z>1\,\centi\meter$, where the electron losses at the wall can be seen.
+    The differences in $E_z$ are small, but we can still observe that the amplitude of $E_z$ is reduced with the increased radial losses.
+    The electron density $n_e$ shown in \cref{fig-boeuf_axialone}.{\bf b} is almost not affected, except for $z>1\,\centi\meter$, where the electron losses at the wall can be seen.
 
     \begin{figure}[hbt]
       \centering
@@ -69,15 +70,16 @@
     \end{figure}
 
     \Cref{fig-boeuf_axialtwo} shows the axial profiles of the electron axial density current and the electron temperatures.
-    In contrast to $n_e$ and $E_z$, the electron temperatures are reduced by the radial losses in each direction ($\Te{}_{,\theta}, \Te{}_{,R}, \Te{}_{,Z}$).
-    The radial temperature $\Te{}_{,R}$ is reduced uniformly everywhere, but the two other temperature are mostly affected before the axial position of their maxima, at approximately $z=0.8\,\centi\meter$.
-    Surprisingly, as a first approximation, the radial losses should not reduce the axial and azimuthal temperatures.
+    The electron temperatures are reduced by the radial losses in each direction ($\Te{}_{,\theta}, \Te{}_{,R}, \Te{}_{,Z}$).
+    The radial temperature $\Te{}_{,R}$ is reduced uniformly everywhere, but the two other temperature are mostly affected upstream, at approximately $z=0.8\,\centi\meter$.
+    Surprisingly, to a first approximation we could think the radial losses should not reduce the axial and azimuthal temperatures.
     Indeed, if we suppose that the distribution function has separated variables
     \[ f(\vect{v_e}) = f_r(v_{e,r})f_{\theta}(v_{e,\theta})f_z(v_{e,z}), \]
-    then the absorption of electrons with high radial energy does not modify the distribution function in the other directions.
+    then the absorption of electrons with high radial energy should not modify the distribution function in the other directions.
+    However, the loss of energetic particles is an energy loss in the three directions, so that it will affect the power balance.
     
-    The electron heating comes principally from the Joule heating $\vect{J_e} \cdot \vect{E}$.
-    As axial electric field $E_z$, seen in \cref{fig-boeuf_axialone}.{\bf a}, is almost unaffected, the difference in the electron temperature necessarily comes from the differences in the axial electron current.
+    In addition, the electron heating comes principally from the Joule heating $\vect{J_e} \cdot \vect{E}$.
+    As the axial electric field $E_z$, seen in \cref{fig-boeuf_axialone}.{\bf a}, is almost unaffected, the difference in the electron temperature can also originates from the differences in the axial electron current.
     The axial electron density current $J_{e, z}$ is shown in \cref{fig-boeuf_axialtwo}.{\bf b}.
     It is more significantly reduced by the radial losses.
     
@@ -134,7 +136,7 @@
     The electron temperature is also reduced, not only in the radial direction, where the radial losses have a direct impact, but also on the azimuthal and axial temperatures.
     This is consistent with the large reduction of the axial electron mobility, which lower the Joule heating.
     The reduction of the crossfield electron transport comes from the diminished amplitude of the azimuthal instability.
-    In the next section, we analyze in more details the instability i order to explain the impact of the radial losses on the amplitude of the instability.
+    In the next section, we analyze in more details the instability in order to explain the impact of the radial losses on the amplitude of the instability.
     In \cref{sec-rheating}, we will discuss radial heating of the electrons.
 
 

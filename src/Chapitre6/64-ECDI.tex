@@ -13,37 +13,37 @@
     \item The radial loss algorithm used could induce numerical noise which affect the instability,
     \item The electron temperature is decreased\string; if the amplitude of the instability saturates due to ion-wave trapping, then the amplitude would be lower,has developed in \cref{eq-iontropempl},
     \item The growth rate is proportional to the azimuthal electron drift velocity, as seen in \cref{eq-MIAW}. If the growth rate is affected, then the wave at steady state could be reduced,
-    \item The radial losses  could directly reduce the amplitude of the instability by absorbing preferentially the particles where the density is higher.
+    \item The radial losses  could directly reduce the amplitude of the instability.
   \end{enumerate}
 
-  Using the results of the \ac{2D} \ac{PIC} simulation, we will discuss is the next section the four points.
-  We recall that three cases have been simulated\string: the nominal case without radial losses and two other cases with the radial losses modeled with $L_R=2\,\centi\meter$ and $L_R=4\,\centi\meter$.
+  Using the results of the \ac{2D} \ac{PIC} simulation, we will discuss the four points in the next section.
+  
 
 
 
 \subsection{Overview of the azimuthal instability} \label{subsec-azi_insta_Ztheta}
-
+  
   \begin{figure}[hbt]
     \centering
     \includegraphics[width=\textwidth]{Boeuf_Ex_snapshot}
     \caption{Axial and azimuthal distribution of the azimuthal electric field $E_{\theta}$  obtained at $t=10 \,\micro\second$ for the three cases using the model of Boeuf. The same color limits are used for each figure.}
     \label{fig-snapshots}
   \end{figure}
-
+  We recall that three cases have been simulated\string: the nominal case without radial losses and two other cases with the radial losses modeled with $L_R=2\,\centi\meter$ and $L_R=4\,\centi\meter$.
   \Cref{fig-snapshots} shows the azimuthal electric field at the end of the simulation for the three cases.
   The azimuthal instability is present in all the simulation domain.
-  We note that the radial losses do not induces unphysical instabilities, such as observe in \cref{sec-reinjectionnoise} with the modeling of the axial convection in radial-azimuthal simulations.
+  We note that the radial losses do not induce unphysical instabilities, such as observe in \cref{sec-reinjectionnoise} with the modeling of the axial convection in radial-azimuthal simulations.
   Therefore, we believe that there is no numerical noise or artifacts that could affect the instability.
-  This conclusion is enforced by the spectra analysis of \cref{subsec-fft_losses}.
-  From the characteristics of the instability seen in \cref{fig-snapshots}, two zones can be discerned\string:
+  This conclusion is confirmed by the spectra analysis of \cref{subsec-fft_losses}.
+  From the characteristics of the instability seen in \cref{fig-snapshots}, two zones can be identified\string:
   \begin{itemize}
-    \item The upstream region, $z < 8 \,\milli\meter$, the instability presents a short wavelength, and is oblique.
-    \item The downstream region, $z > 1\,\centi\meter$, the wavelength of the instability is larger and is almost perfectly azimuthal.
+    \item The upstream region, $z < 8 \,\milli\meter$, where the instability presents a short wavelength, and is oblique.
+    \item The downstream region, $z > 1\,\centi\meter$, where the wavelength of the instability is larger and is almost perfectly azimuthal.
   \end{itemize}
-  The radial losses seem to reduce the wavelength of the instability in both regions, but the main impact reside in the downstream region.
+  The radial losses seem to reduce the wavelength of the instability in both regions, but the main impact is in the downstream region.
 
 
-  We have seen in \cref{ch-5} that the instability wavelength is of the order of the Debye length $\lde$ and its frequency of the order of the ion plasma frequency $\opi$.
+  We have seen in \cref{ch-5} that the instability wavelength is of the order of the Debye length $\lde$ and its frequency is of the order of the ion plasma frequency $\opi$.
   In contrast with \cref{ch-5}, the two parameters now vary in the simulation domain.
   \Cref{fig-wpi_Lde} shows the axial evolution of the ion plasma frequency and the Debye length for the three cases.
   The Debye length is calculated using the azimuthal temperature $\Te_{\theta}$.
@@ -61,7 +61,7 @@
   In the upstream region, the radial losses decrease $\lde$, while they increase $\lde$ in the downstream region.
 
 
-\subsection{Ion-trapping saturation } \label{subsec-boeuf_iontrapping}
+\subsection{Ion-wave trapping saturation } \label{subsec-boeuf_iontrapping}
 
   The test-case used here and proposed by \citet{boeuf2018} allows the simulation to reach a steady-state.
   The authors state that the amplitude of the instability is consistent with an ion-wave trapping saturation.
@@ -81,7 +81,7 @@
   \end{figure}
 
   We see that the results observed for the case without radial losses do reach the saturation criteria, but only close to the cathode for $z > 2\,\centi\meter$.
-  Nevertheless, for both cases with the radial losses modeled, the amplitude on the wave is much smaller.
+  Nevertheless, for both cases with the radial losses modeled, the amplitude on the wave is smaller.
   Hence, it seems that the wave amplitude is reduced by the radial losses such that the ion-wave trapping is not the dominant saturation mechanism anymore.
 
 
@@ -127,10 +127,10 @@
   Instead, we have 
   $$ u_{e, \theta} =   u_{E \times B} + u_{\rm Dia}$$
   everywhere in the simulation domain.
-  We see that $u_{\rm Dia}$ is of the same order of magnitude as $u_{E \times B}$, but of opposite sign.
+  We see that $u_{\rm Dia}$ is of the same order of magnitude as $u_{E \times B}$, but of opposite sign downstream.
   \Cref{fig-Jetheta} shows the values of $ u_{e, \theta},   u_{E \times B}$, and $u_{\rm Dia}$ for the three cases.
   We can see that the magnitude of $u_{e, \theta} $ decreases when the radial losses are present.
-  However, the amplitude of both $u_{\rm Dia}$ and $u_{E \times B}$ decreases as well.
+  However, both the amplitude of $u_{\rm Dia}$ and $u_{E \times B}$ decreases.
 
    
   \begin{figure}[hbt]
@@ -140,9 +140,9 @@
     \label{fig-Jetheta}
   \end{figure}
 
-  Despite seeing previously in \cref{sec-Zthetaresults} that the radial losses do not modify significantly axial electric field and the electron density, the electron azimuthal drift velocity does decreases with the radial losses. 
-  At the maximum, the difference represent a 20\% variation, but in average the difference is below 10\%.
-  Therefore, this hypothesis on the reduction of the amplitude of the wave is plausible, but may not be the most prominent.
+  Despite seeing previously in \cref{sec-Zthetaresults} that the radial losses do not modify significantly the axial electric field and the electron density, the electron azimuthal drift velocity does decrease with the radial losses. 
+  At the maximum, the difference represents a 20\% variation, but in average the difference is below 10\%.
+  Therefore, the hypothesis of decreased growth rate to explain the reduction of the amplitude of the wave is plausible, but may not be the most prominent.
 
 \FloatBarrier
 
@@ -151,9 +151,13 @@
 
   The last hypothesis on the reduction of the wave amplitude is the direct impact of the radial losses.
   As the ion flux to the wall is a thermal flux
-  \[ \Gamma_R \propto n_i \bar{v}_{i, r} \]
+  \[ \Gamma_{R, i} \propto n_i \bar{v}_{i, r} \]
   with $\bar{v}_{i, r}$ proportional to the radial thermal velocity.
-  Supposing the radial electron constant and the quasineutrality $n_e=n_i$, the particle flux to the wall is proportional to the particle density $\Gamma_R \propto n_e$, then presents the azimuthal fluctuation of the wave
+  We recall that the electron flux equals the ion flux\string:
+  \begin{equation} \label{eq-fluxequality}
+   \Gamma_{R, e} = \Gamma_{R, i}
+  \end{equation}
+  Supposing the radial electron density constant and the quasineutrality $n_e=n_i$, the particle flux to the wall is proportional to the particle density $\Gamma_R \propto n_e$, then presents the azimuthal fluctuation of the wave
   \[ \Gamma_R(\theta) = \Gamma_0 + \delta \Gamma_R(\theta). \]
   \Cref{fig-rfluxs} shows the azimuthal-axial distribution of (left) the radial flux measured in the \ac{PIC} simulation, and (right) the electron density, at $t=10\,\micro\second$ for the case $L_R=2\,\centi\meter$.
 
@@ -202,8 +206,8 @@
   We perform a \ac{2D} \ac{FFT} on the spatio-temporal azimuthal electric field to obtain the dispersion relation of the wave observed.
   \Cref{fig-fft2D_noLr_zu} shows the \ac{2D} \ac{FFT} obtained in ({\bf a}) the upstream region and ({\bf b}) the downstream region.
   We also display the \ac{1D} \ac{FFT} obtained by summing the \ac{2D} \ac{FFT} in one direction.
-  Concerning the upstream region, we see that the waves follow one well-defined curve, which corresponds to the \ac{IAW} \ac{DR} \cref{eq-MIAW} using the local Debye length and ion plasma pulsation.
-  The maximum of the wave is located at $k_{\theta} = 8.5\,\radian\per\milli\meter$ and $\omega = 35\, \radian\per\mega\hertz$.
+  Concerning the upstream region, we see that the waves follow one well-defined curve, which corresponds to the \ac{IAW} \ac{DR} \cref{eq-MIAW} using the local Debye length and ion plasma frequency.
+  The maximum of the wave is located at $k_{\theta} = 8.5\,\radian\per\milli\meter$ and $\omega = 35\, \radian\mega\hertz$.
 
   \begin{figure}[!hbt]
     \centering
@@ -211,15 +215,15 @@
       \subfigure{Boeuf_noLr_FFT2D_y110_full}{a}{5,5} & 
       \subfigure{Boeuf_noLr_FFT2D_y300_full}{b}{5,5} \\
     \end{tabular}
-    \caption{\acs{2D} and \acs{1D} \acs{FFT} of the azimuthal electric field in ({\bf a}) the upstream region $z=z_u$, and ({\bf b}) the downstream region at $z=z_d$, without radial losses. The black dotted lines highlight the position of the maximum of the \acs{2D} \acs{FFT}. The red dotted line corresponds the \acs{IAW} dispersion relation of \cref{eq-MIAW} at $z=z_u$, and the green dotted line the \acs{IAW} dispersion relation at $z=z_d$.}
+    \caption{\acs{2D} and \acs{1D} \acs{FFT} of the azimuthal electric field in ({\bf a}) the upstream region $z=z_u$, and ({\bf b}) the downstream region at $z=z_d$, without radial losses. The black dotted lines highlight the position of the maximum of the \acs{2D} \acs{FFT}. The red dotted line corresponds the \acs{IAW} dispersion relation of \cref{eq-MIAW} at $z=z_u$, and the green dotted line the \acs{IAW} dispersion relation of \cref{eq-MIAW} at $z=z_d$.}
     \label{fig-fft2D_noLr_zu}
   \end{figure}
 
   The \ac{2D} \ac{FFT} in the downstream region is presented in \cref{fig-fft2D_noLr_zu}.{\bf b}.
-  In contrast to the upstream region, we can see that the waves do not follow one well-defined curve, but instead there are several clusters.
+  In contrast to the upstream region, we can see that the waves do not follow one well-defined curve.
   The wave characteristics of the upstream region can still be seen, but a larger and slower wave is overlaid to it.
   The maximum of the wave is located at $k_{\theta} = 3\,\radian\per\milli\meter$ and $\omega = 20\, \radian\per\mega\hertz$.
-  However, this new wave seems to follow the same dispersion relation as in the upstream region, instead of the \ac{DR} using the local plasma parameters, which underestimates the wave parameters.
+  However, this new wave seems to follow the same dispersion relation as in the upstream region (green), instead of the \ac{DR} using the local plasma parameters (red).
   This could mean that the wave originates in the upstream region, and is convected to the downstream region without changing the wave \ac{DR}. 
 
 
@@ -255,11 +259,11 @@
       \subfigure{Boeuf_Lr4_FFT2D_y300_full}{a}{5,5} & 
       \subfigure{Boeuf_Lr2_FFT2D_y300_full}{b}{5,5} \\
     \end{tabular}
-    \caption{\acs{2D} and \acs{1D} \acs{FFT} of the azimuthal electric field in the downstream region $z=z_d$ with ({\bf a}) $L_R=4\,\centi\meter$, and ({\bf b}) $L_R=2\,\centi\meter$.  The black dotted lines highlight the position of the maximum of the \acs{2D} \acs{FFT}. The red dotted line corresponds the \acs{IAW} dispersion relation of \cref{eq-MIAW} at $z=z_u$, and the green dotted line the \acs{IAW} dispersion relation at $z=z_d$.}
+    \caption{\acs{2D} and \acs{1D} \acs{FFT} of the azimuthal electric field in the downstream region $z=z_d$ with ({\bf a}) $L_R=4\,\centi\meter$, and ({\bf b}) $L_R=2\,\centi\meter$.  The black dotted lines highlight the position of the maximum of the \acs{2D} \acs{FFT}. The red dotted line corresponds the \acs{IAW} dispersion relation of \cref{eq-MIAW} at $z=z_u$, and the green dotted line the \acs{IAW} dispersion relation  of \cref{eq-MIAW} at $z=z_d$.}
     \label{fig-fft2D_Lr_zd}
   \end{figure}
 
-  However, in the downstream region, showed in \cref{fig-fft2D_Lr_zd}, we do observe an difference due to the radial losses.
+  However, in the downstream region, showed in \cref{fig-fft2D_Lr_zd}, we do observe a difference due to the radial losses.
   For $L_R=4\,\centi\meter$, the low frequency-large wavelength wave already observed in the case without losses is present.
   Moreover, the waves remain slightly scattered in regard to the theoretical \ac{IAW} \ac{DR}.
   However, these two observations are less visible than without the radial losses.
@@ -268,7 +272,7 @@
   Only the waves observed in the upstream region remains.
   The evolution of the waves can also be seen in \Cref{fig-boeuf_fft_comparasion}, where the \ac{1D} spectra obtained in the downstream region for the three cases are overlaid.
   To compare the three cases, the wavenumber and the frequency are normalized by the Debye length $\lde$ and the ion plasma frequency $\opi$, respectively.
-  As we saw in in \cref{fig-fft2D_noLr_zu,fig-fft2D_Lr_zd} that the wave dispersion relation is better characterized by the upstream region, we use the values of $\lde$ and $\opi$ measured at $z=z_u$.
+  Since we saw  in \cref{fig-fft2D_noLr_zu,fig-fft2D_Lr_zd} that the wave dispersion relation is better characterized by the upstream region, we use the values of $\lde$ and $\opi$ measured at $z=z_u$.
 
 
   \begin{figure}[hbtp]
@@ -283,14 +287,14 @@
   We can also confirm that the difference on wavelength between the three cases comes from the evolution of the Debye length, as the three spectra are approximately centered around the same wavenumber.
 
   On the other hand, the temporal frequency spectra clearly show two maxima. 
-  The first one can be see around $\omega = 0.5 \opi$ for the three cases.
-  The second is observed at lower frequencies\string: for the case without losses, it is clearly seen at  $\omega \simeq 0.3 \opi$\string; for the case $L_R=4\,\centi\meter$, the second maximum is closer to $\omega \simeq 0.25 \opi$\string; for the third case $L_R=2\,\centi\meter$, the second maximum cannot be seen.\footnote{We observe the small bump in the frequency spectrum at $\omega \simeq 0.2 \opi$, but it could simply be some noise. }
+  The first one can be seen around $\omega = 0.5 \opi$ for the three cases.
+  The second is observed at lower frequencies\string: for the case without losses, it is clearly seen at  $\omega \simeq 0.3 \opi$\string; for the case $L_R=4\,\centi\meter$, the second maximum is closer to $\omega \simeq 0.25 \opi$\string; for the third case $L_R=2\,\centi\meter$, the second maximum disappear. %\footnote{We observe the small bump in the frequency spectrum at $\omega \simeq 0.2 \opi$, but it could simply be some noise. }
   
   \subsection{Axial evolution of the frequency spectra} \label{subsec-axialFFT}
   
-  To finish with the analyze of the instability characteristics, we present in \cref{fig-axial_fft1D} the axial evolution of the \ac{1D} \ac{FFT} for the two extreme cases\string: without radial losses and with $L_R=2\,\centi\meter$.
+  To finish with the analysis of the instability characteristics, we present in \cref{fig-axial_fft1D} the axial evolution of the \ac{1D} \ac{FFT} for the two extreme cases\string: without radial losses and with $L_R=2\,\centi\meter$.
   We can see in \cref{fig-axial_fft1D} that in the case without radial losses, the low frequency oscillation appears abruptly, close to $z=0.75\,\centi\meter$ which corresponds to the maximum of the magnetic field.
-  However, it is non-existent for $L_R=2\,\centi\meter$ in the frequency spectra.
+  On the contrary, it does not show up for $L_R=2\,\centi\meter$ in the frequency spectra.
   
  \begin{figure}[!hbt]
    \centering
@@ -302,7 +306,7 @@
  \end{figure}
   
   The low frequency oscillations seems to originate from a non-linear phenomena, such as an inverse cascade \citep{taccogna2019}.
-  We have seen in \cref{sec-Ztheta-instability} that the effective growth rate is reduced by the radial losses, due to the reduction of $u_{, \theta}$ and the present of $\gamma_R$.
+  We have seen in \cref{sec-Ztheta-instability} that the effective growth rate is reduced by the radial losses, due to the reduction of $u_{, \theta}$ and the presence of $\gamma_R$.
   However, the convection of the wave by the ions is not affected by the radial losses \citep{martorelli2019}.
   Consequently, we believe that due to the radial losses, the wave amplitude is smaller, and therefore does not reach the non-linear regime responsible of the low frequency large wavelength waves.
 

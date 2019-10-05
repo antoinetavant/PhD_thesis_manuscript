@@ -8,7 +8,7 @@ However, there are other missing mechanism of the axial direction in this simula
 
 The axial-azimuthal \ac{2D} simulation domain is used to study these mechanisms, and there are several studies that focused on modeling this specific simulation plane \citep{adam2004,coche2014,boeuf2018,taccogna2019}.
 However, in these models, the impact of the radial direction is now missing.
-Therefore, we propose in this chapter a first step to study the radial direction in the axial-azimuthal simulation.
+Therefore, we propose in this chapter a first step to incorporate the radial direction in the axial-azimuthal simulation.
 
 After presenting the simulation domain and its characteristics in \cref{sec-ztheta_description}, we compare the impact of the radial losses modeled on the simulation results.
 First, we analyze the discharge characteristics in \cref{sec-Zthetaresults}, then we focus in \cref{sec-Ztheta-instability} on the azimuthal instability.
@@ -46,12 +46,12 @@ This allowed us to adapt the code \LPPic to simulate both domains using the same
 Three particular aspects have been developed\string: the cathode electron emission, the dynamic computational load balancing, and the electron sub-cycling.
 
 \paragraph{Cathode electron emission\\}
-In the \ac{HET},  the cathode is are mostly used to neutralize the ion beam, but a significant fraction of the emitted elections enters the channel and travels toward the anode, maintaining the discharge.
+In the \ac{HET},  the cathode is mostly used to neutralize the ion beam, but a significant fraction of the emitted elections enters the channel and travels toward the anode, in order to sustain the discharge.
 Consequently in the simulation, electrons are injected close to the cathode boundary following a Maxwellian distribution of a few electron volts.
 The number of electrons to inject at each time step is computed by closing the eternal circuit between the anode and the cathode.
 
-In the experimental set-up, an electric filter is placed between the thruster and the generator \citep{barral2008}, originally placed to protect the power supply against AC current.
-While this external circuit can be modeled \citep{verboncoeur1993}, and is susceptible to impact the thruster behavior \citep{barral2008,wei2017}, we neglect it in this study for sake of clarity.
+In the experimental set-up, a circuit (filter) is placed between the thruster and the generator \citep{barral2008}, originally to protect the power supply against AC current.
+While this external circuit can be modeled \citep{verboncoeur1993}, and is susceptible to impact the thruster behavior \citep{barral2008,wei2017}, it is not included in this study.
 Thus, the cathode current equals the anode current \[ I_a = I_c. \]
 
 \paragraph{Dynamic computational load balancing\\}
@@ -68,15 +68,15 @@ Instead, we implemented a dynamic redistribution of the CPU domain, so that ever
 As the density gradient is principally in the axial direction, we only change the axial size of the CPU domains.
 
 \paragraph{Electron time-step sub-cycling\\}
-Due to the large mass ratio between the  ions and the electrons, the ion dynamic is much slower than the electron dynamic that constrained the time step  $\dt$, which is constrained by the electron dynamic.
+Due to the large mass ratio between the  ions and the electrons, the ion dynamic is much slower than the electron dynamic that constrained the time step  $\dt$.
 In \citet{adam1982}, the authors propose to reduce the computational time by using a different time-step $\dt$ for the ions and the electrons.
 They show theoretically and numerically that numerical instabilities rise when $\ope \dt_i  \sim \pi$.
-With the stability criterion on $\dt_e$ \cref{eq-dx_limit}, we find the stability criterion 
+With the stability criterion on $\dt_e$ (\cref{eq-dx_limit}), we find the stability criterion 
 \begin{equation} \label{eq-subcycling_criterion}
   \frac{\dt_i}{\dt_e} < \frac{\pi}{0.2} \simeq 15.7.
 \end{equation}
 
-Consequently, we use $\frac{\dt_i}{\dt_e} = 11$ in the latter.
+Consequently, we use $\frac{\dt_i}{\dt_e} = 11$ in what follows.
 We verified for one case that using the same time-step for the ion and the electrons produces the same solution.
 
 
@@ -96,7 +96,7 @@ This could be overcome by adapting dynamically the mesh and the time step.
 However, too few studies of the consequences of the use of adaptive mesh and time step on the simulations have been conducted.
 Thus, we have chosen not to modify the \ac{PIC} algorithm.
 
-Two other approaches have been followed to reduce the computational cost induce by the breathing mode\string:
+Two other approaches have been followed to reduce the computational cost induced by the breathing mode\string:
 \begin{enumerate}
   \item the approach used by \citet{coche2014}\string: using a scaling of the permittivity to reduce the computational load,
   \item the approach of \citet{boeuf2018}, using a forced ionization source term.
@@ -211,7 +211,7 @@ The ionization source term $S_{iz}$ used follow a cosine profile
 with the parameters $S_0, z_M$ , and $L_S$ given in \cref{tab-parameters-boeuf}.
 The simulation domain is small, reducing again the computational load.
 Indeed, the axial length in this case in $L_z=2.5\,\centi\meter$, with $L_{ch}=0.75\,\centi\meter$ of the chamber included in the simulation domain, against $L_{ch}=2.5\,\centi\meter$ in the typical \ac{HET}.
-\Cref{fig-boeuf-presnetation} presents the simulation domain and the axial profile of the ionization source term $S_{iz}$ and the magnetic field.
+\Cref{fig-boeuf-presnetation} presents the simulation domain, the axial profile of the ionization source term $S_{iz}$, and the magnetic field profile.
 \begin{figure}[hbt]
   \centering
   \begin{tabular}{@{} cc}
@@ -222,7 +222,7 @@ Indeed, the axial length in this case in $L_z=2.5\,\centi\meter$, with $L_{ch}=0
   \label{fig-boeuf-presnetation}
 \end{figure}
 
-The electrons emitted by the cathode are injected inside of the simulation domain, at 1\,cm from the boundary.
+The electrons emitted by the cathode are injected inside the simulation domain, at 1\,cm from the boundary.
 Since the electron injection is not located at the cathode boundary, a large cathode sheath is present.
 Therefore, the plasma potential is corrected so that the potential is $\phi=0$ at the location of injection, at 1\,cm from the boundary.
 This is done by substracting the azimuthally averaged plasma potential at the injection plane, from the potential calculated with the Poisson equation.
@@ -262,13 +262,13 @@ The physical and numerical conditions used for the test-case of Boeuf are given 
 
 \subsection{Model for radial losses} \label{subsec-fakeR}
 
-In this section, we address the objective to add to the purely \ac{2D} axial-azimuthal \ac{PIC} simulation the impact of the radial walls.
+In this section, we address the issue of adding to the purely \ac{2D} axial-azimuthal \ac{PIC} simulation the impact of the radial walls.
 The first effect that we want to model is the particle and power losses to the wall.
 Thus, as previously done in the radial-azimuthal simulation, the particles are tracked in the three directions, and a finite radial length is used to limit the radial direction.
 
 When an ion crosses the boundary, it is removed from the simulation.
 The electrons are partially reflected, such that the electron flux absorbed at the wall equals the ion flux.
-We do not model the secondary electron emission.
+We do not model the secondary elecobjectivetron emission.
 We suppose that the sheath is infinitely thin, so that the wall corresponds to a partially reflecting surface.
 Two approaches have been investigated to model efficiently the effect of the sheath.
 
@@ -290,18 +290,21 @@ Hence, we chose not to use it.
 % The authors did not modeled the particle losses
 
 \paragraph{Model 2 for the  radial losses\string: flux equality\\}
-The second approach directly imposes the flux equality by absorbing every time step the same number of electrons than ions.
+The second approach directly imposes the flux equality by absorbing at every time step the same number of electrons than ions.
 The electrons crossing the radial boundaries are sorted by their energy in the radial direction, and the electrons absorbed are the most energetic ones.
 The others are reflected elastically.
-Due to the small number of ions crossing the boundary, and for performance issues, we choose to impose the flux equality averaged over the domain of a CPU.
+Due to the small number of ions crossing the boundary, and for performance issues, we choose to impose the flux equality averaged over the domain of one CPU.
 As 360 CPU domains are used to decompose the whole simulation domain, this allows a partial locality of the flux equality. 
 
 \vspace{1ex}
 While the sheath can be supposed infinitely thin, the ion flux to the wall usually depends on the pre-sheaths, which display an ambipolar electric field that accelerates the ions to the ion sound speed at the sheath edge.
 Since the development and validation of a pre-sheath electric field model in the radial model required more resources than available, there is no such pre-sheath model in the results presented in this chapter.
 Consequently, the ion flux to the wall is a thermal flux, which is much smaller than the flux created by a pre-sheath.
-Hence, using a realistic radial length  of the order of $2\,\centi\meter$, the particle losses are underestimated.
+Hence, using a realistic radial length  of the order of $L_R=2\,\centi\meter$, the particle losses are underestimated.
+
 One solution could be to reduce the radial length, so that the particle flux are closer to physical losses.
+Indeed, we can compensate the reduced ion flux (due to the reduced ion velocity) by increasing the density of the macro-particles.
+Assuming the macro-particles uniformly distributed over the third $R$ direction, reducing  $L_R$ increases the radial density of macro-particles, hence the macro-particle flux.
 
 The results given in the next sections are obtained by modeling the radial losses in the whole simulation domain.
 We choose to do so in order not to introduce a discontinuity in the radial boundary condition, as well as to increase the impact of the radial losses on the simulation results.
