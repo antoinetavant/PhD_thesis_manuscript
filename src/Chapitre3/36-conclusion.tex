@@ -24,7 +24,7 @@ Following the work of \citet{zhang2016} on the collisionless evolution of non-Ma
   \Te n_e^{1-\gamma} = cst, \text{ with $\gamma$ the polytropic index}
 \end{equation*}
 
-The polytropic state law for the electrons, when used in fluid model, allows to obtain the same densities and plasma potential than in the \ac{PIC} simulation.
+The polytropic state law for the electrons, when used in fluid model, allows to obtain the same densities and plasma potential as in the \ac{PIC} simulation.
 This paves the way for a modified sheath model to compare to the \ac{2D} \ac{PIC} simulation of the \ac{HET} of \cref{ch-2}.
 
 We have also seen in \cref{sec-realistic_1D} that the polytropic state law also stands when a self-consistent heating mechanism is used, even if the agreement is less satisfactory than in the other case.
@@ -32,5 +32,5 @@ We have also seen in \cref{sec-realistic_1D} that the polytropic state law also 
 In \cref{eq-polyp2}, the value of the polytropic index $\gamma$ depends on the shape of the \ac{EVDF}.
 We showed in \cref{sec-MCM} that a Monte Carlo computation can be used in order to obtain the \ac{EVDF} for a given plasma potential profile and neutral pressure.
 As the Monte Carlo approach does not need the Poisson equation to be solved, it produces the \ac{EVDF} much faster than a \ac{PIC} simulation.
-Hence, we could couple the Monte Carlo calculation with a fluid model, as long as no analytic model can be used to determine the \ac{EVDF}.
+Hence, we could couple the Monte Carlo calculation with a fluid model to accurately take into account the real shape of the \ac{EVDF} in the closure of terms in fluid models.
 

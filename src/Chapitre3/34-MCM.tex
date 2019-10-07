@@ -4,11 +4,11 @@
 \label{sec-MCM}
   
   The \ac{1D} \ac{PIC} simulations were computed faster than the \ac{2D} simulations, as the latter needed around a week to compute $10\,\micro\second$ on 360 CPUs, while the former needed only a few days on 64 CPUs to compute $20\,\micro\second$ of physical time.
-  However, they still took a rather long time, especially when compared to fluid models that can be solve from under one second to around one day on a single core, depending on the hypotheses used.
+  However, they still take a rather long time, especially when compared to fluid models that can be solved from under one second to around one day on a single core, depending on the hypotheses used.
   
   We have seen that the polytropic index depends on several conditions, as the background pressure (see \cref{fig-p}) but also the densities, sizes, heating mechanism, and so on.
   We have seen in \cref{sec-fluid} that the only value of the polytropic index $\gamma$ is enough to describe the \ac{PIC} simulation.
-  As the value of $\gamma$ depends on the \ac{EVDF}, we propose here a Monte Carlo approach that could be used in order to obtain the \ac{EVDF} faster that a \ac{PIC} simulation.
+  As the value of $\gamma$ depends on the \ac{EVDF}, we propose here a Monte Carlo approach that could be used in order to obtain the \ac{EVDF} faster than with a \ac{PIC} simulation.
   A possible application would be similar to \citet{kushner1983}, where the author uses a small population of electrons (typically 300-500) and observes their evolutions in a given plasma potential.
   
   This method gets rid of the Poisson equation, which can take between 30\% and 50\% of the total simulation time.
@@ -22,7 +22,7 @@
 
     In order to validate the Monte Carlo approach, we use the converged simulation of the \ac{1D} \ac{PIC} model.
     We use the potential, so the electric field, computed self-consistently in the \ac{PIC} simulation.
-    The Monte Carlo is initialised with a uniform density of electrons.
+    The Monte Carlo is initialized with a uniform density of electrons.
     When an electron is collected at the wall, it is re-injected, similarly to the \ac{PIC} simulation.
     The electrons are pushed, and undergo collisions as described in \cref{sec-elements}.
 
@@ -42,10 +42,10 @@
     In PIC simulations, numerical parameters can induce numerical heating and thermalization \citep{lai2014}.
     The numerical heating has been studied in detail \citep{birdsall1991}.
     It is due to aliasing effects, and depends on the grid size, time step and number of particles per cell.
-    The choice of these parameter leads to reduce the effect of the heating.
+    It is important to carefully choose these parameters to reduce the effect of the heating.
 
     The thermalization is the fact that the distribution of the particle tends toward a Maxwellian.
-    It originates from fluctuations of the electric field due to the discretization of the particle.
+    It originates from fluctuations of the electric field due to the discretization of the particles.
     The first studies showed that the thermalization time $\tau_T$ depends on $N_D$ the number of (numerical) particles per Debye sphere \citep{dawson1964,montgomery1970}.
     The presence of collisions can affect $\tau_T$  \citep{turner2006,lai2014}.
     In \citet{turner2006}, the author observed the evolution of the thermalization time with $N_D$ as
@@ -57,9 +57,10 @@
     Hence, the effects of numerical parameters on the simulation results are expected to be negligible.
 
   \subsection{Results of the Monte Carlo computation} \label{subsec-MCMresults}
-
+\inlinenote{Anne: j'avoue que je me suis perdue dans ce paragraphe!!!\\
+je ne comprends pas ta demonstration ici...c'est quoi le lien avec 4.6.1??}
     We measured the electron energy distribution function (EEDF) at $3\,\centi\meter$ from the left wall.
-    \Cref{fig-zoom_init_Mc} shows the evolution of the EEDF at the very early moments of the simulation, from $t=0.01$ to $0.08\,\micro\second$.
+    \Cref{fig-zoom_init_Mc} shows the evolution of the EEDF at the very early time of the simulation, from $t=0.01$ to $0.08\,\micro\second$.
     The energy of the electrons is oriented, meaning that the electrons with positive energy are coming from the wall, while the negative energy is used for the electrons going toward the wall.
 
     \begin{figure}[!hbt]
@@ -72,11 +73,13 @@
         \includegraphics[width=0.4\textwidth]{MCC_EEDF/Heelo_6} &
         \includegraphics[width=0.4\textwidth]{MCC_EEDF/Heelo_8} \\
       \end{tabular}
-      \caption{Evolution of the directed EEPF measured at $x=3\,\centi\meter$ from a wall. The positive energy is used for the electron going from the wall, while the negative energy represents the electrons moving toward the wall. The dotted line correspond to the local potential. Are overlaid (organge) the initial Maxwellian distribution and (green) the EEPF obtained at the end of the \acs{PIC} simulation. }
+      \caption{Evolution of (blue) the directed EEPF measured at $x=3\,\centi\meter$ from the left wall. The positive energy is used for the electrons going from the wall, while the negative energy represents the electrons moving toward the wall. The dotted lines correspond to the local potential. Are overlaid (organge) the initial Maxwellian distribution and (green) the EEPF obtained at the end of the \acs{PIC} simulation. }
       \label{fig-zoom_init_Mc}
     \end{figure}
+    \inlinenote{Anne: Refaire les figures, surtout pour la legend qui n'est pas claire dans l'état.}
+    
 
-    Two phenomena can be seen in \cref{fig-zoom_init_Mc}.
+    Two phenomenon can be seen in \cref{fig-zoom_init_Mc}.
     The first is the rapid decrease of the tail of the distribution function, for energies higher than the plasma potential.
     The tail for positive energy decreases faster than for negative energy, as the EEPF is measured closer to one wall than the other ($x=3\,\centi\meter$ against $L-x=7\,\centi\meter$).
     After $ T \simeq 0.06\,\micro\second$ the two tails are largely depleted, as they are one order of magnitude smaller than the Maxwellian EEPF.
@@ -95,20 +98,20 @@
         \includegraphics[width=0.3\textwidth]{MCC_EEDF/Heelo_1_100.pdf} &
         \includegraphics[width=0.3\textwidth]{MCC_EEDF/Heelo_1_150.pdf} \\
       \end{tabular}
-      \caption{Evolution of the directed EEPF measured at $x=3\,\centi\meter$ from a wall. The dotted line corresponds to the local potential. Are overlaid (organge) the initial Maxwellian distribution and (green) the EEPF obtained at the end of the \acs{PIC} simulation. }
+      \caption{Evolution of (blue) the directed EEPF measured at $x=3\,\centi\meter$ from the left wall. The dotted line corresponds to the local potential. Are overlaid (orange) the initial Maxwellian distribution and (green) the EEPF obtained at the end of the \acs{PIC} simulation. }
       \label{fig-zoom_Mc_later}
     \end{figure}
 
     \vspace{1em}
-    This Monte Carlo investigation has shown that in the \ac{1D} model, the EEPF depends on the absorption at the wall but also the electron-neutral collisions.
+    This Monte Carlo investigation has shown that in the \ac{1D} model, the EEPF depends on the absorption at the wall but also on the electron-neutral collisions.
     The final shape of the distribution is not simple, and is difficult to describe and predict analytically.
     However, given the potential profile, the Monte Carlo computation reproduces the same distribution in a much shorter time compared to the \ac{PIC} simulation. 
     The obtained EEPF can then be used to determine the electron density and temperature evolution.
     This could be used to determine efficiently, and precisely, the electron polytropic coefficient.
 
   \subsection{Discussion on the different time scales}
-    The results presented in the previous section show two main time scale.
-    In this section, compare the observed time scaled with the theoretical times.
+    The results presented in the previous section show two main time scales.
+    In this section, we compare the observed time scaled with the theoretical times.
     
     The electrons collected at the wall have a kinetic energy at least equal to the potential drop to the wall $\ek = e \dphi$, which corresponds in our case to a limit velocity of $v_{\rm lim} = \sn{1.5}{6} \,\meter\per\second$.
     Hence, the limit time of flight between the two boundaries is
@@ -125,7 +128,7 @@
     
     This discrepancy can be due to two reasons.
     First, at high energy the electron-neutral scattering is not isotropic, but instead gives mostly small angles (forward scattering) \citep{vahedi1995}.
-    Hence, a large number of collision is required for the isotropization to be observable.
-    Secondly, the argon presents a significant Ramsauer minimum (a quantum mechanical resonance \citep{lieberman2005}) at $0.3 \,\volt$, were the cross-section is two orders of magnitude lower than on $5\,\volt$.
+    Hence, a large number of collisions is required for the isotropization to be observable.
+    Secondly, the argon presents a significant Ramsauer minimum (a quantum mechanical resonance \citep{lieberman2005}) at $0.3 \,\volt$, were the cross-section is two orders of magnitude lower than at $5\,\volt$.
     The two phenomena combined can explain the discrepancy between $\tau_{\rm ela}$ and the simulation results.
   

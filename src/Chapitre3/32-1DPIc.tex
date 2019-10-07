@@ -3,7 +3,7 @@
 \section{Simplified 1D PIC simulations}
   \label{sec-1DPIC}
 
-  We have seen in \cref{sec-insights} that the secondary electron emission is not responsible for the temperature radial profile.
+  We have seen in \cref{sec-insights} in \cref{fig-te_profile_see} that the secondary electron emission is not responsible for the temperature radial profile.
   Hence, we neglect it in this section.
   The simulations are at low pressure, in which case  the electrons are non-local \cite{bernstein1954, godyak1993}.
   In low pressure bounded discharges, it is well-known that the EEDF is not Maxwellian in both capacitively coupled plasmas and inductively coupled plasmas \cite{mouchtouris2016, godyak2002, meige2006a, dominguez-vazquez2018}, in agreement with \cref{fig-EEDF}.
@@ -59,9 +59,10 @@
 
   \subsection{Simulation results of the \acs{1D} \acs{PIC} simulation} \label{subsec-1DPIC_results}
 
-    \Cref{fig-PIC1} shows the results of the simulation with the parameters of \cref{tab_1DPICParams}.
-    We only present in this section the result for neutral pressure $P=0.1$mTorr.
-    The results obtained with different pressure show the same characteristics, and the effect of the pressure is further discussed in \cref{subsec-presurseffect}.
+    % \Cref{fig-PIC1} shows the results of the simulation with the parameters of \cref{tab_1DPICParams}.
+    % We only present in this section the result for neutral pressure $P=0.1$mTorr.
+    \Cref{fig-PIC1} shows the results of the simulation for a neutral pressure $P=0.1$mTorr.
+    The results obtained with the different pressures of \cref{tab_1DPICParams} show the same characteristics, and the effect of the pressure is further discussed in \cref{subsec-presurseffect}.
     
     \begin{figure}[!htb]
       \centering
@@ -71,7 +72,7 @@
     \end{figure}
 
 
-    On the left-hand side we observe the electron and ion density profiles, while on the right the plasma potential and the electron temperature are shown.
+    On the left-hand side we observe the electron and ion density profiles, while on the right the plasma potential and the electron temperature, defined with \cref{eq-defTe}, are shown.
     In \cref{fig-PIC1}, the electron and ion densities and the plasma potential feature the usual symmetric profiles with a pre-sheath and a sheath.
     However, while the electron temperature is almost constant in the plasma bulk at the center of the simulation domain, we observe a steep decrease in the sheath.
     The electron temperature gradient should affect the density profile in the sheath and the electron heat flux to the wall.
@@ -86,6 +87,7 @@
     f_{P}(\epsilon) = \epsilon^{-1/2} f_{\epsilon}
     \end{equation}
 
+    \inlinenote{Illustrer l'anisotropie ici}
     As the distribution function is anisotropic, and since the direction of interest is the $x$ direction, we focus here on $f_{P x}(\epsilon_x)$ the EEPF in the $x$ direction, with $\epsilon_x = \frac{m_e v_{e,x}^2}{2}$.
 
 
@@ -103,7 +105,7 @@
     This population corresponds to the electrons confined by the sheath.
     However, the high energy tail ( $\ek > e\dphi$) is depleted due to the absorption at the wall \citep{meige2006a,kaganovich2007,lafleur2011}.
     This results in a  non-Maxwellian EEPF of temperature, defined with \cref{eq-defTe}, lower than $\Te_{, inj}$.
-    The small population of electrons with very high energy corresponds to the electrons newly generated that have not yet reached the walls.
+    The small population of electrons with very high energy corresponds to the electrons newly generated that have not reached the walls yet.
 
 
 

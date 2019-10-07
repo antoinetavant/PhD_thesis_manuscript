@@ -13,13 +13,11 @@
   \subsection{Numerical determination of \texorpdfstring{$\hat\epsilon$}{the plasma dielectric function.}} \label{subsec-numepsilon}
   
   The calculation of $Z$, needed to determine $\hat{\epsilon}$, is usually done using the Maxwellian hypothesis \citep{cavalier2013} (hence using the Fried and Compte function $Z_M$), the kappa distribution \citep{ziebell2017}, or other analytic expressions.
-  We can also use a linear combination of such simple distribution functions, such as done in the software WHAMP, \citet{ronnmark1982}.
+  We can also use a linear combination of such simple distribution functions, such as done in the software WHAMP in \citet{ronnmark1982}.
   Here we propose to solve the dispersion relation $\hat{\epsilon}=0$ using the distribution function measured in the \ac{PIC} simulation.
-  
   
   The numerical computation of $\norm{\hat\epsilon}$ is done using the method of \citet{xie2013} for computing $\tilde{Z}$ the numerical approximation of $Z$. 
   It uses the fact that $Z$ is an Hilbert transform of the distribution function, and that the Hilbert transform can be changed to a Fourier Transform, weighted by well chosen basis functions, so the \ac{FFT} algorithm can be used \citep{weideman1995}.
-  
   An interesting point is that the evaluation of $\tilde{Z}(\eta)$ is done by a polynomial function, which coefficients depends only on the distribution function $f$. 
   Hence, they need to be determined only once, and evaluating $\tilde{Z}(\eta)$ is relatively fast.
   
@@ -31,7 +29,7 @@
   \end{figure}
   \cref{fig-numZ} shows the comparison of the numerical evaluation of $\tilde{Z}(\eta)$ for a Maxwellian distribution function with the Fried and Conte function (from the `plasmapy` python package) for different values of the imaginary part of $\eta$.
   We can see that for $\Im(\eta)$ positive, null or slightly negative, the two functions gives exactly the same results.
-  However, for larger negative values of $\Im(\eta)$, the two functions gives different results.
+  However, for larger negative values of ${\rm Im}(\eta)$, the two functions gives different results.
   
   This discrepancy between $Z_M$ and $\tilde{Z}_M$ for large negative imaginary argument is certainly due to the fact of the analytic expansion of $Z$ to the complex plane require the evaluation of the distribution function for complex velocities \citep{xie2013,weideman1995}.
   However, the discrete velocity distribution function measured in the \ac{PIC} simulation cannot be properly evaluated for complex velocities.

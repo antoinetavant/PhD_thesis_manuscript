@@ -38,7 +38,7 @@
   We present in this section the simulation conducted to study the azimuthal instability.
   The parameters of the simulation are given in \cref{tab-evdfpicparams}.
   The imposed axial electric field $E_z$ and the radial magnetic field $B_r$ are uniform in space and constant in time.
-  The radial direction is closed with the dielectric boundary condition of dielectric width $L_{diel}$.
+  The radial direction is closed with the dielectric boundary condition of dielectric width $L_{diel}=3\,\milli\meter$.
   No \ac{SEE} is modeled, and the convection is modeled with the new noiseless model (see \cref{sec-noiselessresults}).
   The simulation is initialized with a uniform electron and ion density $n_e = n_i = \sn{3}{17}\per\meter\squared$, with an electron temperature $\Te=10\,\volt$ and an ion temperature $\Ti=0.025\,\volt$.
   The mean particle density is conserved by imposing an ionization  which compensate the particle losses at the wall a each time step.
@@ -152,7 +152,7 @@
   
   \Cref{fig-turbul} shows the frequency power spectrum in log scale.
   Overlaid is a fit of the cascade, for frequencies above the maximum amplitude.
-  The power law obtained is $\alpha \simeq 4.2$, which is much greater than the Kolmogorov's value.
+  The power law obtained is $\alpha \simeq 4.2$, which is much greater than Kolmogorov's value of $5/3$.
   The oscillations observed present a decrease of the power spectrum much steeper than expected from turbulence.
   Even if the mechanism of plasma turbulence differs from the fluid turbulence \citep{tsytovich1972}, the value of $\alpha$ is significantly larger than expected.
   Consequently, we expected that there is no significant dissipation or cascade to the small scales.
@@ -190,11 +190,18 @@
     \end{equation}
     
     The transit time is of the good  order of magnitude, but $T_{NL}$ is still twice bigger.
+    In addition, we tried to initialize the simulation with ions distributed in the axial direction, so that their flux is constant in time.
+    Such an initialization did not modify the low frequency oscillations.
     
   \paragraph{Particle trapping and bouncing\\}
-    A common reason for wave saturation is the ion trapping. 
-    It has been observed in both \ac{1D} simulation by \citet{lafleur2016a} and in \ac{2D} simulation \citep{croes2017a}.
-    Hence, the low frequency modulation could be due to particle bouncing \citep{belmont2013}.
+    A common reason for wave saturation is the ion-wave trapping.
+    The ion-wave trapping is a particle wave interaction that happens for the ions that have a velocity near the phase velocity of the wave.
+    Ions are first accelerated by the wave where the electric field is positive.
+    Hence, their velocity become slightly above the phase velocity of the wave, so that they reach the negative electric field of the wave.
+    Then, their decelerate and reaches the first step of the process. 
+    
+    Ion-wave trapping has been observed in both \ac{1D} simulation by \citet{lafleur2016a} and in \ac{2D} simulation \citep{croes2017a}.
+    Hence, the low frequency modulation could be due to the ions bouncing \citep{belmont2013}.
     However, the bouncing time scale is 
     \begin{equation} \label{eq-TB}
       T_{B} = 2 \pi \sqrt{\frac{m_i}{e k \max(E_{\theta})} } \simeq 0.5 \,\micro\second,
@@ -232,6 +239,9 @@
     \Cref{fig-tempITcrit} shows the temporal evolution of the electron thermal energy $\epsilon_{\rm th}$ and the wave energy density $\epsilon_{\rm wave}$, scaled by the factor 432.
     We can see that $\epsilon_{\rm th}$ is relatively constant.
     However, $\epsilon_{\rm wave}$  oscillates significantly, and passes regularly above and below $\epsilon_{\rm th}$.
+    In order to understand the reason for this behavior, we can look at the evolution of the ion temperature.
+    Indeed, the trapped ions gain energy, which increases the total ion temperature. 
+    
     
     \begin{figure}[!hbt]
       \centering
@@ -241,11 +251,12 @@
       \label{fig-tempITcrit}
     \end{figure}
     
+    
     The correlation between the wave amplitude and the ion temperature is shown in \Cref{fig-oscillation_ion_cret}.
     \cref{fig-oscillation_ion_cret}.{\bf a} shows the temporal evolution of the ion temperature $\Ti$ and the standard deviation of the azimuthal electric field $\sigma_{E_{theta}}$, both normalized.
-    We see that the wave amplitude is a quarter of a period before the ion temperature.
+    We see that the oscillation of the wave amplitude is a quarter of a period before the oscillation of the ion temperature.
     This means that first the wave increases, then the ion temperature increases.
-    After that, the ave amplitude decreases, which leads to the decreases of the ion temperature.
+    After that, the wave amplitude decreases, which leads to the decreases of the ion temperature.
     
     \begin{figure}[hbtp]
       \centering
@@ -265,8 +276,7 @@
     
     In \cref{fig-tempITcrit,fig-oscillation_ion_cret}, the period of the oscillations of $\epsilon_{\rm wave}$ is $T_{NL} \simeq 1.5\,\micro\second$.
     This period is related to the response time of the ions, as we have $$T_{NL}/4 \simeq 0.4\,\micro\second \sim T_B.$$
-    The hypothesis that the low frequency modulation of the amplitude of the azimuthal wave could be validated by varying the ion mass, and observe if $T_{NL}$ varies in $\sqrt{m_i}$.
-    
+    The hypothesis that the low frequency modulation of the amplitude of the azimuthal wave could be validated by varying the ion mass, and observe if $T_{NL}$ varies in $\sqrt{m_i}$.    
     To summarize, the low frequency modulation of the azimuthal wave amplitude is certainly due to non-linear behavior of wave-particle interaction.
     Complementary results are presented in \cref{subsec-VDFIAW} by solving the dispersion relations.
     

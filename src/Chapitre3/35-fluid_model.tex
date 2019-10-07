@@ -53,7 +53,7 @@ with $\Te_{,c}, n_{e,c}$ the electron temperature and density at the center, $c_
 \end{cases}
 \end{equation}
 
-Starting from the center, and using the results of the PIC simulations to determine $\gamma$, we can use the system of \cref{eqs-fluid} to compute the profile of every variable.
+Starting from the center, and using the results of the PIC simulations to determine $\gamma$, we can use the system of \cref{eqs-fluid} to compute the profile of each variable.
 The plasma potential is self consistently computed from an arbitrary value at the center.
 It is then shifted to set the wall potential to 0V.
 The integration uses the \nth{4} order Runge-Kutta integration scheme of the python package \texttt{scipy}.
@@ -176,7 +176,7 @@ However, for $\gamma > 1$, the mean energy by electron decreases.
 \begin{figure}[!htbp]
   \centering
   \includegraphics[width=\defaultwidth]{meanelectronenergy_PIC.pdf}
-  \caption{Evolution of the mean energy per electron leaving the plasma at the wall normalized to the electron temperature at the sheath edge as a function of the polytropic index $\gamma$ from the theory of \cref{eq-meanE}. The simulation result (marker) corresponds to the model \M1. }
+  \caption{Evolution of the mean energy per electron leaving the plasma at the wall normalized to the electron temperature at the sheath edge as a function of the polytropic index $\gamma$ from the theory of \cref{eq-meanE} and from the PIC simulations results (the same cases as in \cref{fig-p}) . }
   \label{fig-avE}
 \end{figure}
 
