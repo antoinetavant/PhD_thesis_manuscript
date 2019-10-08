@@ -8,15 +8,15 @@
     The presence of azimuthal instabilities in the Hall effect thrusters has first been shown with numerical simulations by \citet{adam2004}.
     Then, they have been the subject of numerous studies, especially numerical \citep{ducrocq2006,lafleur2016,lafleur2016a,croes2017,croes2018,janhunen2018,taccogna2019}, but also experimental \citep{honore2011,cavalier2013,cavalier2013a}.
     However, their nature remain unclear \citep{boeuf2018}.
-    Viven Croes studied the azimuthal instability in a radial-azimuthal simulation domain with the model of particle convection proposed by Lafleur \citep{croes2017,croes2018}.
-    The author showed that the saturation of the oscillations was due to ion-wave trapping.
+    Viven Croes studied the azimuthal instability in a radial-azimuthal simulation domain of radial length $L_R=2\,\centi\meter$ and azimuthal length $\L_{\theta}=0.25\,\centi\meter$, with the model of particle convection proposed by Lafleur \citep{croes2017,croes2018}.
+    He showed that the saturation of the oscillations was due to ion-wave trapping.
     Using a parametric study over the plasma density and the ion mass, he observed that the main oscillation is consistent with the characteristics of the \ac{IAW}.
     
     During the three years of my Ph.D., other groups presented new simulation results in similar radial-azimuthal geometries.
-    \citet{hara2019a} presents some kinetic simulation results of a \ac{2D} geometry, of size similar to the case studied here.
-    However, the authors focused on the electron mobility values, and few information on the instability are given.
-    In \citet{janhunen2018}, the authors present a collisionless highly resolved \ac{2D} \ac{PIC} simulation.
-    No convection and no radial losses compensation models are used, hence the electron energy quickly rises and the density decreases.
+    \citet{hara2019a} presented some kinetic simulation results of a \ac{2D} geometry, of size similar to the case studied here.
+    However, that work was focused on the electron mobility values, and few information on the instability are given.
+    In \citet{janhunen2018}, the authors presented a collisionless highly resolved \ac{2D} \ac{PIC} simulation.
+    No convection and no compensation model for radial losses are used, hence the electron energy quickly rises and the density decreases.
     On the other hand, the domain is bigger, with a radial length of $L_r = 53.8\,\milli\meter$ for an azimuthal length of $L_{\theta} = 13.45 \,\milli\meter$.
     Three cells by Debye length are used, while there are in average 800 particles per cell.
     In these conditions, the instability rises, but a large radial structure, named Modified Two Stream Instability (MTSI), of radial wavelength twice as big as $L_r$  is observed.
@@ -25,8 +25,8 @@
         
     \vspace{1ex}
     We can see that the results obtained with similar configurations differ significantly, meaning that some points needs to be clarified.
-    Therefore, we present in this chapter the results obtained with \LPPic.  
-    In \cref{sec-PIC-ECDI}, we present the oscillations observed in the \ac{PIC} simulations.
+    % Therefore, we present in this chapter the results obtained with \LPPic.  
+    In \cref{sec-PIC-ECDI}, we present the oscillations observed in the \ac{PIC} simulations carried out with \LPPic.
     After that, we derive the dispersion relation with no hypothesis concerning the particle distribution functions in \cref{sec-DR-kinetic}, and we present in \cref{sec-DR-solver} a numerical algorithm that solves the dispersion relation using the distribution function measured in the \ac{PIC} simulations.
     The oscillations observed in the simulation are compared in \cref{sec-DR-results} to the results of the dispersion relation.
     To finish with, the impact of the radial boundary condition is investigated in \cref{sec-DR-BC}.
@@ -90,13 +90,13 @@
   \begin{equation} \label{eq-Ee}
     \Ee_d = \frac{m_e}{2 e N_e} \sum_{j=1}^{N_e} v_{j, d}^2 
   \end{equation}
-  with $d$ the direction ($r,\theta$, or $z$), $N_e$ is the number of electron, and $v_{j, d}$ is the velocity in the direction $d$ of the $j^{\rm nt}$ electron.
+  with $d$ the direction ($r,\theta$, or $z$), $N_e$ is the number of electrons, and $v_{j, d}$ is the velocity in the direction $d$ of the $j^{\rm nt}$ electron.
   We see that the simulation starts at $\Ee = \Te_{,0} /2$, and  that after a few microseconds of transition, the simulations reaches a steady-state with small fluctuations.
   This corresponds to an initial Debye length of $\lde=\sn{4.3}{-5}\,\meter$, increasing up to  $\lde=\sn{7.0}{-5}\,\meter$ at the saturated regime.
   \begin{figure}[!hbt]
     \centering
     \includegraphics[width=\defaultwidth]{canonical_Te_all_directions.pdf}
-    \caption{Temporal evolution of $\Ee$ the electron mean kinetic energy decomposed  over the three directions. The kinetic energy include the internal energy (temperature) and the kinetic energy of the mean velocity.}
+    \caption{Temporal evolution of $\Ee$ the electron mean kinetic energy decomposed  over the three directions. The kinetic energy includes the internal energy (temperature) and the kinetic energy of the mean velocity.}
     \label{fig-canon_Te_allch5}
   \end{figure}
   
@@ -117,7 +117,7 @@
   
   \Cref{fig-2DcutEx} shows the temporal evolution of the azimuthal electric field and the electron density as a function of the azimuthal position, measured at the center of the radial direction.
   We see the instability growing at the beginning, up to the saturation around $t=1\,\micro\second$.
-  Then, we observe, in addition to the fast oscillation, a slower modulation of the oscillation's amplitude, similar to the fluctuations seen in \cref{fig-canon_Te_allch5}.
+  Then, we observe, in addition to the fast oscillation, a slower modulation of the oscillation amplitude, similar to the fluctuations seen in \cref{fig-canon_Te_allch5}.
   \begin{figure}[!hbt]
     \centering
     \includegraphics[width=\textwidth]{R_theta_fluctuations}
@@ -125,15 +125,15 @@
     \label{fig-2DcutEx}
   \end{figure}
 
-  \Cref{fig-FFT_ex} shows the frequency spectrum of the azimuthal electric field presented in \cref{fig-2DcutEx} computed via \ac{FFT} in the saturated regime ($t > 1.5\,\micro\second$).
+  \Cref{fig-FFT_ex} shows the frequency spectrum of the azimuthal electric field presented in \cref{fig-2DcutEx} computed via \ac{FFT} in the saturated regime between $t > 1.5$ and $7\,\micro\second$.
   The spectrum has been averaged in the azimuthal direction, in order to reduce the noise.
   The theoretical frequency $f_{\rm theo} = \frac{\opi}{\pi \sqrt{6} }$ \citep{croes2018} is shown with a dashed line. 
   We can see a very good agreement between $f_{\rm theo}$ and the maximum of the frequency spectrum.
-  The value of the theoretical frequency $f_{\rm theo}$ is developed in \cref{sec-DR-kinetic}.
+  The value of the theoretical frequency $f_{\rm theo}$ corresponds to the most growing frequency of the \ac{IAW} and is detailed in \cref{sec-DR-kinetic}.
   \begin{figure}[!hbt]
     \centering
     \includegraphics[width=\defaultwidth]{spectrum_frequency}
-    \caption{Frequency spectrum of the azimuthal electric field, averaged in the azimuthal direction. The black line is the theoretical frequency.}
+    \caption{Frequency spectrum of the azimuthal electric field computed between $t > 1.5$ and $7\,\micro\second$, averaged in the azimuthal direction. The black line is the theoretical frequency.}
     \label{fig-FFT_ex}
   \end{figure}
   
@@ -146,11 +146,11 @@
   \begin{figure}[!hbt]
     \centering
     \includegraphics[width=\defaultwidth]{spectrum_frequency_turbul}
-    \caption{Normalized frequency power spectrum in log-log scale. The black dotted line shows the  theoretical frequency $f_{\rm theo}$, the orange solid line is a linear fit of coefficient $\alpha$, and the green dashed line correspond to Kolmogorov's turbulent spectra. }
+    \caption{Normalized frequency power spectrum in log-log scale computed between $t > 1.5$ and $7\,\micro\second$. The black dotted line shows the  theoretical frequency $f_{\rm theo}$, the orange solid line is a linear fit of coefficient $\alpha$, and the green dashed line correspond to Kolmogorov's turbulent spectra. }
     \label{fig-turbul}
   \end{figure}
   
-  \Cref{fig-turbul} shows the frequency power spectrum in log scale.
+  \Cref{fig-turbul} shows the frequency power spectrum computed between $t > 1.5$ and $7\,\micro\second$ in log scale.
   Overlaid is a fit of the cascade, for frequencies above the maximum amplitude.
   The power law obtained is $\alpha \simeq 4.2$, which is much greater than Kolmogorov's value of $5/3$.
   The oscillations observed present a decrease of the power spectrum much steeper than expected from turbulence.
@@ -158,7 +158,7 @@
   Consequently, we expected that there is no significant dissipation or cascade to the small scales.
   
   \subsection{Temporal evolution of the oscillation amplitude} \label{subsec-temp}
-  We have seen in the previous section that after a growing phase, the amplitude of the instability saturates with a low frequency oscillation around the stable value.
+  We have seen in the previous section that after a growing phase, the amplitude of the instability saturates with a low frequency oscillation around a stable value.
   This section analyses these temporal characteristics.
   
   \Cref{fig-Ezstd_time} shows the temporal evolution of the characteristics of the electrostatic oscillation.
@@ -173,12 +173,12 @@
     \label{fig-Ezstd_time}
   \end{figure}
   
-  We can see in \cref{fig-Ezstd_time} that during the first microsecond, the growth of the wave amplitude is exponential, corresponding to a constant growth rate.
+  We can see in \cref{fig-Ezstd_time} that during the first microsecond, the growth of the wave amplitude is exponential, corresponding to a constant growth rate $\gamma_{PIC}$ that can be extracted from the simulation.
   A linear fit in log scale give $\gamma_{PIC} \simeq 0.07 \opi$ during the linear phase.
-  After $t=1\,\micro\second$, the amplitude of the electric field oscillates around a mean value, with a period of the order of $T_{NL}=1.5 \pm 0.1 \,\micro\second$.
+  After $t=1\,\micro\second$, the amplitude of the electric field oscillates around a mean value, with a period of the order of $T_{NL}=1.5 \pm 0.1 \,\micro\second$ ($NL$ for {\it non-linear} oscillation).
   Hence, the azimuthal electric field becomes of the type of
   \[  E_{\theta} = E_{\rm LF}(t) E_{\rm HF}(t, {\theta}) \]
-  with $E_{\rm HF}(t, \theta) $ the high frequency instability, and $E_{\rm LF}(t)$ the modulation of the amplitude, with a low frequency $f_{\rm LF} \simeq  650 \pm 40 \,\kilo\hertz$.
+  with $E_{\rm HF}(t, \theta) $ the high frequency instability, and $E_{\rm LF}(t)$ the low frequency modulation of the amplitude, with a low frequency $f_{\rm LF} \simeq  650 \pm 40 \,\mega\hertz$.
   Several phenomena are candidates to the modulation observed, which are discussed here-after.
   
   
@@ -207,8 +207,8 @@
       T_{B} = 2 \pi \sqrt{\frac{m_i}{e k \max(E_{\theta})} } \simeq 0.5 \,\micro\second,
     \end{equation}
     which is 3 times smaller than $T_{NL}$.
-    Using $\sqrt{2} \sigma_{E_{\theta}}$ instead of $\max(E)$, we find $T_B = 0.9\,\micro\second$
-    Even though in \citet{belmont2013}, the authors say that, when the amplitude of the electric field is large (as it is the case here), the bouncing time scale increases due to non-linear phenomenon (the particle trajectory is no longer harmonic), we cannot conclude here that this is the origin of the low frequency modulation.
+    Using $\sqrt{2} \sigma_{E_{\theta}}$ instead of $\max(E)$, we find $T_B = 0.9\,\micro\second$.
+    Even though in \citet{belmont2013}, the authors say that when the amplitude of the electric field is large (as it is the case here), the bouncing time scale increases due to non-linear phenomenon (the particle trajectory is no longer harmonic), we cannot conclude for now that this is the origin of the low frequency modulation.
 
   
   \paragraph{Ion-wave trapping oscillation\\}
@@ -247,9 +247,10 @@
       \centering
       % \includegraphics[width=\defaultwidth]{Ion_Trapping_criter}
       \includegraphics[width=\defaultwidth]{Ion_Trapping_criter_bis}
-      \caption{Temporal evolution of the wave energy density (scaled) compared to the thermal energy density.}
+      \caption{Temporal evolution of the wave energy density compared to the thermal energy density.}
       \label{fig-tempITcrit}
     \end{figure}
+    \inlinenote{Anne: Add unites here}
     
     
     The correlation between the wave amplitude and the ion temperature is shown in \Cref{fig-oscillation_ion_cret}.
@@ -258,25 +259,25 @@
     This means that first the wave increases, then the ion temperature increases.
     After that, the wave amplitude decreases, which leads to the decreases of the ion temperature.
     
-    \begin{figure}[hbtp]
+    \begin{figure}[!hbt]
       \centering
         \begin{tabular}{cc}
           \subfigure{Instability_amp_and_Ti}{a}{30,20} & 
           \subfigure{Instability_criterion_and_gradTi}{b}{20,20} \\
           
         \end{tabular}
-        \caption{Temporal evolution of ({\bf a}) the ion temperature $\Ti$ and the standard deviation of the $\sigma_{E_{\theta}}$, and ({\bf b}) the temporal derivative of the ion temperature $\partial{\Ti}/\partial t$ and the ion-wave trapping criterion}
+        \caption{Temporal evolution of ({\bf a}) the ion temperature $\Ti$ and the standard deviation of the $\sigma_{E_{\theta}}$, normalized, and ({\bf b}) the temporal derivative of the ion temperature $\partial{\Ti}/\partial t$ and the ion-wave trapping criterion, normalized.}
       \label{fig-oscillation_ion_cret}
     \end{figure}
     
-    \cref{fig-oscillation_ion_cret}.{\bf b} shows the temporal derivative of the ion temperature $\partial_t \Ti$ and the ion-wave trapping criterion \cref{eq-criteriaIT}, both normalized.
+    \cref{fig-oscillation_ion_cret}.{\bf b} shows the temporal derivative of the ion temperature $\partial_t \Ti$ and the ion-wave trapping criterion defined as $432\epsilon_{\rm wave} - \epsilon_{\rm th}$ from \cref{eq-criteriaIT}, both normalized.
     When the ion-wave trapping criterion is negative, it means that the wave amplitude is too small, so that the ions are not trapped.
     In contrast, if it is positive the ions will be trapped.
     Again, we see a good correlation between the sign of the ion-wave trapping criteria and the growth, or decrease, of the ion temperature.
     
     In \cref{fig-tempITcrit,fig-oscillation_ion_cret}, the period of the oscillations of $\epsilon_{\rm wave}$ is $T_{NL} \simeq 1.5\,\micro\second$.
-    This period is related to the response time of the ions, as we have $$T_{NL}/4 \simeq 0.4\,\micro\second \sim T_B.$$
-    The hypothesis that the low frequency modulation of the amplitude of the azimuthal wave could be validated by varying the ion mass, and observe if $T_{NL}$ varies in $\sqrt{m_i}$.    
+    This period could be related to the response time of the ions, as we have $$T_{NL}/4 \simeq 0.4\,\micro\second \sim T_B.$$
+    The hypothesis that the low frequency modulation of the amplitude of the azimuthal wave could be validated by varying the ion mass, and observe if $T_{NL}$ varies in $\sqrt{m_i}$.    \inlinenote{Anne: "On peut se demander pourquoi tu ne l'a pas fait"}
     To summarize, the low frequency modulation of the azimuthal wave amplitude is certainly due to non-linear behavior of wave-particle interaction.
     Complementary results are presented in \cref{subsec-VDFIAW} by solving the dispersion relations.
     

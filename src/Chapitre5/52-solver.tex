@@ -47,7 +47,7 @@
   
   \Cref{fig-numZbis} presents the comparison of the calculation of $\hat\epsilon$ from \cref{eq-drECDI} for a Maxwellian distribution function with (left) the Fried and Conte function (from the `plasmapy` python package) and (right) the numerical $\tilde{Z}$.
   We can see that the root with the greater imaginary part, located close to (0.2, 0), is the same in both cases, but that other roots for large negative imaginary part are not similar.
-  But as said previously, theses roots are not our concern, hence the dispersion relation should be well computed using $\tilde{Z}$.
+  But as said previously, these roots are of no interest for our problem, hence the dispersion relation should be well computed using $\tilde{Z}$.
   
 
   \subsection{Finding the root of \texorpdfstring{$\hat\epsilon$}{the plasma dielectric function.} }
@@ -74,20 +74,20 @@
     If $N=1$, we can once again use an integral on the contour to find the root \citep{fortune2001}.
     
     \vspace{1em}
-    This algorithm have been implemented in a python package and successfully tested.
+    This algorithm has been implemented in a python package and successfully tested.
     However, it takes a significant amount of time to obtain the solutions, as $\hat\epsilon$ needs to be evaluated a lot of time during the integration.
     Moreover, we have observed that the dispersion relations \cref{eq-drECDI,eq-MIAW} present only one solution with a positive growth rate.
     This solution, corresponding to the instability, is isolated from the others as observed in \cref{fig-numZbis}.
     Hence, a simpler algorithm, as the Gradient descent, can be used.
     
   \paragraph{Fast root finding algorithm\\}
-    A faster root finding algorithm is proposed to solve the dispersion relation by supposing that the most growing wave is the only root over a domain sufficiently large.
+    A faster root finding algorithm is proposed to solve the dispersion relation by supposing that the wave growing the most is the only root over a domain sufficiently large.
     In other words, it is not close to other roots.
     Hence, we can use a standard minimization method for non-linear equation.
     As the analytic expression of the Hessian or the gradient are unknown, we use the Nelder-Mead method \citep{mckinnon1998}.
     We also tried the Conjugate gradient method by approximating the gradient using finite differences. 
     However, even if this method converges in fewer steps, the gradient estimation takes a significant amount of time.
-    Powell's method \citep{powell1964} has also been implemented, but the Nelder-Mead method present the best performances.
+    Powell's method \citep{powell1964} has also been implemented, but the Nelder-Mead method presents the best performances.
     
     The first guess of the iterative Nelder-Mead method is either 
     \begin{itemize}
@@ -96,6 +96,7 @@
     \end{itemize}
     In addition, we can see in \cref{fig-numZbis} that the interesting root is far from the others in the complex plane.
     Hence, a poor initial guess should not affect significantly the converged results, as long as the step size is small enough.
+    The results presented hereafter have been obtained using this second faster algorithm.
     
 
     \FloatBarrier
@@ -107,7 +108,7 @@
   
   \Cref{fig-IAW_Maxw} shows the comparison with the dispersion relation \cref{eq-drIAWgene} for cold ions and drifting Maxwellian electrons of temperature $\Te=50\,\volt$ and drift velocity $u_e = \sn{2}{6} \,\meter\per\second$ for which the plasma dispersion function $Z_M$ is computed analytically (with the \texttt{plasmapy} package) or numerically.
   The plasma density is $n_e = n_i = \sn{1}{17} \,\per\meter\cubed$.
-  The frequency and growth rate obtained the simplified dispersion relation of \cref{eq-MIAW} is also shown. 
+  The frequency and growth rate obtained using the simplified dispersion relation of \cref{eq-MIAW} is also shown. 
   
   \begin{figure}[hbt]
     \centering

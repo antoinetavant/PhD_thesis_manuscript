@@ -18,7 +18,7 @@
     \Cref{fig-overview_boeuf_neEx} shows the axial and azimuthal distribution of the azimuthal electric field $E_{\theta}$ and the electron density $n_e$ at $t=10\,\micro\second$ is the case where no radial losses are modeled.
     We see in both $E_{\theta}$ and $n_e$ the \ac{ECDI}, which wavelength is approximately $\lambda_{\theta} = 0.08\,\centi\meter$ at $z=0.5\,\centi\meter$.
     The results observed are similar to the one presented by \citet{boeuf2018}, but in order to validate the results, an exhaustive comparisons has been conducted between seven independently developed \ac{PIC} codes on this specific case.
-    A good agreements has been shown \citep{charoy2019}.
+    A good agreement has been shown \citep{charoy2019}.
     
 
     \begin{figure}[hbt]
@@ -39,7 +39,7 @@
         \subfigure{Boeuf_ne_temporal}{a}{20,20} &
         \subfigure{Boeuf_Te_temporal}{b}{20,20} \\
       \end{tabular}
-      \caption{Temporal evolution of ({\bf a})  the mean plasma density, and  ({\bf b}) the  mean electron temperatures in the axial-azimuthal simulations, obtained with three different radial models. }
+      \caption{Temporal evolution of ({\bf a})  the mean plasma density, and  ({\bf b}) the  mean (solid line) total electron temperatures temperature $\Te$  and (dashed line) the radial temperature $\Te_{,R}$ in the axial-azimuthal simulations, obtained with three different radial models. }
       \label{fig-boeuf-temporal}
     \end{figure}
 
@@ -105,7 +105,7 @@
     \end{figure}
 
     We can see that the electron mobility is significantly affected by the radial losses.
-    However, since the simulation is collisionless, the electron crossfield transport in the axial direction is only due to the azimuthal instability.
+    However, since the simulation is collisionless, the electron cross-field transport in the axial direction is only due to the azimuthal instability.
     It is confirmed by \Cref{fig-boeuf-instability}, that shows on the left the average standard deviation of the azimuthal electric field, and on the right the correlation term $R_{ei}$.
     We recall from \cref{sec-transport} that 
     \begin{equation} \label{eq-rei}
@@ -131,11 +131,11 @@
 
     \vspace{1em}
     To summarize the results presented in this section, we used a simple algorithm to model the radial particle losses in the \ac{2D} axial-azimuthal \ac{PIC} simulation.
-    We observe almost no impact on the axial electric field $E_z$, and a slight diminution of the mean electron density $n_e$ (up to 20\% in total, but mostly present in the near-plume region).
+    We observe almost no impact on the axial electric field $E_z$, and a slight diminution of the mean electron density $n_e$ (up to 20\% in total, but mostly in the near-plume region).
     
     The electron temperature is also reduced, not only in the radial direction, where the radial losses have a direct impact, but also on the azimuthal and axial temperatures.
     This is consistent with the large reduction of the axial electron mobility, which lower the Joule heating.
-    The reduction of the crossfield electron transport comes from the diminished amplitude of the azimuthal instability.
+    The reduction of the cross-field electron transport comes from the diminished amplitude of the azimuthal instability.
     In the next section, we analyze in more details the instability in order to explain the impact of the radial losses on the amplitude of the instability.
     In \cref{sec-rheating}, we will discuss radial heating of the electrons.
 

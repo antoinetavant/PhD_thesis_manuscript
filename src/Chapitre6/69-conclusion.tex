@@ -13,13 +13,13 @@ It uses a forced ionization source term, which removes the breathing mode.
 The breathing mode is an ionization instability that makes the analysis of the simulations more complex.
 
 The model of radial losses has successfully shown its ability to reduce the plasma density and electron temperature.
-We were able to obtain a steady-state for three cases\string: one without radial losses, and two with losses using a radial length of $L_R=4\,\centi\meter$ and $L_R=2\,\centi\meter$.
+We were able to obtain a steady-state for three cases\string: one without radial losses, and two with losses using a radial length of $L_R=4\,\centi\meter$ or $L_R=2\,\centi\meter$.
 We observed that the radial losses reduce the electron density slightly and that the axial electric field is almost unaffected.
 On the other hand, the electron temperature is significantly reduced and not only in the radial direction but in the three directions.
-The reduction of the electron temperature is correlated to a substantial diminution of the electron axial mobility.
+The reduction of the electron temperature is correlated with a substantial diminution of the electron axial mobility.
 
 Since the simulations are collisionless, the electron mobility comes from the azimuthal instability.
-We observed that the amplitude of the instability, thus the induced electron axial mobility, are reduced by the radial losses.
+We observed that the amplitude of the instability, thus the induced electron axial mobility, is reduced by the radial losses.
 Several hypotheses that could explain the diminution of the wave amplitude have been discussed.
 The most probable reasons are the diminution of the electron azimuthal drift, hence the reduction of the growth rate, and the fact that the radial losses absorb the particles preferentially at the maximum of the oscillations.
 
@@ -49,7 +49,7 @@ The next section discuss the radial heating observed in both the axial-azimuthal
     % Script on Juno (CH-6_Boeuf)
 
     To model the neutral density, we inject at the anode a constant xenon flow of rate $\dot{m} = 5 \milli\gram\per\second$ at a temperature of $T_g = 640\,\kelvin$.
-    Using a typical surface area, this corresponds to a neutral density at the anode of $n_g=3.0 \times 10^{19}$ {m}$^{-3}$ and a mean velocity of $u_g = 200 \,\meter\per\second$.
+    Using a typical surface area, this corresponds to a neutral density at the anode of $n_g=1.0 \times 10^{19}$ {m}$^{-3}$ and a mean velocity of $u_g = 200 \,\meter\per\second$.
     The evolution of the neutral density is model using the system of \ac{1D} fluid equations, and consider azimuthal symmetry\string:
     \begin{equation}
     \left\{
@@ -61,7 +61,7 @@ The next section discuss the radial heating observed in both the axial-azimuthal
     \right.
     \label{eq-euler}
     \end{equation}
-    with $u_g, p_g$ the neutral axial velocity and the pressure, respectively, $S_{iz}$ is the imposed ionization source term, and $E$ the energy per volume unit
+    with $u_g, p_g$ the neutral axial velocity and the pressure, respectively, $S_{iz}$ is the imposed ionization source term, and $E$ the total energy per volume unit
     \begin{equation}
       E =  \frac{p_g}{\gamma - 1} + \frac{1}{2} n_g u_g^{2},
     \end{equation}
@@ -73,7 +73,7 @@ The next section discuss the radial heating observed in both the axial-azimuthal
     \end{equation}
     with $T_0$ the desired temperature, and $\tau$ the "thermalization time" to reach $T_0$.
     We chose $\tau$ small enough so that $T_n$ does not vary much, while preserving the Courant-Friedrich-Levy condition.
-    In practice, we use $\tau = 10\,\nano\second$.
+    In practice, we use $\tau = 10\,\pico\second$.
     Finally, the neutral density is used in the \ac{MCC} algorithm to model the electron-neutral and ion-neutral scattering and momentum transfer, but the creation of particles remains imposed by the same ionization profile $S_{iz}$ as in \cref{sec-Zthetaresults}.
     \Cref{fig-boeuf-neutrals} shows the neutral density and velocity obtained at steady-state.
 
@@ -120,7 +120,7 @@ The next section discuss the radial heating observed in both the axial-azimuthal
   \end{equation}
   with $\vect{J_e}$ the electron density current and $\vect{E}$ the electric field.
   \Cref{fig-epower_radialone} shows the radial profiles of the electron (and ion) current density $< J_{e, R}>$ and the radial electric field $ < E_R >$, averaged in the azimuthal direction.
-  We observe that the ion and electron current densities are equal to each-other, and they increase linearly with the radial position, in agreement with the use of a uniform artificial injection of particles (see \cref{sec-bidimentionnal_simulation} for more details).
+  We observe that the ion and electron current densities are equal, and they increase linearly with the radial position, in agreement with the use of a uniform artificial injection of particles (see \cref{sec-bidimentionnal_simulation} for more details).
 
   \begin{figure}[hbt]
     \centering

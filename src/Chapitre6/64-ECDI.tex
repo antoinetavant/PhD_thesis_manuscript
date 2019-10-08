@@ -12,7 +12,7 @@
   \begin{enumerate}
     \item The radial loss algorithm used could induce numerical noise which affect the instability,
     \item The electron temperature is decreased\string; if the amplitude of the instability saturates due to ion-wave trapping, then the amplitude would be lower,has developed in \cref{eq-iontropempl},
-    \item The growth rate is proportional to the azimuthal electron drift velocity, as seen in \cref{eq-MIAW}. If the growth rate is affected, then the wave at steady state could be reduced,
+    \item The growth rate is proportional to the azimuthal electron drift velocity, as seen in \cref{eq-MIAW}. If the growth rate is affected, then the wave amplitude at steady state could be reduced,
     \item The radial losses  could directly reduce the amplitude of the instability.
   \end{enumerate}
 
@@ -119,11 +119,11 @@
   \begin{figure}[hbt]
     \centering
     \includegraphics[width=\defaultwidth]{Boeuf_Je_x_axial_one}
-    \caption{Axial profile of the electron azimuthal velocity, the $\vect{E} \times \vect{B}$ drift velocity and the diamagnetic velocity and some of the $\vect{E} \times \vect{B}$ and diamagnetic velocities at steady state for the simulation test-case of Boeuf without radial losses.}
+    \caption{Axial profile of (black solid line) the electron azimuthal velocity measured in the simulation, (blue solid line) the $\vect{E} \times \vect{B}$ drift velocity, (solid orange line) the diamagnetic velocity, and (dashed line) the sum of the $\vect{E} \times \vect{B}$ and diamagnetic velocities at steady state for the simulation test-case of Boeuf without radial losses.}
     \label{fig-Jetheta_sum}
   \end{figure}
   
-  We can see that the $E \times B$ drift is not the only contribution to the electron azimuthal velocity, in contrast to the radial-azimuthal simulations
+  We can see that the $E \times B$ drift is not the only contribution to the electron azimuthal velocity, in contrast to the radial-azimuthal simulations.
   Instead, we have 
   $$ u_{e, \theta} =   u_{E \times B} + u_{\rm Dia}$$
   everywhere in the simulation domain.
@@ -136,7 +136,7 @@
   \begin{figure}[hbt]
     \centering
     \includegraphics[width=\defaultwidth]{Boeuf_Je_x_axial}
-    \caption{Axial profile of the electron azimuthal velocity, the $\vect{E} \times \vect{B}$ drift velocity and the diamagnetic velocity at steady state with three different radial models for the simulation test-case of Boeuf. The sheaths (close to the axial boundaries) are removed from the figure to ease the reading.}
+    \caption{Axial profile of the electron azimuthal velocity, the $\vect{E} \times \vect{B}$ drift velocity and the diamagnetic velocity at steady state with three different radial models for the simulation test-case of Boeuf. The sheaths (close to the axial boundaries) are removed from the figure for clarity purpose.}
     \label{fig-Jetheta}
   \end{figure}
 
@@ -150,15 +150,18 @@
 \subsection{Characteristics of the radial losses}
 
   The last hypothesis on the reduction of the wave amplitude is the direct impact of the radial losses.
-  As the ion flux to the wall is a thermal flux
-  \[ \Gamma_{R, i} \propto n_i \bar{v}_{i, r} \]
-  with $\bar{v}_{i, r}$ proportional to the radial thermal velocity.
-  We recall that the electron flux equals the ion flux\string:
+  We recall that the electron flux equals the ion flux at each time step\string:
   \begin{equation} \label{eq-fluxequality}
-   \Gamma_{R, e} = \Gamma_{R, i}
+    \Gamma_{R, e} = \Gamma_{R, i}.
   \end{equation}
-  Supposing the radial electron density constant and the quasineutrality $n_e=n_i$, the particle flux to the wall is proportional to the particle density $\Gamma_R \propto n_e$, then presents the azimuthal fluctuation of the wave
-  \[ \Gamma_R(\theta) = \Gamma_0 + \delta \Gamma_R(\theta). \]
+  The ion flux to the wall is a thermal flux
+  \[ \Gamma_{R, i} \propto \bar{v}_{i, r} \]
+  with $\bar{v}_{i, r}$ proportional to the radial thermal velocity. 
+  However, we have seen that the radial temperature of the particles is constant.
+  Assuming the ions distributed uniformly along the radial direction, the particle flux to the wall is proportional to the particle density $$\Gamma_R \propto n_i.$$
+  Hence, the particle losses presents the azimuthal fluctuation of the wave
+  \[ \Gamma_R(\theta) = \Gamma_0 + \delta \Gamma_R(\theta), \]
+  with $\Gamma_0$ the mean particle loss, and $ \delta \Gamma_R(\theta)$ the fluctuation of the losses due to the wave.
   \Cref{fig-rfluxs} shows the azimuthal-axial distribution of (left) the radial flux measured in the \ac{PIC} simulation, and (right) the electron density, at $t=10\,\micro\second$ for the case $L_R=2\,\centi\meter$.
 
   \begin{figure}[hbtp]
@@ -168,17 +171,17 @@
     \label{fig-rfluxs}
   \end{figure}
 
-  We see that radial flux present the same spatial characteristics of the electron density, meaning that there is a preferential loss of particle at the maxima of the oscillations.
-  Under this condition, the amplitude of the oscillation will be directly reduced as
-  \[ \deriv{\dne}{t} =  \gamma_R \dne \]
-  with $\gamma_R < 0$ the damping rate of the instability which depends on the ion radial velocity $ \bar{v}_{i, r}$.
-  This direct impact of the radial losses on the amplitude of the density fluctuation results in a reduction of the instability, including the wave energy $W$.
+  We see that radial flux presents the same spatial characteristics of the electron density, meaning that the loss of particle is greater at the maxima of the density oscillations.
+  Under this condition, the amplitude of the oscillation will be directly reduced as 
+  \[ \left. \deriv{\dne}{t} \right\rvert_{\Gamma_R} =  \gamma_R \dne \]
+  with $\gamma_R < 0$ the damping rate of the instability due to the radial losses, which depends on the ion radial velocity $ \bar{v}_{i, r}$.
+  To summarize, we have shown that this direct impact of the radial losses on the amplitude of the density fluctuation could result in a reduction of the instability amplitude, hence the wave energy $W$.
   
   \vspace{1em}
   The presence of a damping rate $\gamma_R$, combined with the reduction of the azimuthal drift velocity $u_{e, \theta}$ that is proportional to the instability growth rate, can explain the reduction of the wave amplitude at the steady-state.
-  Indeed, the wave equation that takes into account he growth rate and the wave convection is \citep{martorelli2019}
+  Indeed, the wave equation that takes into account the growth rate and the wave convection is \citep{martorelli2019}
   \begin{equation} \label{eq-wequation}
-    \deriv{W}{t} - \div (\vect{u_i} W) = 2 \gamma_{\rm eff} W
+    \deriv{W}{t} + \div (\vect{u_i} W) = 2 \gamma_{\rm eff} W
   \end{equation}
   with $\gamma_{\rm eff}$ the effective growth rate, and $\vect{u_i} =u_{i, z} \vect{e_z}$  the ion mean velocity.
   As the radial losses do not affect significantly the axial electric field, $\vect{u_i}$ is the same for the three cases.
@@ -207,7 +210,7 @@
   \Cref{fig-fft2D_noLr_zu} shows the \ac{2D} \ac{FFT} obtained in ({\bf a}) the upstream region and ({\bf b}) the downstream region.
   We also display the \ac{1D} \ac{FFT} obtained by summing the \ac{2D} \ac{FFT} in one direction.
   Concerning the upstream region, we see that the waves follow one well-defined curve, which corresponds to the \ac{IAW} \ac{DR} \cref{eq-MIAW} using the local Debye length and ion plasma frequency.
-  The maximum of the wave is located at $k_{\theta} = 8.5\,\radian\per\milli\meter$ and $\omega = 35\, \radian\mega\hertz$.
+  The maximum of the wave is located at $k_{\theta} = 8.5\,\radian\per\milli\meter$ and $\omega = 35\, \radian.\mega\hertz$.
 
   \begin{figure}[!hbt]
     \centering
@@ -222,7 +225,7 @@
   The \ac{2D} \ac{FFT} in the downstream region is presented in \cref{fig-fft2D_noLr_zu}.{\bf b}.
   In contrast to the upstream region, we can see that the waves do not follow one well-defined curve.
   The wave characteristics of the upstream region can still be seen, but a larger and slower wave is overlaid to it.
-  The maximum of the wave is located at $k_{\theta} = 3\,\radian\per\milli\meter$ and $\omega = 20\, \radian\per\mega\hertz$.
+  The maximum of the wave is located at $k_{\theta} = 3\,\radian\per\milli\meter$ and $\omega = 20\, \radian.\mega\hertz$.
   However, this new wave seems to follow the same dispersion relation as in the upstream region (green), instead of the \ac{DR} using the local plasma parameters (red).
   This could mean that the wave originates in the upstream region, and is convected to the downstream region without changing the wave \ac{DR}. 
 
@@ -278,7 +281,7 @@
   \begin{figure}[hbtp]
     \centering
     \includegraphics[width=0.9\textwidth]{Beuf_spectra_comp.pdf}
-    \caption{Comparison of the frequency spectrum of the three axial-azimuthal simulations in the downstream region at $z=z_d$. On top, the spatial frequency spectra normalized by the Debye length $\lde$\string; bellow, the temporal frequency spectra normalized by the ion plasma frequency $\opi$. The values of $\lde$ and $\opi$ used are obtained in the upstream region at $z=z_u$.}
+    \caption{Comparison of the frequency spectrum of the three axial-azimuthal simulations in the downstream region at $z=z_d$. On top, the spatial frequency spectra normalized by the Debye length $\lde$\string; bellow, the temporal frequency spectra normalized by the ion plasma frequency $\opi$. The values of $\lde$ and $\opi$ used are obtained in the upstream region at $z=z_u$, as the waves are better characterized by the upstream region.}
     \label{fig-boeuf_fft_comparasion}
   \end{figure}
 
@@ -306,7 +309,7 @@
  \end{figure}
   
   The low frequency oscillations seems to originate from a non-linear phenomena, such as an inverse cascade \citep{taccogna2019}.
-  We have seen in \cref{sec-Ztheta-instability} that the effective growth rate is reduced by the radial losses, due to the reduction of $u_{, \theta}$ and the presence of $\gamma_R$.
+  We have seen in \cref{sec-Ztheta-instability} that the effective growth rate is reduced by the radial losses, due to the reduction of $u_{e, \theta}$ and the presence of $\gamma_R$.
   However, the convection of the wave by the ions is not affected by the radial losses \citep{martorelli2019}.
   Consequently, we believe that due to the radial losses, the wave amplitude is smaller, and therefore does not reach the non-linear regime responsible of the low frequency large wavelength waves.
 
