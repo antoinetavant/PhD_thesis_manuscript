@@ -6,7 +6,7 @@
 
 
 \LPPic is the electrostatic particle-in-cell simulation code developed at \ac{LPP} to study principally magnetized plasma thruster, such as the \ac{HET}.
-Written with Fortran, it uses the Message Passing Interface (MPI) to parallelize the computational load using a domain decomposition.
+Written in Fortran, it uses the Message Passing Interface (MPI) to parallelize the computational load using a domain decomposition.
 The principle of the domain decomposition is that each Central Processing Unit (CPU) knows a small chunk of the whole domain.
 We use {\sc Hypre}'s multigrid solver to solve Poisson equation in \ac{2D} \citep{falgout2002}.
 

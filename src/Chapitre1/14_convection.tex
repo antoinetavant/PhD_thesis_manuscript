@@ -58,7 +58,7 @@
       \label{fig-Fake_2d}
     \end{figure}
 
-    \Cref{fig-energy_convection} shows the evolution as a function of time of the electron mean energy in the simulation in a typical \ac{2D} radial-azimuthal simulation, adapted from \citet{croes2017}.
+    \Cref{fig-energy_convection} shows the evolution as a function of time of the electron mean energy in a typical \ac{2D} radial-azimuthal simulation, adapted from \citet{croes2017}.
     We can see that without the convection, the mean energy quickly rises to unphysical values.
     When the convection is modeled, using an axial of $L_z=1$ cm, the energy reaches a steady-state.
     \nomenclature[Q]{\ensuremath{ L_z}}{ Axial length}
@@ -87,8 +87,8 @@
     We observe this time a saturation of the oscillation's amplitude, and the wavelength is close to $\lambda \simeq 1.5$~mm.
 
     On the second row (\cref{fig-convection_numerical}.{\bf c} and {\bf d}), the length of the periodic azimuthal direction is $L_{\theta}=1$~cm.
-    \cref{fig-convection_numerical}.{\bf c} corresponds to the case without axial convection, and \cref{fig-convection_numerical}.{\bf b} corresponds to the same case but with the axial convection modeled.
-    In \cref{fig-convection_numerical}.{\bf c}, we can see that increasing the azimuthal length did not affect the \ac{ECDI}, as expected.
+    \cref{fig-convection_numerical}.{\bf c} corresponds to the case without axial convection, and \cref{fig-convection_numerical}.{\bf d} corresponds to the same case but with the axial convection modeled.
+    In \cref{fig-convection_numerical}.{\bf c}, we can see that increasing the azimuthal length compared to \cref{fig-convection_numerical}.{\bf a} did not affect the \ac{ECDI}, as expected.
     However, in  \cref{fig-convection_numerical}.{\bf d}, the instability is clearly affected.
     A single oscillation is observed, corresponding to $\lambda=10$~mm, which seems almost undoubtedly unphysical.
 
@@ -101,7 +101,7 @@
         \subfigure{Lafleur_NoLz_2}{c}{20, 20} &
         \subfigure{Lafleur_Lz_2}{d}{20, 20} \\
       \end{tabular}
-      \caption{Effects of Lafleur's convection model for two different azimuthal lengths on the azimuthal electric field. ({\bf a}) No convection, $L_x=0.5$~cm,  ({\bf b}) convection modeled, $L_x=0.5$~cm,  ({\bf c}) No convection, $L_x=1$~cm,  ({\bf d}) convection modeled, $L_x=1$~cm. The colour of each plot is normalized to the maximum amplitude. Adapted from \citep{lafleur2016a}. }
+      \caption{Effects of Lafleur's convection model for two different azimuthal lengths on the azimuthal electric field. ({\bf a}) No convection, $L_x=0.5$~cm,  ({\bf b}) convection modeled, $L_x=0.5$~cm,  ({\bf c}) No convection, $L_x=1$~cm,  ({\bf d}) convection modeled, $L_x=1$~cm. The color of each plot is normalized to the maximum amplitude. Adapted from \citep{lafleur2016a}. }
       \label{fig-convection_numerical}
     \end{figure}
     \FloatBarrier
@@ -201,7 +201,7 @@
       \label{sec-noiselessresults}
       In previous section, we have shown that the convection model induces a noise in the charge density, that produces an azimuthal electric field which amplitudes depends on the azimuthal length.
       
-      We propose here a modified version of Lafleur's convection model in order to remove the noise in the charge density
+      We propose here a modified version of Lafleur's convection model in order to remove the noise in the charge density.
       The noiseless convection model follows the same algorithm as before, but the azimuthal position of the particle created is not chosen uniformly as random, but instead the new particle has the same position as the removed particle.
       \Cref{fig-fakez3} shows a schematic illustration of the noiseless convection algorithm applied on a particle.
       
@@ -290,7 +290,7 @@
       The potential mostly oscillates in the azimuthal direction, and its amplitude is larger on the centerline between the walls.
       A similar behavior is observed for the azimuthal electric field.      
       
-      \Cref{fig-dftLr} shows the \ac{DFT} of the source term $\rho_1$, the resulting azimuthal electric field $\aziE_{, 1}$ and plasma potential $\phi_1$ computed on the centerline of the simulation domain, for three different radial lengths expressed in number of cell in the radial direction $N_x$.
+      \Cref{fig-dftLr} shows the \ac{DFT} of the source term $\rho_1$, the resulting azimuthal electric field $\aziE_{, 1}$ and plasma potential $\phi_1$ computed on the centerline of the simulation domain, for three different radial lengths expressed in number of cells in the radial direction $N_x$.
       Is also shown the "equivalent" source term $\rho_{\rm eq}$, which is the source term that would give the frequency spectra of $\aziE_{, 1}$ observed in a \ac{1D} domain
       
       \begin{equation} \label{eq-equirho}
