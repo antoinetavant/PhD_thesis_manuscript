@@ -124,12 +124,12 @@
   
   \Cref{fig-IAW_druv} shows the effect of a Druyvesteyn electron distribution compared to a Maxwellian.
   We recall that a Druyvesteyn distribution follows the expression
-
   \begin{equation} \label{eq-druyv}
-    f_{D}(v) = v_{th}^{-3/2} C2 \exp \lp -C1 \frac{\norm{v}^4}{v_{th}^4}  \rp ,
+    f_{D}(v) = v_{th}^{-1} C2 \exp \lp -C1 \frac{\norm{v}^4}{v_{th}^4}  \rp ,
   \end{equation}
-  where $C1 = \Gamma(5/4)^2\Gamma(3/4)^2 \simeq 0.55$ and $C2 = \Gamma(5/4)^{3/2}\Gamma(3/4)^{-5/2} \simeq 0.52$, with $\Gamma$ the gamma function, are two normalizing constants.
-  We can see that there is not much impact of the Druyvesteyn electron velocity distribution function on the electron, except that the maximum growth rate is sightly diminished.
+  where $C1 \simeq 1.82$ and $C2 \simeq 0.64$ are two normalizing constants.
+  The electron density used is $n_e=\sn{1}{17}\,\meter^{-3}$ and the electron temperature is $\Te=50\,\volt$, the ion temperature is $\Ti=0.1\,\volt$, and the drift velocity is $u_e=\sn{1.8}{6}\,\meter\per\second \simeq 300 c_s$ with $c_s=\lde \opi\simeq 6\,\kilo\meter\per\second$.
+  We see in \cref{fig-IAW_druv} that the impact of the Druyvesteyn \ac{EVDF} on the \ac{IAW} dispersion relation is small, except that the maximum growth rate is sightly increased.
   
   \begin{figure}[!hbt]
     \centering
@@ -137,15 +137,24 @@
     \caption{IAW frequency and growth rate for a Maxwellian distribution function using the Freid and Conte function and a Druyvesteyn distribution evaluated with the numerical estimation of $\tilde{Z}$. }
     \label{fig-IAW_druv}
   \end{figure}
+  \Cref{fig-valition-solver} shows the evolution of the most growing wave with the electron drift velocity for both the Maxwellian and the Druyvesteyn \ac{EVDF}.
+  An illustration of the two distribution functions can be seen in \cref{fig-valition-solver}.{\bf b}.
+  We see that as obtained in the analytic dispersion relation \cref{eq-MIAW}, the growth rate is proportional to the drift velocity.
+  In addition, the wave corresponding to the maximum growth rate depends only weakly of the drift velocity, and we find the analytic values $k_{\theta} \lde =1/\sqrt{2} \simeq 0.707$ and $\omega / \opi = 1/\sqrt{3} \simeq 0.577$. 
+  Lastly, the \ac{EVDF} seems to affect only weakly the result.
+  
+  \begin{figure}[!hbt]
+    \centering
+    \includegraphics[width=0.8\textwidth]{comp_Maxw_Druyv_IAW.pdf}
+    \caption{({\bf a}) Evolution as a function of the electron drift velocity $u_e$ of the maximum growth rate $\gamma$ and the corresponding wavenumber $k_{\theta}$ and frequency $\omega$ for both a Maxwellian and a Druyvesteyn \acs{EVDF}, supposing the ions Maxwellian;({\bf b}) the two distribution function for $v_{e, d}/c_s = 300$.}
+    \label{fig-valition-solver}
+  \end{figure}
+  
+  \FloatBarrier
   
   \paragraph{Electron Cyclotron Drift instability\\}
     
-    \begin{figure}[!hbt]
-    \centering
-    \includegraphics[width=\defaultwidth]{ECDI_druv}
-    \caption{\acs{ECDI} frequency and growth rate for a Maxwellian distribution function using the Freid and Conte function and a Druyvesteyn distribution evaluated with the numerical estimation of $\tilde{Z}$, the radial wave number is $k_r \lambda_{De} = 0.1 $.}
-    \label{fig-ECDI_druv}
-  \end{figure}
+
   
   \Cref{fig-ECDI_druv} shows the frequency and the grow rate for the \ac{ECDI}, defined by \cref{eq-drECDI}, in the same conditions that the \ac{IAW} results, with $k_r \lambda_{De} = 0.1 $.
   The infinite sum over the cyclotron resonances is stopped at $N_{max} = 20$.
@@ -154,5 +163,11 @@
   However, in the limit $\eta \rightarrow \infty, Z(\eta) \rightarrow  \frac{1}{\eta}$.
   Hence, we still obtain the cyclotron resonances, as shown in \citet[Fig. 2]{janhunen2018}.
   
-  
+  \begin{figure}[!hbt]
+  \centering
+  \includegraphics[width=\defaultwidth]{ECDI_druv}
+  \caption{\acs{ECDI} frequency and growth rate for a Maxwellian distribution function using the Freid and Conte function and a Druyvesteyn distribution evaluated with the numerical estimation of $\tilde{Z}$, the radial wave number is $k_r \lambda_{De} = 0.1 $.}
+  \label{fig-ECDI_druv}
+\end{figure}
+
 \let\rightmark=\oldrightmark

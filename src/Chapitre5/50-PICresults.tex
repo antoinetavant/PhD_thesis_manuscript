@@ -8,12 +8,12 @@
     The presence of azimuthal instabilities in the Hall effect thrusters has first been shown with numerical simulations by \citet{adam2004}.
     Then, they have been the subject of numerous studies, especially numerical \citep{ducrocq2006,lafleur2016,lafleur2016a,croes2017,croes2018,janhunen2018,taccogna2019}, but also experimental \citep{honore2011,cavalier2013,cavalier2013a}.
     However, their nature remain unclear \citep{boeuf2018}.
-    Viven Croes studied the azimuthal instability in a radial-azimuthal simulation domain of radial length $L_R=2\,\centi\meter$ and azimuthal length $\L_{\theta}=0.25\,\centi\meter$, with the model of particle convection proposed by Lafleur \citep{croes2017,croes2018}.
+    Viven Croes studied the azimuthal instability in a radial-azimuthal simulation domain of radial length $L_R=2\,\centi\meter$ and azimuthal length $L_{\theta}=0.5\,\centi\meter$, with the model of particle convection proposed by Lafleur \citep{croes2017,croes2018}.
     He showed that the saturation of the oscillations was due to ion-wave trapping.
     Using a parametric study over the plasma density and the ion mass, he observed that the main oscillation is consistent with the characteristics of the \ac{IAW}.
     
     During the three years of my Ph.D., other groups presented new simulation results in similar radial-azimuthal geometries.
-    \citet{hara2019a} presented some kinetic simulation results of a \ac{2D} geometry, of size similar to the case studied here.
+    \citet{hara2019a} presented kinetic simulation results on a two-dimensional domain, of size similar to the case studied here.
     However, that work was focused on the electron mobility values, and few information on the instability are given.
     In \citet{janhunen2018}, the authors presented a collisionless highly resolved \ac{2D} \ac{PIC} simulation.
     No convection and no compensation model for radial losses are used, hence the electron energy quickly rises and the density decreases.
@@ -71,7 +71,7 @@
   \Cref{fig-profiles_ne_one} shows the radial profile of the electron and ion densities, as well as the plasma potential, at the end of the simulation. 
   The results are averaged azimuthally and in time over the 3 last microseconds.
   We can observe on the radial profile of both the densities and the plasma potential the sheaths close to the walls (regions of high electric field due to a charge unbalance) and the quasineutral plasma bulk in the center.
-  These profiles are typical of low temperature low pressure bounded plasma.
+  These profiles are typical of low temperature low pressure bounded plasmas.
   
   \begin{figure}[hbt]
     \centering
@@ -103,15 +103,19 @@
 
   \subsection{General characteristics of the azimuthal instability }
   In this section, we present the general characteristics of the azimuthal instability observed in the \ac{2D} \ac{PIC} simulations.
-  \Cref{fig-2D_ne} shows the radial-azimuthal distribution of the electron density during the saturated regime.
+  \Cref{fig-2D_ne} shows the radial-azimuthal distribution of the electron density and the plasma potential during the saturated regime.
   We can see the instability in the azimuthal direction with a wavelength of a third of the azimuthal length.
   The instability can be seen in all of the plasma quantities (electron and ion densities, potential, electric field).
   In the radial direction, we can see the presheaths and the sheaths, characterized by the decrease of the plasma density between the center and the walls.
 
   \begin{figure}[hbtp]
     \centering
-    \includegraphics[width=\defaultwidth]{2D_schema_ne}
-    \caption{Radial and azimuthal distribution of the electron density $n_e$ at $t=10\,\micro\second$, during the saturated regime. The azimuthal instability is clearly seen, as well as the sheaths in the radial direction. }
+    % \includegraphics[width=\defaultwidth]{2D_schema_ne}
+    \begin{tabular}{@{} c c}
+      \includegraphics[width=0.49\textwidth]{2D_ne_ch5} &
+      \includegraphics[width=0.49\textwidth]{2D_phi_ch5} \\
+    \end{tabular}
+    \caption{Radial and azimuthal distribution of (left) the electron density $n_e$ at $t=6\,\micro\second$ (during the saturated regime), and (right) the plasma potential $\phi$. The azimuthal instability is clearly seen, as well as the sheaths in the radial direction. }
     \label{fig-2D_ne}
   \end{figure}
   
@@ -125,7 +129,7 @@
     \label{fig-2DcutEx}
   \end{figure}
 
-  \Cref{fig-FFT_ex} shows the frequency spectrum of the azimuthal electric field presented in \cref{fig-2DcutEx} computed via \ac{FFT} in the saturated regime between $t > 1.5$ and $7\,\micro\second$.
+  \Cref{fig-FFT_ex} shows the frequency spectrum of the azimuthal electric field presented in \cref{fig-2DcutEx} computed via \ac{FFT} in the saturated regime between $2$ and $7\,\micro\second$.
   The spectrum has been averaged in the azimuthal direction, in order to reduce the noise.
   The theoretical frequency $f_{\rm theo} = \frac{\opi}{\pi \sqrt{6} }$ \citep{croes2018} is shown with a dashed line. 
   We can see a very good agreement between $f_{\rm theo}$ and the maximum of the frequency spectrum.
@@ -133,7 +137,7 @@
   \begin{figure}[!hbt]
     \centering
     \includegraphics[width=\defaultwidth]{spectrum_frequency}
-    \caption{Frequency spectrum of the azimuthal electric field computed between $t > 1.5$ and $7\,\micro\second$, averaged in the azimuthal direction. The black line is the theoretical frequency.}
+    \caption{Frequency spectrum of the azimuthal electric field computed between $2$ and $7\,\micro\second$, averaged in the azimuthal direction. The black line is the theoretical frequency.}
     \label{fig-FFT_ex}
   \end{figure}
   
@@ -141,16 +145,16 @@
   
   We can see in \cref{fig-FFT_ex} a slow decrease of the frequency amplitude from $f_{\rm theo}$ to larger frequencies.
   This type of cascade may be the signature of turbulence, and can be a source of energy dissipation - hence saturation.
-  Kolmogorov's hypothesis of in-compressible fluid leads to a cascade in power law \[ W(f) = | \mathcal{FFT}(E_{\theta})(f) |^2 \propto f ^ {- \alpha}, \]
+  Kolmogorov's hypothesis of incompressible fluid leads to a cascade in power law \[ W(f) = | \mathcal{FFT}(E_{\theta})(f) |^2 \propto f ^ {- \alpha}, \]
   with $\alpha = 5/3$.
   \begin{figure}[!hbt]
     \centering
     \includegraphics[width=\defaultwidth]{spectrum_frequency_turbul}
-    \caption{Normalized frequency power spectrum in log-log scale computed between $t > 1.5$ and $7\,\micro\second$. The black dotted line shows the  theoretical frequency $f_{\rm theo}$, the orange solid line is a linear fit of coefficient $\alpha$, and the green dashed line correspond to Kolmogorov's turbulent spectra. }
+    \caption{Normalized frequency power spectrum in log-log scale computed between $1.5$ and $7\,\micro\second$. The black dotted line shows the  theoretical frequency $f_{\rm theo}$, the orange solid line is a linear fit of coefficient $\alpha$, and the green dashed line correspond to Kolmogorov's turbulent spectra. }
     \label{fig-turbul}
   \end{figure}
   
-  \Cref{fig-turbul} shows the frequency power spectrum computed between $t > 1.5$ and $7\,\micro\second$ in log scale.
+  \Cref{fig-turbul} shows the frequency power spectrum computed between $2$ and $7\,\micro\second$ in log scale.
   Overlaid is a fit of the cascade, for frequencies above the maximum amplitude.
   The power law obtained is $\alpha \simeq 4.2$, which is much greater than Kolmogorov's value of $5/3$.
   The oscillations observed present a decrease of the power spectrum much steeper than expected from turbulence.
@@ -247,10 +251,9 @@
       \centering
       % \includegraphics[width=\defaultwidth]{Ion_Trapping_criter}
       \includegraphics[width=\defaultwidth]{Ion_Trapping_criter_bis}
-      \caption{Temporal evolution of the wave energy density compared to the thermal energy density.}
+      \caption{Temporal evolution of the wave energy density $\epsilon_{\rm wave}$ compared to the thermal energy density $\epsilon_{\rm th}$.}
       \label{fig-tempITcrit}
     \end{figure}
-    \inlinenote{Anne: Add unites here}
     
     
     The correlation between the wave amplitude and the ion temperature is shown in \Cref{fig-oscillation_ion_cret}.
@@ -277,7 +280,7 @@
     
     In \cref{fig-tempITcrit,fig-oscillation_ion_cret}, the period of the oscillations of $\epsilon_{\rm wave}$ is $T_{NL} \simeq 1.5\,\micro\second$.
     This period could be related to the response time of the ions, as we have $$T_{NL}/4 \simeq 0.4\,\micro\second \sim T_B.$$
-    The hypothesis that the low frequency modulation of the amplitude of the azimuthal wave could be validated by varying the ion mass, and observe if $T_{NL}$ varies in $\sqrt{m_i}$.    \inlinenote{Anne: "On peut se demander pourquoi tu ne l'a pas fait"}
+    The hypothesis that the low frequency modulation of the amplitude of the azimuthal wave could be validated by varying the ion mass, and observe if $T_{NL}$ varies in $\sqrt{m_i}$.    
     To summarize, the low frequency modulation of the azimuthal wave amplitude is certainly due to non-linear behavior of wave-particle interaction.
     Complementary results are presented in \cref{subsec-VDFIAW} by solving the dispersion relations.
     
