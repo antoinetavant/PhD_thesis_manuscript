@@ -3,21 +3,23 @@
 \section{Comparison of the \acs{DR} with the \acs{PIC} simulations}
   \label{sec-DR-results}
   
-  
+  In this section, we continue to analyze the simulation results described in \Cref{sec-PIC-ECDI}.
+  First, we described in \cref{subsec-VDFpic} the velocity distribution functions (VDF) measured in the simulation.
+  Then, we solve the relation dispersion with the measured VDFs, for both the \ac{ECDI} (\cref{eq-drECDI}) and the \ac{IAW} waves (\cref{eq-drIAWgene}), with the solved developed in \Cref{sec-DR-solver}.
 
   \subsection{Temporal evolution of the distribution functions in the \acs{PIC} simulation} \label{subsec-VDFpic}
   
-  To beging with, we visualize and comment the distribution functions measured in the \ac{PIC} simulation.
+  To begin with, we visualize and comment the distribution functions measured in the \ac{PIC} simulation.
   \Cref{fig-vdfs_pic_time} shows at different times in the simulation the normalized ion and electron azimuthal velocity distribution functions.
   The velocities are normalized by the thermal speed of the respective species.
-  To help the reading of the figure, the  theoretical electron drift velocity $u_e = \frac{E_z}{B_r}$, normalized to the electron thermal speed, as well as the ion sound speed $c_s$, normalized to the ion thermal velocity, are added.
+  To help reading the figure, the  theoretical electron drift velocity $u_e = \frac{E_z}{B_r}$, normalized to the electron thermal speed, as well as the ion sound speed $c_s$, normalized to the ion thermal velocity, are added.
   The distributions are averaged in time over $4\,\nano\second$, and in space over all the azimuthal direction.
   In the radial direction, the distributions are averaged over a small length at the center of the channel, between $r=0.45\,\centi\meter$ and $r=0.55\,\centi\meter$.
   
   \begin{figure}[!hbt]
     \centering
     \includegraphics[width=0.95\textwidth]{Distributions_time_evolution_2.pdf}
-    \caption{Electron and ion normalized azimuthal velocity distribution functions. The velocity in abscissa is normalized by the thermal speed of the corresponding species. The theoretical $E\times B$ drift velocity of the electrons $u_e = \frac{E_z}{B_r}$, and the ion sound speed $c_s$ normalized by the ion thermal velocity re also displayed.}
+    \caption{Electron and ion normalized azimuthal velocity distribution functions at different times of the simulation. The velocity is normalized by the thermal speed of the corresponding species. The theoretical $E\times B$ drift velocity of the electrons $u_e = \frac{E_z}{B_r}$, and the ion sound speed $c_s$ normalized by the ion thermal velocity are also displayed.}
     \label{fig-vdfs_pic_time}
   \end{figure}
   
@@ -40,11 +42,11 @@
   \subsection{Resolution of the electron cyclotron drift instability} \label{subsec-ECDIPIC}
   
   
-    As observed in \Cref{sec-PIC-ECDI}, the simulation begins by a linear growth of the instability.
+    As observed in \Cref{sec-PIC-ECDI}, the simulation begins with a linear growth of the instability.
     Previous results obtained with \LPPic \citep{croes2017a} showed no cyclotron resonances (also known as Bernstein resonances) during this period.
-    However, these results where obtained with Lafleur's convection model, as introduced in \cref{sec-reinjectionnoise}.
-    Here, the results where obtained with the modified model, inducing less noise.
-    The parameters used for the simulation are given in \cref{tab-evdfpicparams}.
+    However, these results were obtained with Lafleur's convection model, as introduced in \cref{sec-reinjectionnoise}.
+    Here, the results were obtained with the modified model, inducing less noise.
+    
     
     We can see in \Cref{fig-phi_fluctuation_summary}  a snapshot of the plasma potential fluctuation in the azimuthal direction \[ \delta \phi(r, \theta) = \phi(r, \theta) - < \phi(r, \theta) >_{ \theta}, \]
     at four different times during the growth of the instability.

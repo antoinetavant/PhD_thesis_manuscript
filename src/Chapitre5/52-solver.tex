@@ -5,8 +5,8 @@
   % \renewcommand\rightmark{\expandafter\MakeUppercase{Solver for the general DR}}
 
 
-  In order to solve the dispersion relation $\hat\epsilon(\vect{k}, \omega) = 0$ of \cref{eq-drECDI}, we solve for every $\vect{k}$ the complex value of $\omega$ that minimize $\norm{\hat\epsilon}$.
-  Hence, we first need to evaluate $\hat\epsilon(\vect{k}, \omega)$ for given arguments $\vect{k}, \omega$.
+  In order to solve the dispersion relation $\hat\epsilon(\vect{k}, \omega) = 0$ of \cref{eq-drECDI}, we solve for every $\vect{k}$ the complex value of $\omega$ that is a zero, also named a root, of $\hat\epsilon(\vect{k}, \omega)$.
+  Hence, we first need to evaluate $\hat\epsilon(\vect{k}, \omega)$ for any given arguments $\vect{k}, \omega$.
   Then, we can find the root.
   
 
@@ -28,10 +28,10 @@
     \label{fig-numZ}
   \end{figure}
   \cref{fig-numZ} shows the comparison of the numerical evaluation of $\tilde{Z}(\eta)$ for a Maxwellian distribution function with the Fried and Conte function (from the `plasmapy` python package) for different values of the imaginary part of $\eta$.
-  We can see that for $\Im(\eta)$ positive, null or slightly negative, the two functions gives exactly the same results.
+  We can see that for ${\rm Im}(\eta)$ positive, null or slightly negative, the two functions gives exactly the same results.
   However, for larger negative values of ${\rm Im}(\eta)$, the two functions gives different results.
   
-  This discrepancy between $Z_M$ and $\tilde{Z}_M$ for large negative imaginary argument is certainly due to the fact of the analytic expansion of $Z$ to the complex plane require the evaluation of the distribution function for complex velocities \citep{xie2013,weideman1995}.
+  This discrepancy between $Z_M$ and $\tilde{Z}_M$ for large negative imaginary argument is certainly due to the fact that the analytic expansion of $Z$ to the complex plane require the evaluation of the distribution function for complex velocities \citep{xie2013,weideman1995}.
   However, the discrete velocity distribution function measured in the \ac{PIC} simulation cannot be properly evaluated for complex velocities.
   On the other hand, we are only interested in instabilities, with positive growth rate.
   Hence, the discrepancy observed should not affect the conclusions of the study.
@@ -102,7 +102,7 @@
     \FloatBarrier
 
 \subsection{Use of analytic distribution functions} \label{subsec-DRimpact}
-  Before using the electron and ion distribution functions measured in the \ac{PIC} simulations, we compare the distribution relation for \ac{ECDI} and \ac{IAW} for different analytic distribution functions.
+  Before using the electron and ion distribution functions measured in the \ac{PIC} simulations, we compare the dispersion relation for \ac{ECDI} and \ac{IAW} for different analytic distribution functions.
   
   \paragraph{Ion acoustic wave\\}
   
@@ -112,12 +112,12 @@
   
   \begin{figure}[hbt]
     \centering
-    \includegraphics[width=\defaultwidth]{IAW_Maxw}
-    \caption{IAW frequency and growth rate for a Maxwellian distribution function using the Freid and Conte function (labelled Analytic $Z_M$), the numerical estimation of $\tilde{Z}_M$, and the simplified analytic expressions of \cref{eq-MIAW}. }
+    \includegraphics[width=0.7\textwidth]{IAW_Maxw}
+    \caption{IAW frequency $\omega_r$ and growth rate $\gamma$ (scaled by a factor of two) for a Maxwellian distribution function using the Freid and Conte function (labelled Analytic $Z_M$), the numerical estimation of $\tilde{Z}_M$, and the simplified analytic expressions of \cref{eq-MIAW}. }
     \label{fig-IAW_Maxw}
   \end{figure}
   
-  We can see that all results gives almost the same solutions.
+  We can see that the three approaches give almost the same solutions.
   The growth rates are all overlapping, hence it is difficult to see the differences.
   For $\omega_r$, the simplified analytic expression returns a slightly different result, but the difference is negligible.
   The numerical evaluation of $\tilde{Z}_M$ gives the same result as the analytic evaluation.
@@ -146,7 +146,7 @@
   \begin{figure}[!hbt]
     \centering
     \includegraphics[width=0.8\textwidth]{comp_Maxw_Druyv_IAW.pdf}
-    \caption{({\bf a}) Evolution as a function of the electron drift velocity $u_e$ of the maximum growth rate $\gamma$ and the corresponding wavenumber $k_{\theta}$ and frequency $\omega$ for both a Maxwellian and a Druyvesteyn \acs{EVDF}, supposing the ions Maxwellian;({\bf b}) the two distribution function for $v_{e, d}/c_s = 300$.}
+    \caption{({\bf a}) Evolution as a function of the electron drift velocity $u_e$ of the maximum growth rate $\gamma$ and the corresponding wavenumber $k_{\theta}$ and frequency $\omega$ of the \acs{IAW} for both a Maxwellian and a Druyvesteyn \acs{EVDF}, supposing the ions Maxwellian;({\bf b}) the two distribution function for $u_e/c_s = 300$.}
     \label{fig-valition-solver}
   \end{figure}
   

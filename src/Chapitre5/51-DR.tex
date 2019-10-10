@@ -6,14 +6,14 @@
   
   The dispersion relations are obtained by coupling the particle dynamics with the electric fields.
   In the case of the kinetic electrostatic dispersion relation, we couple the Vlasov equation with the Poisson equation.
-  
   In our \ac{2D} geometry, we can neglect all the gradients.
   A fixed axial electric field $\vect{E} = E_0 \vect{e_z}$ and a fixed radial magnetic field $\vect{B} = B_0 \vect{e_r}$ are imposed.
   The electrons are drifting in the azimuthal direction due to the $E\times B$ drift, hence
   \[ \vect{u_{e}} = \frac{\vect{E} \times \vect{B}}{\norm{\vect{B}}^2} = \frac{E_0}{B_0}  \vect{e_{\theta}}.    \]
   The ions are accelerated in the axial direction, $ \vect{u_i} = u_i  \vect{e_z}$.
   Using a perturbations as waves of the form \[ \exp \lp i \vect{k} \cdot \vect{x} - i \omega t  \rp, \]
-  with $\vect{x}$ the position vector, the oscillation wave vector $\vect{k} = k_r \vect{e_r} + k_{\theta} \vect{e_{\theta}}$ is real but its frequency $\omega = \omega_r + i \gamma$ can be complex, where $\gamma$ is the growth rate of the oscillations. 
+  with $\vect{x}$ the position vector.
+  The oscillation wave vector $\vect{k} = k_r \vect{e_r} + k_{\theta} \vect{e_{\theta}}$ is real but its frequency $\omega = \omega_r + i \gamma$ can be complex, where $\gamma$ is the growth rate of the oscillations. 
   
   \vspace{1em}
   The dispersion relation has been studied by \citet{ducrocq2006} in the case of cold ions and Maxwellian electrons in a \ac{2D} geometry.
@@ -58,7 +58,7 @@
     \begin{equation} \label{eq-general}
       Z(\eta, f) = \int_{-\infty}^{\infty} \frac{f(t)}{t - \eta} dt,
     \end{equation}
-    with $f$ the velocity distribution function to consider.
+    with $f$ the velocity distribution function to consider, normalized to one, centered, and of standard deviation $\sigma = 1/2$.
     For the sake of brevity, the generalized dispersion function $Z(\eta,f)$ is noted $Z(\eta)$, and the Fried and Conte function is noted $Z_M(\eta)$.
     The derivative of $Z$ is
     \begin{equation} \label{eq-derivatives}

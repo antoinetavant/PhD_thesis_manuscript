@@ -8,14 +8,14 @@
     The presence of azimuthal instabilities in the Hall effect thrusters has first been shown with numerical simulations by \citet{adam2004}.
     Then, they have been the subject of numerous studies, especially numerical \citep{ducrocq2006,lafleur2016,lafleur2016a,croes2017,croes2018,janhunen2018,taccogna2019}, but also experimental \citep{honore2011,cavalier2013,cavalier2013a}.
     However, their nature remain unclear \citep{boeuf2018}.
-    Viven Croes studied the azimuthal instability in a radial-azimuthal simulation domain of radial length $L_R=2\,\centi\meter$ and azimuthal length $L_{\theta}=0.5\,\centi\meter$, with the model of particle convection proposed by Lafleur \citep{croes2017,croes2018}.
+    Viven Croes studied the azimuthal instability in a bi-dimensional (\acs{2D}) radial-azimuthal simulation domain of radial length $L_R=2\,\centi\meter$ and azimuthal length $L_{\theta}=0.5\,\centi\meter$, with the model of particle convection proposed by Lafleur \citep{croes2017,croes2018}.
     He showed that the saturation of the oscillations was due to ion-wave trapping.
     Using a parametric study over the plasma density and the ion mass, he observed that the main oscillation is consistent with the characteristics of the \ac{IAW}.
     
     During the three years of my Ph.D., other groups presented new simulation results in similar radial-azimuthal geometries.
     \citet{hara2019a} presented kinetic simulation results on a two-dimensional domain, of size similar to the case studied here.
     However, that work was focused on the electron mobility values, and few information on the instability are given.
-    In \citet{janhunen2018}, the authors presented a collisionless highly resolved \ac{2D} \ac{PIC} simulation.
+    In \citet{janhunen2018}, the authors presented a collisionless highly resolved \acs{2D} \ac{PIC} simulation.
     No convection and no compensation model for radial losses are used, hence the electron energy quickly rises and the density decreases.
     On the other hand, the domain is bigger, with a radial length of $L_r = 53.8\,\milli\meter$ for an azimuthal length of $L_{\theta} = 13.45 \,\milli\meter$.
     Three cells by Debye length are used, while there are in average 800 particles per cell.
@@ -40,7 +40,7 @@
   The imposed axial electric field $E_z$ and the radial magnetic field $B_r$ are uniform in space and constant in time.
   The radial direction is closed with the dielectric boundary condition of dielectric width $L_{diel}=3\,\milli\meter$.
   No \ac{SEE} is modeled, and the convection is modeled with the new noiseless model (see \cref{sec-noiselessresults}).
-  The simulation is initialized with a uniform electron and ion density $n_e = n_i = \sn{3}{17}\per\meter\squared$, with an electron temperature $\Te=10\,\volt$ and an ion temperature $\Ti=0.025\,\volt$.
+  The simulation is initialized with a uniform electron and ion density $n_e = n_i = \sn{3}{17}\per\meter\cubed$, with an electron temperature $\Te=10\,\volt$ and an ion temperature $\Ti=0.025\,\volt$.
   The mean particle density is conserved by imposing an ionization  which compensate the particle losses at the wall a each time step.
   
   \begin{table}[!hbt]
@@ -68,7 +68,7 @@
     \end{tabular}
   \end{table}
   
-  \Cref{fig-profiles_ne_one} shows the radial profile of the electron and ion densities, as well as the plasma potential, at the end of the simulation. 
+  \Cref{fig-profiles_ne_one} shows the radial profile of the electron and ion densities, as well as the plasma potential, at the end of the simulation, averaged azimuthally and in time between $t=4$ and $7\,\micro\second$.
   The results are averaged azimuthally and in time over the 3 last microseconds.
   We can observe on the radial profile of both the densities and the plasma potential the sheaths close to the walls (regions of high electric field due to a charge unbalance) and the quasineutral plasma bulk in the center.
   These profiles are typical of low temperature low pressure bounded plasmas.
@@ -81,7 +81,7 @@
       \subfigure{Ch5_radial_profiles_phi}{b}{20, 15} \\
 
     \end{tabular}
-    \caption{Radial profile of ({\bf a}) the ion and electron densities, and ({\bf b}) the plasma potential at steady-state, averaged azimuthally and in time over the 3 last microseconds.}
+    \caption{Radial profile of ({\bf a}) the ion and electron densities, and ({\bf b}) the plasma potential, averaged azimuthally and in time between $t=4$ and $7\,\micro\second$.}
     \label{fig-profiles_ne_one}
   \end{figure}
 
@@ -91,8 +91,8 @@
     \Ee_d = \frac{m_e}{2 e N_e} \sum_{j=1}^{N_e} v_{j, d}^2 
   \end{equation}
   with $d$ the direction ($r,\theta$, or $z$), $N_e$ is the number of electrons, and $v_{j, d}$ is the velocity in the direction $d$ of the $j^{\rm nt}$ electron.
-  We see that the simulation starts at $\Ee = \Te_{,0} /2$, and  that after a few microseconds of transition, the simulations reaches a steady-state with small fluctuations.
-  This corresponds to an initial Debye length of $\lde=\sn{4.3}{-5}\,\meter$, increasing up to  $\lde=\sn{7.0}{-5}\,\meter$ at the saturated regime.
+  We see that the simulation starts at $\Ee = \Te_{,0} /2$, and  that after a few microseconds of transition, the simulations reaches a quasi steady-state with small fluctuations, that we name the saturated regime.
+  This corresponds to an initial Debye length of $\lde=\sn{4.3}{-5}\,\meter$, increasing up to  $\lde=\sn{7.0}{-5}\,\meter$ during the saturated regime.
   \begin{figure}[!hbt]
     \centering
     \includegraphics[width=\defaultwidth]{canonical_Te_all_directions.pdf}
@@ -137,7 +137,7 @@
   \begin{figure}[!hbt]
     \centering
     \includegraphics[width=\defaultwidth]{spectrum_frequency}
-    \caption{Frequency spectrum of the azimuthal electric field computed between $2$ and $7\,\micro\second$, averaged in the azimuthal direction. The black line is the theoretical frequency.}
+    \caption{Frequency spectrum of the azimuthal electric field computed between $2$ and $7\,\micro\second$, averaged in the azimuthal direction. The black line is the theoretical frequency $f_{\rm theo} = \frac{\opi}{\pi \sqrt{6} }$.}
     \label{fig-FFT_ex}
   \end{figure}
   
@@ -182,7 +182,7 @@
   After $t=1\,\micro\second$, the amplitude of the electric field oscillates around a mean value, with a period of the order of $T_{NL}=1.5 \pm 0.1 \,\micro\second$ ($NL$ for {\it non-linear} oscillation).
   Hence, the azimuthal electric field becomes of the type of
   \[  E_{\theta} = E_{\rm LF}(t) E_{\rm HF}(t, {\theta}) \]
-  with $E_{\rm HF}(t, \theta) $ the high frequency instability, and $E_{\rm LF}(t)$ the low frequency modulation of the amplitude, with a low frequency $f_{\rm LF} \simeq  650 \pm 40 \,\mega\hertz$.
+  with $E_{\rm HF}(t, \theta) $ the high frequency instability, and $E_{\rm LF}(t)$ the low frequency modulation of the amplitude, with a low frequency $f_{\rm LF} \simeq  660 \pm 45 \,\kilo\hertz$.
   Several phenomena are candidates to the modulation observed, which are discussed here-after.
   
   
