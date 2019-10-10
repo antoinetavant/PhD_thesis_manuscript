@@ -7,16 +7,15 @@
   We have observed in the previous section that the radial loss model did not modify significantly the plasma characteristics (densities, axial electric field), but it had a significant impact on the electron cross-field transport.
   Since the simulations are collisionless, the origin of the variation of the electron axial mobility comes from the azimuthal instability, which amplitude decreases with the radial losses as seen in \cref{fig-boeuf-instability}.
   In this section, we investigate the possible mechanism responsible of the evolution of the oscillation characteristics.
-
   Several phenomena can have an impact, direct or indirect, on the azimuthal instability\string:
   \begin{enumerate}
     \item The radial loss algorithm used could induce numerical noise which affect the instability,
     \item The electron temperature is decreased\string; if the amplitude of the instability saturates due to ion-wave trapping, then the amplitude would be lower,has developed in \cref{eq-iontropempl},
     \item The growth rate is proportional to the azimuthal electron drift velocity, as seen in \cref{eq-MIAW}. If the growth rate is affected, then the wave amplitude at steady state could be reduced,
-    \item The radial losses  could directly reduce the amplitude of the instability.
+    \item The radial losses  could directly reduce the amplitude of the density oscillation.
   \end{enumerate}
 
-  Using the results of the \ac{2D} \ac{PIC} simulation, we will discuss the four points in the next section.
+  Using the results of the \ac{2D} \ac{PIC} simulation, we will discuss the four points in the next sections.
   
 
 
@@ -29,11 +28,11 @@
     \caption{Axial and azimuthal distribution of the azimuthal electric field $E_{\theta}$  obtained at $t=10 \,\micro\second$ for the three cases using the model of Boeuf. The same color limits are used for each figure.}
     \label{fig-snapshots}
   \end{figure}
-  We recall that three cases have been simulated\string: the nominal case without radial losses and two other cases with the radial losses modeled with $L_R=2\,\centi\meter$ and $L_R=4\,\centi\meter$.
+  We recall that three cases have been simulated\string: the nominal case without radial losses and two other cases with the radial losses modeled with $L_R=2\,\centi\meter$ or $L_R=4\,\centi\meter$.
   \Cref{fig-snapshots} shows the azimuthal electric field at the end of the simulation for the three cases.
   The azimuthal instability is present in all the simulation domain.
   We note that the radial losses do not induce unphysical instabilities, such as observe in \cref{sec-reinjectionnoise} with the modeling of the axial convection in radial-azimuthal simulations.
-  Therefore, we believe that there is no numerical noise or artifacts that could affect the instability.
+  Therefore, we believe that there is no numerical noise or artifacts that affects the instability.
   This conclusion is confirmed by the spectra analysis of \cref{subsec-fft_losses}.
   From the characteristics of the instability seen in \cref{fig-snapshots}, two zones can be identified\string:
   \begin{itemize}
@@ -47,17 +46,20 @@
   In contrast with \cref{ch-5}, the two parameters now vary in the simulation domain.
   \Cref{fig-wpi_Lde} shows the axial evolution of the ion plasma frequency and the Debye length for the three cases.
   The Debye length is calculated using the azimuthal temperature $\Te_{\theta}$.
-  We observe that $\opi$ is not significantly affected in the upstream region, but decreases with the increase of the losses in the downstream region.
+  
 
   \begin{figure}[hbt]
     \centering
     \includegraphics[width=\textwidth]{Boeuf_opi_Lde}
-    \caption{Axial evolution of (left) the ion plasma frequency $\opi$ and (right) the Debye length $\lde$ for the three cases using the model of Boeuf.}
+    \caption{Axial evolution of (left) the ion plasma frequency $\opi$ and (right) the Debye length $\lde$ for the three cases averaged  azimuthally and in time between $t=6\,\micro\second$ and $t=10\,\micro\second$.}
     \label{fig-wpi_Lde}
   \end{figure}
 
-
-  Concerning the Debye length, we see in \cref{fig-wpi_Lde} that the radial losses change $\lde$ in both regions, but not with the same trend.
+  We see in \cref{fig-wpi_Lde} that $\opi$ reaches a maximum at $z=0.5\,\centi\meter$, and decreases by almost a factor of two towards both the anode and the cathode.
+  We observe that $\opi$ is not significantly affected by the radial losses in the upstream region, but decreases with the increase of the losses in the downstream region.
+  On the other hand, the Debye length $\lde$ presents a more complex behavior, as it reaches a local minima at $z=0.5\,\centi\meter$ and a local maxima at $z\simeq 1\,\centi\meter$.
+  The amplitude of the evolution of $\lde$ is smaller compared to $\opi$, as it changes in the axial direction by approximately $20\%$ without the radial, and up to $40\%$ with $L_R=2\,\centi\meter$.
+  In addition, we see in \cref{fig-wpi_Lde} that the radial losses change $\lde$ in both regions, but not with the same trend.
   In the upstream region, the radial losses decrease $\lde$, while they increase $\lde$ in the downstream region.
 
 
@@ -71,12 +73,12 @@
     432 \epsilon_{\rm wave} = \epsilon_{\rm th},
   \end{equation}
   with $\epsilon_{\rm th} = \frac{3}{2} e n_e \Te$ and $\epsilon_{\rm wave} = \frac{\epsilon_0}{2} \stdE^2$.
-  \Cref{fig-ionwavetrapping_axial} shows the axial profile of the ion-wave trapping criterion averaged in time between $t=6\,\micro\second$ and $t=10\,\micro\second$ for the three cases of radial losses.
+  \Cref{fig-ionwavetrapping_axial} shows the axial profile of the ration between $432 \epsilon_{\rm wave}$ and $\epsilon_{\rm th}$,  averaged  azimuthally and in time between $t=6\,\micro\second$ and $t=10\,\micro\second$ for the three cases of radial losses.
 
   \begin{figure}[hbt]
     \centering
     \includegraphics[width=\defaultwidth]{Boeuf_Axial_IonTrapping_criter}
-    \caption{Axial evolution of the ion-wave trapping criterion averaged between $t=6\,\micro\second$ and $t=10\,\micro\second$ for the three cases using Boeuf's test-case. }
+    \caption{Axial evolution of the ration between $432 \epsilon_{\rm wave}$ and $\epsilon_{\rm th}$ to characterize the ion-wave trapping, averaged azimuthally and between $t=6\,\micro\second$ and $t=10\,\micro\second$ for the three radial losses cases. }
     \label{fig-ionwavetrapping_axial}
   \end{figure}
 
@@ -119,7 +121,7 @@
   \begin{figure}[hbt]
     \centering
     \includegraphics[width=\defaultwidth]{Boeuf_Je_x_axial_one}
-    \caption{Axial profile of (black solid line) the electron azimuthal velocity measured in the simulation, (blue solid line) the $\vect{E} \times \vect{B}$ drift velocity, (solid orange line) the diamagnetic velocity, and (dashed line) the sum of the $\vect{E} \times \vect{B}$ and diamagnetic velocities at steady state for the simulation test-case of Boeuf without radial losses.}
+    \caption{Axial profile of (black solid line) the electron azimuthal velocity measured in the simulation, (blue solid line) the $\vect{E} \times \vect{B}$ drift velocity, (solid orange line) the diamagnetic velocity, and (dashed line) the sum of the $\vect{E} \times \vect{B}$ and diamagnetic velocities averaged azimuthally and between $t=6\,\micro\second$ and $t=10\,\micro\second$ for the case without radial losses.}
     \label{fig-Jetheta_sum}
   \end{figure}
   
@@ -136,13 +138,13 @@
   \begin{figure}[hbt]
     \centering
     \includegraphics[width=\defaultwidth]{Boeuf_Je_x_axial}
-    \caption{Axial profile of the electron azimuthal velocity, the $\vect{E} \times \vect{B}$ drift velocity and the diamagnetic velocity at steady state with three different radial models for the simulation test-case of Boeuf. The sheaths (close to the axial boundaries) are removed from the figure for clarity purpose.}
+    \caption{Axial profile of the electron azimuthal velocity, the $\vect{E} \times \vect{B}$ drift velocity and the diamagnetic velocity averaged azimuthally and between $t=6\,\micro\second$ and $t=10\,\micro\second$ for the three different radial models for the simulation test-case of Boeuf. The sheaths (close to the axial boundaries) are removed from the figure for clarity purpose.}
     \label{fig-Jetheta}
   \end{figure}
 
   Despite seeing previously in \cref{sec-Zthetaresults} that the radial losses do not modify significantly the axial electric field and the electron density, the electron azimuthal drift velocity does decrease with the radial losses. 
   At the maximum, the difference represents a 20\% variation, but in average the difference is below 10\%.
-  Therefore, the hypothesis of decreased growth rate to explain the reduction of the amplitude of the wave is plausible, but may not be the most prominent.
+  Therefore, the hypothesis of decreased growth rate to explain the reduction of the amplitude of the wave is plausible.
 
 \FloatBarrier
 
@@ -158,11 +160,15 @@
   \[ \Gamma_{R, i} \propto \bar{v}_{i, r} \]
   with $\bar{v}_{i, r}$ proportional to the radial thermal velocity. 
   However, we have seen that the radial temperature of the particles is constant.
-  Assuming the ions distributed uniformly along the radial direction, the particle flux to the wall is proportional to the particle density $$\Gamma_R \propto n_i.$$
+  Assuming the ions distributed uniformly along the radial direction, the particle flux to the wall is proportional to the particle density
+  \begin{equation} \label{eq-Rlosses}
+    \Gamma_R \propto n_i.
+  \end{equation}
   Hence, the particle losses presents the azimuthal fluctuation of the wave
-  \[ \Gamma_R(\theta) = \Gamma_0 + \delta \Gamma_R(\theta), \]
+  \[ \Gamma_R(\theta) = \Gamma_0 + \delta \Gamma_R(\theta) \propto (n_{i,0} + \delta_{n_i})  \bar{v}_{i, r} , \]
   with $\Gamma_0$ the mean particle loss, and $ \delta \Gamma_R(\theta)$ the fluctuation of the losses due to the wave.
   \Cref{fig-rfluxs} shows the azimuthal-axial distribution of (left) the radial flux measured in the \ac{PIC} simulation, and (right) the electron density, at $t=10\,\micro\second$ for the case $L_R=2\,\centi\meter$.
+  We suppose the quasi-neutrality, hence $n_i = n_e$.
 
   \begin{figure}[hbtp]
     \centering
@@ -171,7 +177,8 @@
     \label{fig-rfluxs}
   \end{figure}
 
-  We see that radial flux presents the same spatial characteristics of the electron density, meaning that the loss of particle is greater at the maxima of the density oscillations.
+  We see in \cref{fig-rfluxs}  that the radial flux presents the same spatial characteristics than that of the electron density, as expected from \cref{eq-Rlosses}
+  This means that the loss of particle is greater at the maxima of the density oscillations.
   Under this condition, the amplitude of the oscillation will be directly reduced as 
   \[ \left. \deriv{\dne}{t} \right\rvert_{\Gamma_R} =  \gamma_R \dne \]
   with $\gamma_R < 0$ the damping rate of the instability due to the radial losses, which depends on the ion radial velocity $ \bar{v}_{i, r}$.
@@ -185,7 +192,7 @@
   \end{equation}
   with $\gamma_{\rm eff}$ the effective growth rate, and $\vect{u_i} =u_{i, z} \vect{e_z}$  the ion mean velocity.
   As the radial losses do not affect significantly the axial electric field, $\vect{u_i}$ is the same for the three cases.
-  Consequently, a steady state we have $\deriv{W}{t}=0$, so that if $\gamma_{\rm eff}$ is reduced because of $\gamma_R$, the wave energy $W$ is reduced as well.
+  Consequently, at steady state we have $\deriv{W}{t}=0$, so that if $\gamma_{\rm eff}$ is reduced because of $\gamma_R$, the wave energy $W$ is reduced as well.
 
   \FloatBarrier
 

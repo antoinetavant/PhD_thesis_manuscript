@@ -4,7 +4,7 @@
   \label{sec-Zthetaresults}
   In this sections, we present the results of the \ac{2D} \ac{PIC} simulations using the test-case of Boeuf \citep{boeuf2018}, described in \cref{subsec-boeuf_description}\string; the parameters used for the simulations are given in \cref{tab-parameters-boeuf}.
   In this test-case, the ionization is fixed, consequently the breathing mode is absent.
-  Thus, the simulation converges quickly towards a steady state.
+  Thus, the simulation converges quickly towards a steady state, as the mean parameters stop evolving in approximately 8\,\micro\second.
   
   We run three different cases\string:
   the first is the usual case, without the effects of the radial direction.
@@ -24,13 +24,14 @@
     \begin{figure}[hbt]
       \centering
       \includegraphics[width=0.9\textwidth]{Boeuf_example_t=8}
-      \caption{ Axial-azimuthal distributions of (left) the azimuthal electric field $E_{\theta}$ and (right) the electron density $n_e$ at $t=10\,\micro\second$ for the test-case of Boeuf. } 
+      \caption{ Axial-azimuthal distributions of (left) the azimuthal electric field $E_{\theta}$ and (right) the electron density $n_e$ at $t=10\,\micro\second$. The short scale azimuthal oscillation is the \ac{ECDI}.} 
       \label{fig-overview_boeuf_neEx}
     \end{figure}
 
   \subsection{Simulation results\string: temporal evolution} \label{subsec-temp_boeuf}
     
-    \Cref{fig-boeuf-temporal} presents the temporal evolution of the mean plasma density and temperature.
+    \Cref{fig-boeuf-temporal} presents the temporal evolution of the mean plasma density, the total temperature, and radial temperature.
+    Both the electron density and the total temperature rise from the initial condition and reach the stationary state at $t=8\,\micro\second$.
     We see that when the radial direction is modeled the density, the mean electron temperature, and the radial electron temperature are reduced, as expected when increasing the losses when the ionization source term is constant.
 
     \begin{figure}[hbt]
@@ -39,7 +40,7 @@
         \subfigure{Boeuf_ne_temporal}{a}{20,20} &
         \subfigure{Boeuf_Te_temporal}{b}{20,20} \\
       \end{tabular}
-      \caption{Temporal evolution of ({\bf a})  the mean plasma density, and  ({\bf b}) the  mean (solid line) total electron temperatures temperature $\Te$  and (dashed line) the radial temperature $\Te_{,R}$ in the axial-azimuthal simulations, obtained with three different radial models. }
+      \caption{Temporal evolution of ({\bf a})  the mean plasma density, and  ({\bf b}) the  mean (solid line) total electron temperatures temperature $\Te$  and (dashed line) the radial temperature $\Te_{,R}$ in the axial-azimuthal simulations, obtained with the three different radial models. }
       \label{fig-boeuf-temporal}
     \end{figure}
 
@@ -54,7 +55,7 @@
 
     \Cref{fig-boeuf_axialone,fig-boeuf_axialtwo}  show the axial profile at steady-state of several plasma quantities.
     The variables are averaged in the azimuthal direction and in time between $t=8$ and $t=10\,\micro\second$.
-    The results  obtained with three different radial models are overlaid.
+    The results  obtained with the three different radial models are overlaid.
     \cref{fig-boeuf_axialone}.{\bf a} shows the axial electric field $E_z$.
     The differences in $E_z$ are small, but we can still observe that the amplitude of $E_z$ is reduced with the increased radial losses.
     The electron density $n_e$ shown in \cref{fig-boeuf_axialone}.{\bf b} is almost not affected, except for $z>1\,\centi\meter$, where the electron losses at the wall can be seen.
@@ -65,14 +66,14 @@
         \subfigure{Boeuf_electric_field}{a}{30,22} &
         \subfigure{Boeuf_ne_axial}{b}{30,24} \\
       \end{tabular}
-      \caption{Averaged axial profiles at steady state of ({\bf a}) the axial electric field $E_z$, ({\bf b}) the mean plasma density obtained with three different radial models for the simulation case of Boeuf. }
+      \caption{Averaged axial profiles at steady state of ({\bf a}) the axial electric field $E_z$, ({\bf b}) the mean plasma density obtained with the three different radial models. The variables are averaged over the azimuthal direction and in time between $t=8$ and $10\,\micro\second$. }
       \label{fig-boeuf_axialone}
     \end{figure}
 
     \Cref{fig-boeuf_axialtwo} shows the axial profiles of the electron axial density current and the electron temperatures.
     The electron temperatures are reduced by the radial losses in each direction ($\Te{}_{,\theta}, \Te{}_{,R}, \Te{}_{,Z}$).
     The radial temperature $\Te{}_{,R}$ is reduced uniformly everywhere, but the two other temperature are mostly affected upstream, at approximately $z=0.8\,\centi\meter$.
-    Surprisingly, to a first approximation we could think the radial losses should not reduce the axial and azimuthal temperatures.
+    Surprisingly, to a first approximation we could think that the radial losses should not reduce the axial and azimuthal temperatures.
     Indeed, if we suppose that the distribution function has separated variables
     \[ f(\vect{v_e}) = f_r(v_{e,r})f_{\theta}(v_{e,\theta})f_z(v_{e,z}), \]
     then the absorption of electrons with high radial energy should not modify the distribution function in the other directions.
@@ -81,7 +82,9 @@
     In addition, the electron heating comes principally from the Joule heating $\vect{J_e} \cdot \vect{E}$.
     As the axial electric field $E_z$, seen in \cref{fig-boeuf_axialone}.{\bf a}, is almost unaffected, the difference in the electron temperature can also originates from the differences in the axial electron current.
     The axial electron density current $J_{e, z}$ is shown in \cref{fig-boeuf_axialtwo}.{\bf b}.
-    It is more significantly reduced by the radial losses.
+    We see that $J_{e, z}$ decreases between $z=0.2$ and $z=1\,\centi\meter$, because of the ionization source term.
+    We can also observe the sharp sign change at $z=2.4\,\centi\meter$, in agreement with the cathode electron injection location. 
+    In addition, $J_{e, z}$ is significantly reduced in the whole domain by the radial losses, as there is approximately a factor of two between the case withour radial losses and the case $L_R=2\,\centi\meter$.
     
     \begin{figure}[!hbt]
       \centering
@@ -89,7 +92,7 @@
         \subfigure{Boeuf_Te_axial}{a}{20,75} &
         \subfigure{Boeuf_Je_axial}{b}{30,22} \\
       \end{tabular}
-      \caption{Averaged axial profile at steady state of ({\bf a}) the  electron temperature, and ({\bf b}) the axial electron current density $J_{e, z}$, obtained with three different radial models for the simulation case of Boeuf. }
+      \caption{Averaged axial profile at steady state of ({\bf a}) the  electron temperature, and ({\bf b}) the axial electron current density $J_{e, z}$, obtained with the three different radial models. The variables are averaged over the azimuthal direction and in time between $t=8$ and $10\,\micro\second$. }
       \label{fig-boeuf_axialtwo}
     \end{figure}
     

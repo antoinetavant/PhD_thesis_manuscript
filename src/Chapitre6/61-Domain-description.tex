@@ -36,7 +36,7 @@ The azimuthal direction is closed with periodic boundaries for both the particle
 \begin{figure}[hbt]
   \centering
   \includegraphics[width=0.5\textwidth]{2D_ztheta}
-  \caption{Schematic representation of the \acs{2D} \ztheta simulation domain.}
+  \caption{Schematic representation of the \acs{2D} \ztheta simulation domain. The anode is at the top, and the cathode at the bottomof the figure. The radial magnetic field perpendicular to the simulation plane is imposed. The azimuthal direction is closed by periodic boundary condition. The electron current density emitted by the cathode $J_{e,c}$ is injected in the simulation domain at the cathode side. }
   \label{fig-2D_ztheta_bis}
 \end{figure}
 
@@ -69,7 +69,7 @@ As the density gradient is principally in the axial direction, we only change th
 
 \paragraph{Electron time-step sub-cycling\\}
 Due to the large mass ratio between the  ions and the electrons, the ion dynamic is much slower than the electron dynamic that constrained the time step  $\dt$.
-In \citet{adam1982}, the authors propose to reduce the computational time by using a different time-step $\dt$ for the ions and the electrons.
+In \citet{adam1982}, the authors propose to reduce the computational time by using a different time-step  for the ions $\dt_i$ and the electrons $\dt_e$.
 They show theoretically and numerically that numerical instabilities rise when $\ope \dt_i  \sim \pi$.
 With the stability criterion on $\dt_e$ (\cref{eq-dx_limit}), we find the stability criterion 
 \begin{equation} \label{eq-subcycling_criterion}
@@ -103,7 +103,7 @@ Two other approaches have been followed to reduce the computational cost induced
 \end{enumerate} 
 These two cases are significantly different in the physics modeled and the behavior observed, as Boeuf's test-case will converge toward a steady-state, in contrast to Coche's test-case which model the breathing mode.
 Since we are not directly interested in the breathing oscillations, and we want to get insights on the radial wall effects in a reasonable computational time, we use in this study the test-case of Boeuf.
-\inlinenote{Plutôt referencer le benchmark Charoy et al. ?}
+% \inlinenote{Plutôt referencer le benchmark Charoy et al. ?}
 % 
 % \subsection{Simulation test-case of Coche} \label{subsec-coche_description}
 % 
@@ -218,7 +218,7 @@ Indeed, the axial length in this case is $L_z=2.5\,\centi\meter$, with $L_{ch}=0
     \subfigure{boeuf-domain.png}{}{10,10} &
     \subfigure{boeuf-profiles.png}{}{10,10} \\
   \end{tabular}
-  \caption{(left) the \acs{2D} axial azimuthal domain\string; (right) the axial profile of the magnetic field and the ionization source term profiles used for the simulation case of \citet{boeuf2018}. }
+  \caption{(left) the \acs{2D} axial azimuthal domain, with in dash line the cathode electron injection plan\string; (right) the axial profile of the magnetic field and the ionization source term profiles, taken from \citep{boeuf2018}. }
   \label{fig-boeuf-presnetation}
 \end{figure}
 
@@ -261,12 +261,11 @@ The physical and numerical conditions used for the test-case of Boeuf are given 
 
 
 
-\subsection{Model for radial losses} \label{subsec-fakeR}
+\subsection{Models for the radial losses} \label{subsec-fakeR}
 
 In this section, we address the issue of adding to the purely \ac{2D} axial-azimuthal \ac{PIC} simulation the impact of the radial walls.
 The first effect that we want to model is the particle and power losses to the wall.
 Thus, as previously done in the radial-azimuthal simulation, the particles are tracked in the three directions, and a finite radial length is used to limit the radial direction.
-
 When an ion crosses the boundary, it is removed from the simulation.
 The electrons are partially reflected, such that the electron flux absorbed at the wall equals the ion flux.
 We do not model the secondary electron emission.
@@ -278,7 +277,6 @@ Two approaches have been investigated to model efficiently the effect of the she
 In the first approach, we set the potential drop at the walls by the use of a sheath model, such as the one described in \cref{sec-sheath}, or in \cref{ch-3,ch-4}.
 The ions would be absorbed by the radial boundary, as well as the electrons of energy higher than the sheath potential.
 Electrons with smaller energy are reflected spectacularly.
-
 This model is more physical, and it would allow local charge imbalance.
 However, as there is no electric field self-consistently computed in the radial direction, the plasma cannot react to such imbalances.
 Hence, we chose not to use it.
