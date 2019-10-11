@@ -34,157 +34,157 @@
 
   \subsection{Overview of the 2D simulation} \label{subsec-lppic_ECDI}
   
-  
-  We present in this section the simulation conducted to study the azimuthal instability.
-  The parameters of the simulation are given in \cref{tab-evdfpicparams}.
-  The imposed axial electric field $E_z$ and the radial magnetic field $B_r$ are uniform in space and constant in time.
-  The radial direction is closed with the dielectric boundary condition of dielectric width $L_{diel}=3\,\milli\meter$.
-  No \ac{SEE} is modeled, and the convection is modeled with the new noiseless model (see \cref{sec-noiselessresults}).
-  The simulation is initialized with a uniform electron and ion density $n_e = n_i = \sn{3}{17}\per\meter\cubed$, with an electron temperature $\Te=10\,\volt$ and an ion temperature $\Ti=0.025\,\volt$.
-  The mean particle density is conserved by imposing an ionization  which compensate the particle losses at the wall a each time step.
-  
-  \begin{table}[!hbt]
-  \ra{1.3}
-    \centering
-    \caption{Parameters of the \acs{2D} \acs{PIC} simulations}
-    \label{tab-evdfpicparams}
-    \begin{tabular}{@{}r l l l @{}} \toprule
-      {\bf Physical Parameter} &  &   &  \\
-    Parameter                    & Symbol                          & Value                    & Unit \\ \midrule
-    Dimensions                   & $L_r\times L_{\theta}\times L_z$ & $1\times 0.26\times 0.5$ & cm \\
-    Radial magnetic field        & $B_r$                            & 0.02                     & T \\
-    Axial electric field         & $E_z$                            & \sn{2}{4}                & $s\volt\per\meter$ \\
-    Dielectric layer of width    & $L_{diel}$                       & 3                        & \milli\meter \\
-    Mean plasma density          & $n_{0}$                          & $3 \times 10^{17}$       & {m}$^{-3}$ \\
-    Initial electron temperature & $\Te_{,0} $                      & $10.0$                   & V \\
-    Initial ion temperature      & $\Ti_{,0} $                      & $0.025$                  & V \\
-    Duration of the simulation   & $T_{\rm simu}$                   & $7$                      & $\micro\second$ \\
-    \midrule
-    {\bf Numerical Parameter}    &                                  &                          & \\
-    Time step                    & $\Delta t $                      & $4 \times 10^{-12}$      & s \\
-    Cell size                    & $\Delta x = \Delta y$            & $2 \times 10^{-5}$       & m \\
-    Number of particles per cell & $N/NG $                          & $80$                     & part/cell \\
-    \bottomrule
-    \end{tabular}
-  \end{table}
-  
-  \Cref{fig-profiles_ne_one} shows the radial profile of the electron and ion densities, as well as the plasma potential, at the end of the simulation, averaged azimuthally and in time between $t=4$ and $7\,\micro\second$.
-  The results are averaged azimuthally and in time over the 3 last microseconds.
-  We can observe on the radial profile of both the densities and the plasma potential the sheaths close to the walls (regions of high electric field due to a charge unbalance) and the quasineutral plasma bulk in the center.
-  These profiles are typical of low temperature low pressure bounded plasmas.
-  
-  \begin{figure}[hbt]
-    \centering
-    \begin{tabular}{@{} cc @{}}
-      \subfigure{Ch5_radial_profiles}{a}{20, 15}
-          &
-      \subfigure{Ch5_radial_profiles_phi}{b}{20, 15} \\
+    
+    We present in this section the simulation conducted to study the azimuthal instability.
+    The parameters of the simulation are given in \cref{tab-evdfpicparams}.
+    The imposed axial electric field $E_z$ and the radial magnetic field $B_r$ are uniform in space and constant in time.
+    The radial direction is closed with the dielectric boundary condition of dielectric width $L_{diel}=3\,\milli\meter$.
+    No \ac{SEE} is modeled, and the convection is modeled with the new noiseless model (see \cref{sec-noiselessresults}).
+    The simulation is initialized with a uniform electron and ion density $n_e = n_i = \sn{3}{17}\per\meter\cubed$, with an electron temperature $\Te=10\,\volt$ and an ion temperature $\Ti=0.025\,\volt$.
+    The mean particle density is conserved by imposing an ionization  which compensate the particle losses at the wall a each time step.
+    
+    \begin{table}[!hbt]
+    \ra{1.3}
+      \centering
+      \caption{Parameters of the \acs{2D} \acs{PIC} simulations}
+      \label{tab-evdfpicparams}
+      \begin{tabular}{@{}r l l l @{}} \toprule
+        {\bf Physical Parameter} &  &   &  \\
+      Parameter                    & Symbol                          & Value                    & Unit \\ \midrule
+      Dimensions                   & $L_r\times L_{\theta}\times L_z$ & $1\times 0.26\times 0.5$ & cm \\
+      Radial magnetic field        & $B_r$                            & 0.02                     & T \\
+      Axial electric field         & $E_z$                            & \sn{2}{4}                & $s\volt\per\meter$ \\
+      Dielectric layer of width    & $L_{diel}$                       & 3                        & \milli\meter \\
+      Mean plasma density          & $n_{0}$                          & $3 \times 10^{17}$       & {m}$^{-3}$ \\
+      Initial electron temperature & $\Te_{,0} $                      & $10.0$                   & V \\
+      Initial ion temperature      & $\Ti_{,0} $                      & $0.025$                  & V \\
+      Duration of the simulation   & $T_{\rm simu}$                   & $7$                      & $\micro\second$ \\
+      \midrule
+      {\bf Numerical Parameter}    &                                  &                          & \\
+      Time step                    & $\Delta t $                      & $4 \times 10^{-12}$      & s \\
+      Cell size                    & $\Delta x = \Delta y$            & $2 \times 10^{-5}$       & m \\
+      Number of particles per cell & $N/NG $                          & $80$                     & part/cell \\
+      \bottomrule
+      \end{tabular}
+    \end{table}
+    
+    \Cref{fig-profiles_ne_one} shows the radial profile of the electron and ion densities, as well as the plasma potential, at the end of the simulation, averaged azimuthally and in time between $t=4$ and $7\,\micro\second$.
+    The results are averaged azimuthally and in time over the 3 last microseconds.
+    We can observe on the radial profile of both the densities and the plasma potential the sheaths close to the walls (regions of high electric field due to a charge unbalance) and the quasineutral plasma bulk in the center.
+    These profiles are typical of low temperature low pressure bounded plasmas.
+    
+    \begin{figure}[hbt]
+      \centering
+      \begin{tabular}{@{} cc @{}}
+        \subfigure{Ch5_radial_profiles}{a}{20, 15}
+            &
+        \subfigure{Ch5_radial_profiles_phi}{b}{20, 15} \\
 
-    \end{tabular}
-    \caption{Radial profile of ({\bf a}) the ion and electron densities, and ({\bf b}) the plasma potential, averaged azimuthally and in time between $t=4$ and $7\,\micro\second$.}
-    \label{fig-profiles_ne_one}
-  \end{figure}
+      \end{tabular}
+      \caption{Radial profile of ({\bf a}) the ion and electron densities, and ({\bf b}) the plasma potential, averaged azimuthally and in time between $t=4$ and $7\,\micro\second$.}
+      \label{fig-profiles_ne_one}
+    \end{figure}
 
-  \Cref{fig-canon_Te_allch5} shows the temporal evolution of the mean kinetic energy $\Ee$ during the simulations.
-  The mean kinetic energy is computed in the simulations by averaging over the whole electron population
-  \begin{equation} \label{eq-Ee}
-    \Ee_d = \frac{m_e}{2 e N_e} \sum_{j=1}^{N_e} v_{j, d}^2 
-  \end{equation}
-  with $d$ the direction ($r,\theta$, or $z$), $N_e$ is the number of electrons, and $v_{j, d}$ is the velocity in the direction $d$ of the $j^{\rm nt}$ electron.
-  We see that the simulation starts at $\Ee = \Te_{,0} /2$, and  that after a few microseconds of transition, the simulations reaches a quasi steady-state with small fluctuations, that we name the saturated regime.
-  This corresponds to an initial Debye length of $\lde=\sn{4.3}{-5}\,\meter$, increasing up to  $\lde=\sn{7.0}{-5}\,\meter$ during the saturated regime.
-  \begin{figure}[!hbt]
-    \centering
-    \includegraphics[width=\defaultwidth]{canonical_Te_all_directions.pdf}
-    \caption{Temporal evolution of $\Ee$ the electron mean kinetic energy decomposed  over the three directions. The kinetic energy includes the internal energy (temperature) and the kinetic energy of the mean velocity.}
-    \label{fig-canon_Te_allch5}
-  \end{figure}
-  
+    \Cref{fig-canon_Te_allch5} shows the temporal evolution of the mean kinetic energy $\Ee$ during the simulations.
+    The mean kinetic energy is computed in the simulations by averaging over the whole electron population
+    \begin{equation} \label{eq-Ee}
+      \Ee_d = \frac{m_e}{2 e N_e} \sum_{j=1}^{N_e} v_{j, d}^2 
+    \end{equation}
+    with $d$ the direction ($r,\theta$, or $z$), $N_e$ is the number of electrons, and $v_{j, d}$ is the velocity in the direction $d$ of the $j^{\rm nt}$ electron.
+    We see that the simulation starts at $\Ee = \Te_{,0} /2$, and  that after a few microseconds of transition, the simulations reaches a quasi steady-state with small fluctuations, that we name the saturated regime.
+    This corresponds to an initial Debye length of $\lde=\sn{4.3}{-5}\,\meter$, increasing up to  $\lde=\sn{7.0}{-5}\,\meter$ during the saturated regime.
+    \begin{figure}[!hbt]
+      \centering
+      \includegraphics[width=\defaultwidth]{canonical_Te_all_directions.pdf}
+      \caption{Temporal evolution of $\Ee$ the electron mean kinetic energy decomposed  over the three directions. The kinetic energy includes the internal energy (temperature) and the kinetic energy of the mean velocity.}
+      \label{fig-canon_Te_allch5}
+    \end{figure}
+    
 
   \subsection{General characteristics of the azimuthal instability }
-  In this section, we present the general characteristics of the azimuthal instability observed in the \ac{2D} \ac{PIC} simulations.
-  \Cref{fig-2D_ne} shows the radial-azimuthal distribution of the electron density and the plasma potential during the saturated regime.
-  We can see the instability in the azimuthal direction with a wavelength of a third of the azimuthal length.
-  The instability can be seen in all of the plasma quantities (electron and ion densities, potential, electric field).
-  In the radial direction, we can see the presheaths and the sheaths, characterized by the decrease of the plasma density between the center and the walls.
+    In this section, we present the general characteristics of the azimuthal instability observed in the \ac{2D} \ac{PIC} simulations.
+    \Cref{fig-2D_ne} shows the radial-azimuthal distribution of the electron density and the plasma potential during the saturated regime.
+    We can see the instability in the azimuthal direction with a wavelength of a third of the azimuthal length.
+    The instability can be seen in all of the plasma quantities (electron and ion densities, potential, electric field).
+    In the radial direction, we can see the presheaths and the sheaths, characterized by the decrease of the plasma density between the center and the walls.
 
-  \begin{figure}[hbtp]
-    \centering
-    % \includegraphics[width=\defaultwidth]{2D_schema_ne}
-    \begin{tabular}{@{} c c @{}}
-      \includegraphics[width=0.485\textwidth]{2D_ne_ch5} &
-      \includegraphics[width=0.485\textwidth]{2D_phi_ch5} \\
-    \end{tabular}
-    \caption{Radial and azimuthal distribution of (left) the electron density $n_e$ at $t=6\,\micro\second$ (during the saturated regime), and (right) the plasma potential $\phi$. The azimuthal instability is clearly seen, as well as the sheaths in the radial direction. }
-    \label{fig-2D_ne}
-  \end{figure}
-  
-  \Cref{fig-2DcutEx} shows the temporal evolution of the azimuthal electric field and the electron density as a function of the azimuthal position, measured at the center of the radial direction.
-  We see the instability growing at the beginning, up to the saturation around $t=1\,\micro\second$.
-  Then, we observe, in addition to the fast oscillation, a slower modulation of the oscillation amplitude, similar to the fluctuations seen in \cref{fig-canon_Te_allch5}.
-  \begin{figure}[!hbt]
-    \centering
-    \includegraphics[width=\textwidth]{R_theta_fluctuations}
-    \caption{Temporal evolution of (left) the azimuthal electric field $E_{\theta}$, and (right) the electron density $n_e$ as a function of the azimuthal position.}
-    \label{fig-2DcutEx}
-  \end{figure}
+    \begin{figure}[hbtp]
+      \centering
+      % \includegraphics[width=\defaultwidth]{2D_schema_ne}
+      \begin{tabular}{@{} c c @{}}
+        \includegraphics[width=0.485\textwidth]{2D_ne_ch5} &
+        \includegraphics[width=0.485\textwidth]{2D_phi_ch5} \\
+      \end{tabular}
+      \caption{Radial and azimuthal distribution of (left) the electron density $n_e$ at $t=6\,\micro\second$ (during the saturated regime), and (right) the plasma potential $\phi$. The azimuthal instability is clearly seen, as well as the sheaths in the radial direction. }
+      \label{fig-2D_ne}
+    \end{figure}
+    
+    \Cref{fig-2DcutEx} shows the temporal evolution of the azimuthal electric field and the electron density as a function of the azimuthal position, measured at the center of the radial direction.
+    We see the instability growing at the beginning, up to the saturation around $t=1\,\micro\second$.
+    Then, we observe, in addition to the fast oscillation, a slower modulation of the oscillation amplitude, similar to the fluctuations seen in \cref{fig-canon_Te_allch5}.
+    \begin{figure}[!hbt]
+      \centering
+      \includegraphics[width=\textwidth]{R_theta_fluctuations}
+      \caption{Temporal evolution of (left) the azimuthal electric field $E_{\theta}$, and (right) the electron density $n_e$ as a function of the azimuthal position.}
+      \label{fig-2DcutEx}
+    \end{figure}
 
-  \Cref{fig-FFT_ex} shows the frequency spectrum of the azimuthal electric field presented in \cref{fig-2DcutEx} computed via \ac{FFT} in the saturated regime between $2$ and $7\,\micro\second$.
-  The spectrum has been averaged in the azimuthal direction, in order to reduce the noise.
-  The theoretical frequency $f_{\rm theo} = \frac{\opi}{\pi \sqrt{6} }$ \citep{croes2018} is shown with a dashed line. 
-  We can see a very good agreement between $f_{\rm theo}$ and the maximum of the frequency spectrum.
-  The value of the theoretical frequency $f_{\rm theo}$ corresponds to the most growing frequency of the \ac{IAW} and is detailed in \cref{sec-DR-kinetic}.
-  \begin{figure}[!hbt]
-    \centering
-    \includegraphics[width=\defaultwidth]{spectrum_frequency}
-    \caption{Frequency spectrum of the azimuthal electric field computed between $2$ and $7\,\micro\second$, averaged in the azimuthal direction. The black line is the theoretical frequency $f_{\rm theo} = \frac{\opi}{\pi \sqrt{6} }$.}
-    \label{fig-FFT_ex}
-  \end{figure}
-  
+    \Cref{fig-FFT_ex} shows the frequency spectrum of the azimuthal electric field presented in \cref{fig-2DcutEx} computed via \ac{FFT} in the saturated regime between $2$ and $7\,\micro\second$.
+    The spectrum has been averaged in the azimuthal direction, in order to reduce the noise.
+    The theoretical frequency $f_{\rm theo} = \frac{\opi}{\pi \sqrt{6} }$ \citep{croes2018} is shown with a dashed line. 
+    We can see a very good agreement between $f_{\rm theo}$ and the maximum of the frequency spectrum.
+    The value of the theoretical frequency $f_{\rm theo}$ corresponds to the most growing frequency of the \ac{IAW} and is detailed in \cref{sec-DR-kinetic}.
+    \begin{figure}[!hbt]
+      \centering
+      \includegraphics[width=\defaultwidth]{spectrum_frequency}
+      \caption{Frequency spectrum of the azimuthal electric field computed between $2$ and $7\,\micro\second$, averaged in the azimuthal direction. The black line is the theoretical frequency $f_{\rm theo} = \frac{\opi}{\pi \sqrt{6} }$.}
+      \label{fig-FFT_ex}
+    \end{figure}
+    
   \subsection{Energy cascade} \label{subsec-turbul}
   
-  We can see in \cref{fig-FFT_ex} a slow decrease of the frequency amplitude from $f_{\rm theo}$ to larger frequencies.
-  This type of cascade may be the signature of turbulence, and can be a source of energy dissipation - hence saturation.
-  Kolmogorov's hypothesis of incompressible fluid leads to a cascade in power law \[ W(f) = | \mathcal{FFT}(E_{\theta})(f) |^2 \propto f ^ {- \alpha}, \]
-  with $\alpha = 5/3$.
-  \begin{figure}[!hbt]
-    \centering
-    \includegraphics[width=\defaultwidth]{spectrum_frequency_turbul}
-    \caption{Normalized frequency power spectrum in log-log scale computed between $1.5$ and $7\,\micro\second$. The black dotted line shows the  theoretical frequency $f_{\rm theo}$, the orange solid line is a linear fit of coefficient $\alpha$, and the green dashed line correspond to Kolmogorov's turbulent spectra. }
-    \label{fig-turbul}
-  \end{figure}
-  
-  \Cref{fig-turbul} shows the frequency power spectrum computed between $2$ and $7\,\micro\second$ in log scale.
-  Overlaid is a fit of the cascade, for frequencies above the maximum amplitude.
-  The power law obtained is $\alpha \simeq 4.2$, which is much greater than Kolmogorov's value of $5/3$.
-  The oscillations observed present a decrease of the power spectrum much steeper than expected from turbulence.
-  Even if the mechanism of plasma turbulence differs from the fluid turbulence \citep{tsytovich1972}, the value of $\alpha$ is significantly larger than expected.
-  Consequently, we expected that there is no significant dissipation or cascade to the small scales.
+    We can see in \cref{fig-FFT_ex} a slow decrease of the frequency amplitude from $f_{\rm theo}$ to larger frequencies.
+    This type of cascade may be the signature of turbulence, and can be a source of energy dissipation - hence saturation.
+    Kolmogorov's hypothesis of incompressible fluid leads to a cascade in power law \[ W(f) = | \mathcal{FFT}(E_{\theta})(f) |^2 \propto f ^ {- \alpha}, \]
+    with $\alpha = 5/3$.
+    \begin{figure}[!hbt]
+      \centering
+      \includegraphics[width=\defaultwidth]{spectrum_frequency_turbul}
+      \caption{Normalized frequency power spectrum in log-log scale computed between $1.5$ and $7\,\micro\second$. The black dotted line shows the  theoretical frequency $f_{\rm theo}$, the orange solid line is a linear fit of coefficient $\alpha$, and the green dashed line correspond to Kolmogorov's turbulent spectra. }
+      \label{fig-turbul}
+    \end{figure}
+    
+    \Cref{fig-turbul} shows the frequency power spectrum computed between $2$ and $7\,\micro\second$ in log scale.
+    Overlaid is a fit of the cascade, for frequencies above the maximum amplitude.
+    The power law obtained is $\alpha \simeq 4.2$, which is much greater than Kolmogorov's value of $5/3$.
+    The oscillations observed present a decrease of the power spectrum much steeper than expected from turbulence.
+    Even if the mechanism of plasma turbulence differs from the fluid turbulence \citep{tsytovich1972}, the value of $\alpha$ is significantly larger than expected.
+    Consequently, we expected that there is no significant dissipation or cascade to the small scales.
   
   \subsection{Temporal evolution of the oscillation amplitude} \label{subsec-temp}
-  We have seen in the previous section that after a growing phase, the amplitude of the instability saturates with a low frequency oscillation around a stable value.
-  This section analyses these temporal characteristics.
-  
-  \Cref{fig-Ezstd_time} shows the temporal evolution of the characteristics of the electrostatic oscillation.
-  As the oscillation is not monochromatic (i.e. it is the sum of multiple waves), we display both the maximum of the electric field $\max(E_{\theta})$, and its standard deviation $\stdE$.
-  In the case of a monochromatic wave, one would have 
-  \[ \stdE = \frac{\max(E_{\theta})}{\sqrt{2}}.  \]
-  
-  \begin{figure}[!hbt]
-    \centering
-    \includegraphics[width=\defaultwidth]{Temporal_E_theta.pdf}
-    \caption{Temporal evolution of the maximum and the standard deviation of the azimuthal electric field, in log scale.}
-    \label{fig-Ezstd_time}
-  \end{figure}
-  
-  We can see in \cref{fig-Ezstd_time} that during the first microsecond, the growth of the wave amplitude is exponential, corresponding to a constant growth rate $\gamma_{PIC}$ that can be extracted from the simulation.
-  A linear fit in log scale give $\gamma_{PIC} \simeq 0.07 \opi$ during the linear phase.
-  After $t=1\,\micro\second$, the amplitude of the electric field oscillates around a mean value, with a period of the order of $T_{NL}=1.5 \pm 0.1 \,\micro\second$ ($NL$ for {\it non-linear} oscillation).
-  Hence, the azimuthal electric field becomes of the type of
-  \[  E_{\theta} = E_{\rm LF}(t) E_{\rm HF}(t, {\theta}) \]
-  with $E_{\rm HF}(t, \theta) $ the high frequency instability, and $E_{\rm LF}(t)$ the low frequency modulation of the amplitude, with a low frequency $f_{\rm LF} \simeq  660 \pm 45 \,\kilo\hertz$.
-  Several phenomena are candidates to the modulation observed, which are discussed here-after.
-  
+    We have seen in the previous section that after a growing phase, the amplitude of the instability saturates with a low frequency oscillation around a stable value.
+    This section analyses these temporal characteristics.
+    
+    \Cref{fig-Ezstd_time} shows the temporal evolution of the characteristics of the electrostatic oscillation.
+    As the oscillation is not monochromatic (i.e. it is the sum of multiple waves), we display both the maximum of the electric field $\max(E_{\theta})$, and its standard deviation $\stdE$.
+    In the case of a monochromatic wave, one would have 
+    \[ \stdE = \frac{\max(E_{\theta})}{\sqrt{2}}.  \]
+    
+    \begin{figure}[!hbt]
+      \centering
+      \includegraphics[width=\defaultwidth]{Temporal_E_theta.pdf}
+      \caption{Temporal evolution of the maximum and the standard deviation of the azimuthal electric field, in log scale.}
+      \label{fig-Ezstd_time}
+    \end{figure}
+    
+    We can see in \cref{fig-Ezstd_time} that during the first microsecond, the growth of the wave amplitude is exponential, corresponding to a constant growth rate $\gamma_{PIC}$ that can be extracted from the simulation.
+    A linear fit in log scale give $\gamma_{PIC} \simeq 0.07 \opi$ during the linear phase.
+    After $t=1\,\micro\second$, the amplitude of the electric field oscillates around a mean value, with a period of the order of $T_{NL}=1.5 \pm 0.1 \,\micro\second$ ($NL$ for {\it non-linear} oscillation).
+    Hence, the azimuthal electric field becomes of the type of
+    \[  E_{\theta} = E_{\rm LF}(t) E_{\rm HF}(t, {\theta}) \]
+    with $E_{\rm HF}(t, \theta) $ the high frequency instability, and $E_{\rm LF}(t)$ the low frequency modulation of the amplitude, with a low frequency $f_{\rm LF} \simeq  660 \pm 45 \,\kilo\hertz$.
+    Several phenomena are candidates to the modulation observed, which are discussed here-after.
+    
   
   \paragraph{Ion transit time\\}
     The ions are injected at the anode, and are accelerated by the uniform axial electric field $E_z$.

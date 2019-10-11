@@ -5,7 +5,7 @@
   % \renewcommand\rightmark{\expandafter\MakeUppercase{Solver for the general DR}}
 
 
-  In order to solve the dispersion relation $\hat\epsilon(\vect{k}, \omega) = 0$ of \cref{eq-drECDI}, we solve for every $\vect{k}$ the complex value of $\omega$ that is a zero, also named a root, of $\hat\epsilon(\vect{k}, \omega)$.
+  In order to solve the \ac{DR}  $\hat\epsilon(\vect{k}, \omega) = 0$ of \cref{eq-drECDI}, we solve for every $\vect{k}$ the complex value of $\omega$ that is a zero, also named a root, of $\hat\epsilon(\vect{k}, \omega)$.
   Hence, we first need to evaluate $\hat\epsilon(\vect{k}, \omega)$ for any given arguments $\vect{k}, \omega$.
   Then, we can find the root.
   
@@ -47,7 +47,7 @@
   
   \Cref{fig-numZbis} presents the comparison of the calculation of $\hat\epsilon$ from \cref{eq-drECDI} for a Maxwellian distribution function with (left) the Fried and Conte function (from the `plasmapy` python package) and (right) the numerical $\tilde{Z}$.
   We can see that the root with the greater imaginary part, located close to (0.2, 0), is the same in both cases, but that other roots for large negative imaginary part are not similar.
-  But as said previously, these roots are of no interest for our problem, hence the dispersion relation should be well computed using $\tilde{Z}$.
+  But as said previously, these roots are of no interest for our problem, hence the \ac{DR} should be well computed using $\tilde{Z}$.
   
 
   \subsection{Finding the root of \texorpdfstring{$\hat\epsilon$}{the plasma dielectric function.} }
@@ -127,9 +127,10 @@
   \begin{equation} \label{eq-druyv}
     f_{D}(v) = v_{th}^{-1} C2 \exp \lp -C1 \frac{\norm{v}^4}{v_{th}^4}  \rp ,
   \end{equation}
-  where $C1 \simeq 1.82$ and $C2 \simeq 0.64$ are two normalizing constants.
+  
+  where $C1 \simeq \Gamma(3/4)^2 \Gamma(5/4)^{-2}/4 \simeq 0.457 $ and $C2 =\Gamma(3/4)^{1/2} \Gamma(5/4)^{-3/2}2^{-3/2}  \simeq 0.453$ are two normalizing constants, so that the density and the thermal velocity $v_{th}$ are consistent with the Maxwellian distribution.
   The electron density used is $n_e=\sn{1}{17}\,\meter^{-3}$ and the electron temperature is $\Te=50\,\volt$, the ion temperature is $\Ti=0.1\,\volt$, and the drift velocity is $u_e=\sn{1.8}{6}\,\meter\per\second \simeq 300 c_s$ with $c_s=\lde \opi\simeq 6\,\kilo\meter\per\second$.
-  We see in \cref{fig-IAW_druv} that the impact of the Druyvesteyn \ac{EVDF} on the \ac{IAW} dispersion relation is small, except that the maximum growth rate is sightly increased.
+  We see in \cref{fig-IAW_druv} that the impact of the Druyvesteyn \ac{EVDF} on the \ac{IAW} dispersion relation is small, except that the maximum growth rate is decreased by $15\%$.
   
   \begin{figure}[!hbt]
     \centering
@@ -138,10 +139,10 @@
     \label{fig-IAW_druv}
   \end{figure}
   \Cref{fig-valition-solver} shows the evolution of the most growing wave with the electron drift velocity for both the Maxwellian and the Druyvesteyn \ac{EVDF}.
-  An illustration of the two distribution functions can be seen in \cref{fig-valition-solver}.{\bf b}.
-  We see that as obtained in the analytic dispersion relation \cref{eq-MIAW}, the growth rate is proportional to the drift velocity.
-  In addition, the wave corresponding to the maximum growth rate depends only weakly of the drift velocity, and we find the analytic values $k_{\theta} \lde =1/\sqrt{2} \simeq 0.707$ and $\omega / \opi = 1/\sqrt{3} \simeq 0.577$. 
-  Lastly, the \ac{EVDF} seems to affect only weakly the result.
+  An illustration of the two distribution functions with a drift equal to the thermal velocity can be seen in \cref{fig-valition-solver}.{\bf b}.
+  We see that, as obtained in the analytic dispersion relation \cref{eq-MIAW}, the growth rate is proportional to the drift velocity when $u_e \ll v_{th}$.
+  In addition, the wave corresponding to the maximum growth rate depends only weakly of the drift velocity, and we find a good agreement with the analytic values $k_{\theta} \lde =1/\sqrt{2} \simeq 0.707$ and $\omega / \opi = 1/\sqrt{3} \simeq 0.577$. 
+  Lastly, the shape of the \ac{EVDF} seems to affect only weakly the result.
   
   \begin{figure}[!hbt]
     \centering
@@ -156,18 +157,21 @@
     
 
   
-  \Cref{fig-ECDI_druv} shows the frequency and the grow rate for the \ac{ECDI}, defined by \cref{eq-drECDI}, in the same conditions that the \ac{IAW} results, with $k_r \lambda_{De} = 0.1 $.
+  \Cref{fig-ECDI_druv} shows the frequency and the grow rate for the \ac{ECDI}, defined by \cref{eq-drECDI}, in the same conditions that the \ac{IAW} results, with $k_r \lambda_{De} = 0.05 $.
   The infinite sum over the cyclotron resonances is stopped at $N_{max} = 20$.
-  We can see in \cref{fig-ECDI_druv} that the cyclotron resonances are present for both distribution functions, and similarly to the \ac{IAW}, the wave frequency and the growth rate are not much affected.
-  For a smaller radial wavenumber, the numerical resolution crashes, as the argument in the $Z$ function diverges.
+  We see in \cref{fig-ECDI_druv} that the cyclotron resonances are present for both distribution functions, and the wave frequency and the growth rate are not much affected by the shape of the \ac{EVDF}.
+  For very small radial wavenumber, the numerical resolution crashes, as the argument in $Z(\eta)$ diverges.
   However, in the limit $\eta \rightarrow \infty, Z(\eta) \rightarrow  \frac{1}{\eta}$.
   Hence, we still obtain the cyclotron resonances, as shown in \citet[Fig. 2]{janhunen2018}.
   
   \begin{figure}[!hbt]
-  \centering
-  \includegraphics[width=\defaultwidth]{ECDI_druv}
-  \caption{\acs{ECDI} frequency and growth rate for a Maxwellian distribution function using the Freid and Conte function and a Druyvesteyn distribution evaluated with the numerical estimation of $\tilde{Z}$, the radial wave number is $k_r \lambda_{De} = 0.1 $.}
-  \label{fig-ECDI_druv}
-\end{figure}
+    \centering
+    \includegraphics[width=\defaultwidth]{ECDI_druv}
+    \caption{\acs{ECDI} frequency and growth rate for a Maxwellian distribution function using the Freid and Conte function and a Druyvesteyn distribution evaluated with the numerical estimation of $\tilde{Z}$, the radial wave number is $k_r \lambda_{De} = 0.05$. The \acs{IAW} \acs{DR} using Maxwellian VDFs is shown }
+    \label{fig-ECDI_druv}
+  \end{figure}
+
+  We also see in \cref{fig-ECDI_druv} that the \ac{ECDI} \ac{DR} presents the resonances around the \ac{IAW} \ac{DR}.
+  This is why in case of resonance broadening, the \ac{ECDI} converged toward a \ac{IAW}-like dispersion relation.
 
 \let\rightmark=\oldrightmark

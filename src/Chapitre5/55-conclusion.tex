@@ -9,29 +9,33 @@
   
   At the beginning, the resonances typical of the \ac{ECDI} are observed.
   After about $0.7\,\micro\second$, they disappear, evolving towards the \ac{IAW} dispersion relation.
-  However, we show that the evolution from the \ac{ECDI} to the \ac{IAW}  is not due to the larger radial wavenumber, as there is no radial patterns.
+  However, we show that the evolution from the \ac{ECDI} to the \ac{IAW}  is not due to the larger radial wavenumber, as we observe no radial pattern in the simulation.
   Instead, it might be due to non-linear resonance broadening and electron demagnetization.
   
   \vspace{1ex}
   We also observed low frequency modulations of the amplitude of the instability.
   This oscillation is believed to be driven by the ion dynamic of the the ion-wave trapping.
   Indeed, the oscillation period is of the order of $\tau=1.5\,\micro\second$, which is four times the ion bouncing period.
-    
   
   The oscillation of the growth rate is also observed with the dispersion relation when the ion temperature is used and that they are supposed Maxwellian.
-  However, when the ion velocity distribution function measured in the \ac{PIC}  simulation is used, the growth rate stays close to zero at saturation.
-  The origin of the discrepancy is unclear, as this could even be due to errors in the general dispersion relation solver.
-  A proper cross-validation with other solvers using discrete distribution function is needed to confirm the result obtained.
+  However, when the ion velocity distribution function measured in the \ac{PIC}  simulation is used, the growth rate stays almost constant, with small oscillations.
+  The growth rate in the simulation is estimated with the wave equation.
+  The measured growth rate is in better agreement with the dispersion relation assuming Maxwellian distribution function, compared to the one using the VDF measured int he PIC simulation.
   
-  Another approach, not used here, would be to fit the distribution function using a sum of analytic functions.
+  The origin of the discrepancy is unclear, as there are several possible reason.
+  Firstly, to obtain the dispersion relations used here, we assumed small oscillations.
+  However, the quasi-steady state is governed by non-linear phenomena, which probably have an affect the dispersion relation.
+  Secondly, the estimation of the growth rate in the simulation uses a crude estimation of impact of the axial direction and the convection model on the wave.
+  Lastly, the general dispersion relation solver use here has not been validated with distribution functions of complex shape, as the one observed in \cref{fig-ivdfs_pic_time}.
+  A proper cross-validation with other solvers using complex distribution function is needed to confirm the result obtained.  
+  Another approach for the dispersion relation solver is to fit the VDF using a sum of analytic functions.
   Usually, one or few simple distribution functions are used, such as done by \citet{ronnmark1982}.
   A general algorithm finding the best fit in a large ensemble of analytic functions could be used to analyze more complex distribution function as the one observed here in the PIC simulation.
 
-  
+  \vspace{1ex}
   The results observed here are globally similar with the other simulation results of the community discussed in \cref{subsec-indroECDI}.
-  However, some differences remain, in particular during the non-linear saturation stage.
-  In order to conclude on the origins of the discrepancy, a precise comparison between the simulation codes and the parameters used should be done.
-  A Benchmark is currently conducted, in order to compare some of these codes on the axial-azimuthal geometry.
-  Once it is finished, efforts will be made on the radial and azimuthal case.
+  However, some differences remain, in particular during the non-linear stage.
+  In order to conclude on the origins of the discrepancies, a precise comparison between the simulation codes and the parameters used will be conducted.
+  A Benchmark is currently in construction, to compare some of these codes on the radial-azimuthal geometry similarly to the work done on the axial-azimuthal domain \citep{charoy2019}.
   
   
