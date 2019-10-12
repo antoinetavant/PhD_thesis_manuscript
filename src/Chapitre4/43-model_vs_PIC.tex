@@ -125,12 +125,12 @@
     \paragraph{Electron power balance\\}
     The total electron power balance integrated aver the simulation domain can be expressed as
     \begin{equation} \label{eq-GMel}
-      \deriv{}{t} \lp 3/2 V n_e \Te \rp = P_{\rm abs} - P_{\rm loss},
+      \deriv{}{t} \lp \frac{3}{2} V n_e e \Te \rp = P_{\rm abs} - P_{\rm loss},
     \end{equation}
     with $V$ the  volume of the simulation domain, $n_e$ the average electron density,  $P_{\rm abs}$ the total absorbed power, and $P_{\rm loss}$ the total power lost.
     The absorbed power $P_{\rm abs}$ is assumed to mainly be the Joule heating
     \begin{equation} \label{eq-pabs}
-      P_{\rm abs} = V n_e \vect{v_e} \cdot \vect{E} = V n_e v_{e, z} E_z = V n_e \mu_e  E_z^2
+      P_{\rm abs} = V n_e e \vect{v_e} \cdot \vect{E} = V n_e e v_{e, z} E_z = V n_e e \mu_e  E_z^2
     \end{equation}
     $E_z$ the imposed axial electric field and $\mu_e$ the electron axial mobility.
     From the parametric study of \cref{ch-2}, we have $\mu_e \simeq 5.6 \,\meter\squared\per\volt\per\second$.
@@ -139,12 +139,12 @@
     The power loss $P_{\rm loss}$ is assumed to be governed by the losses at the wall.
     Hence, as developed in \cref{sec-fluid}
     \begin{equation} \label{eq-Ploss}
-      P_{\rm loss} = S \frac{1}{4} h n_e u_b 2 \Tew
+      P_{\rm loss} = S \frac{1}{4} h n_e u_b 2 e\Tew
     \end{equation}
     with $S$ the surface of the wall of the simulation domain, $h \sim 1$ is the ratio between the mean plasma density and the plasma density at the sheath edge, $u_b = \sqrt{\frac{\gamma e \Te}{m_i}}$ is the modified Bhom velocity and $\Tew$ is the electron temperature at the wall.
     Hence, we have
     \begin{equation} \label{eq-MG_bis}
-    \frac{3}{2} \deriv{}{t} \Te = \mu_e  E_z^2 - \frac{S}{V} \frac{1}{2} \sqrt{\frac{\gamma e \Te}{m_i}}  \lp \Te - \frac{\gamma - 1}{\gamma} \dphi \rp,
+    \deriv{}{t} \Te = \frac{2}{3} \mu_e  E_z^2 - \frac{S}{V} \frac{1}{3} \sqrt{\frac{\gamma e \Te}{m_i}}  \lp \Te - \frac{\gamma - 1}{\gamma} \dphi \rp,
     \end{equation}
     where $\frac{V}{S} = L_R$.
     \Cref{eq-MG_bis} is coupled with the sheath model that return $\dphi$ as a function of $\Te$.
@@ -169,6 +169,7 @@
     The power balance of \cref{eq-MG_bis} cannot present an oscillating evolution, as there is a temperature for which the power is balance.
     This is because the maximum power balance in the \ac{SCL} regime (blue circle markers in  \cref{fig-powerbalance}) is above the minimum value in the standard regime (black triangular markers)
     In order to observe the oscillations, one should have the circle marker below the triangular one.
+    
     
     % \begin{figure}[hbtp]
     %   \centering
