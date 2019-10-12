@@ -151,20 +151,39 @@
     Concerning the three co-existing solutions, we assume that the sheath follows the same branch until the threshold temperature $\Te^2$, or $\Te^1$, is reached when the electron temperature increases, or decreases, respectively.
     When $\Te^1$ or $\Te^2$ is crosses, the sheath jumps to the other solution.
     
-    \begin{figure}[hbtp]
+    
+    \begin{figure}[!hbt]
       \centering
-      \includegraphics[width=\textwidth]{global_model.pdf}
-      \caption{Results of the electron power balance. ({\bf a}) shows the temporal evolution of the electron power balance from \cref{eq-MG_bis}, ({\bf b}) shows the temporal evolution of the electron temperature, and ({\bf c}) shows the evolution of the plasma potential $\dphi$ as a function of $\Te$. }
-      \label{fig-GM_results}
+      \includegraphics[width=0.9\textwidth]{Power_balance_Te.pdf}
+      \caption{Evolution of the power balance $P_{\rm abs}-P_{\rm loss}$ as a function of the electron temperature for ({\bf a}) $L_R=2\,\centi\meter$ and ({\bf b}) $L_R=4\,\centi\meter$, with $\crover=45\,\volt$. The blue line corresponds to the increasing temperature for the standard sheath solution, and the orange line correspond to the decreasing temperature in the inverted sheath solution. The markers represent the limit values of the power balance.}
+      \label{fig-powerbalance}
     \end{figure}
     
-    \Cref{fig-GM_results} shows the results obtained by using the electron power balance.
-    \cref{fig-GM_results}.{\bf a} and {\bf b} shows the temporal evolution of the power balance and the electron temperature $\Te$, and \cref{fig-GM_results}.{\bf c} shows the plasma potential as a function of $\Te$.
-    Starting from an initial value $\Te=10\,\volt$, the electron temperature increases until reaching $\Te^1$.
-    Then, the sheath enters the \ac{SCL} regime and $\Te$ decreases until reaching $\Te^2$.
+    \Cref{fig-powerbalance} shows the evolution of the power balance with the electron temperature for two values of $L_R=2$ and $4\,\centi\meter$.
+    We see for $L_R=2\,\centi\meter$ in \cref{fig-powerbalance}.{\bf a} that starting from $\Te=20\,\volt$ the power balance is positive until $\Te\simeq36\,\volt$.
+    In this condition, the system present a stable solution at that temperature.
     
-    The period of the oscillation is of the order of $0.1\,\micro\second$, which is significantly shorter than the \ac{PIC} simulation.
-    Indeed, the period of the sheath oscillations observed in \cref{fig-long_time} is approximately $T = 2\,\micro\second$.
+    In contrast for $L_R=4\,\centi\meter$ in \cref{fig-powerbalance}.{\bf b} the power balance is positive along all of the blue curve, meaning that the electron temperature will rise until the sheath jumps to the \ac{SCL} regime.
+    There, the power balance is negative, so the electron temperature will decreases until $\Te\simeq35\,\volt$ for which the power is balanced.
+    
+    The power balance of \cref{eq-MG_bis} cannot present an oscillating evolution, as there is a temperature for which the power is balance.
+    This is because the maximum power balance in the \ac{SCL} regime (blue circle markers in  \cref{fig-powerbalance}) is above the minimum value in the standard regime (black triangular markers)
+    In order to observe the oscillations, one should have the circle marker below the triangular one.
+    
+    % \begin{figure}[hbtp]
+    %   \centering
+    %   \includegraphics[width=\textwidth]{global_model.pdf}
+    %   \caption{Results of the electron power balance. ({\bf a}) shows the temporal evolution of the electron power balance from \cref{eq-MG_bis}, ({\bf b}) shows the temporal evolution of the electron temperature, and ({\bf c}) shows the evolution of the plasma potential $\dphi$ as a function of $\Te$. }
+    %   \label{fig-GM_results}
+    % \end{figure}
+    % 
+    % \Cref{fig-GM_results} shows the results obtained by using the electron power balance.
+    % \cref{fig-GM_results}.{\bf a} and {\bf b} shows the temporal evolution of the power balance and the electron temperature $\Te$, and \cref{fig-GM_results}.{\bf c} shows the plasma potential as a function of $\Te$.
+    % Starting from an initial value $\Te=10\,\volt$, the electron temperature increases until reaching $\Te^1$.
+    % Then, the sheath enters the \ac{SCL} regime and $\Te$ decreases until reaching $\Te^2$.
+    % 
+    % The period of the oscillation is of the order of $0.1\,\micro\second$, which is significantly shorter than the \ac{PIC} simulation.
+    % Indeed, the period of the sheath oscillations observed in \cref{fig-long_time} is approximately $T = 2\,\micro\second$.
     
     \paragraph{ Ion dynamics \\}
 
