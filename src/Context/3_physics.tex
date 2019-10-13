@@ -4,16 +4,16 @@
 % \addcontentsline{toc}{section}{Scientific challenges of the HETs}
 
 The scientific challenges are the critical phenomena that are currently not understood enough and prevent the industrial development of \ac{HET}s.
-As introduced before, in this Ph.D. manuscript, we focus on 2 of them : the electron transport and the plasma-wall interaction.
+As introduced before, in this Ph.D. manuscript, we focus on two of them : the electron transport and the plasma-wall interaction.
 
 
 \subsection{Electron drift and azimuthal instability in the HETs}
 % \addcontentsline{toc}{subsection}{Electron drift and azimuthal instability in the HETs}
 
-The axial electric field $E$ and the radial magnetic field $B$ induces an azimuthal $E\times B$ drift of the electrons.
+The axial electric field $E_z$ and the radial magnetic field $B_r$ induces an azimuthal $E\times B$ drift of the electrons.
 The drift velocity $v_{\rm d, ExB}$ is 
 \begin{equation} \label{eq-exbdriftbis}
-  v_{\rm d, ExB} = \bigg\lvert \frac{\vect{E} \times \vect{B}}{B^2} \bigg\rvert = \frac{E}{B} \sim \sn{1.5}{6} \,\meter\per\second
+  v_{\rm d, ExB} = \bigg\lvert \frac{\vect{E} \times \vect{B}}{B^2} \bigg\rvert = \frac{E_z}{B_r} \sim \sn{1.5}{6} \,\meter\per\second
 \end{equation}
 Because of their large mass, the ions are not significantly affected by the magnetic field.
 Hence they do not drift azimuthally.
@@ -46,8 +46,8 @@ These instabilities are treated in \cref{ch-5}.
   Ignoring the electron inertia and the pressure term, and with $\vect{B} = B_0 \vect{e}_r$, we can write the conservation equation projected on the axial and azimuthal direction
   \begin{equation} \label{eq-elec_momentum_mobility2}
   \begin{cases}
-    0 =  n_e E_z - n_e v_{de{\theta}} B_0 - \frac{m_e}{q_e} \nu_m n_e v_{dez}\\
-    0 =  n_e E_{\theta} -  n_e v_{dez} B_0 - \frac{m_e}{q_e} \nu_m n_e v_{de{\theta}}
+    0 =  n_e E_z - n_e v_{de{\theta}} B_r - \frac{m_e}{q_e} \nu_m n_e v_{dez}\\
+    0 =  n_e E_{\theta} -  n_e v_{dez} B_r - \frac{m_e}{q_e} \nu_m n_e v_{de{\theta}}
   \end{cases}
   \end{equation}
   Supposing that there is no electric field in the azimuthal direction because of the azimuthal periodicity ($E_{\theta}=0$),  we can combine the two equations of \cref{eq-elec_momentum_mobility2} and have \citep{chen2006,meezan2001}
@@ -59,11 +59,9 @@ These instabilities are treated in \cref{ch-5}.
   \nomenclature[Q]{\ensuremath{ \nu_m}}{  Electron-neutral momentum transfer collision frequency}
   \nomenclature[Q]{\ensuremath{ \mu}}{  Electron mobility, such that $v_e = \mu E$}
   \nomenclature[Q]{\ensuremath{ \mobcla}}{ Classical electron mobility, defined in \cref{eq-mobility}}
-  At the exit plane, the classical mobility predicts a mobility of the order of $\mobcla=0.001-0.01\mobunit$ \citep{adam2008a}.
-    
+  At the exit plane, the classical mobility predicts a mobility of the order of $\mobcla=0.001-0.01\,\mobunit$ \citep{adam2008a}.
   However, it has been observed in experiments by \citet{meezan2001} that the electron cross-field transport in the axial direction of the \ac{HET} is higher than $\mobcla$.
-  Different phenomena have been proposed to explain the origin of this \emph{anomalous} transport.
-  Two phenomena are supposed to be mainly responsible for this enhanced mobility \citep{croes2017}\string: the azimuthal instability and the near-wall mobility due to electron emission.
+  Two phenomena are supposed to be mainly responsible for this enhanced \emph{anomalous} mobility \citep{croes2017}\string: the azimuthal instability and the near-wall mobility due to electron emission.
   A significant part of the work of this Ph.D. thesis concerns the quantitative comparison of the relative importance of the two phenomena.
   
   The mobility induced by the azimuthal instability has first been observed in \ac{PIC} simulations by \citet{adam2004}, since then, it has been reproduced several times \citep{adam2008a,heron2013,lafleur2016a,croes2017,boeuf2018,taccogna2019}.
@@ -90,10 +88,8 @@ These instabilities are treated in \cref{ch-5}.
   Unfortunately, the experimental dataset is sparse, hence the domain of validity of the model is difficult to estimate.
   More precisely, the four \ac{HET} used operate between 1 and 6 \kilo\watt, thus the model may not be usable for smaller thruster.
   
-  \vspace{1em}
   The other mechanism enhancing the electron mobility is the secondary electron emission, responsible for a near-wall conductivity \citep{morozov1972,morozov2001, barral2003a}.
   The coupling between the instability and the electron emission has first been studied in \citet{heron2013}, but the mechanism is still not clearly understood.
-  
   Consequently, a better understanding of the electron cross-field mobility, the azimuthal instability, and the secondary electron emission is required before being able to model realistically the \ac{HET}.
   
   
@@ -131,11 +127,11 @@ These instabilities are treated in \cref{ch-5}.
 % \addcontentsline{toc}{subsection}{Three-dimensional physics of the HET}
 
 The physics governing the \ac{HET} is three dimensional\string:
-\begin{itemize}
+\begin{enumerate}
   \item The plasma is accelerated in the axial direction by the electric field, and it is observed experimentally that the axial profile of the magnetic field is responsible for the performance of the thruster.
   \item The chamber walls close the radial dimension. The walls are responsible for most of the plasma losses, both on the particle and energy balances.
   \item The electrons drift in the azimuthal direction, leading to strong instabilities that affect the axial transport.
-\end{itemize}
+\end{enumerate}
 
 Consequently, when modeling or simulating a \ac{HET}, if one of the direction is not included, a part of the physics will be missing\string:
 \begin{itemize}

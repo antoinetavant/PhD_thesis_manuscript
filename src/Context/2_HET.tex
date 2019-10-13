@@ -7,14 +7,12 @@
 
   
   The \ac{HET} is an electrostatic electrical propulsion system accelerating ions by the mean of an imposed voltage difference.
-  \Cref{fig-bhtonoff} shows a picture of an \ac{HET} switched on and off.
+  \Cref{fig-bhtonoff} shows a picture of the front view of an \ac{HET} switched on and off.
   We can see the plasma in the annular plasma chamber.
-
-
-  \begin{figure}[hbt]
+  \begin{figure}[!hbt]
     \centering
     \includegraphics[width=\defaultwidth]{PPS-ON_OFF.jpg}
-    \caption{Front view of an \acs{HET}, the BHT-1500 from Busek, USA}
+    \caption{Front view of an \acs{HET}, the BHT-1500 from Busek, USA, switched on (left) and off (right). The cathode is located at the center.}
     \label{fig-bhtonoff}
   \end{figure}
 
@@ -26,18 +24,18 @@
     \item The magnetic circuit
   \end{enumerate}
 
-  \begin{figure}[hbt]
+  \begin{figure}[!hbt]
     \centering
     \includegraphics[width=\defaultwidth]{shematic_HET}
     \caption{Schematic cut of an \acs{HET}, illustrating its different parts. }
     \label{fig-shematiccut}
   \end{figure}
 
-  \Cref{fig-shematiccut} presents a schematic cut of the \ac{HET} along its axial and radial direction.
+  \Cref{fig-shematiccut} presents a schematic cut of the \ac{HET} along its axial and radial directions.
 
   \paragraph{The chamber} has an annular shape.
   It is closed at the anode side and kept open at the other side.
-  The axial length of the chamber is between $1$ and $3\,\centi\meter$; the radial width of the chamber is between $1$ and $2\,\centi\meter$. 
+  The axial length of the chamber is between $1$ and $3\,\centi\meter$; the radial width of the chamber is between $1$ and $2\,\centi\meter$, and its mean radius is of the order of $5\,\centi\meter$. 
   The walls are usually constituted by a ceramic, as the \ac{BNSiO2}.
   The material needs to be resistant to erosion by ion impact sputtering.
   But changing the material is also known to affect the behavior of the discharge.
@@ -61,7 +59,6 @@
   It creates a constant radial magnetic field in the annular chamber.
   The maximum value of the radial magnetic field is located close to the exit plane of the chamber.
   Its amplitude is on the order of $200$ Gauss ($\sn{2}{-2}$ T).
-
   \Cref{fig-bshape} illustrates the axial profile of the magnitude of the radial magnetic field.
   \begin{figure}[hbt]
     \centering
@@ -76,7 +73,7 @@
 
 
   The operation principle of a \ac{HET} is rather simple.
-  The objective is to ionize the propellant and impose an electric field to accelerate the ions.
+  The objective is to ionize the propellant and impose an axial electric field to accelerate the ions.
 
   \paragraph{Ionization\\}
   The propellant, usually xenon, is ionized by electron-impact.
@@ -94,19 +91,20 @@
 
   \paragraph{Ionization and Acceleration regions overlap\\}
   \Cref{fig-zones} shows an illustration of the usual axial profiles of the ionization and the electric and magnetic fields.
-  As the magnetic field governs both the ionization and the acceleration regions, it can be challenging to obtain a clear separation between the two regions.
+  As the magnetic field governs both the ionization and the acceleration regions, it is challenging to obtain a clear separation between the two regions.
   However, if ionization happens in the acceleration region, the newly created ions will not be accelerated at their maximum velocity, hence resulting in a loss compared to the maximum theoretical thrust.
   The theoretical maximum speed is, by conservation of the total energy of the ion
   \begin{equation} \label{eq-vmaxtheo}
-    v_{\rm ex, max} = \sqrt{ \frac{2 e V}{m_i} } \sim 31 \,\kilo\meter\per\second
+    v_{\rm ex, max} = \sqrt{ \frac{2 e U_d}{m_i} } \sim 31 \,\kilo\meter\per\second
   \end{equation}
-  with $m_i = 131 \,\atomicmass$ for xenon and $V=300\,\volt$.
-
+  with $m_i = 131 \,\atomicmass$ for xenon and $U_d=300\,\volt$.
+ \nomenclature[Q]{\ensuremath{ \atomicmass}}{ Atomic mass, $1\, \atomicmass \simeq \sn{1.66}{-27} \,\kilo\gram$}
+ \nomenclature[P]{\ensuremath{ U_d}}{ Discharge voltage}
 
   \begin{figure}[hbt]
     \centering
     \includegraphics[width=\defaultwidth]{zones}
-    \caption{Illustration of the usual axial profiles of the ionization and acceleration amplitude compared to the magnetic field.}
+    \caption{Illustration of the usual axial profiles of the ionization and axial electric field amplitudes compared to the radial magnetic field amplitude.}
     \label{fig-zones}
   \end{figure}
 
