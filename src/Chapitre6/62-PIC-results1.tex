@@ -3,8 +3,7 @@
 \section{Results of the axial-azimuthal PIC simulations}
   \label{sec-Zthetaresults}
   In this sections, we present the results of the \ac{2D} \ac{PIC} simulations using the test-case of Boeuf \citep{boeuf2018}, described in \cref{subsec-boeuf_description}\string; the parameters used for the simulations are given in \cref{tab-parameters-boeuf}.
-  In this test-case, the ionization is fixed, consequently the breathing mode is absent.
-  Thus, the simulation converges quickly towards a steady state, as the mean parameters stop evolving in approximately 8\,\micro\second.
+  In this test-case, the ionization is fixed, consequently the simulation converges quickly towards a steady state, as the mean parameters stop evolving in approximately 8\,\micro\second.
   
   We run three different cases\string:
   the first is the usual case, without the effects of the radial direction.
@@ -14,11 +13,11 @@
 
   
   \subsection{Simulation results\string: an overview} \label{subsec-boeuf-overview}
-    As the ionization is not self-consistently modeled, the simulations converges after less than $10\,\micro\second$.
-    \Cref{fig-overview_boeuf_neEx} shows the axial and azimuthal distribution of the azimuthal electric field $E_{\theta}$ and the electron density $n_e$ at $t=10\,\micro\second$ is the case where no radial losses are modeled.
+    % As the ionization is not self-consistently modeled, the simulations converges after less than $10\,\micro\second$.
+    \Cref{fig-overview_boeuf_neEx} shows the axial and azimuthal distribution of the azimuthal electric field $E_{\theta}$ and the electron density $n_e$ at steady state at $t=10\,\micro\second$ in the case where no radial losses are modeled.
     We see in both $E_{\theta}$ and $n_e$ the \ac{ECDI}, which wavelength is approximately $\lambda_{\theta} = 0.08\,\centi\meter$ at $z=0.5\,\centi\meter$.
-    The results observed are similar to the one presented by \citet{boeuf2018}, but in order to validate the results, an exhaustive comparisons has been conducted between seven independently developed \ac{PIC} codes on this specific case.
-    A good agreement has been shown \citep{charoy2019}.
+    The results observed are similar to those presented by \citet{boeuf2018}, but in order to validate the results, an exhaustive comparisons has been conducted between seven independently developed \ac{PIC} codes on this specific case.
+    A good agreement has been obtained as shown in \citet{charoy2019}.
     
 
     \begin{figure}[hbt]
@@ -40,7 +39,7 @@
         \subfigure{Boeuf_ne_temporal}{a}{20,20} &
         \subfigure{Boeuf_Te_temporal}{b}{20,20} \\
       \end{tabular}
-      \caption{Temporal evolution of ({\bf a})  the mean plasma density, and  ({\bf b}) the  mean (solid line) total electron temperatures temperature $\Te$  and (dashed line) the radial temperature $\Te_{,R}$ in the axial-azimuthal simulations, obtained with the three different radial models. }
+      \caption{Temporal evolution of ({\bf a})  the mean plasma density, and  ({\bf b}) the  mean (solid line) total electron temperature $\Te$  and (dashed line) the radial temperature $\Te_{,R}$ in the axial-azimuthal simulations, obtained with the three different radial models. }
       \label{fig-boeuf-temporal}
     \end{figure}
 
@@ -72,7 +71,7 @@
 
     \Cref{fig-boeuf_axialtwo} shows the axial profiles of the electron axial density current and the electron temperatures.
     The electron temperatures are reduced by the radial losses in each direction ($\Te{}_{,\theta}, \Te{}_{,R}, \Te{}_{,Z}$).
-    The radial temperature $\Te{}_{,R}$ is reduced uniformly everywhere, but the two other temperature are mostly affected upstream, at approximately $z=0.8\,\centi\meter$.
+    The radial temperature $\Te{}_{,R}$ is reduced uniformly everywhere, but the two other temperatures are mostly affected upstream, at approximately $z=0.8\,\centi\meter$.
     Surprisingly, to a first approximation we could think that the radial losses should not reduce the axial and azimuthal temperatures.
     Indeed, if we suppose that the distribution function has separated variables
     \[ f(\vect{v_e}) = f_r(v_{e,r})f_{\theta}(v_{e,\theta})f_z(v_{e,z}), \]
@@ -84,7 +83,7 @@
     The axial electron density current $J_{e, z}$ is shown in \cref{fig-boeuf_axialtwo}.{\bf b}.
     We see that $J_{e, z}$ decreases between $z=0.2$ and $z=1\,\centi\meter$, because of the ionization source term.
     We can also observe the sharp sign change at $z=2.4\,\centi\meter$, in agreement with the cathode electron injection location. 
-    In addition, $J_{e, z}$ is significantly reduced in the whole domain by the radial losses, as there is approximately a factor of two between the case withour radial losses and the case $L_R=2\,\centi\meter$.
+    In addition, $J_{e, z}$ is significantly reduced in the whole domain by the radial losses, as there is approximately a factor of two between the case without radial losses and the case $L_R=2\,\centi\meter$.
     
     \begin{figure}[!hbt]
       \centering
@@ -140,7 +139,7 @@
     This is consistent with the large reduction of the axial electron mobility, which lower the Joule heating.
     The reduction of the cross-field electron transport comes from the diminished amplitude of the azimuthal instability.
     In the next section, we analyze in more details the instability in order to explain the impact of the radial losses on the amplitude of the instability.
-    In \cref{sec-rheating}, we will discuss radial heating of the electrons.
+    In \cref{sec-rheating}, we will discuss the radial heating of the electrons.
 
 
 \afterpage{\clearpage}

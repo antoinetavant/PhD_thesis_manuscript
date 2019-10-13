@@ -3,10 +3,10 @@
 \section{Presentation of the axial-azimuthal simulation}
 \label{sec-ztheta_description}
 The bi-dimensional (\acs{2D}) simulation plane used so far in this work was the radial-azimuthal plane so that the plasma-wall interaction could be studied while obtaining self-consistently the azimuthal instability responsible for the axial electron transport.
-In this configuration, we have implemented an algorithm that model the axial convection of the particles.
-However, there are other missing mechanisms of the axial direction in this simulation, in particular\string: the axial electric field is imposed\string; the wave is not convected\string; the impact of the axial gradients, such as the diamagnetic drift, are not included\string; the ionization region is not modeled.
+In this configuration, we have implemented an algorithm that models the axial convection of the particles.
+However, there are other missing mechanisms of the axial direction in this simulation, in particular\string: the axial electric field is imposed\string; the wave is not convected axially\string; the impact of the axial gradients, such as the diamagnetic drift, are not included\string; the ionization region is not modeled.
 
-The axial-azimuthal \ac{2D} simulation domain is used to study these mechanisms, and there are several studies that focused on modeling this specific simulation plane \citep{adam2004,coche2014,boeuf2018,taccogna2019}.
+The axial-azimuthal \ac{2D} simulation domain is used to study these mechanisms, and there are several studies in the literature that focused on modeling this specific simulation plane \citep{adam2004,coche2014,boeuf2018,taccogna2019}.
 However, in these models, the impact of the radial direction is now missing.
 Therefore, we propose in this chapter a first step to incorporate the radial direction in the axial-azimuthal simulation.
 
@@ -36,7 +36,7 @@ The azimuthal direction is closed with periodic boundaries for both the particle
 \begin{figure}[hbt]
   \centering
   \includegraphics[width=0.5\textwidth]{2D_ztheta}
-  \caption{Schematic representation of the \acs{2D} \ztheta simulation domain. The anode is at the top, and the cathode at the bottomof the figure. The radial magnetic field perpendicular to the simulation plane is imposed. The azimuthal direction is closed by periodic boundary condition. The electron current density emitted by the cathode $J_{e,c}$ is injected in the simulation domain at the cathode side. }
+  \caption{Schematic representation of the \acs{2D} \ztheta simulation domain. The anode is at the top, and the cathode at the bottom of the figure. The radial magnetic field perpendicular to the simulation plane is imposed. The azimuthal direction is closed by periodic boundary condition. The electron current density emitted by the cathode $J_{e,c}$ is injected in the simulation domain at the cathode side. }
   \label{fig-2D_ztheta_bis}
 \end{figure}
 
@@ -59,13 +59,14 @@ The axial profile of the plasma density presents a maximum that can be one order
 Consequently, a static MPI domain decomposition would produce an unbalance in the number of numerical particles per CPU, which would reduce the efficiency of the code.
 
 One possibility is to modify dynamically the weight of the numerical particles relative to the plasma density, in order to keep a relatively constant number of particles per cell.
-This can be done by merging the particles when they are too small, or by splitting them in smaller particles when they are too big \citep{shon2001,teunissen2014}.
-However, such algorithm can modify the charge, momentum, or the energy of the system if not done carefully.
+This can be done by merging the particles when they are too numerous, or by splitting them in smaller particles when they are too few \citep{shon2001,teunissen2014}.
+However, such algorithm can modify the charge, momentum, or the energy of the system if it is not done carefully.
 In \citet{vranic2015}, the authors present an algorithm claimed to conserve these quantities.
 However, we chose not to implement it because of its error-prone complexity.
 
-Instead, we implemented a dynamic redistribution of the CPU domain, so that every CPU own approximately the same number of particles.
+Instead, we implemented a dynamic redistribution of the CPU domain, so that every CPU owns approximately the same number of particles.
 As the density gradient is principally in the axial direction, we only change the axial size of the CPU domains.
+The dynamic load balancing is done every 150 000 time steps.
 
 \paragraph{Electron time-step sub-cycling\\}
 Due to the large mass ratio between the  ions and the electrons, the ion dynamic is much slower than the electron dynamic that constrained the time step  $\dt$.
@@ -77,32 +78,34 @@ With the stability criterion on $\dt_e$ (\cref{eq-dx_limit}), we find the stabil
 \end{equation}
 
 Consequently, we use $\frac{\dt_i}{\dt_e} = 11$ in what follows.
-We verified for one case that using the same time-step for the ion and the electrons produces the same solution.
+We verified for one case that using the same time-step for the ions and the electrons produces the same solution.
 
 
 \subsection{Facing the breathing mode} \label{subsec-breathmod}
 The breathing mode comes from the coupling between the neutral gas flow and the plasma dynamics, via the ionization.
-Under the typical conditions of the \ac{HET}, we observed this oscillation with a low frequency, around  $10-30$ kHz, and a large amplitude, as the plasma density can change up to one order of magnitude during the oscillation period \citep{barral2003a,barral2009}.
+Under the typical conditions of the \ac{HET}, this oscillation is observed with a low frequency, around  $10-30$ kHz, and a large amplitude, as the plasma density can change up to one order of magnitude during the oscillation period \citep{barral2003a,barral2009}.
 This oscillation is much slower than the \ac{ECDI}, and is present throughout the entire channel.
 
 If these oscillations are not problematic for the fluid or \ac{DK} simulations, they are for \ac{PIC} simulations.
 Indeed, the total number of numerical particles is proportional to the plasma density, and a minimal number of particles is required to limit the numerical heating \citep{turner2006}.
 Thus, when the mean plasma density oscillates, the number of numerical particles (hence the amount of memory used) can change drastically.
-This reduces significantly the performance of the simulation code, and can lead to memory overflow if the memory available is not high enough to store all of the particles during the peak of density  of the oscillation.
+This reduces significantly the performance of the simulation code, and can lead to memory overflow if the memory available is not high enough to store all the particles during the peak of density  of the oscillation.
 The \emph{merging-splitting} of the particles  can be used to reduce the variation of the number of numerical particles, but it is not used for the same reason than discussed above.
 
-In addition to the number of particles, the numerical parameters (time step and cell size) have to be chosen to satisfy the stability criteria during all of the simulation, which also reduces significantly the performance of the simulation. 
+In addition to the number of particles, the numerical parameters (time step and cell size) have to be chosen to satisfy the stability criteria during all the simulation, which also reduces significantly the performance of the simulation. 
 This could be overcome by adapting dynamically the mesh and the time step.
 However, too few studies of the consequences of the use of adaptive mesh and time step on the simulations have been conducted.
 Thus, we have chosen not to modify the \ac{PIC} algorithm.
-
-Two other approaches have been followed to reduce the computational cost induced by the breathing mode\string:
+Two other approaches have been followed to reduce the computational cost of axial-azimuthal simulations\string:
 \begin{enumerate}
-  \item the approach used by \citet{coche2014}\string: using a scaling of the permittivity to reduce the computational load,
-  \item the approach of \citet{boeuf2018}\string: using an imposed ionization source term.
+  \item the approach used by \citet{coche2014}\string: using a scaling of the permittivity to reduce the computational load to simulate the breathing mode,
+  \item the approach of \citet{boeuf2018}\string: using an imposed ionization source term to obtain a steady-state without breathing mode.
 \end{enumerate} 
-These two cases are significantly different in the physics modeled and the behavior observed, as Boeuf's test-case will converge toward a steady-state, in contrast to Coche's test-case which model the breathing mode.
-Since we are not directly interested in the breathing oscillations, and we want to get insights on the radial wall effects in a reasonable computational time, we use in this study the test-case of Boeuf.
+% These two cases are significantly different in the physics modeled and the behavior observed, as Boeuf's test-case will converge toward a steady-state, in contrast to Coche's test-case which model the breathing mode.
+% Since we are not directly interested in the breathing oscillations, and we want to get insights on the radial wall effects in a reasonable computational time, we use in this study the test-case of Boeuf.
+Since we want to get insights on the radial wall effects in a reasonable computational time, we use in this study the test-case of Boeuf.
+It is interesting to note that a very close configuration has been used as a international benchmark published recently in \citet{charoy2019}.
+
 % \inlinenote{Plutôt referencer le benchmark Charoy et al. ?}
 % 
 % \subsection{Simulation test-case of Coche} \label{subsec-coche_description}
@@ -218,7 +221,7 @@ Indeed, the axial length in this case is $L_z=2.5\,\centi\meter$, with $L_{ch}=0
     \subfigure{boeuf-domain.png}{}{10,10} &
     \subfigure{boeuf-profiles.png}{}{10,10} \\
   \end{tabular}
-  \caption{(left) the \acs{2D} axial azimuthal domain, with in dash line the cathode electron injection plan\string; (right) the axial profile of the magnetic field and the ionization source term profiles, taken from \citep{boeuf2018}. }
+  \caption{(left) the \acs{2D} axial azimuthal domain, with in dashed line the cathode electron injection plan\string; (right) the axial profile of the magnetic field and the ionization source term profiles, taken from \citep{boeuf2018}. }
   \label{fig-boeuf-presnetation}
 \end{figure}
 
@@ -226,13 +229,14 @@ The electrons emitted by the cathode are injected inside the simulation domain, 
 Since the electron injection is not located at the cathode boundary, a large cathode sheath is present.
 Therefore, the plasma potential is corrected so that the potential is $\phi=0$ at the location of injection, at 1\,mm from the boundary.
 This is done by substracting the azimuthally averaged plasma potential at the injection plane, from the potential calculated with the Poisson equation.
-The large cathode sheath that forms between 2.4 and 2.5\,cm has been shown not to affect the discharge behavior and hence, it won't be considered here.
-The physical and numerical conditions used for the test-case of Boeuf are given in \cref{tab-parameters-boeuf}.
+The large cathode sheath that forms between 2.4 and 2.5\,cm has been shown not to affect the discharge behavior and hence, it won't be studied here.
+The physical and numerical conditions used for the simulation are given in \cref{tab-parameters-boeuf}.
+More details can be found in \citet{boeuf2018} and \citet{charoy2019}. 
 
 \begin{table}[htb] %PIC parameters
      \centering
      \ra{1.3}
-     \caption{\label{tab-parameters-boeuf} Physical and numerical parameters used in the \acs{2D} \acs{PIC} simulations of an axial and azimuthal \ztheta plane of a \acs{HET} in the test-case of Boeuf.}
+     \caption{\label{tab-parameters-boeuf} Physical and numerical parameters used in the \acs{2D} \acs{PIC} simulations of an axial and azimuthal \ztheta plane of a \acs{HET}.}
      \begin{tabular}{@{}r c c c@{}} 
         \toprule
         {\bf Physical Parameter} & notation & Value & Unit \\
@@ -269,7 +273,7 @@ Thus, as previously done in the radial-azimuthal simulation, the particles are t
 When an ion crosses the boundary, it is removed from the simulation.
 The electrons are partially reflected, such that the electron flux absorbed at the wall equals the ion flux.
 We do not model the secondary electron emission.
-We suppose that the sheath is infinitely thin, so that the wall corresponds to a partially reflecting surface.
+We assume that the sheath is infinitely thin, so that the wall corresponds to a partially reflecting surface.
 Two approaches have been investigated to model efficiently the effect of the sheath.
 
 
@@ -289,7 +293,7 @@ Hence, we chose not to use it.
 % The authors did not modeled the particle losses
 
 \paragraph{Model 2 for the  radial losses\string: flux equality\\}
-The second approach directly imposes the flux equality by absorbing at every time step the same number of electrons than ions.
+The second approach directly imposes the flux equality by absorbing at every time step the same number of electrons as ions.
 The electrons crossing the radial boundaries are sorted by their energy in the radial direction, and the electrons absorbed are the most energetic ones.
 The others are reflected specularly.
 Due to the small number of ions crossing the boundary, and for performance issues, we choose to impose the flux equality averaged over the domain of one CPU.
