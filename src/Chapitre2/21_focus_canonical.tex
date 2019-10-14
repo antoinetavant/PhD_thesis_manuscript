@@ -11,7 +11,7 @@
   \subsection{Initial phase of the simulation\string: \texorpdfstring{$t < 2\,\micro\second$}{ t < 2 microseconds} } \label{subsec-initlaphase}
   
   The initial phase of the simulation corresponds to the growth of the \ac{ECDI}, and the formation of the sheaths.
-  Because of the growth of the instability, the electron transport increases as well, that increases the electron heating.
+  Because of the growth of the instability, the electron transport increases as well, which increases the electron heating.
   The time scale of the sheath formation is governed by the ion inertia.
   It is roughly the same time scale as the saturation of the instability due to ion-trapping.
   
@@ -54,15 +54,15 @@
     \label{fig-tx_n_phi}
   \end{figure}
 
-  We can see on \Cref{fig-tx_n_phi} the evolution of the radial profile of the electron density on the plasma potential over the same period as \cref{fig-canon_Te_strat}.
+  We can see in \Cref{fig-tx_n_phi} the evolution of the radial profile of the electron density on the plasma potential over the same period as \cref{fig-canon_Te_strat}.
   We observe on both quantities the formation of the sheath and the evolution toward a steady-state.
   
   \subsection{Saturated quasi steady-state\string: \texorpdfstring{$t \geq 2\,\micro\second$}{t > 2 microseconds}  }
   \label{subsec-stablephase}
   After the relatively fast rise of the plasma characteristics, the simulation reaches a quasi steady-state, as we can see in \Cref{fig-canon_Te_all}.
   We observe that after $t\simeq2\mus$ , the electron energy $\Ee$ starts to oscillate around a mean value.
-  The oscillations are then damped and reach their minimum amplitude at  $t\simeq 7\mus$ and then remain with a small amplitude as shown on simulations carried out up to $25\,\micro\second$ on \cref{fig-canon_Te_all} (the origin of these oscillations has been discussed in \Cref{subsec-temp}).
-  Hence, there is no need to simulate for longer times than $10\mus$ in the following simulations.
+  The oscillations are then damped and reach their minimum amplitude at  $t\simeq 7\mus$ and then remain with a small amplitude as shown on simulations carried out up to $25\,\micro\second$ in \cref{fig-canon_Te_all} (the origin of these oscillations has been discussed in \Cref{subsec-temp}).
+  Hence, there is no need to simulate for times longer than $10\mus$ in the following simulations.
   
   
   
@@ -75,7 +75,7 @@
   
 
   \Cref{fig-profiles} shows the azimuthally-averaged radial profiles of the electron and ion densities.
-  The plasma is mostly quasineutral, expect close to the walls.
+  The plasma is mostly quasineutral, except close to the walls.
   In the sheath, close to the wall, the electron density falls more rapidly compared to that of ions.
   The sheath length can be roughly estimated to be $1\,\milli\meter$.
   The Debye length in our conditions is
@@ -101,7 +101,7 @@
   \nomenclature[Q]{\ensuremath{ u}}{ Electron mean velocity}
   In \ac{PIC} simulations, $\mob$ is computed at each time step by
   \begin{equation} \label{eq-mobpic}
-    \mobpic = \frac{1}{E_z} \sum_N v_{e,z}
+    \mobpic = \frac{1}{N E_z} \sum_N v_{e,z}
   \end{equation}
 
   \begin{figure}[hbt]
@@ -117,7 +117,7 @@
   \begin{equation} \label{eq-muclass}
     \mobcla = \frac{\nu_m \frac{e}{m_e}}{\oce^2 + \nu_m^2}
   \end{equation}
-  with $\nu_m$ the electron-neutral  collision frequency and \oce is the electron cyclotron frequency.
+  with $\nu_m$ the electron-neutral  collision frequency and \oce{} is the electron cyclotron frequency.
   In the conditions of \cref{parameters}, $\mobcla \simeq 0.8$ \square\meter(sV)$^{-1}$.
   
   The measured electron mobility in the \ac{PIC} simulation is one order of magnitude larger than the classical mobility.
@@ -148,7 +148,7 @@
   \end{figure}
   
   The effective mobility $\mobeff$ is determined by the correlation term $<\dEt \dne>$ and the parameters of the simulations.
-  The effectively mobility at saturation $\mobeffsat$, using the hypothesis of saturation by ion-wave trapping, only need the electron temperature $\Te$.
+  The effective mobility at saturation $\mobeffsat$, using the hypothesis of saturation by ion-wave trapping, only needs the electron temperature $\Te$.
   We can see that the three values $\mobpic, \mobeff$, and $\mobeffsat$ are close from each-others.
   
   \begin{table}[hbtp]

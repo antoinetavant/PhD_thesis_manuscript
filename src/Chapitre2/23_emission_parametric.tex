@@ -48,7 +48,7 @@
   The saturation at $\probamax$ can be neglected as we have seen that it only affects a small part of the electron population, see \cref{fig-see_illustration}.
   The exact calculation and the relative error is given in \cref{an-SEE_exact}.
   
-  \subsection{Impact of the electron emission of the mobility} \label{subsec-param-mob}
+  \subsection{Impact of the electron emission on the mobility} \label{subsec-param-mob}
     
   The effects of the electron emission at the wall on the electron axial mobility are presented in \Cref{fig-mob-epsstar}.
   The measured mobility $\mobpic$ are shown, as well as the effective mobility $\mobeff$, the saturation estimate $\mobeffsat$ and the classical mobility $\mobcla$, defined in \cref{sec-transport} respectively by \cref{eq-mudef}, \cref{eq-defmobeff}, \cref{eq-mobeffsat} and \cref{eq-mobclas}.
@@ -81,7 +81,7 @@
   \begin{figure}[hbt]
     \centering
     \includegraphics[width=\textwidth]{both_Mobility_SEE}
-    \caption{Radial profile the electron mobility (left) measured in the \acs{PIC} simulations, and (right) given by \cref{eq-defmobeff}, for different wall emissivities. }
+    \caption{Radial profile of the electron mobility (left) measured in the \acs{PIC} simulations, and (right) given by \cref{eq-defmobeff}, for different wall emissivities. }
     \label{fig-radial-data}
   \end{figure}
   
@@ -89,7 +89,7 @@
   This observation is in agreement with $\mobeffsat$ observed in \cref{fig-radial-data,fig-mob-epsstar}.
   This is due the electron temperature $\Te$ which decreases from around $\Te=45$V at $\crover=200$V to $\Te=30$V at low $\crover$ (the evolution of $\Te$ can be seen in \cref{fig-Tevsproba}).
   
-  On the other hand, the near-wall mobility increases significantly on $\mobpic$ (almost by a factor of 2) with the increase of the electron emission.
+  On the other hand, the near-wall mobility increases on $\mobpic$ almost by a factor of two between the case withour emission and $\crover=38\,\volt$.
   However, we do not see this evolution on $\mobeffsat$ which was derived from a theory with no \ac{SEE}, meaning that it indeed comes from another physical mechanism than the \ac{ECDI}.
   
   
@@ -98,8 +98,8 @@
 
   In \Cref{fig-mob-epsstar}, three regimes have been identified.
   Regime {\bf I} corresponds to low values of $\crover$ (lower than 35V), during which $\mobeffsat$ increases with $\crover$ but $\mobpic$ and $\mobeff$ decreases.
-  Regime {\bf III} corresponds to high values of $\crover$ (higher than 50V), during which $\mobeffsat$, and  $\mobpic$ are roughlty constants, but $\mobeff$ increases slightly.
-  Regime {\bf II} is a short transition regime, for $35 < \crover < 50$V.
+  Regime {\bf III} corresponds to high values of $\crover$ (higher than 50V), during which $\mobeffsat$, and  $\mobpic$ are roughly constants, but $\mobeff$ increases slightly.
+  Regime {\bf II} is a short transition regime, for $38 < \crover < 50$V.
   
   The different regimes are actually obvious when looking at the temporal evolution of the different variables.
   \Cref{fig-threeregimes}  presents the temporal evolution of the space average $\ratepic$ for three different
@@ -109,7 +109,7 @@
   \begin{figure}[hbt]
     \centering
     \includegraphics[width=\defaultwidth]{comparaison_3_regimes}
-    \caption{Evolution as a function of time of the averaged electron emission rate $\ratepic$ in the three regimes observed (two stables, one with oscillations). The light green zones correspond to the periods when $\ratepic > \ratecr$}
+    \caption{Evolution as a function of time of the averaged electron emission rate $\ratepic$ in the three regimes observed (two stable ones, one with oscillations). The light green zones correspond to the periods when $\ratepic > \ratecr$}
     \label{fig-threeregimes}
   \end{figure}
   
@@ -154,18 +154,18 @@
    However, during regime {\bf I}, the electron power loss to the wall is very high, and can exceed the gain.
    Hence, the electron temperature decreases.
    If $\Te$ decreases too much, the sheath can come back to the previous regime {\bf III}.
-   The oscillations between regimes {\bf I} and {\bf III} defines regimes {\bf II}.
+   The oscillations between regimes {\bf I} and {\bf III} define regimes {\bf II}.
       
    We can try and predict the threshold value of $\crover$ between regimes {\bf III} and {\bf II}.
    We have seen in \cref{fig-canon_Te_all} that without electron emission, $\Te$ is of the order of $45\,\volt$.
    Using the different curves in \cref{fig-dphivsTe}, we can expect to observe the transition between regime {\bf III} and {\bf II} for $\crover > 60$~V, as we have for $\crover = 60$~V the maximum of $\dphi$ is at $\Te\sim 25$~V, which is significantly lower than 45~V.
    However, we see in \cref{fig-threeregimes} that the transition appears at $\crover=50$~V.
    
-   The reason for the discrepancy between the expected and the observe threshold value of $\crover$ could be that when $\rate$ increases, the electron power losses increases, hence decreases the electron temperature at equilibrium.
+   The reason for the discrepancy between the expected and the observed threshold values of $\crover$ could be that when $\rate$ increases, the electron power losses increase, and hence cause the electron temperature at equilibrium to decrease.
    The evolution of the temperature with  $\rate$ is shown latter in \cref{fig-Tevsproba}.
-   We can see that even for very large \ac{SEE} rate, the electron temperature only decreases down to $\Te=30\,\volt$.
+   We can see that even for very large \ac{SEE} rates, the electron temperature only decreases down to $\Te=30\,\volt$.
    However, the curves of \cref{fig-dphivsTe} still predict for $\Te=30\,\volt$ a threshold value at $\crover=60\,\volt$.
-   Consequently, even if $\Te$ does indeed decrease when increasing $\crover$, it remains too large the explain the discrepancy between the observed transition between regime {\bf III} and {\bf II} in \cref{fig-threeregimes} and the curves in \cref{fig-dphivsTe}.
+   Consequently, even if $\Te$ does indeed decrease when increasing $\crover$, it remains too large to explain the discrepancy between the observed transition between regime {\bf III} and {\bf II} in \cref{fig-threeregimes} and the curves in \cref{fig-dphivsTe}.
    
    Hence, the cause of the difference if the threshold value for regime {\bf II} will be discussed again in \cref{ch-4}, using a modified plasma-wall interaction model.
    
