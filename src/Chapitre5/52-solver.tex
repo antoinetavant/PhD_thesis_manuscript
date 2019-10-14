@@ -18,7 +18,7 @@
   
   The numerical computation of $\norm{\hat\epsilon}$ is done using the method of \citet{xie2013} for computing $\tilde{Z}$ the numerical approximation of $Z$. 
   It uses the fact that $Z$ is an Hilbert transform of the distribution function, and that the Hilbert transform can be changed to a Fourier Transform, weighted by well chosen basis functions, so the \ac{FFT} algorithm can be used \citep{weideman1995}.
-  An interesting point is that the evaluation of $\tilde{Z}(\eta)$ is done by a polynomial function, which coefficients depends only on the distribution function $f$. 
+  An interesting point is that the evaluation of $\tilde{Z}(\eta)$ is done by a polynomial function, which coefficients depend only on the distribution function $f$. 
   Hence, they need to be determined only once, and evaluating $\tilde{Z}(\eta)$ is relatively fast.
   
   \begin{figure}[!hbt]
@@ -27,7 +27,7 @@
     \caption{Comparison of the numerical evaluation of $\tilde{Z}_M(\eta)$ for a Maxwellian distribution function with the Fried and Conte function (from the \texttt{plasmapy} python package) for different values of the imaginary part of $\eta: 5, 0,-1,$ and $-2.2$.  }
     \label{fig-numZ}
   \end{figure}
-  \cref{fig-numZ} shows the comparison of the numerical evaluation of $\tilde{Z}(\eta)$ for a Maxwellian distribution function with the Fried and Conte function (from the `plasmapy` python package) for different values of the imaginary part of $\eta$.
+  \cref{fig-numZ} shows the comparison of the numerical evaluation of $\tilde{Z}(\eta)$ for a Maxwellian distribution function with the Fried and Conte function (from the \texttt{plasmapy} python package) for different values of the imaginary part of $\eta$.
   We can see that for ${\rm Im}(\eta)$ positive, null or slightly negative, the two functions gives exactly the same results.
   However, for larger negative values of ${\rm Im}(\eta)$, the two functions gives different results.
   
@@ -87,7 +87,7 @@
     As the analytic expression of the Hessian or the gradient are unknown, we use the Nelder-Mead method \citep{mckinnon1998}.
     We also tried the Conjugate gradient method by approximating the gradient using finite differences. 
     However, even if this method converges in fewer steps, the gradient estimation takes a significant amount of time.
-    Powell's method \citep{powell1964} has also been implemented, but the Nelder-Mead method presents the best performances.
+    Powell's method \citep{powell1964} has also been implemented, but the Nelder-Mead method features the best performances.
     
     The first guess of the iterative Nelder-Mead method is either 
     \begin{itemize}

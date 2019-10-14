@@ -87,7 +87,7 @@
     The spectra are obtained with the FFT algorithm, and are averaged in the radial direction.
     We can see in the spectra the resonances at multiple of the cyclotron wavenumber $k_0 = \frac{\oce}{u_e} \simeq 3.5\,\milli\meter^{-1}$.
     At $t=0.2\,\micro\second$, the most dominant mode is the second resonance, but the other resonances are also present.
-    At $t=0.5\,\micro\second$, all of the resonances are distinguishable, but their amplitude is strictly decreasing.
+    At $t=0.5\,\micro\second$, all the resonances are distinguishable, but their amplitude is strictly decreasing.
     Then, at $t=0.8\,\micro\second$, we can no longer see the resonances, except for the first one.
     % As we observed during the first stages of the simulation the resonances in the Fourier spectrum, we solve the dispersion relation for the \ac{ECDI}.
     
@@ -108,11 +108,11 @@
     \end{figure}
     
     We can see in \Cref{fig-DRECDI} that the dispersion relation shows the cyclotron resonance at the beginning.
-    However, the most growing wavelength is not the second harmonic, but the forth.
+    However, the most growing wavelength is not the second harmonic, but the fourth.
     After $t=0.5\,\micro\second$, the resonances broaden, and disappear.
     This is in agreement with the measured spectra in \cref{fig-phi_fluctuation_summary_FFT}, as no resonances are present at $t=0.8\,\micro\second$.
     This is correlated to the increases of the electron temperature, that increases the Debye length $\lde$ and hence affects the radial wave number \citep{lafleur2016a,ducrocq2006,cavalier2013}.
-    The value of radial wavelength is discuss later in \cref{sec-DR-BC}.
+    The value of radial wavelength is discussed later in \cref{sec-DR-BC}.
     
     
     We can also observe that the deviation of the distribution function from the Maxwellian affects the \ac{DR}.
@@ -163,19 +163,19 @@
     \begin{figure}[hbt]
       \centering
       \includegraphics[width=4.5in]{Example_of_DR_IAW.pdf}
-      \caption{Illustration of the \acs{IAW} dispersion relation obtained at two different time ($t=0$ and $t=1.2\,\micro\second$), (solid line) the wave frequency $\omega$, and (dotted line) the growth rate $\gamma$, using the hypothesis of Maxwellian distribution functions for both electrons and ions. The electron temperature measured in the simulation is always used, but the ion temperature is only used once. The most growing solution is marked with a circle on the growing rate and the frequency.}
+      \caption{Illustration of the \acs{IAW} dispersion relation obtained at two different time ($t=0$ and $t=1.2\,\micro\second$), (solid line) the wave frequency $\omega$, and (dotted line) the growth rate $\gamma$, using the hypothesis of Maxwellian distribution functions for both electrons and ions. The electron temperature measured in the simulation is always used, but the ion temperature is only used once. The most growing solution is marked with a circle on the growth rate and the frequency.}
       \label{fig-Example_of_DR_IAW}
     \end{figure}
     
     
     This process is repeated for the whole duration of the simulation.
-    The velocity distribution functions, when used, are obtained from the \ac{PIC} simulation the same way that in \cref{subsec-VDFpic}.
-    \Cref{fig-time_wave} shows the temporal evolution of the three characteristics of the most growing wave: the growth rate $\gamma$, the azimuthal wavenumber $k$ and the frequency $\omega$.
+    The velocity distribution functions, when used, are obtained from the \ac{PIC} simulation the same way as in \cref{subsec-VDFpic}.
+    \Cref{fig-time_wave} shows the temporal evolution of the three characteristics of the most growing wave\string: the growth rate $\gamma$, the azimuthal wavenumber $k$ and the frequency $\omega$.
     \begin{figure}[hbt]
       \centering
       % \includegraphics[width=\textwidth]{GrowthRate_time_evolution_250_ter.pdf}
       \includegraphics[width=\textwidth]{GrowthRate_time_evolution_250_notinverted.pdf}  %inverted ion velocity as a correction, to look like Lefleur... :/
-      \caption{Temporal evolution of the growth rate $\gamma$, the azimuthal wavenumber $k$ and the frequency $\omega$ for the most growing wave, obtained with several hypotheses on the dispersion relation. See text for more precision. }
+      \caption{Temporal evolution of the growth rate $\gamma$, the azimuthal wavenumber $k$ and the frequency $\omega$ for the most growing wave, obtained with several hypotheses on the dispersion relation. See text for more details. }
       \label{fig-time_wave}
     \end{figure}
     
@@ -218,6 +218,7 @@
       \caption{Temporal evolution of the growth rate}
       \label{fig-pic_growth_rate}
     \end{figure}
+    \inlinenote{Continue the legend}
     
     We see in \cref{fig-pic_growth_rate} that $\gamma_{\rm PIC}$, the growth rate measured in the simulation, follows the expected trend with an initial phase ($t<1\,\micro\second$) of growth, and then the oscillations with growing and damping phases.
     The values of $\gamma_{\rm PIC}$ are closer to the growth rate obtained with the Maxwellian hypothesis and a non-zero ion temperature (label "Maxw, $\Ti>0$" in \cref{fig-pic_growth_rate}), compared to the values obtained with the \ac{PIC} VDFs or with cold ions (label "Maxw, $\Ti=0$").
