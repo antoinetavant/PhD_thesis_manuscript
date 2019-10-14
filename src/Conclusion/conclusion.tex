@@ -2,18 +2,17 @@
 
 \chapter{Conclusion}
 \label{ch-conclusion}
-\inlinenote{Anne: add the chapter numbers in the summary, to help the reviewers.}
 
-\section{Summary}
+\section{Summary of the thesis}
 
-The Hall Effect Thruster (HET) is mainly governed by two phenomena\string: the electron cross-field mobility - due to the azimuthal Electron Cyclotron Drift Instability (ECDI) and the electron collisions; and the wall interaction with the Secondary Electron Emission.
-As both phenomena are of kinetic nature, we used during this work a Particle-In-Cell (PIC) simulation model.
+The Hall Effect Thruster (HET) is mainly governed by two phenomena\string: the electron cross-field mobility -- due to the azimuthal Electron Cyclotron Drift Instability (ECDI) and the electron collisions -- and the wall interaction that is affected by the Secondary Electron Emission.
+As both phenomena are of kinetic nature, we used during this work a Particle-In-Cell (PIC) simulation model, \LPPic, that is presented in \cref{ch-1}.
 Unfortunately, full 3 Dimensional (3D) realistic PIC simulations are still out of reach due to the excessive computational load.
 Therefore, we used in this work bi-dimensional simulation domains to study both the radial-azimuthal and the axial-azimuthal planes of the HET.
 
 \subsection{Growth and saturation of the azimuthal instability}
 
-In this work, the radial-azimuthal simulation domain has first been used in \cref{ch-5} to provide more insights on the \ac{ECDI}, and its interaction with the wall.
+The radial-azimuthal simulation domain has first been used in \cref{ch-5} to provide more insights on the \ac{ECDI}, and its interaction with the wall.
 The instability presents two phases\string: the first corresponds to the linear growth of the instability; the second phase corresponds to the saturated phases, during which the amplitude of the instability oscillates around a mean value.
 
 We implemented a solver for the general Dispersion Relation (DR), that uses the Electron Velocity Distribution Function (EVDF) and the Ion Velocity Distribution Function (IVDF) measured in the PIC simulations to compute the growth rate and the frequency for a given wavevector.
@@ -21,8 +20,7 @@ We observed a good agreement with the characteristics (wavenumber and frequency)
 During the linear phase, the wave presents the cyclotron resonances, characteristic of the ECDI.
 In contrast, during the saturated phase the resonances are not observed anymore, and the DR can be approximated by the Ion Accoustic Wave (IAW).
 
-We showed that the modulation of the amplitude during the saturated phase is certainly due to the ions.
-The main saturation mechanism is the ion-wave trapping.
+We showed that the modulation of the wave amplitude during the saturated phase is certainly due to the ions, as the main saturation mechanism of the instability is the ion-wave trapping.
 However, due to the large xenon ion mass, the ion-wave trapping takes some time before being effective, resulting in the oscillation observed.
 
 This hypothesis is strengthened by the growth rate obtained by solution of the dispersion relation when the ion temperature is taken into account.
@@ -31,38 +29,39 @@ However, the results of the General DR solver, using the IVDF, yields a growth r
 
 Lastly, we observed that in our simulation the oscillation does not present any radial modulation.
 Conversely, the ratio between the ion density fluctuation $\delta n_i$ and the mean value $n_i$ is constant. 
-This corresponds to a wavevector strictly perpendicular to the magnetic field.
+This corresponds to a wavevector strictly perpendicular to the magnetic field, in disagreement with the expected impact of the wall on the wall.
+Instead, it seams that the wall are totaly screened from the instability.
 
 
 \subsection{Impact of the wall characteristics on the plasma-wall interaction }
-Using the 2D PIC simulation code in the radial-azimuthal domain, we performed a parametric study over the characteristics of the dielectric walls that is presented in \cref{ch-2}.
+Using the 2D PIC simulation code in the radial-azimuthal domain, we presented in \cref{ch-2} a parametric study over the characteristics of the dielectric walls.
 We uncoupled and studied separately the two main aspects of the dielectric wall\string: the physical insulating layer between the plasma and the grounded electron; and the electron induced Secondary Electron Emission (SEE).
 
-The dielectric layer has been modeled by solving the Poisson equation inside the layer.
+The dielectric layer has been modeled by solving the Poisson equation inside the layer, between the plasma and the grounded electrodes.
 The impact of the insulating layer alone has been observed to induce only small impact on the discharge.
-The azimuthal instability in the electric field is observed to be larger at the vicinity of the wall, compared to the case with the grounded wall.
-However, this difference disappear after one Debye length.
-In addition, it is not observed on the fluctuation of the ion density.
+The azimuthal instability in the electric field is observed to be larger at the vicinity of the wall with the dielectric modeled, compared to the case with the grounded wall.
+However, this difference disappear quickly after one Debye length.
+In addition, no impact of the dielectric is observed on the fluctuation of the ion density.
 Lastly, its impact on the electron mobility is not significant.
 
 The impact of the SEE has been studied with a parametric study over the emissivity of the wall.
 We covered a large ensemble of parameters, from low emissive material (such as Graphite) to very high emissive material (as Alumina Al$_2$O$_3$).
 We observed that the increase of SEE is associated with a decrease of the mean electron temperature, which in turn decreases the amplitude of the instability, and the axial electron mobility.
-However, the SEE induces a so-call near-wall mobility, which compensates the total electron  mobility.
+However, the SEE induces a so-call near-wall mobility, which compensates the total electron mobility.
 
-Three regimes of emission have been observed.
+Three regimes of emission have been observed depending on the wall emissivity.
 For a low emissivity, the sheath follows the usual positive sheath.
 With a high emissivity, the sheath enters a Space-Charge Limited (SCL) regime, during which a potential well appears close to the wall.
-The potential well reflects the emitted electrons from back towards the wall, so that the effective total emission rate is strictly bellow one.
+The potential well reflects the secondary electrons emitted back towards the wall, so that the effective total emission rate is strictly bellow one.
 The transition between the two regimes passes through a third unstable regime, during which the sheath oscillates between the two stable regimes.
 The nature of this so-call Relaxation Sheath Oscillation (RSO), and issues related to the value of the SEE rate are discussed in the next section.
 
 Lastly, we used both aspects of the dielectric wall together.
-We choose to use the SEE parameters that led to the oscillating regime with the grounded wall.
+We choose to use the SEE parameters that led to the oscillating regime when using the grounded wall.
 These parameters are close to the one measured for the Boron-Nitride (BN) ceramic.
-The overall electron mobility and the plasma parameters were not significantly affected by the dielectric.
+The overall electron mobility and the plasma parameters were not significantly affected by the dielectric layer, compared to the case with grounded wall.
 However, we observed that the RSO was no more synchronous over the walls, but instead it presented differences between the two opposing walls and along the azimuthal direction of the same wall.
-This could explain why such oscillations has not yet been observed experimentally, as it is very localized.
+This could explain why such oscillations has not yet been observed experimentally, since the experimental measurement average this localized behavior.
 
 \subsection{Non-isothermal sheath model}
 
@@ -99,12 +98,12 @@ Indeed, the radial-azimuthal domain do not include the ionization region, nor th
 We also proposed a model to include the impact of the wall in the radial direction in the 2D axial-azimuthal simulation.
 
 The simulation follows the model of \citet{boeuf2018} that imposes a constant ionization, so that the breathing mode is not present.
-We observed that is this conditions, the electron drift was reduced by the diamagnetic drift as a strong electron gradient is present.
+We observed that is this conditions, the electron drift was reduced by the diamagnetic drift as strong electron density and temperature gradients are present.
 The azimuthal instability also rises in this condition, but the convection become the limiting phenomena as the ion-wave trapping is not highly developed.
 
 Including the radial particle losses in the simulation is shown to reduces the amplitude of the instability, hence the anomalous electron axial mobility.
 Several phenomena could explain the reduction of the wave amplitude, such as the reduction of the azimuthal electron drift, the diminution of the electron temperature, or the absorption of the particle at the maximum of the oscillation that reduce the wave amplitude.
-As the wave amplitude is smaller than without the radial boundary, it seems to remain in the linear phase, with less ion wave trapping and no inverse cascade.
+As the wave amplitude is smaller than without the radial boundary modeled, it seems to remain in the linear phase, with less ion wave trapping and no inverse cascade.
 
 \section{Perspectives}
 
@@ -124,33 +123,34 @@ A comparison of the 2D PIC simulations in the radial-azimuthal domain is current
 
 Experimental investigation of the radial modulation on the instability would also be useful to validate the simulation results.
 Electrostatic probes cannot resolve yet the scale of the instability \citep{brown2018}, and it is expected to affect the discharge.
-The measurement could however be achieved by collective light scattering \citep{tsikata2009} resolved in the radial direction, for instance by orienting the primary beams in the axial direction.
+The measurement could however be achieved by collective light scattering \citep{tsikata2009} resolved in the radial direction, for instance by orienting the primary laser beams in the axial direction.
 
 In addition, we observed than modeling the radial particle losses in the axial-azimuthal simulation reduced the wave amplitude.
 The origin of the decrease of the instability is unclear, as it could be to a reduction of the growth rate (function of the azimuthal drift velocity and electron temperature that are affected by the wall), or to a direct damping of the instability due to the particle loss in phase with the wave amplitude.
-In the parametric study of the wall emissivity presented in \cref{ch-2}, we observed an impact of the wall on the amplitude of the wave.
-However, in the configuration studied wave amplitude was governed by the saturation due to ion-wave trapping.
-Investigation of the damping effect of the walls on the wave could be investigated with a radial-azimuthal PIC simulation, for instance by varying the radial length of the channel or the emissivity of the material, if the convection modeled is larger than the ion-wave trapping, so that the wave amplitude would not be governed by it.
+In the parametric study of the wall emissivity presented in \cref{ch-2}, we also observed an impact of the wall on the amplitude of the wave.
+However, in the configuration studied, the  wave amplitude was governed by the saturation due to ion-wave trapping.
+Investigation of the damping effect of the walls on the wave could be investigated with a radial-azimuthal PIC simulation, for instance by varying the radial length of the channel or the emissivity of the material, but only if the effect of convection modeled is larger than the ion-wave trapping, so that the wave amplitude would not be governed by it.
 
 
 
 \subsection{Particle-wave interaction during the non-linear saturated stage}
-We have observed that the azimuthal instability affects the ion and the electron distribution functions, that have a counter reaction on the instability by changing the dispersion relation.
-It also seems that is is responsible for the isotropization of the electrons, that impacts the plasma-wall interaction.
-The non-linear stage of the instability is unclear, and could necessitate an in-depth mathematical and theoretically investigation of the different phenomena observed in the simulation, such as the resonances broadening, particle-wave coupling, the turbulent and inverse cascade, and the saturation.
+We have observed that the azimuthal instability affects the ion and the electron distribution functions, that have a counter reaction on the instability by modifying the dispersion relation.
+It also seems that is is responsible for the isotropization  and the radial heating of the electrons, that impacts the plasma-wall interaction.
+The non-linear stage of the instability is unclear, and could necessitate an in-depth mathematical and theoretically investigation of the different phenomena observed in the simulation, such as the resonances broadening, particle-wave coupling, the turbulent and inverse cascade, and the saturation mechanisms.
 
-The saturation of the ExB instability could be investigated by simulation with a simplified geometry.
+The saturation of the ExB instability could be investigated by simulations with a simplified geometry.
 Indeed, the 2D axial-azimuthal simulation used in \cref{ch-6} present multiple gradients that increases the complexity of the physics observed.
 However, it is expected that the results of a 1D purely azimuthal simulation would be affected by the presence of the other directions.
+A simplified simulation, for instance without gradient, would allows a simplified understanding of the physics observed, and enable more efficient parametric studies.
 
 We observed that depending of the 2D geometry used (radial-azimuthal or the axial-azimuthal domains), different phenomena are present.
-We proposed in this work to include in both domains the effect of the mission direction (the axial convection and the radial boundaries, respectively).
+We proposed during this thesis to include in both domains the effect of the mission direction (the axial convection and the radial boundaries, respectively).
 However, in order to validate the results, a proper 3D simulation of the ExB configuration bounded by walls is necessary, in order to determine how the two direction are coupled with the instability.
 
 Lastly, more insights from experimental measurements are required to validate, or invalidate, the results of the simulation and theoretical investigations.
 The measurements of the electron and ion velocity distribution functions in the azimuthal direction would be a significant contribution to the understanding of the particle-wave interaction present in the HETs.
 However, the geometry and the usual parameter range of the HET increases the complexity of such measurements.
-Other ExB devices, such as the Magnetron, that present similar behavior but with an simplification of the measurements could be beneficial to the HET community.
+Other ExB devices, such as the Magnetron, that present similar behavior but simplify the experimental measurements could be beneficial to the HET community.
 
 \subsection{Improved simulations and modeling of the HET}
 
@@ -219,7 +219,7 @@ Sujets non abordé dans la conclusion
   manque lien plus macro :
 - pour aider au design des propulseurs en couplant numerique et expé, il faudrait quoi?
 -quel niveau de modèle? code?
-\\
+}
   
 \end{itemize}
 
