@@ -19,13 +19,13 @@ Integrating \cref{eq-elec_mom} from the sheath edge, the electron density is hen
   \label{eq-ne}
   n_e(\phi) = n_0 \left[ 1 + \frac{(\gamma - 1) (\phi - \phi_0)}{\gamma \Te_0}  \right]^{\frac{1}{\gamma - 1}}
 \end{equation}
-with the subscript $0$ corresponds to the sheath edge.
+with the subscript $0$ corresponding to the sheath edge.
 In \cref{eq-ne}, we need to have $\gamma$ strictly greater than one.
 For $\gamma=1$, we find the usual Boltzmann electrons:
 \begin{equation}
   n_e(\phi) = n_0 \exp( - \frac{ (\phi - \phi_0)}{\Te})
 \end{equation}
-corresponding to the usual isothermal model.
+corresponding to the isothermal model.
 
 \subsection{Comparison with the PIC simulations}
 \label{sec-fluidPIC}
@@ -133,7 +133,7 @@ We can see that in the limit where $\gamma \rightarrow 1$, we find with \cref{eq
 The value observed in the fluid model is very close to the results of \cref{eq-sheath}.
 This is due to the very small size of the sheath, as seen in \cref{fig-PIC1}.
 When $\gamma$ increases, $\frac{\dphi_0}{\Te_0}$ decreases significantly.
-The decrease of $\dphi_0$ is consistent with the depletion of the high energy tail of the electrons, as the plasma needs less screening of the electrons in order to stay quasi-neutral.
+The decrease of $\dphi_0$ is consistent with the depletion of the high energy tail of the electrons distribution function, as the plasma needs less screening of the electrons in order to remain quasi-neutral.
 
 \Cref{fig-dphinorm} also presents the potential drop measured in the same PIC simulations as presented in \cref{fig-p}.
 The error bars correspond to an estimate of the aggregation of the uncertainties from the PIC simulation and the averages.
@@ -189,6 +189,6 @@ Indeed, we can see in \cref{fig-EVDFpm} that there is a small population of high
 This population is not big enough to modify the electron flux to the wall, hence the potential drop \citep{demidov2005}, but may increase the mean energy of electron leaving the plasma.
 {  We tested the hypothesis for one case ($P_n=2$ mTorr).
 Once the steady-state was reached, we stopped generating the electron-ion couples.
-We observed that during a transition time of around $0.74 \mu$s, the mean energy per electron decreased significantly from $0.9$~V to $0.3$~V, while the electron flux to the wall $\Gamma_e$ and the electron temperature $\Te_{, 0}$ was not yet affected.
-This is more consistent with \cref{eq-meanE} and seems to confirm the hypothesis, but more investigations on the heat flux are needed.
+We observed that during a transition time of around $0.74 \mu$s, the mean energy per electron decreased significantly from $0.9 \Teb$  to $0.3 \Teb$, while the electron flux to the wall $\Gamma_e$ and the electron temperature $\Te_{, 0}$ was not yet affected.
+This is more consistent with the value given by \cref{eq-meanE} shown in \cref{fig-avE}, and seems to confirm the hypothesis, but more investigations on the heat flux are needed.
   }

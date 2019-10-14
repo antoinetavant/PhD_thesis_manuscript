@@ -27,7 +27,7 @@
     The electrons are pushed, and undergo collisions as described in \cref{sec-elements}.
 
     We validate the Monte Carlo computation by comparing the electron density, temperature and distribution function.
-    \Cref{fig-EEPF_start_end} shows the expected EEPF obtained in the \ac{PIC} simulation with a background pressure of $P=1$\,mTorr.
+    \Cref{fig-EEPF_start_end} shows the expected EEPF obtained in the \ac{PIC} simulation with a background pressure of $P=100$\,mTorr.
     The maximum plasma potential, at the center of the domain, is $\max(\phi)=12.2\,\volt$.
     Is also shown in \cref{fig-EEPF_start_end} the EEPF at the beginning of the Monte Carlo computation, which corresponds to the Maxwellian distribution of temperature $\Te=5\,\volt$
 
@@ -73,7 +73,7 @@ je ne comprends pas ta demonstration ici...c'est quoi le lien avec 4.6.1??}
         \includegraphics[width=0.4\textwidth]{MCC_EEDF/Heelo_6} &
         \includegraphics[width=0.4\textwidth]{MCC_EEDF/Heelo_8} \\
       \end{tabular}
-      \caption{Evolution of (blue) the directed EEPF measured at $x=3\,\centi\meter$ from the left wall. The positive energy is used for the electrons going from the wall, while the negative energy represents the electrons moving toward the wall. The dotted lines correspond to the local potential. Are overlaid (organge) the initial Maxwellian distribution and (green) the EEPF obtained at the end of the \acs{PIC} simulation. }
+      \caption{Evolution of (blue) the directed EEPF measured at $x=3\,\centi\meter$ from the left wall in the Monte Carlo simulation. The positive energy is used for the electrons going from the wall, while the negative energy represents the electrons moving toward the wall. The dotted lines correspond to the local potential. Are overlaid (orange) the initial Maxwellian distribution and (green) the EEPF obtained at the end of the \acs{PIC} simulation. }
       \label{fig-zoom_init_Mc}
     \end{figure}
     \inlinenote{Anne: Refaire les figures, surtout pour la legend qui n'est pas claire dans l'état.}
@@ -98,7 +98,7 @@ je ne comprends pas ta demonstration ici...c'est quoi le lien avec 4.6.1??}
         \includegraphics[width=0.3\textwidth]{MCC_EEDF/Heelo_1_100.pdf} &
         \includegraphics[width=0.3\textwidth]{MCC_EEDF/Heelo_1_150.pdf} \\
       \end{tabular}
-      \caption{Evolution of (blue) the directed EEPF measured at $x=3\,\centi\meter$ from the left wall. The dotted line corresponds to the local potential. Are overlaid (orange) the initial Maxwellian distribution and (green) the EEPF obtained at the end of the \acs{PIC} simulation. }
+      \caption{Evolution of (blue) the directed EEPF measured at $x=3\,\centi\meter$ from the left wall in the Monte Carlo simulation. The dotted line corresponds to the local potential. Are overlaid (orange) the initial Maxwellian distribution and (green) the EEPF obtained at the end of the \acs{PIC} simulation. }
       \label{fig-zoom_Mc_later}
     \end{figure}
 
@@ -111,8 +111,7 @@ je ne comprends pas ta demonstration ici...c'est quoi le lien avec 4.6.1??}
 
   \subsection{Discussion on the different time scales}
     The results presented in the previous section show two main time scales.
-    In this section, we compare the observed time scaled with the theoretical times.
-    
+    In this section, we compare the observed time scales with the theoretical times.
     The electrons collected at the wall have a kinetic energy at least equal to the potential drop to the wall $\ek = e \dphi$, which corresponds in our case to a limit velocity of $v_{\rm lim} = \sn{1.5}{6} \,\meter\per\second$.
     Hence, the limit time of flight between the two boundaries is
     \[ T_{\rm flight} = \frac{L}{v_{\rm lim}} = 0.068 \,\micro\second.  \]

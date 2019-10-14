@@ -15,7 +15,7 @@
 
   The evolution of the electron temperature and the non-locality of the electrons in bounded plasmas has been studied in \citet{meige2006a}.
   The authors showed that the high energy tail of the \ac{EEDF} is depleted.
-  They observed that the energy at which the depletion starts correspond to the local plasma potential related to the wall.
+  They observed that the energy at which the depletion starts corresponds to the local plasma potential related to the wall.
   Hence, we will use in this chapter similar physical conditions, in order to compare our results to their observations.
 
   \subsection{Description of the \acs{1D} simulations}
@@ -26,7 +26,7 @@
 
     The same particle source model as in \ac{2D}\ac{PIC} of the \ac{HET} is used.
     In order to compensate the particle losses at the wall, we inject with a spatially uniform probability an electron-ion couple for every ion lost at the wall.
-    This corresponds to the following ionization rate:
+    This corresponds to the following ionization source term\string:
     \begin{equation}
       S_{iz} = \frac{1}{L} 2 \Gamma_e
     \end{equation}
@@ -78,11 +78,11 @@
     The electron temperature gradient should affect the density profile in the sheath and the electron heat flux to the wall.
 
     \vspace{1em}
-    For isotropic distribution functions, it is convenient to introduce the electron energy distribution function (EEDF) $f_{\epsilon}$ \citep{chabert2011}:
+    For isotropic distribution functions, it is convenient to introduce the electron energy distribution function (EEDF) $f_{\epsilon}$ \citep{chabert2011}\string:
     \begin{equation}
     f_{\epsilon}(\epsilon) d\epsilon = 4 \pi v^2 f_e(\vec{v}) dv
     \end{equation}
-    It is related to the electron energy probability function (EEPF) $f_{P}$ by
+    It is related to the electron energy probability function (EEPF) $f_{P}$ by (see \cref{eq-EPF})
     \begin{equation}
     f_{P}(\epsilon) = \epsilon^{-1/2} f_{\epsilon}
     \end{equation}
@@ -94,7 +94,7 @@
     \begin{figure}[!htbp]
       \centering
       \includegraphics[width=\defaultwidth]{EVDFs.pdf}
-      \caption{Electron energy probability function at different positions in the simulation: at $x=1.3,6.6$ and $23.7$ mm in blue, orange and green respectively. Also shown are the Maxwellian distribution of temperature $\Te=5\eV$ (red dashed line), as well as the local plasma potential relative to the wall $\dphi$ (dotted lines). }
+      \caption{Electron energy probability function at different positions in the simulation\string: at $x=1.3,6.6$ and $23.7$ mm in blue, orange and green respectively. Also shown are the Maxwellian distribution of temperature $\Te=5\eV$ (red dashed line), as well as the local plasma potential relative to the wall $\dphi$ (dotted lines). }
 
       \label{fig-PIC2}
     \end{figure}
@@ -109,9 +109,9 @@
 
 
 
-  \subsection{A model for the EVDF observed}
+  \subsection{A model for the observed EVDF}
     \label{sec-twoTe}
-    In order to describe the  EEPF seen in \cref{fig-PIC2}, it is possible to use a two-$\Te$ distribution \citep{lafleur2011,mouchtouris2016, zhang2016}:
+    In order to describe the  EEPF seen in \cref{fig-PIC2}, it is possible to use a two-$\Te$ distribution \citep{lafleur2011,mouchtouris2016, zhang2016}\string:
 
     \begin{equation}
       f_{Px}(\ek_x) = A \ek_x^{1/2}
