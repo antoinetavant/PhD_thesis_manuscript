@@ -33,10 +33,6 @@ Lastly, we observed that in our simulation the oscillation does not present any 
 Conversely, the ratio between the ion density fluctuation $\delta n_i$ and the mean value $n_i$ is constant. 
 This corresponds to a wavevector strictly perpendicular to the magnetic field.
 
-{\bf TODO:} The linear phase of the instability seems now well understood, but effort in the understanding of the non-linear saturation must be pursue.
-The effect of the non-linear saturation on the cyclotron resonances should be better understood.
-The General Distribution Solver should be verified by comparing it to other independently developed solvers.
-Similar verification can be obtained by a comparison of the wave characteristics with independent PIC simulations codes.
 
 \subsection{Impact of the wall characteristics on the plasma-wall interaction }
 Using the 2D PIC simulation code in the radial-azimuthal domain, we performed a parametric study over the characteristics of the dielectric walls that is presented in \cref{ch-2}.
@@ -119,17 +115,45 @@ The first one concerns some physical unanswered questions that have been raised 
 The seconds concern the modeling and simulation of the HET.
 Lastly, the experimental insights required to validate the simulations and the theories.
 
+\subsection{Interaction of the instability with the wall}
+
+We observed in the radial-azimuthal PIC simulation no radial mode on the wave, so it seems that the walls are screened from the azimuthal instability by the sheath.
+Similar, but non-identical, screening was observed in \citet{janhunen2018}, where the authors observed a radial mode larger than the radial length.
+In contrast, \citet{taccogna2019} observed short scale radial oscillations in a similar geometry.
+A comparison of the 2D PIC simulations in the radial-azimuthal domain is currently being conducted, and a better understanding of the discrepancy between the different results should be achieved.
+
+Experimental investigation of the radial modulation on the instability would also be useful to validate the simulation results.
+Electrostatic probes cannot resolve yet the scale of the instability \citep{brown2018}, and it is expected to affect the discharge.
+The measurement could however be achieved by collective light scattering \citep{tsikata2009} resolved in the radial direction, for instance by orienting the primary beams in the axial direction.
+
+In addition, we observed than modeling the radial particle losses in the axial-azimuthal simulation reduced the wave amplitude.
+The origin of the decrease of the instability is unclear, as it could be to a reduction of the growth rate (function of the azimuthal drift velocity and electron temperature that are affected by the wall), or to a direct damping of the instability due to the particle loss in phase with the wave amplitude.
+In the parametric study of the wall emissivity presented in \cref{ch-2}, we observed an impact of the wall on the amplitude of the wave.
+However, in the configuration studied wave amplitude was governed by the saturation due to ion-wave trapping.
+Investigation of the damping effect of the walls on the wave could be investigated with a radial-azimuthal PIC simulation, for instance by varying the radial length of the channel or the emissivity of the material, if the convection modeled is larger than the ion-wave trapping, so that the wave amplitude would not be governed by it.
+
+
+
 \subsection{Particle-wave interaction during the non-linear saturated stage}
-We have observed that the azimuthal instability affects the ion and the electron distribution functions.
+We have observed that the azimuthal instability affects the ion and the electron distribution functions, that have a counter reaction on the instability by changing the dispersion relation.
 It also seems that is is responsible for the isotropization of the electrons, that impacts the plasma-wall interaction.
-The non-linear stage of the instability is unclear, and could necessitate an in-depth mathematical investigation of the resonances broadening observed.
+The non-linear stage of the instability is unclear, and could necessitate an in-depth mathematical and theoretically investigation of the different phenomena observed in the simulation, such as the resonances broadening, particle-wave coupling, the turbulent and inverse cascade, and the saturation.
 
-The saturation of the ExB instability should be investigated in simplified geometry that allows to conduct a parametric study.
+The saturation of the ExB instability could be investigated by simulation with a simplified geometry.
+Indeed, the 2D axial-azimuthal simulation used in \cref{ch-6} present multiple gradients that increases the complexity of the physics observed.
+However, it is expected that the results of a 1D purely azimuthal simulation would be affected by the presence of the other directions.
 
-We observed in the radial-azimuthal and the axial-azimuthal domain different phenomena.
-Hence, a proper 3D simulation of the ExB configuration is necessary, in order to determine which phenomena is expected to be present in reality.
+We observed that depending of the 2D geometry used (radial-azimuthal or the axial-azimuthal domains), different phenomena are present.
+We proposed in this work to include in both domains the effect of the mission direction (the axial convection and the radial boundaries, respectively).
+However, in order to validate the results, a proper 3D simulation of the ExB configuration bounded by walls is necessary, in order to determine how the two direction are coupled with the instability.
 
-\subsection{Improved simulations of the HET}
+Lastly, more insights from experimental measurements are required to validate, or invalidate, the results of the simulation and theoretical investigations.
+The measurements of the electron and ion velocity distribution functions in the azimuthal direction would be a significant contribution to the understanding of the particle-wave interaction present in the HETs.
+However, the geometry and the usual parameter range of the HET increases the complexity of such measurements.
+Other ExB devices, such as the Magnetron, that present similar behavior but with an simplification of the measurements could be beneficial to the HET community.
+
+\subsection{Improved simulations and modeling of the HET}
+
 We have seen that the kinetic phenomena in the HET are important.
 We derived a polytropic sheath model that include some of the kinetic effects in a fluid model.
 It could be included in fluid simulations to better the plasma-wall interaction.
@@ -140,24 +164,55 @@ First, the theory of the PIC simulation is spares, and a lot of the guideline fo
 The impact of dynamically adaptive time step and mesh refinement should be studied, and reliable merging a splitting algorithms should be developed.
 
 On top of that, the validation and the verification of the simulation code need to be improved.
+The axial-azimuthal benchmarks \citep{charoy2019} is a first step in the better PIC modeling if the magnetized plasmas.
+However, the ionization is imposed, instead of being self-consistently computed with a Monte Carlo algorithm.
+Hence, the simplified geometry of the magnetized column of \citet{lucken2019} could be a choice of interest for the low pressure magnetized plasma community.
+In addition, as discussed previously a proper comparison of the results obtained in the radial-azimuthal simulation domain is currently being conducted, and a similar effort is lead by the community to the purely 1D azimuthal PIC simulation.
 
-{\bf Anne: } tu pourrais mettre en avant des cas de benchmarks qui te paraitraient interessants de faire.
+\subsection{Improving HET design and developments } 
+
+As presented in the introduction of this thesis, the long term objective of this work is to improve the design of the next Hall effect thrusters.
+The light fluid models that are used in the development process uses crude estimations of the plasma-wall interaction and the anomalous electron mobility.
+On the other hand, heavy kinetic simulation that can model accurately the such phenomena are too costly to be used during the industrial development.
+
+In this thesis, we proposed a new model for the plasma-wall interaction that can improve the accuracy of the fluid models.
+The value of the polytropic index could be estimated using a Monte Carlo simulation, or experimentally by measuring the radial evolution of the electron density with the electron temperature or the plasma potential. 
+
+Conversely, the issue of the electron cross-field transport is less understood.
+Indeed, if there is a general agreement on its origin, the saturation mechanism remains difficult to evaluate.
+Recently, a proposition to model the electron transport following a data-driven approach has been presented \citep{jorns2018}, but the actual data is spare.
+More experimental measurements, as well as better precision \citep{mikellides2019}, are required in order to improve the modeling of HETs.
+
+One reason for the lack of useful data is the large variation of thrusters used in the experiment, so that the measurement of one of them cannot be combined to another.
+In addition, most thrusters are confidential due to the close relation between the research and the industry, so that few of the required information to reproduce experiment are available.
+The Radio Frequency plasma community had a similar problem, that has been solved by proposing a reference cell in 1989\citep{olthoff1995}.
+Five year latter, 66 experimental measurements and 17 numerical models of this unique reference cell have been published.
+A similar reference thruster should be used the improve the model accuracy, and allow a more efficient thruster design.
+
+Another reason is the few range of parameters achievable experimentally.
+Indeed, a thruster is designed to be used at a nominal power, mass flow rate and magnetic field topology, that depends on its geometry.
+Consequently, the numerical model are fitted over a small range of parameter, which reduce the versatility of such models.
+The \PPS X00 Laboratory Model, developed during my thesis, will allow us to investigate a wider range of geometry, wall material, and magnetic field topology.
+It will enable a better verification of the numerical models used, and pave the way to improved design.
+However, it is developed for low power, so that another model is necessary for the design of higher power thrusters. 
+
+
+\subsection{Missing topics}
+Sujets non abordé dans la conclusion
+
+
 
 \begin{itemize}
   \item Physics :
   \begin{itemize}
-    \item Impact of the wall on the instability unclear, on both the radial wavenumber and the damping effect
-    \item Radial heating due to instability unclear
-    \item Non-linear behavior with particle-wave interaction and convection unclear
     \item Evolution of the electron mobility with the breathing mode
+    \item Benchmark the Dispersion relation solver with general VDFs
   \end{itemize}
 
 
   \item Experiment
   \begin{itemize}
-    \item Comparison between experiment and simulation parametric study
     \item Resolved non-intrusive diagnostic, as CRM model
-    \item Verification of the code
   \end{itemize}
   
   \inlinenote{Anne 
@@ -165,7 +220,6 @@ On top of that, the validation and the verification of the simulation code need 
 - pour aider au design des propulseurs en couplant numerique et expé, il faudrait quoi?
 -quel niveau de modèle? code?
 \\
-Je peux dire ce qu'on avait dit pour le X00-ML: measured in situ et sondes electro statics}
   
 \end{itemize}
 
