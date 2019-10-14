@@ -5,7 +5,7 @@
 \label{sec-simulations}
 % \addcontentsline{toc}{section}{Plasma models and simulations}
 
-Depending on the pressure, energy, and time scale, different models are more adapted to describe the plasma.
+Depending on the pressure, energy, and time scale, different models are more suitable to describe the plasma.
 There are mainly two distinct models.
 The first is the \emph{kinetic} description of the species of the plasma, via the Boltzmann equation.
 The second uses a \emph{fluid} description of the species, by means of moments.
@@ -32,7 +32,7 @@ In the general electromagnetic case,
   \vect{F} =  q \vect{E} + q \vect{v} \times \vect{B}
 \end{equation*}
 with $q$ the particle charge, $\vect{E}$ the electric field, and $\vect{B}$ the magnetic field.
-The distribution function of the stationary Boltzmann equation without collision, also known as the stationary Vlasov equation, is
+The solution function of the stationary Boltzmann equation without collision, also known as the stationary Vlasov equation, is
 \begin{equation} \label{eq-Maxwellian}
   f(\vect{v}) = N (\frac{m}{2 \pi k_B T})^{3/2} \exp \lp - \frac{q \phi + m v^2/2}{k_B T } \rp,
 \end{equation}
@@ -70,7 +70,7 @@ In one dimension, the Maxwellian distribution function becomes
 \end{equation}
 
 \paragraph{Fluid equations \\}
-The description on the plasma in 7 dimensions (3 of space, 3 of velocity, and one of time) can complicate the resolution of the Boltzmann equation.
+The description on the plasma in 7 dimensions (3 of space, 3 of velocity, and one of time) can make the resolution of the Boltzmann equation complicated.
 If the precise description of $f$ is not needed, we can instead use the first moments of \cref{eq-boltzmann} on the velocity to obtain a set of simpler equations.
 
 The first equation is obtained by integrating \cref{eq-boltzmann} over the velocity space, which gives
@@ -92,13 +92,13 @@ Hence, the energy conservation equation is not needed.
 Other possible closures are the adiabatic hypothesis (no heat flux, the \nth{3} moment of $f$), the polytropic law linking the evolution of $n$ with $T$, or the Fourier law for heat diffusion.
 % \inlinenote{Should we write the closes as equations ? $q = 0$, $T_e n_e ^{a}=cst$, etc. ?}
 
-Besides, one may be led to believe that the temperature is defined by the Maxwell-Boltzmann distribution \cref{eq-Maxwellian}, and therefore that the fluid set of equation equations need to use the Maxwellian hypothesis $f = f_{\rm M}$.
+Besides, one may be led to believe that the temperature is defined by the Maxwell-Boltzmann distribution \cref{eq-Maxwellian}, and therefore that the fluid set of equations needs to use the Maxwellian hypothesis $f = f_{\rm M}$.
 As a matter of fact in this work, the temperature is defined by the second moment of the distribution function
 \begin{equation} \label{eq-defTe}
   e {\rm T} = k_B T = \frac{m}{3 n} \iiint (\vect{v} - \vect{u})^2 f(\vect{v}) d^3v.
 \end{equation}
 Hence, the Maxwellian hypothesis is not used, except when including the collisions int he model.
-It happens that in the case of the Maxwell-Boltzmann distribution, the quantity define by \cref{eq-defTe} is the denominator of the argument of the exponential in \cref{eq-Maxwellian}.
+It happens that in the case of the Maxwell-Boltzmann distribution, the quantity defined by \cref{eq-defTe} is the denominator of the argument of the exponential in \cref{eq-Maxwellian}.
 The integral in \cref{eq-defTe} can be decomposed over the three directions $x,y$, and $z$ as
 \begin{equation} \label{eq-3Te}
   e {\rm T} = k_B T = \frac{m}{3 n} \sum_{i=x,y,z} \iiint (v_i - u_i)^2 f(\vect{v}) d^3v = k_B \frac{ T_x + T_y + T_z}{3},
@@ -112,7 +112,7 @@ The fluid simulations solve the moments of the distribution function (the densit
 Depending on the conditions, the system of equations can be simplified before resolution.
 For instance, under the electrodynamic conditions, mainly for space plasmas and fusion, the Maxwell equations are coupled to the fluid equations leading to magnetohydrodynamics (MHD).
 In the case of electrostatic conditions, as it is usual for Low-Temperature (LT) plasmas, the Poisson equation is coupled to the fluid equations.
-In most of LT plasmas the plasma is quasi-neutral except in small regions, such as the plasma sheaths close to walls.
+In most of LT plasmas the plasma is quasi-neutral except in a limited near-wall region called the plasma sheath.
 It is also common to neglect inertia terms and assume a steady-state in the momentum equations, leading to the drift-diffusion approximation.
 The fluid equations can be solved in \ac{3D}, \ac{2D}, or \ac{1D} for space.
 In a low dimension model, the effects of the missing dimensions are usually included, for instance, in the source terms as done by \citet{barral2003a}.
@@ -129,7 +129,7 @@ Two approaches are usually used for kinetic simulations\string:
 \end{itemize} 
 While the \ac{DK} simulations use a Eulerian description of the distribution function, we can see the \ac{PIC} simulations as a Lagrangian approach.
 The \ac{DK} simulations can theoretically better describe the plasma, mostly because there is less numerical noise and we can model binary collisions more easily, especially Coulomb collisions.
-On the other hand, \ac{PIC} simulations are much simpler to develop on both a mathematical and a computation perspective.
+On the other hand, \ac{PIC} simulations are much simpler to develop both on a mathematical and a computational perspective.
 For instance, the kinetic effects of electron emission have been recently studied using \ac{DK} simulation by \citet{cagas2019}, while it has been done since the last century in \ac{PIC} simulations \citep{boswell1988}.
 
 

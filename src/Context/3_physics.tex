@@ -19,18 +19,18 @@ Because of their large mass, the ions are not significantly affected by the magn
 Hence they do not drift azimuthally.
 As a consequence, there is a significant difference between the movement of electrons and ions in the azimuthal direction.
 
-This drift of electrons relative to the ions leads to instability in the azimuthal directions, so some  authors refers the instabilities as \ac{EDI}.
+This drift of electrons relative to the ions leads to instability in the azimuthal directions, so some  authors refer the instabilities as \ac{EDI}.
 However, as the drift is perpendicular to the magnetic field, it is subject to the cyclotron resonances.
 Therefore, in this thesis we use the more precise second name for these instabilities, the \ac{ECDI}.
 But it should be noted that both terms refer to the same physical phenomena.
 
 The actual nature of the \ac{ECDI} remains unclear\citep{boeuf2018}, as the \ac{ECDI} characteristics are very close to usual \ac{IAW}, and that experimental measurements are challenging to conduct in the range of parameter of interest.
-Hence, the community is still arguing about the actual nature of wave observed.
-A part of the work undertaken during my thesis concerns the study and characterization of the instabilities observed in the kinetic simulations.
+Hence, the community is still arguing about the actual nature of the observed wave.
+A part of the work undertaken during my thesis focuses on the study and characterization of the instabilities observed in the kinetic simulations.
 These instabilities are treated in \cref{ch-5}.
 
 
-\subsection{Cross-field transport of the elections}
+\subsection{Cross-field transport of the electrons}
 % \addcontentsline{toc}{subsection}{Cross-field transport of the elections}
   \label{sec-mob}
   
@@ -40,7 +40,7 @@ These instabilities are treated in \cref{ch-5}.
   This leads to a transport in the direction of the electric field.
   This transport can be expressed considering the electron momentum conservation equation \citep{lafleur2016a}\string:
   \begin{align*} %\label{eq-elec_momentum_mobility}
-    \partial_t(m_e n_e \vect{v}_{de}) + \div(m_e n_e  \vect{v}_{de} \vect{v}_{de})  = & q_e n_e ( \vect{E} + \vect{v}_{de} \times \vect{B})  &&\text{(Lorenz force)}\\ &- \div \vect{\Pi}_e &&\text{(pressure gradient)}\\ & - m_e \nu_m n_e \vect{v}_{de}, &&\text{(collisions)}
+    \partial_t(m_e n_e \vect{v}_{de}) + \div(m_e n_e  \vect{v}_{de} \vect{v}_{de})  = & q_e n_e ( \vect{E} + \vect{v}_{de} \times \vect{B})  &&\text{(Lorentz force)}\\ &- \div \vect{\Pi}_e &&\text{(pressure gradient)}\\ & - m_e \nu_m n_e \vect{v}_{de}, &&\text{(collisions)}
   \end{align*}
   where $m_e, q_e$, $n_e$, $\vect{v}_{de}$, and $\vect{\Pi}_e $ are the electron mass, charge, density, drift velocity and pressure tensor, and $\nu_m$ is the electron-neutral momentum transfer collision frequency.
   Ignoring the electron inertia and the pressure term, and with $\vect{B} = B_0 \vect{e}_r$, we can write the conservation equation projected on the axial and azimuthal direction
@@ -50,9 +50,9 @@ These instabilities are treated in \cref{ch-5}.
     0 =  n_e E_{\theta} -  n_e v_{dez} B_r - \frac{m_e}{q_e} \nu_m n_e v_{de{\theta}}
   \end{cases}
   \end{equation}
-  Supposing that there is no electric field in the azimuthal direction because of the azimuthal periodicity ($E_{\theta}=0$),  we can combine the two equations of \cref{eq-elec_momentum_mobility2} and have \citep{chen2006,meezan2001}
+  Assuming that there is no electric field in the azimuthal direction because of the azimuthal periodicity ($E_{\theta}=0$),  we can combine the two equations of \cref{eq-elec_momentum_mobility2} to obtain the mobility \citep{chen2006,meezan2001}
   \begin{equation} \label{eq-mobility}
-    \mobcla = \frac{n_e v_{dez}}{n_e E_z} = \frac{ \frac{\norm{q}}{m \nu_m}}{1 + \frac{\oce^2}{\nu_m}}
+    \mobcla   \equiv \frac{n_e v_{dez}}{n_e E_z} = \frac{ \frac{\norm{q}}{m \nu_m}}{1 + \frac{\oce^2}{\nu_m^2}}
   \end{equation}
   with $\oce= \frac{\norm{q}B_0}{m}$ the cyclotron frequency.
   \nomenclature[Q]{\ensuremath{ \oce}}{ Electron cyclotron frequency $\oce=\frac{e B}{m_e}$}
@@ -62,7 +62,7 @@ These instabilities are treated in \cref{ch-5}.
   At the exit plane, the classical mobility predicts a mobility of the order of $\mobcla=0.001-0.01\,\mobunit$ \citep{adam2008a}.
   However, it has been observed in experiments by \citet{meezan2001} that the electron cross-field transport in the axial direction of the \ac{HET} is higher than $\mobcla$.
   Two phenomena are supposed to be mainly responsible for this enhanced \emph{anomalous} mobility \citep{croes2017}\string: the azimuthal instability and the near-wall mobility due to electron emission.
-  A significant part of the work of this Ph.D. thesis concerns the quantitative comparison of the relative importance of the two phenomena.
+  A significant part of the work of this Ph.D. thesis focuses on the quantitative comparison of the relative importance of the two phenomena.
   
   The mobility induced by the azimuthal instability has first been observed in \ac{PIC} simulations by \citet{adam2004}, since then, it has been reproduced several times \citep{adam2008a,heron2013,lafleur2016a,croes2017,boeuf2018,taccogna2019}.
   The kinetic approach allowed \citet{lafleur2016a} to propose a modified mobility due to the oscillations of the electron density and the azimuthal electric field of the \ac{ECDI}.
@@ -73,11 +73,11 @@ These instabilities are treated in \cref{ch-5}.
   with \dne{} and \dEt{} the fluctuations in the azimuthal directions of the electron density and azimuthal electric field, respectively, the operator $< . >_{\theta}$ is the average in the azimuthal direction, and $n_0$ is the average plasma density.
   In the case where $\nu_m << \oce$, \cref{eq-defmobeff} can be simplified to 
   \begin{align} 
-    \mobeff &= \frac{\frac{e}{m_e} \nu_m}{\oce^2} \lp 1 - \frac{\oce^2}{\nu_m}  \frac{< \dne \dEt >_{\theta} }{n_0 E_z}   \rp \nonumber \\
+    \mobeff &= \frac{\frac{e}{m_e} \nu_m}{\oce^2} \lp 1 - \frac{\oce}{\nu_m}  \frac{< \dne \dEt >_{\theta} }{n_0 E_z}   \rp \nonumber \\
     &= \frac{< \dne \dEt >_{\theta} }{n_0 E_z}   \frac{1}{B_r} \label{eq-mobeffsimple}
   \end{align}
   which shows that the instability enhances the electron axial mobility in a way similar to an $E \times B$ drift.
-  The electric field $E_{\theta}$ oscillates and presents a zero mean value, but the average effect on the electron transport is not zero if the correlation between \dEt{} and \dne{} is not zero.
+  The electric field $E_{\theta}$ oscillates and has a zero mean value, but the average effect on the electron transport is not zero if the correlation between \dEt{} and \dne{} is not zero.
   
   The amplitude of the instability at steady-state depends on the saturation mechanisms and the convection of the wave.
   Studies have been  undertaken very recently but more work is still needed to derive expressions of the effective cross-field mobility that could be used in fluid models \citep{boeuf2017}.
@@ -98,7 +98,7 @@ These instabilities are treated in \cref{ch-5}.
 
   The ceramic wall closes the chamber in the radial directions.
   It has been observed in experiments that the nature of the wall can significantly affect the discharge behavior \citep{gascon2003}.
-  The primary phenomenon hold responsible for this observation is the electron emission.
+  The primary phenomenon held responsible for this observation is the electron emission.
   As usually observed in bounded plasmas, a floating sheath forms between the plasma and the dielectric wall.
   The sheath confines the electrons in the plasma and accelerates the ions toward the walls.
   This allows to obtain a flux of electrons equals to the flux of ions, resulting in charge conservation in the plasma, and a neutral flux, or also named zero-net current, to the surfaces.
@@ -133,7 +133,7 @@ The physics governing the \ac{HET} is three dimensional\string:
   \item The electrons drift in the azimuthal direction, leading to strong instabilities that affect the axial transport.
 \end{enumerate}
 
-Consequently, when modeling or simulating a \ac{HET}, if one of the direction is not included, a part of the physics will be missing\string:
+Consequently, when modeling or simulating a \ac{HET}, if one of the direction is not included, some of the physics will be missing\string:
 \begin{itemize}
   \item No axial direction\string: the ionization or the acceleration, as well as the plasma transport, are missing,
   \item No radial direction\string: the wall losses and interactions are missing,
