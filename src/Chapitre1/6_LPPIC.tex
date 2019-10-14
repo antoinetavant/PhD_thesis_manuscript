@@ -27,7 +27,7 @@ A perfectly parallel code has $\alpha=1$, hence a speedup $S=s$.
 In \cref{fig-strongperfo} are shown the speedup for the overall simulation, as well as the main functions of the \ac{PIC} algorithm (Charge deposition to the mesh, Particle pusher, Monte Carlo Collision and the Poisson solver).
 The scalability test is realized over two \ac{2D} radial-azimuthal cases. 
 The bigger case uses a mesh of $1000\times1024$ cells with $140$ particles per cell, which corresponds to a typical simulation case.
-Unfortunately, this case cannot be run with less than 240 CPUs because of the maximum memory disposable per CPU. 
+Unfortunately, this case cannot be run with less than 240 CPUs because of the maximum memory available per CPU. 
 Hence, we use a case four times smaller to test fewer number of CPU.
 The simulation is run over 2000 time steps.
 More informations on the scalability is given in \cref{an-scalability}.
@@ -39,7 +39,7 @@ More informations on the scalability is given in \cref{an-scalability}.
 \end{figure}
 
 
-We can see that the overall performance of the code is very good, as it scale as if it is parallelized at 91\% from Amdahl's law.
+We can see that the overall performance of the code is very good, as it scales as if it is parallelized at 91\% from Amdahl's law.
 Most of the sub-functions are much better, but the Poisson solver does not scale at all.
 It is due to the size of the chunk of domain of each CPU, which are too small.
 A way to improve the performances of \LPPic would be to use an hybridization of the parallelization with the shared memory openMP library.
@@ -49,7 +49,7 @@ But the current performance is acceptable, as the typical simulation case presen
 
 The development of the  simulation code \LPPic started in 2015 by Vivien Croes.
 I joined the development with Romain Lucken in 2016, and Thomas Charoy started in 2017.
-Because of the number of contributors, and our relative experience in Fortran, we quickly set a Continues Integration (CI) pipeline on a self hosted server using Teamcity.
+Because of the number of contributors, and our relative experience in Fortran, we quickly set a Continuous Integration (CI) pipeline on a self hosted server using Teamcity.
 This allows a systematic verification of the modification by the mean of unit, mezzanine and integration tests \citep{turner2016}.
 
 The validation of the code is done using the Benchmark of \citet{turner2013}.

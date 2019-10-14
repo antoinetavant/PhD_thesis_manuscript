@@ -2,7 +2,7 @@
 
 \section{Elements of the 2D PIC-MCC simulations}
   \label{sec-elements}
-  \subsection{Principe of the PIC-MCC simulations}
+  \subsection{Principle of the PIC-MCC simulations}
     \label{subsec-intro}
     The \ac{PIC} simulation models particles moving freely on a grid.
     The grid is used to compute the electric field, in the electrostatic approximation by solving the Poisson equation
@@ -13,10 +13,10 @@
     where $\phi$ is the electric potential, $\rho$ is the charge density, and $\epsilon_0$ the vacuum permittivity.
     If the electrostatic approximation is not correct, one needs to solve the Maxwell equations.
 
-    The particles move following the Lorenz forces
+    The particles move following the Lorentz forces
     \begin{equation}
       \label{eq-Lor}
-      m \vec{a} = q \vect{E} + q \vec{v} \times \vec{B}
+      m \deriv{\vec{v}}{t} = q \vect{E} + q \vec{v} \times \vec{B}
     \end{equation}
     with $m$ and $q$, the particle mass and electric charge, respectively.
     The numerical particles followed in the simulations correspond to $q_f$ physical particles, with
@@ -102,14 +102,14 @@
 
     One numerical particle represents a large number of physical particle. 
     Therefore they can be called \emph{superparticle} or \emph{macroparticle} in the literature.
-    We will simply call them particle, unless the context require a precision.
+    We will simply call them particle, unless the context requires clarification.
     
     \paragraph{Fields\\}
     The fields are defined at the center of each cell of the mesh.
     The charge density $\rho$ is computed by depositing the particle on the mesh, using the Cloud-in-cell model \cite{birdsall1991}.
     The electric field at the position of the particle is also obtained by bilinear interpolation.
     The mesh dimension defines the dimension of the simulation.
-    It is usual to find \acs{1D}\acs{3V} or \acs{2D}\acs{3V} \ac{PIC} simulations, for particles with 3 directions on the velocity but one (or two) dimensions in space.
+    It is usual to find \acs{1D}\acs{3V} or \acs{2D}\acs{3V} \ac{PIC} simulations, for particles with 3 directions on the velocity but one or two dimension(s) in space, respectively.
     
     Early studies on the stability of the \ac{PIC} simulations gave conditions for the cell size and the time step as functions of the physical parameters \citep{birdsall1991,turner2013}
     \begin{align}
@@ -133,7 +133,7 @@
       \frac{\dt}{\dx}\sqrt{\frac{e \Te}{m_e}} \leq 0.4,
     \end{equation}
     which can be seen as a constraint on the thermal electron velocity that must be much less than one cell per time step.
-    Hence, condition \ref{eq-CFL} is usually referred as the Current condition.
+    Hence, condition \ref{eq-CFL} is usually referred as the CFL condition.
     
     As presented before in \cref{subsec-intro}, a third condition applies on the ratio between the superparticle density and the physical particle density. 
     No universal rule exist, as a wide range of values may be appropriate to different context \citep{turner2006,turner2013}.
@@ -141,46 +141,28 @@
     
     \subsection{Memory requirement}
     Because of the particle discretization, the memory requirement for \ac{PIC} simulation can be tremendous.
-    For instance, we estimate here the numerical parameters of a \ac{2D} \ac{HET} simulation.
+    For instance, we estimate here the numerical parameters of a \acs{2D} \ac{HET} simulation.
     With a density $n_e = \sn{3}{17}\,\per\meter\cubed$, and an electron temperature $\Te=20\,\volt$, the Debye length is $\lde=\sn{6}{-5}\,\meter$.
-    The simulation of a square domain of $2\,\centi\meter$ aside needs a mesh of approximately 650 cells in each direction, hence more than $\sn{4}{5}$ cells in total.
+    The simulation of a square domain of $2\,\centi\meter$ side needs a mesh of approximately 650 cells in each direction, hence more than $\sn{4}{5}$ cells in total.
     With 100 electrons and 100 ions per cell, it is 85 million particles that are simulated.
     
-    For every particles, we need to store at least the two values of position and the three values of velocity, thus 6 real number.
+    For every particles, we need to store at least the two values of position and the three values of velocity, thus five real number.
     Using the double-precision floating-point format, it corresponds to approximately 400 bits per particles.
     In total, around 33 billion bits, or 4 Go (gigaoctet) are needed to store the particles ! 
     To give a reference to the reader, a modern laptop has a RAM of 8 Go.
-    Adding a thirst dimension of size 2 cm increases the number of cells to 300 millions, and the memory requirement for the particles to 2.5 Terabytes of memory.
+    Adding a third dimension of size 2 cm increases the number of cells to 300 millions, and the memory requirement for the particles to 2.5 Terabytes of memory.
     
     
     \subsection{Particle pusher}
-    The interaction of the movement equation \cref{eq-Lor} is different for magnetized and non-magnetized particles.
+    The interaction of the motion equation \cref{eq-Lor} is different for magnetized and non-magnetized particles.
     For non-magnetized particles, we use the leapfrog scheme \cite{birdsall1991}
     \begin{align}\label{eq-leapfrog}
       \vect{v}^t &= \vect{v}^{t-1} + \frac{q}{m} \vect{E} \dt, \\
-      \vect{x}^t &= \vect{x}^{t-1} + \vect{v}^t \dt,
+      \vect{x}^t &= \vect{x}^{t-1} + \vect{v}^t \dt, \label{eq-leapfrogtwo}
     \end{align}
     with the superscript $t$ designing the time step, $q$ and $m$ the particle electric charge and mass, $\vect{E}$ the electric field at the particle position, and \dt the time step duration.
 
-    It is important to note that the leapfrog induces a shift of $\frac{\dt}{2}$ between the position and the velocity, as illustrated in \cref{fig-leapfrog}.
-    \begin{figure}[hbt]
-      \centering
-      \includegraphics[width=\defaultwidth]{leapfrog.png}
-      \caption{Illustration of the shift between the particle velocity and position.}
-      \label{fig-leapfrog}
-    \end{figure}
-    This shift can lead to erroneous diagnostics when computing moments of the particles distribution.
-    For instance, the mean velocity of an ensemble of $N$ particles at the instant $t$ is computed as\string:
-    \begin{equation} \label{eq-meanv}
-      \mean{\vect{v}}^t = \frac{1}{N} \sum_i^N \lp \vect{v_i}^t + \frac{q}{m} \vect{E_i} \frac{\dt}{2} \rp.
-    \end{equation}
-    Other moments like the mean energy or heat flux follow the same correction.
-    We can see that the error between $\mean{\vect{v}}$ defined above and
-    $$ \tilde{\vect{v}} = \frac{1}{N} \sum_i^N  \vect{v_i}^t $$
-    is
-    $$ \mean{\vect{v}} - \tilde{\vect{v}} =\frac{q \dt}{2 m}  \frac{1}{N}  \sum_i^N  \vect{E_i} .$$
-    Hence, the error in the diagnostic is larger in the region of large electric field (as in the sheaths).
-
+    
     \paragraph{Magnetized particles}
     For magnetized particles, we use a modification of the leapfrog algorithm proposed by Boris \cite{boris1970}.
     It corresponds to an operator splitting between the electrostatic acceleration and the magnetic rotation.
@@ -192,7 +174,25 @@
       \item accelerate the particle during $\frac{\dt}{2}$\string: $\vect{v}^t = \vect{v}^{t-\frac{\dt}{2}} + \frac{q}{m} \vect{E} \frac{\dt}{2}$
     \end{enumerate}
 
-
+    It is important to note that the leapfrog and the Boris schemes induce a shift of $\frac{\dt}{2}$ between the position and the velocity\citep{birdsall1991}, as illustrated in \cref{fig-leapfrog}.
+    This shift can lead to erroneous diagnostics when computing moments of the particles distribution.
+    For instance, the mean velocity of an set of $N$ particles at time $t$ is computed as\string:
+    \begin{equation} \label{eq-meanv}
+      \mean{\vect{v}}^t = \frac{1}{N} \sum_i^N \lp \vect{v_i}^t + \frac{q}{m} \vect{E_i} \frac{\dt}{2} \rp.
+    \end{equation}
+    Other moments like the mean energy or heat flux follow the same correction.
+    We can see that the error between $\mean{\vect{v}}$ defined above and
+    $$ \tilde{\vect{v}} = \frac{1}{N} \sum_i^N  \vect{v_i}^t $$
+    is
+    $$ \mean{\vect{v}} - \tilde{\vect{v}} =\frac{q \dt}{2 m}  \frac{1}{N}  \sum_i^N  \vect{E_i} .$$
+    Hence, the error in the diagnostic is larger in the region of large electric field (as in the sheaths).
+    
+    \begin{figure}[hbt]
+      \centering
+      \includegraphics[width=0.8\textwidth]{leapfrog.png}
+      \caption{Illustration of the shift between the particle velocity and position due to the leapfrog scheme \cref{eq-leapfrog,eq-leapfrogtwo}.}
+      \label{fig-leapfrog}
+    \end{figure}
   \subsection{Poisson equation solver}
   \label{subsec-poissonintro}
 

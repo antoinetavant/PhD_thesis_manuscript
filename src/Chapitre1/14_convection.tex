@@ -12,7 +12,7 @@
 
     \citet{lafleur2016a} proposed a way to model the axial convection of the particles in a \ac{1D} purely azimuthal simulation.
     \Cref{fig-Fake_1d_1} shows a schematic illustration of the model.
-    The principle is as follow
+    The principle is as follows
     \begin{itemize}
       \item We set a finite axial length, noted $L_z$ in \cref{fig-Fake_1d_1}.
       \item We follow the positions of the particle in the axial direction $z$
@@ -28,7 +28,7 @@
     The new particle has a velocity following a Maxwellian flux distribution function of a given temperature.
     The azimuthal position of the particle is chosen uniformly at random.
 
-    The Maxwellian flux distribution is the velocity distribution of the particles traversing a surface if the particles follow a Maxwellian distribution function. Thus we have
+    The Maxwellian flux distribution is the velocity distribution of the particles crossing a surface if the particles follow a Maxwellian distribution function. Thus we have
     \begin{equation} \label{eq-Maxwflux} 
       f_{\rm flux}(\vect{v}) = \vect{v} \cdot \vect{n} f_{\rm M}(\vect{v}),
     \end{equation}
@@ -48,7 +48,7 @@
     The simulation is not \ac{3D}-\ac{3V}, but only \ac{2D}-\ac{3V}.
 
     In \citet{croes2017a}, the authors have observed that if the newly created particle has a radial position chosen uniformly at random, it will affect the sheath.
-    Hence, they decided to use the same radial position that the removed particle.
+    Hence, they decided to use the same radial position as the removed particle.
     \Cref{fig-Fake_2d} presents a schematic representation of the convection model in \ac{2D}.
 
     \begin{figure}[hbt]
@@ -60,7 +60,7 @@
 
     \Cref{fig-energy_convection} shows the evolution as a function of time of the electron mean energy in a typical \ac{2D} radial-azimuthal simulation, adapted from \citet{croes2017}.
     We can see that without the convection, the mean energy quickly rises to unphysical values.
-    When the convection is modeled, using an axial of $L_z=1$ cm, the energy reaches a steady-state.
+    When the convection is modeled, using an axial length of $L_z=1$ cm, the energy reaches a steady-state.
     \nomenclature[Q]{\ensuremath{ L_z}}{ Axial length}
     \begin{figure}[hbt]
       \centering
@@ -111,11 +111,12 @@
     \Cref{fig-couplesCroes} shows the results obtained (adapted from \citep{croes2017}).
     We can see that for a given value of the axial length, the azimuthal length must be less than a specific value to present physical results.
     However, the value of this upper limit depends on the axial length, such that if the axial length decreases, the upper limit of the azimuthal length decreases as well.
+    The dotted gray line is a rough representation of the limit between the physical and unphysical results. 
 
     \begin{figure}[hbt]
       \centering
       \includegraphics[width=\defaultwidth]{2D_couples.pdf}
-      \caption{For 2D PIC simulations\string: values of the azimuthal length and the axial length for which the simulation result is physical (similar to \cref{fig-convection_numerical}.{\bf b}) or unphysical  (similar to \cref{fig-convection_numerical}.{\bf d})}
+      \caption{For 2D PIC simulations\string: values of the azimuthal length and the axial length for which the simulation result is physical (similar to \cref{fig-convection_numerical}.{\bf b}) or unphysical  (similar to \cref{fig-convection_numerical}.{\bf d}). The dotted gray line is an approximation of the limit between the domains.}
       \label{fig-couplesCroes}
     \end{figure}
 
@@ -126,11 +127,11 @@
     Let us consider Lafleur's convection model in \ac{1D} on the charge density.
     When computing the charge density on the mesh vertices, the axial position is not taken into account.
     Consequently, the convection process illustrated in \cref{fig-Fake_1d_1} is similar to moving a particle arbitrarily (read randomly).
-    Seen by the charge density, this is similar to Poisson noise, also named shot noise, on the charge density.\footnote{Actually, this noise is the combination of Poisson noise with a uniform noise, happening twice for every particle convection, once with a positive charge and once with a negative charge.}
+    Seen by the charge density, this is similar to Poisson noise, also named shot noise, on the charge density.\footnote{Actually, this noise is the combination of Poisson noise with a uniform noise as we use a cloud in cell method. In addition it is happening twice for every particle convection, once with a positive charge and once with a negative charge. But the result is not affected by this simplification due to the central limit theorem.}
 
     After a certain number of particles removed and created, the Poisson noise is similar to a Gaussian noise, also named thermal noise, following a normal distribution $\N$. 
     \nomenclature[Q]{\ensuremath{ \N }}{ Normal distribution.}
-    Hence, the charge density becomes \footnote{One can note that the mean of the noise is strictly zero (with probability 1), as the charge density is conserved.}
+    Hence, the charge density becomes \footnote{One can note that the mean noise is strictly zero (with probability 1), as the charge density is conserved.}
     \begin{equation} \label{eq-rhonoise}
       \rho = \rho_0 + \N(0, \stdconv),
     \end{equation}
@@ -188,7 +189,7 @@
       Hence, we have \citep{ibe2013}
       \begin{align*}
         \mathbb{E}(\aziE_{, 1}) &= 0,  \\
-        {\rm var}(\aziE_{, 1}) &= \stdconv^2 \frac{L_{\theta^2}}{4}
+        {\rm var}(\aziE_{, 1}) &= \stdconv^2 \frac{L_{\theta}^2}{4}
       \end{align*}
     
       Hence, the increase of the azimuthal length increases the amplitude of $\aziE_{, 1}$.
@@ -199,7 +200,7 @@
     
     \subsection{Noiseless convection model}
       \label{sec-noiselessresults}
-      In previous section, we have shown that the convection model induces a noise in the charge density, that produces an azimuthal electric field which amplitudes depends on the azimuthal length.
+      In previous section, we have shown that the convection model induces a noise in the charge density, that produces an azimuthal electric field which amplitude depends on the azimuthal length.
       
       We propose here a modified version of Lafleur's convection model in order to remove the noise in the charge density.
       The noiseless convection model follows the same algorithm as before, but the azimuthal position of the particle created is not chosen uniformly as random, but instead the new particle has the same position as the removed particle.
@@ -240,7 +241,7 @@
       \Cref{fig-oldeconv_newconv_longLZ} shows the  time  evolution of the azimuthal electric field at the center of the radial dimension  with the convection modeled using Lafleur's model and the noiseless model but using a longer azimuthal length than \cref{fig-oldeconv_newconv}.
       In this case, we can see that Lafleur's convection model induces oscillations that are not observed with the noiseless model.
       
-      \begin{figure}[hbt]
+      \begin{figure}[!hbt]
         \centering
         \includegraphics[width=0.95\textwidth]{Compare_old_new_Reinj_Oz_LongLx}
         \caption{Time evolution of the azimuthal electric field at the center of the radial dimension with the convection modeled using (left) Lafleur's model and (right) the noiseless model with a longer azimuthal length (0.65cm).}
@@ -257,7 +258,7 @@
       
       The mathematical development of \cref{sec-mathnoise} has been done in \ac{1D}.
       We can legitimately wonder if the results  can be extended directly to a \ac{2D} domain.
-      A mathematical definition of $\aziE_{, 1}$ i \ac{2D} is more difficult, as we have, neglecting the dielectric layers,
+      A mathematical definition of $\aziE_{, 1}$ in \ac{2D} is more difficult, as we have, neglecting the dielectric layers,
       \begin{equation} \label{eq-aziE}
         \aziE_{, 1} = -\partial_{\theta} \phi_1 \text{ such that } \grad \cdot \grad \phi_1 = - \frac { \N(0, \stdconv)}{\epsilon_0} \text{ following the \ac{BC}}.
       \end{equation}
@@ -275,10 +276,10 @@
       Solving \cref{eq-aziE} with the conditions \cref{eq-BC1,eq-BC2} analytically is much more difficult that the \ac{1D} development, because of the Dirichlet \ac{BC}.
       \nomenclature[N]{Dirichlet Boundary condition\string:}{ a type of boundary conditions for which the field is fixed. For instance for grounded electrodes on the plasma potential\string: $\phi = 0$}
       However, we can investigate it numerically, by solving \cref{eq-aziE} for a given random source term.
-      Using a Monte Carlo approach, we average the results  200 times to better observe the mean behavior in respect to the noise (i.e. increasing signal to noise ratio).
+      Using a Monte Carlo approach, we average the results  200 times to better observe the mean behavior with respect to the noise (i.e. increasing signal to noise ratio).
       For each computation, a normalized source term $\rho_1 = \N(0, 1)$ is generated over a \ac{2D} domain, then the \ac{2D} Poisson equation is solved numerically\footnote{The SOR algorithm is used in this MC calculation. The iterations are stopped using a relative tolerance of $\sn{2}{-6}$ on the mean square error.} to obtain $\phi_1$, and the azimuthal electric field $\aziE_{, 1} =- \partial_{\theta} \phi_1 $ is computed.
     
-      \begin{figure}[hbt]
+      \begin{figure}[!hbt]
         \centering
         \includegraphics[width=\textwidth]{2D_MC_noise.png}
         \caption{Results for one case used in the Monte Carlo calculation with 100 cells in radial direction and 500 cells in the azimuthal direction, with (left) the normalized source term $\rho = \N(0, 1)$, (center) the azimuthal electric field, and (right) the plasma potential. }
@@ -308,7 +309,7 @@
       It means that the \ac{2D} domain does not change significantly the effect of the numerical noise $\rho_1$.
       Hence, the conclusions of  \cref{sec-mathnoise} derived in \ac{1D} can be legitimately used for \ac{2D} domains.
       
-      \begin{figure}[hbt]
+      \begin{figure}[!hbt]
         \centering
         \includegraphics[width=\textwidth]{effect_Lr_noEq1D.pdf}
         \caption{ DFT of the source term $\rho_1 = \N(0, \stdconv)$, the resulting azimuthal electric field $\aziE_{, 1}$ and plasma potential $\phi$ computed on the centerline of a radial-azimuthal simulation, and the Equivalent \acs{1D} source term defined by \cref{eq-equirho}. The azimuthal length is $L_{\theta}=50$ cm. The \acs{DFT} are averaged 200 times  }
