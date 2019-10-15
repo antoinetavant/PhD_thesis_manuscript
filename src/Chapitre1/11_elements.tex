@@ -89,7 +89,7 @@
   \subsection{Computational characteristics}
     In \ac{PIC} simulations, there are two kinds of data used\string:
     \begin{itemize}
-      \item Particles (electrons and ions; neutrals can be followed as well but not in \LPPic),
+      \item Particles (electrons and ions; neutrals can be followed as well but not in the version of \LPPic I have used for my Ph.D.),
       \item Mesh, also named fields (densities, electric and magnetic fields, and so on).
     \end{itemize}
 
@@ -100,7 +100,7 @@
     It is abbreviated as \acs{3V}.
     The particle positions and velocity are not discretized, except to the numerical floating-point precision.
 
-    One numerical particle represents a large number of physical particle. 
+    One numerical particle represents a large number of physical particles. 
     Therefore they can be called \emph{superparticle} or \emph{macroparticle} in the literature.
     We will simply call them particle, unless the context requires clarification.
     
@@ -136,8 +136,8 @@
     Hence, condition \ref{eq-CFL} is usually referred as the CFL condition.
     
     As presented before in \cref{subsec-intro}, a third condition applies on the ratio between the superparticle density and the physical particle density. 
-    No universal rule exist, as a wide range of values may be appropriate to different context \citep{turner2006,turner2013}.
-    A general consensus in low temperature plasma agrees on using approximately 100 numerical particles per cell.
+    No universal rule exists, as a wide range of values may be appropriate to different contexts \citep{turner2006,turner2013}.
+    A general consensus in low temperature plasma agrees on using approximately 100 numerical particles per cell but a careful convergence study has to be carried out to demonstrate that it is enough for the studied conditions.
     
     \subsection{Memory requirement}
     Because of the particle discretization, the memory requirement for \ac{PIC} simulation can be tremendous.
@@ -146,7 +146,7 @@
     The simulation of a square domain of $2\,\centi\meter$ side needs a mesh of approximately 650 cells in each direction, hence more than $\sn{4}{5}$ cells in total.
     With 100 electrons and 100 ions per cell, it is 85 million particles that are simulated.
     
-    For every particles, we need to store at least the two values of position and the three values of velocity, thus five real number.
+    For every particle, we need to store at least the two values of position and the three values of velocity, thus five real numbers.
     Using the double-precision floating-point format, it corresponds to approximately 400 bits per particles.
     In total, around 33 billion bits, or 4 Go (gigaoctet) are needed to store the particles ! 
     To give a reference to the reader, a modern laptop has a RAM of 8 Go.

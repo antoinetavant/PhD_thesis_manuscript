@@ -13,20 +13,20 @@
   \nomenclature[Q]{\ensuremath{ u_{e,z}}}{Electron mean velocity in the axial direction\string: $u_{e,z} = < v_{e,z}>$}
   In the \ac{PIC} simulations, \cref{eq-mudef} can be used directly to compute $\mobpic$.
   As introduced before, in the \ac{PIC} simulation the velocity is shifted by half a time step compared to the position.
-  Thus, a special attention must be given in to compute $\mobpic$.
+  Thus, a special care is needed to compute $\mobpic$.
   
-  In the classical drift diffusion theory of the electron mobility transverse to a magnetic field, the mobility is due to collisions as seen in \cref{eq-mobility} 
+  In the classical drift diffusion theory of the electron mobility transverse to a magnetic field presented in \cref{ch-concepts}  (\cref{eq-mobility}), the mobility is due to collisions is 
   \begin{equation} \label{eq-mobclas}
     \mobcla = \frac{e}{m_e} \frac{\nu_m}{\nu_m^2 + \oce^2}
   \end{equation}
   with $\oce=\frac{e B}{m_e}$ the electron cyclotron frequency and $\nu_m$ the electron-neutral momentum transfer collision frequency.
   In order to evaluate \cref{eq-mobclas},  $\nu_m$ is measured in the \ac{PIC} simulations at every cell.
-  The mobility induced by the instability when neglecting the collision, as introduced in \cref{sec-mob}, is 
+  The mobility induced by the instability when neglecting the collisions, as introduced in \cref{ch-concepts} (\cref{eq-mobeffsimple}), is 
   \begin{equation} \label{eq-eq_mobeffsimple_two}
       \mobeff = \frac{< \dne \dEt >_{\theta} }{n_0 E_z}   \frac{1}{B_r}
   \end{equation}
-  The correlation term $< \dne \dEt >_{\theta}$ can be computed in the \ac{PIC} simulation at every radial position.
-  Using its radial profile, we will be able to determine where the instability enhances the electron mobility the most.
+  The correlation term $< \dne \dEt >_{\theta}$ can be computed in the \ac{PIC} simulation at each radial position.
+  Using its radial profile, we will be able to determine where the instability enhances the most the electron mobility.
   
   In  \citet{lafleur2016}, the authors present the instability effect as an electron-ion friction force $\Rei = - e < \dne \dEt >_{\theta}$.
   Under the assumption that the saturation of the instability is mainly due to ion trapping, the electron-ion friction force can be simplified in the \ac{2D} geometry of the simulation to

@@ -10,11 +10,11 @@
   As the electrons drift azimuthally due to the $E \times B$ configuration, the \ac{ECDI} rises, enhancing the cross-field transport of the electron towards the anode.
   The walls closing the chamber in the radial direction are also important for the discharge behavior.
   Hence, in order to compare the interaction between these phenomena, we simulate the radial-azimuthal domain.
-  
-  A special care has been taken during the developement of \LPPic, the \ac{2D}-\ac{3V} \ac{PIC}-\ac{MCC} simulation code, concerning
+  In my Ph.D., I have worked on the development of  \LPPic, the \ac{2D}-\ac{3V} \ac{PIC}-\ac{MCC} simulation code, concerning in the radial-azimuthal configuration
   \begin{itemize}
     \item the modeling of the axial convection, in order to model the energy losses and so attain a steady-state,
     \item the modeling of the radial boundary with the dielectric layer included in the simulation domain.
   \end{itemize}
   
-  Several theories have also been given in order to better understand the \ac{PIC} simulation results, especially regarding the electron cross-field mobility and the sheath model in presence of electron emission.
+  We also adapted \LPPic to simulation the axial-azimuthal domain, that is presented in more detailed in \cref{ch-6}.
+  The performances of the code are good, with $90\%$ of the calculation parallelized, and an important effort as been made concerning the validation and verification.

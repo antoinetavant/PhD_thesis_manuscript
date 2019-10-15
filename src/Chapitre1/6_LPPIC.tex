@@ -6,7 +6,7 @@
 
 
 \LPPic is the electrostatic particle-in-cell simulation code developed at \ac{LPP} to study principally magnetized plasma thruster, such as the \ac{HET}.
-Written in Fortran, it uses the Message Passing Interface (MPI) to parallelize the computational load using a domain decomposition.
+Written in Fortran (2008), it uses the Message Passing Interface (MPI) to parallelize the computational load using a domain decomposition.
 The principle of the domain decomposition is that each Central Processing Unit (CPU) knows a small chunk of the whole domain.
 We use {\sc Hypre}'s multigrid solver to solve Poisson equation in \ac{2D} \citep{falgout2002}.
 
@@ -30,7 +30,7 @@ The bigger case uses a mesh of $1000\times1024$ cells with $140$ particles per c
 Unfortunately, this case cannot be run with less than 240 CPUs because of the maximum memory available per CPU. 
 Hence, we use a case four times smaller to test fewer number of CPU.
 The simulation is run over 2000 time steps.
-More informations on the scalability is given in \cref{an-scalability}.
+More information on the scalability is given in \cref{an-scalability}.
 \begin{figure}[hbt]
   \centering
   \includegraphics[width=\textwidth]{StrongScalingOccigen_speedup.pdf}
@@ -40,17 +40,17 @@ More informations on the scalability is given in \cref{an-scalability}.
 
 
 We can see that the overall performance of the code is very good, as it scales as if it is parallelized at 91\% from Amdahl's law.
-Most of the sub-functions are much better, but the Poisson solver does not scale at all.
-It is due to the size of the chunk of domain of each CPU, which are too small.
-A way to improve the performances of \LPPic would be to use an hybridization of the parallelization with the shared memory openMP library.
-But the current performance is acceptable, as the typical simulation case presented here runs in around one week (7 days) on 360 CPUs.
+Most of the sub-functions have higher speed-ups, but the Poisson solver does not scale at all.
+It is due to the size of the chunk of domain of each CPU, which is too small.
+A way to improve the performances of \LPPic would be to use an hybrid parallelization with the shared memory openMP library.
+But the current performance is acceptable, as the typical simulation cases presented in this manuscript run in around one week (7 days) on 360 CPUs.
 
 \vspace{1em}
 
 The development of the  simulation code \LPPic started in 2015 by Vivien Croes.
 I joined the development with Romain Lucken in 2016, and Thomas Charoy started in 2017.
-Because of the number of contributors, and our relative experience in Fortran, we quickly set a Continuous Integration (CI) pipeline on a self hosted server using Teamcity.
-This allows a systematic verification of the modification by the mean of unit, mezzanine and integration tests \citep{turner2016}.
+Because of the number of contributors, and our different experiences in software development, we quickly set a Continuous Integration (CI) pipeline on a self hosted server using Teamcity.
+This allows a systematic verification of the modifications by the mean of unit, mezzanine and integration tests \citep{turner2016}.
 
 The validation of the code is done using the Benchmark of \citet{turner2013}.
 While it allows to validate a significant part of the \ac{PIC} code, it is not magnetized and only in \ac{1D}.

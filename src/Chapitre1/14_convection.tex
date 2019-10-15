@@ -10,7 +10,7 @@
   
   \subsection{Lafleur's model of convection}
 
-    \citet{lafleur2016a} proposed a way to model the axial convection of the particles in a \ac{1D} purely azimuthal simulation.
+    \citet{lafleur2016a} proposed a way to model the axial convection of the particles in \ac{1D} purely azimuthal simulation.
     \Cref{fig-Fake_1d_1} shows a schematic illustration of the model.
     The principle is as follows
     \begin{itemize}
@@ -127,7 +127,7 @@
     Let us consider Lafleur's convection model in \ac{1D} on the charge density.
     When computing the charge density on the mesh vertices, the axial position is not taken into account.
     Consequently, the convection process illustrated in \cref{fig-Fake_1d_1} is similar to moving a particle arbitrarily (read randomly).
-    Seen by the charge density, this is similar to Poisson noise, also named shot noise, on the charge density.\footnote{Actually, this noise is the combination of Poisson noise with a uniform noise as we use a cloud in cell method. In addition it is happening twice for every particle convection, once with a positive charge and once with a negative charge. But the result is not affected by this simplification due to the central limit theorem.}
+    Seen by the charge density, this is similar to Poisson noise, also named shot noise, on the charge density.\footnote{In fact, this noise is the combination of Poisson noise with a uniform noise as we use a cloud in cell method. In addition it is happening twice for every particle convection, once with a positive charge and once with a negative charge. But the result is not affected by this simplification due to the central limit theorem.}
 
     After a certain number of particles removed and created, the Poisson noise is similar to a Gaussian noise, also named thermal noise, following a normal distribution $\N$. 
     \nomenclature[Q]{\ensuremath{ \N }}{ Normal distribution.}
@@ -200,7 +200,7 @@
     
     \subsection{Noiseless convection model}
       \label{sec-noiselessresults}
-      In previous section, we have shown that the convection model induces a noise in the charge density, that produces an azimuthal electric field which amplitude depends on the azimuthal length.
+      In the previous section, we have shown that the convection model induces a noise in the charge density, that produces an azimuthal electric field which amplitude depends on the azimuthal length.
       
       We propose here a modified version of Lafleur's convection model in order to remove the noise in the charge density.
       The noiseless convection model follows the same algorithm as before, but the azimuthal position of the particle created is not chosen uniformly as random, but instead the new particle has the same position as the removed particle.
@@ -250,7 +250,7 @@
 
 
       These observations have shown that Lafleur's convection model induces a noise on the charge density, that does not affect the simulation when the domain size is small, but can rise numerical artifacts when the domain size is larger.
-      We have seen that the minor modifications on the model do not affect the simulation results on a small domain, and allows us to use a larger simulation domain without any numerical artifact.
+      We have seen that minor modifications on the model do not affect the simulation results on a small domain, and allows us to use a larger simulation domain without any numerical artifact.
       
       
           
