@@ -137,7 +137,7 @@
     \end{equation}
     with $\rho$ the charge density, $\rho_0$ the charge density without the convection process, and $\stdconv$ the standard deviation of the distribution of the noise associated with the convection model.
     \nomenclature[Q]{\ensuremath{ \rho}}{ Charge density}
-    \nomenclature[Q]{\ensuremath{ \stdconv}}{ tandard deviation of the distribution of the noise associated with the convection model}
+    \nomenclature[Q]{\ensuremath{ \stdconv}}{ standard deviation of the distribution of the noise associated with the convection model}
     Surprisingly, the noise due to the convection model is similar to the numerical noise induced by the decomposition of the plasma into particles $\N(0, \sigma_{\rm stat})$.
     However, the amplitude of this statistical noise decreases with the number of particles per cell used
     \begin{equation*} \label{eq-statistical}
@@ -274,7 +274,8 @@
       \end{align}
       
       Solving \cref{eq-aziE} with the conditions \cref{eq-BC1,eq-BC2} analytically is much more difficult that the \ac{1D} development, because of the Dirichlet \ac{BC}.
-      \nomenclature[N]{Dirichlet Boundary condition\string:}{ a type of boundary conditions for which the field is fixed. For instance for grounded electrodes on the plasma potential\string: $\phi = 0$}
+      \nomenclature[N]{Dirichlet boundary condition\string:}{ a type of boundary conditions for which the field is fixed. For instance for grounded electrodes on the plasma potential\string: $\phi = 0$}
+      \nomenclature[N]{Neumann boundary condition\string:}{ a type of boundary conditions for which the first derivative of the field field is fixed. For instance for a surface with surface charges on the plasma potential\string: $\deriv{\phi}{x} = \sigma$}
       However, we can investigate it numerically, by solving \cref{eq-aziE} for a given random source term.
       Using a Monte Carlo approach, we average the results  200 times to better observe the mean behavior with respect to the noise (i.e. increasing signal to noise ratio).
       For each computation, a normalized source term $\rho_1 = \N(0, 1)$ is generated over a \ac{2D} domain, then the \ac{2D} Poisson equation is solved numerically\footnote{The SOR algorithm is used in this MC calculation. The iterations are stopped using a relative tolerance of $\sn{2}{-6}$ on the mean square error.} to obtain $\phi_1$, and the azimuthal electric field $\aziE_{, 1} =- \partial_{\theta} \phi_1 $ is computed.

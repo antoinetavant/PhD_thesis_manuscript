@@ -50,7 +50,7 @@
 \newcommand{\Es}{{\mathcal{E}_s}}
 
 \newcommand\Npc{N_{\rm pc}}
-\newcommand\Isp{\ensuremath {\rm I_{\rm sp}}\xspace}
+\newcommand\Isp{\ensuremath {\rm I_{\rm sp}} \xspace}
 
 % 10^number: use as \sn{Value}{Power} for value x 10^Power
 \newcommand{\sn}[2]{\ensuremath{{{#1}{\times}10^{#2}}}}
@@ -135,3 +135,16 @@
 \newcommand\kms{\ensuremath{ \kilo\meter\per\second }}
 
 \newcommand\ztheta{\ensuremath{ ( \mathbf Z - \theta) } }
+
+%nomenclature text 
+\renewcommand{\nompreamble}{In this work we use the SI system of units, expect for a few specific to the plasma community. The notations in general follow common usage. The vectors are noted in bold, as $\vect{v}$, $\vect{E}$, etc.
+Complex quantities are not distinguished from real ones.
+
+The next list describes several symbols that will be later used within the body of the document.}
+
+\nomenclature[P]{Torr}{Equivalent to one millimeter of mercury, \nomunit{$1$\,Torr = 133.32 \pascal}}
+\nomenclature[P]{Gauss}{Unit of magnetic flux density in cgs (centimeter-gram-second units) \nomunit{$1$\,G = $\sn{1}{-4}\,\tesla $}}
+\nomenclature[P]{eV}{Unit of energy, corresponds to the kinetic energy of one electron accelerated by an electric potential difference of one volt. It is usually used in plasma physics as a unit of temperature via the Boltzmann constant. \nomunit{$1$\,eV $\simeq \sn{1.602}{-19}\,\joule$  }}
+
+\nomenclature[P]{\ensuremath{ K_B}}{Boltzmann constant \nomunit{$\sn{1.380649}{-23}\,\joule\per\kelvin$}}
+\nomenclature[P]{\ensuremath{ e}}{Elementary charge \nomunit{$\sn{1.602176634}{-19}$\,C}}
