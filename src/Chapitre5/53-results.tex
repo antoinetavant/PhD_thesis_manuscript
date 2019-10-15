@@ -194,7 +194,7 @@
     Then for $t > 1 \,\micro\second$, the growth rate oscillates slightly around a mean value that is below the solution with cold ions, but above the result with warm ions.
     In order to determine which solution is the closest from the observation, we estimate the growth rate in the \ac{PIC} simulation with the wave equation
     \begin{equation} \label{eq-wequationbis}
-      \deriv{W_{\rm PIC}}{t} + \div (\vect{u_i} W_{\rm PIC}) = 2 \gamma_{\rm PIC} W_{\rm PIC}
+      \deriv{W_{\rm PIC}}{t} + \div (\vect{u_i} W_{\rm PIC}) = 2 \gamma_{eff} W_{\rm PIC}
     \end{equation}
     with $W_{\rm PIC} = \sigma_{E_{\theta}}^2 \epsilon_0/2$ the electrostatic wave energy measured in the \ac{PIC} simulation.
     The spatial derivative can been approximated across the axial simulation direction by
@@ -208,20 +208,29 @@
     with $U_z = E_z L_z$ the total potential difference in the axial direction.
     Therefore, the growth rate measured in the \ac{PIC} simulation is
     \begin{equation} \label{eq-picgrowthrate}
-      \gamma_{\rm PIC} = \frac{ \partial_t W_{\rm PIC} }{W_{\rm PIC}}  +\frac{ \viout}{2 L_z}.
+      \gamma_{eff} = \frac{ \partial_t W_{\rm PIC} }{W_{\rm PIC}}  +\frac{ \viout}{2 L_z}.
     \end{equation}
-    \Cref{fig-pic_growth_rate} shows the temporal evolution of the growth rate of the most growing mode (similar to the left panel of \cref{fig-time_wave}) obtained with the relation dispersion, and $\gamma_{\rm PIC}$ the growth rate measured in the \ac{PIC} simulation using \cref{eq-picgrowthrate}.
-    The value of $\gamma_{\rm PIC}$ is noisy, so we average it using a Gaussian kernel of standard deviation $\tau = 12\,\nano\second$.
+    The effective azimuthal wave number $k_{eff}$ is estimated by Fourier transform averaged in the the radial direction between $r=0.4$ and $r=0.6\,\centi\meter$.
+    \Cref{fig-pic_growth_rate} shows the comparisons between the results of the dispersion relations and the PIC simulation results.
+
+    
     \begin{figure}[hbtp]
       \centering
-      \includegraphics[width=\defaultwidth]{GrowthRate_time_evolution_onlygamma.pdf}
-      \caption{Temporal evolution of the growth rate}
+      %\includegraphics[width=\defaultwidth]{GrowthRate_time_evolution_onlygamma.pdf}
+      \includegraphics[width=0.8\textwidth]{GrowthRate_time_evolution_withPIC.pdf}
+
+      \caption{Temporal evolution of ({\bf a}) the growth rate and ({\bf b}) the main wavenumber  (red solid line) measured in the simulation using \cref{eq-picgrowthrate}, and computed with the DR using (blue solid line) the VDF measured in the PIC simulation, (dotted orange line) the Maxwellian hypothesis with $\Ti=0$\,\volt, (dashed green line) the Maxwellian hypothesis with non-zero temperature ions. The result of the three DR are the same as in \cref{fig-time_wave}. }
       \label{fig-pic_growth_rate}
     \end{figure}
-    \inlinenote{Continue the legend}
     
-    We see in \cref{fig-pic_growth_rate} that $\gamma_{\rm PIC}$, the growth rate measured in the simulation, follows the expected trend with an initial phase ($t<1\,\micro\second$) of growth, and then the oscillations with growing and damping phases.
-    The values of $\gamma_{\rm PIC}$ are closer to the growth rate obtained with the Maxwellian hypothesis and a non-zero ion temperature (label "Maxw, $\Ti>0$" in \cref{fig-pic_growth_rate}), compared to the values obtained with the \ac{PIC} VDFs or with cold ions (label "Maxw, $\Ti=0$").
+    
+    \Cref{fig-pic_growth_rate}.{\bf a} shows the temporal evolution of the growth rate of the most growing mode (similar to the left panel of \cref{fig-time_wave}) obtained with the relation dispersion, and $\gamma_{eff}$ the growth rate measured in the \ac{PIC} simulation using \cref{eq-picgrowthrate}.
+    The value of $\gamma_{eff}$ is averaged using a Gaussian kernel of standard deviation $\tau = 12\,\nano\second$.
+    We see in \cref{fig-pic_growth_rate} that $\gamma_{eff}$, the growth rate measured in the simulation, follows the expected trend with an initial phase ($t<1\,\micro\second$) of growth, and then the oscillations with growing and damping phases.
+    The values of $\gamma_{eff}$ are closer to the growth rate obtained with the Maxwellian hypothesis and a non-zero ion temperature (label "Maxw, $\Ti>0$" in \cref{fig-pic_growth_rate}), compared to the values obtained with the \ac{PIC} VDFs or with cold ions (label "Maxw, $\Ti=0$").
+    
+    \Cref{fig-pic_growth_rate}.{\bf b}  shows the temporal evolution of the main wavenumber measured in the simulation and the wavenumber of the most growing mode obtained with the relation dispersion (similar to the central panel of \cref{fig-time_wave}).
+    We see that the wavenumber of the instability observed in the simulation is of the good order of magnitude, and that is is in good agreement with the result of the \ac{DR} that uses the velocity distribution functions measured in the simulation.
       %It is also in contrast with \citet{lafleur2018}, where the authors obtained a non-zero growth rate in an axial-azimuthal geometry.
       
       
