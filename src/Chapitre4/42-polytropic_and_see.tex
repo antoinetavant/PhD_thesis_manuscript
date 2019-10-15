@@ -11,7 +11,7 @@
 \subsection{Definition of the sheath equation} \label{subsec-def_sheat_see}
 
 We have seen in \cref{sec-PIC_poly} that even in the presence of electron emission from the wall, the electrons can be described using a polytropic state law.
-The value of the polytropic index obtained from the mean electron density and temperature is for $\crover \geq 40 \,\volt$ is $\gamma = 1.36$.
+The value of the polytropic index obtained from the mean electron density and temperature is for $\crover \geq 40 \,\volt$ is $\gamma \simeq 1.36$.
 % Using the electron distribution function, the evolution of the forward electron seems to follow a polytropic low of index $\gamma=1.28$.
 Hence, we modify the polytropic sheath model of \cref{sec-fluid} to take into account the electron emission from the wall.
 This modifies the current equality at the wall to
@@ -55,7 +55,7 @@ with $\ratecr = 0.983$ corresponding to the \ac{SCL} regime, and the electron te
 \end{equation}
 
 
-Noting $\chi = \frac{\gamma -1}{\gamma} \frac{ \dphi_0}{ \Teb} $, we finely obtain the sheath equation to be solved
+Noting $\chi = \frac{\gamma -1}{\gamma} \frac{ \dphi_0}{ \Teb} $, we finally obtain the sheath equation to be solved
 \begin{equation} \label{eq-costseepoly}
   f(\chi) = \left[ 1 + \chi  \right]^{\frac{1}{\gamma - 1}} \sqrt{1 - \chi} - \frac{  \sqrt{4 \gamma m_e / m_i}}{1 - \rate (\Teb, \chi )} = 0.
 \end{equation}
@@ -78,7 +78,7 @@ Five points of interest are marked and labeled in \cref{fig-costfunction} to eas
   \item A and B are two local extrema.
 \end{enumerate}
 
-The courbe $f(\chi)$ is composed of two continuous branches that join at the point A in \cref{fig-costfunction}.
+The curve $f(\chi)$ is composed of two continuous branches that join at the point A in \cref{fig-costfunction}.
 The two branches corresponds to the two cases of \cref{eq-seemaxw_poly}. Hence, the point A corresponds to the value of $\dphi/\Teb$ for which  \[ \sigo + ( 1 - \sigo) \frac{ 2 \Tew  }{\crover} = \ratecr = 0.983. \]
 
 The branch at the left of A corresponds to the \ac{SCL} regime, and has one solution S3 to $f(\chi)=0$ at $\dphi / \Teb \simeq 1$.
@@ -119,17 +119,17 @@ Lastly, the dash-dotted green line represents S2 the intermediate solution.
 
 
 \Cref{fig-iso_poly} shows the evolution of the sheath potential drop and the \ac{SEE} rate as a function of $\Teb$ for the case $\crover=50\,\volt$.
-Both the isothermal sheath and the polytropic model using $\gamma=1.36$ are showed. 
+Both the isothermal sheath and the polytropic model using $\gamma=1.36$ are shown. 
 The result of the isothermal sheath model was previously shown in \cref{fig-dphivsTe}  in \cref{ch-2}.
 For the solution of the polytropic sheath model, the branches corresponding to the three solutions S1, S2, and S3 are labeled.
 The light green area highlights the temperature range with the three coexisting solutions.
 The lower bounds of the area is noted $\Te^2$ and the upper bound is noted $\Te^1$
-\renewcommand\subfigurewidth{0.65\textwidth}
+%\renewcommand\subfigurewidth{0.65\textwidth}
 
 \begin{figure}[!hbt]
   \centering
-  \begin{tabular}{@{} c}
-    \subfigure{Iso_vs_poly_dphibis}{a}{25,18} \\
+  \begin{tabular}{@{} c c @{}}
+    \subfigure{Iso_vs_poly_dphibis}{a}{25,18} &
     \subfigure{Iso_vs_poly_rate}{b}{20,18} 
   \end{tabular}
   \caption{Evolution as a function of the electron temperature $\Te$ for $\crover=50\,\volt$ of ({\bf a}) the plasma potential drop to the wall $\dphi$, and ({\bf b}) the SEE rate $\ratemaxw$ using the polytropic sheath model ($\gamma = 1.36$) and the isothermal sheath model. The labels S1, S2 and SCL regime correspond to the three solutions illustrated in \cref{fig-schematic-solutions}. The light green area highlights the temperature range with three solutions.}
@@ -187,7 +187,7 @@ Consequently, the electron bulk temperature can access higher temperature, compa
     The solutions for different values of $\crover$ and $\gamma$ are shown in \cref{fig-Te2_epsi}.
     As for $\Te^1$, $\Te^2$ increases linearly with $\crover$.
     It also increases slowly with $\gamma$, from $26\,\volt$ for $\gamma=1.2$ to $30\,\volt$ for $\gamma=1.4$ in the case $\crover=45\,\volt$.
-    We note that $\Te^2$ increasing more slowly with $\gamma$ compared to $\Te^1$, hence the range of temperature with the three coexisting solutions widen  when $\gamma$ increases.
+    We note that $\Te^2$ increases more slowly with $\gamma$ compared to $\Te^1$, hence the range of temperature with the three coexisting solutions widen  when $\gamma$ increases.
 
     \begin{figure}[hbt]
       \centering
