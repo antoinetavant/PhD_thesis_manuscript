@@ -34,7 +34,7 @@
     \label{fig-see_illustration}
   \end{figure}
   
-  \Cref{fig-see_illustration} shows the electron emission probability for $\crover=35.04$~V superimposed to a Maxwellian \ac{EEDF} of temperature $\Te=45$~V.
+  \Cref{fig-see_illustration} shows the electron emission probability for $\crover=35.04$~V (corresponding to \ac{BN}) superimposed to a Maxwellian \ac{EEDF} of temperature $\Te=45$~V (typical value obtained in the simulations).
   We can see that the saturation of $\proba$ at $\probamax$ happens only for the very high energy tail.
   In the simulation, we can evaluate the average electron emission yield, also named emission rate, defined as\string:
   \begin{equation} \label{eq-seeyield}
@@ -51,7 +51,7 @@
   \subsection{Impact of the electron emission on the mobility} \label{subsec-param-mob}
     
   The effects of the electron emission at the wall on the electron axial mobility are presented in \Cref{fig-mob-epsstar}.
-  The measured mobility $\mobpic$ are shown, as well as the effective mobility $\mobeff$, the saturation estimate $\mobeffsat$ and the classical mobility $\mobcla$, defined in \cref{sec-transport} respectively by \cref{eq-mudef}, \cref{eq-defmobeff}, \cref{eq-mobeffsat} and \cref{eq-mobclas}.
+  The measured mobility $\mobpic$ is shown, as well as the effective mobility $\mobeff$, the saturation estimate $\mobeffsat$ and the classical mobility $\mobcla$, defined in \cref{sec-transport} respectively by \cref{eq-mudef}, \cref{eq-defmobeff}, \cref{eq-mobeffsat} and \cref{eq-mobclas}.
   The values are averaged in time between $t=5 \mus$ and $t=10\mus$, and in space over the azimuthal and radial directions.
   For the canonical case, without electron emission, the values are presented in \cref{tab-canonical_mobility}.
   \begin{figure}[hbt]
@@ -101,9 +101,9 @@
   Regime {\bf III} corresponds to high values of $\crover$ (higher than 50V), during which $\mobeffsat$, and  $\mobpic$ are roughly constants, but $\mobeff$ increases slightly.
   Regime {\bf II} is a short transition regime, for $38 < \crover < 50$V.
   
-  The different regimes are actually obvious when looking at the temporal evolution of the different variables.
+  The different regimes appear clearly on the temporal evolution of the different variables.
   \Cref{fig-threeregimes}  presents the temporal evolution of the space average $\ratepic$ for three different
-  values of $\crover$ , corresponding to three different regimes we have identified.
+  values of $\crover$ , corresponding to the three different regimes we have identified.
   In regimes {\bf I} and {\bf III}, $\ratepic$ reaches a quasi steady-state after a few microseconds.
 
   \begin{figure}[hbt]
@@ -156,18 +156,18 @@
    If $\Te$ decreases too much, the sheath can come back to the previous regime {\bf III}.
    The oscillations between regimes {\bf I} and {\bf III} define regimes {\bf II}.
       
-   We can try and predict the threshold value of $\crover$ between regimes {\bf III} and {\bf II}.
+   We can try to predict the threshold value of $\crover$ between regimes {\bf III} and {\bf II}.
    We have seen in \cref{fig-canon_Te_all} that without electron emission, $\Te$ is of the order of $45\,\volt$.
    Using the different curves in \cref{fig-dphivsTe}, we can expect to observe the transition between regime {\bf III} and {\bf II} for $\crover > 60$~V, as we have for $\crover = 60$~V the maximum of $\dphi$ is at $\Te\sim 25$~V, which is significantly lower than 45~V.
    However, we see in \cref{fig-threeregimes} that the transition appears at $\crover=50$~V.
    
    The reason for the discrepancy between the expected and the observed threshold values of $\crover$ could be that when $\rate$ increases, the electron power losses increase, and hence cause the electron temperature at equilibrium to decrease.
-   The evolution of the temperature with  $\rate$ is shown latter in \cref{fig-Tevsproba}.
+   The evolution of the temperature with  $\rate$ is shown later in \cref{fig-Tevsproba}.
    We can see that even for very large \ac{SEE} rates, the electron temperature only decreases down to $\Te=30\,\volt$.
    However, the curves of \cref{fig-dphivsTe} still predict for $\Te=30\,\volt$ a threshold value at $\crover=60\,\volt$.
    Consequently, even if $\Te$ does indeed decrease when increasing $\crover$, it remains too large to explain the discrepancy between the observed transition between regime {\bf III} and {\bf II} in \cref{fig-threeregimes} and the curves in \cref{fig-dphivsTe}.
    
-   Hence, the cause of the difference if the threshold value for regime {\bf II} will be discussed again in \cref{ch-4}, using a modified plasma-wall interaction model.
+   Hence, the cause of the difference in the threshold value for regime {\bf II} will be discussed again in \cref{ch-4}, using a modified plasma-wall interaction model.
    
    
   

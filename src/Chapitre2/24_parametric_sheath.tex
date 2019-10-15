@@ -16,14 +16,14 @@
   \begin{figure}[hbt]
     \centering
     \includegraphics[width=\defaultwidth]{SEE_rates}
-    \caption{Values of the electron emission rate $\ratepic$ (blue) measured in the \acs{PIC} simulations, and $ \ratemaxw$ obtained with \cref{eq-seemaxw} using the electron temperature shown in \cref{fig-Tevsproba}. }
+    \caption{Values of the electron emission rate $\ratepic$ (blue) measured in the \acs{PIC} simulations, and (orange) $ \ratemaxw$ obtained with \cref{eq-seemaxw} using the electron temperature shown in \cref{fig-Tevsproba}. }
     \label{fig-seeparamesMaxw}
   \end{figure}
   
   
-  We can see in \Cref{fig-seeparamesMaxw} that the mean electron emission rate lies between 0.6 for large $\crover$ and 1 at low $\crover$.
-  The saturation of $\ratepic$ at 1 for high emissivity ($\crover < 50 \volt$) was not expected from \ratemaxw.
-  Indeed, $\probamax$ is equal to 2.9, and the electron temperature in the bulk measured, when used in \cref{eq-seemaxw}, predicts a rate between 1.4 and 2.8.
+  We can see in \Cref{fig-seeparamesMaxw} that the mean electron emission rate in the simulations $\ratepic$ lies between 0.6 for large $\crover$ and 1 at low $\crover$.
+  The saturation of $\ratepic$ at 1 for high emissivity ($\crover < 50 \volt$) was not expected from \ratemaxw obtained with \cref{eq-seemaxw}.
+  Indeed, $\probamax$ in \cref{eq-seemaxw} is equal to 2.9, and the electron temperature in the bulk measured, when used in \cref{eq-seemaxw}, predicts a rate between 1.4 and 2.8.
   This discrepancy at low $\crover$ is due to the \ac{SCL} regime.
   \citet{hobbs1967} predicted that in this regime, a potential well forms such that a fraction of the emitted electrons return to the wall, in order to maintain the effective emission rate to $\ratecr\sim1$.
   However, for $\crover > 50 \volt$, the sheath regime described in \cref{sec-sheath} should be valid.
@@ -31,20 +31,19 @@
   \begin{figure}[hbt]
     \centering
     \begin{tabular}{@{} cc}
-      \includegraphics[width=0.45\textwidth]{phi_drop_6}
+      \includegraphics[width=0.49\textwidth]{phi_drop_6}
       &
-      \includegraphics[width=0.45\textwidth]{Te_pic_2}
+      \includegraphics[width=0.49\textwidth]{Te_pic_2}
     \end{tabular}
     \caption{({\bf a}) Plasma potential drop to the wall normalized by the electron bulk temperature as a function of the electron rate, and ({\bf b}) the mean electron bulk temperature measured in the \acs{PIC} simulations as a function of the electron emission rate \rate, measured in the simulations, and the effective temperature expected from \cref{eq-Teeff}.  }
     \label{fig-Tevsproba}
   \end{figure}
   
   The electron temperature measured in the bulk of the simulation is presented in \cref{fig-Tevsproba}.{\bf b} for the same cases as in \cref{fig-seeparamesMaxw}.
-  An \emph{effective} temperature that would correspond to the measured emission rate $\ratepic$ in \cref{eq-dphi_vs_Te_Maxw},
+  An \emph{effective} temperature that would correspond to the measured emission rate $\ratepic$ in \cref{eq-dphi_vs_Te_Maxw} is given by:
   \begin{equation} \label{eq-Teeff}
      \ratemaxw(\Te{}_{, eff}) = \ratepic \text{, hence } \Te{}_{, eff} = \frac{\ratepic - \sigo}{1 - \sigo} \frac{\crover}{2},
   \end{equation}
-  is also given.
   We can see that when \rate increases, the electron temperature in the bulk $\Te$ monotonically decreases from 45V to around 30V.
   However, these values are not consistent with the measured emission rate \ratepic, even for $\crover > 50\volt$.
   The bulk electron temperature is much higher than the effective $\Te{}_{, eff}$ obtained to correctly predict the emission rate.
