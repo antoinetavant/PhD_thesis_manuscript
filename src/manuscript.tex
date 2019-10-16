@@ -86,19 +86,20 @@
 % 176 par 250 mm
 % Avec 2cm à gauche et à droite: textwidth = 176-40 = 136 
 % Avec 1.5cmen haut et 3cm en bas:: textwidth = 250-45 = 205 
-
-\newgeometry{twoside,
-  bindingoffset=0mm, 
-  includehead, 
-  heightrounded=true, 
-  hmarginratio=1:1, 
-  vmarginratio=10:15,
-  textwidth=136mm,
-  textheight=205mm,
-  % textwidth=159mm
-   }
+% 
+% \newgeometry{twoside,
+%   bindingoffset=0mm, 
+%   includehead, 
+%   heightrounded=true, 
+%   hmarginratio=1:1, 
+%   vmarginratio=10:13,
+%   textwidth=136mm,
+%   textheight=205mm,
+%   % textwidth=159mm
+%    }
    
 % Taille papier A4:
+
 % 210 par 297 mm
 % Avec 2.5cm à gauche et à droite: textwidth = 210-50 = 160 
 % Avec 1.5cmen haut et 3cm en bas:: textwidth = 297-45 = 252 
@@ -107,7 +108,7 @@
  bindingoffset=0mm, 
  includehead, 
  heightrounded=true, 
- hmarginratio=10:15, 
+ hmarginratio=10:13, 
  vmarginratio=10:15,
  textwidth=160mm,
  textheight=252mm,
@@ -145,7 +146,6 @@
 % * Achim Von Keudell (Borum) (rapporteur)
 % * Stephan
 % * directeru LPGP \string: Tiberiu Minea (EDOM)
-% * 
 % 
 % Polytechnique\string:
 % * Post d'IR ?
@@ -171,20 +171,20 @@
 % \acresetall
 % 
 % 
-Context \pageCompt{ch-concepts}{ch-1}
-
-Chapitre \pageCompt{ch-1}{ch-5}
-
-Chapitre \pageCompt{ch-5}{ch-2}
-
-Chapitre \pageCompt{ch-2}{ch-3}
-
-Chapitre \pageCompt{ch-3}{ch-4}
-
-Chapitre \pageCompt{ch-4}{ch-6}
-
-
-Chapitre \pageCompt{ch-6}{ch-bibliography}
+% Context \pageCompt{ch-concepts}{ch-1}
+% 
+% Chapitre \pageCompt{ch-1}{ch-5}
+% 
+% Chapitre \pageCompt{ch-5}{ch-2}
+% 
+% Chapitre \pageCompt{ch-2}{ch-3}
+% 
+% Chapitre \pageCompt{ch-3}{ch-4}
+% 
+% Chapitre \pageCompt{ch-4}{ch-6}
+% 
+% 
+% Chapitre \pageCompt{ch-6}{ch-bibliography}
 
 
 \renewcommand\subfigurewidth{0.47\textwidth}
@@ -242,7 +242,10 @@ Chapitre \pageCompt{ch-6}{ch-bibliography}
 % \bibliographystyle{theseen-nat-href}  
 \bibliography{bib/MyLibrary}{}
 
-% \include{texfiles/4eme}
+
+
+
+\input{texfiles/4eme}
 
 \end{document}
 

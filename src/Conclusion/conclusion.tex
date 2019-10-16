@@ -96,7 +96,7 @@
     Indeed, the radial-azimuthal domain does not include the ionization region, nor the convection of the wave.
     We also proposed a model to include the impact of the wall in the radial direction in the 2D axial-azimuthal simulation.
 
-    We have chosen to present in this manuscript a axial-azimuthal simulation which follows the model of \citet{boeuf2018} with an imposed constant ionization, so that the breathing mode is not present.
+    We have chosen to present in this manuscript an axial-azimuthal simulation which follows the model of \citet{boeuf2018} with an imposed constant ionization, so that the breathing mode is not present.
     We observed that under this condition, the electron drift was reduced by the diamagnetic drift as strong electron density and temperature gradients are present, in contrast to the radial-azimuthal simulation.
     The azimuthal instability also rises in this condition, but the wave convection becomes a significant phenomenon for the wave amplitude saturation, and the ion-wave trapping is less developed.
 
@@ -110,10 +110,19 @@
     Several phenomena could explain the reduction of the wave amplitude, such as the reduction of the azimuthal electron drift, the decrease of the electron temperature, or the absorption of the particle at the maximum of the oscillation that reduces the wave amplitude.
     As the wave amplitude is smaller than without the radial boundary modeled, it seems to remain in the linear phase, with less ion wave trapping and no inverse cascade.
 
+
+\vspace{2em}
+    To conclude on my doctoral project, I have used highly resolved kinetic simulations to better understand the plasma-wall interaction and the electron axial transport, two phenomena governing the behavior of Hall thrusters.
+    The electron transport is enhanced by instabilities, whose amplitude depends on the relative importance of the axial convection of the wave and the growth rate.
+    We have seen that the growth rate during the saturated quasi-steady-state is highly affected by particle-wave interactions, and that the quasi-linear relation dispersion solved with the measured distribution functions only returned rough estimations of the instability characteristics in the radial-azimuthal simulations.
+    To better model the plasma-wall interaction, we developed a polytropic sheath model that better include the non-local nature of the electrons at low pressure.
+    This new model can be used not only to model HETs, even in the presence of secondary electron emission, but also for other low-pressure plasmas.
+
+    
+
 \section{Perspectives}
 
   The work of this thesis was focused on the better understanding of the fundamental physical phenomena involved in the Hall Effect Thrusters.
-  From the highly resolved PIC simulation results, we derived in particular a non-isothermal sheath model that better predicts the plasma-wall interaction.
   There are several perspectives on this work.
   The first one concerns physics and theoretical work, the second is related to the simulation and modeling, and the third concerns the experimental insights required to validate the simulations and the theories.
   These three aspects are intertwined, and should be used together over three main issues highlighted by the work conducted during my thesis, namely the interaction of the instability with the wall\string; the non-linear stage of the instability with a focus on the particle-wave interaction\string; and the reliability of the simulation of the HETs.
@@ -134,7 +143,7 @@
     The origin of the decrease of the instability is unclear, as it could be due to a reduction of the growth rate (function of the azimuthal drift velocity and electron temperature that are affected by the wall), or to a direct damping of the instability due to the particle loss in phase with the wave amplitude.
     In the parametric study of the wall emissivity presented in \cref{ch-2}, we also observed an impact of the wall on the amplitude of the wave.
     However, in the configuration studied, the  wave amplitude was governed by the saturation due to ion-wave trapping, in contrast to the axial-azimuthal simulation for which the wave convection is dominant.
-    Investigation of the damping effect of the walls on the wave could be investigated with a radial-azimuthal PIC simulation, for instance by varying the radial length of the channel or the emissivity of the material, but only if the effect of convection modeled is larger than the ion-wave trapping, so that the wave amplitude would not be governed by it.
+    The damping effect of the walls on the wave could be investigated with a radial-azimuthal PIC simulation, for instance by varying the radial length of the channel or the emissivity of the material, but only if the effect of convection modeled is larger than the ion-wave trapping, so that the wave amplitude would not be governed by it.
 
   \subsection{Particle-wave interaction during the non-linear saturated stage}
     We have observed that the azimuthal instability affects the ion and the electron distribution functions, that have a counter reaction on the instability by modifying the dispersion relation.
@@ -158,8 +167,8 @@
   \subsection{Improving precision and reliability simulations of the HET}
 
     We have seen that the kinetic phenomena in the HET are important in the behavior of the discharge.
-    We derived from the kinetic simulations a polytropic sheath model that allows us to include some of the kinetic effects in a fluid model.
-    It could be included in fluid simulations to better model the plasma-wall interaction.
+    We derived from the kinetic simulations a polytropic sheath model that allows us to include some of the kinetic effects in a fluid model that reproduce the PIC simulation results.
+    This model could be used in HET fluid simulations to better model the plasma-wall interaction.
     The value of the polytropic index could be self-consistently obtained with a Monte Carlo algorithm coupled to the fluid simulation, or an uncertainty quantification study could be conducted on its value  to quantify the required accuracy of this polytropic index to obtain a good agreement with PIC results in a given range of conditions typical of HETs.
 
     In addition to the low dimensional fluid simulations, that allow to obtain quickly rough estimations, kinetic simulations have to be improved.
@@ -168,7 +177,7 @@
 
     On top of that, the validation and the verification of the simulation codes need to be improved.
     The international work on the axial-azimuthal benchmark \citep{charoy2019} is a first step in the improvement of the reliability of PIC modeling in magnetized plasmas.
-    However, the ionization is imposed, instead of being self-consistently computed with a Monte Carlo algorithm.
+    However, the reference case of the Benchmark uses an imposed the ionization, instead of a self-consistently computed source term.
     Hence, the simplified geometry of the magnetized column of \citet{lucken2019} could be a choice of interest for the low pressure magnetized plasma community.
     In addition, as discussed previously a detailed comparison of the results obtained in the radial-azimuthal simulation domain is currently being conducted, and a similar effort is lead by the community for the purely 1D azimuthal PIC simulation.
     
@@ -180,13 +189,15 @@
     On the other hand, "heavy" kinetic simulation that can model accurately the such phenomena are too costly to be used during the industrial development.
 
     In this thesis, we proposed a new model for the plasma-wall interaction that can improve the accuracy of fluid models.
-    The value of the polytropic index could be estimated using a Monte Carlo simulation, or experimentally by measuring the radial evolution of the electron density with the electron temperature or the plasma potential.
+    The new model could reproduce accurately the PIC simulation results given the value of the polytropic index obtained from the PIC results.
+    The value of the polytropic index could be estimated without the PIC simulation, by using a simple Monte Carlo simulation or experimentally by measuring the radial evolution of the electron density with the electron temperature or the plasma potential.
 
-    Conversely, the issue of the electron cross-field transport is less understood.
-    Indeed, if there is a general agreement on its origin, the saturation mechanism remains difficult to evaluate.
+    Conversely, the issue of the electron cross-field transport is less understood compared to the plasma-wall interaction.
+    As a matter of fact, if there is a general agreement on its origin, the saturation mechanism remains difficult to evaluate.
     More insights from the simulations have been given is this thesis, but we also showed its complexity.
-    Recently, a proposition to model the electron transport following a data-driven approach has been presented \citep{jorns2018}, using a machine-learning model trained on experimental data.
-    Unfortunately, the current data set is sparse.
+    Indeed, the general dispersion relation solver that uses the velocity distribution functions measured in the PIC simulation could not described accurately the observed instability, as particle-wave interactions and non-linear mechanisms are important during the saturated stage.
+    Recently, a proposition to model the electron transport following a data-driven approach using a machine-learning model trained on experimental data has been presented \citep{jorns2018}.
+    Unfortunately, the current data set is sparse which limits the applicability of the model.
     More experimental measurements, as well as measurements of better accuracy are required in order to improve the modeling of HETs \citep{mikellides2019}.
 
     One reason for the lack of usable data is the wide variety of thrusters used in experiments, so that the measurement of one of them cannot be combined to that of another.

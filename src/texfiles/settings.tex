@@ -315,3 +315,10 @@
     urlcolor={blue!80!black},
     breaklinks
 }
+
+\newcommand*\cleartoleftpage{%
+   \clearpage
+   \ifodd\value{page}\hbox{}\vspace*{\fill}\thispagestyle{empty}\newpage\fi
+}
+
+\usepackage{ifthen,changepage}

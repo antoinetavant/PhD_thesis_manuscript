@@ -1,12 +1,28 @@
+% !TEX root=/home/tavant/these/manuscript/src/manuscript.tex
+
+
+
+\checkoddpage
+\ifoddpage
+  \null\newpage
+  \thispagestyle{empty}
+
+  \else 
+  %nothing
+\fi
+
+
 
 \pagestyle{empty}
 
-%%% Logo de l'école doctorale. Le nom du fichier correspond au sigle de l'ED / Doctoral school logo. Filename correspond to doctoral school acronym
-%%% Les noms valides sont / Valid names are \string: 2MIB; AAIF; ABIES; BIOSIGNE; CBMS; EDMH; EDOM; EDPIF; EDSP; EOBE; INTERFACES; ITFA; PHENIICS; SDSV; SDV; SHS; SMEMAG; SSMMH; STIC
+%% Logo de l'école doctorale. Le nom du fichier correspond au sigle de l'ED / Doctoral school logo. Filename correspond to doctoral school acronym
+%% Les noms valides sont / Valid names are \string: 2MIB; AAIF; ABIES; BIOSIGNE; CBMS; EDMH; EDOM; EDPIF; EDSP; EOBE; INTERFACES; ITFA; PHENIICS; SDSV; SDV; SHS; SMEMAG; SSMMH; STIC
 \begin{textblock*}{61mm}(16mm,3mm)
 	\noindent\includegraphics[height=24mm]{couvertures/ed/\logoEd.jpeg}
 \end{textblock*}
+\topskip=0pt  %\offinterlineskip 
 
+\vspace*{0em}
 
 
 %%%Titre de la thèse en français / Thesis title in french
@@ -26,7 +42,6 @@
 \end{multicols}
 }}
 \end{center}
-
 \vspace*{0mm}
 
 %%%Titre de la thèse en anglais / Thesis title in english
@@ -44,7 +59,9 @@
 %%% Résumé en anglais / abstract in english
 {\bf Abstract\string:}
 \abstractEN
+
 \end{multicols}
+
 }}
 \end{center}
 
@@ -61,3 +78,4 @@
 \begin{textblock*}{20mm}(182mm,255mm)
 \includegraphics[width=20mm]{couvertures/UPSACLAY-petit}
 \end{textblock*}
+

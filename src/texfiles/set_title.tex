@@ -136,10 +136,40 @@
 
 
 \newcommand{\logoEd}{EDOM}																		%% Logo de l'école doctorale. Indiquer le sigle / Doctoral school logo. Indicate the acronym \string: 2MIB; AAIF; ABIES; BIOSIGNE; CBMS; EDMH; EDOM; EDPIF; EDSP; EOBE; INTERFACES; ITFA; PHENIICS; SDSV; SDV; SHS; SMEMAG; SSMMH; STIC
-\newcommand{\PhDTitleFR}{titre (en français)}													%% Titre de la thèse en français / Thesis title in french
-\newcommand{\keywordsFR}{3 à 6 mots clés}														%% Mots clés en français, séprarés par des , / Keywords in french, separated by ,
-\newcommand{\abstractFR}{\lipsum[1-2]}															%% Résumé en français / abstract in french
+\newcommand{\PhDTitleFR}{Intéraction plasma-paroi et tranport des électrons dans les moteurs à effet Hall.}													%% Titre de la thèse en français / Thesis title in french
+\newcommand{\keywordsFR}{Propulsion électrique, simulation PIC, modèle de gain non isothermal, instabilité de dérive cyclotronique}														%% Mots clés en français, séprarés par des , / Keywords in french, separated by ,
+\newcommand{\abstractFR}{
 
-\newcommand{\PhDTitleEN}{titre (en anglais)}													%% Titre de la thèse en anglais / Thesis title in english
-\newcommand{\keywordsEN}{3 à 6 mots clés}														%% Mots clés en anglais, séprarés par des , / Keywords in english, separated by ,
-\newcommand{\abstractEN}{\lipsum[1-2]}															%% Résumé en anglais / abstract in english
+Les moteurs électriques pour satellites, qui accélèrent un plasma, sont primordiaux pour le succès des missions spatiales (GPS, météo, communication, etc.).
+Le moteur à effet Hall fait parti des technologies les plus performantes et utilisées.
+Cependant, sa conception et optimisation est long et couteuse, car ma compris.
+En particulier, le transport des électrons et l'interaction plasma-paroi. 
+Afin d'étudier ces deux phénomènes, nous utilisons une simulation cinétique bidimensionnelle. 
+ 
+Grace aux résultats de simulation, nous avons mis en évidence que les électrons sont non-locaux, car ils sont absorbé plus vite aux parois qu'ils ne sont thermalisé par les collisions.
+En conséquence, nous avons développé un model de gaine avec une loi d'état polytropique pour les électrons, qui décrit plus précisément l'interaction plasma-surface.
+Ce modèle peut être utilisé en présence, ou non, d'émission électronique secondaire.
+Lorsque l'émission secondaire est présent, le model de gain présente jusqu'à trois solutions, qui explique les oscillations de gaines observées dans les simulations. 
+
+L'instabilité azimutale observée, responsable du transport des électrons, est comparée aux relations de dispersions de l'instabilité acoustique ionique et l'instabilité cyclotronique de dérive électronique. 
+Nous montrons que la phase de croissance linéaire est bien comprise, mais que l'état stationnaire dépend de l'interaction onde-particule et de phénomènes non-linéaires qui ne sont pas pris en compte dans les relations de dispersion. 
+
+}															%% Résumé en français / abstract in french
+
+\newcommand{\PhDTitleEN}{\PhDTitle}													%% Titre de la thèse en anglais / Thesis title in english
+\newcommand{\keywordsEN}{Electric propulsion, PIC simulation, non-isothermal sheath model, cyclotron drift instability}														%% Mots clés en anglais, séprarés par des , / Keywords in english, separated by ,
+\newcommand{\abstractEN}{
+
+Electric propulsion systems that accelerate plasma are important for the success of spatial missions (GPS, weather forecast, communication, etc.).
+The Hall effect thruster is one of the most used and efficient technology.
+However, its conception and optimization is slow and costly, because poorly understood, in particular the electron transport and the plasma-wall interaction.
+In order to study both phenomena, we use a bi-dimensional kinetic simulation. 
+
+We showed with the PIC simulation results that electrons are non-local, as they are absorbed more quickly at the wall compared to the collision frequency.
+Consequently, we derived a non-isothermal sheath model using a polytropic state law for the electrons that describes more accurately the plasma-wall interaction.
+The model can be used with and without secondary electron emission.
+With electron emission, the sheath model can present up to three solutions, explaining the oscillations observed in the simulations. 
+
+The azimuthal instability observed, responsible for the electron transport, is compared to the dispersion relation of the ion acoustic wave and the electron cyclotron drift instability.
+We show that, while the first linear stage of the instability is well understood, the saturated quasi-steady-state is affected by particle-wave interactions and non-linear mechanisms that are not included in the dispersion relation.
+}															%% Résumé en anglais / abstract in english
