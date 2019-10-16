@@ -67,7 +67,7 @@
     \begin{figure}[!htb]
       \centering
       \includegraphics[width=\textwidth]{1D_PIC_summary.pdf}
-      \caption{Profile of the electron and ion densities (left) and the plasma potential and electron temperature in the PIC simulation with the parameters of \cref{tab_1DPICParams}, with $P=0.1$mTorr.}
+      \caption{Profile of the electron and ion densities (left) and the plasma potential and electron temperature in the PIC simulation with the parameters of \cref{tab_1DPICParams}, with $P=2$mTorr.}
       \label{fig-PIC1}
     \end{figure}
 
@@ -87,8 +87,16 @@
     f_{P}(\epsilon) = \epsilon^{-1/2} f_{\epsilon}
     \end{equation}
 
-    \inlinenote{Illustrer l'anisotropie ici}
-    As the distribution function is anisotropic, and since the direction of interest is the $x$ direction, we focus here on $f_{P x}(\epsilon_x)$ the EEPF in the $x$ direction, with $\epsilon_x = \frac{m_e v_{e,x}^2}{2}$.
+    \begin{figure}[!hbt]
+      \centering
+      \includegraphics[width=\defaultwidth]{1D_PIC_anisotropy}
+      \caption{Evolution of the temperature ration between the $y$ direction (parallel to the wall) and the $x$ direction (normal to the wall) as a function of the neutral pressure}
+      \label{fig-anisotropy1D}
+    \end{figure}
+    At low pressure, the distribution function can be anisotropic.
+    \Cref{fig-anisotropy1D} shows the evolution as a function of the neutral background pressure of the ratio between the electron temperature parallel to the wall $\Te{}_{, y}$ and the temperature normal the the wall $\Te{}_{, x}$.
+    We can see that when the pressure decreases, the distribution function becomes less isotropic.
+    As the distribution function can be anisotropic, and since the direction of interest is the $x$ direction, we focus here on $f_{P x}(\epsilon_x)$ the EEPF in the $x$ direction, with $\epsilon_x = \frac{m_e v_{e,x}^2}{2}$.
 
 
     \begin{figure}[!htbp]

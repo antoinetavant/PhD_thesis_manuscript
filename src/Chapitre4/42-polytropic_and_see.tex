@@ -60,14 +60,14 @@ Noting $\chi = \frac{\gamma -1}{\gamma} \frac{ \dphi_0}{ \Teb} $, we finally obt
   f(\chi) = \left[ 1 + \chi  \right]^{\frac{1}{\gamma - 1}} \sqrt{1 - \chi} - \frac{  \sqrt{4 \gamma m_e / m_i}}{1 - \rate (\Teb, \chi )} = 0.
 \end{equation}
 
-\Cref{eq-costseepoly} depends now explicitly on $\Teb$ though $\rate$.
+\Cref{eq-costseepoly} depends now explicitly on $\Teb$ through the value of $\rate$.
 Hence, the solution of $f(\chi)=0$ is no longer independent of $\Teb$, which adds a free parameter when solving the sheath equation.
 \Cref{fig-costfunction} shows the evolution of $f(\chi)$ of \cref{eq-costseepoly} for $\gamma = 1.36$, $\Teb=40\,\volt$ and $\crover=50\,\volt$.
 
 \begin{figure}[!hbt]
   \centering
   \includegraphics[width=\defaultwidth]{cost_function_solo}
-  \caption{Value of $f(\chi)$ of \cref{eq-costseepoly} for $\gamma = 1.36$, $\Teb=40\,\volt$ and $\crover=50\,\volt$. The five red triangular markers represents five points of interest\string: the three markers S1, S2, and S3 are solutions of $f(\chi) = 0$; and the markers A and B are two local extrema. }
+  \caption{Value of $f(\chi)$ of \cref{eq-costseepoly} for $\gamma = 1.36$, $\Teb=40\,\volt$ and $\crover=50\,\volt$. The five red triangular markers represent five points of interest\string: the three markers S1, S2, and S3 are solutions of $f(\chi) = 0$; and the markers A and B are two local extrema. }
   \label{fig-costfunction}
 \end{figure}
 
@@ -123,7 +123,7 @@ Both the isothermal sheath and the polytropic model using $\gamma=1.36$ are show
 The result of the isothermal sheath model was previously shown in \cref{fig-dphivsTe}  in \cref{ch-2}.
 For the solution of the polytropic sheath model, the branches corresponding to the three solutions S1, S2, and S3 are labeled.
 The light green area highlights the temperature range with the three coexisting solutions.
-The lower bounds of the area is noted $\Te^2$ and the upper bound is noted $\Te^1$
+The lower bounds of the area is noted $\Te^{(2)}$ and the upper bound is noted $\Te^{(1)}$
 %\renewcommand\subfigurewidth{0.65\textwidth}
 
 \begin{figure}[!hbt]
@@ -142,20 +142,20 @@ We see in \cref{fig-iso_poly}.{\bf a} that $\dphi$ is significantly impacted by 
 In particular the maximum potential drop which is more than twice as high as the isothermal maximum.
 In addition, we see in \cref{fig-iso_poly}.{\bf b} that the polytropic sheath model predicts a \ac{SEE} rate smaller than the isothermal model.
 This is due to the fact that the polytropic state law reduces the electron temperature at the wall, hence decreases the electron emission rate for a given $\Teb$.
-Consequently, the electron bulk temperature can access higher temperature, compared to the one observed in \cref{fig-dphivsTe}.
+Consequently, the electron bulk temperature can reach higher temperature, compared to the one observed in \cref{fig-dphivsTe}.
 
 
 \subsection{Theoretical values of the critical electron temperatures} \label{subsec-theo_Tecr}
 
-  As shown in \cref{fig-costfunction}, for a given $\Teb$ $f(\chi)$ defined by  \cref{eq-costseepoly} presents a local minimum and a local maximum, labeled A and B respectively in \cref{fig-costfunction}.
+  As shown in \cref{fig-costfunction}, for a given $\Teb$, $f(\chi)$ defined by  \cref{eq-costseepoly} presents a local minimum and a local maximum, labeled A and B respectively in \cref{fig-costfunction}.
   Therefore, there exist two values of $\Teb$ for which either the minimum or the maximum of the $f(\chi)$ crosses exactly the horizontal axis.
-  These values, noted $\Te^1$ and $\Te^2$ corresponds respectively to the upper and lower bounds of the electron temperature range over which the three solutions coexist.
-  These threshold temperatures can be seen for $\gamma=1.36$ in \cref{fig-iso_poly}, where $\Te^1\simeq 55\,\volt$ and $\Te^2\simeq 35\,\volt$ 
+  These values, noted $\Te^{(1)}$ and $\Te^{(2)}$ correspond respectively to the upper and lower bounds of the electron temperature range over which the three solutions coexist.
+  These threshold temperatures can be seen for $\gamma=1.36$ in \cref{fig-iso_poly}, where $\Te^{(1)}\simeq 55\,\volt$ and $\Te^{(2)}\simeq 35\,\volt$ 
 
-  \paragraph{Maximum electron temperature value for regime {\bf III}, $\Te^1$\\}
+  \paragraph{Maximum electron temperature value for regime {\bf III}, $\Te^{(1)}$\\}
 
-    The first critical electron temperature  $\Te^1$  corresponds to the maximum temperature of the root S1, which is the usual monotonic sheath (corresponding to regime {\bf III}).
-    It is defined as the temperature for which the the local maximum B crosses the line $f(\chi)=0$.
+    The first critical electron temperature  $\Te^{(1)}$  corresponds to the maximum temperature of the root S1, which is the usual monotonic sheath (corresponding to regime {\bf III}).
+    It is defined as the temperature for which the local maximum B crosses the line $f(\chi)=0$.
     As it is a double solution, it corresponds to the solution of \cref{eq-costseepoly} that is also a solution of its derivative with respect to $\chi$\string:
     \[ \deriv{f(\chi)}{\chi} = 0. \]
     Once again, the equation is not trivial, and cannot be solved analytically, thus we solve it numerically.
@@ -166,28 +166,28 @@ Consequently, the electron bulk temperature can access higher temperature, compa
         \subfigure{Maximum_Te1_epsilon.pdf}{a}{20,20} &
         \subfigure{Maximum_Te1_gamma.pdf}{b}{20,15} \\
       \end{tabular}
-      \caption{Variation of $\Te^1$  ({\bf a})  as a function of $\crover$ for two values of $\gamma$, and ({\bf b})  as a function of $\gamma$ for two values of $\crover$.}
+      \caption{Variation of $\Te^{(1)}$  ({\bf a})  as a function of $\crover$ for two values of $\gamma$, and ({\bf b})  as a function of $\gamma$ for two values of $\crover$.}
       \label{fig-Te1_epsi}
     \end{figure}
 
-    \Cref{fig-Te1_epsi} shows the variation of $\Te^1$ as a function of   $\crover$  and $\gamma$.
-    We see that the maximum temperature $\Te^1$ increases linearly with $\crover$.
+    \Cref{fig-Te1_epsi} shows the variation of $\Te^{(1)}$ as a function of   $\crover$  and $\gamma$.
+    We see that the maximum temperature $\Te^{(1)}$ increases linearly with $\crover$.
     This was expected, as in \cref{eq-costseepoly}, the only time that $\Teb$ is explicitly present is in the term $\frac{\Teb}{\crover}$.
     On the other hand, the variation with $\gamma$ follows a power law, monotonically increasing from $30\,\volt$ for $\gamma=1.2$ to $50\,\volt$ for $\gamma=1.4$ in the case $\crover=45\,\volt$.
 
-  \paragraph{Minimum electron temperature value for regime {\bf I}, $\Te^2$\\}
+  \paragraph{Minimum electron temperature value for regime {\bf I}, $\Te^{(2)}$\\}
 
-    The minimum electron temperature value for regime {\bf I}, $\Te^2$, corresponds to the case where the electron temperature at the wall induces exactly an emission rate $\ratemaxw (\Tew) = \ratecr$.
+    The minimum electron temperature value for regime {\bf I}, $\Te^{(2)}$, corresponds to the case where the electron temperature at the wall induces exactly an emission rate $\ratemaxw (\Tew) = \ratecr$.
     Noting $C_1 = \frac{\ratecr - \sigo}{1-\sigo} = 0.964$, we obtain
     \begin{equation} \label{eq-Te2}
-      (1-\ratecr) \lp 2 - \frac{C_1 \crover}{2 \Te^2} \rp^{\frac{1}{(\gamma-1)}} \sqrt{\frac{C_1 \crover}{2 \Te^2}} = \sqrt{\frac{4 \gamma \pi m_e}{m_i}}
+      (1-\ratecr) \lp 2 - \frac{C_1 \crover}{2 \Te^{(2)}} \rp^{\frac{1}{(\gamma-1)}} \sqrt{\frac{C_1 \crover}{2 \Te^{(2)}}} = \sqrt{\frac{4 \gamma \pi m_e}{m_i}}
     \end{equation}
 
     \Cref{eq-Te2} is solved numerically.
     The solutions for different values of $\crover$ and $\gamma$ are shown in \cref{fig-Te2_epsi}.
-    As for $\Te^1$, $\Te^2$ increases linearly with $\crover$.
+    As for $\Te^{(1)}$, $\Te^{(2)}$ increases linearly with $\crover$.
     It also increases slowly with $\gamma$, from $26\,\volt$ for $\gamma=1.2$ to $30\,\volt$ for $\gamma=1.4$ in the case $\crover=45\,\volt$.
-    We note that $\Te^2$ increases more slowly with $\gamma$ compared to $\Te^1$, hence the range of temperature with the three coexisting solutions widen  when $\gamma$ increases.
+    We note that $\Te^{(2)}$ increases more slowly with $\gamma$ compared to $\Te^{(1)}$, hence the range of temperature with the three coexisting solutions widen  when $\gamma$ increases.
 
     \begin{figure}[hbt]
       \centering
@@ -195,7 +195,7 @@ Consequently, the electron bulk temperature can access higher temperature, compa
         \subfigure{Maximum_Te2_epsilon.pdf}{a}{20,25} &
         \subfigure{Maximum_Te2_gamma.pdf}{b}{20,20} \\
       \end{tabular}
-      \caption{Variation of $\Te^2$  ({\bf a}) as a function of $\crover$ for two values of $\gamma$, and ({\bf b}) as a function of $\gamma$ for two values of $\crover$.}
+      \caption{Variation of $\Te^{(2)}$  ({\bf a}) as a function of $\crover$ for two values of $\gamma$, and ({\bf b}) as a function of $\gamma$ for two values of $\crover$.}
       \label{fig-Te2_epsi}
     \end{figure}
 

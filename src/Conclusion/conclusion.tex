@@ -13,10 +13,10 @@
   \subsection{Growth and saturation of the azimuthal instability}
 
     The radial-azimuthal simulation domain has first been used in \cref{ch-5} to provide more insights on the \ac{ECDI}, and its interaction with the wall.
-    The instability presents two phases\string: the first corresponds to the linear growth of the instability; the second phase corresponds to the saturated phases, during which the amplitude of the instability oscillates around a mean value.
+    The instability presents two phases\string: the first corresponds to the linear growth of the instability; the second phase corresponds to the quasi-steady phase, during which the amplitude of the instability saturates.
 
     We implemented a solver for the general Dispersion Relation (DR), that uses the Electron Velocity Distribution Function (EVDF) and the Ion Velocity Distribution Function (IVDF) measured in the PIC simulations to compute the growth rate and the frequency for a given wavevector.
-    We observed a good agreement with the characteristics (wavenumber and frequency) observed in the \ac{PIC} simulation and the theoretical DR of the ECDI.
+    We observed a good agreement between the characteristics (wavenumber and frequency) observed in the \ac{PIC} simulation and the theoretical DR of the ECDI.
     During the linear phase, the wave presents the cyclotron resonances, characteristic of the ECDI.
     Conversely, during the saturated phase the resonances broaden, and the ECDI DR can be approximated by the Ion Accoustic Wave (IAW).
 
@@ -56,7 +56,7 @@
     The nature of this so-called Relaxation Sheath Oscillation (RSO), and issues related to the value of the SEE rate are discussed in the next section.
 
     Lastly, we combined both aspects of the dielectric wall together.
-    We choose to use the SEE parameters that led to the oscillating regime when using only the grounded wall.
+    We chose to use the SEE parameters that led to the oscillating regime when using only the grounded wall.
     These parameters are close to the one measured for the Boron-Nitride (BN) ceramic.
     The overall electron mobility and the plasma parameters were not significantly affected by the dielectric layer, compared to the case with only the grounded wall.
     However, we observed that the RSO was no more synchronous over the two walls, but instead it presented differences between the two opposing walls and along the azimuthal direction of the same wall.
@@ -92,7 +92,7 @@
 
   \subsection{Modeling the radial dimension in a 2D axial-azimuthal PIC simulation}
 
-    Lastly, we studied in \cref{ch-6} the axial-azimuthal simulation domain in order to tackle the conclusion obtained in the radial-azimuthal simulation domain.
+    Lastly, we studied in \cref{ch-6} the axial-azimuthal simulation domain in order to challenge the conclusion obtained in the radial-azimuthal simulation domain.
     Indeed, the radial-azimuthal domain does not include the ionization region, nor the convection of the wave.
     We also proposed a model to include the impact of the wall in the radial direction in the 2D axial-azimuthal simulation.
 
@@ -100,13 +100,13 @@
     We observed that under this condition, the electron drift was reduced by the diamagnetic drift as strong electron density and temperature gradients are present, in contrast to the radial-azimuthal simulation.
     The azimuthal instability also rises in this condition, but the wave convection becomes a significant phenomenon for the wave amplitude saturation, and the ion-wave trapping is less developed.
 
-    The radial loss model proposed considers a simple fully absorbing surface with an infinitely fine sheath located a certain length $L_R=2$ or $4$\,cm.
+    The radial loss model proposed considers a simple fully absorbing surface with an infinitely fine sheath located at a certain length $L_R=2$ or $4$\,cm.
     The ions crossing the surface are removed from the simulation, and part of the electrons are reflected in order to obtain a neutral loss.
     The presheaths are not modeled.
     We observed as expected that the radial losses reduce the particle density and the electron temperature, and do not induce any detectable numerical artifact.
     
     
-    Including the radial particle losses in the simulation is shown to reduces the amplitude of the instability, hence the anomalous electron axial mobility.
+    Including the radial particle losses in the simulation is shown to reduce the amplitude of the instability, hence the anomalous electron axial mobility.
     Several phenomena could explain the reduction of the wave amplitude, such as the reduction of the azimuthal electron drift, the decrease of the electron temperature, or the absorption of the particle at the maximum of the oscillation that reduces the wave amplitude.
     As the wave amplitude is smaller than without the radial boundary modeled, it seems to remain in the linear phase, with less ion wave trapping and no inverse cascade.
 
@@ -130,7 +130,7 @@
 
   \subsection{Interaction of the instability with the wall}
 
-    We observed in the radial-azimuthal PIC simulation no radial mode on the wave, so it seems that the walls are screened from the azimuthal instability by the sheath.
+    We observed in the radial-azimuthal PIC simulation no radial mode of the wave, so it seems that the walls are screened from the azimuthal instability by the sheath.
     Similar, but non-identical, screening was observed in \citet{janhunen2018}, where the authors observed a radial mode larger than the radial length.
     In contrast, \citet{taccogna2019} observed short scale radial oscillations in a similar geometry.
     A comparison of the 2D PIC simulations obtained by different international groups in the radial-azimuthal domain is currently being conducted, and a better understanding of the discrepancy between the different results should be achieved in a short period of time.
@@ -153,7 +153,7 @@
     The saturation of the ExB instability could be investigated by simulations with a simplified geometry.
     Indeed, the 2D axial-azimuthal simulation used in \cref{ch-6} presents multiple gradients that increases the complexity of the physics observed.
     However, it is expected that the results of a 1D purely azimuthal simulation would be affected by the presence of the other directions.
-    A simplified simulation, for instance without gradient, would allows a simplified understanding of the physics observed, and enable more efficient parametric studies.
+    A simplified simulation, for instance without gradient, would allow a simplified understanding of the physics observed, and enable more efficient parametric studies.
 
     We observed that depending of the 2D geometry used (radial-azimuthal or the axial-azimuthal domains), different phenomena are present.
     We proposed during this thesis to include in both domains the effect of the missing direction (the axial convection and the radial boundaries, respectively).
@@ -176,7 +176,7 @@
     The impact of dynamically adaptive time step and mesh refinement should be studied, and reliable merging and splitting algorithms should be developed.
 
     On top of that, the validation and the verification of the simulation codes need to be improved.
-    The international work on the axial-azimuthal benchmark \citep{charoy2019} is a first step in the improvement of the reliability of PIC modeling in magnetized plasmas.
+    The international work on the axial-azimuthal benchmark \citep{charoy2019} is a first step in the improvement of the reliability of PIC modeling of magnetized plasmas.
     However, the reference case of the Benchmark uses an imposed the ionization, instead of a self-consistently computed source term.
     Hence, the simplified geometry of the magnetized column of \citet{lucken2019} could be a choice of interest for the low pressure magnetized plasma community.
     In addition, as discussed previously a detailed comparison of the results obtained in the radial-azimuthal simulation domain is currently being conducted, and a similar effort is lead by the community for the purely 1D azimuthal PIC simulation.

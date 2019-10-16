@@ -18,18 +18,20 @@
   The condition on the time step is also reduced.
   This results in a much faster computation.
 
-  \subsection{Description of the Monte Carlo approach}
-  \inlinenote{Reclarifier tout cette section pour bien mettre en avant l'objectif, ce que je fais ensuite dans les autres sections.}
-    In order to validate the Monte Carlo approach, we use the converged simulation of the \ac{1D} \ac{PIC} model.
-    We use the potential, so the electric field, computed self-consistently in the \ac{PIC} simulation.
-    The Monte Carlo is initialized with a uniform density of electrons.
-    When an electron is collected at the wall, it is re-injected, similarly to the \ac{PIC} simulation.
-    The electrons are pushed, and undergo collisions as described in \cref{sec-elements}.
+  \subsection{Description of the Monte Carlo simulation used}
 
-    We validate the Monte Carlo computation by comparing the electron density, temperature and distribution function.
-    \Cref{fig-EEPF_start_end} shows the expected EEPF obtained in the \ac{PIC} simulation with a background pressure of $P=100$\,mTorr.
+    In order to validate the Monte Carlo approach, we use as reference the converged simulation of the \ac{1D} \ac{PIC} model at a background pressure of $P_n=1$\,mTorr.
+    We use the plasma potential $\phi$ computed self-consistently at the end of the \ac{PIC} simulation.
+    The Monte Carlo simulation uses the same modules of \LPPic as the \ac{PIC} simulation for the particles, but the fields (charge density, electric field, etc.) are not computed.
+    Similarly to the \ac{PIC} simulation, the Monte Carlo simulation is initialized with uniform Maxwellian electrons.
+    The electrons motion and collisions are computed as described in \cref{sec-elements}.
+    When an electron is collected at the wall, it is re-injected uniformly.
+
+    We validate the Monte Carlo computation by comparing the distribution function obtained with the one measured at the end of the \ac{PIC} simulation.
+    \Cref{fig-EEPF_start_end} shows the expected EEPF obtained in the \ac{PIC} simulation with a background pressure of $P=1$\,mTorr.
     The maximum plasma potential, at the center of the domain, is $\max(\phi)=12.2\,\volt$.
-    Is also shown in \cref{fig-EEPF_start_end} the EEPF at the beginning of the Monte Carlo computation, which corresponds to the Maxwellian distribution of temperature $\Te=5\,\volt$
+    Is also shown in \cref{fig-EEPF_start_end} the EEPF at the beginning of the Monte Carlo computation, which corresponds to the Maxwellian distribution of temperature $\Te=5\,\volt$.
+    The results of the Monte Carlo simulation are presented in \cref{subsec-MCMresults}.
 
     \begin{figure}[!hbt]
       \centering
@@ -38,76 +40,62 @@
       \label{fig-EEPF_start_end}
     \end{figure}
 
-    \paragraph{Numerical artifacts \\}
-    In PIC simulations, numerical parameters can induce numerical heating and thermalization \citep{lai2014}.
-    The numerical heating has been studied in detail \citep{birdsall1991}.
-    It is due to aliasing effects, and depends on the grid size, time step and number of particles per cell.
-    It is important to carefully choose these parameters to reduce the effect of the heating.
-
-    The thermalization is the fact that the distribution of the particle tends toward a Maxwellian.
-    It originates from fluctuations of the electric field due to the discretization of the particles.
-    The first studies showed that the thermalization time $\tau_T$ depends on $N_D$ the number of (numerical) particles per Debye sphere \citep{dawson1964,montgomery1970}.
-    The presence of collisions can affect $\tau_T$  \citep{turner2006,lai2014}.
-    In \citet{turner2006}, the author observed the evolution of the thermalization time with $N_D$ as
-    \begin{equation} \label{eq-taut}
-      \tau_T = \frac{1}{\omega_{pe}} \frac{34.4}{N_D^{-2} + 28.0 N_D^{-1} \frac{\nu_m}{\omega_{pe}}}
-    \end{equation}
-    which gives in our condition a time-scale several orders of magnitude larger than the typical simulation time.
-    We confirmed it by doubling the number of particle per cell for one pressure condition, and no observable impact has been detected.
-    Hence, the effects of numerical parameters on the simulation results are expected to be negligible.
-
   \subsection{Results of the Monte Carlo computation} \label{subsec-MCMresults}
-\inlinenote{Anne: j'avoue que je me suis perdue dans ce paragraphe!!!\\
-je ne comprends pas ta demonstration ici...c'est quoi le lien avec 4.6.1??}
-    We measured the electron energy distribution function (EEDF) at $3\,\centi\meter$ from the left wall.
-    \Cref{fig-zoom_init_Mc} shows the evolution of the EEDF at the very early time of the simulation, from $t=0.01$ to $0.08\,\micro\second$.
+    In this section, we describe the temporal evolution of the EEPF in the Monte Carlo (MC) simulation, compared to the EEPF measured in the PIC simulation.
+    \paragraph{Beginning of the simulation\\ }
+    We start by analyzing the evolution of the EEDF at the very early time of the simulation, from $t=0.01$ to $0.08\,\micro\second$.
+    \Cref{fig-zoom_init_Mc} shows the measured electron energy probability function (EEPF) at $3\,\centi\meter$ from the left wall.
     The energy of the electrons is oriented, meaning that the electrons with positive energy are coming from the wall, while the negative energy is used for the electrons going toward the wall.
 
     \begin{figure}[!hbt]
       \centering
-      \begin{tabular}{@{} cc}
-        \includegraphics[width=0.4\textwidth]{MCC_EEDF/Heelo_1} &
-        \includegraphics[width=0.4\textwidth]{MCC_EEDF/Heelo_2} \\
-        \includegraphics[width=0.4\textwidth]{MCC_EEDF/Heelo_3} &
-        \includegraphics[width=0.4\textwidth]{MCC_EEDF/Heelo_4} \\
-        \includegraphics[width=0.4\textwidth]{MCC_EEDF/Heelo_6} &
-        \includegraphics[width=0.4\textwidth]{MCC_EEDF/Heelo_8} \\
-      \end{tabular}
-      \caption{Evolution of (blue) the directed EEPF measured at $x=3\,\centi\meter$ from the left wall in the Monte Carlo simulation. The positive energy is used for the electrons going from the wall, while the negative energy represents the electrons moving toward the wall. The dotted lines correspond to the local potential. Are overlaid (orange) the initial Maxwellian distribution and (green) the EEPF obtained at the end of the \acs{PIC} simulation. }
+      \includegraphics[width=0.9\textwidth]{MC_first_time}
+      % \begin{tabular}{@{} cc}
+      %   \includegraphics[width=0.4\textwidth]{MCC_EEDF/Heelo_1} &
+      %   \includegraphics[width=0.4\textwidth]{MCC_EEDF/Heelo_2} \\
+      %   \includegraphics[width=0.4\textwidth]{MCC_EEDF/Heelo_3} &
+      %   \includegraphics[width=0.4\textwidth]{MCC_EEDF/Heelo_4} \\
+      %   \includegraphics[width=0.4\textwidth]{MCC_EEDF/Heelo_6} &
+      %   \includegraphics[width=0.4\textwidth]{MCC_EEDF/Heelo_8} \\
+      % \end{tabular}
+      \caption{Evolution of (blue) the directed EEPF measured at $x=3\,\centi\meter$ from the left wall in the Monte Carlo simulation. The positive energy is used for the electrons going from the wall, while the negative energy represents the electrons moving toward the wall. The dotted lines correspond to the local potential. Are overlaid (dash-dotted orange) the initial Maxwellian distribution (Maxwellian at $\Te=5\,\volt)$ and (dashed green) the EEPF obtained at the end of the \acs{PIC} simulation ($t=8\,\micro\second$). }
       \label{fig-zoom_init_Mc}
     \end{figure}
-    \inlinenote{Anne: Refaire les figures, surtout pour la legend qui n'est pas claire dans l'état.}
     
 
-    Two phenomenon can be seen in \cref{fig-zoom_init_Mc}.
+    Two phenomenon can be seen in  \cref{fig-zoom_init_Mc}.
     The first is the rapid decrease of the tail of the distribution function, for energies higher than the plasma potential.
     The tail for positive energy decreases faster than for negative energy, as the EEPF is measured closer to one wall than the other ($x=3\,\centi\meter$ against $L-x=7\,\centi\meter$).
-    After $ T \simeq 0.06\,\micro\second$ the two tails are largely depleted, as they are one order of magnitude smaller than the Maxwellian EEPF.
+    After $ T \simeq 0.06\,\micro\second$ the two tails are largely depleted, as they are one order of magnitude smaller than the initial Maxwellian EEPF.
 
     The second phenomena is the presence of waves in the velocity space that can be seen in the low energy populations.
     They are due to the plasma potential profiles.
-    Indeed, the electrons are initialized with a uniform temperature, but their total energy depends on the local plasma potential. 
+    Indeed, the electrons are initialized uniformly  with a fixed temperature, hence their total energy depends on the local plasma potential. 
 
-    \Cref{fig-zoom_Mc_later} shows the evolution of the EEDF over a longer time scale from $t=0.1$ to $2\,\micro\second$ compared to \cref{fig-zoom_init_Mc}.
+    \paragraph{Convergence of the simulation\\ }
+
+    \Cref{fig-zoom_Mc_later} shows the evolution of the EEDF over a longer time scale from $t=0.1$ to $3.5\,\micro\second$ (compared to $t=0.01$ to $0.08\,\micro\second$ in \cref{fig-zoom_init_Mc}).
     We can see the slow evolution of the low energy population from the initial, but slightly perturbed, Maxwellian distribution toward a distribution of smaller temperature.
-    After $t=1.5\,\micro\second$, the EEPF of the Monte Carlo computation is fairly close to the \ac{PIC} EEPF.
+    After $t=1.5\,\micro\second$, the EEPF of the Monte Carlo computation is fairly close to -- and converges slowly towards -- the EEPF measured at $t=8\,\micro\second$ in the \ac{PIC} simulation.
 
     \begin{figure}[!hbt]
-      \begin{tabular}{@{} ccc}
-        \includegraphics[width=0.3\textwidth]{MCC_EEDF/Heelo_1_10.pdf} &
-        \includegraphics[width=0.3\textwidth]{MCC_EEDF/Heelo_1_100.pdf} &
-        \includegraphics[width=0.3\textwidth]{MCC_EEDF/Heelo_1_150.pdf} \\
-      \end{tabular}
-      \caption{Evolution of (blue) the directed EEPF measured at $x=3\,\centi\meter$ from the left wall in the Monte Carlo simulation. The dotted line corresponds to the local potential. Are overlaid (orange) the initial Maxwellian distribution and (green) the EEPF obtained at the end of the \acs{PIC} simulation. }
+      \includegraphics[width=0.9\textwidth]{MC_later_time}
+
+      % \begin{tabular}{@{} ccc}
+      %   \includegraphics[width=0.3\textwidth]{MCC_EEDF/Heelo_1_10.pdf} &
+      %   \includegraphics[width=0.3\textwidth]{MCC_EEDF/Heelo_1_100.pdf} &
+      %   \includegraphics[width=0.3\textwidth]{MCC_EEDF/Heelo_1_150.pdf} \\
+      % \end{tabular}
+      \caption{Evolution of (blue) the EEPF measured at $x=3\,\centi\meter$ from the left wall in the Monte Carlo simulation. The dotted line corresponds to the local potential. Are overlaid (dash-dotted orange) the initial Maxwellian distribution and (dashed green) the EEPF obtained at the end of the \acs{PIC} simulation ($t=8\,\micro\second$). }
       \label{fig-zoom_Mc_later}
     \end{figure}
 
     \vspace{1em}
-    This Monte Carlo investigation has shown that in the \ac{1D} model, the EEPF depends on the absorption at the wall but also on the electron-neutral collisions.
+    This Monte Carlo investigation has shown that in the \ac{1D} model at $P_n=1$\,mTorr, the EEPF depends on the absorption at the wall but also on the electron-neutral collisions.
     The final shape of the distribution is not simple, and is difficult to describe and predict analytically.
-    However, given the potential profile, the Monte Carlo computation reproduces the same distribution in a much shorter time compared to the \ac{PIC} simulation. 
-    The obtained EEPF can then be used to determine the electron density and temperature evolution.
-    This could be used to determine efficiently, and precisely, the electron polytropic coefficient.
+    However, given the profile of the plasma potential, the Monte Carlo computation reproduces the same distribution in a much shorter time compared to the \ac{PIC} simulation. 
+    The obtained EEPF can then be used to determine the electron density and temperature evolution in a low pressure plasma where electrons are non-local.
+    This could be used to determine efficiently, and precisely, the electron polytropic coefficient to use in a fluid model.
 
   \subsection{Discussion on the different time scales}
     The results presented in the previous section show two main time scales.
@@ -131,3 +119,21 @@ je ne comprends pas ta demonstration ici...c'est quoi le lien avec 4.6.1??}
     Secondly, the argon presents a significant Ramsauer minimum (a quantum mechanical resonance \citep{lieberman2005}) at $0.3 \,\volt$, were the cross-section is two orders of magnitude lower than at $5\,\volt$.
     The two phenomena combined can explain the discrepancy between $\tau_{\rm ela}$ and the simulation results.
   
+    
+        \paragraph{Numerical artifacts \\}
+        In PIC simulations, numerical parameters can induce numerical heating and thermalization \citep{lai2014}.
+        The numerical heating has been studied in detail \citep{birdsall1991}.
+        It is due to aliasing effects, and depends on the grid size, time step and number of particles per cell.
+        It is important to carefully choose these parameters to reduce the effect of the heating.
+
+        The thermalization is the fact that the distribution of the particle tends toward a Maxwellian.
+        It originates from fluctuations of the electric field due to the discretization of the particles.
+        The first studies showed that the thermalization time $\tau_T$ depends on $N_D$ the number of (numerical) particles per Debye sphere \citep{dawson1964,montgomery1970}.
+        The presence of collisions can affect $\tau_T$  \citep{turner2006,lai2014}.
+        In \citet{turner2006}, the author observed the evolution of the thermalization time with $N_D$ as
+        \begin{equation} \label{eq-taut}
+          \tau_T = \frac{1}{\omega_{pe}} \frac{34.4}{N_D^{-2} + 28.0 N_D^{-1} \frac{\nu_m}{\omega_{pe}}}
+        \end{equation}
+        which gives in our condition a time-scale several orders of magnitude larger than the typical simulation time.
+        We confirmed it by doubling the number of particle per cell for one pressure condition, and no observable impact has been detected.
+        Hence, the effects of numerical parameters on the simulation results are expected to be negligible.
