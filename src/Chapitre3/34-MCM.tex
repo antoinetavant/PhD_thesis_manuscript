@@ -106,19 +106,16 @@
     This is in agreement with the results of \cref{fig-zoom_init_Mc}, where we see that the high energy tails are depleted around $t=0.06\,\micro\second$.
     
     \vspace{1em}
-    The electron-neutral scattering frequency is computed for a background pressure of $13.3$\,Pa (${100}$\,mTorr) at the temperature of $300\,\kelvin$, which corresponds to a neutral density of $${n_g = \sn{3.2}{21} \meter^{-3}}.$$
+    The electron-neutral scattering frequency is computed for a background pressure of $0.13$\,Pa (${1}$\,mTorr) at the temperature of $300\,\kelvin$, which corresponds to a neutral density of $${n_g = \sn{3.2}{19} \meter^{-3}}.$$
     For an electron temperature of $5\,\volt$, the thermal electron-neutral elastic scattering frequency for argon is \citep[p.73]{lieberman2005}
-    \[ \nu_{\rm ela} = 470 \,\mega\hertz,  \] 
-    which corresponds to a period of $\tau_{\rm ela} = 2 \,\nano\second$.
-    This period is much shorter than the one observed in the Monte-Carlo simulation.
-    We can see in \cref{fig-zoom_Mc_later} that the low energy part of the EEPF is significantly affected after $t=1\,\micro\second$.
+    \[ \nu_{\rm ela} = 4.70 \,\mega\hertz,  \] 
+    which corresponds to a period of $\tau_{\rm ela} = 0.2 \,\micro\second$.
+    This period is shorter than the one observed in the Monte-Carlo simulation, as we see in \cref{fig-zoom_Mc_later} that the low energy part of the EEPF is significantly affected after $t=1\,\micro\second$.
     
     This discrepancy can be due to two reasons.
     First, at high energy the electron-neutral scattering is not isotropic, but instead gives mostly small angles (forward scattering) \citep{vahedi1995}.
     Hence, a large number of collisions is required for the isotropization to be observable.
-    Secondly, the argon presents a significant Ramsauer minimum (a quantum mechanical resonance \citep{lieberman2005}) at $0.3 \,\volt$, were the cross-section is two orders of magnitude lower than at $5\,\volt$.
-    The two phenomena combined can explain the discrepancy between $\tau_{\rm ela}$ and the simulation results.
-  
+    Secondly, the argon presents a significant Ramsauer minimum (a quantum mechanical resonance \citep{lieberman2005}) at $0.3 \,\volt$, were the cross-section is two orders of magnitude lower than at $5\,\volt$.  
     
         \paragraph{Numerical artifacts \\}
         In PIC simulations, numerical parameters can induce numerical heating and thermalization \citep{lai2014}.

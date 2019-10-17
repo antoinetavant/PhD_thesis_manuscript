@@ -33,7 +33,7 @@
   \begin{equation} \label{eq-rei-sat}
     \Rei^{sat} = \frac{e \norm{\grad \cdot (n_e \Te \vect{v_i})}}{4 \sqrt{6} c_s} \simeq \frac{e n_e \Te \viout}{4 \sqrt 6 c_s L_z}
   \end{equation} 
-  \nomenclature[Q]{\ensuremath{ \vect{v_i}}}{  Ion velocity vector}
+  \nomenclature[Q]{\ensuremath{ \vect{v_e}, \vect{v_i}}}{  Electron and ion velocity vectors}
   \nomenclature[Q]{\ensuremath{ c_s}}{ Ion sound speed $c_s=(e \Te/m_i)^{1/2}$ }
   where $\vect{v_i}$ is the ion velocity, $c_s=(e \Te/m_i)^{1/2}$  is the ion sound speed, and the spatial derivative has been approximated across the axial simulation direction, with $\viout$ the ion outlet velocity 
   \begin{equation} \label{eq-viz}
@@ -41,6 +41,7 @@
   \end{equation}
   with $U_z = E_z L_z$ the total potential difference in the axial direction.
   \nomenclature[Q]{\ensuremath{ U_z}}{   Total potential difference in the axial direction $U_z = E_z L_z$}
+  \nomenclature[Q]{\ensuremath{ U_d}}{   Discharge voltage}
   
   Using \cref{eq-rei-sat} in \cref{eq-mobeffsimple}, we obtain the simplified expression of the effective mobility at saturation
   \begin{equation} \label{eq-mobeffsat}
