@@ -8,7 +8,7 @@
   The plasma is bounded in the radial direction by dielectric layers isolating the magnetic circuit.
   The magnetic circuit can be considered electrically grounded.
 
-  The particles are absorbed when touching the dielectric wall, and we assume an infinite residence time.
+  The particles are absorbed when touching the dielectric wall, and we neglect the diffusion of the charge in the dielectric.
   Hence, we obtain a surface charge $\sigma$ at a time $t$ with
   \begin{equation} \label{eq-sigmaintegrate}
     \sigma(t) = e \int_0^t (J_i - J_e) dt
@@ -280,7 +280,7 @@
     
   \subsection{Electric field computation}
   
-    The resolution of the Poisson equation returns the value of the plasma potential $\phi$ at the cell centers.
+    The resolution of the Poisson equation returns the value of the plasma potential $\phi$ at the cell center.
     The electric field is computed by taking the first derivative of the potential at the cell interface, as in \cref{eq-flux1},
     \begin{equation} \label{eq-E_ihalf}
       E_{x, i+1/2,j}^- = - \epsilon_{i,j} \frac{\phi_{i+1/2,j} - \phi_{i,j}}{d_i/2},

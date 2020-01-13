@@ -176,7 +176,7 @@
 
     It is important to note that the leapfrog and the Boris schemes induce a shift of $\frac{\dt}{2}$ between the position and the velocity\citep{birdsall1991}, as illustrated in \cref{fig-leapfrog}.
     This shift can lead to erroneous diagnostics when computing moments of the particles distribution.
-    For instance, the mean velocity of an set of $N$ particles at time $t$ is computed as\string:
+    For instance, the mean velocity of a set of $N$ particles at time $t$ is computed as\string:
     \begin{equation} \label{eq-meanv}
       \mean{\vect{v}}^t = \frac{1}{N} \sum_i^N \lp \vect{v_i}^t + \frac{q}{m} \vect{E_i} \frac{\dt}{2} \rp.
     \end{equation}
