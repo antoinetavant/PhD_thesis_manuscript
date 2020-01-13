@@ -109,7 +109,7 @@ Using \cref{eq-momentum}, we have:
 with $\dphi_0$ the potential drop between the sheath edge and the wall.
 Using the current equality: $\Gamma_i = \Gamma_e$ at the wall we find with \cref{eq-gi,eq-ge,eq-tew}:
 \begin{equation}\label{eq-sheath}
-  \left[ 1 +\frac{\gamma -1}{\gamma} \frac{ \dphi_0}{ \Te_0}  \right]^{\frac{1}{\gamma - 1}} \sqrt{1 - \frac{\gamma -1}{\gamma}\frac{\dphi_0}{\Te_0}} = \sqrt{\frac{4 \gamma \pi m_e}{m_i}}
+  \left[ 1 +\frac{\gamma -1}{\gamma} \frac{ \dphi_0}{ \Te_0}  \right]^{\frac{1}{\gamma - 1}} \sqrt{1 - \frac{\gamma -1}{\gamma}\frac{\dphi_0}{\Te_0}} = \sqrt{\frac{2 \gamma \pi m_e}{m_i}}
 \end{equation}
 
 \Cref{eq-sheath} cannot be solved analytically, but it can be solved numerically.
@@ -190,5 +190,8 @@ This population is not big enough to modify the electron flux to the wall, hence
 {  We tested the hypothesis for one case ($P_n=2$ mTorr).
 Once the steady-state was reached, we stopped generating the electron-ion couples.
 We observed that during a transition time of around $0.74 \mu$s, the mean energy per electron decreased significantly from $0.9 \Teb$  to $0.3 \Teb$, while the electron flux to the wall $\Gamma_e$ and the electron temperature $\Te_{, 0}$ was not yet affected.
+Another phenomena is the anisotropy of the \ac{EVDF}, as shown in \cref{1D_PIC_anisotropy} for low pressure, hence large polytropic index (see \cref{fig-p}). 
+This could explain why the mean energy per electron in the \ac{PIC} simulations increases with increasing $\gamma$.
+
 This is more consistent with the value given by \cref{eq-meanE} shown in \cref{fig-avE}, and seems to confirm the hypothesis, but more investigations on the heat flux are needed.
   }
