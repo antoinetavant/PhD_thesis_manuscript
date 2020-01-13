@@ -1,13 +1,13 @@
 % !TEX root=/home/tavant/these/manuscript/src/manuscript.tex
 
-\section{Scientific challenges of the HETs}
+\section{Scientific challenges of the Hall Effect Thruster}
 % \addcontentsline{toc}{section}{Scientific challenges of the HETs}
 
 The scientific challenges are the critical phenomena that are currently not understood enough and prevent the industrial development of \ac{HET}s.
 As introduced before, in this Ph.D. manuscript, we focus on two of them : the electron transport and the plasma-wall interaction.
 
 
-\subsection{Electron drift and azimuthal instability in the HETs}
+\subsection{Electron drift and azimuthal instability in the Hall Effect Thruster}
 % \addcontentsline{toc}{subsection}{Electron drift and azimuthal instability in the HETs}
 
 The axial electric field $E_z$ and the radial magnetic field $B_r$ induces an azimuthal $E\times B$ drift of the electrons.
@@ -93,7 +93,7 @@ These instabilities are treated in \cref{ch-5}.
   Consequently, a better understanding of the electron cross-field mobility, the azimuthal instability, and the secondary electron emission is required before being able to model realistically the \ac{HET}.
   
   
-\subsection{Plasma-wall interaction}
+\subsection{Plasma-wall interaction and secondary electron emission}
 % \addcontentsline{toc}{subsection}{Plasma-wall interaction}
 
   Ceramic walls close the chamber in the radial directions.
@@ -101,7 +101,7 @@ These instabilities are treated in \cref{ch-5}.
   The primary phenomenon held responsible for this observation is the electron emission.
   As usually observed in bounded plasmas, a floating sheath forms between the plasma and the dielectric wall.
   The sheath confines the electrons in the plasma and accelerates the ions toward the walls.
-  This allows to obtain a flux of electrons equal to the flux of ions, resulting in charge conservation in the plasma, and a neutral flux, or also named zero-net current, to the surfaces.
+  This allows to obtain a flux of electrons equal to the flux of ions, resulting in charge conservation in the plasma, and a neutral flux, also named zero-net current, to the surfaces.
   
   Due to the relatively high electron energy, the impact of a primary electron can lead to the emission of secondary electrons \citep{barral2003a,villemant2018}.
   The probability of \ac{SEE} depends on the electron impact characteristics (energy, angle) but also of the material\string: some materials are emitting more than others \citep{gascon2003}.
@@ -122,7 +122,7 @@ These instabilities are treated in \cref{ch-5}.
   The origin and the possible implications of these erosion striations remain open questions.
   
 
-\subsection{Three-dimensional physics of the HET}
+\subsection{Three-dimensional physics of the Hall Effect Thruster}
 \label{sec-3Dphi}
 % \addcontentsline{toc}{subsection}{Three-dimensional physics of the HET}
 
@@ -140,8 +140,8 @@ Consequently, when modeling or simulating a \ac{HET}, if one of the direction is
   \item No azimuthal direction\string: the instability is missing. Hence the electron cross-field transport is not well represented.
 \end{itemize}
 
-While \ac{3D}-simulations have recently been proposed, they use scaling laws to simulate the system in a reasonable amount of time\citep{taccogna2019a}.
+While \acs{3D}-simulations have recently been proposed, they use scaling laws to simulate the system in a reasonable amount of time\citep{taccogna2019a}.
 For instance, a reduced geometry is used in \citet{taccogna2018}, or a reduced density is used in \citet{fubiani2018a}.
-A \ac{3D} simulation at real scale is not yet accessible.
-Hence, we need to be able to rely on \ac{1D} or \ac{2D} simulations.
+A \acs{3D} simulation at real scale is not yet accessible.
+Hence, we need to be able to rely on \acs{1D} or \acs{2D} simulations.
 Consequently, we have to take into account the missing physics or include a model of its effects on the system.
