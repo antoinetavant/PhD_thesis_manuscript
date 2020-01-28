@@ -23,7 +23,7 @@ This modifies the current equality at the wall to
 
 Using \cref{eq-gi,eq-ge,eq-tew} for $\Gamma_i$ and $\Gamma_e$, we obtain the equality
 \begin{equation}\label{eq-sheathsee}
-  (1 - \rate )\left[ 1 +\frac{\gamma -1}{\gamma} \frac{ \dphi_0}{ \Te_0}  \right]^{\frac{1}{\gamma - 1}} \sqrt{1 - \frac{\gamma -1}{\gamma}\frac{\dphi_0}{\Te_0}} = \sqrt{\frac{4 \gamma \pi m_e}{m_i}}
+  (1 - \rate )\left[ 1 +\frac{\gamma -1}{\gamma} \frac{ \dphi_0}{ \Te_0}  \right]^{\frac{1}{\gamma - 1}} \sqrt{1 - \frac{\gamma -1}{\gamma}\frac{\dphi_0}{\Te_0}} = \sqrt{\frac{2 \gamma \pi m_e}{m_i}}
 \end{equation}
 
 Similarly to the case without electron emission in \cref{sec-fluid}, \cref{eq-sheathsee} cannot be solved analytically, but it can be solved numerically.
@@ -57,17 +57,17 @@ with $\ratecr = 0.983$ corresponding to the \ac{SCL} regime, and the electron te
 
 Noting $\chi = \frac{\gamma -1}{\gamma} \frac{ \dphi_0}{ \Teb} $, we finally obtain the sheath equation to be solved
 \begin{equation} \label{eq-costseepoly}
-  f(\chi) = \left[ 1 + \chi  \right]^{\frac{1}{\gamma - 1}} \sqrt{1 - \chi} - \frac{  \sqrt{4 \gamma m_e / m_i}}{1 - \rate (\Teb, \chi )} = 0.
+  f(\chi) = \left[ 1 + \chi  \right]^{\frac{1}{\gamma - 1}} \sqrt{1 - \chi} - \frac{  \sqrt{2 \gamma m_e / m_i}}{1 - \rate (\Teb, \chi )} = 0.
 \end{equation}
 
 \Cref{eq-costseepoly} depends now explicitly on $\Teb$ through the value of $\rate$.
 Hence, the solution of $f(\chi)=0$ is no longer independent of $\Teb$, which adds a free parameter when solving the sheath equation.
-\Cref{fig-costfunction} shows the evolution of $f(\chi)$ of \cref{eq-costseepoly} for $\gamma = 1.36$, $\Teb=40\,\volt$ and $\crover=50\,\volt$.
+\Cref{fig-costfunction} shows the evolution of $f(\chi)$ of \cref{eq-costseepoly} for $\gamma = 1.36$, $\Teb=45\,\volt$ and $\crover=50\,\volt$.
 
 \begin{figure}[!hbt]
   \centering
   \includegraphics[width=\defaultwidth]{cost_function_solo}
-  \caption{Value of $f(\chi)$ of \cref{eq-costseepoly} for $\gamma = 1.36$, $\Teb=40\,\volt$ and $\crover=50\,\volt$. The five red triangular markers represent five points of interest\string: the three markers S1, S2, and S3 are solutions of $f(\chi) = 0$; and the markers A and B are two local extrema. }
+  \caption{Value of $f(\chi)$ of \cref{eq-costseepoly} for $\gamma = 1.36$, $\Teb=45\,\volt$ and $\crover=50\,\volt$. The five red triangular markers represent five points of interest\string: the three markers S1, S2, and S3 are solutions of $f(\chi) = 0$; and the markers A and B are two local extrema. }
   \label{fig-costfunction}
 \end{figure}
 
@@ -83,7 +83,7 @@ The two branches corresponds to the two cases of \cref{eq-seemaxw_poly}. Hence, 
 
 The branch at the left of A corresponds to the \ac{SCL} regime, and has one solution S3 to $f(\chi)=0$ at $\dphi / \Teb \simeq 1$.
 This solutions is the same as in the isothermal case \citep{hobbs1967}.
-The branch at the right of A passes by a local maximum B and presents two roots S1 and S3.
+The branch at the right of A passes by a local maximum B and presents two roots S1 and S2.
 
 The existence of the three solutions depends on the values of $\crover$, $\Teb$ and $\gamma$.
 \Cref{fig-costfunction_multiple} shows the impact of the evolution of $\Teb$ and $\crover$, with $\gamma$ constant.
@@ -132,7 +132,7 @@ The lower bounds of the area is noted $\Te^{(2)}$ and the upper bound is noted $
     \subfigure{Iso_vs_poly_dphibis}{a}{25,18} &
     \subfigure{Iso_vs_poly_rate}{b}{20,18} 
   \end{tabular}
-  \caption{Evolution as a function of the electron temperature $\Te$ for $\crover=50\,\volt$ of ({\bf a}) the plasma potential drop to the wall $\dphi$, and ({\bf b}) the SEE rate $\ratemaxw$ using the polytropic sheath model ($\gamma = 1.36$) and the isothermal sheath model. The labels S1, S2 and SCL regime correspond to the three solutions illustrated in \cref{fig-schematic-solutions}. The light green area highlights the temperature range with three solutions.}
+  \caption{Evolution as a function of the electron temperature $\Te$ for $\crover=35\,\volt$ of ({\bf a}) the plasma potential drop to the wall $\dphi$, and ({\bf b}) the SEE rate $\ratemaxw$ using the polytropic sheath model ($\gamma = 1.36$) and the isothermal sheath model. The labels S1, S2 and SCL regime correspond to the three solutions illustrated in \cref{fig-schematic-solutions}. The light green area highlights the temperature range with three solutions.}
   \label{fig-iso_poly}
 \end{figure}
 
@@ -180,19 +180,19 @@ Consequently, the electron bulk temperature can reach higher temperature, compar
     The minimum electron temperature value for regime {\bf I}, $\Te^{(2)}$, corresponds to the case where the electron temperature at the wall induces exactly an emission rate $\ratemaxw (\Tew) = \ratecr$.
     Noting $C_1 = \frac{\ratecr - \sigo}{1-\sigo} = 0.964$, we obtain
     \begin{equation} \label{eq-Te2}
-      (1-\ratecr) \lp 2 - \frac{C_1 \crover}{2 \Te^{(2)}} \rp^{\frac{1}{(\gamma-1)}} \sqrt{\frac{C_1 \crover}{2 \Te^{(2)}}} = \sqrt{\frac{4 \gamma \pi m_e}{m_i}}
+      (1-\ratecr) \lp 2 - \frac{C_1 \crover}{2 \Te^{(2)}} \rp^{\frac{1}{(\gamma-1)}} \sqrt{\frac{C_1 \crover}{2 \Te^{(2)}}} = \sqrt{\frac{2 \gamma \pi m_e}{m_i}}
     \end{equation}
 
     \Cref{eq-Te2} is solved numerically.
     The solutions for different values of $\crover$ and $\gamma$ are shown in \cref{fig-Te2_epsi}.
     As for $\Te^{(1)}$, $\Te^{(2)}$ increases linearly with $\crover$.
-    It also increases slowly with $\gamma$, from $26\,\volt$ for $\gamma=1.2$ to $30\,\volt$ for $\gamma=1.4$ in the case $\crover=45\,\volt$.
+    It also increases slowly with $\gamma$, from $24\,\volt$ for $\gamma=1.2$ to $39\,\volt$ for $\gamma=1.4$ in the case $\crover=45\,\volt$.
     We note that $\Te^{(2)}$ increases more slowly with $\gamma$ compared to $\Te^{(1)}$, hence the range of temperature with the three coexisting solutions widen  when $\gamma$ increases.
 
     \begin{figure}[hbt]
       \centering
       \begin{tabular}{@{} cc}
-        \subfigure{Maximum_Te2_epsilon.pdf}{a}{20,25} &
+        \subfigure{Maximum_Te2_epsilon.pdf}{a}{20,27} &
         \subfigure{Maximum_Te2_gamma.pdf}{b}{20,20} \\
       \end{tabular}
       \caption{Variation of $\Te^{(2)}$  ({\bf a}) as a function of $\crover$ for two values of $\gamma$, and ({\bf b}) as a function of $\gamma$ for two values of $\crover$.}
