@@ -1,0 +1,66 @@
+% !TEX root=/home/tavant/these/manuscript/src/manuscript.tex
+
+
+
+
+\chapter*{Résumé}
+
+Les moteurs électriques pour satellites, qui accélèrent les ions d'un plasma, sont primordiaux pour le succès des missions spatiales, qui sont de plus en plus essentielles dans nos vies (GPS, météo, communication, etc.).
+En effet, ils utilisent plus efficacement la masse du carburant que les moteurs chimiques plus conventionnels. 
+Le moteur à effet Hall fait partie des technologies les plus performantes et utilisées.
+Cependant, sa conception et son optimisation sont longs et coûteux, car des processus physiques clefs, qui impactent son fonctionnement, sont encore mal compris.
+En particulier le transport des électrons à travers les lignes de champs magnétique, et l'interaction entre le plasma et les parois du canal du moteur. 
+
+Ces deux phénomènes sont basés sur des mécanismes cinétiques, et donc ne peuvent pas être étudier précisément avec des modèles fluides.
+Le transport des électrons est fortement impacté par une instabilité de dérive électronique qui croie dans la direction azimutale.
+L'interaction plasma-surface, elle, se déroule dans la direction radial du moteur.
+Ainsi, afin d'étudier ces deux phénomènes, nous utilisons une simulation cinétique bidimensionnelle qui modélise les direction radial et azimuthal du moteur.
+Le code de simulation, {\emph LPPic}, a été développé dans ce but précis par Vivien Croes.
+Massivement parallélisé, il permet de simuler en un temps respectable le moteur a effet hall dans des conditions réalistes.
+ 
+Grace aux résultats de simulations, nous avons mis en évidence que les électrons sont non-locaux, car ils sont absorbés plus vite aux parois qu'ils ne sont thermalisés par les collisions.
+Cette observation est primordiale pour la modélisation de l'interaction plasma-surface, car elle remet en question l'hypothèse des électrons isothermes.
+En conséquence, nous avons développé un modèle de gaine avec une loi d'état polytropique pour les électrons, qui décrit plus précisément l'interaction plasma-surface.
+Une très bonne correspondance a été observé entre les simulations bidimensionnelles cinétiques et le modèle de gaine fluid unidirectionnel.
+Ce modèle peut être utilisé en présence, ou non, d'émission électronique secondaire.
+Lorsque l'émission secondaire est présente, le modèle de gaine présente jusqu'à trois solutions, ce qui explique les oscillations de gaines observées précédemment dans les simulations. 
+De plus, ce résultats est en accords avec des observations expérimentales, ce qui conforte ça validité.
+
+Ce modèle est une première étape important pour mieux modéliser les moteurs à effet Hall.
+Cependant, certains aspects, comme la courbure du canal et le gradient de champs magnétiques, ont été négligé.
+Ces autres aspects de l'interaction plasma surface devront être pris en compte afin d'obtenir une modélisation précise des moteurs à effet Hall. 
+
+Concernant le transport des électrons dans la direction axial du moteur, l'instabilité azimutale observée, responsable du transport, est comparée aux relations de dispersions de l'instabilité acoustique ionique et l'instabilité cyclotronique de dérive électronique. 
+Nous montrons que la phase de croissance linéaire est bien comprise, mais que l'état stationnaire dépend de l'interaction onde-particule et de phénomènes non-linéaires qui ne sont pas pris en compte dans les relations de dispersion.
+Ces phénomènes non-linéaire et cinétique doivent être mieux compris afin de déterminer l'état stationnaire de l'instabilité de dérive électronique, et donc la mobilité des électrons.
+
+\chapter*{Summary}
+
+Electric propulsion systems that accelerate plasma ions are important for the success of spatial missions, which are more and more needed in our daily lives (GPS, weather forecast, communication, etc.).
+Indeed, they uses more efficiently the propellant mass compared to the more conventional chemical thrusters.
+The Hall effect thruster is one of the most used and efficient technology.
+However, its conception and optimization is slow and costly, as key processes are still poorly understood.
+In particular the electron transport across the magnetic field lines, and the interaction between the plasma and the ceramic walls of the channel.
+
+Both phenomena are governed by kinetic mechanisms, and so they cannot be studied precisely with fluid models.
+Th electron transport is governed by the electron drift instability, which rises in the azimuthal direction.
+On the other hand, the plasma-wall interaction happens in the radial direction.
+Consequently, in order to study both phenomena we use a bi-dimensional kinetic simulation. 
+The simulation code, {\emph LPPic}, was developed in the objective by Vivien Croes.
+Highly parallelized, it allows us to simulate under a reasonable time the Hall effect thruster under realistic conditions.
+
+We showed with 2D PIC simulation results that electrons are non-local, as they are absorbed more quickly at the wall compared to the collision frequency.
+This observation is essential, as it questions a usually made hypotheses concerning the isothermal electrons.
+Consequently, we derived a non-isothermal sheath model using a polytropic state law for the electrons that describes more accurately the plasma-wall interaction.
+A very good agreement was found between the bi-dimensional kinetic simulations and the uni-dimensional sheath model.
+The model can be used with and without secondary electron emission.
+With electron emission, the sheath model can present up to three solutions, explaining the oscillations observed in the simulations. 
+Lastly, these results are in agreement with experimental measurements on the maximum , assuring its validity.
+
+This plasma-wall interaction model is an important first step in order to better model Hall effect thrusters.
+however, some aspects of the thruster, such as the channel curvature and the magnetic field gradient, were neglected.
+These phenomena would need to be taken into account in order to model more precisely the thruster.
+
+Concerning the electron transport across the magnetic field lines, the azimuthal instability observed, responsible for the transport, is compared to the dispersion relation of the ion acoustic wave and the electron cyclotron drift instability.
+We show that, while the first linear stage of the instability is well understood, the saturated quasi-steady-state is affected by particle-wave interactions and non-linear mechanisms that are not included in the dispersion relation.
+These non-linear and kinetic phenomena must be better understood in order to determine the stationary state of the instability, and so the electron mobility.
